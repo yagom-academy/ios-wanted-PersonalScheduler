@@ -6,11 +6,22 @@
 //
 
 import UIKit
+import KakaoSDKAuth
 
 class LoginVC: BaseVC {
-
+    // MARK: - View
+    private let loginView = LoginV()
+    
+    override func loadView() {
+        self.view = loginView
+    }
+    // MARK: - ViewModel
+    
+    
+    //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
 }
+// MARK: - Constraint
