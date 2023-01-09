@@ -23,7 +23,13 @@ final class LoginFlowCoordinator: Coordinator {
     }
     
     func start() {
-        let actions = LoginViewModelActions(loginButtonTapped: loginButtonTapped)
+        let actions = LoginViewModelActions(
+            loginButtonTapped: loginButtonTapped,
+            signinButtonTapped: signinButtonTapped,
+            kakaoLogoButtonTapped: kakaoLogoButtonTapped,
+            facebookLogoButtonTapped: facebookLogoButtonTapped,
+            appleLogoButtonTapped: appleLogoButtonTapped
+        )
         let loginVC = dependencies.makeLoginViewController(actions: actions)
         navigationController.pushViewController(loginVC, animated: true)
     }
@@ -39,5 +45,21 @@ final class LoginFlowCoordinator: Coordinator {
         
         // 틀리면
         // 오류처리 해주기.
+    }
+    
+    private func signinButtonTapped() {
+        print("회원가입 버튼 탭 !")
+    }
+    
+    private func kakaoLogoButtonTapped() {
+        print("kakao 버튼 탭 !")
+    }
+    
+    private func facebookLogoButtonTapped() {
+        print("facebook 버튼 탭 !")
+    }
+    
+    private func appleLogoButtonTapped() {
+        print("apple 버튼 탭 !")
     }
 }
