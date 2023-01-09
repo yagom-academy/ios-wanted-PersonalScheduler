@@ -36,9 +36,49 @@ final class LoginViewController: UIViewController {
             action: #selector(loginButtonTapped),
             for: .touchUpInside
         )
+        
+        loginView.signInButton.addTarget(
+            self,
+            action: #selector(signInButtonTapped),
+            for: .touchUpInside
+        )
+        
+        loginView.kakaoLogoImageButton.addTarget(
+            self,
+            action: #selector(kakaoButtonTapped),
+            for: .touchUpInside
+        )
+        
+        loginView.facebookLogoImageButton.addTarget(
+            self,
+            action: #selector(facebookButtonTapped),
+            for: .touchUpInside
+        )
+        
+        loginView.appleLogoImageButton.addTarget(
+            self,
+            action: #selector(appleButtonTapped),
+            for: .touchUpInside
+        )
     }
     
-    @objc func loginButtonTapped() {
+    @objc private func loginButtonTapped() {
         viewModel.loginButtonTapped()
+    }
+    
+    @objc private func signInButtonTapped() {
+        viewModel.signinButtonTapped()
+    }
+    
+    @objc private func kakaoButtonTapped() {
+        viewModel.kakaoLogoButtonTapped()
+    }
+    
+    @objc private func facebookButtonTapped() {
+        viewModel.facebookLogoButtonTapped()
+    }
+    
+    @objc private func appleButtonTapped() {
+        viewModel.appleLogoButtonTapped()
     }
 }
