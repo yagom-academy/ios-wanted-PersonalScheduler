@@ -1,0 +1,25 @@
+//
+//  FirebaseLoginManager.swift
+//  PersonalScheduler
+//
+//  Created by brad on 2023/01/09.
+//
+
+import FirebaseAuth
+
+final class FirebaseLoginManager {
+    
+    func handleLogin(email: String, password: String) {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                Auth.auth().signIn(withEmail: email, password: password, completion: nil)
+                print(email)
+            }
+        }
+    }
+    
+    func handleLogout() {
+        try? Auth.auth().signOut()
+    }
+}

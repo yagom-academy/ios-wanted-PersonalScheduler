@@ -18,7 +18,7 @@ struct LoginView: View {
             Button {
                 loginViewModel.kakaoLogIn()
             } label: {
-                Text("카카오 로그인")
+                Image(uiImage: UIImage(named: "KakoLoginImageButton")!)
             }
             Button {
                 loginViewModel.kakaoLogout()

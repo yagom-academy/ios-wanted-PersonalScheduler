@@ -9,32 +9,30 @@ import Foundation
 
 final class LoginViewModel: ObservableObject {
     
-    let kakaoLoginManager = KakaoLoginManager()
+    private let kakaoLoginManager = KakaoLoginManager()
     
     @Published var isLoggedIn: Bool = false
     
     @MainActor
     func kakaoLogIn() {
         Task {
-            if await kakaoLoginManager.handleKakaoLogin() {
+            if await kakaoLoginManager.handleLogin() {
                 isLoggedIn = true
             } else {
                 isLoggedIn = false
             }
         }
-        print(isLoggedIn)
     }
     
     @MainActor
     func kakaoLogout() {
         Task {
-            if await kakaoLoginManager.handleKakaoLogout() {
+            if await kakaoLoginManager.handleLogout() {
                 isLoggedIn = false
             } else {
                 isLoggedIn = true
             }
         }
-        print(isLoggedIn)
     }
 
 }
