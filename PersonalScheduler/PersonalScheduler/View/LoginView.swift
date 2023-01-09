@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
     
     @StateObject var loginViewModel = LoginViewModel()
+    
     @State var email: String = ""
     @State var password: String = ""
     
@@ -47,7 +48,7 @@ struct LoginView: View {
                 }
                 .frame(height: 40)
                 .cornerRadius(10)
-
+                
                 Button {
                     loginViewModel.kakaoLogIn()
                 } label: {

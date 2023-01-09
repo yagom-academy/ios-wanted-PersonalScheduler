@@ -48,7 +48,7 @@ struct SignUpView: View {
                 let alert = Alert(title: Text("Success"),
                                   message: Text("Welcom!!"),
                                   dismissButton: .cancel()
-                     )
+                )
                 return alert
             case .fail:
                 let alert = Alert(title: Text("Error"),

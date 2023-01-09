@@ -17,21 +17,21 @@ final class SignUpViewModel: ObservableObject {
     @Published var errorMessage = ""
     @Published var isActiveAlert: Bool = false
     @Published var loginResultAlert: LoginResultAlert = .fail
-
+    
     func registerUser(email: String, password: String) {
-            Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
-                if let error = error {
-                    print("Error : \(error.localizedDescription)")
-                    self?.errorMessage = error.localizedDescription
-                    self?.loginResultAlert = .fail
-                    return
-                }
-                
-                guard let user = result?.user else { return }
-                self?.loginResultAlert = .success
-                print(user.uid)
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+            if let error = error {
+                print("Error : \(error.localizedDescription)")
+                self?.errorMessage = error.localizedDescription
+                self?.loginResultAlert = .fail
+                return
             }
-        isActiveAlert.toggle()
+            
+            guard let user = result?.user else { return }
+            self?.loginResultAlert = .success
+            print(user.uid)
         }
+        isActiveAlert.toggle()
+    }
     
 }
