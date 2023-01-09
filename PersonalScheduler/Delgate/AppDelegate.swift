@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        KakaoSDK.initSDK(appKey: "${NATIVE_APP_KEY}")
+        KakaoSDK.initSDK(appKey: "eddf014b61773fbe4871f53881411c26")
         return true
     }
 

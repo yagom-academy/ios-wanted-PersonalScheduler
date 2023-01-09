@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SchedulListVC: UIViewController {
+class SchedulListVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()

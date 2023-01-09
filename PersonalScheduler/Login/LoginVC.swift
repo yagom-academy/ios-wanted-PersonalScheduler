@@ -16,12 +16,26 @@ class LoginVC: BaseVC {
         self.view = loginView
     }
     // MARK: - ViewModel
-    
-    
-    //MARK: - LifeCycles
+    private let viewModel = LoginVM()
+    // MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        addButtonAction()
     }
 }
-// MARK: - Constraint
+// MARK: - addButtonAction
+extension LoginVC {
+    
+    private func addButtonAction() {
+        self.loginView.kakaoLoginButton.addTarget(self, action: #selector(didTapLoginButton(_ :)), for: .touchUpInside)
+    }
+    
+    @objc private func didTapLoginButton(_ sender: UIButton) {
+        switch sender {
+        case loginView.kakaoLoginButton :
+            self.viewModel.input.loginTrigger.value = .kakao
+        default :
+            print("오류")
+        }
+    }
+}

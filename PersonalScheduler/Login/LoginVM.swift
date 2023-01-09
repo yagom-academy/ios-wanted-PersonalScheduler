@@ -31,11 +31,11 @@ class LoginVM: ViewModel {
         input.loginTrigger.bind { [weak self] loginType in
             switch loginType {
             case .apple:
-                <#code#>
+                print("애플")
             case .kakao:
-                LoginManager.shared
+                LoginManager.shared.kakaoLogin()
             case .facebook:
-                <#code#>
+                print("페이스북")
             }
         }
     }
