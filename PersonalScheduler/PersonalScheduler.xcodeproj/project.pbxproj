@@ -7,18 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D260366D8ED2742D2457834 /* Pods_PersonalScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E231B816D0880DA22F05C8B /* Pods_PersonalScheduler.framework */; };
 		A3EB6986296BAFB4004F492A /* PersonalSchedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */; };
-		A3EB6988296BAFB4004F492A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6987296BAFB4004F492A /* ContentView.swift */; };
+		A3EB6988296BAFB4004F492A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6987296BAFB4004F492A /* LoginView.swift */; };
 		A3EB698A296BAFB5004F492A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3EB6989296BAFB5004F492A /* Assets.xcassets */; };
 		A3EB698D296BAFB5004F492A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3EB698C296BAFB5004F492A /* Preview Assets.xcassets */; };
+		A3EB6996296BE8C0004F492A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6995296BE8C0004F492A /* LoginViewModel.swift */; };
+		A3EB6999296BEFF2004F492A /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6998296BEFF2004F492A /* KakaoLoginManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		348C73AD9D4B09F2298C3145 /* Pods-PersonalScheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.debug.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.debug.xcconfig"; sourceTree = "<group>"; };
+		4E231B816D0880DA22F05C8B /* Pods_PersonalScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3EB6982296BAFB4004F492A /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSchedulerApp.swift; sourceTree = "<group>"; };
-		A3EB6987296BAFB4004F492A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A3EB6987296BAFB4004F492A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A3EB6989296BAFB5004F492A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3EB698C296BAFB5004F492A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A3EB6993296BE23F004F492A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A3EB6994296BE351004F492A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		A3EB6995296BE8C0004F492A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		A3EB6998296BEFF2004F492A /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
+		B2A015D98D277D0327F3E886 /* Pods-PersonalScheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.release.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,17 +36,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D260366D8ED2742D2457834 /* Pods_PersonalScheduler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A7BB1AE5A601E3102380819 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				348C73AD9D4B09F2298C3145 /* Pods-PersonalScheduler.debug.xcconfig */,
+				B2A015D98D277D0327F3E886 /* Pods-PersonalScheduler.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A3EB6979296BAFB4004F492A = {
 			isa = PBXGroup;
 			children = (
 				A3EB6984296BAFB4004F492A /* PersonalScheduler */,
 				A3EB6983296BAFB4004F492A /* Products */,
+				5A7BB1AE5A601E3102380819 /* Pods */,
+				DFC1B11B109C7ECC476FC565 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,9 +74,13 @@
 			isa = PBXGroup;
 			children = (
 				A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */,
-				A3EB6987296BAFB4004F492A /* ContentView.swift */,
+				A3EB6993296BE23F004F492A /* Info.plist */,
 				A3EB6989296BAFB5004F492A /* Assets.xcassets */,
+				A3EB6997296BEFD8004F492A /* Manager */,
+				A3EB699A296BF03F004F492A /* ViewModel */,
+				A3EB699B296BF055004F492A /* View */,
 				A3EB698B296BAFB5004F492A /* Preview Content */,
+				A3EB6994296BE351004F492A /* Config.xcconfig */,
 			);
 			path = PersonalScheduler;
 			sourceTree = "<group>";
@@ -67,6 +93,38 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		A3EB6997296BEFD8004F492A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				A3EB6998296BEFF2004F492A /* KakaoLoginManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		A3EB699A296BF03F004F492A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A3EB6995296BE8C0004F492A /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A3EB699B296BF055004F492A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A3EB6987296BAFB4004F492A /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DFC1B11B109C7ECC476FC565 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4E231B816D0880DA22F05C8B /* Pods_PersonalScheduler.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +132,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3EB6990296BAFB5004F492A /* Build configuration list for PBXNativeTarget "PersonalScheduler" */;
 			buildPhases = (
+				D815D1CD1B10C3E5AFE085F5 /* [CP] Check Pods Manifest.lock */,
 				A3EB697E296BAFB4004F492A /* Sources */,
 				A3EB697F296BAFB4004F492A /* Frameworks */,
 				A3EB6980296BAFB4004F492A /* Resources */,
+				DAB5FAF36307DD552DD7A463 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,12 +192,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D815D1CD1B10C3E5AFE085F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PersonalScheduler-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DAB5FAF36307DD552DD7A463 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A3EB697E296BAFB4004F492A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3EB6988296BAFB4004F492A /* ContentView.swift in Sources */,
+				A3EB6988296BAFB4004F492A /* LoginView.swift in Sources */,
+				A3EB6999296BEFF2004F492A /* KakaoLoginManager.swift in Sources */,
+				A3EB6996296BE8C0004F492A /* LoginViewModel.swift in Sources */,
 				A3EB6986296BAFB4004F492A /* PersonalSchedulerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +251,7 @@
 /* Begin XCBuildConfiguration section */
 		A3EB698E296BAFB5004F492A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3EB6994296BE351004F492A /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -207,6 +312,7 @@
 		};
 		A3EB698F296BAFB5004F492A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3EB6994296BE351004F492A /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -261,6 +367,7 @@
 		};
 		A3EB6991296BAFB5004F492A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 348C73AD9D4B09F2298C3145 /* Pods-PersonalScheduler.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -269,11 +376,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PersonalScheduler/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PersonalScheduler/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -289,6 +398,7 @@
 		};
 		A3EB6992296BAFB5004F492A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2A015D98D277D0327F3E886 /* Pods-PersonalScheduler.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -297,11 +407,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PersonalScheduler/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PersonalScheduler/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
