@@ -10,23 +10,62 @@ import SwiftUI
 struct LoginView: View {
     
     @StateObject var loginViewModel = LoginViewModel()
+    @State var email: String = ""
+    @State var password: String = ""
     
     var body: some View {
-        VStack {
-            Text(loginViewModel.isLoggedIn.description)
-            
-            Button {
-                loginViewModel.kakaoLogIn()
-            } label: {
-                Image(uiImage: UIImage(named: "KakoLoginImageButton")!)
+        NavigationView {
+            VStack {
+                Text("Login")
+                    .font(.largeTitle)
+                    .fontWeight(.semibold)
+                    .padding(.top, 80)
+                    .padding(.bottom, 50)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                TextField("ID", text: $email)
+                    .padding()
+                    .background(
+                        Color(.systemGray6)
+                    )
+                    .cornerRadius(10)
+                SecureField("Password", text: $password)
+                    .padding()
+                    .background(
+                        Color(.systemGray6)
+                    )
+                    .cornerRadius(10)
+                
+                GeometryReader { geometry in
+                    Button {
+                        loginViewModel.kakaoLogIn()
+                    } label: {
+                        Text("Login")
+                            .foregroundColor(.white)
+                            .frame(width: geometry.size.width, height: 40)
+                    }
+                    .background(Color.blue)
+                }
+                .frame(height: 40)
+                .cornerRadius(10)
+
+                Button {
+                    loginViewModel.kakaoLogIn()
+                } label: {
+                    Image(uiImage: UIImage(named: "KakoLoginImageButton")!)
+                }
+                .padding(.top, 50)
+                
+                NavigationLink {
+                    SignUpView()
+                } label: {
+                    Text("Create Account")
+                }
+                .frame(maxHeight: .infinity, alignment: .bottom)
             }
-            Button {
-                loginViewModel.kakaoLogout()
-            } label: {
-                Text("카카오 로그아웃")
-            }
+            .padding()
+            .navigationTitle("Personal Scheduler")
+            .navigationBarTitleDisplayMode(.large)
         }
-        .padding()
     }
 }
 
