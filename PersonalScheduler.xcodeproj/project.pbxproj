@@ -20,6 +20,9 @@
 		AF026D43296BBEB400780955 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF026D42296BBEB400780955 /* Coordinator.swift */; };
 		AF026D45296BBF5900780955 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF026D44296BBF5900780955 /* AppCoordinator.swift */; };
 		AF026D47296BC4CB00780955 /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF026D46296BC4CB00780955 /* MainFlowCoordinator.swift */; };
+		AF14CCE5296C09F1001FD1CC /* LogoImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF14CCE4296C09F1001FD1CC /* LogoImageButton.swift */; };
+		AF14CCE8296C0E0B001FD1CC /* LabelSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF14CCE7296C0E0B001FD1CC /* LabelSeparator.swift */; };
+		AF14CCEB296C29C7001FD1CC /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF14CCEA296C29C7001FD1CC /* UITextField+.swift */; };
 		AFE3109A296BD51500C14BBC /* ScheduleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE31099296BD51500C14BBC /* ScheduleDetailViewModel.swift */; };
 		AFE3109C296BD56000C14BBC /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE3109B296BD56000C14BBC /* ScheduleListViewModel.swift */; };
 		AFE3109F296BD62600C14BBC /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE3109E296BD62600C14BBC /* AppDIContainer.swift */; };
@@ -44,6 +47,9 @@
 		AF026D42296BBEB400780955 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AF026D44296BBF5900780955 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		AF026D46296BC4CB00780955 /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
+		AF14CCE4296C09F1001FD1CC /* LogoImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImageButton.swift; sourceTree = "<group>"; };
+		AF14CCE7296C0E0B001FD1CC /* LabelSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSeparator.swift; sourceTree = "<group>"; };
+		AF14CCEA296C29C7001FD1CC /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		AFE31099296BD51500C14BBC /* ScheduleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewModel.swift; sourceTree = "<group>"; };
 		AFE3109B296BD56000C14BBC /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
 		AFE3109E296BD62600C14BBC /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
@@ -94,6 +100,7 @@
 		AF026D2B296BB60800780955 /* LoginScene */ = {
 			isa = PBXGroup;
 			children = (
+				AF14CCE9296C29B6001FD1CC /* Extension */,
 				AF026D30296BBB4000780955 /* Flows */,
 				AF026D35296BBB9C00780955 /* Login */,
 			);
@@ -177,6 +184,7 @@
 			children = (
 				AF026D25296BB5B300780955 /* LoginViewController.swift */,
 				AFE310A4296BECA500C14BBC /* LoginView.swift */,
+				AF14CCE6296C0B89001FD1CC /* Subviews */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -235,6 +243,23 @@
 				AF026D40296BBC6B00780955 /* Schedule.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		AF14CCE6296C0B89001FD1CC /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				AF14CCE4296C09F1001FD1CC /* LogoImageButton.swift */,
+				AF14CCE7296C0E0B001FD1CC /* LabelSeparator.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		AF14CCE9296C29B6001FD1CC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AF14CCEA296C29C7001FD1CC /* UITextField+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		AFE31098296BD35800C14BBC /* Application */ = {
@@ -328,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF14CCE8296C0E0B001FD1CC /* LabelSeparator.swift in Sources */,
 				AFE3109F296BD62600C14BBC /* AppDIContainer.swift in Sources */,
 				AFE3109A296BD51500C14BBC /* ScheduleDetailViewModel.swift in Sources */,
 				AF026D32296BBB6C00780955 /* LoginFlowCoordinator.swift in Sources */,
@@ -338,11 +364,13 @@
 				AF026D28296BB5D900780955 /* ScheduleListViewController.swift in Sources */,
 				AF026D47296BC4CB00780955 /* MainFlowCoordinator.swift in Sources */,
 				AFE3109C296BD56000C14BBC /* ScheduleListViewModel.swift in Sources */,
+				AF14CCEB296C29C7001FD1CC /* UITextField+.swift in Sources */,
 				AFE310A5296BECA500C14BBC /* LoginView.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				AF026D41296BBC6B00780955 /* Schedule.swift in Sources */,
 				AFE310A3296BDC3200C14BBC /* LoginSceneDIContainer.swift in Sources */,
+				AF14CCE5296C09F1001FD1CC /* LogoImageButton.swift in Sources */,
 				AF026D39296BBBC500780955 /* LoginViewModel.swift in Sources */,
 				AF026D43296BBEB400780955 /* Coordinator.swift in Sources */,
 			);
