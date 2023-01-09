@@ -9,10 +9,18 @@ import Foundation
 
 struct LoginViewModelActions {
     let loginButtonTapped: () -> Void
+    let signinButtonTapped: () -> Void
+    let kakaoLogoButtonTapped: () -> Void
+    let facebookLogoButtonTapped: () -> Void
+    let appleLogoButtonTapped: () -> Void
 }
 
 protocol LoginViewModelInput {
     func loginButtonTapped()
+    func signinButtonTapped()
+    func kakaoLogoButtonTapped()
+    func facebookLogoButtonTapped()
+    func appleLogoButtonTapped()
 }
 
 protocol LoginViewModelOutput {}
@@ -28,5 +36,21 @@ final class DefaultLoginViewModel: LoginViewModel {
     
     func loginButtonTapped() {
         actions?.loginButtonTapped()
+    }
+    
+    func signinButtonTapped() {
+        actions?.signinButtonTapped()
+    }
+    
+    func kakaoLogoButtonTapped() {
+        actions?.kakaoLogoButtonTapped()
+    }
+    
+    func facebookLogoButtonTapped() {
+        actions?.facebookLogoButtonTapped()
+    }
+    
+    func appleLogoButtonTapped() {
+        actions?.appleLogoButtonTapped()
     }
 }
