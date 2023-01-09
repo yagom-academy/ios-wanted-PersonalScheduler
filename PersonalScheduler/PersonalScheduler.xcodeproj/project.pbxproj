@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9D260366D8ED2742D2457834 /* Pods_PersonalScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E231B816D0880DA22F05C8B /* Pods_PersonalScheduler.framework */; };
 		A3DEB0C5296C08770079903A /* FirebaseLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0C4296C08770079903A /* FirebaseLoginManager.swift */; };
+		A3DEB0C7296C3ED70079903A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0C6296C3ED70079903A /* SignUpView.swift */; };
+		A3DEB0C9296C411E0079903A /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0C8296C411E0079903A /* SignUpViewModel.swift */; };
 		A3EB6986296BAFB4004F492A /* PersonalSchedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */; };
 		A3EB6988296BAFB4004F492A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6987296BAFB4004F492A /* LoginView.swift */; };
 		A3EB698A296BAFB5004F492A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3EB6989296BAFB5004F492A /* Assets.xcassets */; };
@@ -22,6 +24,8 @@
 		348C73AD9D4B09F2298C3145 /* Pods-PersonalScheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.debug.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.debug.xcconfig"; sourceTree = "<group>"; };
 		4E231B816D0880DA22F05C8B /* Pods_PersonalScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3DEB0C4296C08770079903A /* FirebaseLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLoginManager.swift; sourceTree = "<group>"; };
+		A3DEB0C6296C3ED70079903A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		A3DEB0C8296C411E0079903A /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		A3EB6982296BAFB4004F492A /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSchedulerApp.swift; sourceTree = "<group>"; };
 		A3EB6987296BAFB4004F492A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				A3EB6995296BE8C0004F492A /* LoginViewModel.swift */,
+				A3DEB0C8296C411E0079903A /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				A3EB6987296BAFB4004F492A /* LoginView.swift */,
+				A3DEB0C6296C3ED70079903A /* SignUpView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,7 +256,9 @@
 				A3EB6999296BEFF2004F492A /* KakaoLoginManager.swift in Sources */,
 				A3DEB0C5296C08770079903A /* FirebaseLoginManager.swift in Sources */,
 				A3EB6996296BE8C0004F492A /* LoginViewModel.swift in Sources */,
+				A3DEB0C7296C3ED70079903A /* SignUpView.swift in Sources */,
 				A3EB6986296BAFB4004F492A /* PersonalSchedulerApp.swift in Sources */,
+				A3DEB0C9296C411E0079903A /* SignUpViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
