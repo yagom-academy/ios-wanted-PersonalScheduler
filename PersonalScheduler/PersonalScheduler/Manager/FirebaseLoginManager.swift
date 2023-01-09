@@ -14,7 +14,6 @@ final class FirebaseLoginManager {
             if let error = error {
                 print("Error: \(error.localizedDescription)")
                 Auth.auth().signIn(withEmail: email, password: password, completion: nil)
-                print(email)
             }
         }
     }

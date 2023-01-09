@@ -14,7 +14,6 @@ final class KakaoLoginManager {
     
     @MainActor
     func handleLogin() async -> Bool {
-        
         await withCheckedContinuation { continuation in
             if (UserApi.isKakaoTalkLoginAvailable()) {
                 UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
@@ -60,7 +59,6 @@ final class KakaoLoginManager {
     
     @MainActor
     func handleLogout() async -> Bool {
-        
         await withCheckedContinuation { [weak self] continuation in
             UserApi.shared.logout {(error) in
                 if let error = error {
