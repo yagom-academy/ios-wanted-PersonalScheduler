@@ -15,6 +15,9 @@
 		35EEA809296C063A002A30C9 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 35EEA808296C063A002A30C9 /* FirebaseMessaging */; };
 		35EEA815296C0880002A30C9 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA814296C0880002A30C9 /* BaseVC.swift */; };
 		35EEA817296C08C6002A30C9 /* Cordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA816296C08C6002A30C9 /* Cordinator.swift */; };
+		35EEA819296C0EF4002A30C9 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA818296C0EF4002A30C9 /* LoginVC.swift */; };
+		35EEA81B296C0F49002A30C9 /* InputSchedulVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA81A296C0F49002A30C9 /* InputSchedulVC.swift */; };
+		35EEA81D296C0F70002A30C9 /* SchedulListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA81C296C0F70002A30C9 /* SchedulListVC.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* SplashVC.swift */; };
@@ -26,6 +29,9 @@
 /* Begin PBXFileReference section */
 		35EEA814296C0880002A30C9 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		35EEA816296C08C6002A30C9 /* Cordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cordinator.swift; sourceTree = "<group>"; };
+		35EEA818296C0EF4002A30C9 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		35EEA81A296C0F49002A30C9 /* InputSchedulVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSchedulVC.swift; sourceTree = "<group>"; };
+		35EEA81C296C0F70002A30C9 /* SchedulListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulListVC.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +88,7 @@
 		35EEA80F296C06EF002A30C9 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				35EEA818296C0EF4002A30C9 /* LoginVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -97,6 +104,7 @@
 		35EEA811296C0784002A30C9 /* SchedulList */ = {
 			isa = PBXGroup;
 			children = (
+				35EEA81C296C0F70002A30C9 /* SchedulListVC.swift */,
 			);
 			path = SchedulList;
 			sourceTree = "<group>";
@@ -104,6 +112,7 @@
 		35EEA812296C07E1002A30C9 /* InputSchedul */ = {
 			isa = PBXGroup;
 			children = (
+				35EEA81A296C0F49002A30C9 /* InputSchedulVC.swift */,
 			);
 			path = InputSchedul;
 			sourceTree = "<group>";
@@ -236,6 +245,9 @@
 			files = (
 				63AAAB062967EA2600775EC3 /* SplashVC.swift in Sources */,
 				35EEA817296C08C6002A30C9 /* Cordinator.swift in Sources */,
+				35EEA81B296C0F49002A30C9 /* InputSchedulVC.swift in Sources */,
+				35EEA81D296C0F70002A30C9 /* SchedulListVC.swift in Sources */,
+				35EEA819296C0EF4002A30C9 /* LoginVC.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				35EEA815296C0880002A30C9 /* BaseVC.swift in Sources */,
