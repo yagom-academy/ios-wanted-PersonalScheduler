@@ -11,6 +11,8 @@
 		0223FAA4296BDD4D00B6B32C /* Encodable+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAA3296BDD4D00B6B32C /* Encodable+extension.swift */; };
 		0223FABA296BED9B00B6B32C /* DefaultAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAB9296BED9B00B6B32C /* DefaultAPIProvider.swift */; };
 		0223FABC296BEDAC00B6B32C /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FABB296BEDAC00B6B32C /* APIProvider.swift */; };
+		0223FABE296BEE8300B6B32C /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FABD296BEE8300B6B32C /* AuthenticationRepository.swift */; };
+		0223FAC0296BF21F00B6B32C /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FABF296BF21F00B6B32C /* Authentication.swift */; };
 		0223FAC3296BFBD300B6B32C /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FAC2296BFBD300B6B32C /* KakaoSDKAuth */; };
 		0223FAC5296BFBD300B6B32C /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FAC4296BFBD300B6B32C /* KakaoSDKCommon */; };
 		0223FAC7296BFBD300B6B32C /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FAC6296BFBD300B6B32C /* KakaoSDKUser */; };
@@ -26,6 +28,8 @@
 		0223FAA3296BDD4D00B6B32C /* Encodable+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+extension.swift"; sourceTree = "<group>"; };
 		0223FAB9296BED9B00B6B32C /* DefaultAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAPIProvider.swift; sourceTree = "<group>"; };
 		0223FABB296BEDAC00B6B32C /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
+		0223FABD296BEE8300B6B32C /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
+		0223FABF296BF21F00B6B32C /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 			children = (
 				0223FAA7296BDDC500B6B32C /* Protocol */,
 				0223FAB9296BED9B00B6B32C /* DefaultAPIProvider.swift */,
+				0223FABD296BEE8300B6B32C /* AuthenticationRepository.swift */,
+				0223FABF296BF21F00B6B32C /* Authentication.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -219,6 +225,8 @@
 				0223FABA296BED9B00B6B32C /* DefaultAPIProvider.swift in Sources */,
 				0223FABC296BEDAC00B6B32C /* APIProvider.swift in Sources */,
 				0223FAA4296BDD4D00B6B32C /* Encodable+extension.swift in Sources */,
+				0223FAC0296BF21F00B6B32C /* Authentication.swift in Sources */,
+				0223FABE296BEE8300B6B32C /* AuthenticationRepository.swift in Sources */,
 				0223FAA2296BDD2600B6B32C /* TargetType.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
