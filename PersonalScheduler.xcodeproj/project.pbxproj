@@ -35,6 +35,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0223FA9D296BDCA700B6B32C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
+				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0223FA9E296BDCAB00B6B32C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB052967EA2600775EC3 /* ViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		0223FA9F296BDCC900B6B32C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
+				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0223FAA0296BDCD300B6B32C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0223FA9D296BDCA700B6B32C /* App */,
+				0223FA9E296BDCAB00B6B32C /* Presentation */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		63AAAAF52967EA2600775EC3 = {
 			isa = PBXGroup;
 			children = (
@@ -54,11 +89,8 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
-				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
-				63AAAB052967EA2600775EC3 /* ViewController.swift */,
-				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
-				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
+				0223FA9F296BDCC900B6B32C /* Resources */,
+				0223FAA0296BDCD300B6B32C /* Sources */,
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
 			);
 			path = PersonalScheduler;
