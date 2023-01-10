@@ -56,6 +56,11 @@ struct SignUpView: View {
                                   dismissButton: .cancel()
                 )
                 return alert
+            case .normal:
+                let alert = Alert(title: Text("Checking..."),
+                                  dismissButton: .cancel()
+                )
+                return alert
             }
         }
     }

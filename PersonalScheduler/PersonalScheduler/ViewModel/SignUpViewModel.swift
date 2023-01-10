@@ -11,7 +11,7 @@ import FirebaseAuth
 final class SignUpViewModel: ObservableObject {
     
     enum LoginResultAlert {
-        case success, fail
+        case success, fail, normal
     }
     
     @Published var errorMessage = ""
@@ -19,6 +19,7 @@ final class SignUpViewModel: ObservableObject {
     @Published var loginResultAlert: LoginResultAlert = .fail
     
     func registerUser(email: String, password: String) {
+        loginResultAlert = .normal
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
             if let error = error {
                 print("Error : \(error.localizedDescription)")
