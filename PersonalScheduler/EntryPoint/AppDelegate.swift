@@ -7,12 +7,14 @@
 
 import UIKit
 import FirebaseCore
+import KakaoSDKCommon
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        initKakaoSDK()
         UNUserNotificationCenter.current().delegate = self
 
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -32,6 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+    }
+
+    private func initKakaoSDK() {
+        guard let path = Bundle.main.path(forResource: "AppKey", ofType: "plist"),
+              let dictionary = NSDictionary(contentsOfFile: path),
+              let key = dictionary["kakaoAppKey"] as? String else {
+            return
+        }
+    
+        KakaoSDK.initSDK(appKey: key, loggingEnable:true)
     }
 }
 
