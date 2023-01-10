@@ -22,6 +22,9 @@
 		0223FAD7296D222D00B6B32C /* KeyChainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAD6296D222D00B6B32C /* KeyChainStorage.swift */; };
 		0223FAD9296D231500B6B32C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAD8296D231500B6B32C /* User.swift */; };
 		0223FADB296D2A7A00B6B32C /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FADA296D2A7A00B6B32C /* Schedule.swift */; };
+		0223FADE296D329900B6B32C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FADD296D329900B6B32C /* FirebaseFirestore */; };
+		0223FAE0296D329900B6B32C /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FADF296D329900B6B32C /* FirebaseFirestoreCombine-Community */; };
+		0223FAE2296D329900B6B32C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FAE1296D329900B6B32C /* FirebaseFirestoreSwift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
@@ -60,6 +63,9 @@
 				0223FAC3296BFBD300B6B32C /* KakaoSDKAuth in Frameworks */,
 				0223FAC7296BFBD300B6B32C /* KakaoSDKUser in Frameworks */,
 				0223FACF296C129200B6B32C /* FacebookCore in Frameworks */,
+				0223FADE296D329900B6B32C /* FirebaseFirestore in Frameworks */,
+				0223FAE0296D329900B6B32C /* FirebaseFirestoreCombine-Community in Frameworks */,
+				0223FAE2296D329900B6B32C /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +190,9 @@
 				0223FAC6296BFBD300B6B32C /* KakaoSDKUser */,
 				0223FACE296C129200B6B32C /* FacebookCore */,
 				0223FAD0296C129200B6B32C /* FacebookLogin */,
+				0223FADD296D329900B6B32C /* FirebaseFirestore */,
+				0223FADF296D329900B6B32C /* FirebaseFirestoreCombine-Community */,
+				0223FAE1296D329900B6B32C /* FirebaseFirestoreSwift */,
 			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
@@ -216,6 +225,7 @@
 			packageReferences = (
 				0223FAC1296BFBD300B6B32C /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				0223FACD296C129200B6B32C /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				0223FADC296D329900B6B32C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
@@ -483,6 +493,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		0223FADC296D329900B6B32C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -510,6 +528,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0223FACD296C129200B6B32C /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookLogin;
+		};
+		0223FADD296D329900B6B32C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0223FADC296D329900B6B32C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		0223FADF296D329900B6B32C /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0223FADC296D329900B6B32C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		0223FAE1296D329900B6B32C /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0223FADC296D329900B6B32C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

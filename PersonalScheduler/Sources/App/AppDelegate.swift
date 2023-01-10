@@ -8,6 +8,7 @@
 import UIKit
 import KakaoSDKCommon
 import FacebookCore
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         KakaoSDK.initSDK(appKey: "0c2147921cd24e01b39c96a36c61c77f")
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        FirebaseApp.configure()
         return true
     }
 
