@@ -12,7 +12,7 @@ final class OAuthLoginUseCase {
 
     private let repository: OAuthRepositoryInterface
 
-    init(repository: OAuthRepositoryInterface) {
+    init(repository: OAuthRepositoryInterface = OAuthRepository()) {
         self.repository = repository
     }
 
