@@ -7,4 +7,9 @@
 
 import Foundation
 
-protocol ScheduleListCoordinatorInterface: AnyObject {}
+protocol ScheduleListCoordinatorInterface: AnyObject {
+    
+    func showCreateSchedule()
+    func showEditSchedule()
+    
+}

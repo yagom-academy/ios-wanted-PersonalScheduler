@@ -37,8 +37,38 @@ private extension ScheduleListCoordinator {
         return viewController
     }
     
+    
+    func makeScheduleCoordinator(type: CoordinatorType) -> Coordinator {
+        let coordinator = ScheduleCoordinator(navigationController: navigationController, type: type)
+        coordinator.finishDelegate = self
+        coordinator.parentCoordinator = self
+        childCoordinators.append(coordinator)
+        return coordinator
+    }
+    
+}
+
+extension ScheduleListCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        childDidFinish(childCoordinator, parent: self)
+        
+        switch childCoordinator.type {
+        case .create: navigationController.visibleViewController?.dismiss(animated: true)
+        case .edit: navigationController.popViewController(animated: true)
+        default: break
+        }
+    }
 }
 
 extension ScheduleListCoordinator: ScheduleListCoordinatorInterface {
     
+    func showCreateSchedule() {
+        
+    }
+    
+    func showEditSchedule() {
+        
+    }
 }
+
+

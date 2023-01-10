@@ -46,7 +46,7 @@ private extension AppCoordinator {
 
 extension AppCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
-        childCoordinators = childCoordinators.filter({ $0.type != childCoordinator.type })
+        childDidFinish(childCoordinator, parent: self)
 
         switch childCoordinator.type {
         case .login:

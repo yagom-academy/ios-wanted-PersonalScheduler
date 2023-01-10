@@ -37,6 +37,10 @@
 		0223FB02296D5EEB00B6B32C /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB01296D5EEB00B6B32C /* ScheduleListViewController.swift */; };
 		0223FB04296D5F0F00B6B32C /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB03296D5F0F00B6B32C /* ScheduleListViewModel.swift */; };
 		0223FB06296D5F1E00B6B32C /* ScheduleListCoordinatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB05296D5F1E00B6B32C /* ScheduleListCoordinatorInterface.swift */; };
+		0223FB0F296D673500B6B32C /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB0E296D673500B6B32C /* ScheduleViewController.swift */; };
+		0223FB11296D674300B6B32C /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB10296D674300B6B32C /* ScheduleViewModel.swift */; };
+		0223FB14296D67F800B6B32C /* ScheduleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB13296D67F800B6B32C /* ScheduleCoordinator.swift */; };
+		0223FB16296D695900B6B32C /* ScheduleCoordinatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB15296D695900B6B32C /* ScheduleCoordinatorInterface.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* AuthViewController.swift */; };
@@ -68,6 +72,10 @@
 		0223FB01296D5EEB00B6B32C /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
 		0223FB03296D5F0F00B6B32C /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
 		0223FB05296D5F1E00B6B32C /* ScheduleListCoordinatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListCoordinatorInterface.swift; sourceTree = "<group>"; };
+		0223FB0E296D673500B6B32C /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		0223FB10296D674300B6B32C /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		0223FB13296D67F800B6B32C /* ScheduleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinator.swift; sourceTree = "<group>"; };
+		0223FB15296D695900B6B32C /* ScheduleCoordinatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinatorInterface.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,8 +118,9 @@
 			children = (
 				0223FB00296D5D9900B6B32C /* Auth */,
 				0223FB07296D5F2D00B6B32C /* ScheduleList */,
-				0223FAF0296D4EE800B6B32C /* AppCoordinator.swift */,
+				0223FB12296D675100B6B32C /* Schedule */,
 				0223FAEE296D4E5F00B6B32C /* Coordinator.swift */,
+				0223FAF0296D4EE800B6B32C /* AppCoordinator.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -265,6 +274,41 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		0223FB12296D675100B6B32C /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB19296D696B00B6B32C /* ViewController */,
+				0223FB18296D696600B6B32C /* ViewModel */,
+				0223FB17296D696100B6B32C /* Coordinator */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		0223FB17296D696100B6B32C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB13296D67F800B6B32C /* ScheduleCoordinator.swift */,
+				0223FB15296D695900B6B32C /* ScheduleCoordinatorInterface.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		0223FB18296D696600B6B32C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB10296D674300B6B32C /* ScheduleViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0223FB19296D696B00B6B32C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB0E296D673500B6B32C /* ScheduleViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		63AAAAF52967EA2600775EC3 = {
 			isa = PBXGroup;
 			children = (
@@ -387,8 +431,11 @@
 				0223FAC0296BF21F00B6B32C /* Authentication.swift in Sources */,
 				0223FAD7296D222D00B6B32C /* KeyChainStorage.swift in Sources */,
 				0223FABE296BEE8300B6B32C /* AuthenticationRepository.swift in Sources */,
+				0223FB0F296D673500B6B32C /* ScheduleViewController.swift in Sources */,
 				0223FAA2296BDD2600B6B32C /* TargetType.swift in Sources */,
 				0223FB06296D5F1E00B6B32C /* ScheduleListCoordinatorInterface.swift in Sources */,
+				0223FB14296D67F800B6B32C /* ScheduleCoordinator.swift in Sources */,
+				0223FB16296D695900B6B32C /* ScheduleCoordinatorInterface.swift in Sources */,
 				0223FAFB296D5CCE00B6B32C /* ScheduleListCoordinator.swift in Sources */,
 				0223FAFF296D5D8800B6B32C /* AuthCoordinatorInterface.swift in Sources */,
 				0223FAF9296D5C5300B6B32C /* AuthCoordinator.swift in Sources */,
@@ -397,6 +444,7 @@
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				0223FADB296D2A7A00B6B32C /* Schedule.swift in Sources */,
 				0223FB04296D5F0F00B6B32C /* ScheduleListViewModel.swift in Sources */,
+				0223FB11296D674300B6B32C /* ScheduleViewModel.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				0223FAFD296D5D2F00B6B32C /* AuthViewModel.swift in Sources */,
 				0223FAF7296D579400B6B32C /* Bundle+extension.swift in Sources */,
