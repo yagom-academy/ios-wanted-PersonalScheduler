@@ -10,6 +10,7 @@ import Combine
 import KakaoSDKAuth
 import KakaoSDKUser
 import AuthenticationServices
+import FacebookLogin
 
 final class AuthenticationRepository: NSObject {
     
@@ -88,6 +89,48 @@ final class AuthenticationRepository: NSObject {
         let controller = ASAuthorizationController(authorizationRequests: [request])
         controller.delegate = self
         return controller
+    }
+    
+    func facebookAuthorize() -> AnyPublisher<Authentication?, Error> {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions:[.publicProfile, .email,], viewController: nil) { [weak self] (result) in
+            switch result {
+            case .cancelled:
+                print("User cancelled login")
+                self?.authentication.send(completion: .finished)
+                
+            case .failed(let error):
+                self?.authentication.send(completion: .failure(error))
+                
+            case .success(_, _, let accessToken):
+                let tokenString = accessToken?.tokenString
+                let userID = accessToken?.userID
+                GraphRequest(
+                    graphPath: "me",
+                    parameters: ["fields": "id, name, picture.type(large), email"]
+                ).start { [weak self] (connection, result, error) -> Void in
+                    if let error {
+                        self?.authentication.send(completion: .failure(error))
+                    } else {
+                        let userInfo = result as? [String: Any]
+                        let profileURL = userInfo?["picture"].flatMap { ($0 as? [String: [String: Any]])?["data"]?["url"] as? String }
+                        let authentication = Authentication(
+                            accessToken: tokenString,
+                            refreshToken: nil,
+                            identityToken: nil,
+                            authorizeCode: nil,
+                            snsUserName: userInfo?["name"] as? String,
+                            snsUserEmail: userInfo?["email"] as? String,
+                            snsUserId: userID,
+                            snsProfileUrl: profileURL
+                        )
+                        self?.authentication.send(authentication)
+                        self?.authentication.send(completion: .finished)
+                    }
+                }
+            }
+        }
+        return authentication.eraseToAnyPublisher()
     }
     
 }

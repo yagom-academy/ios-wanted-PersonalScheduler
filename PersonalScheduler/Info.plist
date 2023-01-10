@@ -12,11 +12,27 @@
 				<string>kakao0c2147921cd24e01b39c96a36c61c77f</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb906066760565684</string>
+			</array>
+		</dict>
 	</array>
+	<key>FacebookAppID</key>
+	<string>906066760565684</string>
+	<key>FacebookClientToken</key>
+	<string>f39101bee90c122e3762914ee1397cb9</string>
+	<key>FacebookDisplayName</key>
+	<string>PersonalScheduler</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kakaokompassauth</string>
 		<string>kakaolink</string>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
