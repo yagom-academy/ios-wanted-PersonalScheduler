@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32EAF58B296C40B10056513F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32EAF58A296C40B10056513F /* GoogleService-Info.plist */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32EAF58A296C40B10056513F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32EAF5A0296C48420056513F /* APIKeys */ = {
+			isa = PBXGroup;
+			children = (
+				32EAF58A296C40B10056513F /* GoogleService-Info.plist */,
+			);
+			path = APIKeys;
+			sourceTree = "<group>";
+		};
+		32EAF5A7296C83690056513F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
+				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
+				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				32EAF589296C38F90056513F /* PersonalScheduler.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		63AAAAF52967EA2600775EC3 = {
 			isa = PBXGroup;
 			children = (
@@ -59,10 +80,7 @@
 				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
 				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
 				63AAAB052967EA2600775EC3 /* ViewController.swift */,
-				63AAAB072967EA2600775EC3 /* Main.storyboard */,
-				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
-				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
-				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				32EAF5A7296C83690056513F /* Resources */,
 			);
 			path = PersonalScheduler;
 			sourceTree = "<group>";
@@ -126,8 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
+				32EAF58B296C40B10056513F /* GoogleService-Info.plist in Resources */,
 				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
-				63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
