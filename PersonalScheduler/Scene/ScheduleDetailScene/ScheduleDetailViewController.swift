@@ -40,6 +40,16 @@ final class ScheduleDetailViewController: UIViewController {
     private let startDatePicker = ScheduleDatePickerView(text: "시작")
     private let endDatePicker = ScheduleDatePickerView(text: "종료")
     private let notificationSwitchView = ScheduleSwitchView(text: "알림")
+    private let scheduleViewModel: ScheduleViewModel
+    
+    init(_ viewModel: ScheduleViewModel) {
+        self.scheduleViewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

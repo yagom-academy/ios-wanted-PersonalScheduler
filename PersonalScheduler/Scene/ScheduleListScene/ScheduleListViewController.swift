@@ -100,6 +100,8 @@ extension ScheduleListViewController {
     }
     
     @objc private func addScheduleBarButtonTapped() {
-        //TODO: 일정 추가 화면으로 이동
+        let detailViewController = ScheduleDetailViewController(scheduleViewModel)
+        navigationController?.pushViewController(detailViewController,
+                                                 animated: true)
     }
 }
