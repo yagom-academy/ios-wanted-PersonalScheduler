@@ -18,6 +18,7 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUp()
     }
     
     init(viewModel: AuthViewModel, coordinator: AuthCoordinatorInterface) {
@@ -31,12 +32,97 @@ class AuthViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "개인 일정 관리"
+        label.font = .preferredFont(for: .largeTitle, weight: .bold)
+        label.textColor = .label
+        return label
+    }()
+    
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "SNS 계정으로 간편 가입하기"
+        label.font = .preferredFont(for: .callout, weight: .bold)
+        label.textColor = .systemGray
+        return label
+    }()
+    
+    private lazy var loginButtonStackView: UIStackView = {
+        let stackView = UIStackView(axis: .horizontal, alignment: .center, distribution: .fill, spacing: 16)
+        stackView.addArrangedSubviews(kakaoButton, appleButton, facebookButton)
+        return stackView
+    }()
+    
+    private lazy var kakaoButton: LoginButton = {
+        let button = LoginButton(image: UIImage(named: "kakao"))
+        button.addTarget(self, action: #selector(didTapKakaoButton(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var appleButton: LoginButton = {
+        let button = LoginButton(image: UIImage(named: "apple"))
+        button.addTarget(self, action: #selector(didTapAppleButton(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var facebookButton: LoginButton = {
+        let button = LoginButton(image: UIImage(named: "Facebook"))
+        button.addTarget(self, action: #selector(didTapFacebookButton(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var helpButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("로그인에 문제가 있나요?", for: .normal)
+        button.titleLabel?.font = .preferredFont(for: .callout, weight: .bold)
+        button.setTitleColor(.label.withAlphaComponent(0.8), for: .normal)
+        button.addTarget(self, action: #selector(didTapHelpButton(_:)), for: .touchUpInside)
+        return button
+    }()
+    
 }
 
 private extension AuthViewController {
     
+    func setUp() {
+        setUpLayout()
+    }
+    
+    func setUpLayout() {
+        view.backgroundColor = .psBackground
+        view.addSubviews(titleLabel, loginButtonStackView, helpButton, descriptionLabel)
+        let deviceHeight = view.safeAreaLayoutGuide.layoutFrame.height
+        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -(deviceHeight * 0.178)),
+            helpButton.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor),
+            helpButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            loginButtonStackView.centerXAnchor.constraint(equalTo: helpButton.centerXAnchor),
+            loginButtonStackView.bottomAnchor.constraint(equalTo: helpButton.topAnchor, constant: -110),
+            descriptionLabel.centerXAnchor.constraint(equalTo: loginButtonStackView.centerXAnchor),
+            descriptionLabel.bottomAnchor.constraint(equalTo: loginButtonStackView.topAnchor, constant: -16)
+        ])
+    }
+    
     func appleAuthorize() {
         
+    }
+    
+    @objc func didTapKakaoButton(_ sender: LoginButton) {
+        print(#function)
+    }
+    
+    @objc func didTapAppleButton(_ sender: LoginButton) {
+        print(#function)
+    }
+    
+    @objc func didTapFacebookButton(_ sender: LoginButton) {
+        print(#function)
+    }
+    
+    @objc func didTapHelpButton(_ sender: UIButton) {
+        print(#function)
     }
     
 }
