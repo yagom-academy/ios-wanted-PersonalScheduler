@@ -5,6 +5,8 @@
 //  Created by bard on 06/01/23.
 //
 
+import KakaoSDKCommon
+import KakaoSDKAuth
 import UIKit
 
 @main
@@ -18,9 +20,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UIApplication.LaunchOptionsKey: Any
         ]?
     ) -> Bool {
+        
+        KakaoSDK.initSDK(appKey: "fe804dea611bd7274a600e42ed515f50")
 
         return true
     }
+    
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) -> Bool {
+            if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                return AuthController.handleOpenUrl(url: url)
+            }
+
+            return false
+        }
 
     // MARK: UISceneSession Lifecycle
 
