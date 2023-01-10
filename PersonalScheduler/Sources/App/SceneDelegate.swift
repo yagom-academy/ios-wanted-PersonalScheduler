@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import KakaoSDKAuth
+import FacebookCore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,6 +21,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()
+    }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else {
+            return
+        }
+        if (AuthApi.isKakaoTalkLoginUrl(url)) { // Kakao SDK
+            _ = AuthController.handleOpenUrl(url: url)
+        }
+        ApplicationDelegate.shared.application( // Facebook SDK
+            UIApplication.shared,
+            open: url,
+            sourceApplication: nil,
+            annotation: [UIApplication.OpenURLOptionsKey.annotation]
+        )
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
