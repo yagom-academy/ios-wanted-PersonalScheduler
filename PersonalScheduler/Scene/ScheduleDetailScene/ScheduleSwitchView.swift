@@ -30,6 +30,10 @@ final class ScheduleSwitchView: UIView {
         return switchView
     }()
     
+    var isSwitchOn: Bool {
+        return switchView.isOn
+    }
+    
     init(text: String, frame: CGRect = .zero) {
         super.init(frame: frame)
         setupView()

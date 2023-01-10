@@ -30,6 +30,10 @@ final class ScheduleDatePickerView: UIView {
         return datePicker
     }()
     
+    var selectedDate: Date {
+        return datePicker.date
+    }
+    
     init(text: String, frame: CGRect = .zero) {
         super.init(frame: frame)
         setupView()
