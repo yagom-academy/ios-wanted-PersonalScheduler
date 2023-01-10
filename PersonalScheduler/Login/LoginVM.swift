@@ -14,7 +14,8 @@ class LoginVM: ViewModel {
     }
     
     struct Output {
-        
+        let isLoginable: Dynamic<Bool> = Dynamic(false)
+        var errorMessage: String = ""
     }
     
     var input: Input
@@ -33,7 +34,15 @@ class LoginVM: ViewModel {
             case .apple:
                 print("애플")
             case .kakao:
-                LoginManager.shared.kakaoLogin()
+                KakaoLoginManager.shared.kakaoLogin() { loginResult, error in
+                    switch loginResult {
+                    case .loginSuccess:
+                        self?.output.isLoginable.value = true
+                    case .loginFail:
+                        self?.output.isLoginable.value = false
+                        self?.output.errorMessage = error!.localizedDescription
+                    }
+                }
             case .facebook:
                 print("페이스북")
             }

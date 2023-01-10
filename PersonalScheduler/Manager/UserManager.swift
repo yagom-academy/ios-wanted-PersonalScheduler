@@ -10,23 +10,28 @@ import FirebaseAuth
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 
+enum RequestResult {
+    case success
+    case fail
+}
+
 class UserManager {
     static let shared = UserManager()
     private let collectionName = "User"
     private let db = Firestore.firestore()
     
-    func createUser(email: String, name: String) {
+    func createUser(email: String, name: String,_ completion: @escaping (RequestResult, Error?) -> Void) {
         let user = User(name: name, email: email, schedulList: [])
         do {
             try db.collection(collectionName).document(Auth.auth().currentUser!.uid).setData(from: user, completion: { error in
-                if let error = error {
-                    print(error.localizedDescription)
+                if let error {
+                    completion(RequestResult.fail, error)
                 } else {
-                    print("Firebase 저장 성공")
+                    completion(RequestResult.success, nil)
                 }
             })
         } catch {
-            print(error.localizedDescription)
+            completion(RequestResult.fail, error)
         }
     }
 }

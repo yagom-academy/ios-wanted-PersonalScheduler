@@ -21,6 +21,7 @@ class LoginVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         addButtonAction()
+        outputBind()
     }
 }
 // MARK: - addButtonAction
@@ -36,6 +37,20 @@ extension LoginVC {
             self.viewModel.input.loginTrigger.value = .kakao
         default :
             print("오류")
+        }
+    }
+}
+
+// MARK: - OuputBind
+extension LoginVC {
+    
+    private func outputBind() {
+        self.viewModel.output.isLoginable.bind { [weak self] isLogin in
+            if isLogin {
+                self?.navigationController?.pushViewController(SchedulListVC(), animated: true)
+            } else {
+                print("로그인 실패")
+            }
         }
     }
 }
