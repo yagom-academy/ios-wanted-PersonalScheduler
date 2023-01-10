@@ -18,9 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         var rootViewController: UIViewController
 
         if Auth.auth().currentUser == nil {
-            rootViewController = ScheduleListViewController()
-        } else {
             rootViewController = OnboardingViewController()
+        } else {
+            rootViewController = ScheduleListViewController()
         }
 
         window = UIWindow(windowScene: scene)
