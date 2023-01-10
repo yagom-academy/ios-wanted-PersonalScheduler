@@ -18,6 +18,7 @@
 		204ACE17296CFD7A003BAD46 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE16296CFD7A003BAD46 /* FirebaseError.swift */; };
 		204ACE1A296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE19296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift */; };
 		204ACE1C296CFF1F003BAD46 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE1B296CFF1F003BAD46 /* Schedule.swift */; };
+		20800DC4296D3787009E3CFC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20800DC3296D3787009E3CFC /* GoogleService-Info.plist */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 		204ACE16296CFD7A003BAD46 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		204ACE19296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFirestoreUseCase.swift; sourceTree = "<group>"; };
 		204ACE1B296CFF1F003BAD46 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		20800DC3296D3787009E3CFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				20800DC3296D3787009E3CFC /* GoogleService-Info.plist */,
 				204AFEDE296CEABC0061EAEE /* Resources */,
 				204AFEDD296CEAB00061EAEE /* Application */,
 				63AAAB052967EA2600775EC3 /* ViewController.swift */,
@@ -218,6 +221,7 @@
 			files = (
 				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
 				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
+				20800DC4296D3787009E3CFC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
