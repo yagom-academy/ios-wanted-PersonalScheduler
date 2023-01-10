@@ -24,7 +24,6 @@ class ScheduleListViewController: UIViewController {
         self.viewModel = viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
-        view.backgroundColor = .white
         
     }
     
