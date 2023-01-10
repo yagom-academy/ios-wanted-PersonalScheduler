@@ -29,7 +29,7 @@ final class DefaultScheduleRepository: ScheduleRepository {
     }
     
     func read() -> AnyPublisher<[Schedule], Error> {
-        guard var user = localStorage.getUser() else {
+        guard let user = localStorage.getUser() else {
             return Empty().eraseToAnyPublisher()
         }
         return firestoreStorage.read(userID: user.userID)
@@ -51,7 +51,7 @@ final class DefaultScheduleRepository: ScheduleRepository {
         guard var user = localStorage.getUser() else {
             return
         }
-        var schedules: [Schedule] = user.schedules?.filter { $0 != schedule } ?? []
+        let schedules: [Schedule] = user.schedules?.filter { $0 != schedule } ?? []
         user.schedules = schedules
         firestoreStorage.delete(user: user)
     }
