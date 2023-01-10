@@ -10,9 +10,17 @@
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
-		63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB072967EA2600775EC3 /* Main.storyboard */; };
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
+		E131BF8C296C500A003DC333 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = E131BF8B296C500A003DC333 /* KakaoSDK */; };
+		E131BF8E296C500A003DC333 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E131BF8D296C500A003DC333 /* KakaoSDKAuth */; };
+		E131BF90296C500A003DC333 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = E131BF8F296C500A003DC333 /* KakaoSDKCommon */; };
+		E131BF92296C500A003DC333 /* KakaoSDKCommonCore in Frameworks */ = {isa = PBXBuildFile; productRef = E131BF91296C500A003DC333 /* KakaoSDKCommonCore */; };
+		E131BF95296C5095003DC333 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E131BF94296C5095003DC333 /* FirebaseAuth */; };
+		E131BF97296C5095003DC333 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = E131BF96296C5095003DC333 /* FirebaseDatabase */; };
+		E131BF99296C5095003DC333 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E131BF98296C5095003DC333 /* FirebaseDatabaseSwift */; };
+		E131BF9C296C5128003DC333 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E131BF9B296C5128003DC333 /* AppAuth */; };
+		E131BF9E296C5128003DC333 /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = E131BF9D296C5128003DC333 /* AppAuthCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +28,6 @@
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		63AAAB052967EA2600775EC3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		63AAAB082967EA2600775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63AAAB0A2967EA2700775EC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +38,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E131BF99296C5095003DC333 /* FirebaseDatabaseSwift in Frameworks */,
+				E131BF97296C5095003DC333 /* FirebaseDatabase in Frameworks */,
+				E131BF9E296C5128003DC333 /* AppAuthCore in Frameworks */,
+				E131BF9C296C5128003DC333 /* AppAuth in Frameworks */,
+				E131BF8C296C500A003DC333 /* KakaoSDK in Frameworks */,
+				E131BF95296C5095003DC333 /* FirebaseAuth in Frameworks */,
+				E131BF92296C500A003DC333 /* KakaoSDKCommonCore in Frameworks */,
+				E131BF90296C500A003DC333 /* KakaoSDKCommon in Frameworks */,
+				E131BF8E296C500A003DC333 /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +75,6 @@
 				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
 				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
 				63AAAB052967EA2600775EC3 /* ViewController.swift */,
-				63AAAB072967EA2600775EC3 /* Main.storyboard */,
 				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
 				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
@@ -83,6 +98,17 @@
 			dependencies = (
 			);
 			name = PersonalScheduler;
+			packageProductDependencies = (
+				E131BF8B296C500A003DC333 /* KakaoSDK */,
+				E131BF8D296C500A003DC333 /* KakaoSDKAuth */,
+				E131BF8F296C500A003DC333 /* KakaoSDKCommon */,
+				E131BF91296C500A003DC333 /* KakaoSDKCommonCore */,
+				E131BF94296C5095003DC333 /* FirebaseAuth */,
+				E131BF96296C5095003DC333 /* FirebaseDatabase */,
+				E131BF98296C5095003DC333 /* FirebaseDatabaseSwift */,
+				E131BF9B296C5128003DC333 /* AppAuth */,
+				E131BF9D296C5128003DC333 /* AppAuthCore */,
+			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +137,11 @@
 				Base,
 			);
 			mainGroup = 63AAAAF52967EA2600775EC3;
+			packageReferences = (
+				E131BF8A296C5009003DC333 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				E131BF93296C5095003DC333 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				E131BF9A296C5128003DC333 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
+			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +158,6 @@
 			files = (
 				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
 				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
-				63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +177,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		63AAAB072967EA2600775EC3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63AAAB082967EA2600775EC3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -356,6 +378,81 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E131BF8A296C5009003DC333 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		E131BF93296C5095003DC333 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		E131BF9A296C5128003DC333 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/openid/AppAuth-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E131BF8B296C500A003DC333 /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E131BF8A296C5009003DC333 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+		E131BF8D296C500A003DC333 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E131BF8A296C5009003DC333 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		E131BF8F296C500A003DC333 /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E131BF8A296C5009003DC333 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		E131BF91296C500A003DC333 /* KakaoSDKCommonCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E131BF8A296C5009003DC333 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommonCore;
+		};
+		E131BF94296C5095003DC333 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E131BF93296C5095003DC333 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E131BF96296C5095003DC333 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E131BF93296C5095003DC333 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		E131BF98296C5095003DC333 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E131BF93296C5095003DC333 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		E131BF9B296C5128003DC333 /* AppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E131BF9A296C5128003DC333 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuth;
+		};
+		E131BF9D296C5128003DC333 /* AppAuthCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E131BF9A296C5128003DC333 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuthCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 63AAAAF62967EA2600775EC3 /* Project object */;
 }
