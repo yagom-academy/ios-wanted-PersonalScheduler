@@ -16,6 +16,7 @@
 		204ACE13296CF9EB003BAD46 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 204ACE12296CF9EB003BAD46 /* FirebaseMessaging */; };
 		204ACE15296CFD49003BAD46 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE14296CFD49003BAD46 /* FirestoreManager.swift */; };
 		204ACE17296CFD7A003BAD46 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE16296CFD7A003BAD46 /* FirebaseError.swift */; };
+		204ACE1C296CFF1F003BAD46 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE1B296CFF1F003BAD46 /* Schedule.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		204ACE14296CFD49003BAD46 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		204ACE16296CFD7A003BAD46 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
+		204ACE1B296CFF1F003BAD46 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				204AFEDD296CEAB00061EAEE /* Application */,
 				63AAAB052967EA2600775EC3 /* ViewController.swift */,
 				204ACE14296CFD49003BAD46 /* FirestoreManager.swift */,
+				204ACE1B296CFF1F003BAD46 /* Schedule.swift */,
 				204ACE16296CFD7A003BAD46 /* FirebaseError.swift */,
 			);
 			path = PersonalScheduler;
