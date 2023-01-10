@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 protocol LoginFlowCoordinatorDependencies: AnyObject {
     func makeLoginViewController(actions: LoginViewModelActions) -> LoginViewController
