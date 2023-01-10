@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		328444B6296DC18700BC099E /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444B5296DC18700BC099E /* ScheduleListViewModel.swift */; };
+		328444BA296DC85100BC099E /* FetchScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444B9296DC85100BC099E /* FetchScheduleUseCase.swift */; };
+		328444BC296DC8A000BC099E /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444BB296DC8A000BC099E /* Schedule.swift */; };
 		32EAF58B296C40B10056513F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32EAF58A296C40B10056513F /* GoogleService-Info.plist */; };
 		32EAF595296C46D70056513F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 32EAF594296C46D70056513F /* FirebaseAuth */; };
 		32EAF597296C46D70056513F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 32EAF596296C46D70056513F /* FirebaseFirestore */; };
@@ -34,6 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		328444B5296DC18700BC099E /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
+		328444B9296DC85100BC099E /* FetchScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchScheduleUseCase.swift; sourceTree = "<group>"; };
+		328444BB296DC8A000BC099E /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		32EAF589296C38F90056513F /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
 		32EAF58A296C40B10056513F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32EAF5A1296C7AA90056513F /* OAuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthError.swift; sourceTree = "<group>"; };
@@ -74,6 +80,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		328444B7296DC29A00BC099E /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				32EAF5AE296C886D0056513F /* OAuthLoginUseCase.swift */,
+				328444B9296DC85100BC099E /* FetchScheduleUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		328444B8296DC29F00BC099E /* RepositoryInterfaces */ = {
+			isa = PBXGroup;
+			children = (
+				32FB8F0E296D94ED007D1BA6 /* OAuthRepositoryInterface.swift */,
+			);
+			path = RepositoryInterfaces;
+			sourceTree = "<group>";
+		};
 		32EAF5A0296C48420056513F /* APIKeys */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				32FB8F00296D675A007D1BA6 /* ScheduleListViewController.swift */,
+				328444B5296DC18700BC099E /* ScheduleListViewModel.swift */,
 			);
 			path = ScheduleListScene;
 			sourceTree = "<group>";
@@ -160,8 +184,9 @@
 		32FB8F10296D9606007D1BA6 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				32EAF5AE296C886D0056513F /* OAuthLoginUseCase.swift */,
-				32FB8F0E296D94ED007D1BA6 /* OAuthRepositoryInterface.swift */,
+				328444B7296DC29A00BC099E /* UseCases */,
+				328444B8296DC29F00BC099E /* RepositoryInterfaces */,
+				328444BB296DC8A000BC099E /* Schedule.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -292,10 +317,13 @@
 				32EAF5A4296C7BC20056513F /* AppleOAuthService.swift in Sources */,
 				32EAF5A6296C7FA80056513F /* OnboardingViewModel.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* OnboardingViewController.swift in Sources */,
+				328444BC296DC8A000BC099E /* Schedule.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				32EAF5A2296C7AA90056513F /* OAuthError.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				32FB8F01296D675A007D1BA6 /* ScheduleListViewController.swift in Sources */,
+				328444BA296DC85100BC099E /* FetchScheduleUseCase.swift in Sources */,
+				328444B6296DC18700BC099E /* ScheduleListViewModel.swift in Sources */,
 				32FB8F06296D7868007D1BA6 /* KaKaoOAuthService.swift in Sources */,
 				32FB8F0D296D94E6007D1BA6 /* OAuthRepository.swift in Sources */,
 				32EAF5AF296C886D0056513F /* OAuthLoginUseCase.swift in Sources */,
