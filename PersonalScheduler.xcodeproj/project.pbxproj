@@ -20,6 +20,7 @@
 		32EAF5AF296C886D0056513F /* OAuthLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAF5AE296C886D0056513F /* OAuthLoginUseCase.swift */; };
 		32FB8F01296D675A007D1BA6 /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB8F00296D675A007D1BA6 /* ScheduleListViewController.swift */; };
 		32FB8F04296D6E73007D1BA6 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB8F03296D6E73007D1BA6 /* OnboardingCollectionViewCell.swift */; };
+		32FB8F0F296D94ED007D1BA6 /* OAuthRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB8F0E296D94ED007D1BA6 /* OAuthRepositoryInterface.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* OnboardingViewController.swift */; };
@@ -36,6 +37,7 @@
 		32EAF5AE296C886D0056513F /* OAuthLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthLoginUseCase.swift; sourceTree = "<group>"; };
 		32FB8F00296D675A007D1BA6 /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
 		32FB8F03296D6E73007D1BA6 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		32FB8F0E296D94ED007D1BA6 /* OAuthRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRepositoryInterface.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,15 @@
 			path = ScheduleListScene;
 			sourceTree = "<group>";
 		};
+		32FB8F10296D9606007D1BA6 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				32EAF5AE296C886D0056513F /* OAuthLoginUseCase.swift */,
+				32FB8F0E296D94ED007D1BA6 /* OAuthRepositoryInterface.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		63AAAAF52967EA2600775EC3 = {
 			isa = PBXGroup;
 			children = (
@@ -163,10 +174,10 @@
 			children = (
 				32EAF5AB296C83920056513F /* EntryPoint */,
 				32EAF5AC296C839C0056513F /* Presentation */,
+				32FB8F10296D9606007D1BA6 /* Domain */,
 				32EAF5A8296C83740056513F /* Data */,
 				32EAF5A7296C83690056513F /* Resources */,
 				32EAF5A0296C48420056513F /* APIKeys */,
-				32EAF5AE296C886D0056513F /* OAuthLoginUseCase.swift */,
 			);
 			path = PersonalScheduler;
 			sourceTree = "<group>";
