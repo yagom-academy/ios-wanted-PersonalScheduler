@@ -7,7 +7,7 @@
 
 import FirebaseFirestore
 
-final class ReviewFirebaseUseCase {
+final class ScheduleFirestoreUseCase {
     private let firestoreManager = FirestoreManager.shared
     
     func save(_ schedule: Schedule,
@@ -53,7 +53,7 @@ final class ReviewFirebaseUseCase {
     }
 }
 
-extension ReviewFirebaseUseCase {
+extension ScheduleFirestoreUseCase {
     private func toSchedule(from document: QueryDocumentSnapshot) -> Schedule? {
         guard let id = document["id"] as? String,
               let scheduleID =  UUID(uuidString: id),
