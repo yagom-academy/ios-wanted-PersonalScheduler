@@ -76,6 +76,7 @@ final class ScheduleDetailViewController: UIViewController {
     private func setupView() {
         addSubView()
         setupConstraint()
+        setupNavigationBar()
         view.backgroundColor = .systemBackground
     }
     
@@ -95,11 +96,29 @@ final class ScheduleDetailViewController: UIViewController {
             entireStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
                                                  constant: 8),
             entireStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
-                                                 constant: -8),
+                                                    constant: -8),
             entireStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,
-                                                 constant: 16),
+                                                     constant: 16),
             entireStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
-                                                 constant: -16)
+                                                      constant: -16)
         ])
+    }
+    
+    private func setupNavigationBar() {
+        let saveBarButton = UIBarButtonItem(title: "저장",
+                                            style: .done,
+                                            target: self,
+                                            action: #selector(saveBarButtonTapped))
+        
+        navigationItem.rightBarButtonItem = saveBarButton
+        navigationItem.title = "새로운 일정"
+        
+    }
+    
+    @objc private func saveBarButtonTapped() {
+        guard let newSchedule = createSchedule() else { return }
+
+        scheduleViewModel.save(newSchedule, at: "judy")
+        navigationController?.popViewController(animated: true)
     }
 }
