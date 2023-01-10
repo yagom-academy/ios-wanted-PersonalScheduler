@@ -8,7 +8,7 @@
 import UIKit
 
 class ScheduleListViewController: UIViewController {
-    private let schduleTableview: UITableView = {
+    private let scheduleTableview: UITableView = {
         let tableVeiw = UITableView(frame: .zero, style: .grouped)
         tableVeiw.backgroundColor = .systemBackground
         tableVeiw.register(ScheduleListTableViewCell.self,
@@ -34,7 +34,7 @@ class ScheduleListViewController: UIViewController {
     private func bind() {
         scheduleViewModel.schedules
             .subscribe { [weak self] scheduled in
-                self?.schduleTableview.reloadData()
+                self?.scheduleTableview.reloadData()
         }
     }
     
@@ -46,8 +46,8 @@ class ScheduleListViewController: UIViewController {
 //MARK: TableView DataSource
 extension ScheduleListViewController: UITableViewDataSource {
     private func setupTableView() {
-        schduleTableview.dataSource = self
-        schduleTableview.rowHeight = view.bounds.height * 0.1
+        scheduleTableview.dataSource = self
+        scheduleTableview.rowHeight = view.bounds.height * 0.1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,16 +75,16 @@ extension ScheduleListViewController {
     }
     
     private func setupConstraint() {
-        view.addSubview(schduleTableview)
+        view.addSubview(scheduleTableview)
         
         NSLayoutConstraint.activate([
-            schduleTableview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+            scheduleTableview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
                                                   constant: 8),
-            schduleTableview.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+            scheduleTableview.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
                                                   constant: -8),
-            schduleTableview.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,
+            scheduleTableview.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,
                                                   constant: 16),
-            schduleTableview.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+            scheduleTableview.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
                                                   constant: -16),
         ])
     }
