@@ -15,9 +15,14 @@ import FacebookLogin
 final class AuthenticationRepository: NSObject {
     
     private let apiProvider: APIProvider
+    private let keychainStorage: KeyChainStorageService
     
-    init(apiProvider: APIProvider) {
+    init(
+        apiProvider: APIProvider = DefaultAPIProvider(),
+        keychainStorage: KeyChainStorageService = KeyChainStorage.shard
+    ) {
         self.apiProvider = apiProvider
+        self.keychainStorage = keychainStorage
     }
     
     private let authentication = CurrentValueSubject<Authentication?, Error>(nil)
@@ -131,6 +136,36 @@ final class AuthenticationRepository: NSObject {
             }
         }
         return authentication.eraseToAnyPublisher()
+    }
+    
+    func readToken(option tokenOption: TokenOption) -> AnyPublisher<Authentication, Never> {
+        var accessToken: String?
+        var refreshToken: String?
+        if tokenOption.contains(.access) {
+            accessToken = keychainStorage.read(.accessToken)
+        }
+        if tokenOption.contains(.refresh) {
+            accessToken = keychainStorage.read(.refreshToken)
+        }
+        return Just(Authentication(accessToken: accessToken, refreshToken: refreshToken)).eraseToAnyPublisher()
+    }
+    
+    func writeToken(authentication: Authentication) {
+        if let accessToken = authentication.accessToken {
+            keychainStorage.write(key: .accessToken, value: accessToken)
+        }
+        if let refreshToken = authentication.refreshToken {
+            keychainStorage.write(key: .refreshToken, value: refreshToken)
+        }
+    }
+    
+    func removeToken(option tokenOption: TokenOption) {
+        if tokenOption.contains(.access) {
+            keychainStorage.delete(key: .accessToken)
+        }
+        if tokenOption.contains(.refresh) {
+            keychainStorage.delete(key: .refreshToken)
+        }
     }
     
 }
