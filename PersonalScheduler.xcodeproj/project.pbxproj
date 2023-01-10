@@ -18,6 +18,7 @@
 		32EAF5A4296C7BC20056513F /* AppleOAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAF5A3296C7BC20056513F /* AppleOAuthService.swift */; };
 		32EAF5A6296C7FA80056513F /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAF5A5296C7FA80056513F /* OnboardingViewModel.swift */; };
 		32EAF5AF296C886D0056513F /* OAuthLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAF5AE296C886D0056513F /* OAuthLoginUseCase.swift */; };
+		32FB8F01296D675A007D1BA6 /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB8F00296D675A007D1BA6 /* ScheduleListViewController.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* OnboardingViewController.swift */; };
@@ -32,6 +33,7 @@
 		32EAF5A3296C7BC20056513F /* AppleOAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleOAuthService.swift; sourceTree = "<group>"; };
 		32EAF5A5296C7FA80056513F /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		32EAF5AE296C886D0056513F /* OAuthLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthLoginUseCase.swift; sourceTree = "<group>"; };
+		32FB8F00296D675A007D1BA6 /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				32EAF5AD296C856D0056513F /* OnboardingScene */,
+				32FB8F02296D6765007D1BA6 /* ScheduleListScene */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -126,6 +129,14 @@
 				32EAF5A5296C7FA80056513F /* OnboardingViewModel.swift */,
 			);
 			path = OnboardingScene;
+			sourceTree = "<group>";
+		};
+		32FB8F02296D6765007D1BA6 /* ScheduleListScene */ = {
+			isa = PBXGroup;
+			children = (
+				32FB8F00296D675A007D1BA6 /* ScheduleListViewController.swift */,
+			);
+			path = ScheduleListScene;
 			sourceTree = "<group>";
 		};
 		63AAAAF52967EA2600775EC3 = {
@@ -245,6 +256,7 @@
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				32EAF5A2296C7AA90056513F /* OAuthError.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				32FB8F01296D675A007D1BA6 /* ScheduleListViewController.swift in Sources */,
 				32EAF5AF296C886D0056513F /* OAuthLoginUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
