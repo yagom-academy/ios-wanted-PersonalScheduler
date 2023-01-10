@@ -26,6 +26,7 @@ class ScheduleListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupTableView()
         bind()
     }
     
@@ -58,6 +59,28 @@ class ScheduleListViewController: UIViewController {
             schduleTableview.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
                                                   constant: -16),
         ])
+    }
+}
+
+extension ScheduleListViewController: UITableViewDataSource {
+    private func setupTableView() {
+        schduleTableview.dataSource = self
+        schduleTableview.rowHeight = view.bounds.height * 0.1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return scheduleViewModel.schedules.value.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleListTableViewCell.identifier,
+                                                       for: indexPath) as? ScheduleListTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.congigure(with: scheduleViewModel.schedules.value[indexPath.row])
+        
+        return cell
     }
 }
 
