@@ -11,25 +11,24 @@ struct LoginView: View {
     
     @StateObject var loginViewModel = LoginViewModel()
     
-    @State var email: String = ""
-    @State var password: String = ""
-    
     var body: some View {
         NavigationView {
             VStack {
+                Text("uid: " +
+                     loginViewModel.uid)
                 Text("Login")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
                     .padding(.top, 80)
                     .padding(.bottom, 50)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                TextField("ID", text: $email)
+                TextField("ID", text: $loginViewModel.email)
                     .padding()
                     .background(
                         Color(.systemGray6)
                     )
                     .cornerRadius(10)
-                SecureField("Password", text: $password)
+                SecureField("Password", text: $loginViewModel.password)
                     .padding()
                     .background(
                         Color(.systemGray6)
@@ -38,7 +37,7 @@ struct LoginView: View {
                 
                 GeometryReader { geometry in
                     Button {
-                        loginViewModel.kakaoLogIn()
+                        loginViewModel.firebaseLogin()
                     } label: {
                         Text("Login")
                             .foregroundColor(.white)

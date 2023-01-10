@@ -11,13 +11,17 @@
 		A3DEB0C5296C08770079903A /* FirebaseLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0C4296C08770079903A /* FirebaseLoginManager.swift */; };
 		A3DEB0C7296C3ED70079903A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0C6296C3ED70079903A /* SignUpView.swift */; };
 		A3DEB0C9296C411E0079903A /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0C8296C411E0079903A /* SignUpViewModel.swift */; };
+		A3DEB0CB296C5CCE0079903A /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0CA296C5CCE0079903A /* ScheduleListView.swift */; };
+		A3DEB0CD296C5E080079903A /* ScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0CC296C5E080079903A /* ScheduleList.swift */; };
+		A3DEB0D0296C5EAE0079903A /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0CF296C5EAE0079903A /* FirebaseStorageManager.swift */; };
+		A3DEB0D2296CE9040079903A /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0D1296CE9040079903A /* ScheduleListViewModel.swift */; };
+		A3DEB0D4296CF3DE0079903A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3DEB0D3296CF3DE0079903A /* GoogleService-Info.plist */; };
 		A3EB6986296BAFB4004F492A /* PersonalSchedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */; };
 		A3EB6988296BAFB4004F492A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6987296BAFB4004F492A /* LoginView.swift */; };
 		A3EB698A296BAFB5004F492A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3EB6989296BAFB5004F492A /* Assets.xcassets */; };
 		A3EB698D296BAFB5004F492A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3EB698C296BAFB5004F492A /* Preview Assets.xcassets */; };
 		A3EB6996296BE8C0004F492A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6995296BE8C0004F492A /* LoginViewModel.swift */; };
 		A3EB6999296BEFF2004F492A /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6998296BEFF2004F492A /* KakaoLoginManager.swift */; };
-		A3EB699D296BFF8E004F492A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3EB699C296BFF8E004F492A /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,11 @@
 		A3DEB0C4296C08770079903A /* FirebaseLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLoginManager.swift; sourceTree = "<group>"; };
 		A3DEB0C6296C3ED70079903A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		A3DEB0C8296C411E0079903A /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		A3DEB0CA296C5CCE0079903A /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
+		A3DEB0CC296C5E080079903A /* ScheduleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleList.swift; sourceTree = "<group>"; };
+		A3DEB0CF296C5EAE0079903A /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
+		A3DEB0D1296CE9040079903A /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
+		A3DEB0D3296CF3DE0079903A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3EB6982296BAFB4004F492A /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSchedulerApp.swift; sourceTree = "<group>"; };
 		A3EB6987296BAFB4004F492A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -35,7 +44,6 @@
 		A3EB6994296BE351004F492A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A3EB6995296BE8C0004F492A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A3EB6998296BEFF2004F492A /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
-		A3EB699C296BFF8E004F492A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B2A015D98D277D0327F3E886 /* Pods-PersonalScheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.release.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +66,14 @@
 				B2A015D98D277D0327F3E886 /* Pods-PersonalScheduler.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A3DEB0CE296C5E0D0079903A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A3DEB0CC296C5E080079903A /* ScheduleList.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A3EB6979296BAFB4004F492A = {
@@ -83,8 +99,9 @@
 			children = (
 				A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */,
 				A3EB6993296BE23F004F492A /* Info.plist */,
-				A3EB699C296BFF8E004F492A /* GoogleService-Info.plist */,
+				A3DEB0D3296CF3DE0079903A /* GoogleService-Info.plist */,
 				A3EB6989296BAFB5004F492A /* Assets.xcassets */,
+				A3DEB0CE296C5E0D0079903A /* Model */,
 				A3EB6997296BEFD8004F492A /* Manager */,
 				A3EB699A296BF03F004F492A /* ViewModel */,
 				A3EB699B296BF055004F492A /* View */,
@@ -107,6 +124,7 @@
 			children = (
 				A3DEB0C4296C08770079903A /* FirebaseLoginManager.swift */,
 				A3EB6998296BEFF2004F492A /* KakaoLoginManager.swift */,
+				A3DEB0CF296C5EAE0079903A /* FirebaseStorageManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -116,6 +134,7 @@
 			children = (
 				A3EB6995296BE8C0004F492A /* LoginViewModel.swift */,
 				A3DEB0C8296C411E0079903A /* SignUpViewModel.swift */,
+				A3DEB0D1296CE9040079903A /* ScheduleListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -125,6 +144,7 @@
 			children = (
 				A3EB6987296BAFB4004F492A /* LoginView.swift */,
 				A3DEB0C6296C3ED70079903A /* SignUpView.swift */,
+				A3DEB0CA296C5CCE0079903A /* ScheduleListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -199,7 +219,7 @@
 			files = (
 				A3EB698D296BAFB5004F492A /* Preview Assets.xcassets in Resources */,
 				A3EB698A296BAFB5004F492A /* Assets.xcassets in Resources */,
-				A3EB699D296BFF8E004F492A /* GoogleService-Info.plist in Resources */,
+				A3DEB0D4296CF3DE0079903A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,10 +274,14 @@
 			files = (
 				A3EB6988296BAFB4004F492A /* LoginView.swift in Sources */,
 				A3EB6999296BEFF2004F492A /* KakaoLoginManager.swift in Sources */,
+				A3DEB0D0296C5EAE0079903A /* FirebaseStorageManager.swift in Sources */,
 				A3DEB0C5296C08770079903A /* FirebaseLoginManager.swift in Sources */,
 				A3EB6996296BE8C0004F492A /* LoginViewModel.swift in Sources */,
 				A3DEB0C7296C3ED70079903A /* SignUpView.swift in Sources */,
+				A3DEB0CB296C5CCE0079903A /* ScheduleListView.swift in Sources */,
 				A3EB6986296BAFB4004F492A /* PersonalSchedulerApp.swift in Sources */,
+				A3DEB0D2296CE9040079903A /* ScheduleListViewModel.swift in Sources */,
+				A3DEB0CD296C5E080079903A /* ScheduleList.swift in Sources */,
 				A3DEB0C9296C411E0079903A /* SignUpViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

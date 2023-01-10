@@ -13,7 +13,7 @@ final class KakaoLoginManager {
     private let firebaseLoginManager = FirebaseLoginManager()
     
     @MainActor
-    func handleLogin() async -> Bool {
+    func handleLogin(completion: @escaping (String) -> Void) async -> Bool {
         await withCheckedContinuation { continuation in
             if (UserApi.isKakaoTalkLoginAvailable()) {
                 UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
@@ -47,7 +47,10 @@ final class KakaoLoginManager {
                                 self?.firebaseLoginManager.handleLogin(
                                     email: (kuser?.kakaoAccount?.email)!,
                                     password: String(describing: kuser?.id)
-                                )
+                                ) {
+                                    data in
+                                    completion(data)
+                                }
                             }
                         }
                         continuation.resume(returning: true)
