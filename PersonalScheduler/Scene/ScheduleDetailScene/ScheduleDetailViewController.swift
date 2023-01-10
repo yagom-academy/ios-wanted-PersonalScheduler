@@ -56,6 +56,23 @@ final class ScheduleDetailViewController: UIViewController {
         setupView()
     }
     
+    private func createSchedule() -> Schedule? {
+        guard let title = titleTextField.text,
+              let content = contentTextView.text else { return nil }
+        
+        guard title.isEmpty == false,
+              content.isEmpty == false else {
+            return nil
+        }
+        
+        return Schedule(id: UUID(),
+                        title: title,
+                        content: content,
+                        isNotified: notificationSwitchView.isSwitchOn,
+                        startTime: startDatePicker.selectedDate,
+                        endTime: endDatePicker.selectedDate)
+    }
+    
     private func setupView() {
         addSubView()
         setupConstraint()
