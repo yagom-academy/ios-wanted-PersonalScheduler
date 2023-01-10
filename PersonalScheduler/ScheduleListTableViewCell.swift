@@ -70,6 +70,29 @@ final class ScheduleListTableViewCell: UITableViewCell {
         setupView()
     }
     
+    func congigure(with schedule: Schedule) {
+        titleLabel.text = schedule.title
+        contentLabel.text = schedule.content
+        changeBellImage(schedule.isNotified)
+        changeHighlight(schedule.endTime)
+    }
+    
+    private func changeBellImage(_ isNotified: Bool) {
+        if isNotified {
+            bellImageView.image = ScheduleImage.notifyingBell
+        } else {
+            bellImageView.image = ScheduleImage.unnotifyingBell
+        }
+    }
+    
+    private func changeHighlight(_ endTime: Date) {
+        if Date() > endTime {
+            highlightView.backgroundColor = .gray
+        } else {
+            highlightView.backgroundColor = #colorLiteral(red: 0.7264262438, green: 0.9996786714, blue: 0.5089451671, alpha: 1)
+        }
+    }
+    
     private func setupView() {
         addSubView()
         setupConstraint()
