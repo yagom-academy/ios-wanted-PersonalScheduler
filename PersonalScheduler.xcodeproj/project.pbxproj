@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		204ACE07296CF9EB003BAD46 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 204ACE06296CF9EB003BAD46 /* FirebaseAnalytics */; };
+		204ACE09296CF9EB003BAD46 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 204ACE08296CF9EB003BAD46 /* FirebaseAuth */; };
+		204ACE0B296CF9EB003BAD46 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 204ACE0A296CF9EB003BAD46 /* FirebaseFirestore */; };
+		204ACE0D296CF9EB003BAD46 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 204ACE0C296CF9EB003BAD46 /* FirebaseFirestoreSwift */; };
+		204ACE0F296CF9EB003BAD46 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 204ACE0E296CF9EB003BAD46 /* FirebaseInAppMessaging-Beta */; };
+		204ACE11296CF9EB003BAD46 /* FirebaseInAppMessagingSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 204ACE10296CF9EB003BAD46 /* FirebaseInAppMessagingSwift-Beta */; };
+		204ACE13296CF9EB003BAD46 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 204ACE12296CF9EB003BAD46 /* FirebaseMessaging */; };
+		204ACE15296CFD49003BAD46 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE14296CFD49003BAD46 /* FirestoreManager.swift */; };
+		204ACE17296CFD7A003BAD46 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE16296CFD7A003BAD46 /* FirebaseError.swift */; };
+		204ACE1A296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE19296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift */; };
+		204ACE1C296CFF1F003BAD46 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE1B296CFF1F003BAD46 /* Schedule.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
@@ -15,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		204ACE14296CFD49003BAD46 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		204ACE16296CFD7A003BAD46 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
+		204ACE19296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFirestoreUseCase.swift; sourceTree = "<group>"; };
+		204ACE1B296CFF1F003BAD46 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,12 +44,61 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				204ACE07296CF9EB003BAD46 /* FirebaseAnalytics in Frameworks */,
+				204ACE09296CF9EB003BAD46 /* FirebaseAuth in Frameworks */,
+				204ACE13296CF9EB003BAD46 /* FirebaseMessaging in Frameworks */,
+				204ACE0B296CF9EB003BAD46 /* FirebaseFirestore in Frameworks */,
+				204ACE0D296CF9EB003BAD46 /* FirebaseFirestoreSwift in Frameworks */,
+				204ACE11296CF9EB003BAD46 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
+				204ACE0F296CF9EB003BAD46 /* FirebaseInAppMessaging-Beta in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		204ACE1D296D0841003BAD46 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				204ACE1E296D084A003BAD46 /* Firestore */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		204ACE1E296D084A003BAD46 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				204ACE14296CFD49003BAD46 /* FirestoreManager.swift */,
+				204ACE16296CFD7A003BAD46 /* FirebaseError.swift */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
+		204ACE1F296D085D003BAD46 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				204ACE20296D0867003BAD46 /* Entity */,
+				204ACE21296D0871003BAD46 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		204ACE20296D0867003BAD46 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				204ACE1B296CFF1F003BAD46 /* Schedule.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		204ACE21296D0871003BAD46 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				204ACE19296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		204AFEDD296CEAB00061EAEE /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +140,8 @@
 				204AFEDE296CEABC0061EAEE /* Resources */,
 				204AFEDD296CEAB00061EAEE /* Application */,
 				63AAAB052967EA2600775EC3 /* ViewController.swift */,
+				204ACE1D296D0841003BAD46 /* Service */,
+				204ACE1F296D085D003BAD46 /* Domain */,
 			);
 			path = PersonalScheduler;
 			sourceTree = "<group>";
@@ -96,6 +162,15 @@
 			dependencies = (
 			);
 			name = PersonalScheduler;
+			packageProductDependencies = (
+				204ACE06296CF9EB003BAD46 /* FirebaseAnalytics */,
+				204ACE08296CF9EB003BAD46 /* FirebaseAuth */,
+				204ACE0A296CF9EB003BAD46 /* FirebaseFirestore */,
+				204ACE0C296CF9EB003BAD46 /* FirebaseFirestoreSwift */,
+				204ACE0E296CF9EB003BAD46 /* FirebaseInAppMessaging-Beta */,
+				204ACE10296CF9EB003BAD46 /* FirebaseInAppMessagingSwift-Beta */,
+				204ACE12296CF9EB003BAD46 /* FirebaseMessaging */,
+			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
 			productType = "com.apple.product-type.application";
@@ -124,6 +199,9 @@
 				Base,
 			);
 			mainGroup = 63AAAAF52967EA2600775EC3;
+			packageReferences = (
+				204ACE05296CF9EB003BAD46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -150,9 +228,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				204ACE1A296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				204ACE15296CFD49003BAD46 /* FirestoreManager.swift in Sources */,
+				204ACE1C296CFF1F003BAD46 /* Schedule.swift in Sources */,
+				204ACE17296CFD7A003BAD46 /* FirebaseError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +442,55 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		204ACE05296CF9EB003BAD46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		204ACE06296CF9EB003BAD46 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 204ACE05296CF9EB003BAD46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		204ACE08296CF9EB003BAD46 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 204ACE05296CF9EB003BAD46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		204ACE0A296CF9EB003BAD46 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 204ACE05296CF9EB003BAD46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		204ACE0C296CF9EB003BAD46 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 204ACE05296CF9EB003BAD46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		204ACE0E296CF9EB003BAD46 /* FirebaseInAppMessaging-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 204ACE05296CF9EB003BAD46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessaging-Beta";
+		};
+		204ACE10296CF9EB003BAD46 /* FirebaseInAppMessagingSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 204ACE05296CF9EB003BAD46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessagingSwift-Beta";
+		};
+		204ACE12296CF9EB003BAD46 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 204ACE05296CF9EB003BAD46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 63AAAAF62967EA2600775EC3 /* Project object */;
 }
