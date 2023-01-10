@@ -47,9 +47,13 @@ final class KakaoLoginManager {
                                 self?.firebaseLoginManager.handleLogin(
                                     email: (kuser?.kakaoAccount?.email)!,
                                     password: String(describing: kuser?.id)
-                                ) {
-                                    data in
-                                    completion(data)
+                                ) { response in
+                                    switch response {
+                                    case .success(let success):
+                                        completion(success)
+                                    case .failure(let failure):
+                                        print(failure)
+                                    }
                                 }
                             }
                         }

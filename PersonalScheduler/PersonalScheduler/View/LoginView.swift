@@ -34,15 +34,6 @@ struct LoginView: View {
                     .cornerRadius(10)
                 
                 GeometryReader { geometry in
-                    NavigationLink {
-                        ScheduleListView(uid: loginViewModel.uid)
-                    } label: {
-                        Text("Create Account")
-                    }
-                    .simultaneousGesture(TapGesture().onEnded{
-                        loginViewModel.firebaseLogin()
-                    })
-                    
                     Button {
                         loginViewModel.firebaseLogin()
                     } label: {
@@ -75,6 +66,30 @@ struct LoginView: View {
             .fullScreenCover(isPresented: $loginViewModel.isLoggedIn) {
                 ScheduleListView(uid: loginViewModel.uid)
             }
+            .alert(isPresented: $loginViewModel.isActiveAlert) {
+                switch loginViewModel.loginResultAlert {
+                case .success:
+                    let alert = Alert(
+                        title: Text("환영 합니다~"),
+                        primaryButton: .default(Text("확인"), action: {
+                            loginViewModel.isLoggedIn.toggle()
+                        }),
+                        secondaryButton: .cancel()
+                    )
+                    return alert
+                case .fail:
+                    let alert = Alert(title: Text("Error"),
+                                      message: Text(loginViewModel.errorMessage),
+                                      dismissButton: .cancel()
+                    )
+                    return alert
+                case .normal:
+                    let alert = Alert(title: Text("Checking..."),
+                                      dismissButton: .cancel()
+                    )
+                    return alert
+                }
+            }
         }
     }
 }
@@ -84,3 +99,4 @@ struct ContentView_Previews: PreviewProvider {
         LoginView()
     }
 }
+

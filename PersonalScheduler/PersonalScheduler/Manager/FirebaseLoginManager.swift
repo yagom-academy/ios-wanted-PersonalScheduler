@@ -9,12 +9,18 @@ import FirebaseAuth
 
 final class FirebaseLoginManager {
     
-    func handleLogin(email: String, password: String, completion: @escaping (String) -> Void) {
+    enum FirebaseLoginError: Error {
+        case badPassword
+    }
+    
+    func handleLogin(email: String, password: String, completion: @escaping (Result<String, FirebaseLoginError>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
+                completion(.failure(.badPassword))
+            } else {
+                completion(.success(Auth.auth().currentUser?.uid ?? ""))
             }
-            completion(Auth.auth().currentUser?.uid ?? "")
         }
     }
     
