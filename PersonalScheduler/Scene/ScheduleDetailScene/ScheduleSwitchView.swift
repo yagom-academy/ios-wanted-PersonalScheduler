@@ -30,11 +30,12 @@ final class ScheduleSwitchView: UIView {
         return switchView
     }()
     
-    override init(frame: CGRect) {
+    init(text: String, frame: CGRect = .zero) {
         super.init(frame: frame)
         setupView()
+        infoLabel.text = text
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()

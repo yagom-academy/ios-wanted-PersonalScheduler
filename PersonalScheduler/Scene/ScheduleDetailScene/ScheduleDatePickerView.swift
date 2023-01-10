@@ -30,9 +30,10 @@ final class ScheduleDatePickerView: UIView {
         return datePicker
     }()
     
-    override init(frame: CGRect) {
+    init(text: String, frame: CGRect = .zero) {
         super.init(frame: frame)
         setupView()
+        infoLabel.text = text
     }
     
     required init?(coder: NSCoder) {
