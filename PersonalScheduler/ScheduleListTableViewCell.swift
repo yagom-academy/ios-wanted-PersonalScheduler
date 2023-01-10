@@ -21,6 +21,7 @@ final class ScheduleListTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.image = ScheduleImage.notifyingBell
         imageView.tintColor = .systemOrange
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -47,7 +48,8 @@ final class ScheduleListTableViewCell: UITableViewCell {
     private let scheduleStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 8
+        stackView.distribution = .fillEqually
+        stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -87,7 +89,7 @@ final class ScheduleListTableViewCell: UITableViewCell {
     
     private func changeHighlight(_ endTime: Date) {
         if Date() > endTime {
-            highlightView.backgroundColor = .gray
+            highlightView.backgroundColor = .systemGray
         } else {
             highlightView.backgroundColor = #colorLiteral(red: 0.7264262438, green: 0.9996786714, blue: 0.5089451671, alpha: 1)
         }
@@ -101,20 +103,34 @@ final class ScheduleListTableViewCell: UITableViewCell {
     private func addSubView() {
         scheduleStackView.addArrangedSubview(titleLabel)
         scheduleStackView.addArrangedSubview(contentLabel)
-        
-        entireStackView.addArrangedSubview(highlightView)
+
         entireStackView.addArrangedSubview(bellImageView)
         entireStackView.addArrangedSubview(scheduleStackView)
         
+        self.contentView.addSubview(highlightView)
         self.contentView.addSubview(entireStackView)
     }
     
     private func setupConstraint() {
         NSLayoutConstraint.activate([
-            entireStackView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            entireStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            entireStackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            entireStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
+            highlightView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            highlightView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            highlightView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            
+            entireStackView.topAnchor.constraint(equalTo: self.contentView.topAnchor,
+                                                constant: 16),
+            entireStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
+                                                    constant: -16),
+            entireStackView.leadingAnchor.constraint(equalTo: highlightView.trailingAnchor,
+                                                     constant: 8),
+            entireStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor,
+                                                      constant: -8),
+            
+            bellImageView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor,
+                                                 multiplier: 1/10),
+            
+            highlightView.widthAnchor.constraint(equalTo: bellImageView.widthAnchor,
+                                                 multiplier: 1/3)
         ])
     }
 }
