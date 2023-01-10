@@ -18,6 +18,10 @@
 		0223FAC7296BFBD300B6B32C /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FAC6296BFBD300B6B32C /* KakaoSDKUser */; };
 		0223FACF296C129200B6B32C /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FACE296C129200B6B32C /* FacebookCore */; };
 		0223FAD1296C129200B6B32C /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FAD0296C129200B6B32C /* FacebookLogin */; };
+		0223FAD5296D20DA00B6B32C /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAD4296D20DA00B6B32C /* LocalStorage.swift */; };
+		0223FAD7296D222D00B6B32C /* KeyChainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAD6296D222D00B6B32C /* KeyChainStorage.swift */; };
+		0223FAD9296D231500B6B32C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAD8296D231500B6B32C /* User.swift */; };
+		0223FADB296D2A7A00B6B32C /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FADA296D2A7A00B6B32C /* Schedule.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
@@ -33,6 +37,10 @@
 		0223FABD296BEE8300B6B32C /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
 		0223FABF296BF21F00B6B32C /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		0223FAC8296C071200B6B32C /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
+		0223FAD4296D20DA00B6B32C /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		0223FAD6296D222D00B6B32C /* KeyChainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainStorage.swift; sourceTree = "<group>"; };
+		0223FAD8296D231500B6B32C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0223FADA296D2A7A00B6B32C /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +99,10 @@
 				0223FAA5296BDD5200B6B32C /* Extensions */,
 				0223FA9E296BDCAB00B6B32C /* Presentation */,
 				0223FAA6296BDDAF00B6B32C /* Network */,
+				0223FAD4296D20DA00B6B32C /* LocalStorage.swift */,
+				0223FAD6296D222D00B6B32C /* KeyChainStorage.swift */,
+				0223FAD8296D231500B6B32C /* User.swift */,
+				0223FADA296D2A7A00B6B32C /* Schedule.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -231,14 +243,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0223FAD9296D231500B6B32C /* User.swift in Sources */,
+				0223FAD5296D20DA00B6B32C /* LocalStorage.swift in Sources */,
 				0223FABA296BED9B00B6B32C /* DefaultAPIProvider.swift in Sources */,
 				0223FABC296BEDAC00B6B32C /* APIProvider.swift in Sources */,
 				0223FAA4296BDD4D00B6B32C /* Encodable+extension.swift in Sources */,
 				0223FAC0296BF21F00B6B32C /* Authentication.swift in Sources */,
+				0223FAD7296D222D00B6B32C /* KeyChainStorage.swift in Sources */,
 				0223FABE296BEE8300B6B32C /* AuthenticationRepository.swift in Sources */,
 				0223FAA2296BDD2600B6B32C /* TargetType.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				0223FADB296D2A7A00B6B32C /* Schedule.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
