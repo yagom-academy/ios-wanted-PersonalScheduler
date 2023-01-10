@@ -9,6 +9,7 @@ import UIKit
 
 protocol LoginFlowCoordinatorDependencies: AnyObject {
     func makeLoginViewController(actions: LoginViewModelActions) -> LoginViewController
+    func makeSigninViewController(actions: SigninViewModelActions) -> SigninViewController
 }
 
 final class LoginFlowCoordinator: Coordinator {
@@ -54,6 +55,9 @@ final class LoginFlowCoordinator: Coordinator {
     
     private func signinButtonTapped() {
         print("회원가입 버튼 탭 !")
+        let actions = SigninViewModelActions(registerButtonTapped: registerButtonTapped)
+        let signinVC = dependencies.makeSigninViewController(actions: actions)
+        navigationController.pushViewController(signinVC, animated: true)
     }
     
     private func kakaoLogoButtonTapped() {
@@ -66,5 +70,24 @@ final class LoginFlowCoordinator: Coordinator {
     
     private func appleLogoButtonTapped() {
         print("apple 버튼 탭 !")
+    }
+    
+    private func registerButtonTapped(_ loginInfo: LoginInfo) {
+        print("등록 버튼 탭 !")
+        // 아이디, 비밀번호 Firebase에 등록
+        Auth.auth().createUser(withEmail: loginInfo.id, password: loginInfo.password) { authResult, error in
+            guard error == nil else {
+                print(String(describing: error))
+                return
+            }
+            guard let authResult = authResult else { return }
+            DefaultAlertBuilder(
+                title: "알람",
+                message: "\(authResult.user.email ?? "e-mail") 등록 완료 !",
+                preferredStyle: .alert
+            ).setButton(name: "확인", style: .default) {
+                self.navigationController.popViewController(animated: true)
+            }.showAlert(on: self.navigationController.viewControllers.last!)
+        }
     }
 }
