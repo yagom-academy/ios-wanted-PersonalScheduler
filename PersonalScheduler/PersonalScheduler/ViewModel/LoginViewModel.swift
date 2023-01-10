@@ -19,10 +19,10 @@ final class LoginViewModel: ObservableObject {
     
     @Published var isLoggedIn: Bool = false
     @Published var isActiveAlert: Bool = false
-    @Published var uid = ""
-    @Published var email = ""
-    @Published var password = ""
-    @Published var errorMessage = ""
+    @Published var uid: String = ""
+    @Published var email: String = ""
+    @Published var password: String = ""
+    @Published var errorMessage: String = ""
     @Published var loginResultAlert: LoginResultAlert = .normal
 
     func firebaseLogin() {

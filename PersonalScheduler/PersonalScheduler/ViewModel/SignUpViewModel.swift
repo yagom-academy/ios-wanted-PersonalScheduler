@@ -14,8 +14,8 @@ final class SignUpViewModel: ObservableObject {
         case success, fail, normal
     }
     
-    @Published var errorMessage = ""
     @Published var isActiveAlert: Bool = false
+    @Published var errorMessage: String = ""
     @Published var loginResultAlert: LoginResultAlert = .fail
     
     func registerUser(email: String, password: String) {
