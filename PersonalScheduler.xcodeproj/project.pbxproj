@@ -41,6 +41,10 @@
 		0223FB11296D674300B6B32C /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB10296D674300B6B32C /* ScheduleViewModel.swift */; };
 		0223FB14296D67F800B6B32C /* ScheduleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB13296D67F800B6B32C /* ScheduleCoordinator.swift */; };
 		0223FB16296D695900B6B32C /* ScheduleCoordinatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB15296D695900B6B32C /* ScheduleCoordinatorInterface.swift */; };
+		0223FB1B296D6B3300B6B32C /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB1A296D6B3300B6B32C /* UIColor+extension.swift */; };
+		0223FB1D296D6CBF00B6B32C /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB1C296D6CBF00B6B32C /* UIView+extension.swift */; };
+		0223FB1F296D6CCF00B6B32C /* UIStackView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB1E296D6CCF00B6B32C /* UIStackView+extension.swift */; };
+		0223FB21296D6DAD00B6B32C /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB20296D6DAD00B6B32C /* UIFont+extension.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* AuthViewController.swift */; };
@@ -76,6 +80,10 @@
 		0223FB10296D674300B6B32C /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		0223FB13296D67F800B6B32C /* ScheduleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinator.swift; sourceTree = "<group>"; };
 		0223FB15296D695900B6B32C /* ScheduleCoordinatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinatorInterface.swift; sourceTree = "<group>"; };
+		0223FB1A296D6B3300B6B32C /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
+		0223FB1C296D6CBF00B6B32C /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		0223FB1E296D6CCF00B6B32C /* UIStackView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+extension.swift"; sourceTree = "<group>"; };
+		0223FB20296D6DAD00B6B32C /* UIFont+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +160,10 @@
 			isa = PBXGroup;
 			children = (
 				0223FAA3296BDD4D00B6B32C /* Encodable+extension.swift */,
+				0223FB1A296D6B3300B6B32C /* UIColor+extension.swift */,
+				0223FB1C296D6CBF00B6B32C /* UIView+extension.swift */,
+				0223FB1E296D6CCF00B6B32C /* UIStackView+extension.swift */,
+				0223FB20296D6DAD00B6B32C /* UIFont+extension.swift */,
 				0223FAF6296D579400B6B32C /* Bundle+extension.swift */,
 			);
 			path = Extensions;
@@ -432,7 +444,9 @@
 				0223FAD7296D222D00B6B32C /* KeyChainStorage.swift in Sources */,
 				0223FABE296BEE8300B6B32C /* AuthenticationRepository.swift in Sources */,
 				0223FB0F296D673500B6B32C /* ScheduleViewController.swift in Sources */,
+				0223FB1D296D6CBF00B6B32C /* UIView+extension.swift in Sources */,
 				0223FAA2296BDD2600B6B32C /* TargetType.swift in Sources */,
+				0223FB1F296D6CCF00B6B32C /* UIStackView+extension.swift in Sources */,
 				0223FB06296D5F1E00B6B32C /* ScheduleListCoordinatorInterface.swift in Sources */,
 				0223FB14296D67F800B6B32C /* ScheduleCoordinator.swift in Sources */,
 				0223FB16296D695900B6B32C /* ScheduleCoordinatorInterface.swift in Sources */,
@@ -444,10 +458,12 @@
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				0223FADB296D2A7A00B6B32C /* Schedule.swift in Sources */,
 				0223FB04296D5F0F00B6B32C /* ScheduleListViewModel.swift in Sources */,
+				0223FB21296D6DAD00B6B32C /* UIFont+extension.swift in Sources */,
 				0223FB11296D674300B6B32C /* ScheduleViewModel.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				0223FAFD296D5D2F00B6B32C /* AuthViewModel.swift in Sources */,
 				0223FAF7296D579400B6B32C /* Bundle+extension.swift in Sources */,
+				0223FB1B296D6B3300B6B32C /* UIColor+extension.swift in Sources */,
 				0223FAF1296D4EE800B6B32C /* AppCoordinator.swift in Sources */,
 				0223FAE8296D374100B6B32C /* FirestoreStorage.swift in Sources */,
 			);
