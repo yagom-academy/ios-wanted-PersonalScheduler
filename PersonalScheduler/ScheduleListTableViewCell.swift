@@ -19,7 +19,7 @@ final class ScheduleListTableViewCell: UITableViewCell {
     
     private let bellImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "bell.circle")
+        imageView.image = ScheduleImage.notifyingBell
         imageView.tintColor = .systemOrange
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -94,4 +94,11 @@ final class ScheduleListTableViewCell: UITableViewCell {
             entireStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
         ])
     }
+}
+
+
+enum ScheduleImage {
+    static let notifyingBell = UIImage(systemName: "bell.circle.fill")
+    static let notifiedBell = UIImage(systemName: "bell.circle")
+    static let unnotifyingBell = UIImage(systemName: "bell.slash.circle.fill")
 }
