@@ -69,10 +69,10 @@
 		32EAF5A7296C83690056513F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				32EAF589296C38F90056513F /* PersonalScheduler.entitlements */,
 				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
 				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
-				32EAF589296C38F90056513F /* PersonalScheduler.entitlements */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
