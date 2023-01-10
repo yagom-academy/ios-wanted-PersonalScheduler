@@ -16,9 +16,28 @@ class ScheduleListViewController: UIViewController {
         return tableVeiw
     }()
     
+    private let scheduleViewModel = ScheduleViewModel()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        loadSchedules()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        bind()
+    }
+    
+    private func bind() {
+        scheduleViewModel.schedules
+            .subscribe { [weak self] scheduled in
+                self?.schduleTableview.reloadData()
+        }
+    }
+    
+    private func loadSchedules() {
+        scheduleViewModel.fetch(at: "judy")
     }
     
     private func setupView() {
