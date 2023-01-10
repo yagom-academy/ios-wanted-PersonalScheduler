@@ -41,8 +41,12 @@ class ScheduleListViewController: UIViewController {
         scheduleViewModel.fetch(at: "judy")
     }
     
+
+//MARK: Setup View
+extension ScheduleListViewController {
     private func setupView() {
         setupConstraint()
+        setupNavigationBar()
         view.backgroundColor = .systemBackground
     }
     
@@ -60,27 +64,18 @@ class ScheduleListViewController: UIViewController {
                                                   constant: -16),
         ])
     }
-}
-
-extension ScheduleListViewController: UITableViewDataSource {
-    private func setupTableView() {
-        schduleTableview.dataSource = self
-        schduleTableview.rowHeight = view.bounds.height * 0.1
+    
+    private func setupNavigationBar() {
+        let addScheduleBarButton = UIBarButtonItem(image: ScheduleImage.add,
+                                                   style: .plain,
+                                                   target: self,
+                                                   action: #selector(addScheduleBarButtonTapped))
+        
+        navigationItem.title = "일정 목록"
+        navigationItem.rightBarButtonItem = addScheduleBarButton
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return scheduleViewModel.schedules.value.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleListTableViewCell.identifier,
-                                                       for: indexPath) as? ScheduleListTableViewCell else {
-            return UITableViewCell()
-        }
-        
-        cell.congigure(with: scheduleViewModel.schedules.value[indexPath.row])
-        
-        return cell
+    @objc private func addScheduleBarButtonTapped() {
+        //TODO: 일정 추가 화면으로 이동
     }
 }
-
