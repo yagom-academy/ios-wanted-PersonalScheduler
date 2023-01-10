@@ -10,6 +10,7 @@ import UIKit
 class ScheduleListViewController: UIViewController {
     private let schduleTableview: UITableView = {
         let tableVeiw = UITableView(frame: .zero, style: .grouped)
+        tableVeiw.backgroundColor = .systemBackground
         tableVeiw.register(ScheduleListTableViewCell.self,
                            forCellReuseIdentifier: ScheduleListTableViewCell.identifier)
         tableVeiw.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +41,30 @@ class ScheduleListViewController: UIViewController {
     private func loadSchedules() {
         scheduleViewModel.fetch(at: "judy")
     }
+}
+
+//MARK: TableView DataSource
+extension ScheduleListViewController: UITableViewDataSource {
+    private func setupTableView() {
+        schduleTableview.dataSource = self
+        schduleTableview.rowHeight = view.bounds.height * 0.1
+    }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return scheduleViewModel.schedules.value.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleListTableViewCell.identifier,
+                                                       for: indexPath) as? ScheduleListTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.congigure(with: scheduleViewModel.schedules.value[indexPath.row])
+        
+        return cell
+    }
+}
 
 //MARK: Setup View
 extension ScheduleListViewController {
