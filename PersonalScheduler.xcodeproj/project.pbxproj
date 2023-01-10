@@ -20,6 +20,7 @@
 		204ACE1A296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE19296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift */; };
 		204ACE1C296CFF1F003BAD46 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE1B296CFF1F003BAD46 /* Schedule.swift */; };
 		20800DC4296D3787009E3CFC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20800DC3296D3787009E3CFC /* GoogleService-Info.plist */; };
+		20800DC8296D3F84009E3CFC /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20800DC7296D3F84009E3CFC /* Observable.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ScheduleListViewController.swift */; };
@@ -34,6 +35,7 @@
 		204ACE19296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFirestoreUseCase.swift; sourceTree = "<group>"; };
 		204ACE1B296CFF1F003BAD46 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		20800DC3296D3787009E3CFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		20800DC7296D3F84009E3CFC /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,9 +146,9 @@
 				20800DC3296D3787009E3CFC /* GoogleService-Info.plist */,
 				204AFEDE296CEABC0061EAEE /* Resources */,
 				204AFEDD296CEAB00061EAEE /* Application */,
-				63AAAB052967EA2600775EC3 /* ScheduleListViewController.swift */,
 				204ACE03296CED21003BAD46 /* ScheduleListTableViewCell.swift */,
-				63AAAB052967EA2600775EC3 /* ViewController.swift */,
+				63AAAB052967EA2600775EC3 /* ScheduleListViewController.swift */,
+				20800DC7296D3F84009E3CFC /* Observable.swift */,
 				204ACE1D296D0841003BAD46 /* Service */,
 				204ACE1F296D085D003BAD46 /* Domain */,
 			);
@@ -236,9 +238,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20800DC8296D3F84009E3CFC /* Observable.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* ScheduleListViewController.swift in Sources */,
 				204ACE1A296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift in Sources */,
-				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
+				63AAAB062967EA2600775EC3 /* ScheduleListViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				204ACE04296CED21003BAD46 /* ScheduleListTableViewCell.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
