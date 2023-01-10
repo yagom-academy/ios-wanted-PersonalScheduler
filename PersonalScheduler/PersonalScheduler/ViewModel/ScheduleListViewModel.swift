@@ -9,18 +9,23 @@ import Foundation
 
 final class ScheduleListViewModel: ObservableObject {
     
-    let firebaseStorageManager = FirebaseStorageManager()
+    private let firebaseStorageManager = FirebaseStorageManager()
+    private let firebaseLoginManager = FirebaseLoginManager()
+    private let kakaoLoginManager = KakaoLoginManager()
+    
     @Published var lists = [ScheduleList]()
     
-    init() {
-        // firebaseStorageManager.uploadPost(title: "Test", description: "Test", startTimeStamp: Date(), endTimeStamp: Date())
-        fetchFirebaseStore()
-    }
-    
-    func fetchFirebaseStore() {
-        firebaseStorageManager.fetchScheduleList(accountUID: "") { data in
+    func fetchFirebaseStore(uid: String) {
+        firebaseStorageManager.fetchScheduleList(accountUID: uid) { data in
             self.lists = data
         }
     }
-
+    
+    func logout() {
+        firebaseLoginManager.handleLogout()
+        
+        Task {
+            await kakaoLoginManager.handleLogout()
+        }
+    }
 }

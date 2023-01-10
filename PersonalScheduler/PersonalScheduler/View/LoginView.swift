@@ -10,12 +10,10 @@ import SwiftUI
 struct LoginView: View {
     
     @StateObject var loginViewModel = LoginViewModel()
-    
+
     var body: some View {
         NavigationView {
             VStack {
-                Text("uid: " +
-                     loginViewModel.uid)
                 Text("Login")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
@@ -36,6 +34,15 @@ struct LoginView: View {
                     .cornerRadius(10)
                 
                 GeometryReader { geometry in
+                    NavigationLink {
+                        ScheduleListView(uid: loginViewModel.uid)
+                    } label: {
+                        Text("Create Account")
+                    }
+                    .simultaneousGesture(TapGesture().onEnded{
+                        loginViewModel.firebaseLogin()
+                    })
+                    
                     Button {
                         loginViewModel.firebaseLogin()
                     } label: {
@@ -65,6 +72,9 @@ struct LoginView: View {
             .padding()
             .navigationTitle("Personal Scheduler")
             .navigationBarTitleDisplayMode(.large)
+            .fullScreenCover(isPresented: $loginViewModel.isLoggedIn) {
+                ScheduleListView(uid: loginViewModel.uid)
+            }
         }
     }
 }

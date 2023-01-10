@@ -21,6 +21,7 @@ final class LoginViewModel: ObservableObject {
     func firebaseLogin() {
         firebaseLoginManager.handleLogin(email: email, password: password, completion: { [weak self] data in
             self?.uid = data
+            self?.isLoggedIn = true
         })
     }
     
@@ -29,21 +30,9 @@ final class LoginViewModel: ObservableObject {
         Task {
             if await kakaoLoginManager.handleLogin(completion: { [weak self] data in
                 self?.uid = data
+                self?.isLoggedIn = true
             }) {
-                isLoggedIn = true
-            } else {
                 isLoggedIn = false
-            }
-        }
-    }
-    
-    @MainActor
-    func kakaoLogout() {
-        Task {
-            if await kakaoLoginManager.handleLogout() {
-                isLoggedIn = false
-            } else {
-                isLoggedIn = true
             }
         }
     }
