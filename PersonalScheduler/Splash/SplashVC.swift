@@ -25,7 +25,7 @@ extension SplashVC {
         viewModel.output.splashResult.bind { [weak self] splashResult in
             switch splashResult {
             case .registered:
-                self?.navigationController?.pushViewController(SchedulListVC(), animated: true)
+                self?.navigationController?.pushViewController(ScheduleListVC(), animated: true)
             case .notRegistered:
                 self?.navigationController?.pushViewController(LoginVC(), animated: true)
             }

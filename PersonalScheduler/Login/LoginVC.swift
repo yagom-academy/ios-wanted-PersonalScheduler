@@ -47,7 +47,7 @@ extension LoginVC {
     private func outputBind() {
         self.viewModel.output.isLoginable.bind { [weak self] isLogin in
             if isLogin {
-                self?.navigationController?.pushViewController(SchedulListVC(), animated: true)
+                self?.navigationController?.pushViewController(ScheduleListVC(), animated: true)
             } else {
                 print("로그인 실패")
             }

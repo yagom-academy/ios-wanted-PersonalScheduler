@@ -12,4 +12,17 @@ class BaseVC: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
     }
+    
+    func isHiddenBackButton() {
+        self.navigationItem.hidesBackButton = true
+    }
+    
+    func setTitle(title: String) {
+        self.title = title
+    }
+    
+    func isLargeTitle() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
+    }
 }
