@@ -13,6 +13,8 @@ struct ScheduleListView: View {
     
     @StateObject var scheduleListViewModel = ScheduleListViewModel()
     
+    @State var isActiveAlert: Bool = false
+    
     var uid: String = ""
     
     var body: some View {
@@ -48,13 +50,26 @@ struct ScheduleListView: View {
                 .listStyle(.plain)
                 
                 Button {
-                    scheduleListViewModel.logout()
-                    presentationMode.wrappedValue.dismiss()
+                    isActiveAlert.toggle()
                 } label: {
                     Text("로그아웃")
                 }
             }
             .padding()
+            .alert(isPresented: $isActiveAlert) {
+                switch scheduleListViewModel.buttonAlert {
+                case .logout:
+                    let alert = Alert(
+                        title: Text("로그아웃 하시겠습니까?"),
+                        primaryButton: .default(Text("확인"), action: {
+                            presentationMode.wrappedValue.dismiss()
+                            scheduleListViewModel.logout()
+                        }),
+                        secondaryButton: .cancel()
+                    )
+                    return alert
+                }
+            }
             .onAppear {
                 scheduleListViewModel.fetchFirebaseStore(uid: uid)
             }
