@@ -24,8 +24,8 @@ final class FirebaseStorageManager {
             id: postId,
             title: title,
             description: description,
-            startTimeStamp: startTimeStamp,
-            endTimeStamp: endTimeStamp
+            startTimeStamp: startTimeStamp.translateToString(),
+            endTimeStamp: endTimeStamp.translateToString()
         )
             
         let _ = db.collection(FirebaseQuery.collection)
@@ -46,8 +46,8 @@ final class FirebaseStorageManager {
                         let id = data["id"] as? String ?? "blank id"
                         let title = data["title"] as? String ?? "blank title"
                         let description = data["description"] as? String ?? "black description"
-                        let startTimeStamp = data["startTimeStamp"] as? Date ?? Date()
-                        let endTimeStamp = data["endTimeStamp"] as? Date ?? Date()
+                        let startTimeStamp = data["startTimeStamp"] as? String ?? "blank startTimeStamp"
+                        let endTimeStamp = data["endTimeStamp"] as? String ?? "blank endTimeStamp"
                         
                         return ScheduleList(id: id, title: title, description: description, startTimeStamp: startTimeStamp, endTimeStamp: endTimeStamp)
                     })

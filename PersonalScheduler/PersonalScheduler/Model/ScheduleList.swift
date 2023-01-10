@@ -11,8 +11,8 @@ struct ScheduleList: Identifiable {
     var id = UUID().uuidString
     var title: String = ""
     var description: String = ""
-    var startTimeStamp: Date = Date()
-    var endTimeStamp: Date = Date()
+    var startTimeStamp: String = ""
+    var endTimeStamp: String = ""
     
     var dictionary: [String: Any] {
         return [
