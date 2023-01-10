@@ -105,13 +105,11 @@
 			children = (
 				0223FA9D296BDCA700B6B32C /* App */,
 				0223FAA5296BDD5200B6B32C /* Extensions */,
-				0223FA9E296BDCAB00B6B32C /* Presentation */,
+				0223FAEB296D45DE00B6B32C /* Model */,
 				0223FAA6296BDDAF00B6B32C /* Network */,
-				0223FAD4296D20DA00B6B32C /* LocalStorage.swift */,
-				0223FAD6296D222D00B6B32C /* KeyChainStorage.swift */,
-				0223FAE7296D374100B6B32C /* FirestoreStorage.swift */,
-				0223FAD8296D231500B6B32C /* User.swift */,
-				0223FADA296D2A7A00B6B32C /* Schedule.swift */,
+				0223FA9E296BDCAB00B6B32C /* Presentation */,
+				0223FAEA296D45D600B6B32C /* Repositories */,
+				0223FAE9296D45CC00B6B32C /* Storages */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -129,7 +127,6 @@
 			children = (
 				0223FAA7296BDDC500B6B32C /* Protocol */,
 				0223FAB9296BED9B00B6B32C /* DefaultAPIProvider.swift */,
-				0223FABD296BEE8300B6B32C /* AuthenticationRepository.swift */,
 				0223FABF296BF21F00B6B32C /* Authentication.swift */,
 			);
 			path = Network;
@@ -142,6 +139,33 @@
 				0223FABB296BEDAC00B6B32C /* APIProvider.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		0223FAE9296D45CC00B6B32C /* Storages */ = {
+			isa = PBXGroup;
+			children = (
+				0223FAD4296D20DA00B6B32C /* LocalStorage.swift */,
+				0223FAD6296D222D00B6B32C /* KeyChainStorage.swift */,
+				0223FAE7296D374100B6B32C /* FirestoreStorage.swift */,
+			);
+			path = Storages;
+			sourceTree = "<group>";
+		};
+		0223FAEA296D45D600B6B32C /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				0223FABD296BEE8300B6B32C /* AuthenticationRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		0223FAEB296D45DE00B6B32C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0223FAD8296D231500B6B32C /* User.swift */,
+				0223FADA296D2A7A00B6B32C /* Schedule.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		63AAAAF52967EA2600775EC3 = {
