@@ -25,6 +25,13 @@
 		E131BFA8296D7B55003DC333 /* KakaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131BFA7296D7B55003DC333 /* KakaoLogin.swift */; };
 		E131BFAC296D81BF003DC333 /* Obserbable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131BFAB296D81BF003DC333 /* Obserbable.swift */; };
 		E131BFAE296D8E85003DC333 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E131BFAD296D8E85003DC333 /* GoogleService-Info.plist */; };
+		E181D2C9296DE61400847DD7 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181D2C8296DE61400847DD7 /* FirebaseManager.swift */; };
+		E181D2CB296DE6FE00847DD7 /* FirebaseDatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181D2CA296DE6FE00847DD7 /* FirebaseDatable.swift */; };
+		E181D2CF296DE76200847DD7 /* LoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181D2CE296DE76200847DD7 /* LoginInfo.swift */; };
+		E181D2D2296DEA0100847DD7 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181D2D1296DEA0100847DD7 /* Encodable+Extension.swift */; };
+		E181D2D5296DEA6400847DD7 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181D2D4296DEA6400847DD7 /* FirebaseError.swift */; };
+		E181D2D9296DECD300847DD7 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181D2D8296DECD300847DD7 /* LoginError.swift */; };
+		E181D2DB296DFF6A00847DD7 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181D2DA296DFF6A00847DD7 /* LoginManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +47,13 @@
 		E131BFA9296D7D38003DC333 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
 		E131BFAB296D81BF003DC333 /* Obserbable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obserbable.swift; sourceTree = "<group>"; };
 		E131BFAD296D8E85003DC333 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E181D2C8296DE61400847DD7 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		E181D2CA296DE6FE00847DD7 /* FirebaseDatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatable.swift; sourceTree = "<group>"; };
+		E181D2CE296DE76200847DD7 /* LoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfo.swift; sourceTree = "<group>"; };
+		E181D2D1296DEA0100847DD7 /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
+		E181D2D4296DEA6400847DD7 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
+		E181D2D8296DECD300847DD7 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		E181D2DA296DFF6A00847DD7 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +95,9 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				E181D2D3296DEA5900847DD7 /* Error */,
+				E181D2D0296DE9EE00847DD7 /* Extension */,
+				E181D2C7296DE55C00847DD7 /* Network */,
 				E131BFA9296D7D38003DC333 /* PersonalScheduler.entitlements */,
 				E131BFAA296D819F003DC333 /* Utility */,
 				E131BFA4296D7AF0003DC333 /* Login */,
@@ -99,6 +116,8 @@
 		E131BFA3296D7AAA003DC333 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E181D2CA296DE6FE00847DD7 /* FirebaseDatable.swift */,
+				E181D2CE296DE76200847DD7 /* LoginInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -108,6 +127,7 @@
 			children = (
 				E131BFA5296D7B01003DC333 /* Login.swift */,
 				E131BFA7296D7B55003DC333 /* KakaoLogin.swift */,
+				E181D2DA296DFF6A00847DD7 /* LoginManager.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -118,6 +138,31 @@
 				E131BFAB296D81BF003DC333 /* Obserbable.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		E181D2C7296DE55C00847DD7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E181D2C8296DE61400847DD7 /* FirebaseManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E181D2D0296DE9EE00847DD7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E181D2D1296DEA0100847DD7 /* Encodable+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		E181D2D3296DEA5900847DD7 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				E181D2D4296DEA6400847DD7 /* FirebaseError.swift */,
+				E181D2D8296DECD300847DD7 /* LoginError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,10 +254,17 @@
 			files = (
 				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				E181D2D2296DEA0100847DD7 /* Encodable+Extension.swift in Sources */,
+				E181D2C9296DE61400847DD7 /* FirebaseManager.swift in Sources */,
+				E181D2D9296DECD300847DD7 /* LoginError.swift in Sources */,
+				E181D2DB296DFF6A00847DD7 /* LoginManager.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				E131BFA6296D7B01003DC333 /* Login.swift in Sources */,
 				E131BFAC296D81BF003DC333 /* Obserbable.swift in Sources */,
+				E181D2CB296DE6FE00847DD7 /* FirebaseDatable.swift in Sources */,
+				E181D2D5296DEA6400847DD7 /* FirebaseError.swift in Sources */,
 				E131BFA8296D7B55003DC333 /* KakaoLogin.swift in Sources */,
+				E181D2CF296DE76200847DD7 /* LoginInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

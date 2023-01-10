@@ -8,5 +8,5 @@
 import Foundation
 
 protocol Login {
-    func getEmail() -> Observable<Result<String, Error>?>
+    func getId() -> Observable<Result<String, Error>?>
 }

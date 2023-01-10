@@ -2,7 +2,7 @@
 //  AppleLogin.swift
 //  PersonalScheduler
 //
-//  Created by 곽우종 on 2023/01/10.
+//  Created by 우롱차 on 2023/01/10.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import KakaoSDKAuth
 import KakaoSDKUser
 
 final class KakaoLogin: Login {
-    func getEmail() -> Observable<Result<String, Error>?> {
+    func getId() -> Observable<Result<String, Error>?> {
         var scope: [String] = []
         scope.append("account_email")
         let result: Observable<Result<String, Error>?> = .init(nil)
@@ -23,24 +23,18 @@ final class KakaoLogin: Login {
         
         UserApi.shared.loginWithKakaoTalk { token, error in
             if error != nil {
-                result.value = .failure(LoginError.kakaoRegisterError)
+                result.value = .failure(LoginError.kakaoLodedError)
             } else {
                 UserApi.shared.me { user, error in
-                    guard let email = user?.kakaoAccount?.email else {
-                        result.value = .failure(LoginError.kakaoEmaildataError)
+                    guard let id = user?.id else {
+                        result.value = .failure(LoginError.kakaoLodedError)
                         return
                     }
-                    result.value = .success(email)
+                    result.value = .success(String(id))
                 }
             }
         }
          
         return result
     }
-}
-
-enum LoginError: Error {
-    case kakaoRegisterError
-    case kakaoEmaildataError
-    case kakaoInstallNeed
 }
