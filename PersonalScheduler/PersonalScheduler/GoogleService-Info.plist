@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>536644379350-ifghpv88cklmk05aim4hludvdpjm2pmq.apps.googleusercontent.com</string>
+	<string>1014728607752-j9givnivkk717dbmfkerdpgdn6km417t.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.536644379350-ifghpv88cklmk05aim4hludvdpjm2pmq</string>
+	<string>com.googleusercontent.apps.1014728607752-j9givnivkk717dbmfkerdpgdn6km417t</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDFlSd90bk9yIGcA1aC6g5OsfgsOyOJ84w</string>
+	<string>AIzaSyClMDrbaTV3_COptSpYO1muT2l5MaUBYlw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>536644379350</string>
+	<string>1014728607752</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>BradHeo.PersonalScheduler</string>
 	<key>PROJECT_ID</key>
-	<string>personalscheduler-76f89</string>
+	<string>ios-wanted-personalscheduler</string>
 	<key>STORAGE_BUCKET</key>
-	<string>personalscheduler-76f89.appspot.com</string>
+	<string>ios-wanted-personalscheduler.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:536644379350:ios:9341a81cef51c99a745f77</string>
+	<string>1:1014728607752:ios:1344af92093c2d9108a9bd</string>
 </dict>
 </plist>
