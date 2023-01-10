@@ -156,8 +156,14 @@ final class LoginView: UIView {
     private func setupData() {
         HeaderTitle.text = "Personal Schedular에 로그인 하세요."
         subTitle.text = "어느 기기에서든 나의 기록을 남길 수 있습니다."
-        idTextField.placeholder = "아이디 입력"
+        idTextField.placeholder = "이메일 입력"
         passwordTextField.placeholder = "비밀번호 입력"
+    }
+    
+    func retrieveLoginInfo() -> LoginInfo? {
+        guard let id = idTextField.text,
+              let password = passwordTextField.text else { return nil }
+        return LoginInfo(id: id, password: password)
     }
 }
 
