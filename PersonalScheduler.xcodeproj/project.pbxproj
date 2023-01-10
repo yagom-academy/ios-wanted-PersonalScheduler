@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		204ACE04296CED21003BAD46 /* ScheduleListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE03296CED21003BAD46 /* ScheduleListTableViewCell.swift */; };
 		204ACE07296CF9EB003BAD46 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 204ACE06296CF9EB003BAD46 /* FirebaseAnalytics */; };
 		204ACE09296CF9EB003BAD46 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 204ACE08296CF9EB003BAD46 /* FirebaseAuth */; };
 		204ACE0B296CF9EB003BAD46 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 204ACE0A296CF9EB003BAD46 /* FirebaseFirestore */; };
@@ -20,12 +21,13 @@
 		204ACE1C296CFF1F003BAD46 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE1B296CFF1F003BAD46 /* Schedule.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
-		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
+		63AAAB062967EA2600775EC3 /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ScheduleListViewController.swift */; };
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		204ACE03296CED21003BAD46 /* ScheduleListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListTableViewCell.swift; sourceTree = "<group>"; };
 		204ACE14296CFD49003BAD46 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		204ACE16296CFD7A003BAD46 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		204ACE19296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFirestoreUseCase.swift; sourceTree = "<group>"; };
@@ -33,7 +35,7 @@
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63AAAB052967EA2600775EC3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		63AAAB052967EA2600775EC3 /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
 		63AAAB0A2967EA2700775EC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,6 +141,8 @@
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
 				204AFEDE296CEABC0061EAEE /* Resources */,
 				204AFEDD296CEAB00061EAEE /* Application */,
+				63AAAB052967EA2600775EC3 /* ScheduleListViewController.swift */,
+				204ACE03296CED21003BAD46 /* ScheduleListTableViewCell.swift */,
 				63AAAB052967EA2600775EC3 /* ViewController.swift */,
 				204ACE1D296D0841003BAD46 /* Service */,
 				204ACE1F296D085D003BAD46 /* Domain */,
@@ -228,9 +232,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63AAAB062967EA2600775EC3 /* ScheduleListViewController.swift in Sources */,
 				204ACE1A296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				204ACE04296CED21003BAD46 /* ScheduleListTableViewCell.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				204ACE15296CFD49003BAD46 /* FirestoreManager.swift in Sources */,
 				204ACE1C296CFF1F003BAD46 /* Schedule.swift in Sources */,
