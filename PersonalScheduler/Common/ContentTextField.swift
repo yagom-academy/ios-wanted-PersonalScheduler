@@ -1,5 +1,5 @@
 //
-//  TitleTextField.swift
+//  ContentTextField.swift
 //  PersonalScheduler
 //
 //  Created by 정재근 on 2023/01/10.
@@ -7,14 +7,9 @@
 
 import UIKit
 
-class TitleTextField: UITextField {
-    
-    var cancelButton: CancelButton = CancelButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-    var isHiddenCancelButton: Bool = true {
-        didSet {
-            self.cancelButton.isHidden = isHiddenCancelButton
-        }
-    }
+class ContentTextField: UITextView {
+    static let placeHolderText = "해야할 일을 입력해주세요."
+    static let placeHolderTextColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
     
     var isFocus: Bool = false {
         didSet {
@@ -32,22 +27,14 @@ class TitleTextField: UITextField {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 16.0
         self.layer.masksToBounds = true
-        self.placeholder = "제목을 입력해주세요."
-        // 왼쪽 여백
-        self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
-        self.leftViewMode = .always
-        // 취소 버튼
-        rightViewMode = .always
-        
-        let insideView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 20))
-        insideView.backgroundColor = self.backgroundColor
-        insideView.addSubview(cancelButton)
-        
-        rightView = insideView
+        self.text = ContentTextField.placeHolderText
+        self.textColor = ContentTextField.placeHolderTextColor
+        self.font = UIFont.systemFont(ofSize: 18)
+        self.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
         setting()
     }
     

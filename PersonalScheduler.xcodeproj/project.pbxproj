@@ -11,6 +11,7 @@
 		3504B4D0296D82080036CB1B /* InputSchedulV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504B4CF296D82080036CB1B /* InputSchedulV.swift */; };
 		3504B4D2296D832A0036CB1B /* TitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504B4D1296D832A0036CB1B /* TitleTextField.swift */; };
 		3504B4D4296D87000036CB1B /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504B4D3296D87000036CB1B /* CancelButton.swift */; };
+		3504B4D6296D99840036CB1B /* ContentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504B4D5296D99840036CB1B /* ContentTextField.swift */; };
 		35406C40296C5F5C0027A261 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 35406C3F296C5F5C0027A261 /* KakaoSDK */; };
 		35406C42296C5F5C0027A261 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 35406C41296C5F5C0027A261 /* KakaoSDKAuth */; };
 		35406C44296C5F5C0027A261 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 35406C43296C5F5C0027A261 /* KakaoSDKCommon */; };
@@ -54,6 +55,7 @@
 		3504B4CF296D82080036CB1B /* InputSchedulV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSchedulV.swift; sourceTree = "<group>"; };
 		3504B4D1296D832A0036CB1B /* TitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextField.swift; sourceTree = "<group>"; };
 		3504B4D3296D87000036CB1B /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
+		3504B4D5296D99840036CB1B /* ContentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTextField.swift; sourceTree = "<group>"; };
 		35406C48296C70A60027A261 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		35406C4A296C70E20027A261 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		35406C4C296C75670027A261 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				3504B4CD296D79E90036CB1B /* SchedulePlusButton.swift */,
 				3504B4D1296D832A0036CB1B /* TitleTextField.swift */,
 				3504B4D3296D87000036CB1B /* CancelButton.swift */,
+				3504B4D5296D99840036CB1B /* ContentTextField.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			files = (
 				3504B4D2296D832A0036CB1B /* TitleTextField.swift in Sources */,
 				35EEA822296C1164002A30C9 /* ViewModelType.swift in Sources */,
+				3504B4D6296D99840036CB1B /* ContentTextField.swift in Sources */,
 				35AF5D57296C597E0085D636 /* LoginType.swift in Sources */,
 				35EEA826296C1421002A30C9 /* SplashResultType.swift in Sources */,
 				35AF119C296D2E03002249AF /* ScheduleListV.swift in Sources */,
