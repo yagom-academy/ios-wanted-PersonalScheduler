@@ -8,7 +8,14 @@
 import Foundation
 import Combine
 
-final class ScheduleRepository {
+protocol ScheduleRepository {
+    func read() -> AnyPublisher<[Schedule], Error>
+    func write(schedule: Schedule) -> AnyPublisher<Bool, Error>
+    func delete(schedule: Schedule)
+    func update(schedule: Schedule) -> AnyPublisher<Bool, Error>
+}
+
+final class DefaultScheduleRepository: ScheduleRepository {
     
     private let firestoreStorage: FirestoreStorageService
     private let localStorage: LocalStorageService

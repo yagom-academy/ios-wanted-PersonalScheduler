@@ -12,7 +12,16 @@ import KakaoSDKUser
 import AuthenticationServices
 import FacebookLogin
 
-final class AuthenticationRepository: NSObject {
+protocol AuthenticationRepository {
+    func kakaoAuthorize() -> AnyPublisher<Authentication?, Error>
+    func appleAuthorize() -> ASAuthorizationController
+    func facebookAuthorize() -> AnyPublisher<Authentication?, Error>
+    func readToken(option tokenOption: TokenOption) -> AnyPublisher<Authentication, Never>
+    func writeToken(authentication: Authentication)
+    func removeToken(option tokenOption: TokenOption)
+}
+
+final class DefaultAuthenticationRepository: NSObject, AuthenticationRepository {
     
     private let apiProvider: APIProvider
     private let keychainStorage: KeyChainStorageService
@@ -170,7 +179,7 @@ final class AuthenticationRepository: NSObject {
     
 }
 
-extension AuthenticationRepository: ASAuthorizationControllerDelegate {
+extension DefaultAuthenticationRepository: ASAuthorizationControllerDelegate {
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
