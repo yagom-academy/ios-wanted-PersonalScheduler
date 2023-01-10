@@ -57,6 +57,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		204ACE1D296D0841003BAD46 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				204ACE1E296D084A003BAD46 /* Firestore */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		204ACE1E296D084A003BAD46 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				204ACE14296CFD49003BAD46 /* FirestoreManager.swift */,
+				204ACE16296CFD7A003BAD46 /* FirebaseError.swift */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
+		204ACE1F296D085D003BAD46 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				204ACE20296D0867003BAD46 /* Entity */,
+				204ACE21296D0871003BAD46 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		204ACE20296D0867003BAD46 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				204ACE1B296CFF1F003BAD46 /* Schedule.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		204ACE21296D0871003BAD46 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				204ACE19296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		204AFEDD296CEAB00061EAEE /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,10 +140,8 @@
 				204AFEDE296CEABC0061EAEE /* Resources */,
 				204AFEDD296CEAB00061EAEE /* Application */,
 				63AAAB052967EA2600775EC3 /* ViewController.swift */,
-				204ACE14296CFD49003BAD46 /* FirestoreManager.swift */,
-				204ACE19296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift */,
-				204ACE1B296CFF1F003BAD46 /* Schedule.swift */,
-				204ACE16296CFD7A003BAD46 /* FirebaseError.swift */,
+				204ACE1D296D0841003BAD46 /* Service */,
+				204ACE1F296D085D003BAD46 /* Domain */,
 			);
 			path = PersonalScheduler;
 			sourceTree = "<group>";
