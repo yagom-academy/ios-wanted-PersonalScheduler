@@ -229,7 +229,7 @@
 				0223FB08296D64A700B6B32C /* Coordinator */,
 				0223FB09296D64AD00B6B32C /* ViewController */,
 				0223FB0A296D64B400B6B32C /* ViewModel */,
-				0223FB22296D6F5500B6B32C /* LoginButton.swift */,
+				0223FB28296DA7DA00B6B32C /* View */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -240,7 +240,7 @@
 				0223FB0B296D64BA00B6B32C /* Coordinator */,
 				0223FB0C296D64C500B6B32C /* ViewController */,
 				0223FB0D296D64CC00B6B32C /* ViewModel */,
-				0223FB24296D77A300B6B32C /* NavigationTitleView.swift */,
+				0223FB29296DA7E200B6B32C /* View */,
 			);
 			path = ScheduleList;
 			sourceTree = "<group>";
@@ -328,6 +328,22 @@
 				0223FB0E296D673500B6B32C /* ScheduleViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0223FB28296DA7DA00B6B32C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB22296D6F5500B6B32C /* LoginButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0223FB29296DA7E200B6B32C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB24296D77A300B6B32C /* NavigationTitleView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		63AAAAF52967EA2600775EC3 = {
