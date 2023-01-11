@@ -100,7 +100,9 @@ extension ScheduleListViewController {
     }
     
     @objc private func addScheduleBarButtonTapped() {
-        let detailViewController = ScheduleDetailViewController(scheduleViewModel)
+        let detailViewController = ScheduleDetailViewController(scheduleViewModel,
+                                                                viewMode: .create)
+        
         navigationController?.pushViewController(detailViewController,
                                                  animated: true)
     }

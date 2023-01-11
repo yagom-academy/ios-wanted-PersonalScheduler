@@ -41,9 +41,11 @@ final class ScheduleDetailViewController: UIViewController {
     private let endDatePicker = ScheduleDatePickerView(text: ScheduleInfo.Edit.endDate)
     private let notificationSwitchView = ScheduleSwitchView(text: ScheduleInfo.Edit.notification)
     private let scheduleViewModel: ScheduleViewModel
+    private let viewMode: DetailViewMode
     
-    init(_ viewModel: ScheduleViewModel) {
+    init(_ viewModel: ScheduleViewModel, viewMode: DetailViewMode) {
         self.scheduleViewModel = viewModel
+        self.viewMode = viewMode
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -136,4 +138,9 @@ enum ScheduleInfo {
         static let notification = "알림"
         static let titlePlaceholder = "제목을 입력해주세요."
     }
+}
+
+enum DetailViewMode {
+    case display(schedule: Schedule)
+    case create
 }
