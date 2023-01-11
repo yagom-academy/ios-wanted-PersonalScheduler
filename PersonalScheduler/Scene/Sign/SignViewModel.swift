@@ -8,6 +8,7 @@
 import Foundation
 
 protocol SignViewModelInput {
+    func autoLogInCheck()
     func didTapKakaoLoginButton()
     func didTapAppleLoginButton()
     func didTapFaceBookLoginButton()
@@ -34,6 +35,21 @@ final class SignViewModel: SignViewModellType {
     
     /// Input
     
+    func autoLogInCheck() {
+        Task {
+            do {
+                let result = try await authUseCase.autoLoginCheck()
+                if result {
+                    print("다음 화면으로 넘어가기")
+                }
+            }
+            catch {
+                self.error.value = error.localizedDescription
+            }
+        }
+    }
+    
+    
     func didTapKakaoLoginButton() {
         self.loginTask = Task {
             do {
@@ -45,7 +61,6 @@ final class SignViewModel: SignViewModellType {
             }
         }
         loginTask?.cancel()
-        
     }
     
     func didTapAppleLoginButton() {

@@ -29,21 +29,6 @@ final class KakaoAuthRepository {
             }
         }
     }
-    
-    /// 카카오톡 유저 id를 반환합니다.
-    func userId(completion: @escaping (Int64) -> Void) {
-        UserApi.shared.me {(user, error) in
-            if let error = error {
-                print(error)
-            }
-            else {
-                print("me() success.")
-                
-                //do something
-                _ = user
-            }
-        }
-    }
 
 }
 
@@ -66,24 +51,33 @@ extension KakaoAuthRepository {
 // MARK: - Token
 extension KakaoAuthRepository {
     
-    func hasToken() {
-        
+    func autoLogInCheck() async throws -> Bool {
+        return try await withCheckedThrowingContinuation { continuation in
+            self.hasToken { result in
+                continuation.resume(with: result)
+            }
+        }
     }
 
-    func accessTokenInfo(completion: @escaping (Result<Void, Error>) -> Void) {
-        UserApi.shared.accessTokenInfo { (_, error) in
+    func hasToken(completion: @escaping (Result<Bool, Error>) -> Void) {
+        if (AuthApi.hasToken()) {
+            UserApi.shared.accessTokenInfo { (_, error) in
                 if let error = error {
                     if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() == true  {
-                        //로그인 필요
+                        completion(.success(false))
                     }
                     else {
-                        //기타 에러
+                        completion(.failure(error))
                     }
                 }
                 else {
-                    //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
+                    completion(.success(true))
                 }
             }
+        }
+        else {
+            completion(.success(false))
+        }
     }
 
 }

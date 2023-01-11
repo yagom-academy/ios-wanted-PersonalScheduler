@@ -73,6 +73,8 @@ final class SignViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.autoLogInCheck()
     }
     
     // MARK: - Functions
@@ -110,10 +112,6 @@ final class SignViewController: BaseViewController {
             facebookButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             facebookButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             facebookButton.heightAnchor.constraint(equalToConstant: 44)
-        ])
-        
-        NSLayoutConstraint.activate([
-            
         ])
     }
     

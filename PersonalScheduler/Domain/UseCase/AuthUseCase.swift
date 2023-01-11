@@ -13,16 +13,15 @@ enum AuthType {
 
 final class AuthUseCase {
     
-    let kakaoAuthRepository: KakaoAuthRepository?
+    let kakaoAuthRepository: KakaoAuthRepository = KakaoAuthRepository()
     
     init() {
-        self.kakaoAuthRepository = KakaoAuthRepository()
     }
     
     func login(authType: AuthType) async throws {
         switch authType {
         case .kakao:
-            let accessToken = try await kakaoAuthRepository?.isKakaoTalkLoginAvailable()
+            let accessToken = try await kakaoAuthRepository.isKakaoTalkLoginAvailable()
         case .apple:
             print()
         case .facebook:
@@ -39,6 +38,10 @@ final class AuthUseCase {
 //        motionInfo.time = item.time
 //
 //        coreDataManager.save(completion: completion)
+    }
+    
+    func autoLoginCheck() async throws -> Bool {
+        return try await kakaoAuthRepository.autoLogInCheck()
     }
 
     func Logout(offset: Int, count: Int) {
