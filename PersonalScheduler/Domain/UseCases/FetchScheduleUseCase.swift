@@ -9,7 +9,13 @@ import Foundation
 
 final class FetchScheduleUseCase {
 
-//    func execute(for date: Date, completion: @escaping (Result<>) -> Void) {
-//
-//    }
+    private let repository: ScheduleListRepositoryInterface
+
+    init(repository: ScheduleListRepositoryInterface) {
+        self.repository = repository
+    }
+
+    func execute(for date: Date, completion: @escaping (Result<[Schedule], Error>) -> Void) {
+        
+    }
 }
