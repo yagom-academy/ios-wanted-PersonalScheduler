@@ -154,7 +154,7 @@ final class DefaultAuthenticationRepository: NSObject, AuthenticationRepository 
             accessToken = keychainStorage.read(.accessToken)
         }
         if tokenOption.contains(.refresh) {
-            accessToken = keychainStorage.read(.refreshToken)
+            refreshToken = keychainStorage.read(.refreshToken)
         }
         return Just(Authentication(accessToken: accessToken, refreshToken: refreshToken)).eraseToAnyPublisher()
     }
