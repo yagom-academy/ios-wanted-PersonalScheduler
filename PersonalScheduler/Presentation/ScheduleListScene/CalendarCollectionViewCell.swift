@@ -11,9 +11,30 @@ final class CalendarCollectionViewCell: UICollectionViewCell {
 
     static let reuseIdentifier = String(describing: CalendarCollectionViewCell.self)
 
+    override var isSelected: Bool {
+        didSet {
+            backgroundColorView.layer.cornerRadius = backgroundColorView.frame.height / 2
+            if isSelected {
+                backgroundColorView.backgroundColor = .systemBlue
+                numberLabel.textColor = .white
+            } else {
+                backgroundColorView.backgroundColor = .white
+                numberLabel.textColor = .black
+            }
+        }
+    }
+
+    private let backgroundColorView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private let numberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.clipsToBounds = true
+        label.textAlignment = .center
         return label
     }()
 
@@ -31,12 +52,23 @@ final class CalendarCollectionViewCell: UICollectionViewCell {
     }
 
     private func layout() {
-        contentView.addSubview(numberLabel)
+        contentView.addSubview(backgroundColorView)
+        backgroundColorView.addSubview(numberLabel)
+
         NSLayoutConstraint.activate([
-            numberLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            numberLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            numberLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            numberLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            backgroundColorView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            backgroundColorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            backgroundColorView.widthAnchor.constraint(equalTo: backgroundColorView.heightAnchor),
+            backgroundColorView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            numberLabel.topAnchor.constraint(equalTo: backgroundColorView.topAnchor, constant: 5),
+            numberLabel.bottomAnchor.constraint(equalTo: backgroundColorView.bottomAnchor, constant: -5),
+            numberLabel.widthAnchor.constraint(equalTo: numberLabel.heightAnchor),
+            numberLabel.centerXAnchor.constraint(equalTo: backgroundColorView.centerXAnchor)
         ])
+    }
+
+    private func setUpContentViewLayer() {
+//        layer.cornerRadius =
     }
 }

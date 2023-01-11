@@ -14,6 +14,8 @@ final class ScheduleListHeader: UICollectionReusableView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .darkGray
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
         return label
     }()
 

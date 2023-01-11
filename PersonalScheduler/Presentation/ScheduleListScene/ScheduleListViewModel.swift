@@ -5,14 +5,26 @@
 //  Created by 천수현 on 2023/01/11.
 //
 
-import Foundation
+import UIKit
 
 final class ScheduleListViewModel {
 
     // MARK: - Outputs
-    var schedules = [Schedule]()
+    private var schedules = [Schedule]()
+
+    func schedules(section: ScheduleListViewController.ScheduleSection) -> [Schedule] {
+        switch section {
+        case .current:
+            return schedules.filter { $0.title == "첫번째 제목" } // TODO: Need to make filter logic
+        case .upcoming:
+            return schedules.filter { $0.title == "두번째 제목" }
+        case .done:
+            return schedules.filter { $0.title != "첫번째 제목" && $0.title != "두번째 제목" }
+        }
+    }
     var days = (1...31).map { $0 }
     var applyDataSource: (() -> Void)?
+    var showAlert: ((UIAlertController) -> Void)?
 
     // MARK: - UseCases
     private let fetchScheduleUseCase: FetchScheduleUseCase
@@ -28,7 +40,9 @@ final class ScheduleListViewModel {
                 self.schedules = schedules
                 self.applyDataSource?()
             case .failure(let error):
-                print("show alert")
+                let alert = UIAlertController(title: "Error", message: error.localizedDescription,
+                                              preferredStyle: .alert)
+                self.showAlert?(alert)
             }
         }
     }
@@ -37,6 +51,7 @@ final class ScheduleListViewModel {
 // MARK: - Inputs
 extension ScheduleListViewModel {
     func viewDidLoad() {
+        applyDataSource?()
         fetchSchedules(date: Date())
     }
 
