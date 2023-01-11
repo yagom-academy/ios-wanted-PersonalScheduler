@@ -13,14 +13,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    private let diContainer = DIContainer()
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         var rootViewController: UIViewController
 
         if Auth.auth().currentUser == nil {
-            rootViewController = OnboardingViewController()
+            rootViewController = diContainer.makeOnboardingViewController()
         } else {
-            rootViewController = ScheduleListViewController()
+            rootViewController = diContainer.makeScheduleListViewController()
         }
 
         window = UIWindow(windowScene: scene)
