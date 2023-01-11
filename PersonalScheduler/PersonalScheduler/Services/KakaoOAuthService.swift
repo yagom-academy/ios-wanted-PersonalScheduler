@@ -18,8 +18,19 @@ final class KakaoOAuthService {
         }
     }
     
+    func executeLogout() {
+        UserApi.shared.logout { error in
+            guard error == nil else {
+                print(error?.localizedDescription as Any)
+                return
+            }
+            
+            print("logout() success.")
+        }
+    }
+    
     private func executeLoginWithKakaoTalk() {
-        UserApi.shared.loginWithKakaoTalk {oauthToken, error in
+        UserApi.shared.loginWithKakaoTalk { oauthToken, error in
             guard error == nil else {
                 print(error?.localizedDescription as Any)
                 return
@@ -32,7 +43,7 @@ final class KakaoOAuthService {
     }
     
     private func executeLoginWithKakaoAccount() {
-        UserApi.shared.loginWithKakaoAccount {oauthToken, error in
+        UserApi.shared.loginWithKakaoAccount { oauthToken, error in
             guard error == nil else {
                 print(error?.localizedDescription as Any)
                 return
