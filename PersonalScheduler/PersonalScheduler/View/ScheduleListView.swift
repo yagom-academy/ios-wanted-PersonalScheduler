@@ -34,7 +34,7 @@ struct ScheduleListView: View {
                 }
                 
                 List {
-                    ForEach(scheduleListViewModel.lists, id: \.id) { data in
+                    ForEach(scheduleListViewModel.lists, id: \.startTimeStamp) { data in
                         VStack(alignment: .leading) {
                             Text("\(data.title)")
                             Text("시작 일시: \(data.startTimeStamp)")
