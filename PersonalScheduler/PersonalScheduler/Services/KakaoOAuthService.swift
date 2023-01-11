@@ -10,34 +10,37 @@ import KakaoSDKUser
 
 final class KakaoOAuthService {
     
-    func executeLoginWithKakaoTalk() {
-        // 카카오톡 실행 가능 여부 확인
-        if (UserApi.isKakaoTalkLoginAvailable()) {
-            
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                if let error = error {
-                    print(error)
-                } else {
-                    print("loginWithKakaoTalk() success.")
-                    
-                    //do something
-                    _ = oauthToken
-                }
-            }
+    func executeLogin() {
+        if UserApi.isKakaoTalkLoginAvailable() {
+            executeLoginWithKakaoTalk()
+        } else {
+            executeLoginWithKakaoAccount()
         }
     }
     
-    func executeLoginWithKakaoAccount() {
-        UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-            if let error = error {
-                print(error)
+    private func executeLoginWithKakaoTalk() {
+        UserApi.shared.loginWithKakaoTalk {oauthToken, error in
+            guard error == nil else {
+                print(error?.localizedDescription as Any)
+                return
             }
-            else {
-                print("loginWithKakaoAccount() success.")
-                
-                //do something
-                _ = oauthToken
+            
+            print("loginWithKakaoTalk() success.")
+            
+            _ = oauthToken
+        }
+    }
+    
+    private func executeLoginWithKakaoAccount() {
+        UserApi.shared.loginWithKakaoAccount {oauthToken, error in
+            guard error == nil else {
+                print(error?.localizedDescription as Any)
+                return
             }
+            
+            print("loginWithKakaoAccount() success.")
+            
+            _ = oauthToken
         }
     }
     
