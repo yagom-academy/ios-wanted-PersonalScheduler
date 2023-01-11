@@ -74,6 +74,13 @@ extension ScheduleListViewController: UITableViewDataSource, UITableViewDelegate
         navigationController?.pushViewController(detailViewController,
                                                  animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let deleteSchedule = scheduleViewModel.schedules.value[indexPath.row]
+            scheduleViewModel.delete(deleteSchedule, at: "judy")
+        }
+    }
 }
 
 //MARK: Setup View

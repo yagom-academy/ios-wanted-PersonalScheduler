@@ -54,7 +54,7 @@ final class ScheduleViewModel: ScheduleViewModelType {
         scheduleFirestoreUseCase.delete(schedule, at: userID) { [weak self] result in
             switch result {
             case .success(_):
-                break
+                self?.fetch(at: userID)
             case .failure(let error):
                 self?.error.value = error.localizedDescription
             }
