@@ -100,7 +100,6 @@ private extension ScheduleListViewController {
             target: self,
             action: #selector(didTapMoreButton(_:))
         )
-        moreButton.tintColor = .label
         navigationItem.rightBarButtonItem = moreButton
         navigationController?.addCustomBottomLine(color: .systemGray4, height: 0.3)
     }

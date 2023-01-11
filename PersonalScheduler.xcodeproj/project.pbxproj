@@ -53,6 +53,7 @@
 		0223FB2F296E495E00B6B32C /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB2E296E495E00B6B32C /* Date+extension.swift */; };
 		0223FB31296E538F00B6B32C /* UICollectionView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB30296E538F00B6B32C /* UICollectionView+extension.swift */; };
 		0223FB33296E53AC00B6B32C /* NSObject+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB32296E53AC00B6B32C /* NSObject+extension.swift */; };
+		0223FB35296E7D8400B6B32C /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB34296E7D8400B6B32C /* AppAppearance.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* AuthViewController.swift */; };
@@ -100,6 +101,7 @@
 		0223FB2E296E495E00B6B32C /* Date+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
 		0223FB30296E538F00B6B32C /* UICollectionView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+extension.swift"; sourceTree = "<group>"; };
 		0223FB32296E53AC00B6B32C /* NSObject+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+extension.swift"; sourceTree = "<group>"; };
+		0223FB34296E7D8400B6B32C /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				0223FB12296D675100B6B32C /* Schedule */,
 				0223FAEE296D4E5F00B6B32C /* Coordinator.swift */,
 				0223FAF0296D4EE800B6B32C /* AppCoordinator.swift */,
+				0223FB34296E7D8400B6B32C /* AppAppearance.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				0223FADB296D2A7A00B6B32C /* Schedule.swift in Sources */,
 				0223FB04296D5F0F00B6B32C /* ScheduleListViewModel.swift in Sources */,
 				0223FB21296D6DAD00B6B32C /* UIFont+extension.swift in Sources */,
+				0223FB35296E7D8400B6B32C /* AppAppearance.swift in Sources */,
 				0223FB11296D674300B6B32C /* ScheduleViewModel.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				0223FAFD296D5D2F00B6B32C /* AuthViewModel.swift in Sources */,

@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KakaoSDK.initSDK(appKey: Bundle.main.kakaoAppKey ?? "")
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         FirebaseApp.configure()
+        AppAppearance.setUpAppearance()
         return true
     }
 
