@@ -48,6 +48,8 @@
 		0223FB23296D6F5500B6B32C /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB22296D6F5500B6B32C /* LoginButton.swift */; };
 		0223FB25296D77A300B6B32C /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB24296D77A300B6B32C /* NavigationTitleView.swift */; };
 		0223FB27296D7A7100B6B32C /* UINavigationController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB26296D7A7100B6B32C /* UINavigationController+extension.swift */; };
+		0223FB2B296DAAC800B6B32C /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB2A296DAAC800B6B32C /* ScheduleCell.swift */; };
+		0223FB2D296DAB4D00B6B32C /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB2C296DAB4D00B6B32C /* DateView.swift */; };
 		0223FB2F296E495E00B6B32C /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB2E296E495E00B6B32C /* Date+extension.swift */; };
 		0223FB31296E538F00B6B32C /* UICollectionView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB30296E538F00B6B32C /* UICollectionView+extension.swift */; };
 		0223FB33296E53AC00B6B32C /* NSObject+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB32296E53AC00B6B32C /* NSObject+extension.swift */; };
@@ -93,6 +95,8 @@
 		0223FB22296D6F5500B6B32C /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		0223FB24296D77A300B6B32C /* NavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
 		0223FB26296D7A7100B6B32C /* UINavigationController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+extension.swift"; sourceTree = "<group>"; };
+		0223FB2A296DAAC800B6B32C /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		0223FB2C296DAB4D00B6B32C /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		0223FB2E296E495E00B6B32C /* Date+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
 		0223FB30296E538F00B6B32C /* UICollectionView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+extension.swift"; sourceTree = "<group>"; };
 		0223FB32296E53AC00B6B32C /* NSObject+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+extension.swift"; sourceTree = "<group>"; };
@@ -351,6 +355,8 @@
 			isa = PBXGroup;
 			children = (
 				0223FB24296D77A300B6B32C /* NavigationTitleView.swift */,
+				0223FB2A296DAAC800B6B32C /* ScheduleCell.swift */,
+				0223FB2C296DAB4D00B6B32C /* DateView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -480,6 +486,7 @@
 				0223FAD7296D222D00B6B32C /* KeyChainStorage.swift in Sources */,
 				0223FABE296BEE8300B6B32C /* AuthenticationRepository.swift in Sources */,
 				0223FB0F296D673500B6B32C /* ScheduleViewController.swift in Sources */,
+				0223FB2D296DAB4D00B6B32C /* DateView.swift in Sources */,
 				0223FB1D296D6CBF00B6B32C /* UIView+extension.swift in Sources */,
 				0223FB25296D77A300B6B32C /* NavigationTitleView.swift in Sources */,
 				0223FAA2296BDD2600B6B32C /* TargetType.swift in Sources */,
@@ -492,6 +499,7 @@
 				0223FAFB296D5CCE00B6B32C /* ScheduleListCoordinator.swift in Sources */,
 				0223FAFF296D5D8800B6B32C /* AuthCoordinatorInterface.swift in Sources */,
 				0223FAF9296D5C5300B6B32C /* AuthCoordinator.swift in Sources */,
+				0223FB2B296DAAC800B6B32C /* ScheduleCell.swift in Sources */,
 				0223FAEF296D4E5F00B6B32C /* Coordinator.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* AuthViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,

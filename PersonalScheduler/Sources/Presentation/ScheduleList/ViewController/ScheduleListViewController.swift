@@ -10,10 +10,23 @@ import Combine
 
 class ScheduleListViewController: UIViewController {
     
-    public weak var coordinator: ScheduleListCoordinatorInterface?
+    enum Section {
+        case schedule
+        
+        init?(index: Int) {
+            switch index {
+            case 0: self = .schedule
+            default: return nil
+            }
+        }
+    }
     
+    public weak var coordinator: ScheduleListCoordinatorInterface?
+
     private let viewModel: ScheduleListViewModel
     private var cancellables = Set<AnyCancellable>()
+
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Schedule>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +48,13 @@ class ScheduleListViewController: UIViewController {
         return NavigationTitleView("2023년 1월")
     }()
     
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        collectionView.register(ScheduleCell.self)
+        collectionView.backgroundColor = .psBackground
+        return collectionView
+    }()
+    
 }
 
 private extension ScheduleListViewController {
@@ -42,10 +62,19 @@ private extension ScheduleListViewController {
     func setUp() {
         setUpLayout()
         setUpNavigationBar()
+        setUpDataSource()
+        applySnapshot()
     }
     
     func setUpLayout() {
         view.backgroundColor = .psBackground
+        view.addSubviews(collectionView)
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
  
     func setUpNavigationBar() {
@@ -69,6 +98,65 @@ private extension ScheduleListViewController {
     
     @objc func didTapMoreButton(_ sender: UIBarButtonItem) {
         print(#function)
+    }
+    
+    func setUpDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, Schedule>(
+            collectionView: collectionView,
+            cellProvider: { collectionView, indexPath, schedule in
+                let section = Section(index: indexPath.section)
+                switch section {
+                case .schedule:
+                    let cell = collectionView.dequeueReusableCell(ScheduleCell.self, for: indexPath)
+                    cell?.setUp(schedule)
+                    return cell
+                    
+                default: return UICollectionViewCell()
+                }
+            })
+        collectionView.dataSource = dataSource
+    }
+    
+    private func applySnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Schedule>()
+        snapshot.appendSections([.schedule])
+        snapshot.appendItems(Array(0...20).map { _ in
+            return Schedule(
+                title: "당근 거래",
+                startDate: Date(),
+                endDate: Date(),
+                description: "공기 청정기를 살거야~~ 요즘에 공기가 너무 안좋아서 살 수 밖에 없어...."
+            )
+        })
+        dataSource?.apply(snapshot)
+    }
+    
+    func createLayout() -> UICollectionViewCompositionalLayout {
+        UICollectionViewCompositionalLayout { [weak self] (sectionNumber, _) -> NSCollectionLayoutSection? in
+            let section = Section(index: sectionNumber)
+            switch section {
+            case .schedule: return self?.scheduleSectionLayout()
+            default: return nil
+            }
+        }
+    }
+    
+    func scheduleSectionLayout() -> NSCollectionLayoutSection? {
+        let layoutSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(100)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: .init(
+                widthDimension: layoutSize.widthDimension,
+                heightDimension: layoutSize.heightDimension
+            ),
+            subitems: [.init(layoutSize: layoutSize)]
+        )
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: .zero, leading: .zero, bottom: .zero, trailing: .zero)
+        return section
     }
     
 }
