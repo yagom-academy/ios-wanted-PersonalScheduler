@@ -44,6 +44,11 @@ extension DateSettingView {
         timeLabel.text = date.toString(.hourMinute)
     }
     
+    func highlight(_ color: UIColor) {
+        dateLabel.textColor = color
+        timeLabel.textColor = color
+    }
+    
 }
 
 private extension DateSettingView {
