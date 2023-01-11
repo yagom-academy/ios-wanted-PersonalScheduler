@@ -52,7 +52,9 @@ extension ScheduleListVC {
     }
     
     @objc private func didTapAddSheduleButton() {
-        self.navigationController?.pushViewController(InputSchedulVC(), animated: true)
+        let addView = InputSchedulVC()
+        addView.viewType = .add
+        self.navigationController?.pushViewController(addView, animated: true)
     }
 }
 
@@ -81,6 +83,7 @@ extension ScheduleListVC: UITableViewDataSource {
         
         guard let list = self.viewModel.output.scheduleList.value else { return UITableViewCell() }
         
+        cell.selectionStyle = .none
         cell.configureCellData(schedule: list[indexPath.row])
         
         return cell
@@ -92,14 +95,25 @@ extension ScheduleListVC: UITableViewDataSource {
 extension ScheduleListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let delete = UIContextualAction(style: .normal, title: "Delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+        let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             let uid = self.viewModel.output.scheduleList.value![indexPath.row].uid
             self.viewModel.input.deleteScheduleTrigger.value = uid
             success(true)
         }
-        delete.backgroundColor = .systemRed
         
-        let swipeActionConfiguration = UISwipeActionsConfiguration(actions:[delete])
+        let edit = UIContextualAction(style: .normal, title: "수정") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            let schedule = self.viewModel.output.scheduleList.value![indexPath.row]
+            let editView = InputSchedulVC()
+            editView.viewType = .edit(schedule: schedule)
+            
+            self.navigationController?.pushViewController(editView, animated: true)
+            success(true)
+        }
+        
+        delete.backgroundColor = .systemRed
+        edit.backgroundColor = .systemBlue
+        
+        let swipeActionConfiguration = UISwipeActionsConfiguration(actions:[delete, edit])
         swipeActionConfiguration.performsFirstActionWithFullSwipe = false
         return swipeActionConfiguration
     }

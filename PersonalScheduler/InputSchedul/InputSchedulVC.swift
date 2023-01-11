@@ -14,6 +14,18 @@ class InputSchedulVC: BaseVC {
     override func loadView() {
         self.view = inputScheduleV
     }
+    
+    var viewType: InputViewType = .add {
+        didSet {
+            switch viewType {
+            case .add:
+                setTitle(title: "일정 추가")
+            case .edit(schedule: let schedule):
+                setTitle(title: "일정 수정")
+                self.inputScheduleV.editViewSetting(schedule: schedule)
+            }
+        }
+    }
     // MARK: - ViewModel
     private let viewModel = InputSchedulVM()
     // MARK: - Life Cycles
@@ -27,7 +39,6 @@ class InputSchedulVC: BaseVC {
 // MARK: - Configure UI
 extension InputSchedulVC {
     private func configureUI() {
-        setTitle(title: "일정 추가")
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: inputScheduleV.saveButton)
     }
     

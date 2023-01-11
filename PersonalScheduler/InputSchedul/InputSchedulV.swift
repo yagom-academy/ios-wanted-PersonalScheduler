@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum InputViewType {
+    case add
+    case edit(schedule: Schedule)
+}
+
 class InputSchedulV: UIView, BaseView {
     
     var saveButton: ScheduleSaveButton = ScheduleSaveButton()
@@ -62,7 +67,7 @@ class InputSchedulV: UIView, BaseView {
     
     private lazy var contentLengthLabel: UILabel = {
         let label = UILabel()
-        label.text = "0/20"
+        label.text = "0/500"
         label.font = UIFont.systemFont(ofSize: 12)
         
         return label
@@ -156,6 +161,7 @@ class InputSchedulV: UIView, BaseView {
         constraints()
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -170,6 +176,16 @@ class InputSchedulV: UIView, BaseView {
     
     func setContentLengthLabel(length: Int) {
         contentLengthLabel.text = "\(length)/500"
+    }
+    
+    func editViewSetting(schedule: Schedule) {
+        self.titleTextField.text = schedule.title
+        self.titleTextField.isFocus = true
+        setTitleLengthLabel(length: schedule.title.count)
+        self.contentTextField.text = schedule.content
+        self.contentTextField.isFocus = true
+        self.contentTextField.textColor = .black
+        setContentLengthLabel(length: schedule.content.count)
     }
 }
 // MARK: - Constraints
