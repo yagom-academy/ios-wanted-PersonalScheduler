@@ -15,7 +15,7 @@ final class FirebaseStorageManager {
     }
     
     private var db = Firestore.firestore()
-    var posts = [ScheduleList]()
+    private var posts = [ScheduleList]()
     
     func uploadPost(accountUID: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
         let postId = UUID().uuidString

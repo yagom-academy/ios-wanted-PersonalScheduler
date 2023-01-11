@@ -9,6 +9,10 @@ import SwiftUI
 
 struct ScheduleAddView: View {
     
+    var isEditing: Bool = false
+    var uid: String = ""
+    var uuid: String = ""
+    
     @Environment(\.presentationMode) var presentationMode
 
     @StateObject var scheduleAddViewModel = ScheduleAddViewModel()
@@ -18,10 +22,6 @@ struct ScheduleAddView: View {
     @State var description: String = ""
     @State var startTimeStamp: Date = Date()
     @State var endTimeStamp: Date = Date()
-
-    var isEditing: Bool = false
-    var uid: String = ""
-    var uuid: String = ""
 
     var body: some View {
         VStack {

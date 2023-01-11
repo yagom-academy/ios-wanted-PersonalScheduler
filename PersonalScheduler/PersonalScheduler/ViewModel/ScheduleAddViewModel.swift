@@ -13,10 +13,10 @@ final class ScheduleAddViewModel: ObservableObject {
         case postCheck
     }
     
-    @Published var buttonAlert: ButtonAlert = .postCheck
-
     private let firebaseStorageManager = FirebaseStorageManager()
     private let notificationManager = NotificationManager.instance
+
+    @Published var buttonAlert: ButtonAlert = .postCheck
 
     func postSchedule(uid: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
         firebaseStorageManager.uploadPost(

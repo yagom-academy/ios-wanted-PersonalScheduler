@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ScheduleListView: View {
     
+    var uid: String = ""
+    
     @Environment(\.presentationMode) var presentationMode
     
     @StateObject var scheduleListViewModel = ScheduleListViewModel()
     
     @State var isActiveAlert: Bool = false
-    
-    var uid: String = ""
     
     var body: some View {
         NavigationView {
@@ -38,13 +38,13 @@ struct ScheduleListView: View {
                         $0.startTimeStamp.translateToDate() > $1.startTimeStamp.translateToDate()}), id: \.startTimeStamp) { data in
                         NavigationLink {
                             ScheduleAddView(
+                                isEditing: true,
+                                uid: uid,
+                                uuid: data.id,
                                 title: data.title,
                                 description: data.description,
                                 startTimeStamp: data.startTimeStamp.translateToDate(),
-                                endTimeStamp: data.endTimeStamp.translateToDate(),
-                                isEditing: true,
-                                uid: uid,
-                                uuid: data.id
+                                endTimeStamp: data.endTimeStamp.translateToDate()
                             )
                         } label: {
                             VStack(alignment: .leading) {

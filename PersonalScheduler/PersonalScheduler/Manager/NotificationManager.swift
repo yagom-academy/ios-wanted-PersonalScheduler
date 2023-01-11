@@ -8,8 +8,10 @@
 import Foundation
 import UserNotifications
 
-class NotificationManager {
+final class NotificationManager {
+    
     static let instance = NotificationManager()
+    
     private init() {}
     
     func requestAuthorization() {
