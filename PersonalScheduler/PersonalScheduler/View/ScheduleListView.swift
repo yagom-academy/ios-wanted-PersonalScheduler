@@ -34,7 +34,8 @@ struct ScheduleListView: View {
                 }
                 
                 List {
-                    ForEach(scheduleListViewModel.lists, id: \.startTimeStamp) { data in
+                    ForEach(scheduleListViewModel.lists.sorted(by: {
+                        $0.startTimeStamp.translateToDate() > $1.startTimeStamp.translateToDate()}), id: \.startTimeStamp) { data in
                         NavigationLink {
                             ScheduleAddView(
                                 title: data.title,
