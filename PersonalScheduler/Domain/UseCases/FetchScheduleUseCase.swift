@@ -16,6 +16,8 @@ final class FetchScheduleUseCase {
     }
 
     func execute(for date: Date, completion: @escaping (Result<[Schedule], Error>) -> Void) {
-        
+        repository.fetchSchedule(for: date) { result in
+            completion(result)
+        }
     }
 }
