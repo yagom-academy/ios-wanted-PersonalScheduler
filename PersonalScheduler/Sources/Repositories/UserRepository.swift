@@ -8,9 +8,10 @@
 import Foundation
 
 protocol UserRepository {
+    func myInfo() -> User?
     func register(_ authatication: Authentication, snsType: SNSType)
     func delete()
-    func myInfo() -> User?
+    func updateSchedules(_ schedules: [Schedule])
 }
 
 final class DefaultUserRepository: UserRepository {
@@ -24,6 +25,10 @@ final class DefaultUserRepository: UserRepository {
     ) {
         self.localStorage = localStorage
         self.firestoreStorage = firestoreStorage
+    }
+    
+    func myInfo() -> User? {
+        localStorage.getUser()
     }
     
     func register(_ authatication: Authentication, snsType: SNSType) {
@@ -46,8 +51,12 @@ final class DefaultUserRepository: UserRepository {
         firestoreStorage.delete(user: user)
     }
     
-    func myInfo() -> User? {
-        localStorage.getUser()
+    func updateSchedules(_ schedules: [Schedule]) {
+        guard var user = myInfo() else {
+            return
+        }
+        user.schedules = schedules
+        localStorage.saveUser(user)
     }
 }
 
