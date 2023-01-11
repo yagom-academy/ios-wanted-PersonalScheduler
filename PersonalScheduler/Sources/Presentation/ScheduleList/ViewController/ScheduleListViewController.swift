@@ -106,7 +106,9 @@ private extension ScheduleListViewController {
     }
     
     @objc func didTapNavigationTitle(_ gesture: UITapGestureRecognizer) {
-        print(#function)
+        showDatePickerAlert(Date()) { date in
+            print(date.toString(.yyyyMMddEEEE))
+        }
     }
     
     @objc func didTapMoreButton(_ sender: UIBarButtonItem) {
