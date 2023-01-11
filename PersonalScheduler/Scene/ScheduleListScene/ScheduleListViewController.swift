@@ -95,7 +95,7 @@ extension ScheduleListViewController {
                                                    target: self,
                                                    action: #selector(addScheduleBarButtonTapped))
         
-        navigationItem.title = "일정 목록"
+        navigationItem.title = ScheduleInfo.scheduleList
         navigationItem.rightBarButtonItem = addScheduleBarButton
     }
     

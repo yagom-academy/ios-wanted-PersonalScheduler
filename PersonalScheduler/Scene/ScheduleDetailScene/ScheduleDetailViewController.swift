@@ -18,7 +18,7 @@ final class ScheduleDetailViewController: UIViewController {
     
     private let titleTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "제목을 입력해주세요."
+        textField.placeholder = ScheduleInfo.Edit.titlePlaceholder
         textField.font = .preferredFont(forTextStyle: .title3)
         textField.borderStyle = .roundedRect
         textField.adjustsFontForContentSizeCategory = true
@@ -36,10 +36,10 @@ final class ScheduleDetailViewController: UIViewController {
         return textView
     }()
     
-    private let allDaySwitchView = ScheduleSwitchView(text: "하루종일")
-    private let startDatePicker = ScheduleDatePickerView(text: "시작")
-    private let endDatePicker = ScheduleDatePickerView(text: "종료")
-    private let notificationSwitchView = ScheduleSwitchView(text: "알림")
+    private let allDaySwitchView = ScheduleSwitchView(text: ScheduleInfo.Edit.allDay)
+    private let startDatePicker = ScheduleDatePickerView(text: ScheduleInfo.Edit.openDate)
+    private let endDatePicker = ScheduleDatePickerView(text: ScheduleInfo.Edit.endDate)
+    private let notificationSwitchView = ScheduleSwitchView(text: ScheduleInfo.Edit.notification)
     private let scheduleViewModel: ScheduleViewModel
     
     init(_ viewModel: ScheduleViewModel) {
@@ -105,13 +105,13 @@ final class ScheduleDetailViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        let saveBarButton = UIBarButtonItem(title: "저장",
+        let saveBarButton = UIBarButtonItem(title: ScheduleInfo.Edit.save,
                                             style: .done,
                                             target: self,
                                             action: #selector(saveBarButtonTapped))
         
         navigationItem.rightBarButtonItem = saveBarButton
-        navigationItem.title = "새로운 일정"
+        navigationItem.title = ScheduleInfo.newSchedule
         
     }
     
@@ -120,5 +120,20 @@ final class ScheduleDetailViewController: UIViewController {
 
         scheduleViewModel.save(newSchedule, at: "judy")
         navigationController?.popViewController(animated: true)
+    }
+}
+
+
+enum ScheduleInfo {
+    static let newSchedule = "새로운 일정"
+    static let scheduleList = "일정 목록"
+    
+    enum Edit {
+        static let save = "저장"
+        static let allDay = "하루종일"
+        static let openDate = "시작"
+        static let endDate = "종료"
+        static let notification = "알림"
+        static let titlePlaceholder = "제목을 입력해주세요."
     }
 }
