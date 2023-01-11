@@ -35,15 +35,27 @@ struct ScheduleListView: View {
                 
                 List {
                     ForEach(scheduleListViewModel.lists, id: \.startTimeStamp) { data in
-                        VStack(alignment: .leading) {
-                            Text("\(data.title)")
-                            Text("시작 일시: \(data.startTimeStamp)")
-                                .foregroundColor(Color.secondary)
-                            Text("종료 일시: \(data.endTimeStamp)")
-                                .foregroundColor(Color.secondary)
-                            Text("내용: \(data.description)")
-                                .foregroundColor(Color.secondary)
-                                .lineLimit(1)
+                        NavigationLink {
+                            ScheduleAddView(
+                                title: data.title,
+                                description: data.description,
+                                startTimeStamp: data.startTimeStamp.translateToDate(),
+                                endTimeStamp: data.endTimeStamp.translateToDate(),
+                                isEditing: true,
+                                uid: uid,
+                                uuid: data.id
+                            )
+                        } label: {
+                            VStack(alignment: .leading) {
+                                Text("\(data.title)")
+                                Text("시작 일시: \(data.startTimeStamp)")
+                                    .foregroundColor(Color.secondary)
+                                Text("종료 일시: \(data.endTimeStamp)")
+                                    .foregroundColor(Color.secondary)
+                                Text("내용: \(data.description)")
+                                    .foregroundColor(Color.secondary)
+                                    .lineLimit(1)
+                            }
                         }
                     }
                     .onDelete { indexSet in

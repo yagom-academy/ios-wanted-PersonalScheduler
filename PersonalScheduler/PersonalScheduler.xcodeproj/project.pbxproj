@@ -19,6 +19,7 @@
 		A3DEB0D7296D94EC0079903A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0D6296D94EC0079903A /* Date+Extension.swift */; };
 		A3DEB0D9296E71EA0079903A /* ScheduleAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0D8296E71EA0079903A /* ScheduleAddView.swift */; };
 		A3DEB0DB296E7C0E0079903A /* ScheduleAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0DA296E7C0E0079903A /* ScheduleAddViewModel.swift */; };
+		A3DEB0DD296E953B0079903A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0DC296E953B0079903A /* String+Extension.swift */; };
 		A3EB6986296BAFB4004F492A /* PersonalSchedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */; };
 		A3EB6988296BAFB4004F492A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6987296BAFB4004F492A /* LoginView.swift */; };
 		A3EB698A296BAFB5004F492A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3EB6989296BAFB5004F492A /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		A3DEB0D6296D94EC0079903A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		A3DEB0D8296E71EA0079903A /* ScheduleAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleAddView.swift; sourceTree = "<group>"; };
 		A3DEB0DA296E7C0E0079903A /* ScheduleAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleAddViewModel.swift; sourceTree = "<group>"; };
+		A3DEB0DC296E953B0079903A /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		A3EB6982296BAFB4004F492A /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSchedulerApp.swift; sourceTree = "<group>"; };
 		A3EB6987296BAFB4004F492A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				A3DEB0D6296D94EC0079903A /* Date+Extension.swift */,
+				A3DEB0DC296E953B0079903A /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				A3EB6986296BAFB4004F492A /* PersonalSchedulerApp.swift in Sources */,
 				A3DEB0D2296CE9040079903A /* ScheduleListViewModel.swift in Sources */,
 				A3DEB0CD296C5E080079903A /* ScheduleList.swift in Sources */,
+				A3DEB0DD296E953B0079903A /* String+Extension.swift in Sources */,
 				A3DEB0C9296C411E0079903A /* SignUpViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

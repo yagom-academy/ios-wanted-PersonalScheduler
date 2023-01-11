@@ -19,8 +19,10 @@ struct ScheduleAddView: View {
     @State var startTimeStamp: Date = Date()
     @State var endTimeStamp: Date = Date()
 
+    var isEditing: Bool = false
     var uid: String = ""
-    
+    var uuid: String = ""
+
     var body: some View {
         VStack {
             TextField("제목을 입력해주세요.", text: $title)
@@ -56,6 +58,8 @@ struct ScheduleAddView: View {
             }
         }
         .padding()
+        .navigationBarTitle(isEditing == false ? "등록 화면" : "편집 화면")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             Button {
                 isActiveAlert.toggle()
@@ -69,13 +73,24 @@ struct ScheduleAddView: View {
                 let alert = Alert(
                     title: Text("저장 하시겠습니까?"),
                     primaryButton: .default(Text("확인"), action: {
-                        scheduleAddViewModel.postSchedule(
-                            uid: uid,
-                            title: title,
-                            description: description,
-                            startTimeStamp: startTimeStamp,
-                            endTimeStamp: endTimeStamp
-                        )
+                        if isEditing {
+                            scheduleAddViewModel.editSchedule(
+                                uid: uid,
+                                uuid: uuid,
+                                title: title,
+                                description: description,
+                                startTimeStamp: startTimeStamp,
+                                endTimeStamp: endTimeStamp
+                            )
+                        } else {
+                            scheduleAddViewModel.postSchedule(
+                                uid: uid,
+                                title: title,
+                                description: description,
+                                startTimeStamp: startTimeStamp,
+                                endTimeStamp: endTimeStamp
+                            )
+                        }
                         presentationMode.wrappedValue.dismiss()
                     }),
                     secondaryButton: .cancel()

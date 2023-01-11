@@ -26,4 +26,15 @@ final class ScheduleAddViewModel: ObservableObject {
             endTimeStamp: endTimeStamp
         )
     }
+    
+    func editSchedule(uid: String, uuid: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
+        firebaseStorageManager.updateScheduleList(
+            accountUID: uid,
+            uuid: uuid,
+            title: title,
+            description: description,
+            startTimeStamp: startTimeStamp,
+            endTimeStamp: endTimeStamp
+        )
+    }
 }
