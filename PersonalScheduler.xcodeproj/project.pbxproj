@@ -22,6 +22,12 @@
 		8F36CB18296E4BCD008E196F /* KakaoSDKTalk in Frameworks */ = {isa = PBXBuildFile; productRef = 8F36CB17296E4BCD008E196F /* KakaoSDKTalk */; };
 		8F36CB1A296E4BCD008E196F /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = 8F36CB19296E4BCD008E196F /* KakaoSDKTemplate */; };
 		8F36CB1C296E4BCD008E196F /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 8F36CB1B296E4BCD008E196F /* KakaoSDKUser */; };
+		8F36CB1F296E4C08008E196F /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = 8F36CB1E296E4C08008E196F /* FacebookAEM */; };
+		8F36CB21296E4C08008E196F /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 8F36CB20296E4C08008E196F /* FacebookBasics */; };
+		8F36CB23296E4C08008E196F /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8F36CB22296E4C08008E196F /* FacebookCore */; };
+		8F36CB25296E4C08008E196F /* FacebookGamingServices in Frameworks */ = {isa = PBXBuildFile; productRef = 8F36CB24296E4C08008E196F /* FacebookGamingServices */; };
+		8F36CB27296E4C08008E196F /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 8F36CB26296E4C08008E196F /* FacebookLogin */; };
+		8F36CB29296E4C08008E196F /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = 8F36CB28296E4C08008E196F /* FacebookShare */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,14 +45,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F36CB23296E4C08008E196F /* FacebookCore in Frameworks */,
 				8F36CB0A296E4BCD008E196F /* KakaoSDK in Frameworks */,
 				8F36CB18296E4BCD008E196F /* KakaoSDKTalk in Frameworks */,
 				8F36CB10296E4BCD008E196F /* KakaoSDKCommonCore in Frameworks */,
 				8F36CB12296E4BCD008E196F /* KakaoSDKNavi in Frameworks */,
+				8F36CB27296E4C08008E196F /* FacebookLogin in Frameworks */,
+				8F36CB25296E4C08008E196F /* FacebookGamingServices in Frameworks */,
 				8F36CB16296E4BCD008E196F /* KakaoSDKStory in Frameworks */,
 				8F36CB1A296E4BCD008E196F /* KakaoSDKTemplate in Frameworks */,
 				8F36CB0E296E4BCD008E196F /* KakaoSDKCommon in Frameworks */,
+				8F36CB29296E4C08008E196F /* FacebookShare in Frameworks */,
+				8F36CB1F296E4C08008E196F /* FacebookAEM in Frameworks */,
 				8F36CB0C296E4BCD008E196F /* KakaoSDKAuth in Frameworks */,
+				8F36CB21296E4C08008E196F /* FacebookBasics in Frameworks */,
 				8F36CB1C296E4BCD008E196F /* KakaoSDKUser in Frameworks */,
 				8F36CB14296E4BCD008E196F /* KakaoSDKShare in Frameworks */,
 			);
@@ -111,6 +123,12 @@
 				8F36CB17296E4BCD008E196F /* KakaoSDKTalk */,
 				8F36CB19296E4BCD008E196F /* KakaoSDKTemplate */,
 				8F36CB1B296E4BCD008E196F /* KakaoSDKUser */,
+				8F36CB1E296E4C08008E196F /* FacebookAEM */,
+				8F36CB20296E4C08008E196F /* FacebookBasics */,
+				8F36CB22296E4C08008E196F /* FacebookCore */,
+				8F36CB24296E4C08008E196F /* FacebookGamingServices */,
+				8F36CB26296E4C08008E196F /* FacebookLogin */,
+				8F36CB28296E4C08008E196F /* FacebookShare */,
 			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
@@ -142,6 +160,7 @@
 			mainGroup = 63AAAAF52967EA2600775EC3;
 			packageReferences = (
 				8F36CB08296E4BCD008E196F /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				8F36CB1D296E4C08008E196F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
@@ -389,6 +408,14 @@
 				kind = branch;
 			};
 		};
+		8F36CB1D296E4C08008E196F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -441,6 +468,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8F36CB08296E4BCD008E196F /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
+		};
+		8F36CB1E296E4C08008E196F /* FacebookAEM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F36CB1D296E4C08008E196F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookAEM;
+		};
+		8F36CB20296E4C08008E196F /* FacebookBasics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F36CB1D296E4C08008E196F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookBasics;
+		};
+		8F36CB22296E4C08008E196F /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F36CB1D296E4C08008E196F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		8F36CB24296E4C08008E196F /* FacebookGamingServices */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F36CB1D296E4C08008E196F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookGamingServices;
+		};
+		8F36CB26296E4C08008E196F /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F36CB1D296E4C08008E196F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		8F36CB28296E4C08008E196F /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F36CB1D296E4C08008E196F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
