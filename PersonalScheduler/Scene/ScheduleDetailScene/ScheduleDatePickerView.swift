@@ -45,6 +45,14 @@ final class ScheduleDatePickerView: UIView {
         setupView()
     }
     
+    func changeOnOff(_ isEnabled: Bool) {
+        datePicker.isEnabled = isEnabled
+    }
+    
+    func setupPicker(_ date: Date) {
+        datePicker.date = date
+    }
+    
     private func setupView() {
         entireStackView.addArrangedSubview(infoLabel)
         entireStackView.addArrangedSubview(datePicker)

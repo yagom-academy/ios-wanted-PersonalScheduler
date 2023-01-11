@@ -55,7 +55,14 @@ final class ScheduleDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        
+        switch viewMode {
+        case .display(let schedule):
+            setupView()
+            setupScheduleInfo(with: schedule)
+        case .create:
+            setupView()
+        }
     }
     
     private func createSchedule() -> Schedule? {
@@ -104,6 +111,26 @@ final class ScheduleDetailViewController: UIViewController {
             entireStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
                                                       constant: -16)
         ])
+    }
+    
+    private func setupScheduleInfo(with schedule: Schedule) {
+        changeEditable(false)
+        
+        titleTextField.text = schedule.title
+        allDaySwitchView.setupSwitch(false)
+        startDatePicker.setupPicker(schedule.startTime)
+        endDatePicker.setupPicker(schedule.endTime)
+        notificationSwitchView.setupSwitch(schedule.isNotified)
+        contentTextView.text = schedule.content
+    }
+    
+    private func changeEditable(_ isEditable: Bool) {
+        titleTextField.isEnabled = isEditable
+        allDaySwitchView.changeOnOff(isEditable)
+        startDatePicker.changeOnOff(isEditable)
+        endDatePicker.changeOnOff(isEditable)
+        notificationSwitchView.changeOnOff(isEditable)
+        contentTextView.isEditable = isEditable
     }
     
     private func setupNavigationBar() {

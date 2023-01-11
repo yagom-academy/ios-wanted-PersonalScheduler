@@ -45,6 +45,14 @@ final class ScheduleSwitchView: UIView {
         setupView()
     }
     
+    func changeOnOff(_ isEnabled: Bool) {
+        switchView.isEnabled = isEnabled
+    }
+    
+    func setupSwitch(_ isOn: Bool) {
+        switchView.isOn = isOn
+    }
+    
     private func setupView() {
         entireStackView.addArrangedSubview(infoLabel)
         entireStackView.addArrangedSubview(switchView)
