@@ -8,5 +8,7 @@
 import Foundation
 
 protocol ScheduleListRepositoryInterface {
+
     func fetchSchedule(for date: Date, completion: @escaping (Result<[Schedule], Error>) -> Void)
+    func deleteSchedule(id: UUID, completion: @escaping (Result<Void, Error>) -> Void)
 }
