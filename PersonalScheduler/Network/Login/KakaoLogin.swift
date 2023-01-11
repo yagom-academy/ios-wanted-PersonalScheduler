@@ -12,8 +12,6 @@ import KakaoSDKUser
 
 final class KakaoLogin: Login {
     func getId() -> Observable<Result<String, Error>?> {
-        var scope: [String] = []
-        scope.append("account_email")
         let result: Observable<Result<String, Error>?> = .init(nil)
         
         guard UserApi.isKakaoTalkLoginAvailable() == true else {

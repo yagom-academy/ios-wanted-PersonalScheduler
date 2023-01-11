@@ -7,8 +7,12 @@
 
 import Foundation
 
-class LoginManager {
-    let firebaseManager: FirebaseManagerable
+protocol LoginManagerAble {
+    func getUserId(loginInfo: LoginInfo) -> Observable<Result<String, Error>?>
+}
+
+class LoginManager: LoginManagerAble {
+    private let firebaseManager: FirebaseManagerable
     
     init(firebaseManager: FirebaseManagerable = FirebaseManager.shared) {
         self.firebaseManager = firebaseManager
