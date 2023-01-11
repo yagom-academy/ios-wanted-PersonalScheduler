@@ -56,6 +56,7 @@
 		0223FB35296E7D8400B6B32C /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB34296E7D8400B6B32C /* AppAppearance.swift */; };
 		02544E2B296E91C200F06385 /* ScheduleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E2A296E91C200F06385 /* ScheduleContentView.swift */; };
 		02544E30296E9E0100F06385 /* DateSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E2F296E9E0000F06385 /* DateSettingView.swift */; };
+		02544E32296EB0A100F06385 /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E31296EB0A100F06385 /* UIViewController+extension.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* AuthViewController.swift */; };
@@ -106,6 +107,7 @@
 		0223FB34296E7D8400B6B32C /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		02544E2A296E91C200F06385 /* ScheduleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleContentView.swift; sourceTree = "<group>"; };
 		02544E2F296E9E0000F06385 /* DateSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSettingView.swift; sourceTree = "<group>"; };
+		02544E31296EB0A100F06385 /* UIViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				0223FB26296D7A7100B6B32C /* UINavigationController+extension.swift */,
 				0223FB30296E538F00B6B32C /* UICollectionView+extension.swift */,
 				0223FB32296E53AC00B6B32C /* NSObject+extension.swift */,
+				02544E31296EB0A100F06385 /* UIViewController+extension.swift */,
 				0223FAF6296D579400B6B32C /* Bundle+extension.swift */,
 				0223FB2E296E495E00B6B32C /* Date+extension.swift */,
 			);
@@ -492,6 +495,7 @@
 			files = (
 				0223FB31296E538F00B6B32C /* UICollectionView+extension.swift in Sources */,
 				0223FAED296D46C500B6B32C /* ScheduleRepository.swift in Sources */,
+				02544E32296EB0A100F06385 /* UIViewController+extension.swift in Sources */,
 				0223FAD9296D231500B6B32C /* User.swift in Sources */,
 				0223FAD5296D20DA00B6B32C /* LocalStorage.swift in Sources */,
 				0223FABA296BED9B00B6B32C /* DefaultAPIProvider.swift in Sources */,

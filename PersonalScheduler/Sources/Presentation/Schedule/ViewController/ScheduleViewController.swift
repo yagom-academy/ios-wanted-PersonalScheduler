@@ -173,41 +173,17 @@ private extension ScheduleViewController {
     }
     
     @objc func didTapStartDate(_ gesture: UITapGestureRecognizer) {
-        showDatePicker(Date().nearestHour())
+        showDatePickerAlert(Date().nearestHour()) { date in
+            print(date.toString(.yyyyMMddEEEE))
+        }
     }
     
     @objc func didTapEndDate(_ gesture: UITapGestureRecognizer) {
-        showDatePicker(Date().nearestHour().plusHour(1))
+        showDatePickerAlert(Date().nearestHour().plusHour(1)) { date in
+            print(date.toString(.yyyyMMddEEEE))
+        }
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-    func showDatePicker(_ date: Date) {
-        let datePicker = createDatePicker(date)
-        let dateChooserAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        dateChooserAlert.view.addSubviews(datePicker)
-        NSLayoutConstraint.activate([
-            datePicker.topAnchor.constraint(equalTo: dateChooserAlert.view.topAnchor),
-            datePicker.leadingAnchor.constraint(equalTo: dateChooserAlert.view.leadingAnchor),
-            datePicker.trailingAnchor.constraint(equalTo: dateChooserAlert.view.trailingAnchor),
-            datePicker.bottomAnchor.constraint(equalTo: dateChooserAlert.view.bottomAnchor, constant: -60)
-        ])
-        dateChooserAlert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { _ in
-            print(datePicker.date)
-        }))
-        present(dateChooserAlert, animated: true, completion: nil)
-    }
-    
-    func createDatePicker(_ date: Date) -> UIDatePicker {
-        let datePicker = UIDatePicker()
-        datePicker.preferredDatePickerStyle = .wheels
-        datePicker.locale = Locale(identifier: "ko_KR")
-        datePicker.minuteInterval = 5
-        datePicker.date = date
-        return datePicker
-    }
 }
 
 extension ScheduleViewController: UITextViewDelegate {
