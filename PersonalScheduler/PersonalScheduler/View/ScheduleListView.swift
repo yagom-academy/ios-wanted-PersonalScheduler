@@ -36,37 +36,38 @@ struct ScheduleListView: View {
                 List {
                     ForEach(scheduleListViewModel.lists.sorted(by: {
                         $0.startTimeStamp.translateToDate() > $1.startTimeStamp.translateToDate()}), id: \.startTimeStamp) { data in
-                        NavigationLink {
-                            ScheduleAddView(
-                                isEditing: true,
-                                accountUID: accountUID,
-                                uuid: data.id,
-                                title: data.title,
-                                description: data.description,
-                                startTimeStamp: data.startTimeStamp.translateToDate(),
-                                endTimeStamp: data.endTimeStamp.translateToDate()
-                            )
-                        } label: {
-                            VStack(alignment: .leading) {
-                                Text("\(data.title)")
-                                Text("시작 일시: \(data.startTimeStamp)")
-                                    .foregroundColor(Color.secondary)
-                                Text("종료 일시: \(data.endTimeStamp)")
-                                    .foregroundColor(Color.secondary)
-                                Text("내용: \(data.description)")
-                                    .foregroundColor(Color.secondary)
-                                    .lineLimit(1)
+                            NavigationLink {
+                                ScheduleAddView(
+                                    isEditing: true,
+                                    accountUID: accountUID,
+                                    uuid: data.id,
+                                    title: data.title,
+                                    description: data.description,
+                                    startTimeStamp: data.startTimeStamp.translateToDate(),
+                                    endTimeStamp: data.endTimeStamp.translateToDate()
+                                )
+                            } label: {
+                                VStack(alignment: .leading) {
+                                    Text("\(data.title)")
+                                    Text("시작 일시: \(data.startTimeStamp)")
+                                        .foregroundColor(Color.secondary)
+                                    Text("종료 일시: \(data.endTimeStamp)")
+                                        .foregroundColor(Color.secondary)
+                                    Text("내용: \(data.description)")
+                                        .foregroundColor(Color.secondary)
+                                        .lineLimit(1)
+                                }
                             }
                         }
-                    }
-                    .onDelete { indexSet in
-                        for index in indexSet {
-                            scheduleListViewModel.delete(
-                                accountUID: accountUID,
-                                uuid: scheduleListViewModel.lists[index].id
-                            )
+                        .onDelete { indexSet in
+                            for index in indexSet {
+                                scheduleListViewModel.delete(
+                                    accountUID: accountUID,
+                                    uuid: scheduleListViewModel.scheduleListViewModel.lists.sorted(by: {
+                                        $0.startTimeStamp.translateToDate() > $1.startTimeStamp.translateToDate()})[index].id
+                                )
+                            }
                         }
-                    }
                 }
                 .listStyle(.plain)
                 
