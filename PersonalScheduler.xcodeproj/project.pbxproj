@@ -14,6 +14,7 @@
 		328444C1296DD7ED00BC099E /* ScheduleListRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C0296DD7ED00BC099E /* ScheduleListRepositoryInterface.swift */; };
 		328444C3296E5B3200BC099E /* DeleteScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C2296E5B3200BC099E /* DeleteScheduleUseCase.swift */; };
 		328444C7296E6D2600BC099E /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C6296E6D2600BC099E /* CalendarCollectionViewCell.swift */; };
+		328444C9296E95A600BC099E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C8296E95A600BC099E /* DIContainer.swift */; };
 		32EAF58B296C40B10056513F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32EAF58A296C40B10056513F /* GoogleService-Info.plist */; };
 		32EAF595296C46D70056513F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 32EAF594296C46D70056513F /* FirebaseAuth */; };
 		32EAF597296C46D70056513F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 32EAF596296C46D70056513F /* FirebaseFirestore */; };
@@ -48,6 +49,7 @@
 		328444C0296DD7ED00BC099E /* ScheduleListRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListRepositoryInterface.swift; sourceTree = "<group>"; };
 		328444C2296E5B3200BC099E /* DeleteScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteScheduleUseCase.swift; sourceTree = "<group>"; };
 		328444C6296E6D2600BC099E /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		328444C8296E95A600BC099E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		32EAF589296C38F90056513F /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
 		32EAF58A296C40B10056513F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32EAF5A1296C7AA90056513F /* OAuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthError.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				328444C8296E95A600BC099E /* DIContainer.swift */,
 				32EAF5AB296C83920056513F /* EntryPoint */,
 				32EAF5AC296C839C0056513F /* Presentation */,
 				32FB8F10296D9606007D1BA6 /* Domain */,
@@ -346,6 +349,7 @@
 				328444BA296DC85100BC099E /* FetchScheduleUseCase.swift in Sources */,
 				328444C7296E6D2600BC099E /* CalendarCollectionViewCell.swift in Sources */,
 				328444B6296DC18700BC099E /* ScheduleListViewModel.swift in Sources */,
+				328444C9296E95A600BC099E /* DIContainer.swift in Sources */,
 				328444C3296E5B3200BC099E /* DeleteScheduleUseCase.swift in Sources */,
 				32FB8F06296D7868007D1BA6 /* KaKaoOAuthService.swift in Sources */,
 				32FB8F0D296D94E6007D1BA6 /* OAuthRepository.swift in Sources */,
