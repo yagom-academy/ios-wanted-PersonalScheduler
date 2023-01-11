@@ -58,6 +58,8 @@
 		02544E30296E9E0100F06385 /* DateSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E2F296E9E0000F06385 /* DateSettingView.swift */; };
 		02544E32296EB0A100F06385 /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E31296EB0A100F06385 /* UIViewController+extension.swift */; };
 		02544E34296ED7DE00F06385 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E33296ED7DE00F06385 /* UserRepository.swift */; };
+		02544E36296EDC6100F06385 /* Publisher+MainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E35296EDC6100F06385 /* Publisher+MainThread.swift */; };
+		02544E38296EDD6000F06385 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E37296EDD6000F06385 /* LoadingView.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* AuthViewController.swift */; };
@@ -110,6 +112,8 @@
 		02544E2F296E9E0000F06385 /* DateSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSettingView.swift; sourceTree = "<group>"; };
 		02544E31296EB0A100F06385 /* UIViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
 		02544E33296ED7DE00F06385 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		02544E35296EDC6100F06385 /* Publisher+MainThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+MainThread.swift"; sourceTree = "<group>"; };
+		02544E37296EDD6000F06385 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 				0223FB30296E538F00B6B32C /* UICollectionView+extension.swift */,
 				0223FB32296E53AC00B6B32C /* NSObject+extension.swift */,
 				02544E31296EB0A100F06385 /* UIViewController+extension.swift */,
+				02544E35296EDC6100F06385 /* Publisher+MainThread.swift */,
 				0223FAF6296D579400B6B32C /* Bundle+extension.swift */,
 				0223FB2E296E495E00B6B32C /* Date+extension.swift */,
 			);
@@ -361,6 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				0223FB22296D6F5500B6B32C /* LoginButton.swift */,
+				02544E37296EDD6000F06385 /* LoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -501,10 +507,12 @@
 				02544E32296EB0A100F06385 /* UIViewController+extension.swift in Sources */,
 				0223FAD9296D231500B6B32C /* User.swift in Sources */,
 				0223FAD5296D20DA00B6B32C /* LocalStorage.swift in Sources */,
+				02544E38296EDD6000F06385 /* LoadingView.swift in Sources */,
 				0223FABA296BED9B00B6B32C /* DefaultAPIProvider.swift in Sources */,
 				0223FABC296BEDAC00B6B32C /* APIProvider.swift in Sources */,
 				0223FAA4296BDD4D00B6B32C /* Encodable+extension.swift in Sources */,
 				0223FB02296D5EEB00B6B32C /* ScheduleListViewController.swift in Sources */,
+				02544E36296EDC6100F06385 /* Publisher+MainThread.swift in Sources */,
 				0223FB2F296E495E00B6B32C /* Date+extension.swift in Sources */,
 				0223FAC0296BF21F00B6B32C /* Authentication.swift in Sources */,
 				0223FAD7296D222D00B6B32C /* KeyChainStorage.swift in Sources */,
