@@ -15,6 +15,20 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func nearestHour() -> Date {
+        var components = NSCalendar.current.dateComponents([.minute], from: self)
+        let minute = components.minute ?? 0
+        components.minute = minute >= 30 ? 60 - minute : -minute
+        return Calendar.current.date(byAdding: components, to: self) ?? Date()
+    }
+    
+    func plusHour(_ hour: Int) -> Date {
+        guard hour > 0 else {
+            return self
+        }
+        return Date(timeIntervalSinceNow: self.timeIntervalSinceNow + Double((3600 * hour)))
+    }
+    
 }
 
 enum DateFormat: String {
