@@ -12,4 +12,5 @@ struct Schedule: Codable {
     var startDate: String
     var endDate: String
     var content: String
+    var uid: String?
 }

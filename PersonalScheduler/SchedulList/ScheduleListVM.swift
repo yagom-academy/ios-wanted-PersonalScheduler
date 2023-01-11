@@ -10,11 +10,12 @@ import Foundation
 class ScheduleListVM: ViewModel {
     
     struct Input {
-        
+        let viewDidLoadTrigger: Dynamic<Void> = Dynamic(())
+        let deleteScheduleTrigger: Dynamic<String?> = Dynamic(nil)
     }
     
     struct Output {
-        
+        let scheduleList: Dynamic<[Schedule]?> = Dynamic(nil)
     }
     
     var input: Input
@@ -24,5 +25,37 @@ class ScheduleListVM: ViewModel {
          output: Output = Output()) {
         self.input = input
         self.output = output
+        inputBind()
+    }
+    
+    // MARK: - inputBind
+    private func inputBind() {
+        input.viewDidLoadTrigger.bind { [weak self] _ in
+            self?.fetchSchedulList()
+        }
+        
+        input.deleteScheduleTrigger.bind { [weak self] scheduleUid in
+            self?.deleteSchedul(uid: scheduleUid!)
+        }
+    }
+    
+    func fetchSchedulList() {
+        ScheduleManager.shared.fetchScheduleListData(completion: { [weak self] scheduleList, error in
+            if let error {
+                print(error.localizedDescription)
+            } else {
+                self?.output.scheduleList.value = scheduleList
+            }
+        })
+    }
+    
+    private func deleteSchedul(uid: String) {
+        ScheduleManager.shared.deleteSchedule(scheduleUid: uid) { [weak self] deleteError in
+            if let deleteError {
+                print(deleteError.localizedDescription)
+            } else {
+                self?.fetchSchedulList()
+            }
+        }
     }
 }

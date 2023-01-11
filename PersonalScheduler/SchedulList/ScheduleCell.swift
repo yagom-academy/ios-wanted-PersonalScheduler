@@ -73,4 +73,10 @@ class ScheduleCell: UITableViewCell {
         
         NSLayoutConstraint.activate(layout)
     }
+    
+    func configureCellData(schedule: Schedule) {
+        self.titleLabel.text = schedule.title
+        self.startTimeLabel.text = "\(schedule.startDate) ~ \(schedule.endDate)"
+        self.contentLabel.text = schedule.content
+    }
 }

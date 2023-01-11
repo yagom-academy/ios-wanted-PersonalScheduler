@@ -21,6 +21,8 @@ class ScheduleListVC: BaseVC {
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionViewBind()
+        self.viewModel.input.viewDidLoadTrigger.value = ()
         configureUI()
         configureTableView()
         addButtonAction()
@@ -53,16 +55,33 @@ extension ScheduleListVC {
         self.navigationController?.pushViewController(InputSchedulVC(), animated: true)
     }
 }
+
+// MARK: - OutputBind
+extension ScheduleListVC {
+    private func collectionViewBind() {
+        viewModel.output.scheduleList.bind { [weak self] _ in
+            self?.scheduleListV.scheduletableView.reloadData()
+        }
+    }
+}
 // MARK: - TableViewDatasource
 extension ScheduleListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        guard let list = self.viewModel.output.scheduleList.value else {
+            return 0
+        }
+        
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleCell.cellID, for: indexPath) as? ScheduleCell else {
             return UITableViewCell()
         }
+        
+        guard let list = self.viewModel.output.scheduleList.value else { return UITableViewCell() }
+        
+        cell.configureCellData(schedule: list[indexPath.row])
         
         return cell
     }
@@ -74,7 +93,8 @@ extension ScheduleListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let delete = UIContextualAction(style: .normal, title: "Delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-
+            let uid = self.viewModel.output.scheduleList.value![indexPath.row].uid
+            self.viewModel.input.deleteScheduleTrigger.value = uid
             success(true)
         }
         delete.backgroundColor = .systemRed

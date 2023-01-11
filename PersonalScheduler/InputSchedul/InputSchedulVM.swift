@@ -30,7 +30,7 @@ class InputSchedulVM: ViewModel {
     private func inputBind() {
         input.addButtonTrigger.bind { [weak self] optionalSchedule in
             if let schedule = optionalSchedule {
-                ScheduleManager.shared.addShedule(schedule: schedule) { error in
+                ScheduleManager.shared.addSchedule(schedule: schedule) { error in
                     if let error = error {
                         print(error)
                     } else {

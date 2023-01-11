@@ -13,22 +13,70 @@ class ScheduleManager {
     static let shared = ScheduleManager()
     private let db = Firestore.firestore()
     
-    func addShedule(schedule: Schedule, error: @escaping (Error?) -> Void) {
-        if let currentUser = Auth.auth().currentUser {
-            do {
-                _ = try db.collection(Collection.user.rawValue).document(currentUser.uid).collection(Collection.scheduleList.rawValue)
-                    .addDocument(from: schedule) { err in
-                        if let err = err {
-                            error(err)
+    func addSchedule(schedule: Schedule, executionError: @escaping (Error?) -> Void) {
+        UserManager.shared.getCurrentUserUid() { [weak self] uid, err in
+            if let err {
+                executionError(err)
+            } else {
+                do {
+                    _ = try self?.db.collection(Collection.user.rawValue).document(uid).collection(Collection.scheduleList.rawValue)
+                        .addDocument(from: schedule) { addError in
+                            if let addError {
+                                executionError(addError)
+                            } else {
+                                executionError(nil)
+                            }
+                        }
+                } catch {
+                    executionError(error)
+                }
+            }
+        }
+    }
+    
+    func fetchScheduleListData(completion: @escaping ([Schedule]?, Error?) -> Void) {
+        UserManager.shared.getCurrentUserUid() { [weak self] uid, err in
+            if let err {
+                completion(nil, err)
+            } else {
+                self?.db.collection(Collection.user.rawValue).document(uid).collection(Collection.scheduleList.rawValue)
+                    .getDocuments(completion: { querySnapShot, error in
+                        if let error {
+                            completion(nil, error)
+                        } else {
+                            if let snapShot = querySnapShot {
+                                var scheduleList: [Schedule] = []
+                                for document in snapShot.documents {
+                                    do {
+                                        var schedule = try document.data(as: Schedule.self)
+                                        schedule.uid = document.documentID
+                                        scheduleList.append(schedule)
+                                    } catch {
+                                        completion(nil, error)
+                                    }
+                                }
+                                completion(scheduleList, nil)
+                            }
+                        }
+                    })
+            }
+        }
+    }
+    
+    func deleteSchedule(scheduleUid: String, _ error: @escaping (Error?) -> Void) {
+        UserManager.shared.getCurrentUserUid() { [weak self] uid, err in
+            if let err {
+                error(err)
+            } else {
+                self?.db.collection(Collection.user.rawValue).document(uid).collection(Collection.scheduleList.rawValue)
+                    .document(scheduleUid).delete() { deleteError in
+                        if let deleteError {
+                            error(deleteError)
                         } else {
                             error(nil)
                         }
                     }
-            } catch {
-                
             }
-        } else {
-            error(AuthError.notFoundCurrentUser)
         }
     }
 }

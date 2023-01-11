@@ -34,4 +34,12 @@ class UserManager {
             completion(RequestResult.fail, error)
         }
     }
+    
+    func getCurrentUserUid(_ completion: @escaping (String, Error?) -> Void) {
+        if let user = Auth.auth().currentUser {
+            completion(user.uid, nil)
+        } else {
+            completion("", AuthError.notFoundCurrentUser)
+        }
+    }
 }
