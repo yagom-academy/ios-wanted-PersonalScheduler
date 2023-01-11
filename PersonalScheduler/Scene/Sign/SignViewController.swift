@@ -10,7 +10,7 @@ final class SignViewController: BaseViewController {
     
     // MARK: - Properties
     
-//    private let viewModel: SignViewModel
+    private let viewModel: SignViewModel
     
     // MARK: - Views
     
@@ -62,13 +62,8 @@ final class SignViewController: BaseViewController {
     
     // MARK: - Life Cycle
     
-//    init(viewModel: SignViewModel) {
-//        self.viewModel = viewModel
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init() {
+        self.viewModel = SignViewModel()
         super.init(nibName: nil, bundle: nil)
     }
         
@@ -125,9 +120,25 @@ final class SignViewController: BaseViewController {
     override func setupView() {
         view.backgroundColor = .systemBackground
         
+        kakaoButton.addTarget(self, action: #selector(didTapKakaoLoginButton), for: .touchUpInside)
+        appleButton.addTarget(self, action: #selector(didTapAppleLoginButton), for: .touchUpInside)
+        facebookButton.addTarget(self, action: #selector(didTapFaceBookLoginButton), for: .touchUpInside)
     }
     
-    override func bindViewModel() {
-        
+}
+
+private extension SignViewController {
+    
+    @objc func didTapKakaoLoginButton() {
+        viewModel.didTapKakaoLoginButton()
     }
+    
+    @objc func didTapAppleLoginButton() {
+        viewModel.didTapAppleLoginButton()
+    }
+    
+    @objc func didTapFaceBookLoginButton() {
+        viewModel.didTapFaceBookLoginButton()
+    }
+    
 }
