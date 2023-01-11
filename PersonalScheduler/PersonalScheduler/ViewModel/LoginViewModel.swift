@@ -19,7 +19,7 @@ final class LoginViewModel: ObservableObject {
     
     @Published var isLoggedIn: Bool = false
     @Published var isActiveAlert: Bool = false
-    @Published var uid: String = ""
+    @Published var accountUID: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var errorMessage: String = ""
@@ -35,7 +35,7 @@ final class LoginViewModel: ObservableObject {
                 return
             }
             guard let user = result?.user else { return }
-            self?.uid = user.uid
+            self?.accountUID = user.uid
             self?.loginResultAlert = .success
         }
         isActiveAlert.toggle()
@@ -45,7 +45,7 @@ final class LoginViewModel: ObservableObject {
     func kakaoLogIn() {
         Task {
             if await kakaoLoginManager.handleLogin(completion: { [weak self] data in
-                self?.uid = data
+                self?.accountUID = data
                 self?.isLoggedIn = true
             }) {
                 isLoggedIn = false

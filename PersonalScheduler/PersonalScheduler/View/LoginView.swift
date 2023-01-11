@@ -64,7 +64,7 @@ struct LoginView: View {
             .navigationTitle("Personal Scheduler")
             .navigationBarTitleDisplayMode(.large)
             .fullScreenCover(isPresented: $loginViewModel.isLoggedIn) {
-                ScheduleListView(uid: loginViewModel.uid)
+                ScheduleListView(accountUID: loginViewModel.accountUID)
             }
             .alert(isPresented: $loginViewModel.isActiveAlert) {
                 switch loginViewModel.loginResultAlert {

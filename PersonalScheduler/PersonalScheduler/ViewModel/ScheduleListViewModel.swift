@@ -21,15 +21,15 @@ final class ScheduleListViewModel: ObservableObject {
     @Published var lists = [ScheduleList]()
     @Published var buttonAlert: ButtonAlert = .logout
 
-    func fetchFirebaseStore(uid: String) {
-        firebaseStorageManager.fetchScheduleList(accountUID: uid) { data in
+    func fetchFirebaseStore(accountUID: String) {
+        firebaseStorageManager.fetchScheduleList(accountUID: accountUID) { data in
             self.lists = data
         }
     }
     
     func delete(accountUID: String, uuid: String) {
         firebaseStorageManager.deleteScheduleList(accountUID: accountUID, uuid: uuid)
-        notificationManager.cancelNotification(uid: accountUID)
+        notificationManager.cancelNotification(uuid: uuid)
     }
     
     func logout() {

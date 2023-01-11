@@ -18,27 +18,30 @@ final class ScheduleAddViewModel: ObservableObject {
 
     @Published var buttonAlert: ButtonAlert = .postCheck
 
-    func postSchedule(uid: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
+    func postSchedule(accountUID: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
+        let postId = UUID().uuidString
+        
         firebaseStorageManager.uploadPost(
-            accountUID: uid,
+            accountUID: accountUID,
+            uuid: postId,
             title: title,
             description: description,
             startTimeStamp: startTimeStamp,
             endTimeStamp: endTimeStamp
         )
-        notificationManager.scheduleNotification(uuid: uid, title: title, subtitle: description, Date: endTimeStamp)
+        notificationManager.scheduleNotification(uuid: postId, title: title, subtitle: description, Date: endTimeStamp)
     }
     
-    func editSchedule(uid: String, uuid: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
+    func editSchedule(accountUID: String, uuid: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
         firebaseStorageManager.updateScheduleList(
-            accountUID: uid,
+            accountUID: accountUID,
             uuid: uuid,
             title: title,
             description: description,
             startTimeStamp: startTimeStamp,
             endTimeStamp: endTimeStamp
         )
-        notificationManager.cancelNotification(uid: uid)
-        notificationManager.scheduleNotification(uuid: uid, title: title, subtitle: description, Date: endTimeStamp)
+        notificationManager.cancelNotification(uuid: uuid)
+        notificationManager.scheduleNotification(uuid: uuid, title: title, subtitle: description, Date: endTimeStamp)
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct ScheduleAddView: View {
     
     var isEditing: Bool = false
-    var uid: String = ""
+    var accountUID: String = ""
     var uuid: String = ""
     
     @Environment(\.presentationMode) var presentationMode
@@ -75,7 +75,7 @@ struct ScheduleAddView: View {
                     primaryButton: .default(Text("확인"), action: {
                         if isEditing {
                             scheduleAddViewModel.editSchedule(
-                                uid: uid,
+                                accountUID: accountUID,
                                 uuid: uuid,
                                 title: title,
                                 description: description,
@@ -84,7 +84,7 @@ struct ScheduleAddView: View {
                             )
                         } else {
                             scheduleAddViewModel.postSchedule(
-                                uid: uid,
+                                accountUID: accountUID,
                                 title: title,
                                 description: description,
                                 startTimeStamp: startTimeStamp,

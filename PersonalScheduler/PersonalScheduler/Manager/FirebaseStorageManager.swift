@@ -17,11 +17,10 @@ final class FirebaseStorageManager {
     private var db = Firestore.firestore()
     private var posts = [ScheduleList]()
     
-    func uploadPost(accountUID: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
-        let postId = UUID().uuidString
+    func uploadPost(accountUID: String, uuid: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
         
         let post = ScheduleList(
-            id: postId,
+            id: uuid,
             title: title,
             description: description,
             startTimeStamp: startTimeStamp.translateToString(),
@@ -31,7 +30,7 @@ final class FirebaseStorageManager {
         let _ = db.collection(FirebaseQuery.collection)
             .document(accountUID)
             .collection("collection")
-            .document(postId)
+            .document(uuid)
             .setData(post.dictionary)
     }
     

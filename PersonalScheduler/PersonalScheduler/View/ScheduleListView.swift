@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScheduleListView: View {
     
-    var uid: String = ""
+    var accountUID: String = ""
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -27,7 +27,7 @@ struct ScheduleListView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     NavigationLink {
-                        ScheduleAddView(uid: uid)
+                        ScheduleAddView(accountUID: accountUID)
                     } label: {
                         Image(uiImage: UIImage(systemName: "plus")!)
                     }
@@ -39,7 +39,7 @@ struct ScheduleListView: View {
                         NavigationLink {
                             ScheduleAddView(
                                 isEditing: true,
-                                uid: uid,
+                                accountUID: accountUID,
                                 uuid: data.id,
                                 title: data.title,
                                 description: data.description,
@@ -62,7 +62,7 @@ struct ScheduleListView: View {
                     .onDelete { indexSet in
                         for index in indexSet {
                             scheduleListViewModel.delete(
-                                accountUID: uid,
+                                accountUID: accountUID,
                                 uuid: scheduleListViewModel.lists[index].id
                             )
                         }
@@ -92,7 +92,7 @@ struct ScheduleListView: View {
                 }
             }
             .onAppear {
-                scheduleListViewModel.fetchFirebaseStore(uid: uid)
+                scheduleListViewModel.fetchFirebaseStore(accountUID: accountUID)
             }
         }
     }
@@ -100,6 +100,6 @@ struct ScheduleListView: View {
 
 struct ScheduleListView_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleListView(uid: "JzOwDyvtg7TUcOFvUNS3DBthbZD2")
+        ScheduleListView(accountUID: "JzOwDyvtg7TUcOFvUNS3DBthbZD2")
     }
 }
