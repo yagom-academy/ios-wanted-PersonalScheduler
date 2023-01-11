@@ -55,6 +55,17 @@ class ScheduleListViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var addScheduleButton: UIButton = {
+        let button = UIButton()
+        let image = UIImage(named: "add")?
+            .withRenderingMode(.alwaysOriginal)
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(didTapAddButton(_:)), for: .touchUpInside)
+        button.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
+        return button
+    }()
+    
 }
 
 private extension ScheduleListViewController {
@@ -68,12 +79,14 @@ private extension ScheduleListViewController {
     
     func setUpLayout() {
         view.backgroundColor = .psBackground
-        view.addSubviews(collectionView)
+        view.addSubviews(collectionView, addScheduleButton)
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            addScheduleButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            addScheduleButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
         ])
     }
  
@@ -97,6 +110,10 @@ private extension ScheduleListViewController {
     }
     
     @objc func didTapMoreButton(_ sender: UIBarButtonItem) {
+        print(#function)
+    }
+    
+    @objc func didTapAddButton(_ sender: UIBarButtonItem) {
         print(#function)
     }
     
