@@ -14,6 +14,7 @@
 		FD4906DA296F29EC002D4E05 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FD4906D9296F29EC002D4E05 /* KakaoSDKAuth */; };
 		FD4906DE296F2ED4002D4E05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906DD296F2ED4002D4E05 /* AppDelegate.swift */; };
 		FD4906E0296F2F89002D4E05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906DF296F2F89002D4E05 /* SceneDelegate.swift */; };
+		FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FD4906DC296F2B9F002D4E05 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		FD4906DD296F2ED4002D4E05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD4906DF296F2F89002D4E05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoOAuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		FD4906B8296E8FF2002D4E05 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				FD4906E1296F3929002D4E05 /* Services */,
 				FD4906DB296F2AC7002D4E05 /* Info.plist */,
 				FD4906B9296E8FF2002D4E05 /* PersonalSchedulerApp.swift */,
 				FD4906BB296E8FF2002D4E05 /* ContentView.swift */,
@@ -77,6 +80,14 @@
 				FD4906C0296E8FF2002D4E05 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FD4906E1296F3929002D4E05 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD4906DE296F2ED4002D4E05 /* AppDelegate.swift in Sources */,
+				FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */,
 				FD4906BC296E8FF2002D4E05 /* ContentView.swift in Sources */,
 				FD4906BA296E8FF2002D4E05 /* PersonalSchedulerApp.swift in Sources */,
 				FD4906E0296F2F89002D4E05 /* SceneDelegate.swift in Sources */,
