@@ -58,6 +58,19 @@ final class FirebaseStorageManager {
             }
     }
     
+    func updateScheduleList(accountUID: String, uuid: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
+        
+        let edit = ScheduleList(
+            id: uuid,
+            title: title,
+            description: description,
+            startTimeStamp: startTimeStamp.translateToString(),
+            endTimeStamp: endTimeStamp.translateToString()
+        )
+        
+        db.collection(FirebaseQuery.collection).document(accountUID).collection("collection").document(uuid).updateData(edit.dictionary)
+    }
+    
     func deleteScheduleList(accountUID: String, uuid: String) {
         db.collection(FirebaseQuery.collection).document(accountUID).collection("collection").document(uuid).delete()
     }
