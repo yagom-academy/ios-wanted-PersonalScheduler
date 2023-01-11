@@ -43,10 +43,11 @@ class ScheduleListViewController: UIViewController {
     }
 }
 
-//MARK: TableView DataSource
-extension ScheduleListViewController: UITableViewDataSource {
+//MARK: TableView DataSource & Delegate
+extension ScheduleListViewController: UITableViewDataSource, UITableViewDelegate {
     private func setupTableView() {
         scheduleTableview.dataSource = self
+        scheduleTableview.delegate = self
         scheduleTableview.rowHeight = view.bounds.height * 0.1
     }
     
@@ -63,6 +64,15 @@ extension ScheduleListViewController: UITableViewDataSource {
         cell.congigure(with: scheduleViewModel.schedules.value[indexPath.row])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedSchedule = scheduleViewModel.schedules.value[indexPath.row]
+        let detailViewController = ScheduleDetailViewController(scheduleViewModel,
+                                                                viewMode: .display(schedule: selectedSchedule))
+        
+        navigationController?.pushViewController(detailViewController,
+                                                 animated: true)
     }
 }
 
