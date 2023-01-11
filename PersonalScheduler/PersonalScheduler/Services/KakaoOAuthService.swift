@@ -6,7 +6,25 @@
 //
 
 import Foundation
+import KakaoSDKUser
 
 final class KakaoOAuthService {
+    
+    func executeLoginWithKakaoTalk() {
+        // 카카오톡 실행 가능 여부 확인
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    print("loginWithKakaoTalk() success.")
+                    
+                    //do something
+                    _ = oauthToken
+                }
+            }
+        }
+    }
     
 }
