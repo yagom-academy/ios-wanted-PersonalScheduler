@@ -36,7 +36,6 @@ private func kakaoLoginWithAPP() async {
             print(error)
         }
         else {
-            //do something
             self.kakaoLoginPublisher.send()
             _ = oauthToken
         }
