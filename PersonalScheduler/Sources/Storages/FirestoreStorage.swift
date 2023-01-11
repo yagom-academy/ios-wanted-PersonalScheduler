@@ -13,13 +13,15 @@ import FirebaseFirestoreSwift
 protocol FirestoreStorageService {
     
     func read(userID: String?) -> AnyPublisher<User, Error>
+    @discardableResult
     func write(user: User) -> AnyPublisher<Bool, Error>
     func delete(user: User)
+    @discardableResult
     func update(user: User) -> AnyPublisher<Bool, Error>
     
 }
 
-final class FirestoreStorage {
+final class FirestoreStorage: FirestoreStorageService {
     
     static let shared = FirestoreStorage()
     private init() {}
@@ -52,6 +54,7 @@ final class FirestoreStorage {
         return completed.eraseToAnyPublisher()
     }
     
+    @discardableResult
     func write(user: User) -> AnyPublisher<Bool, Error> {
         let completed = PassthroughSubject<Bool, Error>()
         guard let userID = user.userID, let user = try? user.asDictionary() else {
@@ -78,6 +81,7 @@ final class FirestoreStorage {
         database.collection("User").document(userID).delete()
     }
     
+    @discardableResult
     func update(user: User) -> AnyPublisher<Bool, Error> {
         let completed = PassthroughSubject<Bool, Error>()
         guard let userID = user.userID, let user = try? user.asDictionary() else {

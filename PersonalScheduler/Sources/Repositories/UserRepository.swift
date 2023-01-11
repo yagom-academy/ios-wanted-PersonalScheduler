@@ -16,9 +16,14 @@ protocol UserRepository {
 final class DefaultUserRepository: UserRepository {
     
     private let localStorage: LocalStorageService
+    private let firestoreStorage: FirestoreStorageService
     
-    init(localStorage: LocalStorageService = UserDefaults.standard) {
+    init(
+        localStorage: LocalStorageService = UserDefaults.standard,
+        firestoreStorage: FirestoreStorageService = FirestoreStorage.shared
+    ) {
         self.localStorage = localStorage
+        self.firestoreStorage = firestoreStorage
     }
     
     func register(_ authatication: Authentication, snsType: SNSType) {
@@ -30,10 +35,15 @@ final class DefaultUserRepository: UserRepository {
             schedules: []
         )
         localStorage.saveUser(newUser)
+        firestoreStorage.write(user: newUser)
     }
     
     func delete() {
+        guard let user = localStorage.getUser() else {
+            return
+        }
         localStorage.delete(key: .userInfo)
+        firestoreStorage.delete(user: user)
     }
     
     func myInfo() -> User? {
