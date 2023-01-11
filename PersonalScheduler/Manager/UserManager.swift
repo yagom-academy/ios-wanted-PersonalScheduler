@@ -17,13 +17,13 @@ enum RequestResult {
 
 class UserManager {
     static let shared = UserManager()
-    private let collectionName = "User"
+
     private let db = Firestore.firestore()
     
     func createUser(email: String, name: String,_ completion: @escaping (RequestResult, Error?) -> Void) {
-        let user = User(name: name, email: email, schedulList: [])
+        let user = User(name: name, email: email)
         do {
-            try db.collection(collectionName).document(Auth.auth().currentUser!.uid).setData(from: user, completion: { error in
+            try db.collection(Collection.user.rawValue).document(Auth.auth().currentUser!.uid).setData(from: user, completion: { error in
                 if let error {
                     completion(RequestResult.fail, error)
                 } else {

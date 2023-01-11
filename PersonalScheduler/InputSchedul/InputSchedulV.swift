@@ -87,7 +87,7 @@ class InputSchedulV: UIView, BaseView {
         return label
     }()
     
-    private lazy var startDatePicker: UIDatePicker = {
+    lazy var startDatePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .compact
         picker.datePickerMode = .dateAndTime
@@ -116,7 +116,7 @@ class InputSchedulV: UIView, BaseView {
         return label
     }()
     
-    private lazy var endDatePicker: UIDatePicker = {
+    lazy var endDatePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .compact
         picker.datePickerMode = .dateAndTime

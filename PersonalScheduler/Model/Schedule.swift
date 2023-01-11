@@ -11,6 +11,5 @@ struct Schedule: Codable {
     var title: String
     var startDate: String
     var endDate: String
-    var finish: String
     var content: String
 }

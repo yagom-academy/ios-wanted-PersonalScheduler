@@ -10,5 +10,4 @@ import Foundation
 struct User: Codable {
     var name: String
     var email: String
-    var schedulList: [Schedule]?
 }

@@ -20,6 +20,7 @@ class LoginVC: BaseVC {
     // MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        isHiddenBackButton()
         addButtonAction()
         outputBind()
     }

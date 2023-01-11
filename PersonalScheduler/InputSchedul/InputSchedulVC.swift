@@ -15,6 +15,7 @@ class InputSchedulVC: BaseVC {
         self.view = inputScheduleV
     }
     // MARK: - ViewModel
+    private let viewModel = InputSchedulVM()
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,12 +44,26 @@ extension InputSchedulVC {
 extension InputSchedulVC {
     private func addButtonAction() {
         self.inputScheduleV.titleTextField.cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
+        self.inputScheduleV.saveButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
     }
     
     @objc private func didTapCancelButton() {
         inputScheduleV.titleTextField.text = nil
         inputScheduleV.titleTextField.isFocus = false
         inputScheduleV.titleTextField.endEditing(true)
+    }
+    
+    @objc private func didTapAddButton() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "y-M-d_HH:mm:ss"
+        let startDate = dateFormatter.string(from: self.inputScheduleV.startDatePicker.date)
+        let endDate = dateFormatter.string(from: self.inputScheduleV.endDatePicker.date)
+        let schedule = Schedule(title: self.inputScheduleV.titleTextField.text!,
+                                startDate: startDate,
+                                endDate: endDate,
+                                content: self.inputScheduleV.contentTextField.text!)
+        
+        viewModel.input.addButtonTrigger.value = schedule
     }
 }
 // MARK: - TextFieldDelegate

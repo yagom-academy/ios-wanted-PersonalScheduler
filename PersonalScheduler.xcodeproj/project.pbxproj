@@ -21,6 +21,10 @@
 		35406C4D296C75670027A261 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35406C4C296C75670027A261 /* UserManager.swift */; };
 		35AAA5C2296EBFB70096A80F /* ScheduleSaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AAA5C1296EBFB70096A80F /* ScheduleSaveButton.swift */; };
 		35AAA5C4296EC6740096A80F /* InputSchedulVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AAA5C3296EC6740096A80F /* InputSchedulVM.swift */; };
+		35AAA5C6296EC7E80096A80F /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AAA5C5296EC7E80096A80F /* ScheduleManager.swift */; };
+		35AAA5CB296ECB510096A80F /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AAA5CA296ECB510096A80F /* Collection.swift */; };
+		35AAA5CD296ECB920096A80F /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AAA5CC296ECB920096A80F /* Field.swift */; };
+		35AAA5D0296ECC450096A80F /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AAA5CF296ECC450096A80F /* AuthError.swift */; };
 		35AF119C296D2E03002249AF /* ScheduleListV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF119B296D2E03002249AF /* ScheduleListV.swift */; };
 		35AF119E296D5E57002249AF /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF119D296D5E57002249AF /* ScheduleCell.swift */; };
 		35AF11A0296D609E002249AF /* ScheduleListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF119F296D609E002249AF /* ScheduleListVM.swift */; };
@@ -63,6 +67,10 @@
 		35406C4C296C75670027A261 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		35AAA5C1296EBFB70096A80F /* ScheduleSaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSaveButton.swift; sourceTree = "<group>"; };
 		35AAA5C3296EC6740096A80F /* InputSchedulVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSchedulVM.swift; sourceTree = "<group>"; };
+		35AAA5C5296EC7E80096A80F /* ScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleManager.swift; sourceTree = "<group>"; };
+		35AAA5CA296ECB510096A80F /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		35AAA5CC296ECB920096A80F /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		35AAA5CF296ECC450096A80F /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		35AF119B296D2E03002249AF /* ScheduleListV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListV.swift; sourceTree = "<group>"; };
 		35AF119D296D5E57002249AF /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		35AF119F296D609E002249AF /* ScheduleListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListVM.swift; sourceTree = "<group>"; };
@@ -111,11 +119,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35AAA5C9296ECB3D0096A80F /* FBConfig */ = {
+			isa = PBXGroup;
+			children = (
+				35AAA5CA296ECB510096A80F /* Collection.swift */,
+				35AAA5CC296ECB920096A80F /* Field.swift */,
+			);
+			path = FBConfig;
+			sourceTree = "<group>";
+		};
+		35AAA5CE296ECC330096A80F /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				35AAA5CF296ECC450096A80F /* AuthError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		35AF5D58296C5A1B0085D636 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				35AF5D59296C5A310085D636 /* KakaoLoginManager.swift */,
 				35406C4C296C75670027A261 /* UserManager.swift */,
+				35AAA5C5296EC7E80096A80F /* ScheduleManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -207,6 +233,8 @@
 		35EEA81E296C105A002A30C9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				35AAA5CE296ECC330096A80F /* Error */,
+				35AAA5C9296ECB3D0096A80F /* FBConfig */,
 				35EEA81F296C1071002A30C9 /* Dynamic.swift */,
 				35406C48296C70A60027A261 /* User.swift */,
 				35406C4A296C70E20027A261 /* Schedule.swift */,
@@ -349,11 +377,14 @@
 				35AF5D5A296C5A310085D636 /* KakaoLoginManager.swift in Sources */,
 				35AF119E296D5E57002249AF /* ScheduleCell.swift in Sources */,
 				3504B4CE296D79E90036CB1B /* SchedulePlusButton.swift in Sources */,
+				35AAA5C6296EC7E80096A80F /* ScheduleManager.swift in Sources */,
 				35AF5D55296C58FD0085D636 /* LoginVM.swift in Sources */,
 				3504B4D0296D82080036CB1B /* InputSchedulV.swift in Sources */,
 				35EEA817296C08C6002A30C9 /* Cordinator.swift in Sources */,
 				35EEA81B296C0F49002A30C9 /* InputSchedulVC.swift in Sources */,
 				35406C4D296C75670027A261 /* UserManager.swift in Sources */,
+				35AAA5CD296ECB920096A80F /* Field.swift in Sources */,
+				35AAA5CB296ECB510096A80F /* Collection.swift in Sources */,
 				3504B4D4296D87000036CB1B /* CancelButton.swift in Sources */,
 				35EEA820296C1071002A30C9 /* Dynamic.swift in Sources */,
 				35EEA81D296C0F70002A30C9 /* ScheduleListVC.swift in Sources */,
@@ -368,6 +399,7 @@
 				35EEA815296C0880002A30C9 /* BaseVC.swift in Sources */,
 				35406C4B296C70E20027A261 /* Schedule.swift in Sources */,
 				35406C49296C70A60027A261 /* User.swift in Sources */,
+				35AAA5D0296ECC450096A80F /* AuthError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +461,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -489,6 +522,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
