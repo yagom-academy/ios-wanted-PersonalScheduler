@@ -69,6 +69,11 @@ struct ScheduleListView: View {
                 }
                 .listStyle(.plain)
                 
+                Button {
+                    isActiveAlert.toggle()
+                } label: {
+                    Text("로그아웃")
+                }
             }
             .padding()
             .alert(isPresented: $isActiveAlert) {
@@ -77,8 +82,8 @@ struct ScheduleListView: View {
                     let alert = Alert(
                         title: Text("로그아웃 하시겠습니까?"),
                         primaryButton: .default(Text("확인"), action: {
-                            presentationMode.wrappedValue.dismiss()
                             scheduleListViewModel.logout()
+                            presentationMode.wrappedValue.dismiss()
                         }),
                         secondaryButton: .cancel()
                     )
