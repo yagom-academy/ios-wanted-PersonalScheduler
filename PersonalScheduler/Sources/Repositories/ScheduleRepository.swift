@@ -44,6 +44,7 @@ final class DefaultScheduleRepository: ScheduleRepository {
         var newSchedules: [Schedule] = user.schedules ?? []
         newSchedules.append(schedule)
         user.schedules = newSchedules
+        localStorage.saveUser(user)
         return firestoreStorage.write(user: user)
     }
     
@@ -53,6 +54,7 @@ final class DefaultScheduleRepository: ScheduleRepository {
         }
         let schedules: [Schedule] = user.schedules?.filter { $0 != schedule } ?? []
         user.schedules = schedules
+        localStorage.saveUser(user)
         firestoreStorage.delete(user: user)
     }
     
@@ -65,6 +67,7 @@ final class DefaultScheduleRepository: ScheduleRepository {
         var newSchedules: [Schedule] = user.schedules ?? []
         newSchedules[index] = schedule
         user.schedules = newSchedules
+        localStorage.saveUser(user)
         return firestoreStorage.update(user: user)
     }
 }

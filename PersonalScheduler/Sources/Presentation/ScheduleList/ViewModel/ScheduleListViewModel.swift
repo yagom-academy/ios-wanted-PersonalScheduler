@@ -75,7 +75,6 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelInput {
     func delete(schedule: Schedule) {
         let schedules = _schedules.value.filter { $0 != schedule }
         scheduleRepository.delete(schedule: schedule)
-        userRepository.updateSchedules(schedules)
         _schedules.send(schedules)
     }
     

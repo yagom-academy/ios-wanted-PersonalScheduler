@@ -11,7 +11,6 @@ protocol UserRepository {
     func myInfo() -> User?
     func register(_ authatication: Authentication, snsType: SNSType)
     func delete()
-    func updateSchedules(_ schedules: [Schedule])
 }
 
 final class DefaultUserRepository: UserRepository {
@@ -51,13 +50,6 @@ final class DefaultUserRepository: UserRepository {
         firestoreStorage.delete(user: user)
     }
     
-    func updateSchedules(_ schedules: [Schedule]) {
-        guard var user = myInfo() else {
-            return
-        }
-        user.schedules = schedules
-        localStorage.saveUser(user)
-    }
 }
 
 enum SNSType: String {
