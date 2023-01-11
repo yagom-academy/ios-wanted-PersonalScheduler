@@ -14,7 +14,8 @@ struct PersonalSchedulerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
         }
     }
+    
 }

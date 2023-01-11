@@ -8,19 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		FD4906BA296E8FF2002D4E05 /* PersonalSchedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906B9296E8FF2002D4E05 /* PersonalSchedulerApp.swift */; };
-		FD4906BC296E8FF2002D4E05 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906BB296E8FF2002D4E05 /* ContentView.swift */; };
 		FD4906BE296E8FF2002D4E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD4906BD296E8FF2002D4E05 /* Assets.xcassets */; };
 		FD4906C1296E8FF2002D4E05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD4906C0296E8FF2002D4E05 /* Preview Assets.xcassets */; };
 		FD4906DE296F2ED4002D4E05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906DD296F2ED4002D4E05 /* AppDelegate.swift */; };
 		FD4906E0296F2F89002D4E05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906DF296F2F89002D4E05 /* SceneDelegate.swift */; };
 		FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */; };
 		FD4906E6296F3B23002D4E05 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = FD4906E5296F3B23002D4E05 /* KakaoSDKUser */; };
+		FD4906EB296F3F42002D4E05 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906EA296F3F42002D4E05 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FD4906B6296E8FF2002D4E05 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD4906B9296E8FF2002D4E05 /* PersonalSchedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSchedulerApp.swift; sourceTree = "<group>"; };
-		FD4906BB296E8FF2002D4E05 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FD4906BD296E8FF2002D4E05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD4906C0296E8FF2002D4E05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FD4906DB296F2AC7002D4E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -28,6 +27,7 @@
 		FD4906DD296F2ED4002D4E05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD4906DF296F2F89002D4E05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoOAuthService.swift; sourceTree = "<group>"; };
+		FD4906EA296F3F42002D4E05 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +62,10 @@
 		FD4906B8296E8FF2002D4E05 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				FD4906E1296F3929002D4E05 /* Services */,
-				FD4906DB296F2AC7002D4E05 /* Info.plist */,
 				FD4906B9296E8FF2002D4E05 /* PersonalSchedulerApp.swift */,
-				FD4906BB296E8FF2002D4E05 /* ContentView.swift */,
+				FD4906E1296F3929002D4E05 /* Services */,
+				FD4906E9296F3F24002D4E05 /* LoginView */,
+				FD4906DB296F2AC7002D4E05 /* Info.plist */,
 				FD4906BD296E8FF2002D4E05 /* Assets.xcassets */,
 				FD4906BF296E8FF2002D4E05 /* Preview Content */,
 				FD4906DD296F2ED4002D4E05 /* AppDelegate.swift */,
@@ -88,6 +88,14 @@
 				FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		FD4906E9296F3F24002D4E05 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				FD4906EA296F3F42002D4E05 /* LoginView.swift */,
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,9 +174,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD4906EB296F3F42002D4E05 /* LoginView.swift in Sources */,
 				FD4906DE296F2ED4002D4E05 /* AppDelegate.swift in Sources */,
 				FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */,
-				FD4906BC296E8FF2002D4E05 /* ContentView.swift in Sources */,
 				FD4906BA296E8FF2002D4E05 /* PersonalSchedulerApp.swift in Sources */,
 				FD4906E0296F2F89002D4E05 /* SceneDelegate.swift in Sources */,
 			);
