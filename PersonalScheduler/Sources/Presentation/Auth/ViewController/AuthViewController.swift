@@ -19,6 +19,12 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
+        bind()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.input.viewWillAppear()
     }
     
     init(viewModel: AuthViewModel, coordinator: AuthCoordinatorInterface) {
@@ -81,9 +87,37 @@ class AuthViewController: UIViewController {
         return button
     }()
     
+    private lazy var activityIndicator: LoadingView = {
+        let activityIndicator = LoadingView(backgroundColor: .clear, alpha: 1)
+        return activityIndicator
+    }()
+    
 }
 
 private extension AuthViewController {
+    
+    func bind() {
+        viewModel.output.isLoading
+            .sinkOnMainThread(receiveValue: { [weak self] isLoading in
+                if isLoading {
+                    self?.activityIndicator.startAnimating()
+                } else {
+                    self?.activityIndicator.stopAnimating()
+                }
+            }).store(in: &cancellables)
+        
+        viewModel.output.errorMessage
+            .compactMap { $0 }
+            .sinkOnMainThread(receiveValue: { [weak self] message in
+                self?.showAlert(message: message)
+            }).store(in: &cancellables)
+        
+        viewModel.output.isCompletedLogin
+            .filter { $0 == true }
+            .sinkOnMainThread(receiveValue: { [weak self] _ in
+                self?.coordinator?.finished()
+            }).store(in: &cancellables)
+    }
     
     func setUp() {
         setUpLayout()
@@ -91,7 +125,7 @@ private extension AuthViewController {
     
     func setUpLayout() {
         view.backgroundColor = .psBackground
-        view.addSubviews(titleLabel, loginButtonStackView, helpButton, descriptionLabel)
+        view.addSubviews(titleLabel, loginButtonStackView, helpButton, descriptionLabel, activityIndicator)
         let deviceHeight = view.safeAreaLayoutGuide.layoutFrame.height
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -101,24 +135,29 @@ private extension AuthViewController {
             loginButtonStackView.centerXAnchor.constraint(equalTo: helpButton.centerXAnchor),
             loginButtonStackView.bottomAnchor.constraint(equalTo: helpButton.topAnchor, constant: -110),
             descriptionLabel.centerXAnchor.constraint(equalTo: loginButtonStackView.centerXAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: loginButtonStackView.topAnchor, constant: -16)
+            descriptionLabel.bottomAnchor.constraint(equalTo: loginButtonStackView.topAnchor, constant: -16),
+            activityIndicator.widthAnchor.constraint(equalTo: view.widthAnchor),
+            activityIndicator.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
     }
     
-    func appleAuthorize() {
-        
-    }
-    
     @objc func didTapKakaoButton(_ sender: LoginButton) {
-        print(#function)
+        viewModel.input.didTapKakaoButton()
     }
     
     @objc func didTapAppleButton(_ sender: LoginButton) {
-        print(#function)
+        showAppleAuthorize()
+        viewModel.input.didTapAppleButton()
+    }
+    
+    func showAppleAuthorize() {
+        let controller = viewModel.output.appleAuthorizationController
+        controller.presentationContextProvider = self
+        controller.performRequests()
     }
     
     @objc func didTapFacebookButton(_ sender: LoginButton) {
-        print(#function)
+        viewModel.input.didTapFacebookButton()
     }
     
     @objc func didTapHelpButton(_ sender: UIButton) {

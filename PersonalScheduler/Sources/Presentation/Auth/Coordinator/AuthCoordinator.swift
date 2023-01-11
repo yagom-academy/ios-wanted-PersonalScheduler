@@ -31,7 +31,7 @@ private extension AuthCoordinator {
     
     func makeAuthViewController() -> UIViewController {
         let viewController = AuthViewController(
-            viewModel: AuthViewModel(),
+            viewModel: DefaultAuthViewModel(),
             coordinator: self
         )
         return viewController

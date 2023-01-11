@@ -14,7 +14,8 @@ import FacebookLogin
 
 protocol AuthenticationRepository {
     func kakaoAuthorize() -> AnyPublisher<Authentication?, Error>
-    func appleAuthorize() -> ASAuthorizationController
+    func appleAuthorizationController() -> ASAuthorizationController
+    func appleAuthorize() -> AnyPublisher<Authentication?, Error>
     func facebookAuthorize() -> AnyPublisher<Authentication?, Error>
     func readToken(option tokenOption: TokenOption) -> AnyPublisher<Authentication, Never>
     func writeToken(authentication: Authentication)
@@ -97,12 +98,16 @@ final class DefaultAuthenticationRepository: NSObject, AuthenticationRepository 
         return authentication.eraseToAnyPublisher()
     }
     
-    func appleAuthorize() -> ASAuthorizationController {
+    func appleAuthorizationController() -> ASAuthorizationController {
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName, .email]
         let controller = ASAuthorizationController(authorizationRequests: [request])
         controller.delegate = self
         return controller
+    }
+    
+    func appleAuthorize() -> AnyPublisher<Authentication?, Error> {
+        return authentication.eraseToAnyPublisher()
     }
     
     func facebookAuthorize() -> AnyPublisher<Authentication?, Error> {
