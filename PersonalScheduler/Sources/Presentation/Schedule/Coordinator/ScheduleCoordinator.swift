@@ -33,7 +33,8 @@ private extension ScheduleCoordinator {
     func makeScheduleViewController() -> UIViewController {
         let viewController = ScheduleViewController(
             viewModel: ScheduleViewModel(),
-            coordinator: self
+            coordinator: self,
+            type: type == .create ? .create : .edit
         )
         return viewController
     }
@@ -41,5 +42,9 @@ private extension ScheduleCoordinator {
 }
 
 extension ScheduleCoordinator: ScheduleCoordinatorInterface {
+    
+    func dismiss() {
+        finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+    }
     
 }

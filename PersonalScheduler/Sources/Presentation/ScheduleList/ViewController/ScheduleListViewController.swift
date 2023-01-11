@@ -52,6 +52,7 @@ class ScheduleListViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.register(ScheduleCell.self)
         collectionView.backgroundColor = .psBackground
+        collectionView.delegate = self
         return collectionView
     }()
     
@@ -113,7 +114,7 @@ private extension ScheduleListViewController {
     }
     
     @objc func didTapAddButton(_ sender: UIBarButtonItem) {
-        print(#function)
+        coordinator?.showCreateSchedule()
     }
     
     func setUpDataSource() {
@@ -173,6 +174,20 @@ private extension ScheduleListViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: .zero, leading: .zero, bottom: .zero, trailing: .zero)
         return section
+    }
+    
+}
+
+extension ScheduleListViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let dummySchedule = Schedule(
+            title: "당근 거래",
+            startDate: Date(),
+            endDate: Date(),
+            description: "공기 청정기를 살거야~~ 요즘에 공기가 너무 안좋아서 살 수 밖에 없어...."
+        )
+        coordinator?.showEditSchedule(dummySchedule)
     }
     
 }
