@@ -27,8 +27,12 @@ extension Schedule {
     
 }
 
-extension Schedule: Equatable {
+extension Schedule: Equatable, Hashable {
     static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
