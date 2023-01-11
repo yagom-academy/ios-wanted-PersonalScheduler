@@ -30,7 +30,9 @@ struct ScheduleAddView: View {
                        displayedComponents: [.date, .hourAndMinute]) {
                 Text("시작 날짜")
             }
-            DatePicker(selection: $endTimeStamp, in: startTimeStamp..., displayedComponents: [.date, .hourAndMinute]) {
+            DatePicker(selection: $endTimeStamp,
+                       in: startTimeStamp...,
+                       displayedComponents: [.date, .hourAndMinute]) {
                 Text("종료 날짜")
             }
             
