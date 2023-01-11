@@ -48,6 +48,9 @@
 		0223FB23296D6F5500B6B32C /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB22296D6F5500B6B32C /* LoginButton.swift */; };
 		0223FB25296D77A300B6B32C /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB24296D77A300B6B32C /* NavigationTitleView.swift */; };
 		0223FB27296D7A7100B6B32C /* UINavigationController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB26296D7A7100B6B32C /* UINavigationController+extension.swift */; };
+		0223FB2F296E495E00B6B32C /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB2E296E495E00B6B32C /* Date+extension.swift */; };
+		0223FB31296E538F00B6B32C /* UICollectionView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB30296E538F00B6B32C /* UICollectionView+extension.swift */; };
+		0223FB33296E53AC00B6B32C /* NSObject+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB32296E53AC00B6B32C /* NSObject+extension.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* AuthViewController.swift */; };
@@ -90,6 +93,9 @@
 		0223FB22296D6F5500B6B32C /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		0223FB24296D77A300B6B32C /* NavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
 		0223FB26296D7A7100B6B32C /* UINavigationController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+extension.swift"; sourceTree = "<group>"; };
+		0223FB2E296E495E00B6B32C /* Date+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
+		0223FB30296E538F00B6B32C /* UICollectionView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+extension.swift"; sourceTree = "<group>"; };
+		0223FB32296E53AC00B6B32C /* NSObject+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+extension.swift"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -171,7 +177,10 @@
 				0223FB1E296D6CCF00B6B32C /* UIStackView+extension.swift */,
 				0223FB20296D6DAD00B6B32C /* UIFont+extension.swift */,
 				0223FB26296D7A7100B6B32C /* UINavigationController+extension.swift */,
+				0223FB30296E538F00B6B32C /* UICollectionView+extension.swift */,
+				0223FB32296E53AC00B6B32C /* NSObject+extension.swift */,
 				0223FAF6296D579400B6B32C /* Bundle+extension.swift */,
+				0223FB2E296E495E00B6B32C /* Date+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -458,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0223FB31296E538F00B6B32C /* UICollectionView+extension.swift in Sources */,
 				0223FAED296D46C500B6B32C /* ScheduleRepository.swift in Sources */,
 				0223FAD9296D231500B6B32C /* User.swift in Sources */,
 				0223FAD5296D20DA00B6B32C /* LocalStorage.swift in Sources */,
@@ -465,6 +475,7 @@
 				0223FABC296BEDAC00B6B32C /* APIProvider.swift in Sources */,
 				0223FAA4296BDD4D00B6B32C /* Encodable+extension.swift in Sources */,
 				0223FB02296D5EEB00B6B32C /* ScheduleListViewController.swift in Sources */,
+				0223FB2F296E495E00B6B32C /* Date+extension.swift in Sources */,
 				0223FAC0296BF21F00B6B32C /* Authentication.swift in Sources */,
 				0223FAD7296D222D00B6B32C /* KeyChainStorage.swift in Sources */,
 				0223FABE296BEE8300B6B32C /* AuthenticationRepository.swift in Sources */,
@@ -494,6 +505,7 @@
 				0223FB1B296D6B3300B6B32C /* UIColor+extension.swift in Sources */,
 				0223FAF1296D4EE800B6B32C /* AppCoordinator.swift in Sources */,
 				0223FAE8296D374100B6B32C /* FirestoreStorage.swift in Sources */,
+				0223FB33296E53AC00B6B32C /* NSObject+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
