@@ -1,18 +1,16 @@
 //
-//  CancelButton.swift
+//  ScheduleSaveButton.swift
 //  PersonalScheduler
 //
-//  Created by 정재근 on 2023/01/10.
+//  Created by 정재근 on 2023/01/11.
 //
 
 import UIKit
 
-class CancelButton: UIButton {
-    private let image = UIImage(named: "textFieldCancel")
-    
-    
+class ScheduleSaveButton: UIButton {
     private func setting() {
-        self.setImage(image, for: .normal)
+        self.setTitle("저장하기", for: .normal)
+        self.setTitleColor(.black, for: .normal)
     }
     
     override init(frame: CGRect) {

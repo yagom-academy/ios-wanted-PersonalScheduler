@@ -34,7 +34,7 @@ class LoginVM: ViewModel {
             case .apple:
                 print("애플")
             case .kakao:
-                KakaoLoginManager.shared.kakaoLogin() { loginResult, error in
+                KakaoLoginManager.shared.login() { loginResult, error in
                     switch loginResult {
                     case .loginSuccess:
                         self?.output.isLoginable.value = true

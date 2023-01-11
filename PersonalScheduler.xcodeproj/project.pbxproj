@@ -19,6 +19,8 @@
 		35406C49296C70A60027A261 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35406C48296C70A60027A261 /* User.swift */; };
 		35406C4B296C70E20027A261 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35406C4A296C70E20027A261 /* Schedule.swift */; };
 		35406C4D296C75670027A261 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35406C4C296C75670027A261 /* UserManager.swift */; };
+		35AAA5C2296EBFB70096A80F /* ScheduleSaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AAA5C1296EBFB70096A80F /* ScheduleSaveButton.swift */; };
+		35AAA5C4296EC6740096A80F /* InputSchedulVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AAA5C3296EC6740096A80F /* InputSchedulVM.swift */; };
 		35AF119C296D2E03002249AF /* ScheduleListV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF119B296D2E03002249AF /* ScheduleListV.swift */; };
 		35AF119E296D5E57002249AF /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF119D296D5E57002249AF /* ScheduleCell.swift */; };
 		35AF11A0296D609E002249AF /* ScheduleListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF119F296D609E002249AF /* ScheduleListVM.swift */; };
@@ -59,6 +61,8 @@
 		35406C48296C70A60027A261 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		35406C4A296C70E20027A261 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		35406C4C296C75670027A261 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		35AAA5C1296EBFB70096A80F /* ScheduleSaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSaveButton.swift; sourceTree = "<group>"; };
+		35AAA5C3296EC6740096A80F /* InputSchedulVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSchedulVM.swift; sourceTree = "<group>"; };
 		35AF119B296D2E03002249AF /* ScheduleListV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListV.swift; sourceTree = "<group>"; };
 		35AF119D296D5E57002249AF /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		35AF119F296D609E002249AF /* ScheduleListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListVM.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 			children = (
 				35EEA81A296C0F49002A30C9 /* InputSchedulVC.swift */,
 				3504B4CF296D82080036CB1B /* InputSchedulV.swift */,
+				35AAA5C3296EC6740096A80F /* InputSchedulVM.swift */,
 			);
 			path = InputSchedul;
 			sourceTree = "<group>";
@@ -194,6 +199,7 @@
 				3504B4D1296D832A0036CB1B /* TitleTextField.swift */,
 				3504B4D3296D87000036CB1B /* CancelButton.swift */,
 				3504B4D5296D99840036CB1B /* ContentTextField.swift */,
+				35AAA5C1296EBFB70096A80F /* ScheduleSaveButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -336,6 +342,7 @@
 				3504B4D6296D99840036CB1B /* ContentTextField.swift in Sources */,
 				35AF5D57296C597E0085D636 /* LoginType.swift in Sources */,
 				35EEA826296C1421002A30C9 /* SplashResultType.swift in Sources */,
+				35AAA5C4296EC6740096A80F /* InputSchedulVM.swift in Sources */,
 				35AF119C296D2E03002249AF /* ScheduleListV.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* SplashVC.swift in Sources */,
 				35EEA824296C11D7002A30C9 /* SplashVM.swift in Sources */,
@@ -352,6 +359,7 @@
 				35EEA81D296C0F70002A30C9 /* ScheduleListVC.swift in Sources */,
 				35EEA819296C0EF4002A30C9 /* LoginVC.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				35AAA5C2296EBFB70096A80F /* ScheduleSaveButton.swift in Sources */,
 				35AF5D4F296C54520085D636 /* LoginV.swift in Sources */,
 				35AF5D51296C54A10085D636 /* BaseView.swift in Sources */,
 				35AF5D53296C55FD0085D636 /* KaKaoLoginButton.swift in Sources */,

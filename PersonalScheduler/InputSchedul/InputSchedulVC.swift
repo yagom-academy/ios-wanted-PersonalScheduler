@@ -26,7 +26,8 @@ class InputSchedulVC: BaseVC {
 // MARK: - Configure UI
 extension InputSchedulVC {
     private func configureUI() {
-        setTitle(title: "스케줄 추가")
+        setTitle(title: "일정 추가")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: inputScheduleV.saveButton)
     }
     
     private func configureTextField() {
@@ -53,6 +54,9 @@ extension InputSchedulVC {
 // MARK: - TextFieldDelegate
 extension InputSchedulVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        if !textField.text!.isEmpty {
+            inputScheduleV.titleTextField.isHiddenCancelButton = false
+        }
         inputScheduleV.titleTextField.isFocus = true
     }
     
@@ -77,9 +81,13 @@ extension InputSchedulVC: UITextFieldDelegate {
         }
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        inputScheduleV.titleTextField.isFocus = false
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let isTextEmpty = !textField.text!.isEmpty
+        inputScheduleV.titleTextField.isFocus = isTextEmpty
         inputScheduleV.titleTextField.isHiddenCancelButton = true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         
         return true
@@ -100,8 +108,8 @@ extension InputSchedulVC: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        self.inputScheduleV.contentTextField.isFocus = false
         if textView.text.isEmpty {
+            self.inputScheduleV.contentTextField.isFocus = false
             self.inputScheduleV.contentTextField.text = ContentTextField.placeHolderText
             self.inputScheduleV.contentTextField.textColor = ContentTextField.placeHolderTextColor
         }

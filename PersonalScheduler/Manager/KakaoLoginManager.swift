@@ -54,7 +54,7 @@ class KakaoLoginManager {
         }
     }
     
-    func kakaoLogin(_ completion: @escaping (LoginResult, Error?) -> Void) {
+    func login(_ completion: @escaping (LoginResult, Error?) -> Void) {
         if AuthApi.hasToken() {
             self.hasTokenLogin() { result, error in
                 completion(result, error)
@@ -71,7 +71,7 @@ class KakaoLoginManager {
             }
         }
     }
-    
+    // 나중에 분리해야함
     private func loginFirebase(_ completion: @escaping (LoginResult, Error?) -> Void) {
         UserApi.shared.me() { user, error in
             if let error {

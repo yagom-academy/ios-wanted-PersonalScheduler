@@ -35,7 +35,7 @@ class ScheduleListVC: BaseVC {
 extension ScheduleListVC {
     private func configureUI() {
         isHiddenBackButton()
-        setTitle(title: "리스트")
+        setTitle(title: "일정 목록")
         isLargeTitle()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: schedulePlusButton)
     }
