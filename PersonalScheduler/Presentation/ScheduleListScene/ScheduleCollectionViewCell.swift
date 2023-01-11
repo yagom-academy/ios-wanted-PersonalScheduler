@@ -44,10 +44,18 @@ final class ScheduleCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        layout()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+
+    func setUpContents(schedule: Schedule) {
+        titleLabel.text = schedule.title
+        descriptionLabel.text = schedule.description
+        startTimeLabel.text = schedule.startDate.toString()
+        endTimeLabel.text = schedule.endDate.toString()
     }
 
     private func layout() {
@@ -77,5 +85,13 @@ final class ScheduleCollectionViewCell: UICollectionViewCell {
             endTimeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
             endTimeLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 2/10),
         ])
+    }
+}
+
+fileprivate extension Date {
+    func toString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: self)
     }
 }
