@@ -32,6 +32,7 @@ class ScheduleListViewController: UIViewController {
         super.viewDidLoad()
         setUp()
         bind()
+        viewModel.input.viewDidLoad()
     }
     
     init(viewModel: ScheduleListViewModel, coordinator: ScheduleListCoordinatorInterface) {
