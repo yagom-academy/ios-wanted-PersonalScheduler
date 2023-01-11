@@ -1,14 +1,13 @@
 //
-//  ViewController.swift
+//  ListViewController.swift
 //  PersonalScheduler
 //
-//  Created by unchain on 06/01/23.
+//  Created by unchain on 2023/01/11.
 //
 
 import UIKit
-import FirebaseFirestore
 
-class ViewController: UIViewController {
+class ListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
