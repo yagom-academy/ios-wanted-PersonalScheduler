@@ -62,6 +62,10 @@ class ScheduleViewController: UIViewController {
             bottom: 20,
             trailing: 20
         )
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissKeyboard))
+        stackView.addGestureRecognizer(tap)
         let titleView = ScheduleContentView(
             icon: UIImage(systemName: "circle.fill")?.withTintColor(.psToday).withRenderingMode(.alwaysOriginal),
             contentView: titleTextField
@@ -174,6 +178,10 @@ private extension ScheduleViewController {
     
     @objc func didTapEndDate(_ gesture: UITapGestureRecognizer) {
         showDatePicker(Date().nearestHour().plusHour(1))
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func showDatePicker(_ date: Date) {
