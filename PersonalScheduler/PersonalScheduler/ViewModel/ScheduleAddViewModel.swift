@@ -16,7 +16,7 @@ final class ScheduleAddViewModel: ObservableObject {
     @Published var buttonAlert: ButtonAlert = .postCheck
 
     private let firebaseStorageManager = FirebaseStorageManager()
-    private let notiManager = NotificationManager.instance
+    private let notificationManager = NotificationManager.instance
 
     func postSchedule(uid: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
         firebaseStorageManager.uploadPost(
@@ -26,7 +26,7 @@ final class ScheduleAddViewModel: ObservableObject {
             startTimeStamp: startTimeStamp,
             endTimeStamp: endTimeStamp
         )
-        notiManager.scheduleNotification(uuid: uid, title: title, subtitle: description, Date: endTimeStamp)
+        notificationManager.scheduleNotification(uuid: uid, title: title, subtitle: description, Date: endTimeStamp)
     }
     
     func editSchedule(uid: String, uuid: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
@@ -38,7 +38,7 @@ final class ScheduleAddViewModel: ObservableObject {
             startTimeStamp: startTimeStamp,
             endTimeStamp: endTimeStamp
         )
-        notiManager.cancelNotification(uid: uid)
-        notiManager.scheduleNotification(uuid: uid, title: title, subtitle: description, Date: endTimeStamp)
+        notificationManager.cancelNotification(uid: uid)
+        notificationManager.scheduleNotification(uuid: uid, title: title, subtitle: description, Date: endTimeStamp)
     }
 }
