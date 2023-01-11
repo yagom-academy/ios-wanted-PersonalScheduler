@@ -20,6 +20,7 @@
 		FD4906BB296E8FF2002D4E05 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FD4906BD296E8FF2002D4E05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD4906C0296E8FF2002D4E05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FD4906DB296F2AC7002D4E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +54,7 @@
 		FD4906B8296E8FF2002D4E05 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				FD4906DB296F2AC7002D4E05 /* Info.plist */,
 				FD4906B9296E8FF2002D4E05 /* PersonalSchedulerApp.swift */,
 				FD4906BB296E8FF2002D4E05 /* ContentView.swift */,
 				FD4906BD296E8FF2002D4E05 /* Assets.xcassets */,
@@ -278,6 +280,7 @@
 				DEVELOPMENT_TEAM = 4K2FDLWHBL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PersonalScheduler/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -308,6 +311,7 @@
 				DEVELOPMENT_TEAM = 4K2FDLWHBL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PersonalScheduler/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
