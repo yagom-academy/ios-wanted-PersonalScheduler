@@ -75,15 +75,21 @@ final class ScheduleListTableViewCell: UITableViewCell {
     func congigure(with schedule: Schedule) {
         titleLabel.text = schedule.title
         contentLabel.text = schedule.content
-        changeBellImage(schedule.isNotified)
+        changeBellImage(schedule.isNotified, Date() > schedule.startTime)
         changeHighlight(schedule.endTime)
     }
     
-    private func changeBellImage(_ isNotified: Bool) {
-        if isNotified {
-            bellImageView.image = ScheduleImage.notifyingBell
-        } else {
+    private func changeBellImage(_ isNotified: Bool, _ isOverDue: Bool) {
+        if isNotified == false {
             bellImageView.image = ScheduleImage.unnotifyingBell
+        } else if isOverDue {
+            bellImageView.image = ScheduleImage.notifiedBell
+        } else {
+            bellImageView.image = ScheduleImage.notifyingBell
+        }
+        
+        if isOverDue {
+            bellImageView.tintColor = .systemGray
         }
     }
     
@@ -95,6 +101,14 @@ final class ScheduleListTableViewCell: UITableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bellImageView.tintColor = .systemOrange
+    }
+}
+
+//MARK: Setup view
+extension ScheduleListTableViewCell {
     private func setupView() {
         addSubView()
         setupConstraint()
@@ -134,7 +148,6 @@ final class ScheduleListTableViewCell: UITableViewCell {
         ])
     }
 }
-
 
 enum ScheduleImage {
     static let notifyingBell = UIImage(systemName: "bell.circle.fill")
