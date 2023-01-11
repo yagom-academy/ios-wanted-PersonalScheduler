@@ -11,10 +11,10 @@
 		FD4906BC296E8FF2002D4E05 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906BB296E8FF2002D4E05 /* ContentView.swift */; };
 		FD4906BE296E8FF2002D4E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD4906BD296E8FF2002D4E05 /* Assets.xcassets */; };
 		FD4906C1296E8FF2002D4E05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD4906C0296E8FF2002D4E05 /* Preview Assets.xcassets */; };
-		FD4906DA296F29EC002D4E05 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FD4906D9296F29EC002D4E05 /* KakaoSDKAuth */; };
 		FD4906DE296F2ED4002D4E05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906DD296F2ED4002D4E05 /* AppDelegate.swift */; };
 		FD4906E0296F2F89002D4E05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906DF296F2F89002D4E05 /* SceneDelegate.swift */; };
 		FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */; };
+		FD4906E6296F3B23002D4E05 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = FD4906E5296F3B23002D4E05 /* KakaoSDKUser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD4906DA296F29EC002D4E05 /* KakaoSDKAuth in Frameworks */,
+				FD4906E6296F3B23002D4E05 /* KakaoSDKUser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +107,7 @@
 			);
 			name = PersonalScheduler;
 			packageProductDependencies = (
-				FD4906D9296F29EC002D4E05 /* KakaoSDKAuth */,
+				FD4906E5296F3B23002D4E05 /* KakaoSDKUser */,
 			);
 			productName = PersonalScheduler;
 			productReference = FD4906B6296E8FF2002D4E05 /* PersonalScheduler.app */;
@@ -138,7 +138,7 @@
 			);
 			mainGroup = FD4906AD296E8FF2002D4E05;
 			packageReferences = (
-				FD4906D8296F29EC002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				FD4906E4296F3B23002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = FD4906B7296E8FF2002D4E05 /* Products */;
 			projectDirPath = "";
@@ -381,7 +381,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FD4906D8296F29EC002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+		FD4906E4296F3B23002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
 			requirement = {
@@ -392,10 +392,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FD4906D9296F29EC002D4E05 /* KakaoSDKAuth */ = {
+		FD4906E5296F3B23002D4E05 /* KakaoSDKUser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FD4906D8296F29EC002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKAuth;
+			package = FD4906E4296F3B23002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
