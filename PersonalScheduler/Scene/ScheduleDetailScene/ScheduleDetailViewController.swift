@@ -139,9 +139,19 @@ final class ScheduleDetailViewController: UIViewController {
                                             target: self,
                                             action: #selector(saveBarButtonTapped))
         
-        navigationItem.rightBarButtonItem = saveBarButton
-        navigationItem.title = ScheduleInfo.newSchedule
+        let editBarButton = UIBarButtonItem(title: ScheduleInfo.Edit.modify,
+                                            style: .done,
+                                            target: self,
+                                            action: #selector(editBarButtonTapped))
         
+        switch viewMode {
+        case .display(let schedule):
+            navigationItem.title = schedule.title
+            navigationItem.rightBarButtonItem = editBarButton
+        case .create:
+            navigationItem.title = ScheduleInfo.newSchedule
+            navigationItem.rightBarButtonItem = saveBarButton
+        }
     }
     
     @objc private func saveBarButtonTapped() {
@@ -150,14 +160,19 @@ final class ScheduleDetailViewController: UIViewController {
         scheduleViewModel.save(newSchedule, at: "judy")
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc private func editBarButtonTapped() {
+        changeEditable(true)
+    }
 }
 
 
 enum ScheduleInfo {
     static let newSchedule = "새로운 일정"
     static let scheduleList = "일정 목록"
-    
+
     enum Edit {
+        static let modify = "편집"
         static let save = "저장"
         static let allDay = "하루종일"
         static let openDate = "시작"
