@@ -16,7 +16,8 @@ final class ScheduleListViewModel: ObservableObject {
     private let firebaseStorageManager = FirebaseStorageManager()
     private let firebaseLoginManager = FirebaseLoginManager()
     private let kakaoLoginManager = KakaoLoginManager()
-    
+    private let notiManager = NotificationManager.instance
+
     @Published var lists = [ScheduleList]()
     @Published var buttonAlert: ButtonAlert = .logout
 
@@ -28,6 +29,7 @@ final class ScheduleListViewModel: ObservableObject {
     
     func delete(accountUID: String, uuid: String) {
         firebaseStorageManager.deleteScheduleList(accountUID: accountUID, uuid: uuid)
+        notiManager.cancelNotification(uid: accountUID)
     }
     
     func logout() {
