@@ -7,4 +7,8 @@
 
 import Foundation
 
-protocol ScheduleCoordinatorInterface: AnyObject {}
+protocol ScheduleCoordinatorInterface: AnyObject {
+    
+    func dismiss()
+
+}

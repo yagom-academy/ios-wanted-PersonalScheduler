@@ -49,9 +49,10 @@ class ScheduleListViewController: UIViewController {
     }()
     
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: listLayout())
         collectionView.register(ScheduleCell.self)
         collectionView.backgroundColor = .psBackground
+        collectionView.delegate = self
         return collectionView
     }()
     
@@ -100,13 +101,14 @@ private extension ScheduleListViewController {
             target: self,
             action: #selector(didTapMoreButton(_:))
         )
-        moreButton.tintColor = .label
         navigationItem.rightBarButtonItem = moreButton
         navigationController?.addCustomBottomLine(color: .systemGray4, height: 0.3)
     }
     
     @objc func didTapNavigationTitle(_ gesture: UITapGestureRecognizer) {
-        print(#function)
+        showDatePickerAlert(Date()) { date in
+            print(date.toString(.yyyyMMddEEEE))
+        }
     }
     
     @objc func didTapMoreButton(_ sender: UIBarButtonItem) {
@@ -114,7 +116,7 @@ private extension ScheduleListViewController {
     }
     
     @objc func didTapAddButton(_ sender: UIBarButtonItem) {
-        print(#function)
+        coordinator?.showCreateSchedule()
     }
     
     func setUpDataSource() {
@@ -148,32 +150,35 @@ private extension ScheduleListViewController {
         dataSource?.apply(snapshot)
     }
     
-    func createLayout() -> UICollectionViewCompositionalLayout {
-        UICollectionViewCompositionalLayout { [weak self] (sectionNumber, _) -> NSCollectionLayoutSection? in
-            let section = Section(index: sectionNumber)
-            switch section {
-            case .schedule: return self?.scheduleSectionLayout()
-            default: return nil
-            }
-        }
+    func listLayout() -> UICollectionViewCompositionalLayout {
+        var listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
+        listConfiguration.showsSeparators = false
+        listConfiguration.backgroundColor = .psBackground
+        listConfiguration.trailingSwipeActionsConfigurationProvider = makeSwipeActions
+        return UICollectionViewCompositionalLayout.list(using: listConfiguration)
     }
     
-    func scheduleSectionLayout() -> NSCollectionLayoutSection? {
-        let layoutSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .estimated(100)
-        )
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: .init(
-                widthDimension: layoutSize.widthDimension,
-                heightDimension: layoutSize.heightDimension
-            ),
-            subitems: [.init(layoutSize: layoutSize)]
-        )
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: .zero, leading: .zero, bottom: .zero, trailing: .zero)
-        return section
+    func makeSwipeActions(for indexPath: IndexPath?) -> UISwipeActionsConfiguration? {
+        guard let indexPath = indexPath, let schedule = dataSource?.itemIdentifier(for: indexPath) else {
+            return nil
+        }
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { _, _, completeHandeler in
+            print(schedule)
+            completeHandeler(true)
+        }
+        deleteAction.image = UIImage(systemName: "trash.fill")
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+}
+
+extension ScheduleListViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let schedule = dataSource?.itemIdentifier(for: indexPath) else {
+            return
+        }
+        coordinator?.showEditSchedule(schedule)
     }
     
 }

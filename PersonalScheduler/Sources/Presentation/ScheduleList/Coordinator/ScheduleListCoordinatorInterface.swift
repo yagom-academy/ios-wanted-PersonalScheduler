@@ -10,6 +10,6 @@ import Foundation
 protocol ScheduleListCoordinatorInterface: AnyObject {
     
     func showCreateSchedule()
-    func showEditSchedule()
+    func showEditSchedule(_ schedule: Schedule)
     
 }
