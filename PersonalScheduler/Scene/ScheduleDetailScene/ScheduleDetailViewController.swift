@@ -73,7 +73,7 @@ final class ScheduleDetailViewController: UIViewController {
         }
     }
     
-    private func createSchedule() -> Schedule? {
+    private func createSchedule(_ id: UUID = UUID()) -> Schedule? {
         guard let title = titleTextField.text,
               let content = contentTextView.text else { return nil }
         
@@ -90,7 +90,7 @@ final class ScheduleDetailViewController: UIViewController {
             return nil
         }
         
-        return Schedule(id: UUID(),
+        return Schedule(id: id,
                         title: title,
                         content: content,
                         isNotified: notificationSwitchView.isSwitchOn,
@@ -178,13 +178,26 @@ extension ScheduleDetailViewController {
     }
     
     @objc private func saveBarButtonTapped() {
-        guard let newSchedule = createSchedule() else { return }
+        let savedSchedule: Schedule?
+        
+        switch viewMode {
+        case .display(let schedule):
+            savedSchedule = createSchedule(schedule.id)
+        case .create:
+            savedSchedule = createSchedule()
+        }
 
-        scheduleViewModel.save(newSchedule, at: "judy")
+        guard let schedule = savedSchedule else { return }
+        
+        scheduleViewModel.save(schedule, at: "judy")
         navigationController?.popViewController(animated: true)
     }
     
     @objc private func editBarButtonTapped() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: ScheduleInfo.Edit.save,
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(saveBarButtonTapped))
         changeEditable(true)
     }
 }
