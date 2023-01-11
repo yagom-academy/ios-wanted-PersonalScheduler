@@ -26,6 +26,10 @@ final class ScheduleListViewModel: ObservableObject {
         }
     }
     
+    func delete(accountUID: String, uuid: String) {
+        firebaseStorageManager.deleteScheduleList(accountUID: accountUID, uuid: uuid)
+    }
+    
     func logout() {
         self.buttonAlert = .logout
         firebaseLoginManager.handleLogout()

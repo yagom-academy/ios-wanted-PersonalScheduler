@@ -46,14 +46,17 @@ struct ScheduleListView: View {
                                 .lineLimit(1)
                         }
                     }
+                    .onDelete { indexSet in
+                        for index in indexSet {
+                            scheduleListViewModel.delete(
+                                accountUID: uid,
+                                uuid: scheduleListViewModel.lists[index].id
+                            )
+                        }
+                    }
                 }
                 .listStyle(.plain)
                 
-                Button {
-                    isActiveAlert.toggle()
-                } label: {
-                    Text("로그아웃")
-                }
             }
             .padding()
             .alert(isPresented: $isActiveAlert) {

@@ -57,4 +57,8 @@ final class FirebaseStorageManager {
                 completion(self!.posts)
             }
     }
+    
+    func deleteScheduleList(accountUID: String, uuid: String) {
+        db.collection(FirebaseQuery.collection).document(accountUID).collection("collection").document(uuid).delete()
+    }
 }
