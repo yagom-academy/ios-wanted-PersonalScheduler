@@ -17,6 +17,8 @@
 		A3DEB0D2296CE9040079903A /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0D1296CE9040079903A /* ScheduleListViewModel.swift */; };
 		A3DEB0D4296CF3DE0079903A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3DEB0D3296CF3DE0079903A /* GoogleService-Info.plist */; };
 		A3DEB0D7296D94EC0079903A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0D6296D94EC0079903A /* Date+Extension.swift */; };
+		A3DEB0D9296E71EA0079903A /* ScheduleAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0D8296E71EA0079903A /* ScheduleAddView.swift */; };
+		A3DEB0DB296E7C0E0079903A /* ScheduleAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0DA296E7C0E0079903A /* ScheduleAddViewModel.swift */; };
 		A3EB6986296BAFB4004F492A /* PersonalSchedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */; };
 		A3EB6988296BAFB4004F492A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6987296BAFB4004F492A /* LoginView.swift */; };
 		A3EB698A296BAFB5004F492A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3EB6989296BAFB5004F492A /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 		A3DEB0D1296CE9040079903A /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
 		A3DEB0D3296CF3DE0079903A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3DEB0D6296D94EC0079903A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		A3DEB0D8296E71EA0079903A /* ScheduleAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleAddView.swift; sourceTree = "<group>"; };
+		A3DEB0DA296E7C0E0079903A /* ScheduleAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleAddViewModel.swift; sourceTree = "<group>"; };
 		A3EB6982296BAFB4004F492A /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSchedulerApp.swift; sourceTree = "<group>"; };
 		A3EB6987296BAFB4004F492A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 				A3EB6995296BE8C0004F492A /* LoginViewModel.swift */,
 				A3DEB0C8296C411E0079903A /* SignUpViewModel.swift */,
 				A3DEB0D1296CE9040079903A /* ScheduleListViewModel.swift */,
+				A3DEB0DA296E7C0E0079903A /* ScheduleAddViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				A3EB6987296BAFB4004F492A /* LoginView.swift */,
 				A3DEB0C6296C3ED70079903A /* SignUpView.swift */,
 				A3DEB0CA296C5CCE0079903A /* ScheduleListView.swift */,
+				A3DEB0D8296E71EA0079903A /* ScheduleAddView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,6 +218,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = A3EB6979296BAFB4004F492A;
 			productRefGroup = A3EB6983296BAFB4004F492A /* Products */;
@@ -288,9 +295,11 @@
 				A3DEB0D0296C5EAE0079903A /* FirebaseStorageManager.swift in Sources */,
 				A3DEB0C5296C08770079903A /* FirebaseLoginManager.swift in Sources */,
 				A3EB6996296BE8C0004F492A /* LoginViewModel.swift in Sources */,
+				A3DEB0DB296E7C0E0079903A /* ScheduleAddViewModel.swift in Sources */,
 				A3DEB0D7296D94EC0079903A /* Date+Extension.swift in Sources */,
 				A3DEB0C7296C3ED70079903A /* SignUpView.swift in Sources */,
 				A3DEB0CB296C5CCE0079903A /* ScheduleListView.swift in Sources */,
+				A3DEB0D9296E71EA0079903A /* ScheduleAddView.swift in Sources */,
 				A3EB6986296BAFB4004F492A /* PersonalSchedulerApp.swift in Sources */,
 				A3DEB0D2296CE9040079903A /* ScheduleListViewModel.swift in Sources */,
 				A3DEB0CD296C5E080079903A /* ScheduleList.swift in Sources */,

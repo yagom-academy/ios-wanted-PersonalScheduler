@@ -27,7 +27,7 @@ struct ScheduleListView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     NavigationLink {
-                        
+                        ScheduleAddView(uid: uid)
                     } label: {
                         Image(uiImage: UIImage(systemName: "plus")!)
                     }
