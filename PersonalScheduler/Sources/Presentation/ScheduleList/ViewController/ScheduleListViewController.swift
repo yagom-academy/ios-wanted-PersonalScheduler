@@ -49,7 +49,7 @@ class ScheduleListViewController: UIViewController {
     }()
     
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: listLayout())
         collectionView.register(ScheduleCell.self)
         collectionView.backgroundColor = .psBackground
         collectionView.delegate = self
@@ -148,32 +148,24 @@ private extension ScheduleListViewController {
         dataSource?.apply(snapshot)
     }
     
-    func createLayout() -> UICollectionViewCompositionalLayout {
-        UICollectionViewCompositionalLayout { [weak self] (sectionNumber, _) -> NSCollectionLayoutSection? in
-            let section = Section(index: sectionNumber)
-            switch section {
-            case .schedule: return self?.scheduleSectionLayout()
-            default: return nil
-            }
-        }
+    func listLayout() -> UICollectionViewCompositionalLayout {
+        var listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
+        listConfiguration.showsSeparators = false
+        listConfiguration.backgroundColor = .psBackground
+        listConfiguration.trailingSwipeActionsConfigurationProvider = makeSwipeActions
+        return UICollectionViewCompositionalLayout.list(using: listConfiguration)
     }
     
-    func scheduleSectionLayout() -> NSCollectionLayoutSection? {
-        let layoutSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .estimated(100)
-        )
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: .init(
-                widthDimension: layoutSize.widthDimension,
-                heightDimension: layoutSize.heightDimension
-            ),
-            subitems: [.init(layoutSize: layoutSize)]
-        )
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: .zero, leading: .zero, bottom: .zero, trailing: .zero)
-        return section
+    func makeSwipeActions(for indexPath: IndexPath?) -> UISwipeActionsConfiguration? {
+        guard let indexPath = indexPath, let schedule = dataSource?.itemIdentifier(for: indexPath) else {
+            return nil
+        }
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { _, _, completeHandeler in
+            print(schedule)
+            completeHandeler(true)
+        }
+        deleteAction.image = UIImage(systemName: "trash.fill")
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
 }
@@ -181,13 +173,10 @@ private extension ScheduleListViewController {
 extension ScheduleListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let dummySchedule = Schedule(
-            title: "당근 거래",
-            startDate: Date(),
-            endDate: Date(),
-            description: "공기 청정기를 살거야~~ 요즘에 공기가 너무 안좋아서 살 수 밖에 없어...."
-        )
-        coordinator?.showEditSchedule(dummySchedule)
+        guard let schedule = dataSource?.itemIdentifier(for: indexPath) else {
+            return
+        }
+        coordinator?.showEditSchedule(schedule)
     }
     
 }

@@ -34,7 +34,6 @@ final class ScheduleCell: UICollectionViewCell {
         let view = UIView()
         view.backgroundColor = .psSecondaryBackground
         view.widthAnchor.constraint(equalToConstant: 4).isActive = true
-//        view.heightAnchor.constraint(equalTo: backgroundStackView.heightAnchor).isActive = true
         view.clipsToBounds = true
         view.layer.cornerRadius = 2
         return view
@@ -72,6 +71,11 @@ final class ScheduleCell: UICollectionViewCell {
         return label
     }()
     
+    private lazy var dateView: DateView = {
+        let view = DateView()
+        return view
+    }()
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         reset()
@@ -85,12 +89,7 @@ final class ScheduleCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
-    private lazy var dateView: DateView = {
-        let view = DateView()
-        return view
-    }()
-    
+
 }
 
 extension ScheduleCell {
@@ -117,7 +116,7 @@ private extension ScheduleCell {
     func configure() {
         contentView.backgroundColor = .psBackground
         contentView.addSubviews(backgroundStackView, separatorView)
-        NSLayoutConstraint.activate([
+        let constraints: [NSLayoutConstraint] = [
             backgroundStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             backgroundStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             backgroundStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -126,7 +125,11 @@ private extension ScheduleCell {
             separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             colorSeparatorView.heightAnchor.constraint(equalTo: backgroundStackView.heightAnchor, constant: -40)
-        ])
+        ]
+        constraints.forEach { constraint in
+            constraint.priority = .init(999)
+        }
+        NSLayoutConstraint.activate(constraints)
     }
     
     func reset() {
