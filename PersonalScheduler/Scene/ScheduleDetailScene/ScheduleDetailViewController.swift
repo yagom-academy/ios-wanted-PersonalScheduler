@@ -65,12 +65,28 @@ final class ScheduleDetailViewController: UIViewController {
         }
     }
     
+    private func bind() {
+        scheduleViewModel.error.subscribe { [weak self] error in
+            if let description = error {
+                self?.showAlert(message: description)
+            }
+        }
+    }
+    
     private func createSchedule() -> Schedule? {
         guard let title = titleTextField.text,
               let content = contentTextView.text else { return nil }
         
         guard title.isEmpty == false,
               content.isEmpty == false else {
+            showAlert(title: "저장 실패",
+                      message: "모든 항목을 입력해주세요.")
+            return nil
+        }
+        
+        guard startDatePicker.selectedDate <= endDatePicker.selectedDate else {
+            showAlert(title: "저장 실패",
+                      message: "시작 날짜가 종료 날짜보다 이후일 수 없습니다.")
             return nil
         }
         
@@ -89,6 +105,7 @@ extension ScheduleDetailViewController {
         addSubView()
         setupConstraint()
         setupNavigationBar()
+        setupTextViewDelegate()
         view.backgroundColor = .systemBackground
     }
     
@@ -171,3 +188,23 @@ extension ScheduleDetailViewController {
         changeEditable(true)
     }
 }
+
+//MARK: TextView Delegate
+extension ScheduleDetailViewController: UITextViewDelegate {
+    private func setupTextViewDelegate() {
+        contentTextView.delegate = self
+    }
+    
+    func textView(_ textView: UITextView,
+                  shouldChangeTextIn range: NSRange,
+                  replacementText text: String) -> Bool {
+        guard textView.text.count + text.count <= 500 else {
+            showAlert(message: "내용은 500자 이하만 가능합니다.")
+            return false
+        }
+        
+        return true
+    }
+}
+
+
