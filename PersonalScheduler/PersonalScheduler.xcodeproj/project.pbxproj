@@ -11,6 +11,7 @@
 		FD4906BC296E8FF2002D4E05 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906BB296E8FF2002D4E05 /* ContentView.swift */; };
 		FD4906BE296E8FF2002D4E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD4906BD296E8FF2002D4E05 /* Assets.xcassets */; };
 		FD4906C1296E8FF2002D4E05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD4906C0296E8FF2002D4E05 /* Preview Assets.xcassets */; };
+		FD4906DA296F29EC002D4E05 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FD4906D9296F29EC002D4E05 /* KakaoSDKAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD4906DA296F29EC002D4E05 /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = PersonalScheduler;
+			packageProductDependencies = (
+				FD4906D9296F29EC002D4E05 /* KakaoSDKAuth */,
+			);
 			productName = PersonalScheduler;
 			productReference = FD4906B6296E8FF2002D4E05 /* PersonalScheduler.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = FD4906AD296E8FF2002D4E05;
+			packageReferences = (
+				FD4906D8296F29EC002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+			);
 			productRefGroup = FD4906B7296E8FF2002D4E05 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -341,6 +349,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FD4906D8296F29EC002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FD4906D9296F29EC002D4E05 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD4906D8296F29EC002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FD4906AE296E8FF2002D4E05 /* Project object */;
 }
