@@ -21,6 +21,7 @@
 		FD4906BD296E8FF2002D4E05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD4906C0296E8FF2002D4E05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FD4906DB296F2AC7002D4E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FD4906DC296F2B9F002D4E05 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +39,7 @@
 		FD4906AD296E8FF2002D4E05 = {
 			isa = PBXGroup;
 			children = (
+				FD4906DC296F2B9F002D4E05 /* Config.xcconfig */,
 				FD4906B8296E8FF2002D4E05 /* PersonalScheduler */,
 				FD4906B7296E8FF2002D4E05 /* Products */,
 			);
