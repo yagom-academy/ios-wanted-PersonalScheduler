@@ -21,6 +21,8 @@
 		204ACE1C296CFF1F003BAD46 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE1B296CFF1F003BAD46 /* Schedule.swift */; };
 		204C9627296D6FDA000575BE /* ScheduleSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204C9626296D6FDA000575BE /* ScheduleSwitchView.swift */; };
 		204C9629296D6FE8000575BE /* ScheduleDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204C9628296D6FE8000575BE /* ScheduleDatePickerView.swift */; };
+		207950C3296EF25B004D27EB /* ScheduleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207950C2296EF25B004D27EB /* ScheduleInfo.swift */; };
+		207950C5296EF27D004D27EB /* DetailViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207950C4296EF27D004D27EB /* DetailViewMode.swift */; };
 		20800DC4296D3787009E3CFC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20800DC3296D3787009E3CFC /* GoogleService-Info.plist */; };
 		20800DC6296D3A72009E3CFC /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20800DC5296D3A72009E3CFC /* ScheduleViewModel.swift */; };
 		20800DC8296D3F84009E3CFC /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20800DC7296D3F84009E3CFC /* Observable.swift */; };
@@ -40,6 +42,8 @@
 		204ACE1B296CFF1F003BAD46 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		204C9626296D6FDA000575BE /* ScheduleSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSwitchView.swift; sourceTree = "<group>"; };
 		204C9628296D6FE8000575BE /* ScheduleDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePickerView.swift; sourceTree = "<group>"; };
+		207950C2296EF25B004D27EB /* ScheduleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInfo.swift; sourceTree = "<group>"; };
+		207950C4296EF27D004D27EB /* DetailViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewMode.swift; sourceTree = "<group>"; };
 		20800DC3296D3787009E3CFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		20800DC5296D3A72009E3CFC /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		20800DC7296D3F84009E3CFC /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -131,6 +135,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		207950C1296EF241004D27EB /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				204C9626296D6FDA000575BE /* ScheduleSwitchView.swift */,
+				204C9628296D6FE8000575BE /* ScheduleDatePickerView.swift */,
+				207950C4296EF27D004D27EB /* DetailViewMode.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		20CD5DCA296D5C1000DB0D7D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +167,7 @@
 		20CD5DCC296D5C3800DB0D7D /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				207950C2296EF25B004D27EB /* ScheduleInfo.swift */,
 				204ACE03296CED21003BAD46 /* ScheduleListTableViewCell.swift */,
 			);
 			path = SubViews;
@@ -178,8 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				20CD5DD0296D643700DB0D7D /* ScheduleDetailViewController.swift */,
-				204C9626296D6FDA000575BE /* ScheduleSwitchView.swift */,
-				204C9628296D6FE8000575BE /* ScheduleDatePickerView.swift */,
+				207950C1296EF241004D27EB /* SubViews */,
 			);
 			path = ScheduleDetailScene;
 			sourceTree = "<group>";
@@ -299,6 +313,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				20CD5DD1296D643700DB0D7D /* ScheduleDetailViewController.swift in Sources */,
+				207950C3296EF25B004D27EB /* ScheduleInfo.swift in Sources */,
+				207950C5296EF27D004D27EB /* DetailViewMode.swift in Sources */,
 				20800DC8296D3F84009E3CFC /* Observable.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* ScheduleListViewController.swift in Sources */,
 				204ACE1A296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift in Sources */,
