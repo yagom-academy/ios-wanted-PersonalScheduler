@@ -21,8 +21,8 @@ final class DefaultScheduleRepository: ScheduleRepository {
     private let localStorage: LocalStorageService
     
     init(
-        firestoreStorage: FirestoreStorageService,
-        localStorage: LocalStorageService
+        firestoreStorage: FirestoreStorageService = FirestoreStorage.shared,
+        localStorage: LocalStorageService = UserDefaults.standard
     ) {
         self.firestoreStorage = firestoreStorage
         self.localStorage = localStorage
@@ -33,7 +33,7 @@ final class DefaultScheduleRepository: ScheduleRepository {
             return Empty().eraseToAnyPublisher()
         }
         return firestoreStorage.read(userID: user.userID)
-            .map { $0.schedules ?? [] }
+            .map { $0.schedules?.sorted { $0.startDate < $1.startDate } ?? [] }
             .eraseToAnyPublisher()
     }
     

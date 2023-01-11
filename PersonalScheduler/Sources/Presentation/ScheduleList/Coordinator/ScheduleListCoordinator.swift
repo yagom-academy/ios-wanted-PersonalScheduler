@@ -31,7 +31,7 @@ private extension ScheduleListCoordinator {
     
     func makeScheduleListViewController() -> UIViewController {
         let viewController = ScheduleListViewController(
-            viewModel: ScheduleListViewModel(),
+            viewModel: DefaultScheduleListViewModel(),
             coordinator: self
         )
         return viewController
