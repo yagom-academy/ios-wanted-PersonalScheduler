@@ -81,7 +81,10 @@ final class ScheduleDetailViewController: UIViewController {
                         startTime: startDatePicker.selectedDate,
                         endTime: endDatePicker.selectedDate)
     }
-    
+}
+
+//MARK: Setup View
+extension ScheduleDetailViewController {
     private func setupView() {
         addSubView()
         setupConstraint()
@@ -132,7 +135,10 @@ final class ScheduleDetailViewController: UIViewController {
         notificationSwitchView.changeOnOff(isEditable)
         contentTextView.isEditable = isEditable
     }
-    
+}
+
+//MARK: Setup NavigationItem
+extension ScheduleDetailViewController {
     private func setupNavigationBar() {
         let saveBarButton = UIBarButtonItem(title: ScheduleInfo.Edit.save,
                                             style: .done,
@@ -165,7 +171,6 @@ final class ScheduleDetailViewController: UIViewController {
         changeEditable(true)
     }
 }
-
 
 enum ScheduleInfo {
     static let newSchedule = "새로운 일정"
