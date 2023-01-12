@@ -10,7 +10,9 @@ import UIKit
 extension UINavigationController {
     
     func addCustomBottomLine(color: UIColor, height: Double) {
-        navigationBar.setValue(true, forKey: "hidesShadow")
+        guard navigationBar.subviews.count <= 3 else {
+            return
+        }
         let lineView = UIView()
         lineView.backgroundColor = color
         navigationBar.addSubview(lineView)
