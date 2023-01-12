@@ -49,7 +49,7 @@ extension LoginViewController {
     
     @objc
     private func signInButtonTapped(_ sender: ASAuthorizationAppleIDButton) {
-        
+        viewModel.appleIDAuthorization()
     }
 }
 
@@ -96,4 +96,3 @@ extension LoginViewController {
         ])
     }
 }
-
