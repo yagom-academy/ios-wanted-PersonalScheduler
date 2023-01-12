@@ -112,40 +112,61 @@ final class LoginViewController: UIViewController {
     
     @objc
     private func kakaoButtonDidTap() {
-        UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-            if let error = error {
-                /// alertController
-                print(error)
-            }
-            else {
-                UserApi.shared.me { (user, error) in
-                    if let error = error {
-                        /// alertController
-                        print(error)
-                    } else {
-                        /// Next ViewController
-                        print(user?.id)
-                    }
+        if UserApi.isKakaoTalkLoginAvailable() {
+            UserApi.shared.loginWithKakaoTalk { oauthToken, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    self.setupKakaoUserInfo()
                 }
             }
+        } else {
+            UserApi.shared.loginWithKakaoAccount { oauthToken, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    self.setupKakaoUserInfo()
+                }
+            }
+        }
+    }
+    
+    private func setupKakaoUserInfo() {
+        UserApi.shared.me { user, error in
+            if let error = error {
+                print(error)
+            }
+            
+            print(user?.kakaoAccount?.email)
         }
     }
     
     @objc
     private func facebookButtonDidTap() {
         let loginManager = LoginManager()
-
-        loginManager.logIn(
-            permissions: ["public_profile", "email"],
-            from: self
-        ) { result, error in
-            if let error = error {
-                /// alertController
-            } else {
-                /// NextViewController
+        loginManager.logIn(permissions: [.email]) { result in
+            switch result {
+            case .cancelled:
+                print("Login Canceled")
+            case .failed(let error):
+                print(error)
+            case .success(_, _, _):
+                GraphRequest.init(
+                    graphPath: "me",
+                    parameters: ["fields": "email"]
+                ).start { connection, result, error in
+                    if let error = error {
+                        print(error)
+                    }
+                    
+                    let userInfo = result as? [String: Any]
+                    let email = userInfo?["email"] as? String
+                    
+                    print(email)
+                    
+                }
             }
+            
         }
     }
-    
 }
-
