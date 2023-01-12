@@ -33,7 +33,7 @@ final class ScheduleListViewModel {
         let now = Date()
         switch section {
         case .current:
-            return schedules.filter { $0.startDate < now && now < $0.endDate } // TODO: Need to make filter logic
+            return schedules.filter { $0.startDate < now && now < $0.endDate }
         case .upcoming:
             return schedules.filter { now < $0.startDate }
         case .done:
