@@ -45,7 +45,7 @@ final class ScheduleViewModel: ScheduleViewModelType {
         scheduleFirestoreUseCase.fetch(at: userID) { [weak self] result in
             switch result {
             case .success(let schedules):
-                self?.schedules.value = schedules
+                self?.schedules.value = schedules.sorted(by: { $0.startTime > $1.startTime } )
             case .failure(let error):
                 self?.error.value = error.localizedDescription
             }
