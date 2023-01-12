@@ -24,7 +24,7 @@ final class ScheduleViewController: UIViewController {
     private let enrollButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("등록", for: .normal)
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         
         return button
@@ -63,6 +63,7 @@ final class ScheduleViewController: UIViewController {
         setupSubviews()
         setupConstraints()
         setupTableView()
+        setupEnrollButton()
     }
     
     private func setupSubviews() {
@@ -122,6 +123,20 @@ final class ScheduleViewController: UIViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    private func setupEnrollButton() {
+        enrollButton.addTarget(
+            self,
+            action: #selector(enrollButtonDidTap),
+            for: .touchUpInside
+        )
+    }
+    
+    @objc
+    private func enrollButtonDidTap() {
+        let scheduleEnrollViewController = ScheduleEnrollViewController()
+        present(scheduleEnrollViewController, animated: true)
     }
 }
 
