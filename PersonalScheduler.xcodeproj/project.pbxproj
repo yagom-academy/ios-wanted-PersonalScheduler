@@ -29,6 +29,8 @@
 		20800DC8296D3F84009E3CFC /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20800DC7296D3F84009E3CFC /* Observable.swift */; };
 		20CD5DD1296D643700DB0D7D /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CD5DD0296D643700DB0D7D /* ScheduleDetailViewController.swift */; };
 		20F44DBC296FC58A005BC329 /* Date+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F44DBB296FC58A005BC329 /* Date+toString.swift */; };
+		20F44DBF296FCE37005BC329 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 20F44DBE296FCE37005BC329 /* KakaoSDKAuth */; };
+		20F44DC1296FCE37005BC329 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 20F44DC0296FCE37005BC329 /* KakaoSDKUser */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ScheduleListViewController.swift */; };
@@ -73,6 +75,8 @@
 				204ACE0D296CF9EB003BAD46 /* FirebaseFirestoreSwift in Frameworks */,
 				204ACE11296CF9EB003BAD46 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				204ACE0F296CF9EB003BAD46 /* FirebaseInAppMessaging-Beta in Frameworks */,
+				20F44DBF296FCE37005BC329 /* KakaoSDKAuth in Frameworks */,
+				20F44DC1296FCE37005BC329 /* KakaoSDKUser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +271,8 @@
 				204ACE0E296CF9EB003BAD46 /* FirebaseInAppMessaging-Beta */,
 				204ACE10296CF9EB003BAD46 /* FirebaseInAppMessagingSwift-Beta */,
 				204ACE12296CF9EB003BAD46 /* FirebaseMessaging */,
+				20F44DBE296FCE37005BC329 /* KakaoSDKAuth */,
+				20F44DC0296FCE37005BC329 /* KakaoSDKUser */,
 			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
@@ -298,6 +304,7 @@
 			mainGroup = 63AAAAF52967EA2600775EC3;
 			packageReferences = (
 				204ACE05296CF9EB003BAD46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				20F44DBD296FCE37005BC329 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
@@ -561,6 +568,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		20F44DBD296FCE37005BC329 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -598,6 +613,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 204ACE05296CF9EB003BAD46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		20F44DBE296FCE37005BC329 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20F44DBD296FCE37005BC329 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		20F44DC0296FCE37005BC329 /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20F44DBD296FCE37005BC329 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
