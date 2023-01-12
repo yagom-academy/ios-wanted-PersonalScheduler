@@ -32,6 +32,7 @@
 		20F44DC1296FCE37005BC329 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 20F44DC0296FCE37005BC329 /* KakaoSDKUser */; };
 		20F44DC3296FD469005BC329 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F44DC2296FD469005BC329 /* LoginViewController.swift */; };
 		20F44DC7296FE1C4005BC329 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20F44DC6296FE1C4005BC329 /* GoogleService-Info.plist */; };
+		20F44DCD296FF588005BC329 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F44DCC296FF588005BC329 /* LoginManager.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ScheduleListViewController.swift */; };
@@ -56,6 +57,7 @@
 		20F44DBB296FC58A005BC329 /* Date+toString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+toString.swift"; sourceTree = "<group>"; };
 		20F44DC2296FD469005BC329 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		20F44DC6296FE1C4005BC329 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		20F44DCC296FF588005BC329 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				207950C6296EF63E004D27EB /* Extension */,
 				20CD5DCE296D5C7A00DB0D7D /* Observable */,
+				20F44DCE296FF6DD005BC329 /* LoginManager */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -225,6 +228,14 @@
 				20F44DC2296FD469005BC329 /* LoginViewController.swift */,
 			);
 			path = LoginScene;
+			sourceTree = "<group>";
+		};
+		20F44DCE296FF6DD005BC329 /* LoginManager */ = {
+			isa = PBXGroup;
+			children = (
+				20F44DCC296FF588005BC329 /* LoginManager.swift */,
+			);
+			path = LoginManager;
 			sourceTree = "<group>";
 		};
 		63AAAAF52967EA2600775EC3 = {
@@ -349,6 +360,7 @@
 				207950C5296EF27D004D27EB /* DetailViewMode.swift in Sources */,
 				20F44DBC296FC58A005BC329 /* Date+toString.swift in Sources */,
 				20F44DC3296FD469005BC329 /* LoginViewController.swift in Sources */,
+				20F44DCD296FF588005BC329 /* LoginManager.swift in Sources */,
 				20800DC8296D3F84009E3CFC /* Observable.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* ScheduleListViewController.swift in Sources */,
 				204ACE1A296CFEF3003BAD46 /* ScheduleFirestoreUseCase.swift in Sources */,
