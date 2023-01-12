@@ -16,31 +16,23 @@ final class AuthUseCase {
     
     let kakaoAuthRepository: KakaoAuthRepository = KakaoAuthRepository()
     let appleAuthRespository: AppleAuthRespository = AppleAuthRespository()
+    let keychainRepository: KeyChainRepository = KeyChainRepository()
     
-    init() {
-    }
+    init() { }
     
     func login(authType: AuthType) async throws {
         switch authType {
         case .kakao:
             let accessToken = try await kakaoAuthRepository.isKakaoTalkLoginAvailable()
+            let userId = try await kakaoAuthRepository.userId()
+            try await keychainRepository.setUserId(String(describing: userId))
+            try await keychainRepository.setAccessToken(accessToken)
         case .apple:
             let userId = try await appleAuthRespository.loginWithApple()
-            print(userId)
+            try await keychainRepository.setUserId(userId)
         case .facebook:
             print()
         }
-        
-//        let motionInfo = MotionInfo(
-//            entity: MotionInfo.entity(),
-//            insertInto: coreDataManager.coreDataStack?.managedContext
-//        )
-//        motionInfo.id = item.id
-//        motionInfo.motionType = item.motionType.rawValue
-//        motionInfo.date = item.date
-//        motionInfo.time = item.time
-//
-//        coreDataManager.save(completion: completion)
     }
     
     func getAppleAuthorizationController() -> ASAuthorizationController {

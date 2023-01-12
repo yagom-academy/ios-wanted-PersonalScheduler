@@ -25,11 +25,13 @@ protocol SignViewModellType: SignViewModelInput, SignViewModelOutput { }
 final class SignViewModel: SignViewModellType {
     
     private let authUseCase: AuthUseCase
+    private let userUseCase: UserUseCase
     private var loginTask: Task<Void, Error>?
     private var autoSignTask: Task<Void, Error>?
     
     init() {
         self.authUseCase = AuthUseCase()
+        self.userUseCase = UserUseCase()
     }
     
     /// Output
@@ -59,6 +61,7 @@ final class SignViewModel: SignViewModellType {
         self.loginTask = Task.detached(operation: {
             do {
                 try await self.authUseCase.login(authType: .kakao)
+                try await self.userUseCase.setUserDocumentation()
                 self.goToListScene.value = true
             }
             catch {
@@ -72,6 +75,7 @@ final class SignViewModel: SignViewModellType {
         self.loginTask = Task.detached(operation: {
             do {
                 try await self.authUseCase.login(authType: .apple)
+                try await self.userUseCase.setUserDocumentation()
                 self.goToListScene.value = true
             }
             catch {

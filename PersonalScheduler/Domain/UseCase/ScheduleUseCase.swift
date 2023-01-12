@@ -8,17 +8,21 @@
 import Foundation
 
 final class ScheduleUseCase {
-    let fireStoreScehduleRepository = FireStoreScehduleRepository()
+    let fireStoreScehduleRepository = FireStoreRepository()
+    let keychainRepository: KeyChainRepository = KeyChainRepository()
     
     func getScheduleList() async throws -> [ScheduleInfo] {
-        try await fireStoreScehduleRepository.fetchScheduleList()
+        let userId = try await keychainRepository.getUserId()
+        return try await fireStoreScehduleRepository.fetchScheduleList(userId: userId)
     }
     
     func addSchedule(_ schedule: ScheduleInfo) async throws {
-        try await fireStoreScehduleRepository.addSchedule(schedule)
+        let userId = try await keychainRepository.getUserId()
+        try await fireStoreScehduleRepository.addSchedule(userId: userId, schedule)
     }
     
     func deleteSchedule(_ schedule: ScheduleInfo) async throws {
-        try await fireStoreScehduleRepository.deleteSchedule(schedule)
+        let userId = try await keychainRepository.getUserId()
+        try await fireStoreScehduleRepository.deleteSchedule(userId: userId, schedule)
     }
 }

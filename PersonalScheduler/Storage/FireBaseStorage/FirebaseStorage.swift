@@ -70,9 +70,3 @@ final class FirebaseStorage {
         }
     }
 }
-
-enum FireBaseError: LocalizedError {
-    case fetch
-    case save
-    case delete
-}

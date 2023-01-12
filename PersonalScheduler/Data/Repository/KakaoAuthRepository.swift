@@ -112,3 +112,26 @@ private extension KakaoAuthRepository {
         }
     }
 }
+
+// MARK: - UserInfo
+extension KakaoAuthRepository {
+
+    /// 카카오톡 유저 id를 반환합니다.
+    func userId() async throws -> Int64 {
+        return try await withCheckedThrowingContinuation { continuation in
+            UserApi.shared.me { user, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                }
+                else {
+                    guard let userId = user?.id else {
+                        return
+                    }
+                    continuation.resume(returning: userId)
+                }
+            }
+        }
+        
+    }
+}
+
