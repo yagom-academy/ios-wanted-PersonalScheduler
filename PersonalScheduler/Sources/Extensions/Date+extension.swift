@@ -43,12 +43,6 @@ extension Date {
         return period.contains(self.timeIntervalSinceReferenceDate)
     }
     
-    func isEqualDay(from date: Date) -> Bool {
-        let lhs = Calendar.current.component(.day, from: self)
-        let rhs = Calendar.current.component(.day, from: date)
-        return lhs == rhs
-    }
-    
     func isEqualMonth(from date: Date) -> Bool {
         let lhs = Calendar.current.component(.month, from: self)
         let rhs = Calendar.current.component(.month, from: date)
