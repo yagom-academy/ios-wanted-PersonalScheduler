@@ -19,6 +19,7 @@
 		FD4906EF296FC8DB002D4E05 /* OAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906EE296FC8DB002D4E05 /* OAuthProvider.swift */; };
 		FD49070429703AA9002D4E05 /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD49070329703AA9002D4E05 /* ScheduleListView.swift */; };
 		FD49070729703BDF002D4E05 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD49070629703BDF002D4E05 /* Schedule.swift */; };
+		FD49070929703BEC002D4E05 /* ScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD49070829703BEC002D4E05 /* ScheduleDTO.swift */; };
 		FD49070C29703CAF002D4E05 /* ScheduleAddingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD49070B29703CAF002D4E05 /* ScheduleAddingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		FD4906EE296FC8DB002D4E05 /* OAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthProvider.swift; sourceTree = "<group>"; };
 		FD49070329703AA9002D4E05 /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
 		FD49070629703BDF002D4E05 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		FD49070829703BEC002D4E05 /* ScheduleDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDTO.swift; sourceTree = "<group>"; };
 		FD49070B29703CAF002D4E05 /* ScheduleAddingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleAddingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				FD49070629703BDF002D4E05 /* Schedule.swift */,
+				FD49070829703BEC002D4E05 /* ScheduleDTO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				FD4906DE296F2ED4002D4E05 /* AppDelegate.swift in Sources */,
 				FD49070C29703CAF002D4E05 /* ScheduleAddingView.swift in Sources */,
 				FD49070729703BDF002D4E05 /* Schedule.swift in Sources */,
+				FD49070929703BEC002D4E05 /* ScheduleDTO.swift in Sources */,
 				FD4906ED296F8274002D4E05 /* LoginViewModel.swift in Sources */,
 				FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */,
 				FD49070429703AA9002D4E05 /* ScheduleListView.swift in Sources */,
