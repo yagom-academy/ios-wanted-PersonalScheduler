@@ -25,6 +25,7 @@
 		0223FADE296D329900B6B32C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FADD296D329900B6B32C /* FirebaseFirestore */; };
 		0223FAE0296D329900B6B32C /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FADF296D329900B6B32C /* FirebaseFirestoreCombine-Community */; };
 		0223FAE2296D329900B6B32C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FAE1296D329900B6B32C /* FirebaseFirestoreSwift */; };
+		0223FAE6296D330500B6B32C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0223FAE5296D330400B6B32C /* GoogleService-Info.plist */; };
 		0223FAE8296D374100B6B32C /* FirestoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAE7296D374100B6B32C /* FirestoreStorage.swift */; };
 		0223FAED296D46C500B6B32C /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAEC296D46C500B6B32C /* ScheduleRepository.swift */; };
 		0223FAEF296D4E5F00B6B32C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAEE296D4E5F00B6B32C /* Coordinator.swift */; };
