@@ -29,16 +29,26 @@ final class KakaoOAuthService {
         }
     }
     
-    private func executeLoginWithKakaoTalk() {
-        UserApi.shared.loginWithKakaoTalk { oauthToken, error in
-            guard error == nil else {
-                print(error?.localizedDescription as Any)
-                return
+    private func executeLoginWithKakaoAccount() async -> Int64 {
+        await withCheckedContinuation { continuation in
+            UserApi.shared.loginWithKakaoAccount { oauthToken, error in
+                guard error == nil else {
+                    print(error?.localizedDescription as Any)
+                    return
+                }
+                
+                UserApi.shared.me { user, error in
+                    guard error == nil else {
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                    
+                    guard let userID = user?.id else {
+                        return
+                    }
+                    continuation.resume(returning: userID)
+                }
             }
-            
-            print("loginWithKakaoTalk() success.")
-            
-            _ = oauthToken
         }
     }
     
