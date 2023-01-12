@@ -12,9 +12,23 @@ struct LoginView: View {
     @StateObject var loginViewModel: LoginViewModel
     
     var body: some View {
-        Button("카카오 로그인") {
-            kakaoOAuthService.executeLogin()
+        if loginViewModel.isLoginFinished {
+            scheduleListView
+        } else {
+            VStack {
+                Button("카카오 로그인") {
+                    loginViewModel.loginButtonTapped(serviceName: loginViewModel.kakaoOAuthService)
+                }
+                
+                Button("로그아웃") {
+                    loginViewModel.logoutButtonTapped(serviceName: loginViewModel.kakaoOAuthService)
+                }
+            }
         }
+    }
+    
+    var scheduleListView: some View {
+        Text(loginViewModel.firebaseID)
     }
     
 }
