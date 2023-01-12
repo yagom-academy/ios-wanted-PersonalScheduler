@@ -37,7 +37,6 @@ final class ScheduleListViewController: UIViewController {
 
     private let currentMonthLabel: UILabel = {
         let label = UILabel()
-//        label.text = "2023년 1월"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -92,6 +91,7 @@ final class ScheduleListViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setUpCollectionViews()
+        setupLongGestureRecognizerOnCollection()
         layout()
         bind()
         viewModel.viewDidLoad()
@@ -100,6 +100,16 @@ final class ScheduleListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         viewModel.viewWillAppear()
 
+    }
+
+    private func setupLongGestureRecognizerOnCollection() {
+        let longPressedGesture = UILongPressGestureRecognizer(
+            target: self,
+            action: #selector(handleLongPress(gestureRecognizer:))
+        )
+        longPressedGesture.minimumPressDuration = 0.5
+        longPressedGesture.delaysTouchesBegan = true
+        scheduleCollectionView.addGestureRecognizer(longPressedGesture)
     }
 
     private func bind() {
@@ -223,6 +233,27 @@ final class ScheduleListViewController: UIViewController {
 
         return dataSource
     }
+
+    // MARK: - Long Press Action
+
+    @objc
+    private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        guard gestureRecognizer.state == .began else { return }
+
+        let point = gestureRecognizer.location(in: scheduleCollectionView)
+        if let indexPath = scheduleCollectionView.indexPathForItem(at: point) {
+            let alert = UIAlertController(title: "삭제하시겠습니까?", message: nil, preferredStyle: .alert)
+            let deleteAction = UIAlertAction(title: "삭제", style: .destructive) { _ in
+                if let schedule = self.scheduleCollectionViewDataSource.itemIdentifier(for: indexPath) {
+                    self.viewModel.deleteActionDone(schedule: schedule)
+                }
+            }
+            let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+            present(alert, animated: true)
+        }
+    }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -230,7 +261,9 @@ final class ScheduleListViewController: UIViewController {
 extension ScheduleListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == calendarCollectionView {
-            viewModel.dateCellSelected(indexPath: indexPath)
+            if let date = calendarCollectionViewDataSource.itemIdentifier(for: indexPath) {
+                viewModel.dateCellSelected(date: date)
+            }
         } else {
             if let schedule = scheduleCollectionViewDataSource.itemIdentifier(for: indexPath) {
                 var currentSnapshot = scheduleCollectionViewDataSource.snapshot()
@@ -242,7 +275,9 @@ extension ScheduleListViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView == calendarCollectionView {
-            viewModel.dateCellSelected(indexPath: indexPath)
+            if let date = calendarCollectionViewDataSource.itemIdentifier(for: indexPath) {
+                viewModel.dateCellSelected(date: date)
+            }
         } else {
             if let schedule = scheduleCollectionViewDataSource.itemIdentifier(for: indexPath) {
                 var currentSnapshot = scheduleCollectionViewDataSource.snapshot()

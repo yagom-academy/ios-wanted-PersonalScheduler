@@ -66,11 +66,11 @@ extension ScheduleListViewModel {
         selectCurrentDate()
     }
 
-    func dateCellSelected(indexPath: IndexPath) {
+    func dateCellSelected(date: Date) {
 
     }
 
-    func deleteActionDone(indexPath: IndexPath) {
+    func deleteActionDone(schedule: Schedule) {
 
     }
 
