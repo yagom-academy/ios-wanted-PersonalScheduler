@@ -8,17 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		FD4906BA296E8FF2002D4E05 /* PersonalSchedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906B9296E8FF2002D4E05 /* PersonalSchedulerApp.swift */; };
-		FD4906BC296E8FF2002D4E05 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906BB296E8FF2002D4E05 /* ContentView.swift */; };
 		FD4906BE296E8FF2002D4E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD4906BD296E8FF2002D4E05 /* Assets.xcassets */; };
 		FD4906C1296E8FF2002D4E05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD4906C0296E8FF2002D4E05 /* Preview Assets.xcassets */; };
+		FD4906DE296F2ED4002D4E05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906DD296F2ED4002D4E05 /* AppDelegate.swift */; };
+		FD4906E0296F2F89002D4E05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906DF296F2F89002D4E05 /* SceneDelegate.swift */; };
+		FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */; };
+		FD4906E6296F3B23002D4E05 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = FD4906E5296F3B23002D4E05 /* KakaoSDKUser */; };
+		FD4906EB296F3F42002D4E05 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906EA296F3F42002D4E05 /* LoginView.swift */; };
+		FD4906ED296F8274002D4E05 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906EC296F8274002D4E05 /* LoginViewModel.swift */; };
+		FD4906EF296FC8DB002D4E05 /* OAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906EE296FC8DB002D4E05 /* OAuthProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FD4906B6296E8FF2002D4E05 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD4906B9296E8FF2002D4E05 /* PersonalSchedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSchedulerApp.swift; sourceTree = "<group>"; };
-		FD4906BB296E8FF2002D4E05 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FD4906BD296E8FF2002D4E05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD4906C0296E8FF2002D4E05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FD4906DB296F2AC7002D4E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FD4906DC296F2B9F002D4E05 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		FD4906DD296F2ED4002D4E05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FD4906DF296F2F89002D4E05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoOAuthService.swift; sourceTree = "<group>"; };
+		FD4906EA296F3F42002D4E05 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FD4906EC296F8274002D4E05 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		FD4906EE296FC8DB002D4E05 /* OAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD4906E6296F3B23002D4E05 /* KakaoSDKUser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -35,6 +49,7 @@
 		FD4906AD296E8FF2002D4E05 = {
 			isa = PBXGroup;
 			children = (
+				FD4906DC296F2B9F002D4E05 /* Config.xcconfig */,
 				FD4906B8296E8FF2002D4E05 /* PersonalScheduler */,
 				FD4906B7296E8FF2002D4E05 /* Products */,
 			);
@@ -52,9 +67,13 @@
 			isa = PBXGroup;
 			children = (
 				FD4906B9296E8FF2002D4E05 /* PersonalSchedulerApp.swift */,
-				FD4906BB296E8FF2002D4E05 /* ContentView.swift */,
+				FD4906E1296F3929002D4E05 /* Services */,
+				FD4906E9296F3F24002D4E05 /* LoginView */,
+				FD4906DB296F2AC7002D4E05 /* Info.plist */,
 				FD4906BD296E8FF2002D4E05 /* Assets.xcassets */,
 				FD4906BF296E8FF2002D4E05 /* Preview Content */,
+				FD4906DD296F2ED4002D4E05 /* AppDelegate.swift */,
+				FD4906DF296F2F89002D4E05 /* SceneDelegate.swift */,
 			);
 			path = PersonalScheduler;
 			sourceTree = "<group>";
@@ -65,6 +84,24 @@
 				FD4906C0296E8FF2002D4E05 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FD4906E1296F3929002D4E05 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */,
+				FD4906EE296FC8DB002D4E05 /* OAuthProvider.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FD4906E9296F3F24002D4E05 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				FD4906EA296F3F42002D4E05 /* LoginView.swift */,
+				FD4906EC296F8274002D4E05 /* LoginViewModel.swift */,
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +120,9 @@
 			dependencies = (
 			);
 			name = PersonalScheduler;
+			packageProductDependencies = (
+				FD4906E5296F3B23002D4E05 /* KakaoSDKUser */,
+			);
 			productName = PersonalScheduler;
 			productReference = FD4906B6296E8FF2002D4E05 /* PersonalScheduler.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +151,9 @@
 				Base,
 			);
 			mainGroup = FD4906AD296E8FF2002D4E05;
+			packageReferences = (
+				FD4906E4296F3B23002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+			);
 			productRefGroup = FD4906B7296E8FF2002D4E05 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +180,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD4906BC296E8FF2002D4E05 /* ContentView.swift in Sources */,
+				FD4906EF296FC8DB002D4E05 /* OAuthProvider.swift in Sources */,
+				FD4906EB296F3F42002D4E05 /* LoginView.swift in Sources */,
+				FD4906DE296F2ED4002D4E05 /* AppDelegate.swift in Sources */,
+				FD4906ED296F8274002D4E05 /* LoginViewModel.swift in Sources */,
+				FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */,
 				FD4906BA296E8FF2002D4E05 /* PersonalSchedulerApp.swift in Sources */,
+				FD4906E0296F2F89002D4E05 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +195,7 @@
 /* Begin XCBuildConfiguration section */
 		FD4906C2296E8FF2002D4E05 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD4906DC296F2B9F002D4E05 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -207,6 +256,7 @@
 		};
 		FD4906C3296E8FF2002D4E05 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD4906DC296F2B9F002D4E05 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -261,6 +311,7 @@
 		};
 		FD4906C5296E8FF2002D4E05 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD4906DC296F2B9F002D4E05 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -270,6 +321,7 @@
 				DEVELOPMENT_TEAM = 4K2FDLWHBL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PersonalScheduler/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -291,6 +343,7 @@
 		};
 		FD4906C6296E8FF2002D4E05 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD4906DC296F2B9F002D4E05 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -300,6 +353,7 @@
 				DEVELOPMENT_TEAM = 4K2FDLWHBL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PersonalScheduler/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -341,6 +395,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FD4906E4296F3B23002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FD4906E5296F3B23002D4E05 /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD4906E4296F3B23002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FD4906AE296E8FF2002D4E05 /* Project object */;
 }

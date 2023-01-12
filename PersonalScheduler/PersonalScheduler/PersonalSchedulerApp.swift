@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct PersonalSchedulerApp: App {
+    
+    @UIApplicationDelegateAdaptor var appDelegate: AppDelegate
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView(loginViewModel: LoginViewModel())
         }
     }
+    
 }
