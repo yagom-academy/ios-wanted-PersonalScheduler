@@ -61,6 +61,7 @@
 		02544E34296ED7DE00F06385 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E33296ED7DE00F06385 /* UserRepository.swift */; };
 		02544E36296EDC6100F06385 /* Publisher+MainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E35296EDC6100F06385 /* Publisher+MainThread.swift */; };
 		02544E38296EDD6000F06385 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E37296EDD6000F06385 /* LoadingView.swift */; };
+		02544E4029703E9F00F06385 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 02544E3F29703E9F00F06385 /* FirebaseMessaging */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* AuthViewController.swift */; };
