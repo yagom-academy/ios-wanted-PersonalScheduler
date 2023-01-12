@@ -12,7 +12,7 @@ protocol UserRepository {
     func getRemoteUserInfo(authentication: Authentication) -> AnyPublisher<User, Error>
     func getLocalUserInfo() -> User?
     func localUpdate(user: User)
-    func register(_ authatication: Authentication, snsType: SNSType)
+    func register(_ authatication: Authentication, snsType: SNSType) -> AnyPublisher<Bool, Error>
     func delete()
 }
 
@@ -20,6 +20,7 @@ final class DefaultUserRepository: UserRepository {
     
     private let localStorage: LocalStorageService
     private let firestoreStorage: FirestoreStorageService
+    private var cancellables: Set<AnyCancellable> = .init()
     
     init(
         localStorage: LocalStorageService = UserDefaults.standard,
@@ -41,7 +42,7 @@ final class DefaultUserRepository: UserRepository {
         localStorage.saveUser(user)
     }
     
-    func register(_ authatication: Authentication, snsType: SNSType) {
+    func register(_ authatication: Authentication, snsType: SNSType) -> AnyPublisher<Bool, Error> {
         let newUser = User(
             userID: authatication.snsUserId,
             socialType: snsType.rawValue,
@@ -50,7 +51,7 @@ final class DefaultUserRepository: UserRepository {
             schedules: []
         )
         localStorage.saveUser(newUser)
-        firestoreStorage.write(user: newUser)
+        return firestoreStorage.write(user: newUser)
     }
     
     func delete() {
