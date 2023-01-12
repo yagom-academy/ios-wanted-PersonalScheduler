@@ -10,6 +10,7 @@
 		057BFB0A29702CCD00E28E54 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 057BFB0929702CCD00E28E54 /* KakaoSDKAuth */; };
 		057BFB0C29702CCD00E28E54 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 057BFB0B29702CCD00E28E54 /* KakaoSDKCommon */; };
 		057BFB0E29702CCD00E28E54 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 057BFB0D29702CCD00E28E54 /* KakaoSDKUser */; };
+		057BFB12297035B900E28E54 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BFB11297035B900E28E54 /* ViewModel.swift */; };
 		05D849C829702A9300B9F6D7 /* PersonalScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D849C729702A9300B9F6D7 /* PersonalScheduleApp.swift */; };
 		05D849CA29702A9300B9F6D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D849C929702A9300B9F6D7 /* ContentView.swift */; };
 		05D849CC29702A9400B9F6D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05D849CB29702A9400B9F6D7 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		057BFB0F29702D0800E28E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		057BFB1029702D7400E28E54 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		057BFB11297035B900E28E54 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		05D849C429702A9300B9F6D7 /* PersonalSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D849C729702A9300B9F6D7 /* PersonalScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalScheduleApp.swift; sourceTree = "<group>"; };
 		05D849C929702A9300B9F6D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				05D849CB29702A9400B9F6D7 /* Assets.xcassets */,
 				05D849CD29702A9400B9F6D7 /* Preview Content */,
 				057BFB1029702D7400E28E54 /* Config.xcconfig */,
+				057BFB11297035B900E28E54 /* ViewModel.swift */,
 			);
 			path = PersonalSchedule;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05D849CA29702A9300B9F6D7 /* ContentView.swift in Sources */,
+				057BFB12297035B900E28E54 /* ViewModel.swift in Sources */,
 				05D849C829702A9300B9F6D7 /* PersonalScheduleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,6 +169,7 @@
 /* Begin XCBuildConfiguration section */
 		05D849D029702A9400B9F6D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 057BFB1029702D7400E28E54 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -225,6 +230,7 @@
 		};
 		05D849D129702A9400B9F6D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 057BFB1029702D7400E28E54 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
