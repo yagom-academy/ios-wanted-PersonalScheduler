@@ -7,6 +7,7 @@
 
 import UIKit
 import KakaoSDKUser
+import FacebookLogin
 
 final class LoginViewController: UIViewController {
     private let titleLabel: UILabel = {
@@ -54,12 +55,14 @@ final class LoginViewController: UIViewController {
     }
     
     private func setupView() {
+        let loginButton = FBLoginButton()
         let spacingView = UIView()
         spacingView.translatesAutoresizingMaskIntoConstraints = false
-        
+    
         loginStackView.addArrangedSubview(titleLabel)
         loginStackView.addArrangedSubview(infoLabel)
         loginStackView.addArrangedSubview(spacingView)
+        loginStackView.addArrangedSubview(loginButton)
         loginStackView.addArrangedSubview(kakaoLoginButton)
         
         view.addSubview(loginStackView)
@@ -71,7 +74,7 @@ final class LoginViewController: UIViewController {
             loginStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
                                                      constant: -16),
             loginStackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            
+    
             spacingView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor,
                                                 multiplier: 1/4),
         ])
