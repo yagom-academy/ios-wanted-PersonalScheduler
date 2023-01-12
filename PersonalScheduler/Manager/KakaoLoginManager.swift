@@ -10,45 +10,40 @@ import KakaoSDKUser
 import KakaoSDKAuth
 import FirebaseAuth
 
-enum LoginResult {
-    case loginSuccess
-    case loginFail
-}
-
 class KakaoLoginManager {
     static let shared = KakaoLoginManager()
     
-    private func hasTokenLogin(_ completion: @escaping (LoginResult, Error?) -> Void) {
+    private func hasTokenLogin(_ completion: @escaping (Error?) -> Void) {
         UserApi.shared.accessTokenInfo { tokenInfo, error in
             if let error {
-                completion(LoginResult.loginFail, error)
+                completion(error)
             } else {
-                self.loginFirebase() { result, error in
-                    completion(result, error)
+                FirebaseLoginManager.shared.loginFirebaseForKakao() { error in
+                    completion(error)
                 }
             }
         }
     }
     
-    private func appLogin(_ completion: @escaping (LoginResult, Error?) -> Void) {
+    private func appLogin(_ completion: @escaping (Error?) -> Void) {
         UserApi.shared.loginWithKakaoTalk { (token, error) in
             if let error {
-                completion(LoginResult.loginFail, error)
+                completion(error)
             } else {
-                self.loginFirebase() { result, error in
-                completion(result, error)
+                FirebaseLoginManager.shared.loginFirebaseForKakao() {error in
+                completion(error)
                 }
             }
         }
     }
     
-    private func webLogin(_ completion: @escaping (LoginResult, Error?) -> Void) {
+    private func webLogin(_ completion: @escaping (Error?) -> Void) {
         UserApi.shared.loginWithKakaoAccount { oauthToken, error in
                 if let error {
-                    completion(LoginResult.loginFail, error)
+                    completion(error)
                 } else {
-                    self.loginFirebase() { result, error in
-                    completion(result, error)
+                    FirebaseLoginManager.shared.loginFirebaseForKakao() { error in
+                    completion(error)
                 }
             }
         }
@@ -56,42 +51,17 @@ class KakaoLoginManager {
     
     func login(_ completion: @escaping (Error?) -> Void) {
         if AuthApi.hasToken() {
-            self.hasTokenLogin() { result, error in
+            self.hasTokenLogin() { error in
                 completion(error)
             }
         } else {
             if (UserApi.isKakaoTalkLoginAvailable()) {
-                self.appLogin() { appLoginResult, error in
+                self.appLogin() { error in
                     completion(error)
                 }
             } else {
-                self.webLogin() { webLoginResult, error in
+                self.webLogin() { error in
                     completion(error)
-                }
-            }
-        }
-    }
-    // 나중에 분리해야함
-    private func loginFirebase(_ completion: @escaping (LoginResult, Error?) -> Void) {
-        UserApi.shared.me() { user, error in
-            if let error {
-                completion(LoginResult.loginFail, error)
-            } else {
-                Auth.auth().createUser(withEmail: (user?.kakaoAccount?.email)!,
-                                       password: "\(String(describing: user?.id))") { result, error in
-                    if let error {
-                        Auth.auth().signIn(withEmail: (user?.kakaoAccount?.email)!,
-                                           password: "\(String(describing: user?.id))")
-                        completion(LoginResult.loginFail, error)
-                    } else {
-                        UserManager.shared.createUser(email: (user?.kakaoAccount?.email)!, name: (user?.kakaoAccount?.profile?.nickname)!) { result, error in
-                            if let error {
-                                completion(LoginResult.loginFail, error)
-                            } else {
-                                completion(LoginResult.loginSuccess, nil)
-                            }
-                        }
-                    }
                 }
             }
         }
