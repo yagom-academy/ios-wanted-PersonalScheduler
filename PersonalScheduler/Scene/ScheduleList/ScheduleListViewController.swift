@@ -32,7 +32,7 @@ final class ScheduleListViewController: BaseViewController {
         super.viewDidLoad()
         
         setupView()
-        bind(to: viewModel)
+        configureNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +43,6 @@ final class ScheduleListViewController: BaseViewController {
 
     override func setupView() {
         view.backgroundColor = .systemBackground
-        title = "제리네 일정"
         
         configureTableViewDataSource()
     }
@@ -61,8 +60,19 @@ final class ScheduleListViewController: BaseViewController {
         ])
     }
     
-    private func bind(to viewModel: ScheduleListViewModel) {
-        
+    private func configureNavigationBar() {
+        let addButton = UIBarButtonItem(title: "추가",
+                                            style: .done,
+                                            target: self,
+                                            action: #selector(goToAddScheduleScene))
+
+        navigationItem.rightBarButtonItem = addButton
+        navigationItem.title = "제리네 일정"
+    }
+    
+    @objc private func goToAddScheduleScene() {
+//        let measurementViewController = MeasurementViewController()
+//        navigationController?.pushViewController(measurementViewController, animated: true)
     }
 }
 
