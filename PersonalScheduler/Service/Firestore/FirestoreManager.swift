@@ -39,15 +39,17 @@ final class FirestoreManager {
     }
     
     func fetch(at collection: String,
-                completion: @escaping (Result<[QueryDocumentSnapshot], FirebaseError>) -> Void) {
-        database.collection(collection).getDocuments { querySnapshot, error in
-            if error != nil {
-                completion(.failure(.fetch))
+               completion: @escaping (Result<[QueryDocumentSnapshot], FirebaseError>) -> Void) {
+        
+        database.collection(collection).order(by: "startTime", descending: true)
+            .getDocuments { querySnapshot, error in
+                if error != nil {
+                    completion(.failure(.fetch))
+                }
+                
+                if let documents = querySnapshot?.documents {
+                    completion(.success(documents))
+                }
             }
-            
-            if let documents = querySnapshot?.documents {
-                completion(.success(documents))
-            }
-        }
     }
 }
