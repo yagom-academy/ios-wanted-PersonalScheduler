@@ -9,6 +9,7 @@ import UIKit
 
 final class OnboardingViewController: UIViewController {
 
+    private var coordinator: OnboardingCoordinator?
     private let viewModel = OnboardingViewModel()
 
     private lazy var onboardingCollectionView: UICollectionView = {
@@ -49,7 +50,9 @@ final class OnboardingViewController: UIViewController {
         button.titleLabel?.textColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction { [weak self] action in
-            self?.viewModel.appleLoginButtonTapped()
+            self?.viewModel.appleLoginButtonTapped {
+                self?.coordinator?.loginFinished()
+            }
         }, for: .touchUpInside)
         return button
     }()
@@ -61,7 +64,9 @@ final class OnboardingViewController: UIViewController {
         button.titleLabel?.textColor = .white
         button.backgroundColor = .systemYellow
         button.addAction(UIAction { [weak self] action in
-            self?.viewModel.kakaoLoginButtonTapped()
+            self?.viewModel.kakaoLoginButtonTapped {
+                self?.coordinator?.loginFinished()
+            }
         }, for: .touchUpInside)
         return button
     }()
@@ -73,10 +78,21 @@ final class OnboardingViewController: UIViewController {
         button.titleLabel?.textColor = .white
         button.backgroundColor = .systemGreen
         button.addAction(UIAction { [weak self] action in
-            self?.viewModel.naverLoginButtonTapped()
+            self?.viewModel.naverLoginButtonTapped {
+                self?.coordinator?.loginFinished()
+            }
         }, for: .touchUpInside)
         return button
     }()
+
+    init(coordinator: OnboardingCoordinator) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

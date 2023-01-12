@@ -12,21 +12,24 @@ import KakaoSDKAuth
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-    private let diContainer = DIContainer()
+    private let onboardingDIContainer = OnboardingDIContainer()
+    private var onboardingCoordinator: OnboardingCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
-        var rootViewController: UIViewController
-
-        if Auth.auth().currentUser == nil {
-            rootViewController = diContainer.makeOnboardingViewController()
-        } else {
-            rootViewController = diContainer.makeScheduleListViewController()
-        }
+        let navigationController = UINavigationController()
+        onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController,
+                                                      onboardingDIContainer: onboardingDIContainer)
 
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = rootViewController
+        window?.rootViewController = navigationController
+
+        if Auth.auth().currentUser == nil {
+            onboardingCoordinator?.start()
+        } else {
+            onboardingCoordinator?.loginFinished()
+        }
+
         window?.makeKeyAndVisible()
     }
 

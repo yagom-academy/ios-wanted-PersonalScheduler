@@ -9,6 +9,7 @@ import UIKit
 
 final class ScheduleListViewController: UIViewController {
 
+    private var coordinator: ScheduleListCoordinator?
     private let viewModel: ScheduleListViewModel
 
     private lazy var todayButton: UIButton = {
@@ -61,7 +62,7 @@ final class ScheduleListViewController: UIViewController {
         button.contentHorizontalAlignment = .fill
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction { _ in
-            self.viewModel.moveToScheduleMakeButtonTapped()
+            self.coordinator?.showScheduleMaking()
         }, for: .touchUpInside)
         return button
     }()
@@ -92,8 +93,9 @@ final class ScheduleListViewController: UIViewController {
     private lazy var calendarCollectionViewDataSource = calendarDataSource()
     private lazy var scheduleCollectionViewDataSource = scheduleDataSource()
 
-    init(viewModel: ScheduleListViewModel) {
+    init(viewModel: ScheduleListViewModel, coordinator: ScheduleListCoordinator) {
         self.viewModel = viewModel
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
 

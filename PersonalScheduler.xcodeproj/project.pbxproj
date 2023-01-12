@@ -14,12 +14,17 @@
 		328444C1296DD7ED00BC099E /* ScheduleListRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C0296DD7ED00BC099E /* ScheduleListRepositoryInterface.swift */; };
 		328444C3296E5B3200BC099E /* DeleteScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C2296E5B3200BC099E /* DeleteScheduleUseCase.swift */; };
 		328444C7296E6D2600BC099E /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C6296E6D2600BC099E /* CalendarCollectionViewCell.swift */; };
-		328444C9296E95A600BC099E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C8296E95A600BC099E /* DIContainer.swift */; };
+		328444C9296E95A600BC099E /* ScheduleListDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C8296E95A600BC099E /* ScheduleListDIContainer.swift */; };
 		328444CB296ED1E000BC099E /* ScheduleListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444CA296ED1E000BC099E /* ScheduleListHeader.swift */; };
 		328444CD296FE06500BC099E /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444CC296FE06500BC099E /* FirebaseService.swift */; };
 		328444CF296FE13700BC099E /* ScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444CE296FE13700BC099E /* ScheduleDTO.swift */; };
 		328444D1296FE27800BC099E /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444D0296FE27800BC099E /* FirebaseError.swift */; };
 		328444D3296FEA1D00BC099E /* ScheduleListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444D2296FEA1D00BC099E /* ScheduleListRepository.swift */; };
+		328444D5297017E600BC099E /* ScheduleMakingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444D4297017E600BC099E /* ScheduleMakingViewController.swift */; };
+		328444D7297017F500BC099E /* ScheduleListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444D6297017F500BC099E /* ScheduleListCoordinator.swift */; };
+		328444D929701D4B00BC099E /* OnboardingDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444D829701D4B00BC099E /* OnboardingDIContainer.swift */; };
+		328444DB29701D6100BC099E /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444DA29701D6100BC099E /* OnboardingCoordinator.swift */; };
+		328444DD29701DB100BC099E /* ScheduleMakingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444DC29701DB100BC099E /* ScheduleMakingViewModel.swift */; };
 		32EAF58B296C40B10056513F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32EAF58A296C40B10056513F /* GoogleService-Info.plist */; };
 		32EAF595296C46D70056513F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 32EAF594296C46D70056513F /* FirebaseAuth */; };
 		32EAF597296C46D70056513F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 32EAF596296C46D70056513F /* FirebaseFirestore */; };
@@ -54,12 +59,17 @@
 		328444C0296DD7ED00BC099E /* ScheduleListRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListRepositoryInterface.swift; sourceTree = "<group>"; };
 		328444C2296E5B3200BC099E /* DeleteScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteScheduleUseCase.swift; sourceTree = "<group>"; };
 		328444C6296E6D2600BC099E /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
-		328444C8296E95A600BC099E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		328444C8296E95A600BC099E /* ScheduleListDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListDIContainer.swift; sourceTree = "<group>"; };
 		328444CA296ED1E000BC099E /* ScheduleListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListHeader.swift; sourceTree = "<group>"; };
 		328444CC296FE06500BC099E /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		328444CE296FE13700BC099E /* ScheduleDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDTO.swift; sourceTree = "<group>"; };
 		328444D0296FE27800BC099E /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		328444D2296FEA1D00BC099E /* ScheduleListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListRepository.swift; sourceTree = "<group>"; };
+		328444D4297017E600BC099E /* ScheduleMakingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleMakingViewController.swift; sourceTree = "<group>"; };
+		328444D6297017F500BC099E /* ScheduleListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListCoordinator.swift; sourceTree = "<group>"; };
+		328444D829701D4B00BC099E /* OnboardingDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDIContainer.swift; sourceTree = "<group>"; };
+		328444DA29701D6100BC099E /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		328444DC29701DB100BC099E /* ScheduleMakingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleMakingViewModel.swift; sourceTree = "<group>"; };
 		32EAF589296C38F90056513F /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
 		32EAF58A296C40B10056513F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32EAF5A1296C7AA90056513F /* OAuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthError.swift; sourceTree = "<group>"; };
@@ -125,6 +135,58 @@
 				328444BB296DC8A000BC099E /* Schedule.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		328444DF2970203200BC099E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				328444CA296ED1E000BC099E /* ScheduleListHeader.swift */,
+				328444C6296E6D2600BC099E /* CalendarCollectionViewCell.swift */,
+				328444BE296DD32B00BC099E /* ScheduleCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		328444E02970204000BC099E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				32FB8F00296D675A007D1BA6 /* ScheduleListViewController.swift */,
+				328444D4297017E600BC099E /* ScheduleMakingViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		328444E12970205000BC099E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				328444B5296DC18700BC099E /* ScheduleListViewModel.swift */,
+				328444DC29701DB100BC099E /* ScheduleMakingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		328444E22970206200BC099E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB052967EA2600775EC3 /* OnboardingViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		328444E32970206800BC099E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				32EAF5A5296C7FA80056513F /* OnboardingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		328444E42970207100BC099E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				32FB8F03296D6E73007D1BA6 /* OnboardingCollectionViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		32EAF5A0296C48420056513F /* APIKeys */ = {
@@ -198,9 +260,11 @@
 		32EAF5AD296C856D0056513F /* OnboardingScene */ = {
 			isa = PBXGroup;
 			children = (
-				63AAAB052967EA2600775EC3 /* OnboardingViewController.swift */,
-				32FB8F03296D6E73007D1BA6 /* OnboardingCollectionViewCell.swift */,
-				32EAF5A5296C7FA80056513F /* OnboardingViewModel.swift */,
+				328444DA29701D6100BC099E /* OnboardingCoordinator.swift */,
+				328444D829701D4B00BC099E /* OnboardingDIContainer.swift */,
+				328444E42970207100BC099E /* Views */,
+				328444E22970206200BC099E /* ViewControllers */,
+				328444E32970206800BC099E /* ViewModels */,
 			);
 			path = OnboardingScene;
 			sourceTree = "<group>";
@@ -208,11 +272,11 @@
 		32FB8F02296D6765007D1BA6 /* ScheduleListScene */ = {
 			isa = PBXGroup;
 			children = (
-				32FB8F00296D675A007D1BA6 /* ScheduleListViewController.swift */,
-				328444CA296ED1E000BC099E /* ScheduleListHeader.swift */,
-				328444B5296DC18700BC099E /* ScheduleListViewModel.swift */,
-				328444C6296E6D2600BC099E /* CalendarCollectionViewCell.swift */,
-				328444BE296DD32B00BC099E /* ScheduleCollectionViewCell.swift */,
+				328444C8296E95A600BC099E /* ScheduleListDIContainer.swift */,
+				328444D6297017F500BC099E /* ScheduleListCoordinator.swift */,
+				328444DF2970203200BC099E /* Views */,
+				328444E02970204000BC099E /* ViewControllers */,
+				328444E12970205000BC099E /* ViewModels */,
 			);
 			path = ScheduleListScene;
 			sourceTree = "<group>";
@@ -255,7 +319,6 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				328444C8296E95A600BC099E /* DIContainer.swift */,
 				32EAF5AB296C83920056513F /* EntryPoint */,
 				32EAF5AC296C839C0056513F /* Presentation */,
 				32FB8F10296D9606007D1BA6 /* Domain */,
@@ -353,12 +416,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				328444D3296FEA1D00BC099E /* ScheduleListRepository.swift in Sources */,
+				328444D929701D4B00BC099E /* OnboardingDIContainer.swift in Sources */,
 				328444C1296DD7ED00BC099E /* ScheduleListRepositoryInterface.swift in Sources */,
 				32EAF5A4296C7BC20056513F /* AppleOAuthService.swift in Sources */,
+				328444DD29701DB100BC099E /* ScheduleMakingViewModel.swift in Sources */,
 				328444CD296FE06500BC099E /* FirebaseService.swift in Sources */,
+				328444D5297017E600BC099E /* ScheduleMakingViewController.swift in Sources */,
 				32EAF5A6296C7FA80056513F /* OnboardingViewModel.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* OnboardingViewController.swift in Sources */,
 				328444BC296DC8A000BC099E /* Schedule.swift in Sources */,
+				328444D7297017F500BC099E /* ScheduleListCoordinator.swift in Sources */,
 				328444CF296FE13700BC099E /* ScheduleDTO.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				32EAF5A2296C7AA90056513F /* OAuthError.swift in Sources */,
@@ -369,7 +436,7 @@
 				328444BA296DC85100BC099E /* FetchScheduleUseCase.swift in Sources */,
 				328444C7296E6D2600BC099E /* CalendarCollectionViewCell.swift in Sources */,
 				328444B6296DC18700BC099E /* ScheduleListViewModel.swift in Sources */,
-				328444C9296E95A600BC099E /* DIContainer.swift in Sources */,
+				328444C9296E95A600BC099E /* ScheduleListDIContainer.swift in Sources */,
 				328444C3296E5B3200BC099E /* DeleteScheduleUseCase.swift in Sources */,
 				32FB8F06296D7868007D1BA6 /* KaKaoOAuthService.swift in Sources */,
 				32FB8F0D296D94E6007D1BA6 /* OAuthRepository.swift in Sources */,
@@ -377,6 +444,7 @@
 				32FB8F04296D6E73007D1BA6 /* OnboardingCollectionViewCell.swift in Sources */,
 				328444BF296DD32B00BC099E /* ScheduleCollectionViewCell.swift in Sources */,
 				32FB8F0F296D94ED007D1BA6 /* OAuthRepositoryInterface.swift in Sources */,
+				328444DB29701D6100BC099E /* OnboardingCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

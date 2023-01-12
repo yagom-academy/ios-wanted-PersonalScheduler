@@ -14,7 +14,7 @@ final class OnboardingViewModel {
 
     var onboardingCardImages = [UIImage(systemName: "person"), UIImage(systemName: "star"), UIImage(systemName: "person")]
 
-    func appleLoginButtonTapped() {
+    func appleLoginButtonTapped(completion: @escaping () -> Void) {
         oAuthLoginUseCase.execute(loginType: .apple) { result in
             switch result {
             case .success(let authResult):
@@ -26,7 +26,7 @@ final class OnboardingViewModel {
         }
     }
 
-    func kakaoLoginButtonTapped() {
+    func kakaoLoginButtonTapped(completion: @escaping () -> Void) {
         oAuthLoginUseCase.execute(loginType: .kakao) { result in
             switch result {
             case .success(let authResult):
@@ -38,7 +38,7 @@ final class OnboardingViewModel {
         }
     }
 
-    func naverLoginButtonTapped() {
+    func naverLoginButtonTapped(completion: @escaping () -> Void) {
         oAuthLoginUseCase.execute(loginType: .apple) { result in
             switch result {
             case .success(let authResult):
