@@ -110,6 +110,7 @@ extension ScheduleListViewModel {
     }
 
     private func selectCurrentDate() {
+        setCurrentMonthLabel?(currentDate.toCurrentMonthText())
         if let day = calendar.dateComponents([.year, .month, .day], from: currentDate).day {
             selectItemAt?(IndexPath(row: day - 1, section: 0))
         }

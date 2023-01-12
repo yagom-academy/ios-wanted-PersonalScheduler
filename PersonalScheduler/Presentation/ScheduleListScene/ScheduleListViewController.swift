@@ -11,6 +11,19 @@ final class ScheduleListViewController: UIViewController {
 
     private let viewModel: ScheduleListViewModel
 
+    private lazy var todayButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("오늘", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 5
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addAction(UIAction { _ in
+            self.viewModel.todayButtonTapped()
+        }, for: .touchUpInside)
+        return button
+    }()
+
     private lazy var previousMonthButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "arrowtriangle.backward.fill"), for: .normal)
@@ -24,7 +37,7 @@ final class ScheduleListViewController: UIViewController {
 
     private let currentMonthLabel: UILabel = {
         let label = UILabel()
-        label.text = "2023년 1월"
+//        label.text = "2023년 1월"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -128,19 +141,25 @@ final class ScheduleListViewController: UIViewController {
     }
 
     private func layout() {
-        [previousMonthButton, currentMonthLabel, nextMonthButton, calendarCollectionView, scheduleCollectionView].forEach {
+        [todayButton, previousMonthButton, currentMonthLabel, nextMonthButton, calendarCollectionView, scheduleCollectionView].forEach {
             view.addSubview($0)
         }
 
         NSLayoutConstraint.activate([
+            todayButton.trailingAnchor.constraint(equalTo: previousMonthButton.leadingAnchor, constant: -20),
+            todayButton.centerYAnchor.constraint(equalTo: currentMonthLabel.centerYAnchor),
+            todayButton.widthAnchor.constraint(equalToConstant: 50),
+            todayButton.topAnchor.constraint(equalTo: currentMonthLabel.topAnchor),
+            todayButton.bottomAnchor.constraint(equalTo: currentMonthLabel.bottomAnchor),
+
             currentMonthLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             currentMonthLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
 
             previousMonthButton.trailingAnchor.constraint(equalTo: currentMonthLabel.leadingAnchor, constant: -10),
-            previousMonthButton.topAnchor.constraint(equalTo: currentMonthLabel.topAnchor),
+            previousMonthButton.centerYAnchor.constraint(equalTo: currentMonthLabel.centerYAnchor),
 
             nextMonthButton.leadingAnchor.constraint(equalTo: currentMonthLabel.trailingAnchor, constant: 10),
-            nextMonthButton.topAnchor.constraint(equalTo: currentMonthLabel.topAnchor),
+            nextMonthButton.centerYAnchor.constraint(equalTo: currentMonthLabel.centerYAnchor),
 
             calendarCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             calendarCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
