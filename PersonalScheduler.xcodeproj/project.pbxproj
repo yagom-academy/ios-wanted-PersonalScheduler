@@ -16,6 +16,9 @@
 		328444C7296E6D2600BC099E /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C6296E6D2600BC099E /* CalendarCollectionViewCell.swift */; };
 		328444C9296E95A600BC099E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C8296E95A600BC099E /* DIContainer.swift */; };
 		328444CB296ED1E000BC099E /* ScheduleListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444CA296ED1E000BC099E /* ScheduleListHeader.swift */; };
+		328444CD296FE06500BC099E /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444CC296FE06500BC099E /* FirebaseService.swift */; };
+		328444CF296FE13700BC099E /* ScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444CE296FE13700BC099E /* ScheduleDTO.swift */; };
+		328444D1296FE27800BC099E /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444D0296FE27800BC099E /* FirebaseError.swift */; };
 		32EAF58B296C40B10056513F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32EAF58A296C40B10056513F /* GoogleService-Info.plist */; };
 		32EAF595296C46D70056513F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 32EAF594296C46D70056513F /* FirebaseAuth */; };
 		32EAF597296C46D70056513F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 32EAF596296C46D70056513F /* FirebaseFirestore */; };
@@ -52,6 +55,9 @@
 		328444C6296E6D2600BC099E /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		328444C8296E95A600BC099E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		328444CA296ED1E000BC099E /* ScheduleListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListHeader.swift; sourceTree = "<group>"; };
+		328444CC296FE06500BC099E /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		328444CE296FE13700BC099E /* ScheduleDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDTO.swift; sourceTree = "<group>"; };
+		328444D0296FE27800BC099E /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		32EAF589296C38F90056513F /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
 		32EAF58A296C40B10056513F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32EAF5A1296C7AA90056513F /* OAuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthError.swift; sourceTree = "<group>"; };
@@ -142,9 +148,12 @@
 		32EAF5A8296C83740056513F /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				328444D0296FE27800BC099E /* FirebaseError.swift */,
 				32FB8F11296D961B007D1BA6 /* Repositories */,
 				32EAF5A9296C83800056513F /* Errors */,
 				32EAF5AA296C83850056513F /* OAuthServices */,
+				328444CC296FE06500BC099E /* FirebaseService.swift */,
+				328444CE296FE13700BC099E /* ScheduleDTO.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -342,11 +351,14 @@
 			files = (
 				328444C1296DD7ED00BC099E /* ScheduleListRepositoryInterface.swift in Sources */,
 				32EAF5A4296C7BC20056513F /* AppleOAuthService.swift in Sources */,
+				328444CD296FE06500BC099E /* FirebaseService.swift in Sources */,
 				32EAF5A6296C7FA80056513F /* OnboardingViewModel.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* OnboardingViewController.swift in Sources */,
 				328444BC296DC8A000BC099E /* Schedule.swift in Sources */,
+				328444CF296FE13700BC099E /* ScheduleDTO.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				32EAF5A2296C7AA90056513F /* OAuthError.swift in Sources */,
+				328444D1296FE27800BC099E /* FirebaseError.swift in Sources */,
 				328444CB296ED1E000BC099E /* ScheduleListHeader.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				32FB8F01296D675A007D1BA6 /* ScheduleListViewController.swift in Sources */,
