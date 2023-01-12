@@ -23,15 +23,15 @@ final class FireStoreManager: RemoteDataBaseProtocol {
     typealias U = ScheduleModel
     
     private let dataBase = Firestore.firestore()
-    private let userName: String
+    private let fireStoreCollectionId: String
     
-    init(userName: String) {
-        self.userName = userName
+    init(fireStoreCollectionId: String) {
+        self.fireStoreCollectionId = fireStoreCollectionId
     }
     
     func create(_ schedule: Schedule) async throws {
         do {
-            try await dataBase.collection(userName)
+            try await dataBase.collection(fireStoreCollectionId)
                 .document(schedule.id.uuidString).setData([
                 "title": schedule.title,
                 "body": schedule.body,
@@ -45,7 +45,7 @@ final class FireStoreManager: RemoteDataBaseProtocol {
     }
     
     func read() async throws -> [Schedule] {
-        let querySnapshot = try await dataBase.collection(userName).getDocuments()
+        let querySnapshot = try await dataBase.collection(fireStoreCollectionId).getDocuments()
         var scheduleList: [Schedule] = []
         querySnapshot.documents.forEach { document in
             let data = document.data()
@@ -64,7 +64,7 @@ final class FireStoreManager: RemoteDataBaseProtocol {
     func update(_ schedule: Schedule,
                 to editedSchedule: ScheduleModel) async throws {
         do {
-            try await dataBase.collection(userName)
+            try await dataBase.collection(fireStoreCollectionId)
                 .document(schedule.id.uuidString).setData([
                 "title": editedSchedule.title,
                 "body": editedSchedule.body,
@@ -79,7 +79,7 @@ final class FireStoreManager: RemoteDataBaseProtocol {
     
     func delete(_ schedule: Schedule) async throws {
         do {
-            try await dataBase.collection(userName)
+            try await dataBase.collection(fireStoreCollectionId)
                 .document(schedule.id.uuidString).delete()
             print("success delete")
         } catch let error {
