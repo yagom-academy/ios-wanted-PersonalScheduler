@@ -189,7 +189,7 @@ extension ScheduleDetailViewController {
 
         guard let schedule = savedSchedule else { return }
         
-        scheduleViewModel.save(schedule, at: "judy")
+        scheduleViewModel.save(schedule)
         navigationController?.popViewController(animated: true)
     }
     

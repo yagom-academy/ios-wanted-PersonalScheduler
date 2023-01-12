@@ -64,7 +64,7 @@ class ScheduleListViewController: UIViewController {
     }
     
     private func loadSchedules() {
-        scheduleViewModel.fetch(at: "judy")
+        scheduleViewModel.fetch()
     }
 }
 
@@ -127,7 +127,7 @@ extension ScheduleListViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let deleteSchedule = scheduleInSection(at: indexPath.section)[indexPath.row]
-            scheduleViewModel.delete(deleteSchedule, at: "judy")
+            scheduleViewModel.delete(deleteSchedule)
         }
     }
 }

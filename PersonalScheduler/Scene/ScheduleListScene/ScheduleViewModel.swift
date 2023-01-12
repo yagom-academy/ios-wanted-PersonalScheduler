@@ -8,9 +8,9 @@
 import Foundation
 
 protocol ScheduleViewModelInput {
-    func save(_ schedule: Schedule, at userID: String)
-    func fetch(at userID: String)
-    func delete(_ schedule: Schedule, at userID: String)
+    func save(_ schedule: Schedule)
+    func fetch()
+    func delete(_ schedule: Schedule)
 }
 
 protocol ScheduleViewModelOutput {
@@ -32,8 +32,8 @@ final class ScheduleViewModel: ScheduleViewModelType {
         self.userToken = userToken
     }
     
-    func save(_ schedule: Schedule, at userID: String) {
-        scheduleFirestoreUseCase.save(schedule, at: userID) { [weak self] result in
+    func save(_ schedule: Schedule) {
+        scheduleFirestoreUseCase.save(schedule, at: userToken) { [weak self] result in
             switch result {
             case .success(_):
                 break
@@ -43,8 +43,8 @@ final class ScheduleViewModel: ScheduleViewModelType {
         }
     }
     
-    func fetch(at userID: String) {
-        scheduleFirestoreUseCase.fetch(at: userID) { [weak self] result in
+    func fetch() {
+        scheduleFirestoreUseCase.fetch(at: userToken) { [weak self] result in
             switch result {
             case .success(let schedules):
                 self?.schedules.value = schedules.sorted(by: { $0.startTime > $1.startTime } )
@@ -54,11 +54,11 @@ final class ScheduleViewModel: ScheduleViewModelType {
         }
     }
     
-    func delete(_ schedule: Schedule, at userID: String) {
-        scheduleFirestoreUseCase.delete(schedule, at: userID) { [weak self] result in
+    func delete(_ schedule: Schedule) {
+        scheduleFirestoreUseCase.delete(schedule, at: userToken) { [weak self] result in
             switch result {
             case .success(_):
-                self?.fetch(at: userID)
+                self?.fetch()
             case .failure(let error):
                 self?.error.value = error.localizedDescription
             }
