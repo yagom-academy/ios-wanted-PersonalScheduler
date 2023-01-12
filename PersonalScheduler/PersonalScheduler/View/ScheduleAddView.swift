@@ -23,6 +23,9 @@ struct ScheduleAddView: View {
     @State var startTimeStamp: Date = Date()
     @State var endTimeStamp: Date = Date()
 
+    @State private var totalChars: Int = 0
+    @State private var lastText: String = ""
+    
     var body: some View {
         VStack {
             TextField("제목을 입력해주세요.", text: $title)
@@ -41,13 +44,21 @@ struct ScheduleAddView: View {
             ZStack {
                 TextEditor(text: $description)
                     .frame(minHeight: 200, maxHeight: .infinity)
-                    .cornerRadius(15)
-                    .background(
-                        RoundedRectangle(cornerRadius: 4, style: .circular)
-                            .stroke(Color.secondary)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.secondary, lineWidth: 1)
                     )
+                    .onChange(of: description) { text in
+                        totalChars = text.count
+                        
+                        if totalChars <= 500 {
+                            lastText = description
+                        } else {
+                            description = lastText
+                        }
+                    }
                 if description.isEmpty {
-                    Text("내용을 작성해주세요")
+                    Text("내용을 작성해주세요. (500자 이내)")
                         .foregroundColor(Color.secondary)
                         .padding(.top, 5)
                         .padding(.leading, 5)
@@ -56,6 +67,8 @@ struct ScheduleAddView: View {
                                alignment: .topLeading)
                 }
             }
+            Text("Chars: \(totalChars) / 500")
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding()
         .navigationBarTitle(isEditing == false ? "등록 화면" : "편집 화면")
