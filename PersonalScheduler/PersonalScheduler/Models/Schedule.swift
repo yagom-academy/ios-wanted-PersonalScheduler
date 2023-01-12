@@ -16,9 +16,32 @@ struct Schedule {
     var status: Status
 }
 
+extension Schedule {
+    func toScheduleDTO() -> ScheduleDTO {
+        let scheduleDTO = ScheduleDTO(
+            id: self.id,
+            title: self.title,
+            description: self.description,
+            startMoment: self.startMoment.toString(),
+            endMoment: self.endMoment.toString(),
+            status: self.status.description
+        )
+    }
+}
+
 enum Status {
     case planned
     case done
+    
+    var description: String {
+        switch self {
+        case .planned:
+            return "planned"
+        case .done:
+            return "done"
+        }
+    }
+}
 
 fileprivate extension Date {
     func toString() -> String {
