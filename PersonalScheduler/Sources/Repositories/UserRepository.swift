@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import Combine
 
 protocol UserRepository {
-    func myInfo() -> User?
+    func getRemoteUserInfo(authentication: Authentication) -> AnyPublisher<User, Error>
+    func getLocalUserInfo() -> User?
+    func localUpdate(user: User)
     func register(_ authatication: Authentication, snsType: SNSType)
     func delete()
 }
@@ -26,8 +29,16 @@ final class DefaultUserRepository: UserRepository {
         self.firestoreStorage = firestoreStorage
     }
     
-    func myInfo() -> User? {
-        localStorage.getUser()
+    func getRemoteUserInfo(authentication: Authentication) -> AnyPublisher<User, Error> {
+        return firestoreStorage.read(userID: authentication.snsUserId)
+    }
+    
+    func getLocalUserInfo() -> User? {
+        return localStorage.getUser()
+    }
+    
+    func localUpdate(user: User) {
+        localStorage.saveUser(user)
     }
     
     func register(_ authatication: Authentication, snsType: SNSType) {

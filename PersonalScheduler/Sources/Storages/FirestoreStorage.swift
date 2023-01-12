@@ -39,7 +39,8 @@ final class FirestoreStorage: FirestoreStorageService {
             if let error {
                 completed.send(completion: .failure(error))
             } else {
-                guard let querySnapShot else {
+                guard let querySnapShot, querySnapShot.data() != nil else {
+                    completed.send(completion: .finished)
                     return
                 }
                 do {
