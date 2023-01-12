@@ -31,6 +31,7 @@ final class ScheduleDetailViewController: UIViewController {
         textView.font = .preferredFont(forTextStyle: .body)
         textView.layer.borderColor = UIColor.systemGray5.cgColor
         textView.layer.borderWidth = 2
+        textView.keyboardDismissMode = .onDrag
         textView.adjustsFontForContentSizeCategory = true
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
@@ -55,6 +56,7 @@ final class ScheduleDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addNotificationObserver()
         
         switch viewMode {
         case .display(let schedule):
@@ -220,4 +222,31 @@ extension ScheduleDetailViewController: UITextViewDelegate {
     }
 }
 
-
+//MARK: Notification
+extension ScheduleDetailViewController {
+    private func addNotificationObserver() {
+        let notificationCenter = NotificationCenter.default
+        
+        notificationCenter.addObserver(self,
+                                       selector: #selector(keyboardWillShow),
+                                       name: UIResponder.keyboardWillShowNotification,
+                                       object: nil)
+        
+        notificationCenter.addObserver(self,
+                                       selector:
+                                        #selector(keyboardWillHide),
+                                       name: UIResponder.keyboardWillHideNotification,
+                                       object: nil)
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        
+        contentTextView.contentInset.bottom = keyboardFrame.size.height
+    }
+    
+    @objc private func keyboardWillHide() {
+        contentTextView.contentInset.bottom = .zero
+    }
+}
