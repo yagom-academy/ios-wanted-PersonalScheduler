@@ -12,6 +12,7 @@ struct ScheduleDTO {
     let scheduleData: [String: Any]
 
     enum Keys: String, CaseIterable {
+        case scheduleId
         case uid
         case title
         case description
@@ -22,21 +23,28 @@ struct ScheduleDTO {
 
 extension ScheduleDTO {
     func toDomain() -> Schedule {
-        guard let title = scheduleData[Keys.title.rawValue] as? String,
+        guard let scheduleId = scheduleData[Keys.scheduleId.rawValue] as? String,
+              let uuid = UUID(uuidString: scheduleId),
+              let title = scheduleData[Keys.title.rawValue] as? String,
               let description = scheduleData[Keys.description.rawValue] as? String,
-              let startDate = scheduleData[Keys.startDate.rawValue] as? Date,
-              let endDate = scheduleData[Keys.endDate.rawValue] as? Date else {
+              let startTimeStamp = scheduleData[Keys.startDate.rawValue] as? Timestamp,
+              let endTimeStamp = scheduleData[Keys.endDate.rawValue] as? Timestamp else {
             return Schedule(id: UUID(), title: "", description: "", startDate: Date(), endDate: Date())
         }
 
-        return Schedule(id: UUID(), title: title, description: description, startDate: startDate, endDate: endDate)
+        let startDate = startTimeStamp.dateValue()
+        let endDate = endTimeStamp.dateValue()
+
+        return Schedule(id: uuid, title: title, description: description, startDate: startDate, endDate: endDate)
     }
 }
 
 extension Schedule {
     func toDTO() -> ScheduleDTO {
+        guard let uid = UserDefaults.standard.string(forKey: "uid") else { return ScheduleDTO(scheduleData: [:]) }
         var scheduleDictionary = [String: Any]()
-        scheduleDictionary.updateValue("user id 받아와야 함", forKey: "uid") // TODO: uid 여기서 넣어주기
+        scheduleDictionary.updateValue(uid, forKey: "uid")
+        scheduleDictionary.updateValue(id, forKey: "scheduleId")
         scheduleDictionary.updateValue(title, forKey: "title")
         scheduleDictionary.updateValue(description, forKey: "description")
         scheduleDictionary.updateValue(startDate, forKey: "startDate")

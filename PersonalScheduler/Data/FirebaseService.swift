@@ -13,13 +13,15 @@ final class FirebaseService {
 
     static let shared = FirebaseService()
     private let database = Firestore.firestore()
-    private lazy var movieReviewReference = database.collection("schedule")
+    private lazy var scheduleReference = database.collection("schedule")
 
     private init() { }
 
-    func fetchSchedules(of uid: String, completion: @escaping (Result<[ScheduleDTO], Error>) -> Void) {
-        movieReviewReference.whereField("uid", isEqualTo: uid)
-            .order(by: "", descending: true)
+    func fetchSchedules(for date: Date, completion: @escaping (Result<[ScheduleDTO], Error>) -> Void) {
+        guard let uid = UserDefaults.standard.string(forKey: "uid") else { return }
+        scheduleReference.whereField("uid", isEqualTo: uid)
+            .order(by: "startDate", descending: true)
+            .order(by: "endDate", descending: false)
             .getDocuments { snapShot, error in
                 guard error == nil else {
                     completion(.failure(FirebaseError.internalError))
