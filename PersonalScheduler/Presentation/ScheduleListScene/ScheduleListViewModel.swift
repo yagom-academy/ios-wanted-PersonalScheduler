@@ -102,6 +102,10 @@ extension ScheduleListViewModel {
         currentDate = nextMonthDate
         setCurrentMonthLabel?(nextMonthDate.toCurrentMonthText())
     }
+
+    func moveToScheduleMakeButtonTapped() {
+        
+    }
 }
 
 // MARK: - Private Methods

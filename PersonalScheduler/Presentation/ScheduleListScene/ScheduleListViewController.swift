@@ -52,6 +52,20 @@ final class ScheduleListViewController: UIViewController {
         return button
     }()
 
+    private lazy var moveToScheduleMakingButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "pencil.circle.fill"), for: .normal)
+        button.tintColor = .systemBlue
+        button.backgroundColor = .white
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addAction(UIAction { _ in
+            self.viewModel.moveToScheduleMakeButtonTapped()
+        }, for: .touchUpInside)
+        return button
+    }()
+
     private lazy var calendarCollectionView: UICollectionView = {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, environment in
             return CalendarSection.calendar.section
@@ -151,7 +165,7 @@ final class ScheduleListViewController: UIViewController {
     }
 
     private func layout() {
-        [todayButton, previousMonthButton, currentMonthLabel, nextMonthButton, calendarCollectionView, scheduleCollectionView].forEach {
+        [todayButton, previousMonthButton, currentMonthLabel, nextMonthButton, calendarCollectionView, scheduleCollectionView, moveToScheduleMakingButton].forEach {
             view.addSubview($0)
         }
 
@@ -179,7 +193,12 @@ final class ScheduleListViewController: UIViewController {
             scheduleCollectionView.topAnchor.constraint(equalTo: calendarCollectionView.bottomAnchor, constant: 10),
             scheduleCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scheduleCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            scheduleCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            scheduleCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+
+            moveToScheduleMakingButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            moveToScheduleMakingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            moveToScheduleMakingButton.widthAnchor.constraint(equalToConstant: 60),
+            moveToScheduleMakingButton.heightAnchor.constraint(equalTo: moveToScheduleMakingButton.widthAnchor)
         ])
     }
 
