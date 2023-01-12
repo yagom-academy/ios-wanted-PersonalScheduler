@@ -16,4 +16,27 @@ final class FirebaseService {
     
     private init() { }
     
+    func isNewUser(firebaseID: String) async -> Bool {
+        await withCheckedContinuation { continuation in
+            database.collection("Users").getDocuments { querySnapshot, error in
+                guard error == nil else {
+                    print(error?.localizedDescription as Any)
+                    return
+                }
+
+                guard let querySnapshot = querySnapshot else {
+                    return
+                }
+
+                querySnapshot.documents.forEach { document in
+                    if document.documentID == firebaseID {
+                        continuation.resume(returning: false)
+                    }
+                }
+
+                continuation.resume(returning: true)
+            }
+        }
+    }
+    
 }
