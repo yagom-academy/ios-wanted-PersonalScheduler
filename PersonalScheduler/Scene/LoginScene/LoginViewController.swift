@@ -116,8 +116,9 @@ final class LoginViewController: UIViewController {
     
     private func presentScheduleListView() {
         let scheduleListView = ScheduleListViewController(scheduleViewModel)
+        let navigationController = UINavigationController(rootViewController: scheduleListView)
         
-        navigationController?.pushViewController(scheduleListView,
-                                                 animated: true)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
     }
 }
