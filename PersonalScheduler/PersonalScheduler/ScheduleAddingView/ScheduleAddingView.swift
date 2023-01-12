@@ -41,5 +41,25 @@ struct ScheduleAddingView_Previews: PreviewProvider {
     }
     
 }
+
+extension ScheduleAddingView {
+    
+    func startDatePickerView(title: String, date: Binding<Date>) -> some View {
+        HStack {
+            Text(title)
+            
+            Spacer()
+            
+            Image(systemName: "calendar")
+            
+            DatePicker(
+                "DatePicker",
+                selection: date,
+                displayedComponents: [.date, .hourAndMinute]
+            )
+            .environment(\.locale, Locale.init(identifier: "ko"))
+            .labelsHidden()
+        }
     }
+    
 }
