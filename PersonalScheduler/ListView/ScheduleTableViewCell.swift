@@ -74,6 +74,6 @@ final class ScheduleTableViewCell: UITableViewCell {
     func configureCell(at indexPath: IndexPath, cellData: [ScheduleModel]) {
         titleLabel.text = cellData[indexPath.row].title
         mainBodyLabel.text = cellData[indexPath.row].mainText
-        startedAtLabel.text = cellData[indexPath.row].startDate.formattedString()
+        startedAtLabel.text = cellData[indexPath.row].startDate?.formattedString()
     }
 }

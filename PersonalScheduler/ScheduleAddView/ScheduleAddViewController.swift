@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 final class ScheduleAddViewController: UIViewController {
     private let textViewPlaceholder = "내용을 입력하세요"
+    private let scheduleAddViewModel = ScheduleAddViewModel()
+    private var cancelable = Set<AnyCancellable>()
 
     private let titleTextField: UITextField = {
         let textField = UITextField()
@@ -42,7 +45,7 @@ final class ScheduleAddViewController: UIViewController {
         return picker
     }()
 
-    lazy var remainCountLabel: UILabel = {
+    private lazy var remainCountLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.text = "0/500"
@@ -52,6 +55,23 @@ final class ScheduleAddViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
 
         return label
+    }()
+
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "새로운 일기"
+        label.textColor = .black
+        label.font = .preferredFont(forTextStyle: .largeTitle)
+        return label
+    }()
+
+
+    private lazy var saveButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.title = "저장"
+        button.target = self
+        button.action = #selector(didTapSaveButton)
+        return button
     }()
 
     private let informationStackView: UIStackView = {
@@ -74,6 +94,9 @@ final class ScheduleAddViewController: UIViewController {
         view.addSubview(remainCountLabel)
 
         setConstraints()
+        bind()
+        self.navigationItem.titleView = titleLabel
+        self.navigationItem.rightBarButtonItem = saveButton
     }
 
     private func setStackView() {
@@ -112,6 +135,31 @@ final class ScheduleAddViewController: UIViewController {
     private func updateCountLabel(characterCount: Int) {
         remainCountLabel.text = "\(characterCount)/500"
         remainCountLabel.asColor(targetString: "\(characterCount)", color: characterCount == 0 ? .lightGray : .blue)
+    }
+
+    @objc
+    private func didTapSaveButton() {
+        scheduleAddViewModel.input.tappedSaveButton()
+    }
+}
+
+extension ScheduleAddViewController {
+    private func bind() {
+        scheduleAddViewModel.output.scheduleSavePublisher
+            .sink { _ in
+                FirebaseManager.shared.savedData(
+                    user: "user", scheduleData: ScheduleModel(firebase: ["title" : self.titleTextField.text ?? "",
+                                                                      "statedTime" : self.startedTimeControl.date,
+                                                                      "mainBody" : self.mainBodyTextView.text ?? ""]) ?? ScheduleModel(firebase: [:])!)
+            }
+            .store(in: &cancelable)
+
+        scheduleAddViewModel.output.dismissPublisher
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.navigationController?.popViewController(animated: true)
+            }
+            .store(in: &cancelable)
     }
 }
 
