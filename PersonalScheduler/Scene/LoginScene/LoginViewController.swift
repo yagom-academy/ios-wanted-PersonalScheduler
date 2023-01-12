@@ -108,9 +108,7 @@ final class LoginViewController: UIViewController {
                 self?.scheduleViewModel.error.value
                 = "카카오 로그인에 실패했습니다.\n\(error.localizedDescription)"
             } else {
-                //TODO: userToken을 캐시로 저장하고 Firestore 저장 시 사용
-                let userToken = oauthToken?.accessToken
-                
+                LoginManager.shared.saveUserToken(oauthToken?.accessToken)
                 self?.presentScheduleListView()
             }
         }
