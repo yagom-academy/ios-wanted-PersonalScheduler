@@ -67,23 +67,40 @@ extension ScheduleListViewController: UITableViewDataSource, UITableViewDelegate
         scheduleTableview.rowHeight = view.bounds.height * 0.1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return scheduleViewModel.schedules.value.count
+    private func scheduleInSection(at section: Int) -> [Schedule] {
+        let sections = scheduleViewModel.sections.value
+        let schedules = scheduleViewModel.schedules.value
+        
+        return schedules.filter {
+            $0.startTime.toString() == sections[section]
+        }
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return scheduleViewModel.sections.value.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return scheduleViewModel.sections.value[section]
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return scheduleInSection(at: section).count
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleListTableViewCell.identifier,
                                                        for: indexPath) as? ScheduleListTableViewCell else {
             return UITableViewCell()
         }
         
-        cell.congigure(with: scheduleViewModel.schedules.value[indexPath.row])
+        cell.congigure(with: scheduleInSection(at: indexPath.section)[indexPath.row])
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedSchedule = scheduleViewModel.schedules.value[indexPath.row]
+        let selectedSchedule = scheduleInSection(at: indexPath.section)[indexPath.row]
         let detailViewController = ScheduleDetailViewController(scheduleViewModel,
                                                                 viewMode: .display(schedule: selectedSchedule))
         
@@ -93,7 +110,7 @@ extension ScheduleListViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let deleteSchedule = scheduleViewModel.schedules.value[indexPath.row]
+            let deleteSchedule = scheduleInSection(at: indexPath.section)[indexPath.row]
             scheduleViewModel.delete(deleteSchedule, at: "judy")
         }
     }
