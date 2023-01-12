@@ -20,6 +20,10 @@ final class LoginViewModel: ObservableObject {
             await serviceName.retrieveUserID()
             firebaseID = serviceName.toFirebaseID()
             isLoginFinished = true
+            
+            if await FirebaseService.shared.isNewUser(firebaseID: firebaseID) {
+                FirebaseService.shared.addUserToDatabase(firebaseID: firebaseID)
+            }
         }
     }
     
