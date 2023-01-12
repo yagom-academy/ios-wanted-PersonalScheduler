@@ -10,4 +10,10 @@ import FirebaseFirestore
 
 final class FirebaseService {
 
+    static let shared = FirebaseService()
+    let database = Firestore.firestore()
+    var isNewUser = false
+    
+    private init() { }
+    
 }
