@@ -24,7 +24,6 @@
 		207950C3296EF25B004D27EB /* ScheduleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207950C2296EF25B004D27EB /* ScheduleInfo.swift */; };
 		207950C5296EF27D004D27EB /* DetailViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207950C4296EF27D004D27EB /* DetailViewMode.swift */; };
 		207950C8296EF656004D27EB /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207950C7296EF656004D27EB /* UIViewController+Alert.swift */; };
-		20800DC4296D3787009E3CFC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20800DC3296D3787009E3CFC /* GoogleService-Info.plist */; };
 		20800DC6296D3A72009E3CFC /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20800DC5296D3A72009E3CFC /* ScheduleViewModel.swift */; };
 		20800DC8296D3F84009E3CFC /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20800DC7296D3F84009E3CFC /* Observable.swift */; };
 		20CD5DD1296D643700DB0D7D /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CD5DD0296D643700DB0D7D /* ScheduleDetailViewController.swift */; };
@@ -32,6 +31,7 @@
 		20F44DBF296FCE37005BC329 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 20F44DBE296FCE37005BC329 /* KakaoSDKAuth */; };
 		20F44DC1296FCE37005BC329 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 20F44DC0296FCE37005BC329 /* KakaoSDKUser */; };
 		20F44DC3296FD469005BC329 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F44DC2296FD469005BC329 /* LoginViewController.swift */; };
+		20F44DC7296FE1C4005BC329 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20F44DC6296FE1C4005BC329 /* GoogleService-Info.plist */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ScheduleListViewController.swift */; };
@@ -50,12 +50,12 @@
 		207950C2296EF25B004D27EB /* ScheduleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInfo.swift; sourceTree = "<group>"; };
 		207950C4296EF27D004D27EB /* DetailViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewMode.swift; sourceTree = "<group>"; };
 		207950C7296EF656004D27EB /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
-		20800DC3296D3787009E3CFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		20800DC5296D3A72009E3CFC /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		20800DC7296D3F84009E3CFC /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		20CD5DD0296D643700DB0D7D /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
 		20F44DBB296FC58A005BC329 /* Date+toString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+toString.swift"; sourceTree = "<group>"; };
 		20F44DC2296FD469005BC329 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		20F44DC6296FE1C4005BC329 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,9 +167,9 @@
 		20CD5DCA296D5C1000DB0D7D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				20F44DC8296FEAA2005BC329 /* LoginScene */,
 				20CD5DCB296D5C2100DB0D7D /* ScheduleListScene */,
 				20CD5DCF296D641600DB0D7D /* ScheduleDetailScene */,
-				20F44DC2296FD469005BC329 /* LoginViewController.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -219,6 +219,14 @@
 			path = ScheduleDetailScene;
 			sourceTree = "<group>";
 		};
+		20F44DC8296FEAA2005BC329 /* LoginScene */ = {
+			isa = PBXGroup;
+			children = (
+				20F44DC2296FD469005BC329 /* LoginViewController.swift */,
+			);
+			path = LoginScene;
+			sourceTree = "<group>";
+		};
 		63AAAAF52967EA2600775EC3 = {
 			isa = PBXGroup;
 			children = (
@@ -239,7 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
-				20800DC3296D3787009E3CFC /* GoogleService-Info.plist */,
+				20F44DC6296FE1C4005BC329 /* GoogleService-Info.plist */,
 				20CD5DCA296D5C1000DB0D7D /* Scene */,
 				20CD5DCD296D5C6F00DB0D7D /* Utility */,
 				204ACE1D296D0841003BAD46 /* Service */,
@@ -325,7 +333,7 @@
 			files = (
 				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
 				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
-				20800DC4296D3787009E3CFC /* GoogleService-Info.plist in Resources */,
+				20F44DC7296FE1C4005BC329 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

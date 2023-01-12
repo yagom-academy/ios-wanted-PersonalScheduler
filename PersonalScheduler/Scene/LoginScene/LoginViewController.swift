@@ -106,7 +106,7 @@ final class LoginViewController: UIViewController {
         UserApi.shared.loginWithKakaoAccount { [weak self] oauthToken, error in
             if let error = error {
                 self?.scheduleViewModel.error.value
-                = "카카오 로그인에 실패했습니다. \n \(error.localizedDescription)"
+                = "카카오 로그인에 실패했습니다.\n\(error.localizedDescription)"
             } else {
                 //TODO: userToken을 캐시로 저장하고 Firestore 저장 시 사용
                 let userToken = oauthToken?.accessToken
