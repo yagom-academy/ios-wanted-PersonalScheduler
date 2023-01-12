@@ -15,18 +15,37 @@ struct ScheduleAddingView: View {
         title: "",
         description: "",
         startTime: Date(),
-        endTime: Date(),
+        endTime: Date(timeInterval: 86400, since: Date()),
         status: .planned
     )
     
     var body: some View {
         NavigationView {
-            Text("")
+            VStack {
+                List {
+                    TextField("제목", text: $newSchedule.title)
+
+                    Section {
+                        TextEditor(text: $newSchedule.description)
+                    }
+                    
+                    Section {
+                        startDatePickerView(title: "시작", date: $newSchedule.startTime)
+                        startDatePickerView(title: "종료", date: $newSchedule.endTime)
+                    }
+                }
+            }
             .navigationTitle("새로운 일정")
+            .navigationBarItems(leading: Button(action: {
+                shouldPresentAddingView.toggle()
+            }, label: {
+                Text("취소")
+            }))
             .navigationBarItems(trailing: Button(action: {
                 shouldPresentAddingView.toggle()
             }, label: {
-                Image(systemName: "저장")
+                //TODO: 저장 로직 구현
+                Text("저장")
             }))
         }
     }
