@@ -7,19 +7,25 @@
 
 import FirebaseAuth
 
+struct KakaoInfo {
+    let uid: String
+    let email: String
+    let password: String
+}
 final class FirebaseLoginManager {
     
     enum FirebaseLoginError: Error {
         case badPassword
     }
     
-    func handleLogin(email: String, password: String, completion: @escaping (Result<String, FirebaseLoginError>) -> Void) {
+    func handleLogin(email: String, password: String, completion: @escaping (Result<KakaoInfo, FirebaseLoginError>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
                 completion(.failure(.badPassword))
             } else {
-                completion(.success(Auth.auth().currentUser?.uid ?? ""))
+                completion(.success(KakaoInfo(uid: Auth.auth().currentUser?.uid ?? "", email: email, password: password)))
+                print(password)
             }
         }
     }

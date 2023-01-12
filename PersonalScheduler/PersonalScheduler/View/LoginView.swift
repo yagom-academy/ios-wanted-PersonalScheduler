@@ -46,6 +46,9 @@ struct LoginView: View {
                 .frame(height: 40)
                 .cornerRadius(10)
                 
+                Toggle(isOn: $loginViewModel.isAutoLogin) {
+                    Text("자동 로그인 설정")
+                }
                 Button {
                     loginViewModel.kakaoLogIn()
                 } label: {
@@ -89,6 +92,9 @@ struct LoginView: View {
                     )
                     return alert
                 }
+            }
+            .onAppear {
+                loginViewModel.checkAutoLoginInfo()
             }
         }
     }
