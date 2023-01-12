@@ -90,8 +90,9 @@ final class SigninViewController: UIViewController {
         }
         do {
             try loginInfo.validate()
+            successRegister(loginInfo)
         } catch let error as LoginError {
-            DefaultAlertBuilder(
+            AlertBuilder(
                 title: "경고",
                 message: error.description,
                 preferredStyle: .alert
@@ -100,7 +101,20 @@ final class SigninViewController: UIViewController {
         } catch {
             print(String(describing: error))
         }
-        viewModel.registerButtonTapped(loginInfo)
+    }
+    
+    private func successRegister(_ loginInfo: LoginInfo) {
+        Task {
+            try await viewModel.registerButtonTapped(loginInfo) { email in
+                AlertBuilder(
+                    title: "알람",
+                    message: "\(email) 등록 완료 !",
+                    preferredStyle: .alert
+                ).setButton(name: "확인", style: .default) {
+                    _ = self.navigationController?.popViewController(animated: true)
+                }.showAlert(on: self)
+            }
+        }
     }
 }
 
