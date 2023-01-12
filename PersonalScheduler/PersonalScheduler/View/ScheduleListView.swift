@@ -63,7 +63,7 @@ struct ScheduleListView: View {
                             for index in indexSet {
                                 scheduleListViewModel.delete(
                                     accountUID: accountUID,
-                                    uuid: scheduleListViewModel.scheduleListViewModel.lists.sorted(by: {
+                                    uuid: scheduleListViewModel.lists.sorted(by: {
                                         $0.startTimeStamp.translateToDate() > $1.startTimeStamp.translateToDate()})[index].id
                                 )
                             }
