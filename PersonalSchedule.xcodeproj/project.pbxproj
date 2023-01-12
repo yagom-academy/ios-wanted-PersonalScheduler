@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		057BFB0A29702CCD00E28E54 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 057BFB0929702CCD00E28E54 /* KakaoSDKAuth */; };
+		057BFB0C29702CCD00E28E54 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 057BFB0B29702CCD00E28E54 /* KakaoSDKCommon */; };
+		057BFB0E29702CCD00E28E54 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 057BFB0D29702CCD00E28E54 /* KakaoSDKUser */; };
 		05D849C829702A9300B9F6D7 /* PersonalScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D849C729702A9300B9F6D7 /* PersonalScheduleApp.swift */; };
 		05D849CA29702A9300B9F6D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D849C929702A9300B9F6D7 /* ContentView.swift */; };
 		05D849CC29702A9400B9F6D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05D849CB29702A9400B9F6D7 /* Assets.xcassets */; };
@@ -14,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		057BFB0F29702D0800E28E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		057BFB1029702D7400E28E54 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		05D849C429702A9300B9F6D7 /* PersonalSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D849C729702A9300B9F6D7 /* PersonalScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalScheduleApp.swift; sourceTree = "<group>"; };
 		05D849C929702A9300B9F6D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,6 +31,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				057BFB0C29702CCD00E28E54 /* KakaoSDKCommon in Frameworks */,
+				057BFB0A29702CCD00E28E54 /* KakaoSDKAuth in Frameworks */,
+				057BFB0E29702CCD00E28E54 /* KakaoSDKUser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,10 +59,12 @@
 		05D849C629702A9300B9F6D7 /* PersonalSchedule */ = {
 			isa = PBXGroup;
 			children = (
+				057BFB0F29702D0800E28E54 /* Info.plist */,
 				05D849C729702A9300B9F6D7 /* PersonalScheduleApp.swift */,
 				05D849C929702A9300B9F6D7 /* ContentView.swift */,
 				05D849CB29702A9400B9F6D7 /* Assets.xcassets */,
 				05D849CD29702A9400B9F6D7 /* Preview Content */,
+				057BFB1029702D7400E28E54 /* Config.xcconfig */,
 			);
 			path = PersonalSchedule;
 			sourceTree = "<group>";
@@ -83,6 +93,11 @@
 			dependencies = (
 			);
 			name = PersonalSchedule;
+			packageProductDependencies = (
+				057BFB0929702CCD00E28E54 /* KakaoSDKAuth */,
+				057BFB0B29702CCD00E28E54 /* KakaoSDKCommon */,
+				057BFB0D29702CCD00E28E54 /* KakaoSDKUser */,
+			);
 			productName = PersonalSchedule;
 			productReference = 05D849C429702A9300B9F6D7 /* PersonalSchedule.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +126,9 @@
 				Base,
 			);
 			mainGroup = 05D849BB29702A9300B9F6D7;
+			packageReferences = (
+				057BFB0829702CCD00E28E54 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+			);
 			productRefGroup = 05D849C529702A9300B9F6D7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -269,6 +287,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PersonalSchedule/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PersonalSchedule/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -297,6 +316,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PersonalSchedule/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PersonalSchedule/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -337,6 +357,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		057BFB0829702CCD00E28E54 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		057BFB0929702CCD00E28E54 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 057BFB0829702CCD00E28E54 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		057BFB0B29702CCD00E28E54 /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 057BFB0829702CCD00E28E54 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		057BFB0D29702CCD00E28E54 /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 057BFB0829702CCD00E28E54 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 05D849BC29702A9300B9F6D7 /* Project object */;
 }
