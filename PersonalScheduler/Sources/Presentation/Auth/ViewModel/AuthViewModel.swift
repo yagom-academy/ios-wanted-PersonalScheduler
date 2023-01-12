@@ -62,9 +62,35 @@ final class DefaultAuthViewModel: AuthViewModel {
 private extension DefaultAuthViewModel {
     
     func successLogin(_ authentication: Authentication, snsType: SNSType) {
-        authRepository.writeToken(authentication: authentication)
-        userRepository.register(authentication, snsType: snsType)
-        _isSuccessLogin.send(true)
+        userRepository.getRemoteUserInfo(authentication: authentication)
+            .sink(receiveCompletion: { [weak self] complection in
+                if case let .failure(error) = complection {
+                    debugPrint(error)
+                    self?._errorMessage.send("로그인을 하는 도중에 알 수 없는 에러가 발생했습니다.")
+                } else {
+                    self?.authRepository.writeToken(authentication: authentication)
+                    if self?.userRepository.getLocalUserInfo() == nil {
+                        self?.registerNewUser(authentication, snsType: snsType)
+                    } else {
+                        self?._isSuccessLogin.send(true)
+                    }
+                }
+            }, receiveValue: { [weak self] user in
+                self?.userRepository.localUpdate(user: user)
+            }).store(in: &cancellables)
+    }
+    
+    func registerNewUser(_ authentication: Authentication, snsType: SNSType) {
+        self.userRepository.register(authentication, snsType: snsType)
+            .sink(receiveCompletion: { [weak self]  complection in
+                if case let .failure(error) = complection {
+                    debugPrint(error)
+                    self?._errorMessage.send("회원가입을 하는 도중에 알 수 없는 에러가 발생했습니다.")
+                }
+            }, receiveValue: { [weak self]  isSuccess in
+                self?._isSuccessLogin.send(isSuccess)
+            })
+            .store(in: &cancellables)
     }
 }
 

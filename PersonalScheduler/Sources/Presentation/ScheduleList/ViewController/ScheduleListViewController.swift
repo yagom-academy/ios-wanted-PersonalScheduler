@@ -31,6 +31,8 @@ class ScheduleListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
+        bind()
+        viewModel.input.viewDidLoad()
     }
     
     init(viewModel: ScheduleListViewModel, coordinator: ScheduleListCoordinatorInterface) {
@@ -67,20 +69,60 @@ class ScheduleListViewController: UIViewController {
         return button
     }()
     
+    private lazy var emptyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "일정을 추가해주세요."
+        label.textColor = .systemGray
+        label.font = .preferredFont(for: .callout, weight: .semibold)
+        return label
+    }()
+    
+    private lazy var activityIndicator: LoadingView = {
+        let activityIndicator = LoadingView(backgroundColor: .clear, alpha: 1)
+        return activityIndicator
+    }()
+    
 }
 
 private extension ScheduleListViewController {
+    
+    func bind() {
+        viewModel.output.schedules
+            .sinkOnMainThread(receiveValue: { [weak self] schedules in
+                self?.applySnapshot(schedules)
+            }).store(in: &cancellables)
+        
+        viewModel.output.schedules
+            .map { $0.isEmpty }
+            .sinkOnMainThread(receiveValue: { [weak self] isEmptySchedules in
+                self?.emptyLabel.isHidden = !isEmptySchedules
+            }).store(in: &cancellables)
+        
+        viewModel.output.isLoading
+            .sinkOnMainThread(receiveValue: { [weak self] isLoading in
+                if isLoading {
+                    self?.activityIndicator.startAnimating()
+                } else {
+                    self?.activityIndicator.stopAnimating()
+                }
+            }).store(in: &cancellables)
+        
+        viewModel.output.errorMessage
+            .compactMap { $0 }
+            .sinkOnMainThread(receiveValue: { [weak self] message in
+                self?.showAlert(message: message)
+            }).store(in: &cancellables)
+    }
     
     func setUp() {
         setUpLayout()
         setUpNavigationBar()
         setUpDataSource()
-        applySnapshot()
     }
     
     func setUpLayout() {
         view.backgroundColor = .psBackground
-        view.addSubviews(collectionView, addScheduleButton)
+        view.addSubviews(collectionView, addScheduleButton, emptyLabel, activityIndicator)
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -88,6 +130,10 @@ private extension ScheduleListViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             addScheduleButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             addScheduleButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            emptyLabel.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
+            emptyLabel.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor),
+            activityIndicator.widthAnchor.constraint(equalTo: view.widthAnchor),
+            activityIndicator.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
     }
  
@@ -95,24 +141,13 @@ private extension ScheduleListViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: navigationTitleView)
         let tappedLoacationView = UITapGestureRecognizer(target: self, action: #selector(didTapNavigationTitle(_:)))
         navigationTitleView.addGestureRecognizer(tappedLoacationView)
-        let moreButton = UIBarButtonItem(
-            image: UIImage(systemName: "arrow.up.arrow.down.circle"),
-            style: .plain,
-            target: self,
-            action: #selector(didTapMoreButton(_:))
-        )
-        navigationItem.rightBarButtonItem = moreButton
         navigationController?.addCustomBottomLine(color: .systemGray4, height: 0.3)
     }
     
     @objc func didTapNavigationTitle(_ gesture: UITapGestureRecognizer) {
-        showDatePickerAlert(Date()) { date in
-            print(date.toString(.yyyyMMddEEEE))
+        showDatePickerAlert(Date()) { [weak self] date in
+            self?.viewModel.input.selectedDate(date)
         }
-    }
-    
-    @objc func didTapMoreButton(_ sender: UIBarButtonItem) {
-        print(#function)
     }
     
     @objc func didTapAddButton(_ sender: UIBarButtonItem) {
@@ -136,17 +171,10 @@ private extension ScheduleListViewController {
         collectionView.dataSource = dataSource
     }
     
-    private func applySnapshot() {
+    private func applySnapshot(_ schedules: [Schedule]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Schedule>()
         snapshot.appendSections([.schedule])
-        snapshot.appendItems(Array(0...20).map { _ in
-            return Schedule(
-                title: "당근 거래",
-                startDate: Date(),
-                endDate: Date(),
-                description: "공기 청정기를 살거야~~ 요즘에 공기가 너무 안좋아서 살 수 밖에 없어...."
-            )
-        })
+        snapshot.appendItems(schedules)
         dataSource?.apply(snapshot)
     }
     
@@ -162,8 +190,8 @@ private extension ScheduleListViewController {
         guard let indexPath = indexPath, let schedule = dataSource?.itemIdentifier(for: indexPath) else {
             return nil
         }
-        let deleteAction = UIContextualAction(style: .destructive, title: nil) { _, _, completeHandeler in
-            print(schedule)
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] _, _, completeHandeler in
+            self?.viewModel.input.delete(schedule: schedule)
             completeHandeler(true)
         }
         deleteAction.image = UIImage(systemName: "trash.fill")

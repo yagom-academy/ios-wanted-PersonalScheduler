@@ -19,7 +19,7 @@ protocol FirestoreStorageService {
     
 }
 
-final class FirestoreStorage {
+final class FirestoreStorage: FirestoreStorageService {
     
     static let shared = FirestoreStorage()
     private init() {}
@@ -37,7 +37,8 @@ final class FirestoreStorage {
             if let error {
                 completed.send(completion: .failure(error))
             } else {
-                guard let querySnapShot else {
+                guard let querySnapShot, querySnapShot.data() != nil else {
+                    completed.send(completion: .finished)
                     return
                 }
                 do {

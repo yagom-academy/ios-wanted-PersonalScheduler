@@ -161,7 +161,10 @@ private extension AuthViewController {
     }
     
     @objc func didTapHelpButton(_ sender: UIButton) {
-        print(#function)
+        guard let url = URL(string: "mailto:lee_ari95@icloud.com") else {
+            return
+        }
+        UIApplication.shared.open(url)
     }
     
 }
