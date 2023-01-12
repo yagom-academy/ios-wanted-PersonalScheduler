@@ -10,7 +10,7 @@ import FirebaseAuth
 
 protocol LoginFlowCoordinatorDependencies: AnyObject {
     func makeLoginViewController(actions: LoginViewModelActions) -> LoginViewController
-    func makeSigninViewController(actions: SigninViewModelActions) -> SigninViewController
+    func makeSigninViewController() -> SigninViewController
 }
 
 final class LoginFlowCoordinator: Coordinator {
@@ -26,69 +26,45 @@ final class LoginFlowCoordinator: Coordinator {
     
     func start() {
         let actions = LoginViewModelActions(
-            loginButtonTapped: loginButtonTapped,
-            signinButtonTapped: signinButtonTapped,
-            kakaoLogoButtonTapped: kakaoLogoButtonTapped,
-            facebookLogoButtonTapped: facebookLogoButtonTapped,
-            appleLogoButtonTapped: appleLogoButtonTapped
+            successLogin: successLogin(_:),
+            successKakaoLogin: successKakaoLogin,
+            successFacebookLogin: successFacebookLogin,
+            signinButtonTapped: signinButtonTapped
         )
         let loginVC = dependencies.makeLoginViewController(actions: actions)
         navigationController.pushViewController(loginVC, animated: true)
     }
     
-    private func loginButtonTapped(_ loginInfo: LoginInfo) {
-        Auth.auth().signIn(withEmail: loginInfo.id, password: loginInfo.password) { [weak self] authResult, error in
-            guard let self = self else { return }
-            if let error = error {
-                print(String(describing: error))
-                DefaultAlertBuilder(title: "알람", message: "사용자를 찾을 수 없습니다." ,preferredStyle: .alert)
-                    .setButton(name: "예", style: .default)
-                    .showAlert(on: self.navigationController.viewControllers.last!)
-            } else {
-                let newDependency = ScheduleSceneDIContainer()
-                let flow = newDependency.makeMainFlowCoordinator(
-                    navigationController: self.navigationController
-                )
-                flow.start()
-            }
-        }
+    private func successLogin(_ userName: String) {
+        let newDependency = ScheduleSceneDIContainer()
+        let flow = newDependency.makeMainFlowCoordinator(
+            navigationController: self.navigationController,
+            fireStoreCollectionId: userName
+        )
+        flow.start()
+    }
+    
+    private func successKakaoLogin(_ email: String) {
+        let newDependency = ScheduleSceneDIContainer()
+        let flow = newDependency.makeMainFlowCoordinator(
+            navigationController: self.navigationController,
+            fireStoreCollectionId: email
+        )
+        flow.start()
+    }
+    
+    private func successFacebookLogin(_ email: String) {
+        let newDependency = ScheduleSceneDIContainer()
+        let flow = newDependency.makeMainFlowCoordinator(
+            navigationController: self.navigationController,
+            fireStoreCollectionId: email
+        )
+        flow.start()
     }
     
     private func signinButtonTapped() {
         print("회원가입 버튼 탭 !")
-        let actions = SigninViewModelActions(registerButtonTapped: registerButtonTapped)
-        let signinVC = dependencies.makeSigninViewController(actions: actions)
+        let signinVC = dependencies.makeSigninViewController()
         navigationController.pushViewController(signinVC, animated: true)
-    }
-    
-    private func kakaoLogoButtonTapped() {
-        print("kakao 버튼 탭 !")
-    }
-    
-    private func facebookLogoButtonTapped() {
-        print("facebook 버튼 탭 !")
-    }
-    
-    private func appleLogoButtonTapped() {
-        print("apple 버튼 탭 !")
-    }
-    
-    private func registerButtonTapped(_ loginInfo: LoginInfo) {
-        print("등록 버튼 탭 !")
-        // 아이디, 비밀번호 Firebase에 등록
-        Auth.auth().createUser(withEmail: loginInfo.id, password: loginInfo.password) { authResult, error in
-            guard error == nil else {
-                print(String(describing: error))
-                return
-            }
-            guard let authResult = authResult else { return }
-            DefaultAlertBuilder(
-                title: "알람",
-                message: "\(authResult.user.email ?? "e-mail") 등록 완료 !",
-                preferredStyle: .alert
-            ).setButton(name: "확인", style: .default) {
-                self.navigationController.popViewController(animated: true)
-            }.showAlert(on: self.navigationController.viewControllers.last!)
-        }
     }
 }
