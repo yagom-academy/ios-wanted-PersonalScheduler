@@ -17,7 +17,8 @@ final class DIContainer {
     }
 
     func makeScheduleListViewModel() -> ScheduleListViewModel {
-        return ScheduleListViewModel(fetchScheduleUseCase: makeFetchScheduleUseCase())
+        return ScheduleListViewModel(fetchScheduleUseCase: makeFetchScheduleUseCase(),
+                                     deleteScheduleUseCase: makeDeleteScheduleUseCase())
     }
 
     func makeOAuthLoginUseCase() -> OAuthLoginUseCase {
@@ -28,7 +29,7 @@ final class DIContainer {
         return FetchScheduleUseCase(repository: ScheduleListRepository())
     }
 
-    func makeDeleteScheduleUseCase() -> FetchScheduleUseCase {
-        return FetchScheduleUseCase(repository: MockScheduleRepository())
+    func makeDeleteScheduleUseCase() -> DeleteScheduleUseCase {
+        return DeleteScheduleUseCase(repository: ScheduleListRepository())
     }
 }

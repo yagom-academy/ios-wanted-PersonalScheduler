@@ -22,6 +22,8 @@ final class ScheduleListRepository: ScheduleListRepositoryInterface {
     }
 
     func deleteSchedule(id: UUID, completion: @escaping (Result<Void, Error>) -> Void) {
-        
+        firebaseService.deleteSchedule(id: id.uuidString) { result in
+            completion(result)
+        }
     }
 }

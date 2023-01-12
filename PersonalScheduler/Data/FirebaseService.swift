@@ -38,4 +38,14 @@ final class FirebaseService {
                 completion(.success(data))
             }
     }
+
+    func deleteSchedule(id: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        scheduleReference.document(id).delete() { error in
+            guard error == nil else {
+                completion(.failure(FirebaseError.internalError))
+                return
+            }
+            completion(.success(()))
+        }
+    }
 }

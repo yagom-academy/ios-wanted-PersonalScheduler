@@ -49,9 +49,11 @@ final class ScheduleListViewModel {
 
     // MARK: - UseCases
     private let fetchScheduleUseCase: FetchScheduleUseCase
+    private let deleteScheduleUseCase: DeleteScheduleUseCase
 
-    init(fetchScheduleUseCase: FetchScheduleUseCase) {
+    init(fetchScheduleUseCase: FetchScheduleUseCase, deleteScheduleUseCase: DeleteScheduleUseCase) {
         self.fetchScheduleUseCase = fetchScheduleUseCase
+        self.deleteScheduleUseCase = deleteScheduleUseCase
     }
 }
 
@@ -67,11 +69,21 @@ extension ScheduleListViewModel {
     }
 
     func dateCellSelected(date: Date) {
-
+        currentDate = date
+        selectCurrentDate()
     }
 
     func deleteActionDone(schedule: Schedule) {
-
+        deleteScheduleUseCase.execute(id: schedule.id) { result in
+            switch result {
+            case .success:
+                self.fetchSchedules(date: self.currentDate)
+            case .failure(let error):
+                let alert = UIAlertController(title: "Error", message: error.localizedDescription,
+                                              preferredStyle: .alert)
+                self.showAlert?(alert)
+            }
+        }
     }
 
     func todayButtonTapped() {
