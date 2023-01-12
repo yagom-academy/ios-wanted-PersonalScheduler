@@ -48,7 +48,7 @@ enum Status {
 fileprivate extension Date {
     func toString() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
+        dateFormatter.dateFormat = "yyyy.MM.dd HH:mm Z"
         return dateFormatter.string(from: self)
     }
 }
