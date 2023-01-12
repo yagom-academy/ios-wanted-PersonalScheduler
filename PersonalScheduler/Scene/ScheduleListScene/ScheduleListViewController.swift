@@ -33,9 +33,25 @@ class ScheduleListViewController: UIViewController {
     
     private func bind() {
         scheduleViewModel.schedules
-            .subscribe { [weak self] scheduled in
+            .subscribe { [weak self] schedules in
                 self?.scheduleTableview.reloadData()
+                
+                var newSection: [String] = []
+                
+                schedules.forEach {
+                    let startTime = $0.startTime.toString()
+                    if newSection.contains(startTime) == false {
+                        newSection.append(startTime)
+                    }
+                }
+                
+                self?.scheduleViewModel.sections.value = newSection
         }
+        
+        scheduleViewModel.sections
+            .subscribe { [weak self] _ in
+                self?.scheduleTableview.reloadData()
+            }
     }
     
     private func loadSchedules() {

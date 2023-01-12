@@ -15,6 +15,7 @@ protocol ScheduleViewModelInput {
 
 protocol ScheduleViewModelOutput {
     var schedules: Observable<[Schedule]> { get set }
+    var sections: Observable<[String]> { get set }
     var error: Observable<String?> { get set }
 }
 
@@ -25,6 +26,7 @@ final class ScheduleViewModel: ScheduleViewModelType {
     
     /// Output
     var schedules: Observable<[Schedule]> = Observable([])
+    var sections: Observable<[String]> = Observable([])
     var error: Observable<String?> = Observable(nil)
     
     /// Input
