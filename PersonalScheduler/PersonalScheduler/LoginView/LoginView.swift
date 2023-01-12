@@ -13,24 +13,26 @@ struct LoginView: View {
     
     var body: some View {
         if loginViewModel.isLoginFinished {
-            scheduleListView
+            ScheduleListView()
         } else {
             VStack {
-                Button("카카오 로그인") {
-                    loginViewModel.loginButtonTapped(serviceName: loginViewModel.kakaoOAuthService)
-                }
+                Text("Personal Schedular")
+                    .font(.system(size: 35))
+                    .fontWeight(.heavy)
                 
-                Button("로그아웃") {
-                    loginViewModel.logoutButtonTapped(serviceName: loginViewModel.kakaoOAuthService)
+                Image("checklist")
+                    .resizable()
+                    .scaledToFit()
+
+                Button {
+                    loginViewModel.loginButtonTapped(serviceName: loginViewModel.kakaoOAuthService)
+                } label: {
+                    Image("kakao_login_medium_narrow")
                 }
+                .offset(y: 100)
             }
         }
     }
-    
-    var scheduleListView: some View {
-        Text(loginViewModel.firebaseID)
-    }
-    
 }
 
 struct LoginView_Previews: PreviewProvider {
@@ -38,4 +40,5 @@ struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView(loginViewModel: LoginViewModel())
     }
+    
 }
