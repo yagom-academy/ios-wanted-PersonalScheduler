@@ -76,6 +76,14 @@ extension ScheduleListViewController: UITableViewDataSource, UITableViewDelegate
         scheduleTableview.rowHeight = view.bounds.height * 0.1
     }
     
+    private func setupInitialTableView() {
+        let initialLabel = UILabel()
+        initialLabel.frame = CGRect(x: .zero, y: .zero, width: view.bounds.width, height: view.bounds.height)
+        initialLabel.text = "저장된 일정이 없습니다."
+        initialLabel.textAlignment = .center
+        scheduleTableview.backgroundView = initialLabel
+    }
+    
     private func scheduleInSection(at section: Int) -> [Schedule] {
         let sections = scheduleViewModel.sections.value
         let schedules = scheduleViewModel.schedules.value
@@ -86,7 +94,15 @@ extension ScheduleListViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return scheduleViewModel.sections.value.count
+        let sections = scheduleViewModel.sections.value
+        scheduleTableview.backgroundView = .none
+        
+        guard sections.isEmpty == false else{
+            setupInitialTableView()
+            return 0
+        }
+            
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
