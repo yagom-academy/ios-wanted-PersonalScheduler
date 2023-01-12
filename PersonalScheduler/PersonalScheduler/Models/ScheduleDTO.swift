@@ -16,6 +16,21 @@ struct ScheduleDTO {
     var status: String
 }
 
+extension ScheduleDTO {
+    func toEntity() -> Schedule {
+        let schedule = Schedule(
+            id: self.id,
+            title: self.title,
+            description: self.description,
+            startMoment: self.startMoment.toDate(),
+            endMoment: self.endMoment.toDate(),
+            status: Status(rawValue: self.status) ?? .planned
+        )
+        
+        return schedule
+    }
+}
+
 fileprivate extension String {
     func toDate() -> Date {
         let formatter = DateFormatter()

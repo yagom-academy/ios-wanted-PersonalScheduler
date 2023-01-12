@@ -31,9 +31,9 @@ extension Schedule {
     }
 }
 
-enum Status {
-    case planned
-    case done
+enum Status: String {
+    case planned = "planned"
+    case done = "done"
     
     var description: String {
         switch self {
