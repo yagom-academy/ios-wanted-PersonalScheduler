@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UserNotifications
 
 protocol ScheduleRepository {
     func read() -> AnyPublisher<[Schedule], Error>
@@ -45,6 +46,7 @@ final class DefaultScheduleRepository: ScheduleRepository {
         newSchedules.append(schedule)
         user.schedules = newSchedules
         localStorage.saveUser(user)
+        registerNotification(schedule)
         return firestoreStorage.write(user: user)
     }
     
@@ -55,6 +57,7 @@ final class DefaultScheduleRepository: ScheduleRepository {
         let schedules: [Schedule] = user.schedules?.filter { $0.id != schedule.id } ?? []
         user.schedules = schedules
         localStorage.saveUser(user)
+        removeNotification(schedule)
         return firestoreStorage.update(user: user)
     }
     
@@ -68,6 +71,40 @@ final class DefaultScheduleRepository: ScheduleRepository {
         newSchedules[index] = schedule
         user.schedules = newSchedules
         localStorage.saveUser(user)
+        registerNotification(schedule)
         return firestoreStorage.update(user: user)
     }
+}
+
+private extension DefaultScheduleRepository {
+    
+    func removeNotification(_ schedule: Schedule) {
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [schedule.id])
+    }
+    
+    func registerNotification(_ schedule: Schedule) {
+        removeNotification(schedule)
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "[10분 후] \(schedule.title)"
+        notificationContent.body = "곧 일정이 시작됩니다."
+        let dateComponents = Calendar.current.dateComponents(
+            [.year, .month, .day, .hour, .minute],
+            from: Date(timeIntervalSinceReferenceDate: schedule.startDate.timeIntervalSinceReferenceDate - (600))
+        )
+        let trigger = UNCalendarNotificationTrigger(
+            dateMatching: dateComponents,
+            repeats: false
+        )
+        let request = UNNotificationRequest(
+            identifier: schedule.id,
+            content: notificationContent,
+            trigger: trigger
+        )
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("⛔️ Notification Error: ", error)
+            }
+        }
+    }
+    
 }
