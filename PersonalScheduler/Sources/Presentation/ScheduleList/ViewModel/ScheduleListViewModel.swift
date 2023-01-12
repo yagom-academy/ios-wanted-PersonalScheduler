@@ -96,17 +96,14 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelInput {
     
     func delete(schedule: Schedule) {
         let schedules = _schedules.value.filter { $0 != schedule }
+        _currentSchedules = schedules
         scheduleRepository.delete(schedule: schedule)
             .sink(receiveCompletion: { [weak self] complection in
                 if case let .failure(error) = complection {
                     debugPrint(error)
                     self?._errorMessage.send("변경사항을 서버에 반영하는 도중에 알 수 없는 에러가 발생했습니다.")
                 }
-            }, receiveValue: { [weak self] isSuccess in
-                if isSuccess {
-                    self?._currentSchedules = schedules
-                }
-            }).store(in: &cancellables)
+            }, receiveValue: { _ in }).store(in: &cancellables)
         
     }
     
