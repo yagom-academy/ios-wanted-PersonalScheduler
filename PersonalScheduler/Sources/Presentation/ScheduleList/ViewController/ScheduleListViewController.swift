@@ -117,6 +117,13 @@ private extension ScheduleListViewController {
             .sinkOnMainThread(receiveValue: { [weak self] message in
                 self?.showAlert(message: message)
             }).store(in: &cancellables)
+        
+        viewModel.output.showSelectedDate
+            .compactMap { $0 }
+            .map { IndexPath(item: $0, section: .zero) }
+            .sinkOnMainThread(receiveValue: { [weak self] indexPath in
+                self?.collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+            }).store(in: &cancellables)
     }
     
     func setUp() {
@@ -150,7 +157,7 @@ private extension ScheduleListViewController {
     }
     
     @objc func didTapNavigationTitle(_ gesture: UITapGestureRecognizer) {
-        showDatePickerAlert(Date()) { [weak self] date in
+        showDatePickerAlert(viewModel.output.currentSelectedDate, type: .date) { [weak self] date in
             self?.viewModel.input.selectedDate(date)
         }
     }

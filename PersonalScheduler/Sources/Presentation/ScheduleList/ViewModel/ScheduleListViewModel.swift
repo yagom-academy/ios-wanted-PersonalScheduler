@@ -23,6 +23,7 @@ protocol ScheduleListViewModelOutput {
     var errorMessage: AnyPublisher<String?, Never> { get }
     var isLoading: AnyPublisher<Bool, Never> { get }
     var currentSelectedDate: Date { get }
+    var showSelectedDate: AnyPublisher<Int?, Never> { get }
     
 }
 
@@ -45,6 +46,7 @@ final class DefaultScheduleListViewModel: ScheduleListViewModel {
     private var _errorMessage = CurrentValueSubject<String?, Never>(nil)
     private var _isLoading = CurrentValueSubject<Bool, Never>(true)
     private var _currentSelectedDate = CurrentValueSubject<Date, Never>(Date())
+    private var _showSelectedDate = CurrentValueSubject<Int?, Never>(nil)
     
     private var _currentSchedules = [Schedule]() {
         didSet {
@@ -103,6 +105,14 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelInput {
     
     func selectedDate(_ date: Date) {
         _currentSelectedDate.send(date)
+        if let index = _currentSchedules.firstIndex(where: { $0.startDate.isEqualDay(from: date)  }) {
+            _showSelectedDate.send(index)
+        } else if let index = _currentSchedules.firstIndex(where: { $0.startDate.isEqualMonth(from: date) }) {
+            _showSelectedDate.send(index)
+            _errorMessage.send("선택한 날짜에 일정이 존재하지 않습니다.")
+        } else {
+            _errorMessage.send("선택한 날짜에 일정이 존재하지 않습니다.")
+        }
     }
 }
 
@@ -114,5 +124,6 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelOutput {
     var errorMessage: AnyPublisher<String?, Never> { _errorMessage.eraseToAnyPublisher() }
     var isLoading: AnyPublisher<Bool, Never> { _isLoading.eraseToAnyPublisher() }
     var currentSelectedDate: Date { _currentSelectedDate.value }
+    var showSelectedDate: AnyPublisher<Int?, Never> { _showSelectedDate.eraseToAnyPublisher() }
 
 }

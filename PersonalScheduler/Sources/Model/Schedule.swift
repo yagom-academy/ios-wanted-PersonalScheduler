@@ -13,6 +13,10 @@ struct Schedule: Codable {
     let startDate: Date
     let endDate: Date
     let description: String
+    
+    var isProgressing: Bool {
+        return Date().contains(start: startDate, end: endDate)
+    }
 }
 
 extension Schedule {
@@ -50,7 +54,8 @@ extension Schedule: Equatable, Hashable {
         lhs.title == rhs.title &&
         lhs.startDate == rhs.startDate &&
         lhs.endDate == rhs.endDate &&
-        lhs.description == rhs.description
+        lhs.description == rhs.description &&
+        lhs.isProgressing == rhs.isProgressing
     }
     
     func hash(into hasher: inout Hasher) {

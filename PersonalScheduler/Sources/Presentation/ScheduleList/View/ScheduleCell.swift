@@ -99,7 +99,7 @@ extension ScheduleCell {
         titleLabel.text = schedule.title
         descriptionLabel.text = schedule.description
         dateLabel.text = "\(schedule.startDate.toString(.hourMinute)) - \(schedule.endDate.toString(.hourMinute))"
-        if Calendar.current.isDateInToday(schedule.startDate) {
+        if schedule.isProgressing {
             highlight()
         }
     }
