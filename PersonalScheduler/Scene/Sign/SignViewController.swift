@@ -74,11 +74,17 @@ final class SignViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel.autoLogInCheck()
     }
     
     // MARK: - Functions
+    
+    override func setupView() {
+        view.backgroundColor = .systemBackground
+        
+        kakaoButton.addTarget(self, action: #selector(didTapKakaoLoginButton), for: .touchUpInside)
+        appleButton.addTarget(self, action: #selector(didTapAppleLoginButton), for: .touchUpInside)
+        facebookButton.addTarget(self, action: #selector(didTapFaceBookLoginButton), for: .touchUpInside)
+    }
     
     override func addView() {
         [mainTitle, subTitle, kakaoButton, appleButton, facebookButton].forEach {
@@ -87,7 +93,6 @@ final class SignViewController: BaseViewController {
     }
     
     override func setLayout() {
-        
         NSLayoutConstraint.activate([
             mainTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 300),
             mainTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -116,12 +121,16 @@ final class SignViewController: BaseViewController {
         ])
     }
     
-    override func setupView() {
-        view.backgroundColor = .systemBackground
+    override func bindViewModel() {
         
-        kakaoButton.addTarget(self, action: #selector(didTapKakaoLoginButton), for: .touchUpInside)
-        appleButton.addTarget(self, action: #selector(didTapAppleLoginButton), for: .touchUpInside)
-        facebookButton.addTarget(self, action: #selector(didTapFaceBookLoginButton), for: .touchUpInside)
+        // Output
+        
+        viewModel.goToListScene.subscribe() { [weak self] isAvailable in
+            guard let isAvailable = isAvailable else { return }
+            if isAvailable {
+                self?.goToListScene()
+            }
+        }
     }
     
 }
@@ -144,6 +153,14 @@ private extension SignViewController {
     func setupAppleLogin() {
         let authorizationController = viewModel.getAppleAuthorizationController()
         authorizationController.presentationContextProvider = self
+    }
+    
+    func goToListScene() {
+        DispatchQueue.main.async {
+            let scheduleListViewController = ScheduleListViewController()
+            scheduleListViewController.navigationItem.hidesBackButton = true
+            self.navigationController?.pushViewController(scheduleListViewController, animated: true)
+        }
     }
     
 }

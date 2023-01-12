@@ -24,6 +24,10 @@
 		F39EDE02296F2EA600A4E655 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE01296F2EA600A4E655 /* Observable.swift */; };
 		F39EDE04296F383300A4E655 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE03296F383300A4E655 /* Token.swift */; };
 		F39EDE06296F49D400A4E655 /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE05296F49D400A4E655 /* ScheduleListViewController.swift */; };
+		F39EDE0A296FFA4200A4E655 /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE09296FFA4200A4E655 /* ScheduleListViewModel.swift */; };
+		F39EDE0C296FFA7000A4E655 /* ScheduleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE0B296FFA7000A4E655 /* ScheduleInfo.swift */; };
+		F39EDE0F296FFB8600A4E655 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE0E296FFB8600A4E655 /* ScheduleTableViewCell.swift */; };
+		F39EDE11296FFC6000A4E655 /* ScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE10296FFC6000A4E655 /* ScheduleUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,11 @@
 		F39EDE01296F2EA600A4E655 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		F39EDE03296F383300A4E655 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		F39EDE05296F49D400A4E655 /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
+		F39EDE08296FEEE800A4E655 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
+		F39EDE09296FFA4200A4E655 /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
+		F39EDE0B296FFA7000A4E655 /* ScheduleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInfo.swift; sourceTree = "<group>"; };
+		F39EDE0E296FFB8600A4E655 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		F39EDE10296FFC6000A4E655 /* ScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +87,7 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				F39EDE08296FEEE800A4E655 /* PersonalScheduler.entitlements */,
 				F39EDDFF296F2E8600A4E655 /* Utility */,
 				F39EDDF3296F19DD00A4E655 /* Data */,
 				F39EDDF2296F19D800A4E655 /* Domain */,
@@ -164,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				F39EDE03296F383300A4E655 /* Token.swift */,
+				F39EDE0B296FFA7000A4E655 /* ScheduleInfo.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -182,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				F39EDDFB296F2A6C00A4E655 /* AuthUseCase.swift */,
+				F39EDE10296FFC6000A4E655 /* ScheduleUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -205,9 +217,19 @@
 		F39EDE07296F49DA00A4E655 /* ScheduleList */ = {
 			isa = PBXGroup;
 			children = (
+				F39EDE0D296FFB6A00A4E655 /* SubViews */,
 				F39EDE05296F49D400A4E655 /* ScheduleListViewController.swift */,
+				F39EDE09296FFA4200A4E655 /* ScheduleListViewModel.swift */,
 			);
 			path = ScheduleList;
+			sourceTree = "<group>";
+		};
+		F39EDE0D296FFB6A00A4E655 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				F39EDE0E296FFB8600A4E655 /* ScheduleTableViewCell.swift */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,16 +310,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F39EDE02296F2EA600A4E655 /* Observable.swift in Sources */,
+				F39EDE0C296FFA7000A4E655 /* ScheduleInfo.swift in Sources */,
 				F39EDDF8296F22F600A4E655 /* kakaoAuthRepository.swift in Sources */,
 				F39EDDD9296DBBA400A4E655 /* SignViewModel.swift in Sources */,
 				F39EDE04296F383300A4E655 /* Token.swift in Sources */,
 				F39EDDFC296F2A6C00A4E655 /* AuthUseCase.swift in Sources */,
+				F39EDE0F296FFB8600A4E655 /* ScheduleTableViewCell.swift in Sources */,
+				F39EDE0A296FFA4200A4E655 /* ScheduleListViewModel.swift in Sources */,
 				F39EDE06296F49D400A4E655 /* ScheduleListViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				F39EDDE6296DD16B00A4E655 /* SignSceneDIContainer.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				F39EDDD7296DBA7B00A4E655 /* SignViewController.swift in Sources */,
 				F39EDDDD296DBD1100A4E655 /* BaseViewController.swift in Sources */,
+				F39EDE11296FFC6000A4E655 /* ScheduleUseCase.swift in Sources */,
 				F39EDDFA296F2A5800A4E655 /* AppleAuthRespository.swift in Sources */,
 				F39EDDFE296F2C6700A4E655 /* FireStoreRepository.swift in Sources */,
 			);
@@ -436,6 +462,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PersonalScheduler/PersonalScheduler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CADXU3X8JU;
@@ -464,6 +491,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PersonalScheduler/PersonalScheduler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CADXU3X8JU;

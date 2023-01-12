@@ -17,6 +17,7 @@ protocol SignViewModelInput {
 
 protocol SignViewModelOutput {
     var error: Observable<String?> { get }
+    var goToListScene: Observable<Bool?> { get }
 }
 
 protocol SignViewModellType: SignViewModelInput, SignViewModelOutput { }
@@ -25,6 +26,7 @@ final class SignViewModel: SignViewModellType {
     
     private let authUseCase: AuthUseCase
     private var loginTask: Task<Void, Error>?
+    private var autoSignTask: Task<Void, Error>?
     
     init() {
         self.authUseCase = AuthUseCase()
@@ -33,13 +35,14 @@ final class SignViewModel: SignViewModellType {
     /// Output
     
     var error: Observable<String?> = Observable(nil)
+    var goToListScene: Observable<Bool?> = Observable(nil)
     
     /// Input
     
     func autoLogInCheck() {
-        Task {
+        self.autoSignTask = Task.detached(operation: {
             do {
-                let result = try await authUseCase.autoLoginCheck()
+                let result = try await self.authUseCase.autoLoginCheck()
                 if result {
                     print("다음 화면으로 넘어가기")
                 }
@@ -47,33 +50,34 @@ final class SignViewModel: SignViewModellType {
             catch {
                 self.error.value = error.localizedDescription
             }
-        }
+        })
+        autoSignTask?.cancel()
     }
     
     
     func didTapKakaoLoginButton() {
-        self.loginTask = Task {
+        self.loginTask = Task.detached(operation: {
             do {
-                try await authUseCase.login(authType: .kakao)
-                print("다음 화면으로 넘어가기")
+                try await self.authUseCase.login(authType: .kakao)
+                self.goToListScene.value = true
             }
             catch {
                 self.error.value = error.localizedDescription
             }
-        }
+        })
         loginTask?.cancel()
     }
     
     func didTapAppleLoginButton() {
-        self.loginTask = Task {
+        self.loginTask = Task.detached(operation: {
             do {
-                try await authUseCase.login(authType: .apple)
-                print("다음 화면으로 넘어가기")
+                try await self.authUseCase.login(authType: .apple)
+                self.goToListScene.value = true
             }
             catch {
                 self.error.value = error.localizedDescription
             }
-        }
+        })
         loginTask?.cancel()
     }
     
