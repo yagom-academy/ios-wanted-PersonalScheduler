@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     
-    let kakaoOAuthService = KakaoOAuthService()
+    @StateObject var loginViewModel: LoginViewModel
     
     var body: some View {
         Button("카카오 로그인") {
@@ -20,7 +20,8 @@ struct LoginView: View {
 }
 
 struct LoginView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        LoginView()
+        LoginView(loginViewModel: LoginViewModel())
     }
 }
