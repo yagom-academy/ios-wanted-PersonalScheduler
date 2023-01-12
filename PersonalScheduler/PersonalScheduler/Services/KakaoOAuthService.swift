@@ -8,13 +8,19 @@
 import Foundation
 import KakaoSDKUser
 
-final class KakaoOAuthService {
+final class KakaoOAuthService: OAuthProvider {
+
+    private(set) var companyName: ProviderName = .kakao
+    private(set) var originalUserID = ""
     
-    func executeLogin() {
+    func retrieveUserID() async {
+        
         if UserApi.isKakaoTalkLoginAvailable() {
-            executeLoginWithKakaoTalk()
+            let serviceIDNumbers: Int64 = await executeLoginWithKakaoTalk()
+            originalUserID = String(serviceIDNumbers)
         } else {
-            executeLoginWithKakaoAccount()
+            let serviceIDNumbers: Int64 = await executeLoginWithKakaoAccount()
+            originalUserID = String(serviceIDNumbers)
         }
     }
     
