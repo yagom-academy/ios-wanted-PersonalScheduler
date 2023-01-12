@@ -85,6 +85,10 @@ extension ScheduleListCoordinator: ScheduleListCoordinatorInterface {
         let coordinator = makeScheduleCoordinator(type: .edit, schedule: schedule)
         coordinator?.start()
     }
+    
+    func finished() {
+        finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+    }
 }
 
 
