@@ -9,8 +9,20 @@ import SwiftUI
 
 struct ScheduleListView: View {
     
+    @EnvironmentObject var scheduleListViewModel: ScheduleListViewModel
+    
     var body: some View {
-        Text("")
+        NavigationView {
+            List(scheduleListViewModel.schedules, id: \.id) { schedule in
+                Text(schedule.title)
+            }
+            .navigationTitle("Schedules")
+            .navigationBarItems(trailing: Button(action: {
+                // adding view
+            }, label: {
+                Image(systemName: "plus")
+            }))
+        }
     }
 }
 
