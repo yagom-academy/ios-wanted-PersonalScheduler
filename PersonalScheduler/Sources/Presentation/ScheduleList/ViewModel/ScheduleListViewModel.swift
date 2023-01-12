@@ -11,6 +11,7 @@ import Combine
 protocol ScheduleListViewModelInput {
     
     func viewDidLoad()
+    func viewWillAppear()
     func delete(schedule: Schedule)
     func selectedDate(_ date: Date)
     
@@ -45,6 +46,11 @@ final class DefaultScheduleListViewModel: ScheduleListViewModel {
     private var _isLoading = CurrentValueSubject<Bool, Never>(true)
     private var _currentSelectedDate = CurrentValueSubject<Date, Never>(Date())
     
+    private var _currentSchedules = [Schedule]() {
+        didSet {
+            _schedules.send(_currentSchedules.sorted { $0.startDate < $1.startDate })
+        }
+    }
     init(
         userRepository: UserRepository = DefaultUserRepository(),
         scheduleRepository: ScheduleRepository = DefaultScheduleRepository()
@@ -68,14 +74,31 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelInput {
                 }
                 self?._isLoading.send(false)
             }, receiveValue: { [weak self] schedules in
-                self?._schedules.send(schedules)
+                self?._currentSchedules = schedules
             }).store(in: &cancellables)
+    }
+    
+    func viewWillAppear() {
+        guard let schedules = userRepository.getLocalUserInfo()?.schedules else {
+            return
+        }
+        _currentSchedules = schedules
     }
     
     func delete(schedule: Schedule) {
         let schedules = _schedules.value.filter { $0 != schedule }
         scheduleRepository.delete(schedule: schedule)
-        _schedules.send(schedules)
+            .sink(receiveCompletion: { [weak self] complection in
+                if case let .failure(error) = complection {
+                    debugPrint(error)
+                    self?._errorMessage.send("변경사항을 서버에 반영하는 도중에 알 수 없는 에러가 발생했습니다.")
+                }
+            }, receiveValue: { [weak self] isSuccess in
+                if isSuccess {
+                    self?._currentSchedules = schedules
+                }
+            }).store(in: &cancellables)
+        
     }
     
     func selectedDate(_ date: Date) {

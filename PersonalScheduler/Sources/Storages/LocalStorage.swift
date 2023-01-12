@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 enum LocalKey: String {
     case userInfo = "userInfo"
@@ -35,17 +37,15 @@ extension UserDefaults: LocalStorageService {
     }
     
     func saveUser(_ user: User) {
-        let encoder = JSONEncoder()
+        let encoder = Firestore.Encoder()
         let encodedUser = try? encoder.encode(user)
         Self.standard.setValue(encodedUser, forKey: LocalKey.userInfo.rawValue)
         Self.standard.synchronize()
     }
     
     func getUser() -> User? {
-        if let data = Self.standard.object(forKey: LocalKey.userInfo.rawValue) as? Data {
-            let decoder = JSONDecoder()
-            let savedUser = try? decoder.decode(User.self, from: data)
-                return savedUser
+        if let dittionary = Self.standard.object(forKey: LocalKey.userInfo.rawValue) as? [String: Any] {
+            return User(dittionary)
             
         }
         return nil

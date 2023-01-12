@@ -11,7 +11,7 @@ import Combine
 protocol ScheduleRepository {
     func read() -> AnyPublisher<[Schedule], Error>
     func write(schedule: Schedule) -> AnyPublisher<Bool, Error>
-    func delete(schedule: Schedule)
+    func delete(schedule: Schedule) -> AnyPublisher<Bool, Error>
     func update(schedule: Schedule) -> AnyPublisher<Bool, Error>
 }
 
@@ -48,19 +48,19 @@ final class DefaultScheduleRepository: ScheduleRepository {
         return firestoreStorage.write(user: user)
     }
     
-    func delete(schedule: Schedule) {
+    func delete(schedule: Schedule) -> AnyPublisher<Bool, Error> {
         guard var user = localStorage.getUser() else {
-            return
+            return Empty().eraseToAnyPublisher()
         }
-        let schedules: [Schedule] = user.schedules?.filter { $0 != schedule } ?? []
+        let schedules: [Schedule] = user.schedules?.filter { $0.id != schedule.id } ?? []
         user.schedules = schedules
         localStorage.saveUser(user)
-        firestoreStorage.delete(user: user)
+        return firestoreStorage.update(user: user)
     }
     
     func update(schedule: Schedule) -> AnyPublisher<Bool, Error> {
         guard var user = localStorage.getUser(),
-              let index = user.schedules?.firstIndex(of: schedule)
+              let index = user.schedules?.firstIndex(where: { $0.id == schedule.id })
         else {
             return Empty().eraseToAnyPublisher()
         }

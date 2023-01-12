@@ -35,6 +35,11 @@ class ScheduleListViewController: UIViewController {
         viewModel.input.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.input.viewWillAppear()
+    }
+    
     init(viewModel: ScheduleListViewModel, coordinator: ScheduleListCoordinatorInterface) {
         self.viewModel = viewModel
         self.coordinator = coordinator

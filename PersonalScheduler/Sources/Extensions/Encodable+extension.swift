@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 extension Encodable {
 
@@ -15,6 +17,12 @@ extension Encodable {
         guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
             throw NSError()
         }
+        return dictionary
+    }
+    
+    func asFirestoreDictionary() throws -> [String: Any] {
+        let encoder = Firestore.Encoder()
+        let dictionary = try encoder.encode(self)
         return dictionary
     }
 

@@ -29,6 +29,11 @@ extension Date {
         return Date(timeIntervalSinceNow: self.timeIntervalSinceNow + Double((3600 * hour)))
     }
     
+    func isFuture(from date: Date) -> Bool {
+        let result: ComparisonResult = self.compare(date)
+        return result == .orderedAscending
+    }
+    
 }
 
 enum DateFormat: String {
