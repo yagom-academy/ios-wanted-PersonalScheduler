@@ -47,16 +47,15 @@ struct ScheduleListView: View {
                                     endTimeStamp: data.endTimeStamp.translateToDate()
                                 )
                             } label: {
-                                VStack(alignment: .leading) {
-                                    Text("\(data.title)")
-                                    Text("시작 일시: \(data.startTimeStamp)")
-                                        .foregroundColor(Color.secondary)
-                                    Text("종료 일시: \(data.endTimeStamp)")
-                                        .foregroundColor(Color.secondary)
-                                    Text("내용: \(data.description)")
-                                        .foregroundColor(Color.secondary)
-                                        .lineLimit(1)
-                                }
+                                let compareDate = data.endTimeStamp.translateToDate().compare(Date().translateToDateFormat())
+                                
+                                ScheduleListCellView(
+                                    compareResult: compareDate,
+                                    title: data.title, 
+                                    startTimeStamp: data.startTimeStamp,
+                                    endTimeStamp: data.endTimeStamp,
+                                    description: data.description
+                                )
                             }
                         }
                         .onDelete { indexSet in

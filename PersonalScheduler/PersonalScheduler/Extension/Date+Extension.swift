@@ -20,5 +20,9 @@ extension Date {
         
         return dateFormatter.string(from: self)
     }
-
+    
+    func translateToDateFormat() -> Date {
+        
+        return dateFormatter.date(from: dateFormatter.string(from: self)) ?? Date()
+    }
 }
