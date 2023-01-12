@@ -16,6 +16,9 @@ final class ScheduleListViewController: UIViewController {
         button.setImage(UIImage(systemName: "arrowtriangle.backward.fill"), for: .normal)
         button.tintColor = .black
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addAction(UIAction { _ in
+            self.viewModel.previousMonthButtonTapped()
+        }, for: .touchUpInside)
         return button
     }()
 
@@ -31,6 +34,9 @@ final class ScheduleListViewController: UIViewController {
         button.setImage(UIImage(systemName: "arrowtriangle.forward.fill"), for: .normal)
         button.tintColor = .black
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addAction(UIAction { _ in
+            self.viewModel.nextMonthButtonTapped()
+        }, for: .touchUpInside)
         return button
     }()
 
@@ -40,6 +46,7 @@ final class ScheduleListViewController: UIViewController {
         }
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+
         return collectionView
     }()
 
@@ -51,6 +58,7 @@ final class ScheduleListViewController: UIViewController {
         }), configuration: configuration)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.allowsMultipleSelection = true
 
         return collectionView
     }()
@@ -70,16 +78,37 @@ final class ScheduleListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        bind()
         setUpCollectionViews()
         layout()
+        bind()
         viewModel.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.viewWillAppear()
+
+    }
+
     private func bind() {
-        viewModel.applyDataSource = {
-            self.applyCalendarCollectionViewDataSource()
-            self.applyScheduleCollectionViewDataSource()
+        viewModel.applyCalendarDataSource = { [weak self] in
+            DispatchQueue.main.async {
+                self?.applyCalendarCollectionViewDataSource()
+            }
+        }
+        viewModel.applyScheduleDataSource = { [weak self] in
+            DispatchQueue.main.async {
+                self?.applyScheduleCollectionViewDataSource()
+            }
+        }
+
+        viewModel.setCurrentMonthLabel = { [weak self] text in
+            self?.currentMonthLabel.text = text
+        }
+
+        viewModel.selectItemAt = { [weak self] indexPath in
+            DispatchQueue.main.async {
+                self?.calendarCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+            }
         }
     }
 
@@ -87,12 +116,15 @@ final class ScheduleListViewController: UIViewController {
         calendarCollectionView.dataSource = calendarCollectionViewDataSource
         calendarCollectionView.register(CalendarCollectionViewCell.self,
                                 forCellWithReuseIdentifier: CalendarCollectionViewCell.reuseIdentifier)
+        calendarCollectionView.delegate = self
+
         scheduleCollectionView.dataSource = scheduleCollectionViewDataSource
         scheduleCollectionView.register(ScheduleCollectionViewCell.self,
                                 forCellWithReuseIdentifier: ScheduleCollectionViewCell.reuseIdentifier)
         scheduleCollectionView.register(ScheduleListHeader.self,
                                         forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                         withReuseIdentifier: ScheduleListHeader.reuseIdentifier)
+        scheduleCollectionView.delegate = self
     }
 
     private func layout() {
@@ -123,9 +155,10 @@ final class ScheduleListViewController: UIViewController {
     }
 
     private func applyCalendarCollectionViewDataSource() {
-        var snapShot = NSDiffableDataSourceSnapshot<CalendarSection, Int>()
+        var snapShot = NSDiffableDataSourceSnapshot<CalendarSection, Date>()
         snapShot.appendSections([.calendar])
         snapShot.appendItems(viewModel.days)
+
         calendarCollectionViewDataSource.apply(snapShot)
     }
 
@@ -138,24 +171,24 @@ final class ScheduleListViewController: UIViewController {
         scheduleCollectionViewDataSource.apply(snapShot)
     }
 
-    private func calendarDataSource() -> UICollectionViewDiffableDataSource<CalendarSection, Int> {
-        return UICollectionViewDiffableDataSource<CalendarSection, Int>(collectionView: scheduleCollectionView) { collectionView, indexPath, itemIdentifier in
+    private func calendarDataSource() -> UICollectionViewDiffableDataSource<CalendarSection, Date> {
+        return UICollectionViewDiffableDataSource<CalendarSection, Date>(collectionView: calendarCollectionView) { collectionView, indexPath, date in
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: CalendarCollectionViewCell.reuseIdentifier,
                 for: indexPath) as? CalendarCollectionViewCell else { return UICollectionViewCell() }
-            cell.setUpContents(number: self.viewModel.days[indexPath.row])
+            cell.setUpContents(number: Calendar.current.dateComponents([.day], from: date).day!)
             return cell
         }
     }
 
     private func scheduleDataSource() -> UICollectionViewDiffableDataSource<ScheduleSection, Schedule> {
-        let dataSource = UICollectionViewDiffableDataSource<ScheduleSection, Schedule>(collectionView: scheduleCollectionView) { collectionView, indexPath, itemIdentifier in
+        let dataSource = UICollectionViewDiffableDataSource<ScheduleSection, Schedule>(collectionView: scheduleCollectionView) { collectionView, indexPath, schedule in
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: ScheduleCollectionViewCell.reuseIdentifier,
                 for: indexPath) as? ScheduleCollectionViewCell else { return UICollectionViewCell() }
             let section = ScheduleSection(rawValue: indexPath.section) ?? .done
             cell.setUpContents(section: section,
-                               schedule: self.viewModel.schedules(section: section)[indexPath.row])
+                               schedule: schedule)
             return cell
         }
 
@@ -173,9 +206,40 @@ final class ScheduleListViewController: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+
+extension ScheduleListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == calendarCollectionView {
+            viewModel.dateCellSelected(indexPath: indexPath)
+        } else {
+            if let schedule = scheduleCollectionViewDataSource.itemIdentifier(for: indexPath) {
+                var currentSnapshot = scheduleCollectionViewDataSource.snapshot()
+                currentSnapshot.reloadItems([schedule])
+                scheduleCollectionViewDataSource.apply(currentSnapshot)
+            }
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if collectionView == calendarCollectionView {
+            viewModel.dateCellSelected(indexPath: indexPath)
+        } else {
+            if let schedule = scheduleCollectionViewDataSource.itemIdentifier(for: indexPath) {
+                var currentSnapshot = scheduleCollectionViewDataSource.snapshot()
+                currentSnapshot.reloadItems([schedule])
+                scheduleCollectionViewDataSource.apply(currentSnapshot)
+            }
+        }
+    }
+}
+
+
+// MARK: - CollectionView Sections
+
 extension ScheduleListViewController {
 
-    enum CalendarSection {
+    enum CalendarSection: Int, CaseIterable {
         case calendar
 
         var item: NSCollectionLayoutItem {
@@ -207,7 +271,7 @@ extension ScheduleListViewController {
         }
 
         var group: NSCollectionLayoutGroup {
-            let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1000))
+            let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
             return NSCollectionLayoutGroup.vertical(layoutSize: size, subitems: [item])
         }
 

@@ -8,23 +8,44 @@
 import UIKit
 
 final class ScheduleListViewModel {
-
-    // MARK: - Outputs
     private var schedules = [Schedule]()
-
-    func schedules(section: ScheduleListViewController.ScheduleSection) -> [Schedule] {
-        switch section {
-        case .current:
-            return schedules.filter { $0.title == "첫번째 제목" } // TODO: Need to make filter logic
-        case .upcoming:
-            return schedules.filter { $0.title == "두번째 제목" }
-        case .done:
-            return schedules.filter { $0.title != "첫번째 제목" && $0.title != "두번째 제목" }
+    private let calendar = Calendar.current
+    private(set) var currentDate = Date() {
+        didSet {
+            applyCalendarDataSource?()
         }
     }
-    var days = (1...31).map { $0 }
-    var applyDataSource: (() -> Void)?
+
+    // MARK: - Outputs
+    var days: [Date] {
+        guard let interval = calendar.dateInterval(of: .month, for: currentDate),
+              let dayCount = calendar.dateComponents([.day], from: interval.start, to: interval.end).day else { return [] }
+
+        let currentComponent = calendar.dateComponents([.year, .month], from: currentDate)
+        guard let year = currentComponent.year,
+              let month = currentComponent.month else { return [] }
+        return (1...dayCount).compactMap {
+            return DateComponents(calendar: calendar, year: year, month: month, day: $0).date
+        }
+    }
+
+    func schedules(section: ScheduleListViewController.ScheduleSection) -> [Schedule] {
+        let now = Date()
+        switch section {
+        case .current:
+            return schedules.filter { $0.startDate < now && now < $0.endDate } // TODO: Need to make filter logic
+        case .upcoming:
+            return schedules.filter { now < $0.startDate }
+        case .done:
+            return schedules.filter { $0.endDate < now }
+        }
+    }
+
+    var applyCalendarDataSource: (() -> Void)?
+    var applyScheduleDataSource: (() -> Void)?
     var showAlert: ((UIAlertController) -> Void)?
+    var setCurrentMonthLabel: ((String) -> Void)?
+    var selectItemAt: ((IndexPath) -> Void)?
 
     // MARK: - UseCases
     private let fetchScheduleUseCase: FetchScheduleUseCase
@@ -32,34 +53,20 @@ final class ScheduleListViewModel {
     init(fetchScheduleUseCase: FetchScheduleUseCase) {
         self.fetchScheduleUseCase = fetchScheduleUseCase
     }
-
-    private func fetchSchedules(date: Date) {
-        fetchScheduleUseCase.execute(for: date) { result in
-            switch result {
-            case .success(let schedules):
-                self.schedules = schedules
-                self.applyDataSource?()
-            case .failure(let error):
-                let alert = UIAlertController(title: "Error", message: error.localizedDescription,
-                                              preferredStyle: .alert)
-                self.showAlert?(alert)
-            }
-        }
-    }
 }
 
 // MARK: - Inputs
 extension ScheduleListViewModel {
     func viewDidLoad() {
-        applyDataSource?()
         fetchSchedules(date: Date())
     }
 
     func viewWillAppear() {
-
+        self.applyCalendarDataSource?()
+        selectCurrentDate()
     }
 
-    func dateCellSelected(date: Date) {
+    func dateCellSelected(indexPath: IndexPath) {
 
     }
 
@@ -68,6 +75,53 @@ extension ScheduleListViewModel {
     }
 
     func todayButtonTapped() {
+        currentDate = Date()
+        selectCurrentDate()
+    }
 
+    func previousMonthButtonTapped() {
+        guard let nextMonthDate = calendar.date(byAdding: .month, value: -1, to: currentDate) else { return }
+        currentDate = nextMonthDate
+        setCurrentMonthLabel?(nextMonthDate.toCurrentMonthText())
+    }
+
+    func nextMonthButtonTapped() {
+        guard let nextMonthDate = calendar.date(byAdding: .month, value: 1, to: currentDate) else { return }
+        currentDate = nextMonthDate
+        setCurrentMonthLabel?(nextMonthDate.toCurrentMonthText())
+    }
+}
+
+// MARK: - Private Methods
+
+extension ScheduleListViewModel {
+    private func fetchSchedules(date: Date) {
+        fetchScheduleUseCase.execute(for: date) { result in
+            switch result {
+            case .success(let schedules):
+                self.schedules = schedules
+                self.applyScheduleDataSource?()
+            case .failure(let error):
+                let alert = UIAlertController(title: "Error", message: error.localizedDescription,
+                                              preferredStyle: .alert)
+                self.showAlert?(alert)
+            }
+        }
+    }
+
+    private func selectCurrentDate() {
+        if let day = calendar.dateComponents([.year, .month, .day], from: currentDate).day {
+            selectItemAt?(IndexPath(row: day - 1, section: 0))
+        }
+    }
+}
+
+// MARK: - Date Extension
+
+fileprivate extension Date {
+    func toCurrentMonthText() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy년 MM월"
+        return dateFormatter.string(from: self)
     }
 }

@@ -11,6 +11,18 @@ final class ScheduleCollectionViewCell: UICollectionViewCell {
 
     static let reuseIdentifier = String(describing: ScheduleCollectionViewCell.self)
 
+
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                descriptionLabel.numberOfLines = 0
+            } else {
+                descriptionLabel.numberOfLines = 2
+            }
+            layoutIfNeeded()
+        }
+    }
+
     private let stateBar: UIView = {
         let bar = UIView()
         bar.translatesAutoresizingMaskIntoConstraints = false
@@ -74,7 +86,7 @@ final class ScheduleCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             stateBar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             stateBar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-            stateBar.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            stateBar.bottomAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
             stateBar.widthAnchor.constraint(equalToConstant: 5),
 
             titleLabel.leadingAnchor.constraint(equalTo: stateBar.trailingAnchor, constant: 10),
@@ -84,15 +96,17 @@ final class ScheduleCollectionViewCell: UICollectionViewCell {
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
             descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-            descriptionLabel.trailingAnchor.constraint(equalTo: endTimeLabel.leadingAnchor, constant: -5),
+            descriptionLabel.trailingAnchor.constraint(equalTo: startTimeLabel.leadingAnchor, constant: -5),
 
             startTimeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             startTimeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
 
             endTimeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             endTimeLabel.topAnchor.constraint(equalTo: startTimeLabel.bottomAnchor, constant: 10),
-            endTimeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            endTimeLabel.bottomAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
         ])
+        startTimeLabel.setContentHuggingPriority(.required, for: .horizontal)
+        endTimeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
 }
 

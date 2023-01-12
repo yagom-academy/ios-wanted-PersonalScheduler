@@ -13,7 +13,6 @@ final class CalendarCollectionViewCell: UICollectionViewCell {
 
     override var isSelected: Bool {
         didSet {
-            backgroundColorView.layer.cornerRadius = backgroundColorView.frame.height / 2
             if isSelected {
                 backgroundColorView.backgroundColor = .systemBlue
                 numberLabel.textColor = .white
@@ -27,6 +26,7 @@ final class CalendarCollectionViewCell: UICollectionViewCell {
     private let backgroundColorView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 15
         return view
     }()
 
@@ -66,9 +66,5 @@ final class CalendarCollectionViewCell: UICollectionViewCell {
             numberLabel.widthAnchor.constraint(equalTo: numberLabel.heightAnchor),
             numberLabel.centerXAnchor.constraint(equalTo: backgroundColorView.centerXAnchor)
         ])
-    }
-
-    private func setUpContentViewLayer() {
-//        layer.cornerRadius =
     }
 }
