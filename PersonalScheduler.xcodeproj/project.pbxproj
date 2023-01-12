@@ -190,18 +190,13 @@
 		0223FAA5296BDD5200B6B32C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0223FAA3296BDD4D00B6B32C /* Encodable+extension.swift */,
-				0223FB1A296D6B3300B6B32C /* UIColor+extension.swift */,
-				0223FB1C296D6CBF00B6B32C /* UIView+extension.swift */,
-				0223FB1E296D6CCF00B6B32C /* UIStackView+extension.swift */,
-				0223FB20296D6DAD00B6B32C /* UIFont+extension.swift */,
-				0223FB26296D7A7100B6B32C /* UINavigationController+extension.swift */,
-				0223FB30296E538F00B6B32C /* UICollectionView+extension.swift */,
-				0223FB32296E53AC00B6B32C /* NSObject+extension.swift */,
-				02544E31296EB0A100F06385 /* UIViewController+extension.swift */,
-				02544E35296EDC6100F06385 /* Publisher+MainThread.swift */,
+				02544E3C2970376700F06385 /* UI */,
 				0223FAF6296D579400B6B32C /* Bundle+extension.swift */,
+				02544E39296FF13500F06385 /* Collection+extension.swift */,
 				0223FB2E296E495E00B6B32C /* Date+extension.swift */,
+				0223FAA3296BDD4D00B6B32C /* Encodable+extension.swift */,
+				0223FB32296E53AC00B6B32C /* NSObject+extension.swift */,
+				02544E35296EDC6100F06385 /* Publisher+MainThread.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -388,6 +383,20 @@
 				02544E2F296E9E0000F06385 /* DateSettingView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		02544E3C2970376700F06385 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB30296E538F00B6B32C /* UICollectionView+extension.swift */,
+				0223FB1A296D6B3300B6B32C /* UIColor+extension.swift */,
+				0223FB20296D6DAD00B6B32C /* UIFont+extension.swift */,
+				0223FB26296D7A7100B6B32C /* UINavigationController+extension.swift */,
+				0223FB1E296D6CCF00B6B32C /* UIStackView+extension.swift */,
+				0223FB1C296D6CBF00B6B32C /* UIView+extension.swift */,
+				02544E31296EB0A100F06385 /* UIViewController+extension.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		63AAAAF52967EA2600775EC3 = {
