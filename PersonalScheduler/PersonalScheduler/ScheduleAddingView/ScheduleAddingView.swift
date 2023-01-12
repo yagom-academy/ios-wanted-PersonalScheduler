@@ -14,8 +14,8 @@ struct ScheduleAddingView: View {
         id: UUID().uuidString,
         title: "",
         description: "",
-        startTime: Date(),
-        endTime: Date(timeInterval: 86400, since: Date()),
+        startMoment: Date(),
+        endMoment: Date(timeInterval: 86400, since: Date()),
         status: .planned
     )
     
@@ -30,8 +30,8 @@ struct ScheduleAddingView: View {
                     }
                     
                     Section {
-                        startDatePickerView(title: "시작", date: $newSchedule.startTime)
-                        startDatePickerView(title: "종료", date: $newSchedule.endTime)
+                        startDatePickerView(title: "시작", date: $newSchedule.startMoment)
+                        startDatePickerView(title: "종료", date: $newSchedule.endMoment)
                     }
                 }
             }
