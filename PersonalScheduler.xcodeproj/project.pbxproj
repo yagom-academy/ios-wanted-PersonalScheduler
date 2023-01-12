@@ -12,6 +12,9 @@
 		63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* LoginViewController.swift */; };
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
+		C4448E50297093BB0085CB77 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4448E4F297093BB0085CB77 /* ScheduleCell.swift */; };
+		C4448E532970953D0085CB77 /* ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4448E522970953D0085CB77 /* ReuseIdentifier.swift */; };
+		C4D37DB5296DF2E40011F1B3 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D37DB4296DF2E40011F1B3 /* ScheduleViewController.swift */; };
 		C4FCC480296DB086000858A4 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = C4FCC47F296DB086000858A4 /* KakaoSDK */; };
 		C4FCC483296DB0C0000858A4 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = C4FCC482296DB0C0000858A4 /* FacebookCore */; };
 		C4FCC485296DB0C0000858A4 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = C4FCC484296DB0C0000858A4 /* FacebookLogin */; };
@@ -25,7 +28,10 @@
 		63AAAB0A2967EA2700775EC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4448E4F297093BB0085CB77 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		C4448E522970953D0085CB77 /* ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifier.swift; sourceTree = "<group>"; };
 		C4D37DB3296DBD690011F1B3 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
+		C4D37DB4296DF2E40011F1B3 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,13 +67,32 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				C4448E51297095320085CB77 /* Protocol */,
 				C4D37DB3296DBD690011F1B3 /* PersonalScheduler.entitlements */,
 				C4DA53CE296D9459006368B0 /* Resource */,
 				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
 				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
 				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
+				C4448E4C29708C2A0085CB77 /* Service */,
+				C4D37DB4296DF2E40011F1B3 /* ScheduleViewController.swift */,
+				C4448E4F297093BB0085CB77 /* ScheduleCell.swift */,
 			);
 			path = PersonalScheduler;
+			sourceTree = "<group>";
+		};
+		C4448E4C29708C2A0085CB77 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C4448E51297095320085CB77 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C4448E522970953D0085CB77 /* ReuseIdentifier.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		C4DA53CE296D9459006368B0 /* Resource */ = {
@@ -160,8 +185,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
+				C4448E532970953D0085CB77 /* ReuseIdentifier.swift in Sources */,
+				C4448E50297093BB0085CB77 /* ScheduleCell.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				C4D37DB5296DF2E40011F1B3 /* ScheduleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
