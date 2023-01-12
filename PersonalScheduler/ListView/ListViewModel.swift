@@ -9,10 +9,11 @@ import Foundation
 import Combine
 
 protocol ListViewModelInputInterface {
+    func tappedAddButton()
 }
 
 protocol ListViewModelOutputInterface {
-    var kakaoLoginPublisher: PassthroughSubject<Void, Never> { get }
+    var scheduleAddPublisher: PassthroughSubject<Void, Never> { get }
 }
 
 protocol ListViewModelInterface {
@@ -25,10 +26,11 @@ final class ListViewModel: ListViewModelInterface, ListViewModelOutputInterface 
 
     var input: ListViewModelInputInterface { self }
     var output: ListViewModelOutputInterface { self }
-
-    var kakaoLoginPublisher = PassthroughSubject<Void, Never>()
+    var scheduleAddPublisher = PassthroughSubject<Void, Never>()
 }
 
 extension ListViewModel: ListViewModelInputInterface {
-
+    func tappedAddButton() {
+        scheduleAddPublisher.send()
+    }
 }

@@ -31,6 +31,7 @@ class ListViewController: UIViewController {
         let button = UIBarButtonItem()
         button.image = UIImage(systemName: "plus")
         button.target = self
+        button.action = #selector(tappedAddButton)
         return button
     }()
 
@@ -41,6 +42,7 @@ class ListViewController: UIViewController {
         self.navigationItem.titleView = titleLabel
         self.navigationItem.rightBarButtonItem = addScheduleButton
         setTableView()
+        bind()
     }
 
     private func setTableView() {
@@ -49,6 +51,24 @@ class ListViewController: UIViewController {
     }
 }
 
+//MARK: Extension
+extension ListViewController {
+    private func bind() {
+        listViewModel.scheduleAddPublisher
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.navigationController?.pushViewController(ScheduleAddViewController(), animated: true)
+            }
+            .store(in: &cancelable)
+    }
+
+    @objc private func tappedAddButton() {
+        listViewModel.input.tappedAddButton()
+    }
+}
+
+
+//MARK: UITableViewDelegate, UITableViewDataSource
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listViewModel.schedules.count
