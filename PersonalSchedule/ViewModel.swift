@@ -10,28 +10,25 @@ import Combine
 import KakaoSDKUser
 
 class ViewModel: ObservableObject {
-    @Published var isLoggedIn: Bool = false
-    
-    @MainActor
-    func handleKakaoLogin() {
-        Task {
+
+    func handleKakaoLogin() async -> Bool {
+        let isLoggedIn = await Task {
             if (UserApi.isKakaoTalkLoginAvailable()) {
-                isLoggedIn = await handleLoginWithKakaoTalkApp()
+                return await handleLoginWithKakaoTalkApp()
             } else {
-                isLoggedIn = await handleLoginWithKakaoAccount()
+                return await handleLoginWithKakaoAccount()
             }
-        }
+        }.value
+
+        return isLoggedIn
     }
     
-    @MainActor
-    func kakaoLogout() {
-        Task {
-            if await handleKakaoLogout() {
-                isLoggedIn = false
-            } else {
-                isLoggedIn = true
-            }
-        }
+    func kakaoLogout() async -> Bool {
+        let isLoggedOut = await Task {
+            return await handleKakaoLogout()
+        }.value
+
+        return isLoggedOut
     }
     
     private func handleLoginWithKakaoTalkApp() async -> Bool {
@@ -48,7 +45,6 @@ class ViewModel: ObservableObject {
                 }
             }
         })
-        
     }
     
     private func handleLoginWithKakaoAccount() async -> Bool {

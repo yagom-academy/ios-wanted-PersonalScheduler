@@ -15,7 +15,6 @@ struct PersonalScheduleApp: App {
     init() {
         let kakaoAppKey = Bundle.main.infoDictionary?["KAKAO_NATIVE_APP_KEY"] ?? ""
         KakaoSDK.initSDK(appKey: kakaoAppKey as! String)
-        print(kakaoAppKey as! String)
     }
     
     var body: some Scene {
