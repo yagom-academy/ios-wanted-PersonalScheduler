@@ -60,6 +60,7 @@ final class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         setUp()
+        bind()
     }
     
     private func setUp() {
@@ -117,13 +118,18 @@ final class ListViewController: UIViewController {
     private func applySnapshot(models: [Schedule]) {
         var snapShot = Snapshot()
         snapShot.appendSections([.scheduleSection])
-        
         snapShot.appendItems(models)
         dataSource.apply(snapShot)
     }
     
     @objc private func addButtonClicked(_: UIBarButtonItem) {
-        
+        let viewController = DetailViewController.instance(
+            mode: .add,
+            userId: viewModel.userId,
+            schedule: nil
+        )
+        viewController.modalPresentationStyle = .formSheet
+        present(viewController, animated: true)
     }
     
 }

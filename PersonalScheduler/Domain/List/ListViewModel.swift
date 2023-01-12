@@ -8,14 +8,15 @@
 import Foundation
 
 protocol ListViewModelInput {
-    func showDetail(schedule: Schedule)
     func loadSchedules()
+    func deleteSchedule(schedule: Schedule)
 }
 
 protocol ListViewModelOutput {
     var scheduls: Observable<[Schedule]?> { get }
     var errorMessage: Observable<String?> { get }
     var detailScheduls: Observable<Schedule?> { get }
+    var userId: String { get }
 }
 
 protocol ListViewModelAble: ListViewModelInput, ListViewModelOutput {}
@@ -27,7 +28,7 @@ class ListViewModel: ListViewModelAble {
     var detailScheduls: Observable<Schedule?>
     
     private var scheduleManager: SchedulManagerAble
-    private var userId: String
+    let userId: String
     
     init(userId: String, scheduleManager: SchedulManagerAble = SchedulManager()){
         self.userId = userId
@@ -42,12 +43,12 @@ class ListViewModel: ListViewModelAble {
 // MARK - input
 extension ListViewModel {
     
-    func showDetail(schedule: Schedule) {
-        //
+    func deleteSchedule(schedule: Schedule) {
+        
     }
     
     func loadSchedules() {
-        scheduleManager.loadSchedul(userId: userId).observe(on: self) { [weak self] result in
+        scheduleManager.loadSchedule(userId: userId).observe(on: self) { [weak self] result in
             switch result {
             case .success(let schedulArray):
                 self?.scheduls.value = schedulArray

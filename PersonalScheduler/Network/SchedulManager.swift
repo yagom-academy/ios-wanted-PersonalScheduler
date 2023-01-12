@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SchedulManagerAble {
-    func loadSchedul(userId: String) -> Observable<Result<[Schedule],Error>?>
+    func loadSchedule(userId: String) -> Observable<Result<[Schedule],Error>?>
 }
 
 final class SchedulManager: SchedulManagerAble {
@@ -19,7 +19,7 @@ final class SchedulManager: SchedulManagerAble {
         self.firebaseManager = firebaseManager
     }
     
-    func loadSchedul(userId: String) -> Observable<Result<[Schedule], Error>?> {
+    func loadSchedule(userId: String) -> Observable<Result<[Schedule], Error>?> {
         let scheduleObserver = Observable<Result<[Schedule],Error>?>.init(nil)
         let schedule = Schedule(userId: userId)
         firebaseManager.readArray(schedule) { result in
@@ -30,8 +30,18 @@ final class SchedulManager: SchedulManagerAble {
                 scheduleObserver.value = .failure(error)
             }
         }
-        
         return scheduleObserver
+    }
+    
+    func addSchedule(schedule: Schedule) -> Observable<Result<Void, Error>?> {
+        let resultObserVer = Observable<Result<Void, Error>?>.init(nil)
+        do {
+            try firebaseManager.create(schedule)
+            resultObserVer.value = .success(())
+        } catch {
+            resultObserVer.value = .failure(error)
+        }
+        return resultObserVer
     }
 }
 

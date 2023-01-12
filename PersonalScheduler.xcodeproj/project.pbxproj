@@ -40,6 +40,12 @@
 		E1A498A0296F211E005C279B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A4989F296F211E005C279B /* Schedule.swift */; };
 		E1A64777296FE35A00599F71 /* SchedulManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A64776296FE35A00599F71 /* SchedulManager.swift */; };
 		E1A64779296FF8AA00599F71 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A64778296FF8AA00599F71 /* ListViewCell.swift */; };
+		E1A6477C29702E2B00599F71 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A6477B29702E2B00599F71 /* DetailViewModel.swift */; };
+		E1A6477E29702E3500599F71 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A6477D29702E3500599F71 /* DetailViewController.swift */; };
+		E1A647802970939900599F71 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A6477F2970939900599F71 /* ValidationError.swift */; };
+		E1A647822970B5D700599F71 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A647812970B5D700599F71 /* String+Extension.swift */; };
+		E1A647842970B5E500599F71 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A647832970B5E500599F71 /* Date+Extension.swift */; };
+		E1A647862970B69500599F71 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A647852970B69500599F71 /* DateFormatter+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +76,12 @@
 		E1A4989F296F211E005C279B /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		E1A64776296FE35A00599F71 /* SchedulManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulManager.swift; sourceTree = "<group>"; };
 		E1A64778296FF8AA00599F71 /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
+		E1A6477B29702E2B00599F71 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		E1A6477D29702E3500599F71 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E1A6477F2970939900599F71 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
+		E1A647812970B5D700599F71 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		E1A647832970B5E500599F71 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		E1A647852970B69500599F71 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,8 +182,11 @@
 			isa = PBXGroup;
 			children = (
 				E181D2D1296DEA0100847DD7 /* Encodable+Extension.swift */,
+				E1A647812970B5D700599F71 /* String+Extension.swift */,
 				E1A49896296EEE07005C279B /* UIViewController+Extension.swift */,
 				E1A49898296EFA30005C279B /* UIView+Extension.swift */,
+				E1A647832970B5E500599F71 /* Date+Extension.swift */,
+				E1A647852970B69500599F71 /* DateFormatter+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -181,6 +196,7 @@
 			children = (
 				E181D2D4296DEA6400847DD7 /* FirebaseError.swift */,
 				E181D2D8296DECD300847DD7 /* LoginError.swift */,
+				E1A6477F2970939900599F71 /* ValidationError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -188,6 +204,7 @@
 		E1A49892296EAA58005C279B /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				E1A6477A29702DFB00599F71 /* Detail */,
 				E1A4989A296F1AEE005C279B /* List */,
 				E1A49893296EAA60005C279B /* Main */,
 			);
@@ -219,6 +236,15 @@
 				E181D2C8296DE61400847DD7 /* FirebaseManager.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		E1A6477A29702DFB00599F71 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				E1A6477B29702E2B00599F71 /* DetailViewModel.swift */,
+				E1A6477D29702E3500599F71 /* DetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,17 +334,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A6477C29702E2B00599F71 /* DetailViewModel.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* MainViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				E1A49899296EFA30005C279B /* UIView+Extension.swift in Sources */,
 				E181D2D2296DEA0100847DD7 /* Encodable+Extension.swift in Sources */,
+				E1A647802970939900599F71 /* ValidationError.swift in Sources */,
 				E1A49897296EEE07005C279B /* UIViewController+Extension.swift in Sources */,
 				E181D2C9296DE61400847DD7 /* FirebaseManager.swift in Sources */,
+				E1A647822970B5D700599F71 /* String+Extension.swift in Sources */,
 				E181D2D9296DECD300847DD7 /* LoginError.swift in Sources */,
 				E181D2DB296DFF6A00847DD7 /* LoginManager.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				E1A49895296EAA9D005C279B /* MainViewModel.swift in Sources */,
+				E1A6477E29702E3500599F71 /* DetailViewController.swift in Sources */,
+				E1A647862970B69500599F71 /* DateFormatter+Extension.swift in Sources */,
 				E131BFA6296D7B01003DC333 /* Login.swift in Sources */,
+				E1A647842970B5E500599F71 /* Date+Extension.swift in Sources */,
 				E131BFAC296D81BF003DC333 /* Observable.swift in Sources */,
 				E1A498A0296F211E005C279B /* Schedule.swift in Sources */,
 				E1A64779296FF8AA00599F71 /* ListViewCell.swift in Sources */,
