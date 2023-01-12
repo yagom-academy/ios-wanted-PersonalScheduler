@@ -44,6 +44,7 @@ class ScheduleListViewController: UIViewController {
         self.viewModel = viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showSrollToSchedule(_:)), name: .scrollToSchedule, object: nil)
         
     }
     
@@ -175,6 +176,16 @@ private extension ScheduleListViewController {
     
     @objc func didTapAddButton(_ sender: UIBarButtonItem) {
         coordinator?.showCreateSchedule()
+    }
+    
+    @objc func showSrollToSchedule(_ notification: Notification) {
+        guard let scheduleID = notification.object as? String,
+              let index = viewModel.output.currentSchedules.firstIndex(where: { $0.id == scheduleID })
+        else {
+            return
+        }
+        let indexPath = IndexPath(item: index, section: .zero)
+        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .top)
     }
     
     func setUpDataSource() {

@@ -21,6 +21,7 @@ protocol ScheduleListViewModelInput {
 protocol ScheduleListViewModelOutput {
     
     var schedules: AnyPublisher<[Schedule], Never> { get }
+    var currentSchedules: [Schedule] { get }
     var errorMessage: AnyPublisher<String?, Never> { get }
     var isLoading: AnyPublisher<Bool, Never> { get }
     var currentSelectedDate: Date { get }
@@ -133,6 +134,7 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelOutput {
     var output: ScheduleListViewModelOutput { self }
     
     var schedules: AnyPublisher<[Schedule], Never> { _schedules.eraseToAnyPublisher() }
+    var currentSchedules: [Schedule] { _schedules.value }
     var errorMessage: AnyPublisher<String?, Never> { _errorMessage.eraseToAnyPublisher() }
     var isLoading: AnyPublisher<Bool, Never> { _isLoading.eraseToAnyPublisher() }
     var currentSelectedDate: Date { _currentSelectedDate.value }

@@ -25,7 +25,6 @@
 		0223FADE296D329900B6B32C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FADD296D329900B6B32C /* FirebaseFirestore */; };
 		0223FAE0296D329900B6B32C /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FADF296D329900B6B32C /* FirebaseFirestoreCombine-Community */; };
 		0223FAE2296D329900B6B32C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FAE1296D329900B6B32C /* FirebaseFirestoreSwift */; };
-		0223FAE6296D330500B6B32C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0223FAE5296D330400B6B32C /* GoogleService-Info.plist */; };
 		0223FAE8296D374100B6B32C /* FirestoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAE7296D374100B6B32C /* FirestoreStorage.swift */; };
 		0223FAED296D46C500B6B32C /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAEC296D46C500B6B32C /* ScheduleRepository.swift */; };
 		0223FAEF296D4E5F00B6B32C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAEE296D4E5F00B6B32C /* Coordinator.swift */; };
@@ -62,6 +61,7 @@
 		02544E36296EDC6100F06385 /* Publisher+MainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E35296EDC6100F06385 /* Publisher+MainThread.swift */; };
 		02544E38296EDD6000F06385 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E37296EDD6000F06385 /* LoadingView.swift */; };
 		02544E4029703E9F00F06385 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 02544E3F29703E9F00F06385 /* FirebaseMessaging */; };
+		02544E42297057C800F06385 /* Notification.Name+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E41297057C800F06385 /* Notification.Name+extension.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* AuthViewController.swift */; };
@@ -116,6 +116,7 @@
 		02544E33296ED7DE00F06385 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		02544E35296EDC6100F06385 /* Publisher+MainThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+MainThread.swift"; sourceTree = "<group>"; };
 		02544E37296EDD6000F06385 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		02544E41297057C800F06385 /* Notification.Name+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+extension.swift"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +206,7 @@
 				02544E35296EDC6100F06385 /* Publisher+MainThread.swift */,
 				0223FAF6296D579400B6B32C /* Bundle+extension.swift */,
 				0223FB2E296E495E00B6B32C /* Date+extension.swift */,
+				02544E41297057C800F06385 /* Notification.Name+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -520,6 +522,7 @@
 				0223FAD9296D231500B6B32C /* User.swift in Sources */,
 				0223FAD5296D20DA00B6B32C /* LocalStorage.swift in Sources */,
 				02544E38296EDD6000F06385 /* LoadingView.swift in Sources */,
+				02544E42297057C800F06385 /* Notification.Name+extension.swift in Sources */,
 				0223FABA296BED9B00B6B32C /* DefaultAPIProvider.swift in Sources */,
 				0223FABC296BEDAC00B6B32C /* APIProvider.swift in Sources */,
 				0223FAA4296BDD4D00B6B32C /* Encodable+extension.swift in Sources */,

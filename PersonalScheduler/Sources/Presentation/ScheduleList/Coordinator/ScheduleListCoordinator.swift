@@ -23,6 +23,7 @@ final class ScheduleListCoordinator: Coordinator {
     func start() {
         let viewController = makeScheduleListViewController()
         navigationController.pushViewController(viewController, animated: true)
+        NotificationCenter.default.addObserver(self, selector: #selector(showScheduleList(_:)), name: .showScheduleList, object: nil)
     }
     
 }
@@ -51,6 +52,13 @@ private extension ScheduleListCoordinator {
         coordinator.parentCoordinator = self
         childCoordinators.append(coordinator)
         return coordinator
+    }
+    
+    @objc func showScheduleList(_ notification: Notification) {
+        guard let scheduleID = notification.object as? String, childCoordinators.isEmpty else {
+            return
+        }
+        NotificationCenter.default.post(name: .scrollToSchedule, object: scheduleID)
     }
     
 }
