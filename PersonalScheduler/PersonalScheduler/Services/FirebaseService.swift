@@ -40,7 +40,6 @@ final class FirebaseService {
                 } else {
                     continuation.resume(returning: false)
                 }
-                
             }
         }
     }
@@ -71,6 +70,34 @@ final class FirebaseService {
             guard error == nil else {
                 print(error?.localizedDescription as Any)
                 return
+            }
+        }
+    }
+    
+    func fetchScheduleData(firebaseID: String) async -> [ScheduleDTO] {
+        await withCheckedContinuation { continuation in
+            var fetchedData: [ScheduleDTO] = []
+            let scheduleCollection = database.collection("Users/\(firebaseID)/Schedules")
+            
+            scheduleCollection.getDocuments { querySnapshot, error in
+                guard let querySnapshot = querySnapshot else {
+                    return
+                }
+                
+                querySnapshot.documents.forEach { document in
+                    fetchedData.append(
+                        ScheduleDTO(
+                            id: document["id"] as? String ?? "",
+                            title: document["title"] as? String ?? "",
+                            description: document["description"] as? String ?? "",
+                            startMoment: document["startMoment"] as? String ?? "",
+                            endMoment: document["endMoment"] as? String ?? "",
+                            status: document["status"] as? String ?? ""
+                        )
+                    )
+                }
+
+                continuation.resume(returning: fetchedData)
             }
         }
     }
