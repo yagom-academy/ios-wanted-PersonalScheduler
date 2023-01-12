@@ -31,12 +31,12 @@ final class ScheduleViewModel: ScheduleViewModelType {
     
     /// Input
     func save(_ schedule: Schedule, at userID: String) {
-        scheduleFirestoreUseCase.save(schedule, at: userID) { result in
+        scheduleFirestoreUseCase.save(schedule, at: userID) { [weak self] result in
             switch result {
             case .success(_):
                 break
             case .failure(let error):
-                self.error.value = error.localizedDescription
+                self?.error.value = error.localizedDescription
             }
         }
     }
