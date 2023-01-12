@@ -60,8 +60,18 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bind()
         setupView()
         addLoginButtonTarget()
+    }
+    
+    private func bind() {
+        scheduleViewModel.error
+            .subscribe { [weak self] error in
+                if let description = error {
+                    self?.showAlert(message: description)
+                }
+            }
     }
     
     private func setupView() {
@@ -93,9 +103,10 @@ final class LoginViewController: UIViewController {
     @objc private func kakaoLoginButtonTapped() {
         guard UserApi.isKakaoTalkLoginAvailable() == true else { return }
         
-        UserApi.shared.loginWithKakaoAccount { oauthToken, error in
+        UserApi.shared.loginWithKakaoAccount { [weak self] oauthToken, error in
             if let error = error {
-                print(error)
+                self?.scheduleViewModel.error.value
+                = "카카오 로그인에 실패했습니다. \n \(error.localizedDescription)"
             } else {
                 print("loginWithKakaoTalk() success.")
                 
