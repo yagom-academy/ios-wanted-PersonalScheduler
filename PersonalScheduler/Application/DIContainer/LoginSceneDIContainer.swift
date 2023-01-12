@@ -15,17 +15,35 @@ final class LoginSceneDIContainer {
     }
     
     func makeLoginViewModel(actions: LoginViewModelActions) -> LoginViewModel {
-        return DefaultLoginViewModel(actions: actions)
+        return DefaultLoginViewModel(
+            actions: actions,
+            kakaoLoginUseCase: makeKakaoLoginUseCase(),
+            facebookLoginUseCase: makeFacebookLoginUseCase(),
+            firebaseAuthUseCase: makeFirebaseAuthUseCase()
+        )
     }
     
     // MARK: - Signin
-    func makeSigninViewController(actions: SigninViewModelActions) -> SigninViewController {
-        let viewModel = makeSigninViewModel(actions: actions)
+    func makeSigninViewController() -> SigninViewController {
+        let viewModel = makeSigninViewModel()
         return SigninViewController(with: viewModel)
     }
     
-    func makeSigninViewModel(actions: SigninViewModelActions) -> SigninViewModel {
-        return DefaultSigninViewModel(actions: actions)
+    func makeSigninViewModel() -> SigninViewModel {
+        return DefaultSigninViewModel(firebaseAuthUseCase: makeFirebaseAuthUseCase())
+    }
+    
+    // MARK: - UseCase
+    func makeKakaoLoginUseCase() -> KakaoLoginUseCase {
+        return KakaoLoginUseCase()
+    }
+    
+    func makeFacebookLoginUseCase() -> FacebookLoginUseCase {
+        return FacebookLoginUseCase()
+    }
+    
+    func makeFirebaseAuthUseCase() -> FirebaseAuthUseCase {
+        return FirebaseAuthUseCase()
     }
     
     // MARK: - Login Flow Coordinator
