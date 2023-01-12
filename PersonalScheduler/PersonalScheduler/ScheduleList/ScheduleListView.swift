@@ -10,6 +10,7 @@ import SwiftUI
 struct ScheduleListView: View {
     
     @EnvironmentObject var scheduleListViewModel: ScheduleListViewModel
+    @State var shouldPresentAddingView = false
     
     var body: some View {
         NavigationView {
@@ -18,10 +19,13 @@ struct ScheduleListView: View {
             }
             .navigationTitle("Schedules")
             .navigationBarItems(trailing: Button(action: {
-                // adding view
+                shouldPresentAddingView.toggle()
             }, label: {
                 Image(systemName: "plus")
             }))
+            .sheet(isPresented: $shouldPresentAddingView) {
+                ScheduleAddingView(shouldPresentAddingView: $shouldPresentAddingView)
+            }
         }
     }
 }
