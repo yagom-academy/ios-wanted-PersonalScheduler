@@ -9,6 +9,12 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    static func instance() -> MainViewController {
+        let viewModel = MainViewModel()
+        let viewController = MainViewController(mainViewModel: viewModel)
+        return viewController
+    }
+    
     private enum Constant {
         static var kakaobutton = "kakao_button_large"
     }
