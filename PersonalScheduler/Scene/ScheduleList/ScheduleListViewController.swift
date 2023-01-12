@@ -60,35 +60,9 @@ final class ScheduleListViewController: BaseViewController {
         ])
     }
     
-    private func configureNavigationBar() {
-        let addButton = UIBarButtonItem(title: "추가",
-                                            style: .done,
-                                            target: self,
-                                            action: #selector(goToAddScheduleScene))
-
-        navigationItem.rightBarButtonItem = addButton
-        navigationItem.title = "제리네 일정"
+    override func bindViewModel() {
     }
     
-    @objc private func goToAddScheduleScene() {
-        let scheduleAddViewController = ScheduleEditViewController(editType: .add)
-        navigationController?.pushViewController(scheduleAddViewController, animated: true)
-    }
-    
-    private func goToUpdateScheduleScene() {
-        let scheduleAddViewController = ScheduleEditViewController(editType: .update)
-        let navigationController = UINavigationController(rootViewController: scheduleAddViewController)
-        
-        self.navigationController?.present(navigationController, animated: true)
-    }
-}
-
-// MARK: TableView Delegate
-
-extension ScheduleListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.pushScheduleDetailScene(information: self.viewModel.items.value[indexPath.row])
-    }
 }
 
 // MARK: TableView DataSource
@@ -117,49 +91,51 @@ extension ScheduleListViewController {
             self?.scheduleListTableViewDataSource?.apply(snapshot, animatingDifferences: animatingDifferences)
         }
     }
-    
-     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-         let offsetY = scheduleListTableView.contentOffset.y
-         let contentHeight = scrollView.contentSize.height
-         let height = scrollView.frame.height
-         
-         if offsetY > (contentHeight - height) {
-             if !viewModel.isloading.value {
-                 self.viewModel.loadItems()
-             }
-         }
-    }
-}
-
-// MARK: NavigationController
-
-extension ScheduleListViewController {
-    
-    private func pushScheduleDetailScene(information: ScheduleInfo) {
-//        let motionResultViewModel = MotionResultViewModel(information)
-//
-//        let motionResultViewController = MotionResultViewController(viewModel: motionResultViewModel)
-//        navigationController?.pushViewController(motionResultViewController, animated: true)
-    }
 }
 
 // MARK: TableView SwipeAction
 
-extension ScheduleListViewController {
+extension ScheduleListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let updateAction = UIContextualAction(style: .normal, title: "수정") { _, _, completionHandler in
             self.goToUpdateScheduleScene()
             completionHandler(true)
         }
-        updateAction.backgroundColor = .systemGreen
+        updateAction.backgroundColor = UIColor.blue
         
         let deleteAction = UIContextualAction(style: .normal, title: "삭제") { _, _, completionHandler in
-//            self.viewModel.deleteItem(information: self.viewModel.items.value[indexPath.row])
+            self.viewModel.deleteItem(index: indexPath.row)
             completionHandler(true)
         }
-        deleteAction.backgroundColor = .red
+        deleteAction.backgroundColor = UIColor.red
         
         return UISwipeActionsConfiguration(actions: [deleteAction, updateAction])
+    }
+}
+
+// MARK: Navigation
+
+private extension ScheduleListViewController {
+    func configureNavigationBar() {
+        let addButton = UIBarButtonItem(title: "추가",
+                                            style: .done,
+                                            target: self,
+                                            action: #selector(goToAddScheduleScene))
+
+        navigationItem.rightBarButtonItem = addButton
+        navigationItem.title = "제리네 일정"
+    }
+    
+    @objc func goToAddScheduleScene() {
+        let scheduleAddViewController = ScheduleEditViewController(editType: .add)
+        navigationController?.pushViewController(scheduleAddViewController, animated: true)
+    }
+    
+    func goToUpdateScheduleScene() {
+        let scheduleAddViewController = ScheduleEditViewController(editType: .update)
+        let navigationController = UINavigationController(rootViewController: scheduleAddViewController)
+        
+        self.navigationController?.present(navigationController, animated: true)
     }
 }

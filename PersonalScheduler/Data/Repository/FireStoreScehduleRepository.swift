@@ -31,7 +31,12 @@ final class FireStoreScehduleRepository {
     
     func addSchedule(_ schedule: ScheduleInfo) async throws {
         let field = ["schedules": FieldValue.arrayUnion([schedule.dictionary])]
-        try await firebaseStorage.update(field, at: collectionString, with: "hoyoungId")
+        try await firebaseStorage.updateData(field, at: collectionString, with: "hoyoungId")
+    }
+    
+    func deleteSchedule(_ schedule: ScheduleInfo) async throws {
+        let field = ["schedules": FieldValue.arrayRemove([schedule.dictionary])]
+        try await firebaseStorage.updateData(field, at: collectionString, with: "hoyoungId")
     }
     
 }

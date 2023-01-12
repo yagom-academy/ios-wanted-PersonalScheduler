@@ -15,7 +15,7 @@ final class FirebaseStorage {
     
     private init() { }
     
-    func set(_ data: [String: Any],
+    func setData(_ data: [String: Any],
               at collection: String,
               with id: String
     ) async throws {
@@ -29,7 +29,7 @@ final class FirebaseStorage {
         }
     }
     
-    func update(_ data: [String: Any],
+    func updateData(_ data: [String: Any],
               at collection: String,
               with id: String
     ) async throws {
@@ -43,7 +43,7 @@ final class FirebaseStorage {
         }
     }
     
-    func delete(with id: String,
+    func deleteDocument(with id: String,
                 at collection: String
     ) async throws {
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in

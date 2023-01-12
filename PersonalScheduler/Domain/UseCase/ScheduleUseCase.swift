@@ -17,4 +17,8 @@ final class ScheduleUseCase {
     func addSchedule(_ schedule: ScheduleInfo) async throws {
         try await fireStoreScehduleRepository.addSchedule(schedule)
     }
+    
+    func deleteSchedule(_ schedule: ScheduleInfo) async throws {
+        try await fireStoreScehduleRepository.deleteSchedule(schedule)
+    }
 }

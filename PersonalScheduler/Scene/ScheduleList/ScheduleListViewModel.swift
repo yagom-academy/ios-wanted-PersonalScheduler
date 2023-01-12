@@ -13,7 +13,7 @@ enum MainSection {
 
 protocol ScheduleListViewModelInput {
     func loadItems()
-    func deleteItem(information: ScheduleInfo)
+    func deleteItem(index: Int)
 }
 
 protocol ScheduleListViewModelOutput {
@@ -25,9 +25,11 @@ protocol ScheduleListViewModelOutput {
 protocol ScheduleListViewModelType: ScheduleListViewModelInput, ScheduleListViewModelOutput { }
 
 final class ScheduleListViewModel: ScheduleListViewModelType {
+    
     let scheduleUseCase = ScheduleUseCase()
     
     private var fetchScheduleTask: Task<Void, Error>?
+    private var deleteScheduleTask: Task<Void, Error>?
     
     var count = 10
     var offset = 0
@@ -56,9 +58,17 @@ final class ScheduleListViewModel: ScheduleListViewModelType {
         fetchScheduleTask?.cancel()
     }
     
-    func deleteItem(information: ScheduleInfo) {
-        
-        
+    func deleteItem(index: Int) {
+        self.fetchScheduleTask = Task {
+            do {
+                try await scheduleUseCase.deleteSchedule(items.value[index])
+                self.loadItems()
+            }
+            catch {
+                self.error.value = error.localizedDescription
+            }
+        }
+        fetchScheduleTask?.cancel()
     }
     
 }
