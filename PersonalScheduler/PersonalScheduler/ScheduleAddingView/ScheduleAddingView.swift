@@ -20,7 +20,15 @@ struct ScheduleAddingView: View {
     )
     
     var body: some View {
-        Text("")
+        NavigationView {
+            Text("")
+            .navigationTitle("새로운 일정")
+            .navigationBarItems(trailing: Button(action: {
+                shouldPresentAddingView.toggle()
+            }, label: {
+                Image(systemName: "저장")
+            }))
+        }
     }
 }
 
