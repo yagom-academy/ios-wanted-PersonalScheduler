@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import KakaoSDKUser
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .title1)
@@ -49,8 +50,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        addLoginButtonTarget()
     }
-
+    
     private func setupView() {
         loginStackView.addArrangedSubview(titleLabel)
         loginStackView.addArrangedSubview(infoLabel)
@@ -61,13 +63,34 @@ class LoginViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             loginStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                                                 constant: 8),
+                                                constant: 8),
             loginStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
-                                                    constant: -8),
+                                                   constant: -8),
             loginStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,
-                                                     constant: 16),
+                                                    constant: 16),
             loginStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
-                                                      constant: -16)
+                                                     constant: -16)
         ])
+    }
+    
+    private func addLoginButtonTarget() {
+        kakaoLoginButton.addTarget(self,
+                                   action: #selector(kakaoLoginButtonTapped),
+                                   for: .touchUpInside)
+    }
+    
+    @objc private func kakaoLoginButtonTapped() {
+        guard UserApi.isKakaoTalkLoginAvailable() == true else { return }
+        
+        UserApi.shared.loginWithKakaoAccount { oauthToken, error in
+            if let error = error {
+                print(error)
+            } else {
+                print("loginWithKakaoTalk() success.")
+                
+                //do something
+                _ = oauthToken
+            }
+        }
     }
 }
