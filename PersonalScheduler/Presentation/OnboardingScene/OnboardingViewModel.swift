@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 final class OnboardingViewModel {
 
@@ -16,7 +17,8 @@ final class OnboardingViewModel {
     func appleLoginButtonTapped() {
         oAuthLoginUseCase.execute(loginType: .apple) { result in
             switch result {
-            case .success:
+            case .success(let authResult):
+                self.saveUID(authResult: authResult)
                 print("success")
             case .failure(let error):
                 print(error)
@@ -27,7 +29,8 @@ final class OnboardingViewModel {
     func kakaoLoginButtonTapped() {
         oAuthLoginUseCase.execute(loginType: .kakao) { result in
             switch result {
-            case .success:
+            case .success(let authResult):
+                self.saveUID(authResult: authResult)
                 print("success")
             case .failure(let error):
                 print(error)
@@ -38,11 +41,20 @@ final class OnboardingViewModel {
     func naverLoginButtonTapped() {
         oAuthLoginUseCase.execute(loginType: .apple) { result in
             switch result {
-            case .success:
+            case .success(let authResult):
+                self.saveUID(authResult: authResult)
                 print("success")
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+}
+
+extension OnboardingViewModel {
+    private func saveUID(authResult: AuthDataResult?) {
+        if let authResult = authResult {
+            UserDefaults.standard.set(authResult.user.uid, forKey: "uid")
         }
     }
 }
