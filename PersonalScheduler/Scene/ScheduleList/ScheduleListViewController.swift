@@ -71,8 +71,17 @@ final class ScheduleListViewController: BaseViewController {
     }
     
     @objc private func goToAddScheduleScene() {
-//        let measurementViewController = MeasurementViewController()
-//        navigationController?.pushViewController(measurementViewController, animated: true)
+        let scheduleAddViewController = ScheduleEditViewController(editType: .add)
+        let navigationController = UINavigationController(rootViewController: scheduleAddViewController)
+        
+        self.navigationController?.present(navigationController, animated: true)
+    }
+    
+    private func goToUpdateScheduleScene() {
+        let scheduleAddViewController = ScheduleEditViewController(editType: .update)
+        let navigationController = UINavigationController(rootViewController: scheduleAddViewController)
+        
+        self.navigationController?.present(navigationController, animated: true)
     }
 }
 
@@ -141,14 +150,14 @@ extension ScheduleListViewController {
 extension ScheduleListViewController {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let updateAction = UIContextualAction(style: .normal, title: "Play") { _, _, completionHandler in
-            
+        let updateAction = UIContextualAction(style: .normal, title: "수정") { _, _, completionHandler in
+            self.goToUpdateScheduleScene()
             completionHandler(true)
         }
         updateAction.backgroundColor = .systemGreen
         
-        let deleteAction = UIContextualAction(style: .normal, title: "Delete") { _, _, completionHandler in
-            self.viewModel.deleteItem(information: self.viewModel.items.value[indexPath.row])
+        let deleteAction = UIContextualAction(style: .normal, title: "삭제") { _, _, completionHandler in
+//            self.viewModel.deleteItem(information: self.viewModel.items.value[indexPath.row])
             completionHandler(true)
         }
         deleteAction.backgroundColor = .red
@@ -156,5 +165,3 @@ extension ScheduleListViewController {
         return UISwipeActionsConfiguration(actions: [deleteAction, updateAction])
     }
 }
-
-
