@@ -14,6 +14,7 @@ protocol ScheduleListViewModelInput {
     func viewWillAppear()
     func delete(schedule: Schedule)
     func selectedDate(_ date: Date)
+    func visibleTopSchedule(_ schedule: Schedule)
     
 }
 
@@ -24,6 +25,8 @@ protocol ScheduleListViewModelOutput {
     var isLoading: AnyPublisher<Bool, Never> { get }
     var currentSelectedDate: Date { get }
     var showSelectedDate: AnyPublisher<Int?, Never> { get }
+    var visibleTopSchedule: AnyPublisher<Schedule?, Never> { get }
+    var currentSchedule: Schedule? { get }
     
 }
 
@@ -47,6 +50,7 @@ final class DefaultScheduleListViewModel: ScheduleListViewModel {
     private var _isLoading = CurrentValueSubject<Bool, Never>(true)
     private var _currentSelectedDate = CurrentValueSubject<Date, Never>(Date())
     private var _showSelectedDate = CurrentValueSubject<Int?, Never>(nil)
+    private var _visibleTopSchedule = CurrentValueSubject<Schedule?, Never>(nil)
     
     private var _currentSchedules = [Schedule]() {
         didSet {
@@ -77,6 +81,9 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelInput {
                 self?._isLoading.send(false)
             }, receiveValue: { [weak self] schedules in
                 self?._currentSchedules = schedules
+                if let index = schedules.firstIndex(where: { $0.isProgressing }) {
+                    self?._showSelectedDate.send(index)
+                }
             }).store(in: &cancellables)
     }
     
@@ -104,15 +111,23 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelInput {
     }
     
     func selectedDate(_ date: Date) {
+        guard date != _visibleTopSchedule.value?.startDate else {
+            return
+        }
         _currentSelectedDate.send(date)
-        if let index = _currentSchedules.firstIndex(where: { $0.startDate.isEqualDay(from: date)  }) {
+        if let index = _currentSchedules.firstIndex(where: { $0.startDate.toString(.yyyyMMddEEEE) == date.toString(.yyyyMMddEEEE)  }) {
             _showSelectedDate.send(index)
         } else if let index = _currentSchedules.firstIndex(where: { $0.startDate.isEqualMonth(from: date) }) {
             _showSelectedDate.send(index)
             _errorMessage.send("선택한 날짜에 일정이 존재하지 않습니다.")
+            _visibleTopSchedule.send(_currentSchedules[index])
         } else {
             _errorMessage.send("선택한 날짜에 일정이 존재하지 않습니다.")
         }
+    }
+    
+    func visibleTopSchedule(_ schedule: Schedule) {
+        _visibleTopSchedule.send(schedule)
     }
 }
 
@@ -125,5 +140,7 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelOutput {
     var isLoading: AnyPublisher<Bool, Never> { _isLoading.eraseToAnyPublisher() }
     var currentSelectedDate: Date { _currentSelectedDate.value }
     var showSelectedDate: AnyPublisher<Int?, Never> { _showSelectedDate.eraseToAnyPublisher() }
+    var visibleTopSchedule: AnyPublisher<Schedule?, Never> { _visibleTopSchedule.eraseToAnyPublisher() }
+    var currentSchedule: Schedule? { _visibleTopSchedule.value }
 
 }

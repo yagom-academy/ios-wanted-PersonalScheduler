@@ -10,9 +10,9 @@ import UIKit
 final class ScheduleCell: UICollectionViewCell {
     
     private lazy var backgroundStackView: UIStackView = {
-        let stackView = UIStackView(axis: .horizontal, alignment: .center, distribution: .fill, spacing: 20)
+        let stackView = UIStackView(axis: .vertical, alignment: .leading, distribution: .fill, spacing: 20)
         stackView.backgroundColor = .clear
-        stackView.addArrangedSubviews(dateView, colorSeparatorView, scheduleView)
+        stackView.addArrangedSubviews(monthLabel, topSeparatorView, infoStackView)
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(
             top: 20,
@@ -23,7 +23,14 @@ final class ScheduleCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var separatorView: UIView = {
+    private lazy var infoStackView: UIStackView = {
+        let stackView = UIStackView(axis: .horizontal, alignment: .center, distribution: .fill, spacing: 20)
+        stackView.backgroundColor = .clear
+        stackView.addArrangedSubviews(dateView, colorSeparatorView, scheduleView)
+        return stackView
+    }()
+    
+    private lazy var bottomseparatorView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray4
         view.heightAnchor.constraint(equalToConstant: 0.3).isActive = true
@@ -76,6 +83,25 @@ final class ScheduleCell: UICollectionViewCell {
         return view
     }()
     
+    private lazy var monthLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .label
+        label.font = .preferredFont(for: .body, weight: .bold)
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        label.isHidden = true
+        return label
+    }()
+    
+    
+    private lazy var topSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray4
+        view.heightAnchor.constraint(equalToConstant: 0.3).isActive = true
+        view.widthAnchor.constraint(equalToConstant: safeAreaLayoutGuide.layoutFrame.width - 40).isActive = true
+        view.isHidden = true
+        return view
+    }()
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         reset()
@@ -109,22 +135,28 @@ extension ScheduleCell {
         colorSeparatorView.backgroundColor = .psToday
     }
     
+    func showMonthView(_ date: Date) {
+        topSeparatorView.isHidden = false
+        monthLabel.isHidden = false
+        monthLabel.text = date.toString(.yearAndMonth)
+    }
+    
 }
 
 private extension ScheduleCell {
     
     func configure() {
         contentView.backgroundColor = .psBackground
-        contentView.addSubviews(backgroundStackView, separatorView)
+        contentView.addSubviews(backgroundStackView, bottomseparatorView)
         let constraints: [NSLayoutConstraint] = [
             backgroundStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             backgroundStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             backgroundStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             backgroundStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            colorSeparatorView.heightAnchor.constraint(equalTo: backgroundStackView.heightAnchor, constant: -40)
+            bottomseparatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            bottomseparatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            bottomseparatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            colorSeparatorView.heightAnchor.constraint(equalTo: scheduleView.heightAnchor)
         ]
         constraints.forEach { constraint in
             constraint.priority = .init(999)
@@ -138,6 +170,8 @@ private extension ScheduleCell {
         titleLabel.text = nil
         descriptionLabel.text = nil
         dateLabel.text = nil
+        topSeparatorView.isHidden = true
+        monthLabel.isHidden = true
     }
     
 }

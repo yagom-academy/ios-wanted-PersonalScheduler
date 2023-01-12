@@ -18,7 +18,6 @@ final class NavigationTitleView: UIStackView {
         label.textColor = .label
         label.font = .preferredFont(for: .body, weight: .bold)
         label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -48,4 +47,11 @@ final class NavigationTitleView: UIStackView {
         addArrangedSubviews(titleLabel, arrowButton)
     }
     
+}
+
+extension NavigationTitleView {
+    
+    func update(title: String) {
+        titleLabel.text = title
+    }
 }
