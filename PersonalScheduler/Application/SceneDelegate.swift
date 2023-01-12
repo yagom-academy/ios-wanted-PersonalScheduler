@@ -16,16 +16,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let scheduleViewModel = ScheduleViewModel()
-       
-        if LoginManager.shared.getUserToken() != nil {
+        if let userToken = LoginManager.shared.getUserToken() {
+            let scheduleViewModel = ScheduleViewModel(with: userToken)
             let listViewController = ScheduleListViewController(scheduleViewModel)
             let navigationController = UINavigationController(rootViewController: listViewController)
            
             window?.rootViewController = navigationController
-            
         } else {
-            let loginViewController = LoginViewController(scheduleViewModel)
+            let loginViewController = LoginViewController()
             window?.rootViewController = loginViewController
         }
 

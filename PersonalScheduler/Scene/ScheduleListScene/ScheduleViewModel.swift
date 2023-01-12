@@ -23,13 +23,15 @@ protocol ScheduleViewModelType: ScheduleViewModelInput, ScheduleViewModelOutput 
 
 final class ScheduleViewModel: ScheduleViewModelType {
     private let scheduleFirestoreUseCase = ScheduleFirestoreUseCase()
-    
-    /// Output
+    private let userToken: String
     var schedules: Observable<[Schedule]> = Observable([])
     var sections: Observable<[String]> = Observable([])
     var error: Observable<String?> = Observable(nil)
     
-    /// Input
+    init(with userToken: String) {
+        self.userToken = userToken
+    }
+    
     func save(_ schedule: Schedule, at userID: String) {
         scheduleFirestoreUseCase.save(schedule, at: userID) { [weak self] result in
             switch result {

@@ -47,31 +47,10 @@ final class LoginViewController: UIViewController {
         return stackView
     }()
     
-    private let scheduleViewModel: ScheduleViewModel
-    
-    init(_ viewModel: ScheduleViewModel) {
-        self.scheduleViewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        bind()
         setupView()
         addLoginButtonTarget()
-    }
-    
-    private func bind() {
-        scheduleViewModel.error
-            .subscribe { [weak self] error in
-                if let description = error {
-                    self?.showAlert(message: description)
-                }
-            }
     }
     
     private func setupView() {
@@ -109,16 +88,18 @@ final class LoginViewController: UIViewController {
         
         UserApi.shared.loginWithKakaoAccount { [weak self] oauthToken, error in
             if let error = error {
-                self?.scheduleViewModel.error.value
-                = "카카오 로그인에 실패했습니다.\n\(error.localizedDescription)"
+                self?.showAlert(message: "카카오 로그인에 실패했습니다.\n\(error.localizedDescription)")
             } else {
-                LoginManager.shared.saveUserToken(oauthToken?.accessToken)
-                self?.presentScheduleListView()
+                if let token = oauthToken?.accessToken {
+                    LoginManager.shared.saveUserToken(token)
+                    self?.presentScheduleListView(with: token)
+                }
             }
         }
     }
     
-    private func presentScheduleListView() {
+    private func presentScheduleListView(with token: String) {
+        let scheduleViewModel = ScheduleViewModel(with: token)
         let scheduleListView = ScheduleListViewController(scheduleViewModel)
         let navigationController = UINavigationController(rootViewController: scheduleListView)
         
