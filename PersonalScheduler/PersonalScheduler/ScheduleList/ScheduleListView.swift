@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScheduleListView: View {
     
-    @EnvironmentObject var scheduleListViewModel: ScheduleListViewModel
+    @StateObject var scheduleListViewModel: ScheduleListViewModel
     @State var shouldPresentAddingView = false
     
     var body: some View {
@@ -24,7 +24,7 @@ struct ScheduleListView: View {
                 Image(systemName: "plus")
             }))
             .sheet(isPresented: $shouldPresentAddingView) {
-                ScheduleAddingView(shouldPresentAddingView: $shouldPresentAddingView)
+                ScheduleAddingView(scheduleListViewModel: scheduleListViewModel, shouldPresentAddingView: $shouldPresentAddingView)
             }
         }
     }
@@ -32,6 +32,6 @@ struct ScheduleListView: View {
 
 struct ScheduleListView_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleListView()
+        ScheduleListView(scheduleListViewModel: ScheduleListViewModel(firebaseID: ""))
     }
 }

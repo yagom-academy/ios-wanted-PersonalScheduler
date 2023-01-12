@@ -13,7 +13,7 @@ struct LoginView: View {
     
     var body: some View {
         if loginViewModel.isLoginFinished {
-            ScheduleListView()
+            ScheduleListView(scheduleListViewModel: ScheduleListViewModel(firebaseID: loginViewModel.firebaseID))
         } else {
             VStack {
                 Text("Personal Schedular")

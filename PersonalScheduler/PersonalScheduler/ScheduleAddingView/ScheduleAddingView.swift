@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScheduleAddingView: View {
     
-    @EnvironmentObject var scheduleListViewModel: ScheduleListViewModel
+    @StateObject var scheduleListViewModel: ScheduleListViewModel
     @Binding var shouldPresentAddingView: Bool
     @State private var newSchedule: Schedule = Schedule(
         id: UUID().uuidString,
@@ -44,6 +44,7 @@ struct ScheduleAddingView: View {
             }))
             .navigationBarItems(trailing: Button(action: {
                 scheduleListViewModel.scheduleAddingSaveButtonTapped(schedule: newSchedule)
+                scheduleListViewModel.fetchDataFromFirestore(firebaseID: scheduleListViewModel.firebaseID)
                 shouldPresentAddingView.toggle()
             }, label: {
                 Text("저장")
@@ -57,7 +58,7 @@ struct ScheduleAddingView_Previews: PreviewProvider {
     @State static var shouldPresentSheet = false
     
     static var previews: some View {
-        ScheduleAddingView(shouldPresentAddingView: $shouldPresentSheet)
+        ScheduleAddingView(scheduleListViewModel: ScheduleListViewModel(firebaseID: ""), shouldPresentAddingView: $shouldPresentSheet)
     }
     
 }
