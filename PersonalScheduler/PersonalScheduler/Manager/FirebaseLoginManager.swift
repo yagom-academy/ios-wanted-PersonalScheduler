@@ -7,11 +7,6 @@
 
 import FirebaseAuth
 
-struct KakaoInfo {
-    let uid: String
-    let email: String
-    let password: String
-}
 final class FirebaseLoginManager {
     
     enum FirebaseLoginError: Error {

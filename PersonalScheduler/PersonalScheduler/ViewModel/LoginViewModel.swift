@@ -27,11 +27,15 @@ final class LoginViewModel: ObservableObject {
     @Published var loginResultAlert: LoginResultAlert = .normal
     
     func checkAutoLoginInfo() {
-        if let userId = UserDefaults.standard.string(forKey: "id"){
-            self.email = userId
-            self.password = UserDefaults.standard.string(forKey: "password") ?? ""
-            
-            firebaseLogin()
+        isAutoLogin = UserDefaults.standard.bool(forKey: UserInfoData.isAutoLogin)
+
+        if isAutoLogin {
+            if let userId = UserDefaults.standard.string(forKey: UserInfoData.id) {
+                self.email = userId
+                self.password = UserDefaults.standard.string(forKey: UserInfoData.password) ?? ""
+                
+                firebaseLogin()
+            }
         }
     }
     
@@ -51,11 +55,11 @@ final class LoginViewModel: ObservableObject {
         isActiveAlert.toggle()
         
         if isAutoLogin {
-            UserDefaults.standard.set(self.email, forKey: "id")
-            UserDefaults.standard.set(self.password, forKey: "password")
+            UserDefaults.standard.set(self.email, forKey: UserInfoData.id)
+            UserDefaults.standard.set(self.password, forKey: UserInfoData.password)
         }
     }
-
+    
     @MainActor
     func kakaoLogIn() {
         Task {
@@ -66,8 +70,8 @@ final class LoginViewModel: ObservableObject {
                     self?.accountUID = data.uid
                     self?.isLoggedIn = true
                     if ((self?.isAutoLogin) != nil) {
-                        UserDefaults.standard.set(data.email, forKey: "id")
-                        UserDefaults.standard.set(data.password, forKey: "password")
+                        UserDefaults.standard.set(data.email, forKey: UserInfoData.id)
+                        UserDefaults.standard.set(data.password, forKey: UserInfoData.password)
                     }
                 case .failure(_):
                     print("error")

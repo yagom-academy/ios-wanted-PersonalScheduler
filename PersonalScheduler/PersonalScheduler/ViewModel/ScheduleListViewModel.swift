@@ -38,7 +38,7 @@ final class ScheduleListViewModel: ObservableObject {
         Task {
             await kakaoLoginManager.handleLogout()
         }
-        UserDefaults.standard.removeObject(forKey: "id")
-        UserDefaults.standard.removeObject(forKey: "password")
+        UserDefaults.standard.removeObject(forKey: UserInfoData.id)
+        UserDefaults.standard.removeObject(forKey: UserInfoData.password)
     }
 }

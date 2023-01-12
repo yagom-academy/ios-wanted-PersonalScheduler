@@ -45,10 +45,19 @@ struct LoginView: View {
                 }
                 .frame(height: 40)
                 .cornerRadius(10)
-                
+
                 Toggle(isOn: $loginViewModel.isAutoLogin) {
                     Text("자동 로그인 설정")
                 }
+                .onChange(of: loginViewModel.isAutoLogin) { value in
+                    switch value {
+                    case true:
+                        UserDefaults.standard.set(true, forKey: UserInfoData.isAutoLogin)
+                    case false:
+                        UserDefaults.standard.set(false, forKey: UserInfoData.isAutoLogin)
+                    }
+                }
+                
                 Button {
                     loginViewModel.kakaoLogIn()
                 } label: {
