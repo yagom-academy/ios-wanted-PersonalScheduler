@@ -17,6 +17,10 @@ struct Schedule: Codable {
     var isProgressing: Bool {
         return Date().contains(start: startDate, end: endDate)
     }
+    
+    var hasOneMoreDay: Bool {
+        return startDate.toString(.yyyyMMddEEEE) != endDate.toString(.yyyyMMddEEEE)
+    }
 }
 
 extension Schedule {

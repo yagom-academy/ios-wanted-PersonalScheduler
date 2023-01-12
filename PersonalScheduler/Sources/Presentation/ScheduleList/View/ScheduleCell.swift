@@ -122,12 +122,9 @@ extension ScheduleCell {
     
     func setUp(_ schedule: Schedule) {
         dateView.setUp(schedule.startDate)
+        setUpDateLabel(schedule)
         titleLabel.text = schedule.title
         descriptionLabel.text = schedule.description
-        dateLabel.text = "\(schedule.startDate.toString(.hourMinute)) - \(schedule.endDate.toString(.hourMinute))"
-        if schedule.isProgressing {
-            highlight()
-        }
     }
     
     func highlight() {
@@ -172,6 +169,15 @@ private extension ScheduleCell {
         dateLabel.text = nil
         topSeparatorView.isHidden = true
         monthLabel.isHidden = true
+    }
+    
+    func setUpDateLabel(_ schedule: Schedule) {
+        let start = schedule.startDate.toString(.hourMinute)
+        let end = schedule.endDate.toString(schedule.hasOneMoreDay ? .hourMinuteDate : .hourMinute)
+        dateLabel.text = "\(start) - \(end)"
+        if schedule.isProgressing {
+            highlight()
+        }
     }
     
 }

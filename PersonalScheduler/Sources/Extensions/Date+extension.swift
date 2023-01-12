@@ -59,6 +59,7 @@ extension Date {
 
 enum DateFormat: String {
     case hourMinute = "a h:mm"
+    case hourMinuteDate = "a h:mm (M/d)"
     case yyyyMMddEEEE = "yyyy. MM. dd. EEEE"
     case month = "M"
     case day = "d"
