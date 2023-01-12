@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD091B0429706F6300A78DCD /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD091B0229706F6300A78DCD /* ScheduleListViewModel.swift */; };
+		FD091B0529706F6300A78DCD /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD091B0329706F6300A78DCD /* ScheduleListView.swift */; };
+		FD091B0829706F7700A78DCD /* ScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD091B0629706F7700A78DCD /* ScheduleDTO.swift */; };
+		FD091B0929706F7700A78DCD /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD091B0729706F7700A78DCD /* Schedule.swift */; };
+		FD091B0B29706F8500A78DCD /* ScheduleAddingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD091B0A29706F8500A78DCD /* ScheduleAddingView.swift */; };
 		FD4906BA296E8FF2002D4E05 /* PersonalSchedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906B9296E8FF2002D4E05 /* PersonalSchedulerApp.swift */; };
 		FD4906BE296E8FF2002D4E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD4906BD296E8FF2002D4E05 /* Assets.xcassets */; };
 		FD4906C1296E8FF2002D4E05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD4906C0296E8FF2002D4E05 /* Preview Assets.xcassets */; };
@@ -24,6 +29,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FD091B0229706F6300A78DCD /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
+		FD091B0329706F6300A78DCD /* ScheduleListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
+		FD091B0629706F7700A78DCD /* ScheduleDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDTO.swift; sourceTree = "<group>"; };
+		FD091B0729706F7700A78DCD /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		FD091B0A29706F8500A78DCD /* ScheduleAddingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleAddingView.swift; sourceTree = "<group>"; };
 		FD4906B6296E8FF2002D4E05 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD4906B9296E8FF2002D4E05 /* PersonalSchedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSchedulerApp.swift; sourceTree = "<group>"; };
 		FD4906BD296E8FF2002D4E05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -120,8 +130,8 @@
 		FD49070029703A69002D4E05 /* ScheduleList */ = {
 			isa = PBXGroup;
 			children = (
-				FD49070329703AA9002D4E05 /* ScheduleListView.swift */,
-				FD49070D29703E0B002D4E05 /* ScheduleListViewModel.swift */,
+				FD091B0329706F6300A78DCD /* ScheduleListView.swift */,
+				FD091B0229706F6300A78DCD /* ScheduleListViewModel.swift */,
 			);
 			path = ScheduleList;
 			sourceTree = "<group>";
@@ -129,8 +139,8 @@
 		FD49070529703BC2002D4E05 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FD49070629703BDF002D4E05 /* Schedule.swift */,
-				FD49070829703BEC002D4E05 /* ScheduleDTO.swift */,
+				FD091B0729706F7700A78DCD /* Schedule.swift */,
+				FD091B0629706F7700A78DCD /* ScheduleDTO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -138,7 +148,7 @@
 		FD49070A29703C7B002D4E05 /* ScheduleAddingView */ = {
 			isa = PBXGroup;
 			children = (
-				FD49070B29703CAF002D4E05 /* ScheduleAddingView.swift */,
+				FD091B0A29706F8500A78DCD /* ScheduleAddingView.swift */,
 			);
 			path = ScheduleAddingView;
 			sourceTree = "<group>";
@@ -224,18 +234,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD4906EF296FC8DB002D4E05 /* OAuthProvider.swift in Sources */,
+				FD091B0429706F6300A78DCD /* ScheduleListViewModel.swift in Sources */,
 				FD4906EB296F3F42002D4E05 /* LoginView.swift in Sources */,
 				FD4906F829700F33002D4E05 /* FirebaseService.swift in Sources */,
 				FD4906DE296F2ED4002D4E05 /* AppDelegate.swift in Sources */,
-				FD49070C29703CAF002D4E05 /* ScheduleAddingView.swift in Sources */,
-				FD49070729703BDF002D4E05 /* Schedule.swift in Sources */,
-				FD49070929703BEC002D4E05 /* ScheduleDTO.swift in Sources */,
+				FD091B0529706F6300A78DCD /* ScheduleListView.swift in Sources */,
+				FD091B0929706F7700A78DCD /* Schedule.swift in Sources */,
 				FD4906ED296F8274002D4E05 /* LoginViewModel.swift in Sources */,
-				FD49070E29703E0B002D4E05 /* ScheduleListViewModel.swift in Sources */,
 				FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */,
-				FD49070429703AA9002D4E05 /* ScheduleListView.swift in Sources */,
 				FD4906BA296E8FF2002D4E05 /* PersonalSchedulerApp.swift in Sources */,
 				FD4906E0296F2F89002D4E05 /* SceneDelegate.swift in Sources */,
+				FD091B0B29706F8500A78DCD /* ScheduleAddingView.swift in Sources */,
+				FD091B0829706F7700A78DCD /* ScheduleDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
