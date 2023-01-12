@@ -13,6 +13,7 @@ protocol FirebaseManagerable {
     func create<T: FirebaseDatable>(_ data: T) throws
     func readAll<T: FirebaseDatable> (completion: @escaping (Result<[T],Error>) -> Void)
     func readOne<T: FirebaseDatable>(_ data: T, completion: @escaping (Result<T,Error>) -> Void)
+    func readArray<T: FirebaseDatable>(_ data: T, completion: @escaping (Result<[T],Error>) -> Void)
     func update<T: FirebaseDatable>(updatedData: T) throws
     func delete<T: FirebaseDatable>(_ data: T) throws
     func observe<T: FirebaseDatable>(_: T.Type)
@@ -98,6 +99,27 @@ final class FirebaseManager: FirebaseManagerable {
         }
     }
     
+    func readArray<T: FirebaseDatable>(_ data: T, completion: @escaping ((Result<[T],Error>) -> Void)) {
+        var result: Result<[T], Error> = .failure(FirebaseError.readError)
+        let taskItemRef = getDetailPath(data: data)
+        
+        taskItemRef.getData { error, dataSnapshot in
+            guard error == nil else {
+                completion(result)
+                return
+            }
+            
+            if let dataSnapshot = dataSnapshot,
+               let encodedData = try? dataSnapshot.data(as: [T].self)
+            {
+                result = .success(encodedData)
+            } else {
+                result = .success([])
+            }
+            completion(result)
+        }
+    }
+                    
     func readOne<T: FirebaseDatable>(_ data: T, completion: @escaping ((Result<T,Error>) -> Void)) {
         var result: Result<T, Error> = .failure(FirebaseError.readError)
         let taskItemRef = getDetailPath(data: data)

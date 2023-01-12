@@ -27,16 +27,20 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
+        mainViewModel.viewDidLoad()
         setupView()
     }
     
     private func bind() {
-        mainViewModel.userId.observe(on: self) { userId in
+        mainViewModel.userId.observe(on: self) { [weak self] userId in
             guard let userId = userId else {
                 return
             }
-            //다음화면으로 전환
+            let viewController = ListViewController.instance(userId: userId)
+            viewController.modalPresentationStyle = .fullScreen
+            self?.present(viewController, animated: true)
         }
+        
         mainViewModel.errorMessage.observe(on: self) { [weak self] errorMessage in
             guard let errorMessage = errorMessage else {
                 return
@@ -63,6 +67,7 @@ class MainViewController: UIViewController {
     private lazy var kakaobutton: UIButton = {
         let button = UIButton(frame: .zero)
         let image = UIImage(named: Constant.kakaobutton)
+        
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(kakoLogin(_:)), for: .touchUpInside)
         return button
@@ -71,6 +76,7 @@ class MainViewController: UIViewController {
     @objc func kakoLogin(_ sender: UIButton) {
         mainViewModel.login(loginType: .kakao)
     }
+    
     
     private func setupView() {
         view.backgroundColor = .white

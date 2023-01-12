@@ -23,7 +23,7 @@
 		E131BF9E296C5128003DC333 /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = E131BF9D296C5128003DC333 /* AppAuthCore */; };
 		E131BFA6296D7B01003DC333 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131BFA5296D7B01003DC333 /* Login.swift */; };
 		E131BFA8296D7B55003DC333 /* KakaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131BFA7296D7B55003DC333 /* KakaoLogin.swift */; };
-		E131BFAC296D81BF003DC333 /* Obserbable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131BFAB296D81BF003DC333 /* Obserbable.swift */; };
+		E131BFAC296D81BF003DC333 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131BFAB296D81BF003DC333 /* Observable.swift */; };
 		E131BFAE296D8E85003DC333 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E131BFAD296D8E85003DC333 /* GoogleService-Info.plist */; };
 		E181D2C9296DE61400847DD7 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181D2C8296DE61400847DD7 /* FirebaseManager.swift */; };
 		E181D2CB296DE6FE00847DD7 /* FirebaseDatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181D2CA296DE6FE00847DD7 /* FirebaseDatable.swift */; };
@@ -35,6 +35,11 @@
 		E1A49895296EAA9D005C279B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49894296EAA9D005C279B /* MainViewModel.swift */; };
 		E1A49897296EEE07005C279B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49896296EEE07005C279B /* UIViewController+Extension.swift */; };
 		E1A49899296EFA30005C279B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49898296EFA30005C279B /* UIView+Extension.swift */; };
+		E1A4989C296F1B0B005C279B /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A4989B296F1B0B005C279B /* ListViewModel.swift */; };
+		E1A4989E296F1B22005C279B /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A4989D296F1B22005C279B /* ListViewController.swift */; };
+		E1A498A0296F211E005C279B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A4989F296F211E005C279B /* Schedule.swift */; };
+		E1A64777296FE35A00599F71 /* SchedulManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A64776296FE35A00599F71 /* SchedulManager.swift */; };
+		E1A64779296FF8AA00599F71 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A64778296FF8AA00599F71 /* ListViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +53,7 @@
 		E131BFA5296D7B01003DC333 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		E131BFA7296D7B55003DC333 /* KakaoLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLogin.swift; sourceTree = "<group>"; };
 		E131BFA9296D7D38003DC333 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
-		E131BFAB296D81BF003DC333 /* Obserbable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obserbable.swift; sourceTree = "<group>"; };
+		E131BFAB296D81BF003DC333 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		E131BFAD296D8E85003DC333 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E181D2C8296DE61400847DD7 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		E181D2CA296DE6FE00847DD7 /* FirebaseDatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatable.swift; sourceTree = "<group>"; };
@@ -60,6 +65,11 @@
 		E1A49894296EAA9D005C279B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		E1A49896296EEE07005C279B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		E1A49898296EFA30005C279B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		E1A4989B296F1B0B005C279B /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		E1A4989D296F1B22005C279B /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		E1A4989F296F211E005C279B /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		E1A64776296FE35A00599F71 /* SchedulManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulManager.swift; sourceTree = "<group>"; };
+		E1A64778296FF8AA00599F71 /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +133,7 @@
 			children = (
 				E181D2CA296DE6FE00847DD7 /* FirebaseDatable.swift */,
 				E181D2CE296DE76200847DD7 /* LoginInfo.swift */,
+				E1A4989F296F211E005C279B /* Schedule.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -131,8 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				E131BFA5296D7B01003DC333 /* Login.swift */,
-				E131BFA7296D7B55003DC333 /* KakaoLogin.swift */,
 				E181D2DA296DFF6A00847DD7 /* LoginManager.swift */,
+				E131BFA7296D7B55003DC333 /* KakaoLogin.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -140,7 +151,7 @@
 		E131BFAA296D819F003DC333 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				E131BFAB296D81BF003DC333 /* Obserbable.swift */,
+				E131BFAB296D81BF003DC333 /* Observable.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -148,8 +159,9 @@
 		E181D2C7296DE55C00847DD7 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E1A64774296FE2F100599F71 /* Firebase */,
 				E131BFA4296D7AF0003DC333 /* Login */,
-				E181D2C8296DE61400847DD7 /* FirebaseManager.swift */,
+				E1A64776296FE35A00599F71 /* SchedulManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -176,6 +188,7 @@
 		E1A49892296EAA58005C279B /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				E1A4989A296F1AEE005C279B /* List */,
 				E1A49893296EAA60005C279B /* Main */,
 			);
 			path = Domain;
@@ -188,6 +201,24 @@
 				E1A49894296EAA9D005C279B /* MainViewModel.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		E1A4989A296F1AEE005C279B /* List */ = {
+			isa = PBXGroup;
+			children = (
+				E1A4989B296F1B0B005C279B /* ListViewModel.swift */,
+				E1A4989D296F1B22005C279B /* ListViewController.swift */,
+				E1A64778296FF8AA00599F71 /* ListViewCell.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		E1A64774296FE2F100599F71 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				E181D2C8296DE61400847DD7 /* FirebaseManager.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,11 +319,16 @@
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				E1A49895296EAA9D005C279B /* MainViewModel.swift in Sources */,
 				E131BFA6296D7B01003DC333 /* Login.swift in Sources */,
-				E131BFAC296D81BF003DC333 /* Obserbable.swift in Sources */,
+				E131BFAC296D81BF003DC333 /* Observable.swift in Sources */,
+				E1A498A0296F211E005C279B /* Schedule.swift in Sources */,
+				E1A64779296FF8AA00599F71 /* ListViewCell.swift in Sources */,
 				E181D2CB296DE6FE00847DD7 /* FirebaseDatable.swift in Sources */,
 				E181D2D5296DEA6400847DD7 /* FirebaseError.swift in Sources */,
+				E1A4989E296F1B22005C279B /* ListViewController.swift in Sources */,
 				E131BFA8296D7B55003DC333 /* KakaoLogin.swift in Sources */,
 				E181D2CF296DE76200847DD7 /* LoginInfo.swift in Sources */,
+				E1A64777296FE35A00599F71 /* SchedulManager.swift in Sources */,
+				E1A4989C296F1B0B005C279B /* ListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
