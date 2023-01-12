@@ -17,4 +17,16 @@ final class ScheduleListViewModel: ObservableObject {
         Schedule(id: "5", title: "title 5", description: "description5", startMoment: Date(timeIntervalSinceNow: 0), endMoment: Date(timeIntervalSinceNow: 86400 * 5), status: .planned)
     ]
     
+    init() {
+        fetchDataFromFirestore()
+    }
+    
+    func fetchDataFromFirestore() {
+        
+    }
+    
+    func scheduleAddingSaveButtonTapped(schedule: Schedule) {
+        FirebaseService.shared.addSchedule(firebaseID: "kk2619244495", schedule: schedule)
+    }
+    
 }

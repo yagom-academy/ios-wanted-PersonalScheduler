@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ScheduleAddingView: View {
     
+    @EnvironmentObject var scheduleListViewModel: ScheduleListViewModel
     @Binding var shouldPresentAddingView: Bool
     @State private var newSchedule: Schedule = Schedule(
         id: UUID().uuidString,
@@ -42,9 +43,9 @@ struct ScheduleAddingView: View {
                 Text("취소")
             }))
             .navigationBarItems(trailing: Button(action: {
+                scheduleListViewModel.scheduleAddingSaveButtonTapped(schedule: newSchedule)
                 shouldPresentAddingView.toggle()
             }, label: {
-                //TODO: 저장 로직 구현
                 Text("저장")
             }))
         }
