@@ -135,6 +135,12 @@ private extension ScheduleListViewController {
             .sinkOnMainThread(receiveValue: { [weak self] date in
                 self?.navigationTitleView.update(title: date)
             }).store(in: &cancellables)
+        
+        viewModel.output.logout
+            .filter { $0 == true}
+            .sinkOnMainThread(receiveValue: { [weak self] _ in
+                self?.coordinator?.finished()
+            }).store(in: &cancellables)
     }
     
     func setUp() {
@@ -165,6 +171,13 @@ private extension ScheduleListViewController {
         let tappedLoacationView = UITapGestureRecognizer(target: self, action: #selector(didTapNavigationTitle(_:)))
         navigationTitleView.addGestureRecognizer(tappedLoacationView)
         navigationController?.addCustomBottomLine(color: .systemGray4, height: 0.3)
+        let moreButton = UIBarButtonItem(
+            image: UIImage(systemName: "ellipsis.circle"),
+            style: .plain,
+            target: self,
+            action: #selector(didTapMoreButton(_:))
+        )
+        navigationItem.rightBarButtonItem = moreButton
     }
     
     @objc func didTapNavigationTitle(_ gesture: UITapGestureRecognizer) {
@@ -172,6 +185,17 @@ private extension ScheduleListViewController {
         showDatePickerAlert(date, type: .date) { [weak self] date in
             self?.viewModel.input.selectedDate(date)
         }
+    }
+    
+    @objc func didTapMoreButton(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(
+            UIAlertAction(title: "로그아웃", style: .destructive) { [weak self] _ in
+                self?.viewModel.input.didTapLogout()
+            }
+        )
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func didTapAddButton(_ sender: UIBarButtonItem) {

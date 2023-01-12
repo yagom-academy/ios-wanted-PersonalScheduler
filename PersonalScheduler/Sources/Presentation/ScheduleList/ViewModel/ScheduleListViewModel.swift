@@ -15,6 +15,7 @@ protocol ScheduleListViewModelInput {
     func delete(schedule: Schedule)
     func selectedDate(_ date: Date)
     func visibleTopSchedule(_ schedule: Schedule)
+    func didTapLogout()
     
 }
 
@@ -28,6 +29,7 @@ protocol ScheduleListViewModelOutput {
     var showSelectedDate: AnyPublisher<Int?, Never> { get }
     var visibleTopSchedule: AnyPublisher<Schedule?, Never> { get }
     var currentSchedule: Schedule? { get }
+    var logout: AnyPublisher<Bool?, Never> { get }
     
 }
 
@@ -52,6 +54,7 @@ final class DefaultScheduleListViewModel: ScheduleListViewModel {
     private var _currentSelectedDate = CurrentValueSubject<Date, Never>(Date())
     private var _showSelectedDate = CurrentValueSubject<Int?, Never>(nil)
     private var _visibleTopSchedule = CurrentValueSubject<Schedule?, Never>(nil)
+    private var _logout = CurrentValueSubject<Bool?, Never>(nil)
     
     private var _currentSchedules = [Schedule]() {
         didSet {
@@ -127,6 +130,11 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelInput {
     func visibleTopSchedule(_ schedule: Schedule) {
         _visibleTopSchedule.send(schedule)
     }
+    
+    func didTapLogout() {
+        userRepository.logout()
+        _logout.send(true)
+    }
 }
 
 extension DefaultScheduleListViewModel: ScheduleListViewModelOutput {
@@ -141,5 +149,6 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelOutput {
     var showSelectedDate: AnyPublisher<Int?, Never> { _showSelectedDate.eraseToAnyPublisher() }
     var visibleTopSchedule: AnyPublisher<Schedule?, Never> { _visibleTopSchedule.eraseToAnyPublisher() }
     var currentSchedule: Schedule? { _visibleTopSchedule.value }
+    var logout: AnyPublisher<Bool?, Never> { _logout.eraseToAnyPublisher() }
 
 }
