@@ -16,9 +16,12 @@ final class ScheduleCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController, type: CoordinatorType) {
+    private let schedule: Schedule
+    
+    init(navigationController: UINavigationController, type: CoordinatorType, schedule: Schedule) {
         self.navigationController = navigationController
         self.type = type
+        self.schedule = schedule
     }
     
     func start() {
@@ -32,7 +35,10 @@ private extension ScheduleCoordinator {
     
     func makeScheduleViewController() -> UIViewController {
         let viewController = ScheduleViewController(
-            viewModel: ScheduleViewModel(),
+            viewModel: DefaultScheduleViewModel(
+                schedule: schedule,
+                type: type == .create ? .create : .edit
+            ),
             coordinator: self,
             type: type == .create ? .create : .edit
         )

@@ -15,8 +15,9 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
     
-    func showDatePickerAlert(_ date: Date, handler: ((Date) -> Void)?) {
+    func showDatePickerAlert(_ date: Date, type: UIDatePicker.Mode = .dateAndTime, handler: ((Date) -> Void)?) {
         let datePicker = createDatePicker(date)
+        datePicker.datePickerMode = type
         let dateChooserAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         dateChooserAlert.view.addSubviews(datePicker)
         NSLayoutConstraint.activate([

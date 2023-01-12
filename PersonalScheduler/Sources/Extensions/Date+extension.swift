@@ -11,7 +11,11 @@ extension Date {
     
     func toString(_ format: DateFormat) -> String {
         let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
         formatter.dateFormat = format.rawValue
+        let localeID = Locale.preferredLanguages.first
+        let deviceLocale = Locale(identifier: localeID ?? "ko-kr").languageCode
+        formatter.locale = Locale(identifier: deviceLocale ?? "ko-kr")
         return formatter.string(from: self)
     }
     
@@ -29,12 +33,30 @@ extension Date {
         return Date(timeIntervalSinceNow: self.timeIntervalSinceNow + Double((3600 * hour)))
     }
     
+    func isFuture(from date: Date) -> Bool {
+        let result: ComparisonResult = self.compare(date)
+        return result == .orderedAscending
+    }
+    
+    func contains(start: Date, end: Date) -> Bool {
+        let period = start.timeIntervalSinceReferenceDate...end.timeIntervalSinceReferenceDate
+        return period.contains(self.timeIntervalSinceReferenceDate)
+    }
+    
+    func isEqualMonth(from date: Date) -> Bool {
+        let lhs = Calendar.current.component(.month, from: self)
+        let rhs = Calendar.current.component(.month, from: date)
+        return lhs == rhs
+    }
+    
 }
 
 enum DateFormat: String {
     case hourMinute = "a h:mm"
+    case hourMinuteDate = "a h:mm (M/d)"
     case yyyyMMddEEEE = "yyyy. MM. dd. EEEE"
     case month = "M"
     case day = "d"
     case week = "E"
+    case yearAndMonth = "yyyy년 M월"
 }

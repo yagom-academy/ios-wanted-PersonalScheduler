@@ -55,7 +55,7 @@ final class FirestoreStorage: FirestoreStorageService {
     
     func write(user: User) -> AnyPublisher<Bool, Error> {
         let completed = PassthroughSubject<Bool, Error>()
-        guard let userID = user.userID, let user = try? user.asDictionary() else {
+        guard let userID = user.userID, let user = try? user.asFirestoreDictionary() else {
             return Empty().eraseToAnyPublisher()
         }
         database.collection("User")
@@ -81,7 +81,7 @@ final class FirestoreStorage: FirestoreStorageService {
     
     func update(user: User) -> AnyPublisher<Bool, Error> {
         let completed = PassthroughSubject<Bool, Error>()
-        guard let userID = user.userID, let user = try? user.asDictionary() else {
+        guard let userID = user.userID, let user = try? user.asFirestoreDictionary() else {
             return Empty().eraseToAnyPublisher()
         }
         database.collection("User")

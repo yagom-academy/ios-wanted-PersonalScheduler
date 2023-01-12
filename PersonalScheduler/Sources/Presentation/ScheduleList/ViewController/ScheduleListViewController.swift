@@ -35,6 +35,11 @@ class ScheduleListViewController: UIViewController {
         viewModel.input.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.input.viewWillAppear()
+    }
+    
     init(viewModel: ScheduleListViewModel, coordinator: ScheduleListCoordinatorInterface) {
         self.viewModel = viewModel
         self.coordinator = coordinator
@@ -112,6 +117,23 @@ private extension ScheduleListViewController {
             .sinkOnMainThread(receiveValue: { [weak self] message in
                 self?.showAlert(message: message)
             }).store(in: &cancellables)
+        
+        viewModel.output.showSelectedDate
+            .compactMap { $0 }
+            .map { IndexPath(item: $0, section: .zero) }
+            .sinkOnMainThread(receiveValue: { [weak self] indexPath in
+                self?.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .top)
+                self?.navigationTitleView.update(
+                    title: self?.viewModel.output.currentSchedule?.startDate.toString(.yearAndMonth) ?? Date().toString(.yearAndMonth)
+                )
+            }).store(in: &cancellables)
+        
+        viewModel.output.visibleTopSchedule
+            .compactMap { $0?.startDate.toString(.yearAndMonth) }
+            .removeDuplicates()
+            .sinkOnMainThread(receiveValue: { [weak self] date in
+                self?.navigationTitleView.update(title: date)
+            }).store(in: &cancellables)
     }
     
     func setUp() {
@@ -145,7 +167,8 @@ private extension ScheduleListViewController {
     }
     
     @objc func didTapNavigationTitle(_ gesture: UITapGestureRecognizer) {
-        showDatePickerAlert(Date()) { [weak self] date in
+        let date = viewModel.output.currentSchedule?.startDate ?? Date()
+        showDatePickerAlert(date, type: .date) { [weak self] date in
             self?.viewModel.input.selectedDate(date)
         }
     }
@@ -157,12 +180,16 @@ private extension ScheduleListViewController {
     func setUpDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Schedule>(
             collectionView: collectionView,
-            cellProvider: { collectionView, indexPath, schedule in
+            cellProvider: { [weak self] collectionView, indexPath, schedule in
                 let section = Section(index: indexPath.section)
                 switch section {
                 case .schedule:
                     let cell = collectionView.dequeueReusableCell(ScheduleCell.self, for: indexPath)
                     cell?.setUp(schedule)
+                    if let prevSchedule = self?.dataSource?.itemIdentifier(for: IndexPath(item: indexPath.item - 1, section: .zero)),
+                       prevSchedule.startDate.isEqualMonth(from: schedule.startDate) == false {
+                        cell?.showMonthView(schedule.startDate)
+                    }
                     return cell
                     
                 default: return UICollectionViewCell()
@@ -207,6 +234,19 @@ extension ScheduleListViewController: UICollectionViewDelegate {
             return
         }
         coordinator?.showEditSchedule(schedule)
+    }
+    
+}
+
+extension ScheduleListViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
+        let visiblePoint = CGPoint(x: visibleRect.minX, y: visibleRect.minY)
+        if let visibleIndexPath = collectionView.indexPathForItem(at: visiblePoint),
+           let schedule = dataSource?.itemIdentifier(for: visibleIndexPath) {
+            viewModel.input.visibleTopSchedule(schedule)
+        }
     }
     
 }

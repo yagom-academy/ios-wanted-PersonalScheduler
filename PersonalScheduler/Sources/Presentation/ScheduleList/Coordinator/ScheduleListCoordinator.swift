@@ -38,13 +38,13 @@ private extension ScheduleListCoordinator {
     }
     
     
-    func makeScheduleCoordinator(type: CoordinatorType) -> Coordinator? {
+    func makeScheduleCoordinator(type: CoordinatorType, schedule: Schedule) -> Coordinator? {
         let coordinator: ScheduleCoordinator
         switch type {
         case .create:
-            coordinator = ScheduleCoordinator(navigationController: .init(), type: type)
+            coordinator = ScheduleCoordinator(navigationController: .init(), type: type, schedule: schedule)
         case .edit:
-            coordinator = ScheduleCoordinator(navigationController: navigationController, type: type)
+            coordinator = ScheduleCoordinator(navigationController: navigationController, type: type, schedule: schedule)
         default: return nil
         }
         coordinator.finishDelegate = self
@@ -74,7 +74,7 @@ extension ScheduleListCoordinator: CoordinatorFinishDelegate {
 extension ScheduleListCoordinator: ScheduleListCoordinatorInterface {
     
     func showCreateSchedule() {
-        let coordinator = makeScheduleCoordinator(type: .create)
+        let coordinator = makeScheduleCoordinator(type: .create, schedule: Schedule())
         coordinator?.start()
         let viewController = coordinator?.navigationController ?? UIViewController()
         viewController.modalPresentationStyle = .fullScreen
@@ -82,7 +82,7 @@ extension ScheduleListCoordinator: ScheduleListCoordinatorInterface {
     }
     
     func showEditSchedule(_ schedule: Schedule) {
-        let coordinator = makeScheduleCoordinator(type: .edit)
+        let coordinator = makeScheduleCoordinator(type: .edit, schedule: schedule)
         coordinator?.start()
     }
 }
