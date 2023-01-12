@@ -44,7 +44,6 @@ final class ScheduleListViewController: BaseViewController {
     override func setupView() {
         view.backgroundColor = .systemBackground
         
-        viewModel.loadItems()
         configureTableViewDataSource()
     }
     
@@ -73,9 +72,7 @@ final class ScheduleListViewController: BaseViewController {
     
     @objc private func goToAddScheduleScene() {
         let scheduleAddViewController = ScheduleEditViewController(editType: .add)
-        let navigationController = UINavigationController(rootViewController: scheduleAddViewController)
-        
-        self.navigationController?.present(navigationController, animated: true)
+        navigationController?.pushViewController(scheduleAddViewController, animated: true)
     }
     
     private func goToUpdateScheduleScene() {

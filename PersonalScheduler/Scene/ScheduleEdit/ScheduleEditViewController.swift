@@ -149,7 +149,7 @@ final class ScheduleEditViewController: BaseViewController {
     override func bindViewModel() {
         self.viewModel.dismiss.subscribe { [weak self] isTrue in
             guard let isTrue = isTrue else { return }
-            if isTrue { self?.dismiss() }
+            if isTrue { self?.pop() }
         }
     }
 }
@@ -179,12 +179,12 @@ extension ScheduleEditViewController {
     }
     
     @objc private func cancel() {
-        self.dismiss()
+        self.pop()
     }
     
-    private func dismiss() {
+    private func pop() {
         DispatchQueue.main.async {
-            self.dismiss(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }
