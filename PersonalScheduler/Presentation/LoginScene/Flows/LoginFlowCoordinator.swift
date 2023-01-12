@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 protocol LoginFlowCoordinatorDependencies: AnyObject {
     func makeLoginViewController(actions: LoginViewModelActions) -> LoginViewController
+    func makeSigninViewController() -> SigninViewController
 }
 
 final class LoginFlowCoordinator: Coordinator {
@@ -23,21 +25,46 @@ final class LoginFlowCoordinator: Coordinator {
     }
     
     func start() {
-        let actions = LoginViewModelActions(loginButtonTapped: loginButtonTapped)
+        let actions = LoginViewModelActions(
+            successLogin: successLogin(_:),
+            successKakaoLogin: successKakaoLogin,
+            successFacebookLogin: successFacebookLogin,
+            signinButtonTapped: signinButtonTapped
+        )
         let loginVC = dependencies.makeLoginViewController(actions: actions)
         navigationController.pushViewController(loginVC, animated: true)
     }
     
-    private func loginButtonTapped() {
-        // 유효성 검사 후.
-        
-        // 맞으면
-        // MainFlowCoordinator 로 넘어가기
+    private func successLogin(_ userName: String) {
         let newDependency = ScheduleSceneDIContainer()
-        let flow = newDependency.makeMainFlowCoordinator(navigationController: navigationController)
+        let flow = newDependency.makeMainFlowCoordinator(
+            navigationController: self.navigationController,
+            fireStoreCollectionId: userName
+        )
         flow.start()
-        
-        // 틀리면
-        // 오류처리 해주기.
+    }
+    
+    private func successKakaoLogin(_ email: String) {
+        let newDependency = ScheduleSceneDIContainer()
+        let flow = newDependency.makeMainFlowCoordinator(
+            navigationController: self.navigationController,
+            fireStoreCollectionId: email
+        )
+        flow.start()
+    }
+    
+    private func successFacebookLogin(_ email: String) {
+        let newDependency = ScheduleSceneDIContainer()
+        let flow = newDependency.makeMainFlowCoordinator(
+            navigationController: self.navigationController,
+            fireStoreCollectionId: email
+        )
+        flow.start()
+    }
+    
+    private func signinButtonTapped() {
+        print("회원가입 버튼 탭 !")
+        let signinVC = dependencies.makeSigninViewController()
+        navigationController.pushViewController(signinVC, animated: true)
     }
 }
