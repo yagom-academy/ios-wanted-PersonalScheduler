@@ -42,7 +42,7 @@ final class LoginViewController: UIViewController {
     private let loginStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.distribution = .equalCentering
+        stackView.spacing = 8
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -75,22 +75,26 @@ final class LoginViewController: UIViewController {
     }
     
     private func setupView() {
+        let spacingView = UIView()
+        spacingView.translatesAutoresizingMaskIntoConstraints = false
+        
         loginStackView.addArrangedSubview(titleLabel)
         loginStackView.addArrangedSubview(infoLabel)
+        loginStackView.addArrangedSubview(spacingView)
         loginStackView.addArrangedSubview(kakaoLoginButton)
         
         view.addSubview(loginStackView)
         view.backgroundColor = .systemBackground
         
         NSLayoutConstraint.activate([
-            loginStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                                                constant: 8),
-            loginStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
-                                                   constant: -8),
             loginStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,
                                                     constant: 16),
             loginStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
-                                                     constant: -16)
+                                                     constant: -16),
+            loginStackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            
+            spacingView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor,
+                                                multiplier: 1/4),
         ])
     }
     
