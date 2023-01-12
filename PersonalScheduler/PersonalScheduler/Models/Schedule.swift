@@ -26,6 +26,8 @@ extension Schedule {
             endMoment: self.endMoment.toString(),
             status: self.status.description
         )
+        
+        return scheduleDTO
     }
 }
 
