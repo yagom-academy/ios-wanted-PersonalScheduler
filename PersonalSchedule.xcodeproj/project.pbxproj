@@ -7,27 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
-		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
-		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
-		63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB072967EA2600775EC3 /* Main.storyboard */; };
-		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
-		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
+		05D849C829702A9300B9F6D7 /* PersonalScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D849C729702A9300B9F6D7 /* PersonalScheduleApp.swift */; };
+		05D849CA29702A9300B9F6D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D849C929702A9300B9F6D7 /* ContentView.swift */; };
+		05D849CC29702A9400B9F6D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05D849CB29702A9400B9F6D7 /* Assets.xcassets */; };
+		05D849CF29702A9400B9F6D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05D849CE29702A9400B9F6D7 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63AAAB052967EA2600775EC3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		63AAAB082967EA2600775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		63AAAB0A2967EA2700775EC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05D849C429702A9300B9F6D7 /* PersonalSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		05D849C729702A9300B9F6D7 /* PersonalScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalScheduleApp.swift; sourceTree = "<group>"; };
+		05D849C929702A9300B9F6D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		05D849CB29702A9400B9F6D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		05D849CE29702A9400B9F6D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		63AAAAFB2967EA2600775EC3 /* Frameworks */ = {
+		05D849C129702A9300B9F6D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,72 +32,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		63AAAAF52967EA2600775EC3 = {
+		05D849BB29702A9300B9F6D7 = {
 			isa = PBXGroup;
 			children = (
-				63AAAB002967EA2600775EC3 /* PersonalScheduler */,
-				63AAAAFF2967EA2600775EC3 /* Products */,
+				05D849C629702A9300B9F6D7 /* PersonalSchedule */,
+				05D849C529702A9300B9F6D7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		63AAAAFF2967EA2600775EC3 /* Products */ = {
+		05D849C529702A9300B9F6D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */,
+				05D849C429702A9300B9F6D7 /* PersonalSchedule.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
+		05D849C629702A9300B9F6D7 /* PersonalSchedule */ = {
 			isa = PBXGroup;
 			children = (
-				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
-				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
-				63AAAB052967EA2600775EC3 /* ViewController.swift */,
-				63AAAB072967EA2600775EC3 /* Main.storyboard */,
-				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
-				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
-				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				05D849C729702A9300B9F6D7 /* PersonalScheduleApp.swift */,
+				05D849C929702A9300B9F6D7 /* ContentView.swift */,
+				05D849CB29702A9400B9F6D7 /* Assets.xcassets */,
+				05D849CD29702A9400B9F6D7 /* Preview Content */,
 			);
-			path = PersonalScheduler;
+			path = PersonalSchedule;
+			sourceTree = "<group>";
+		};
+		05D849CD29702A9400B9F6D7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				05D849CE29702A9400B9F6D7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		63AAAAFD2967EA2600775EC3 /* PersonalScheduler */ = {
+		05D849C329702A9300B9F6D7 /* PersonalSchedule */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 63AAAB122967EA2700775EC3 /* Build configuration list for PBXNativeTarget "PersonalScheduler" */;
+			buildConfigurationList = 05D849D229702A9400B9F6D7 /* Build configuration list for PBXNativeTarget "PersonalSchedule" */;
 			buildPhases = (
-				63AAAAFA2967EA2600775EC3 /* Sources */,
-				63AAAAFB2967EA2600775EC3 /* Frameworks */,
-				63AAAAFC2967EA2600775EC3 /* Resources */,
+				05D849C029702A9300B9F6D7 /* Sources */,
+				05D849C129702A9300B9F6D7 /* Frameworks */,
+				05D849C229702A9300B9F6D7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = PersonalScheduler;
-			productName = PersonalScheduler;
-			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
+			name = PersonalSchedule;
+			productName = PersonalSchedule;
+			productReference = 05D849C429702A9300B9F6D7 /* PersonalSchedule.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		63AAAAF62967EA2600775EC3 /* Project object */ = {
+		05D849BC29702A9300B9F6D7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
-					63AAAAFD2967EA2600775EC3 = {
+					05D849C329702A9300B9F6D7 = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
-			buildConfigurationList = 63AAAAF92967EA2600775EC3 /* Build configuration list for PBXProject "PersonalScheduler" */;
+			buildConfigurationList = 05D849BF29702A9300B9F6D7 /* Build configuration list for PBXProject "PersonalSchedule" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,63 +110,42 @@
 				en,
 				Base,
 			);
-			mainGroup = 63AAAAF52967EA2600775EC3;
-			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
+			mainGroup = 05D849BB29702A9300B9F6D7;
+			productRefGroup = 05D849C529702A9300B9F6D7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				63AAAAFD2967EA2600775EC3 /* PersonalScheduler */,
+				05D849C329702A9300B9F6D7 /* PersonalSchedule */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		63AAAAFC2967EA2600775EC3 /* Resources */ = {
+		05D849C229702A9300B9F6D7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
-				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
-				63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */,
+				05D849CF29702A9400B9F6D7 /* Preview Assets.xcassets in Resources */,
+				05D849CC29702A9400B9F6D7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		63AAAAFA2967EA2600775EC3 /* Sources */ = {
+		05D849C029702A9300B9F6D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
-				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
-				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				05D849CA29702A9300B9F6D7 /* ContentView.swift in Sources */,
+				05D849C829702A9300B9F6D7 /* PersonalScheduleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		63AAAB072967EA2600775EC3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63AAAB082967EA2600775EC3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63AAAB0D2967EA2700775EC3 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		63AAAB102967EA2700775EC3 /* Debug */ = {
+		05D849D029702A9400B9F6D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -226,7 +205,7 @@
 			};
 			name = Debug;
 		};
-		63AAAB112967EA2700775EC3 /* Release */ = {
+		05D849D129702A9400B9F6D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -280,18 +259,19 @@
 			};
 			name = Release;
 		};
-		63AAAB132967EA2700775EC3 /* Debug */ = {
+		05D849D329702A9400B9F6D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PersonalSchedule/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PersonalScheduler/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -299,7 +279,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.PersonalScheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = Seohyeon.PersonalSchedule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -307,18 +287,19 @@
 			};
 			name = Debug;
 		};
-		63AAAB142967EA2700775EC3 /* Release */ = {
+		05D849D429702A9400B9F6D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PersonalSchedule/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PersonalScheduler/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -326,7 +307,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.PersonalScheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = Seohyeon.PersonalSchedule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -337,25 +318,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		63AAAAF92967EA2600775EC3 /* Build configuration list for PBXProject "PersonalScheduler" */ = {
+		05D849BF29702A9300B9F6D7 /* Build configuration list for PBXProject "PersonalSchedule" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				63AAAB102967EA2700775EC3 /* Debug */,
-				63AAAB112967EA2700775EC3 /* Release */,
+				05D849D029702A9400B9F6D7 /* Debug */,
+				05D849D129702A9400B9F6D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		63AAAB122967EA2700775EC3 /* Build configuration list for PBXNativeTarget "PersonalScheduler" */ = {
+		05D849D229702A9400B9F6D7 /* Build configuration list for PBXNativeTarget "PersonalSchedule" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				63AAAB132967EA2700775EC3 /* Debug */,
-				63AAAB142967EA2700775EC3 /* Release */,
+				05D849D329702A9400B9F6D7 /* Debug */,
+				05D849D429702A9400B9F6D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 63AAAAF62967EA2600775EC3 /* Project object */;
+	rootObject = 05D849BC29702A9300B9F6D7 /* Project object */;
 }
