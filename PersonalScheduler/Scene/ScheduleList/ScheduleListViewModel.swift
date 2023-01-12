@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum MainSection {
+  case main
+}
+
 protocol ScheduleListViewModelInput {
     func loadItems()
     func deleteItem(information: ScheduleInfo)

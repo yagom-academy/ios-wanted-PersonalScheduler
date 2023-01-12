@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ScheduleInfo: Decodable {
+struct ScheduleInfo: Decodable, Hashable {
     let title: String
     let startTime: Date
     let content: String

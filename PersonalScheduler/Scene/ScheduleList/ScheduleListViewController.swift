@@ -12,7 +12,6 @@ final class ScheduleListViewController: BaseViewController {
     private lazy var scheduleListTableView: UITableView = {
        let tableView = UITableView()
        tableView.delegate = self
-       tableView.dataSource = self
        tableView.register(
            ScheduleTableViewCell.self,
            forCellReuseIdentifier: ScheduleTableViewCell.cellIdentifier
@@ -27,6 +26,7 @@ final class ScheduleListViewController: BaseViewController {
     }()
     
     private var viewModel: ScheduleListViewModel = ScheduleListViewModel()
+    var scheduleListTableViewDataSource: ScheduleDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +44,8 @@ final class ScheduleListViewController: BaseViewController {
     override func setupView() {
         view.backgroundColor = .systemBackground
         title = "제리네 일정"
+        
+        configureTableViewDataSource()
     }
     
     override func addView() {
@@ -60,7 +62,7 @@ final class ScheduleListViewController: BaseViewController {
     }
     
     private func bind(to viewModel: ScheduleListViewModel) {
-        viewModel.items.subscribe() { [weak self] _ in self?.updateItem() }
+        
     }
 }
 
@@ -74,24 +76,28 @@ extension ScheduleListViewController: UITableViewDelegate {
 
 // MARK: TableView DataSource
 
-extension ScheduleListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.items.value.count
-    }
+extension ScheduleListViewController {
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    private func configureTableViewDataSource() {
+        self.scheduleListTableViewDataSource = ScheduleDataSource(tableView: scheduleListTableView, cellProvider: { tableView, indexPath, category in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.cellIdentifier, for: indexPath) as? ScheduleTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.selectionStyle = .none
+            cell.configure(information: self.viewModel.items.value[indexPath.row])
+            return cell
+        })
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.cellIdentifier, for: indexPath) as? ScheduleTableViewCell else {
-            return UITableViewCell()
-        }
-        cell.selectionStyle = .none
-        cell.configure(information: self.viewModel.items.value[indexPath.row])
-        return cell
+        self.configureTableViewSnapshot()
     }
     
-    private func updateItem() {
-        DispatchQueue.main.async {
-            self.scheduleListTableView.reloadData()
+    func configureTableViewSnapshot(animatingDifferences: Bool = false) {
+        
+        self.viewModel.items.subscribe { [weak self] item in
+            var snapshot = NSDiffableDataSourceSnapshot<MainSection, ScheduleInfo>()
+            snapshot.appendSections([.main])
+            snapshot.appendItems(item, toSection: .main)
+            self?.scheduleListTableViewDataSource?.apply(snapshot, animatingDifferences: animatingDifferences)
         }
     }
     
