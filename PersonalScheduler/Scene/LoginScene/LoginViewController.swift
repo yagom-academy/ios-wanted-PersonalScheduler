@@ -52,6 +52,7 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         addLoginButtonTarget()
+        addNotification()
     }
     
     private func setupView() {
@@ -80,6 +81,13 @@ final class LoginViewController: UIViewController {
         ])
     }
     
+    private func addNotification() {
+        NotificationCenter.default.addObserver(forName: .AccessTokenDidChange,
+                                               object: nil,
+                                               queue: OperationQueue.main,
+                                               using: facebookButtonTapped)
+    }
+    
     private func addLoginButtonTarget() {
         kakaoLoginButton.addTarget(self,
                                    action: #selector(kakaoLoginButtonTapped),
@@ -94,7 +102,6 @@ final class LoginViewController: UIViewController {
                 self?.showAlert(message: "카카오 로그인에 실패했습니다.\n\(error.localizedDescription)")
             } else {
                 if let token = oauthToken?.accessToken {
-                    LoginManager.shared.saveUserToken(token)
                     self?.presentScheduleListView(with: token)
                 }
             }
@@ -106,7 +113,14 @@ final class LoginViewController: UIViewController {
         let scheduleListView = ScheduleListViewController(scheduleViewModel)
         let navigationController = UINavigationController(rootViewController: scheduleListView)
         
+        LoginManager.shared.saveUserToken(token)
         navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: true)
+    }
+    
+    @objc private func facebookButtonTapped(_ notification: Notification) {
+        if let token = AccessToken.current?.tokenString {
+            presentScheduleListView(with: token)
+        }
     }
 }
