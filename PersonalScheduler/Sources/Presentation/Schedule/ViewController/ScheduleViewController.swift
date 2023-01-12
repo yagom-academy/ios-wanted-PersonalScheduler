@@ -110,7 +110,6 @@ class ScheduleViewController: UIViewController {
     private lazy var endDateSettingView: DateSettingView = {
         let view = DateSettingView()
         view.setUp(Date().nearestHour().plusHour(1))
-        view.highlight(.systemRed)
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: #selector(didTapEndDate(_:)))
         view.addGestureRecognizer(tap)
