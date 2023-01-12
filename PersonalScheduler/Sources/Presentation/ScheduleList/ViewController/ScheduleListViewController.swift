@@ -122,7 +122,7 @@ private extension ScheduleListViewController {
             .compactMap { $0 }
             .map { IndexPath(item: $0, section: .zero) }
             .sinkOnMainThread(receiveValue: { [weak self] indexPath in
-                self?.collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+                self?.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .top)
                 self?.navigationTitleView.update(
                     title: self?.viewModel.output.currentSchedule?.startDate.toString(.yearAndMonth) ?? Date().toString(.yearAndMonth)
                 )
@@ -240,7 +240,7 @@ extension ScheduleListViewController: UICollectionViewDelegate {
 
 extension ScheduleListViewController: UIScrollViewDelegate {
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
         let visiblePoint = CGPoint(x: visibleRect.minX, y: visibleRect.minY)
         if let visibleIndexPath = collectionView.indexPathForItem(at: visiblePoint),
