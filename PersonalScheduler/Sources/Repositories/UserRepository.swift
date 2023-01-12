@@ -13,20 +13,24 @@ protocol UserRepository {
     func getLocalUserInfo() -> User?
     func localUpdate(user: User)
     func register(_ authatication: Authentication, snsType: SNSType) -> AnyPublisher<Bool, Error>
-    func delete()
+    func deleteUser()
+    func logout()
 }
 
 final class DefaultUserRepository: UserRepository {
     
     private let localStorage: LocalStorageService
+    private let keychainStorage: KeyChainStorageService
     private let firestoreStorage: FirestoreStorageService
     private var cancellables: Set<AnyCancellable> = .init()
     
     init(
         localStorage: LocalStorageService = UserDefaults.standard,
+        keychainStorage: KeyChainStorageService = KeyChainStorage.shard,
         firestoreStorage: FirestoreStorageService = FirestoreStorage.shared
     ) {
         self.localStorage = localStorage
+        self.keychainStorage = keychainStorage
         self.firestoreStorage = firestoreStorage
     }
     
@@ -54,12 +58,20 @@ final class DefaultUserRepository: UserRepository {
         return firestoreStorage.write(user: newUser)
     }
     
-    func delete() {
+    func deleteUser() {
         guard let user = localStorage.getUser() else {
             return
         }
         localStorage.delete(key: .userInfo)
+        keychainStorage.delete(key: .accessToken)
+        keychainStorage.delete(key: .refreshToken)
         firestoreStorage.delete(user: user)
+    }
+    
+    func logout() {
+        localStorage.delete(key: .userInfo)
+        keychainStorage.delete(key: .accessToken)
+        keychainStorage.delete(key: .refreshToken)
     }
     
 }

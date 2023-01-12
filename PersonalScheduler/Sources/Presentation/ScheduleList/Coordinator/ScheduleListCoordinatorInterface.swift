@@ -11,5 +11,6 @@ protocol ScheduleListCoordinatorInterface: AnyObject {
     
     func showCreateSchedule()
     func showEditSchedule(_ schedule: Schedule)
+    func finished()
     
 }
