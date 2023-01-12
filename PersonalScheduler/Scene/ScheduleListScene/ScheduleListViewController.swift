@@ -17,7 +17,16 @@ class ScheduleListViewController: UIViewController {
         return tableVeiw
     }()
     
-    private let scheduleViewModel = ScheduleViewModel()
+    private let scheduleViewModel: ScheduleViewModel
+    
+    init(_ viewModel: ScheduleViewModel) {
+        self.scheduleViewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

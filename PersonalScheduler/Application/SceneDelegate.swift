@@ -16,7 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let loginViewController = LoginViewController()
+        let scheduleViewModel = ScheduleViewModel()
+        let loginViewController = LoginViewController(scheduleViewModel)
         let navigationController = UINavigationController(rootViewController: loginViewController)
         
         window?.rootViewController = navigationController
