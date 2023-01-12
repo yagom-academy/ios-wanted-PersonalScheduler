@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FacebookLogin
 
 final class LoginViewController: UIViewController {
     private let loginView = LoginView()
@@ -28,16 +29,8 @@ final class LoginViewController: UIViewController {
         setupButton()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
-            //
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        Auth.auth().removeStateDidChangeListener(handle!)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     private func setupInitialView() {
@@ -76,23 +69,36 @@ final class LoginViewController: UIViewController {
         )
     }
     
+    private func compareWithServerInfo(_ loginInfo: LoginInfo) async {
+        do {
+            try await viewModel.validateLoginInfo(loginInfo)
+        } catch {
+            AlertBuilder(title: "알람",
+                         message: "사용자를 찾을 수 없습니다.",
+                         preferredStyle: .alert)
+            .setButton(name: "확인", style: .default)
+            .showAlert(on: self)
+        }
+    }
+    
     @objc private func loginButtonTapped() {
         guard let loginInfo = loginView.retrieveLoginInfo() else {
             return
         }
         do {
             try loginInfo.validate()
+            Task {
+                await compareWithServerInfo(loginInfo)
+            }
         } catch let error as LoginError {
-            DefaultAlertBuilder(
-                title: "경고",
-                message: error.description,
-                preferredStyle: .alert
-            ).setButton(name: "예", style: .default)
-                .showAlert(on: self)
+            AlertBuilder(title: "경고",
+                         message: error.description,
+                         preferredStyle: .alert)
+            .setButton(name: "예", style: .default)
+            .showAlert(on: self)
         } catch {
             print(String(describing: error))
         }
-        viewModel.loginButtonTapped(loginInfo)
     }
     
     @objc private func signInButtonTapped() {
@@ -104,10 +110,12 @@ final class LoginViewController: UIViewController {
     }
     
     @objc private func facebookButtonTapped() {
-        viewModel.facebookLogoButtonTapped()
+        viewModel.facebookLoginButtonTapped(in: self)
     }
     
     @objc private func appleButtonTapped() {
-        viewModel.appleLogoButtonTapped()
+        AlertBuilder(title: "경고", message: "현재 사용할 수 없습니다.", preferredStyle: .alert)
+            .setButton(name: "확인", style: .default)
+            .showAlert(on: self)
     }
 }
