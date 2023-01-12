@@ -101,7 +101,9 @@ final class FirebaseManager: FirebaseManagerable {
     
     func readArray<T: FirebaseDatable>(_ data: T, completion: @escaping ((Result<[T],Error>) -> Void)) {
         var result: Result<[T], Error> = .failure(FirebaseError.readError)
-        let taskItemRef = getDetailPath(data: data)
+        let taskItemRef = data.arrayPath.reduce(database) { database, path in
+            database.child(path)
+        }
         
         taskItemRef.getData { error, dataSnapshot in
             guard error == nil else {
