@@ -15,7 +15,7 @@ final class FirebaseStorage {
     
     private init() { }
     
-    func save(_ data: [String: Any],
+    func set(_ data: [String: Any],
               at collection: String,
               with id: String
     ) async throws {
@@ -27,7 +27,20 @@ final class FirebaseStorage {
                 continuation.resume()
             }
         }
-        
+    }
+    
+    func update(_ data: [String: Any],
+              at collection: String,
+              with id: String
+    ) async throws {
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+            database.collection(collection).document(id).updateData(data) { error in
+                if error != nil {
+                    continuation.resume(throwing: FireBaseError.save)
+                }
+                continuation.resume()
+            }
+        }
     }
     
     func delete(with id: String,

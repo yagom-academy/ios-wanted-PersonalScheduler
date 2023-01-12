@@ -8,7 +8,15 @@
 import Foundation
 
 struct ScheduleInfo: Decodable, Hashable {
+    let id: String
     let title: String
-    let startTime: Date
+    let time: TimeInterval
     let content: String
+    
+    var dictionary: [String: Any] {
+        return["id": id,
+                "title": title,
+                "time": time,
+                "content": content]
+    }
 }

@@ -44,6 +44,7 @@ final class ScheduleListViewController: BaseViewController {
     override func setupView() {
         view.backgroundColor = .systemBackground
         
+        viewModel.loadItems()
         configureTableViewDataSource()
     }
     

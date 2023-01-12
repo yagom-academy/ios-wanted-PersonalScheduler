@@ -15,7 +15,7 @@ final class ScheduleEditViewController: BaseViewController {
     
     // MARK: - Properties
     
-    private let viewModel: SignViewModel
+    private let viewModel: ScheduleEditViewModel
     let editType: EditType
     
     // MARK: - Views
@@ -89,7 +89,7 @@ final class ScheduleEditViewController: BaseViewController {
     // MARK: - Life Cycle
     
     init(editType: EditType) {
-        self.viewModel = SignViewModel()
+        self.viewModel = ScheduleEditViewModel(nil)
         self.editType = editType
         super.init(nibName: nil, bundle: nil)
     }
@@ -106,6 +106,7 @@ final class ScheduleEditViewController: BaseViewController {
     
     override func setupView() {
         view.backgroundColor = .systemBackground
+        configureNavigationBar()
     }
     
     override func addView() {
@@ -146,7 +147,10 @@ final class ScheduleEditViewController: BaseViewController {
     }
     
     override func bindViewModel() {
-        
+        self.viewModel.dismiss.subscribe { [weak self] isTrue in
+            guard let isTrue = isTrue else { return }
+            if isTrue { self?.dismiss() }
+        }
     }
 }
 
@@ -171,7 +175,7 @@ extension ScheduleEditViewController {
     }
     
     @objc private func saveSchedule() {
-        // viewModel에 저장
+        viewModel.addSchedule(title: titleTextField.text ?? "", time: dateTimePicker.date, content: contentTextView.text)
     }
     
     @objc private func cancel() {
@@ -179,6 +183,12 @@ extension ScheduleEditViewController {
     }
     
     private func dismiss() {
-        self.dismiss(animated: true)
+        DispatchQueue.main.async {
+            self.dismiss(animated: true)
+        }
     }
+}
+
+extension ScheduleEditViewController {
+
 }

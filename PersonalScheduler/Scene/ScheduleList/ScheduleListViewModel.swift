@@ -41,16 +41,6 @@ final class ScheduleListViewModel: ScheduleListViewModelType {
     /// Input
     
     func loadItems() {
-        offset = 0
-        appendItems()
-    }
-    
-    func deleteItem(information: ScheduleInfo) {
-        
-        
-    }
-    
-    func appendItems() {
         isloading.value = true
         
         self.fetchScheduleTask = Task {
@@ -64,6 +54,11 @@ final class ScheduleListViewModel: ScheduleListViewModelType {
             }
         }
         fetchScheduleTask?.cancel()
+    }
+    
+    func deleteItem(information: ScheduleInfo) {
+        
+        
     }
     
 }

@@ -6,21 +6,34 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 final class FireStoreScehduleRepository {
     
     private let firebaseStorage = FirebaseStorage.shared
-    private let collectionString = "Schedule"
+    private let collectionString = "User"
     
     init() {
     }
     
     func fetchScheduleList() async throws -> [ScheduleInfo] {
         let queryDocument =  try await firebaseStorage.fetch(at: collectionString)
-        let scheduleList = queryDocument.compactMap { elements in
-            try? elements.data(as: ScheduleInfo.self)
+
+        for document in queryDocument {
+            guard let user = try? document.data(as: User.self) else { continue }
+            if user.userId == "hoyoungId" {
+                return user.schedules
+            }
         }
-        return scheduleList
+        return []
+    }
+    
+    func addSchedule(_ schedule: ScheduleInfo) async throws {
+        let field = ["schedules": FieldValue.arrayUnion([schedule.dictionary])]
+        try await firebaseStorage.update(field, at: collectionString, with: "hoyoungId")
     }
     
 }
+
+            
