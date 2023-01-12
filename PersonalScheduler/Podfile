@@ -13,5 +13,9 @@ target 'PersonalScheduler' do
   pod 'FirebaseFirestore'
   pod 'FirebaseAuth'
 
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
+  pod 'FBSDKLoginKit'
   # Pods for PersonalScheduler
 end

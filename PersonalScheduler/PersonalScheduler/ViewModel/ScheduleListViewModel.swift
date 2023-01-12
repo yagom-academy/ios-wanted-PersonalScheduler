@@ -16,6 +16,7 @@ final class ScheduleListViewModel: ObservableObject {
     private let firebaseStorageManager = FirebaseStorageManager()
     private let firebaseLoginManager = FirebaseLoginManager()
     private let kakaoLoginManager = KakaoLoginManager()
+    private let facebookLoginManager = FacebookLoginManager()
     private let notificationManager = NotificationManager.instance
 
     @Published var lists = [ScheduleList]()
@@ -35,6 +36,7 @@ final class ScheduleListViewModel: ObservableObject {
     func logout() {
         self.buttonAlert = .logout
         firebaseLoginManager.handleLogout()
+        facebookLoginManager.logoutFacebook()
         Task {
             await kakaoLoginManager.handleLogout()
         }

@@ -64,6 +64,11 @@ struct LoginView: View {
                     Image(uiImage: UIImage(named: "KakoLoginImageButton")!)
                 }
                 .padding(.top, 50)
+                Button {
+                    loginViewModel.facebookLogIn()
+                } label: {
+                    Text("facebook login")
+                }
                 
                 NavigationLink {
                     SignUpView()

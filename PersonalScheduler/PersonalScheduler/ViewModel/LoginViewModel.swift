@@ -8,6 +8,9 @@
 import Foundation
 import FirebaseAuth
 
+import FacebookCore
+import FacebookLogin
+
 final class LoginViewModel: ObservableObject {
     
     enum LoginResultAlert {
@@ -78,6 +81,19 @@ final class LoginViewModel: ObservableObject {
                 }
             }) {
                 isLoggedIn = false
+            }
+        }
+    }
+    
+    func facebookLogIn() {
+        firebaseLoginManager.loginWithFacebook { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.accountUID = user.uid
+                self?.isLoggedIn = true
+            case .failure(let error):
+                print(error.localizedDescription)
+                self?.isLoggedIn = false
             }
         }
     }
