@@ -63,6 +63,31 @@ class ScheduleManager {
         }
     }
     
+    func editSchedule(schedule: Schedule, _ errorCompletion: @escaping (Error?) -> Void) {
+        UserManager.shared.getCurrentUserUid() { [weak self] userUid, err in
+            if let err {
+                errorCompletion(err)
+            } else {
+                do {
+                    var scheduleData = schedule
+                    let uid = scheduleData.uid!
+                    scheduleData.uid = nil
+                    
+                    try self?.db.collection(Collection.user.rawValue).document(userUid).collection(Collection.scheduleList.rawValue)
+                        .document(uid).setData(from: scheduleData, merge: true) { error in
+                            if let error {
+                                errorCompletion(error)
+                            } else {
+                                errorCompletion(nil)
+                            }
+                        }
+                } catch {
+                    errorCompletion(error)
+                }
+            }
+        }
+    }
+    
     func deleteSchedule(scheduleUid: String, _ error: @escaping (Error?) -> Void) {
         UserManager.shared.getCurrentUserUid() { [weak self] uid, err in
             if let err {

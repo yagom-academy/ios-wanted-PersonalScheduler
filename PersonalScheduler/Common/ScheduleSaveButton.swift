@@ -9,7 +9,7 @@ import UIKit
 
 class ScheduleSaveButton: UIButton {
     private func setting() {
-        self.setTitle("저장하기", for: .normal)
+        self.setTitle("추가하기", for: .normal)
         self.setTitleColor(.black, for: .normal)
     }
     

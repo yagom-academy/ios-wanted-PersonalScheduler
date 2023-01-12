@@ -54,19 +54,19 @@ class KakaoLoginManager {
         }
     }
     
-    func login(_ completion: @escaping (LoginResult, Error?) -> Void) {
+    func login(_ completion: @escaping (Error?) -> Void) {
         if AuthApi.hasToken() {
             self.hasTokenLogin() { result, error in
-                completion(result, error)
+                completion(error)
             }
         } else {
             if (UserApi.isKakaoTalkLoginAvailable()) {
                 self.appLogin() { appLoginResult, error in
-                    completion(appLoginResult, error)
+                    completion(error)
                 }
             } else {
                 self.webLogin() { webLoginResult, error in
-                    completion(webLoginResult, error)
+                    completion(error)
                 }
             }
         }

@@ -34,6 +34,7 @@ class InputSchedulVC: BaseVC {
         configureUI()
         configureTextField()
         addButtonAction()
+        outputBind()
     }
 }
 // MARK: - Configure UI
@@ -51,6 +52,20 @@ extension InputSchedulVC {
         self.view.endEditing(true)
     }
 }
+// MARK: - OutputBind
+extension InputSchedulVC {
+    private func outputBind() {
+        self.viewModel.output.completion.bind { [weak self] error in
+            self?.inputScheduleV.indicator.stopAnimating()
+            if let error {
+                AlertManager.shared.showErrorAlert(error: error, viewController: self!)
+            } else {
+                NotificationCenter.default.post(Notification(name: Notification.Name("refreshData")))
+                self?.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+}
 // MARK: - ButtonAction
 extension InputSchedulVC {
     private func addButtonAction() {
@@ -65,16 +80,22 @@ extension InputSchedulVC {
     }
     
     @objc private func didTapAddButton() {
+        self.inputScheduleV.indicator.startAnimating()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "y-M-d_HH:mm:ss"
         let startDate = dateFormatter.string(from: self.inputScheduleV.startDatePicker.date)
         let endDate = dateFormatter.string(from: self.inputScheduleV.endDatePicker.date)
-        let schedule = Schedule(title: self.inputScheduleV.titleTextField.text!,
+        var scheduleData = Schedule(title: self.inputScheduleV.titleTextField.text!,
                                 startDate: startDate,
                                 endDate: endDate,
                                 content: self.inputScheduleV.contentTextField.text!)
-        
-        viewModel.input.addButtonTrigger.value = schedule
+        switch self.viewType {
+        case .add:
+            viewModel.input.addButtonTrigger.value = scheduleData
+        case .edit(let schedule):
+            scheduleData.uid = schedule.uid
+            viewModel.input.editButtonTrigger.value = scheduleData
+        }
     }
 }
 // MARK: - TextFieldDelegate

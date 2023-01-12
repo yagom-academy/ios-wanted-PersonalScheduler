@@ -9,6 +9,13 @@ import UIKit
 
 class LoginV: UIView, BaseView {
     
+    lazy var indicator: ActivityIndicator = {
+        let activityIndicator = ActivityIndicator()
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        return activityIndicator
+    }()
+    
     lazy var kakaoLoginButton: KaKaoLoginButton = {
         let button = KaKaoLoginButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +35,7 @@ class LoginV: UIView, BaseView {
     
     func addView() {
         self.addSubview(kakaoLoginButton)
+        self.addSubview(indicator)
     }
 }
 // MARK: - Constraints
@@ -42,7 +50,9 @@ extension LoginV {
             kakaoLoginButton.heightAnchor.constraint(equalToConstant: 50),
             kakaoLoginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             kakaoLoginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            kakaoLoginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -50)
+            kakaoLoginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -50),
+            indicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ]
         
         NSLayoutConstraint.activate(layout)

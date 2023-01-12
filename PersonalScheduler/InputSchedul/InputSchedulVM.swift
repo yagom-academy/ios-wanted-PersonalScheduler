@@ -11,10 +11,11 @@ class InputSchedulVM: ViewModel {
     
     struct Input {
         let addButtonTrigger: Dynamic<Schedule?> = Dynamic(nil)
+        let editButtonTrigger: Dynamic<Schedule?> = Dynamic(nil)
     }
     
     struct Output {
-        
+        let completion: Dynamic<Error?> = Dynamic(nil)
     }
     
     var input: Input
@@ -28,13 +29,25 @@ class InputSchedulVM: ViewModel {
     
     // MARK: - InputBind
     private func inputBind() {
-        input.addButtonTrigger.bind { [weak self] optionalSchedule in
-            if let schedule = optionalSchedule {
+        input.addButtonTrigger.bind { [weak self] schedule in
+            if let schedule {
                 ScheduleManager.shared.addSchedule(schedule: schedule) { error in
-                    if let error = error {
-                        print(error)
+                    if let error {
+                        self?.output.completion.value = error
                     } else {
-                        print("성공")
+                        self?.output.completion.value = nil
+                    }
+                }
+            }
+        }
+        
+        input.editButtonTrigger.bind { [weak self] schedule in
+            if let schedule {
+                ScheduleManager.shared.editSchedule(schedule: schedule) { error in
+                    if let error {
+                        self?.output.completion.value = error
+                    } else {
+                        self?.output.completion.value = nil
                     }
                 }
             }

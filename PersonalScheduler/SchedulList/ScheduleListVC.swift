@@ -21,11 +21,13 @@ class ScheduleListVC: BaseVC {
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.scheduleListV.indicator.startAnimating()
         collectionViewBind()
         self.viewModel.input.viewDidLoadTrigger.value = ()
         configureUI()
         configureTableView()
         addButtonAction()
+        addObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +65,19 @@ extension ScheduleListVC {
     private func collectionViewBind() {
         viewModel.output.scheduleList.bind { [weak self] _ in
             self?.scheduleListV.scheduletableView.reloadData()
+            self?.scheduleListV.indicator.stopAnimating()
         }
+    }
+}
+// MARK: - Notification
+extension ScheduleListVC {
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: Notification.Name("refreshData"), object: nil)
+    }
+    
+    @objc private func refreshData() {
+        self.scheduleListV.indicator.startAnimating()
+        self.viewModel.fetchSchedulList()
     }
 }
 // MARK: - TableViewDatasource
@@ -88,14 +102,13 @@ extension ScheduleListVC: UITableViewDataSource {
         
         return cell
     }
-    
-    
 }
 // MARK: - TableViewDelegate
 extension ScheduleListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.scheduleListV.indicator.startAnimating()
             let uid = self.viewModel.output.scheduleList.value![indexPath.row].uid
             self.viewModel.input.deleteScheduleTrigger.value = uid
             success(true)

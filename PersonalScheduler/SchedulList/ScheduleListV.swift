@@ -9,6 +9,13 @@ import UIKit
 
 class ScheduleListV: UIView, BaseView {
     
+    lazy var indicator: ActivityIndicator = {
+        let activityIndicator = ActivityIndicator()
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        return activityIndicator
+    }()
+    
     lazy var scheduletableView: UITableView = {
         let tableView = UITableView()
         tableView.register(ScheduleCell.self, forCellReuseIdentifier: ScheduleCell.cellID)
@@ -31,6 +38,7 @@ class ScheduleListV: UIView, BaseView {
     
     func addView() {
         self.addSubview(scheduletableView)
+        self.addSubview(indicator)
     }
 }
 // MARK: - Constraints
@@ -41,7 +49,9 @@ extension ScheduleListV {
             self.scheduletableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.scheduletableView.topAnchor.constraint(equalTo: self.topAnchor),
             self.scheduletableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.scheduletableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            self.scheduletableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.indicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.indicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ]
         
         NSLayoutConstraint.activate(layout)

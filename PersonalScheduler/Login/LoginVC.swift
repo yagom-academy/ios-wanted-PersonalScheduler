@@ -33,6 +33,7 @@ extension LoginVC {
     }
     
     @objc private func didTapLoginButton(_ sender: UIButton) {
+        self.loginView.indicator.startAnimating()
         switch sender {
         case loginView.kakaoLoginButton :
             self.viewModel.input.loginTrigger.value = .kakao
@@ -46,11 +47,12 @@ extension LoginVC {
 extension LoginVC {
     
     private func outputBind() {
-        self.viewModel.output.isLoginable.bind { [weak self] isLogin in
-            if isLogin {
-                self?.navigationController?.pushViewController(ScheduleListVC(), animated: true)
+        self.viewModel.output.isLoginable.bind { [weak self] error in
+            self?.loginView.indicator.stopAnimating()
+            if let error {
+                AlertManager.shared.showErrorAlert(error: error, viewController: self!)
             } else {
-                print("로그인 실패")
+                self?.navigationController?.pushViewController(ScheduleListVC(), animated: true)
             }
         }
     }

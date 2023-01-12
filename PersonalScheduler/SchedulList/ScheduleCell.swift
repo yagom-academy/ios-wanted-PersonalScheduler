@@ -76,6 +76,7 @@ class ScheduleCell: UITableViewCell {
     
     func configureCellData(schedule: Schedule) {
         self.titleLabel.text = schedule.title
+//        let relpaceStartDate = schedule.startDate.replacingCharacters(in: "", with: "")
         self.startTimeLabel.text = "\(schedule.startDate) ~ \(schedule.endDate)"
         self.contentLabel.text = schedule.content
     }

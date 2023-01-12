@@ -16,6 +16,13 @@ class InputSchedulV: UIView, BaseView {
     
     var saveButton: ScheduleSaveButton = ScheduleSaveButton()
     
+    lazy var indicator: ActivityIndicator = {
+        let activityIndicator = ActivityIndicator()
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        return activityIndicator
+    }()
+    
     private lazy var titleGuideLabel: UILabel = {
         let label = UILabel()
         label.text = "일정 제목"
@@ -168,6 +175,7 @@ class InputSchedulV: UIView, BaseView {
     
     func addView() {
         self.addSubview(fullStackView)
+        self.addSubview(indicator)
     }
     
     func setTitleLengthLabel(length: Int) {
@@ -179,6 +187,7 @@ class InputSchedulV: UIView, BaseView {
     }
     
     func editViewSetting(schedule: Schedule) {
+        self.saveButton.setTitle("수정하기", for: .normal)
         self.titleTextField.text = schedule.title
         self.titleTextField.isFocus = true
         setTitleLengthLabel(length: schedule.title.count)
@@ -186,6 +195,10 @@ class InputSchedulV: UIView, BaseView {
         self.contentTextField.isFocus = true
         self.contentTextField.textColor = .black
         setContentLengthLabel(length: schedule.content.count)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "y-M-d_HH:mm:ss"
+        self.startDatePicker.date = dateFormatter.date(from: schedule.startDate)!
+        self.endDatePicker.date = dateFormatter.date(from: schedule.endDate)!
     }
 }
 // MARK: - Constraints
@@ -206,7 +219,9 @@ extension InputSchedulV {
             startDatePicker.widthAnchor.constraint(equalTo: fullStackView.widthAnchor),
             endDateGuideLabel.leadingAnchor.constraint(equalTo: endDateStackView.leadingAnchor, constant: 10),
             endDatePicker.heightAnchor.constraint(equalToConstant: 48),
-            endDatePicker.widthAnchor.constraint(equalTo: fullStackView.widthAnchor)
+            endDatePicker.widthAnchor.constraint(equalTo: fullStackView.widthAnchor),
+            indicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ]
         
         NSLayoutConstraint.activate(layout)
