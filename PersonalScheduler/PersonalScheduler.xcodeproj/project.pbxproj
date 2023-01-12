@@ -15,6 +15,7 @@
 		FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */; };
 		FD4906E6296F3B23002D4E05 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = FD4906E5296F3B23002D4E05 /* KakaoSDKUser */; };
 		FD4906EB296F3F42002D4E05 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906EA296F3F42002D4E05 /* LoginView.swift */; };
+		FD4906EF296FC8DB002D4E05 /* OAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906EE296FC8DB002D4E05 /* OAuthProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		FD4906DF296F2F89002D4E05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoOAuthService.swift; sourceTree = "<group>"; };
 		FD4906EA296F3F42002D4E05 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FD4906EE296FC8DB002D4E05 /* OAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */,
+				FD4906EE296FC8DB002D4E05 /* OAuthProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD4906EF296FC8DB002D4E05 /* OAuthProvider.swift in Sources */,
 				FD4906EB296F3F42002D4E05 /* LoginView.swift in Sources */,
 				FD4906DE296F2ED4002D4E05 /* AppDelegate.swift in Sources */,
 				FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */,
