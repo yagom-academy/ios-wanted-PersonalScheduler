@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseFirestore
 import Combine
+import KakaoSDKAuth
 
 final class LoginViewController: UIViewController {
     private let loginViewModel: LoginViewModel
@@ -63,9 +64,9 @@ final class LoginViewController: UIViewController {
     func setConstraint() {
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
         ])
     }
 }

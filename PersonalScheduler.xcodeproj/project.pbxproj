@@ -32,6 +32,12 @@
 		8F36CB2E296E516B008E196F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8F36CB2D296E516B008E196F /* FirebaseAuth */; };
 		8F36CB30296E516B008E196F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8F36CB2F296E516B008E196F /* FirebaseFirestore */; };
 		8F36CB32296E516B008E196F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8F36CB31296E516B008E196F /* FirebaseStorage */; };
+		8F917AB3296EEC5A00AAF094 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F917AB2296EEC5A00AAF094 /* ListViewModel.swift */; };
+		8F917AB6296EF86500AAF094 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F917AB5296EF86500AAF094 /* ScheduleModel.swift */; };
+		8F917AB9296F0A1400AAF094 /* ScheduleAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F917AB8296F0A1400AAF094 /* ScheduleAddViewController.swift */; };
+		8F917ABB296F0CDD00AAF094 /* ScheduleAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F917ABA296F0CDD00AAF094 /* ScheduleAddViewModel.swift */; };
+		8F917ABD296F9D1100AAF094 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F917ABC296F9D1100AAF094 /* ScheduleTableViewCell.swift */; };
+		8F917AC0296FA84200AAF094 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F917ABF296FA84200AAF094 /* Date + Extension.swift */; };
 		8F994402296EE34F0042B8D5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F994401296EE34F0042B8D5 /* LoginViewModel.swift */; };
 		8F994404296EE3A00042B8D5 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F994403296EE3A00042B8D5 /* ListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +52,12 @@
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F36CB2A296E4FA0008E196F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8F917AAF296EEAB600AAF094 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		8F917AB2296EEC5A00AAF094 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		8F917AB5296EF86500AAF094 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
+		8F917AB8296F0A1400AAF094 /* ScheduleAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleAddViewController.swift; sourceTree = "<group>"; };
+		8F917ABA296F0CDD00AAF094 /* ScheduleAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleAddViewModel.swift; sourceTree = "<group>"; };
+		8F917ABC296F9D1100AAF094 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		8F917ABF296FA84200AAF094 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 		8F994401296EE34F0042B8D5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8F994403296EE3A00042B8D5 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,11 +111,13 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				8F917ABE296FA82F00AAF094 /* Extension */,
 				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
 				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
-				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
-				8F994401296EE34F0042B8D5 /* LoginViewModel.swift */,
-				8F994403296EE3A00042B8D5 /* ListViewController.swift */,
+				8F917AB4296EF85100AAF094 /* Model */,
+				8F917AB0296EEC3200AAF094 /* LoginView */,
+				8F917AB1296EEC3E00AAF094 /* ListView */,
+				8F917AB7296F09E300AAF094 /* ScheduleAddView */,
 				8F917AAE296EEA1800AAF094 /* SupprotFiles */,
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
 			);
@@ -119,6 +133,50 @@
 				8F917AAF296EEAB600AAF094 /* Config.xcconfig */,
 			);
 			path = SupprotFiles;
+			sourceTree = "<group>";
+		};
+		8F917AB0296EEC3200AAF094 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
+				8F994401296EE34F0042B8D5 /* LoginViewModel.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		8F917AB1296EEC3E00AAF094 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				8F994403296EE3A00042B8D5 /* ListViewController.swift */,
+				8F917AB2296EEC5A00AAF094 /* ListViewModel.swift */,
+				8F917ABC296F9D1100AAF094 /* ScheduleTableViewCell.swift */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		8F917AB4296EF85100AAF094 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8F917AB5296EF86500AAF094 /* ScheduleModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8F917AB7296F09E300AAF094 /* ScheduleAddView */ = {
+			isa = PBXGroup;
+			children = (
+				8F917AB8296F0A1400AAF094 /* ScheduleAddViewController.swift */,
+				8F917ABA296F0CDD00AAF094 /* ScheduleAddViewModel.swift */,
+			);
+			path = ScheduleAddView;
+			sourceTree = "<group>";
+		};
+		8F917ABE296FA82F00AAF094 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8F917ABF296FA84200AAF094 /* Date + Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,10 +277,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F994402296EE34F0042B8D5 /* LoginViewModel.swift in Sources */,
+				8F917AC0296FA84200AAF094 /* Date + Extension.swift in Sources */,
+				8F917AB6296EF86500AAF094 /* ScheduleModel.swift in Sources */,
+				8F917ABB296F0CDD00AAF094 /* ScheduleAddViewModel.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
+				8F917AB3296EEC5A00AAF094 /* ListViewModel.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				8F917ABD296F9D1100AAF094 /* ScheduleTableViewCell.swift in Sources */,
 				8F994404296EE3A00042B8D5 /* ListViewController.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				8F917AB9296F0A1400AAF094 /* ScheduleAddViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
