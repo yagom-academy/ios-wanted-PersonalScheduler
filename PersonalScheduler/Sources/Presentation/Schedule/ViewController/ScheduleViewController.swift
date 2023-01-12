@@ -24,6 +24,8 @@ class ScheduleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
+        bind()
+        viewModel.input.viewDidLoad()
     }
     
     init(viewModel: ScheduleViewModel, coordinator: ScheduleCoordinatorInterface, type: ViewType) {
@@ -108,6 +110,7 @@ class ScheduleViewController: UIViewController {
     private lazy var endDateSettingView: DateSettingView = {
         let view = DateSettingView()
         view.setUp(Date().nearestHour().plusHour(1))
+        view.highlight(.systemRed)
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: #selector(didTapEndDate(_:)))
         view.addGestureRecognizer(tap)
@@ -130,9 +133,68 @@ class ScheduleViewController: UIViewController {
         return textView
     }()
     
+    private lazy var activityIndicator: LoadingView = {
+        let activityIndicator = LoadingView(backgroundColor: .clear, alpha: 1)
+        return activityIndicator
+    }()
+    
 }
 
 private extension ScheduleViewController {
+    
+    func bind() {
+        viewModel.output.title
+            .compactMap { $0 }
+            .filter { $0.isEmpty == false }
+            .sinkOnMainThread(receiveValue: { [weak self] text in
+                self?.titleTextField.text = text
+            }).store(in: &cancellables)
+        
+        viewModel.output.startDate
+            .sinkOnMainThread(receiveValue: { [weak self] date in
+                self?.startDateSettingView.setUp(date)
+            }).store(in: &cancellables)
+        
+        viewModel.output.endDate
+            .sinkOnMainThread(receiveValue: { [weak self] date in
+                self?.endDateSettingView.setUp(date)
+            }).store(in: &cancellables)
+        
+        viewModel.output.description
+            .compactMap { $0 }
+            .filter { $0.isEmpty == false }
+            .sinkOnMainThread(receiveValue: { [weak self] text in
+                self?.descriptionTextView.text = text
+                self?.descriptionTextView.textColor = .label
+            }).store(in: &cancellables)
+        
+        viewModel.output.isCompleted
+            .filter { $0 == true }
+            .sinkOnMainThread(receiveValue: { [weak self] _ in
+                self?.coordinator?.dismiss()
+            }).store(in: &cancellables)
+        
+        viewModel.output.isLoading
+            .sinkOnMainThread(receiveValue: { [weak self] isLoading in
+                if isLoading {
+                    self?.activityIndicator.startAnimating()
+                } else {
+                    self?.activityIndicator.stopAnimating()
+                }
+            }).store(in: &cancellables)
+        
+        viewModel.output.errorMessage
+            .compactMap { $0 }
+            .sinkOnMainThread(receiveValue: { [weak self] message in
+                self?.showAlert(message: message)
+            }).store(in: &cancellables)
+        
+        viewModel.output.isValidDate
+            .sinkOnMainThread(receiveValue: { [weak self] isValidDate in
+                self?.endDateSettingView.highlight(isValidDate ? .label : .systemRed)
+                self?.navigationItem.rightBarButtonItem?.isEnabled = isValidDate
+            }).store(in: &cancellables)
+    }
     
     func setUp() {
         setUpLayout()
@@ -141,12 +203,14 @@ private extension ScheduleViewController {
     
     func setUpLayout() {
         view.backgroundColor = .psBackground
-        view.addSubviews(scrollView)
+        view.addSubviews(scrollView, activityIndicator)
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            activityIndicator.widthAnchor.constraint(equalTo: view.widthAnchor),
+            activityIndicator.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
     }
  
@@ -164,7 +228,11 @@ private extension ScheduleViewController {
     }
     
     @objc func didTapSaveButton(_ sender: UIBarButtonItem) {
-        print(#function)
+        let description = descriptionTextView.text ?? ""
+        viewModel.input.didTapSaveButton(
+            title: titleTextField.text ?? "",
+            description: description == descriptionPlaceHolder ? "" : description
+        )
         
     }
     
@@ -173,14 +241,14 @@ private extension ScheduleViewController {
     }
     
     @objc func didTapStartDate(_ gesture: UITapGestureRecognizer) {
-        showDatePickerAlert(Date().nearestHour()) { date in
-            print(date.toString(.yyyyMMddEEEE))
+        showDatePickerAlert(viewModel.output.currentStartData) { [weak self] date in
+            self?.viewModel.input.didChangeStartDate(date)
         }
     }
     
     @objc func didTapEndDate(_ gesture: UITapGestureRecognizer) {
-        showDatePickerAlert(Date().nearestHour().plusHour(1)) { date in
-            print(date.toString(.yyyyMMddEEEE))
+        showDatePickerAlert(viewModel.output.currentEndData) { [weak self] date in
+            self?.viewModel.input.didChangeEndDate(date)
         }
     }
     
@@ -193,10 +261,6 @@ extension ScheduleViewController: UITextViewDelegate {
             textView.text = nil
             textView.textColor = .label
         }
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        print(textView.text, textView.text.count)
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
