@@ -23,6 +23,8 @@ protocol ScheduleListViewModelType: ScheduleListViewModelInput, ScheduleListView
 final class ScheduleListViewModel: ScheduleListViewModelType {
     let scheduleUseCase = ScheduleUseCase()
     
+    private var fetchScheduleTask: Task<Void, Error>?
+    
     var count = 10
     var offset = 0
     
@@ -46,12 +48,18 @@ final class ScheduleListViewModel: ScheduleListViewModelType {
     
     func appendItems() {
         isloading.value = true
-        DispatchQueue.global().async {
-//            guard let motionData = self.motionCoreDataUseCase.fetch(offset: self.offset, count: self.count) else { return }
-            self.offset = self.count
-//            self.items.value = motionData
-            self.isloading.value = false
+        
+        self.fetchScheduleTask = Task {
+            do {
+                let schduleList = try await scheduleUseCase.getScheduleList()
+                items.value = schduleList
+                isloading.value = false
+            }
+            catch {
+                self.error.value = error.localizedDescription
+            }
         }
+        fetchScheduleTask?.cancel()
     }
     
 }

@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ScheduleInfo {
+struct ScheduleInfo: Decodable {
     let title: String
-    let startTime: String
+    let startTime: Date
     let content: String
 }

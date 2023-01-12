@@ -8,6 +8,9 @@
 import Foundation
 
 final class ScheduleUseCase {
-    let fireStoreRepository = FireStoreRepository()
+    let fireStoreScehduleRepository = FireStoreScehduleRepository()
     
+    func getScheduleList() async throws -> [ScheduleInfo] {
+        try await fireStoreScehduleRepository.fetchScheduleList()
+    }
 }
