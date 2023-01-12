@@ -28,13 +28,19 @@ final class FirebaseService {
                     return
                 }
 
+                var isNewUser = true
                 querySnapshot.documents.forEach { document in
                     if document.documentID == firebaseID {
-                        continuation.resume(returning: false)
+                        isNewUser = false
                     }
                 }
-
-                continuation.resume(returning: true)
+                
+                if isNewUser {
+                    continuation.resume(returning: true)
+                } else {
+                    continuation.resume(returning: false)
+                }
+                
             }
         }
     }
