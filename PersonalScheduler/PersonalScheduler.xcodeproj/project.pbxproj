@@ -21,6 +21,7 @@
 		FD49070729703BDF002D4E05 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD49070629703BDF002D4E05 /* Schedule.swift */; };
 		FD49070929703BEC002D4E05 /* ScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD49070829703BEC002D4E05 /* ScheduleDTO.swift */; };
 		FD49070C29703CAF002D4E05 /* ScheduleAddingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD49070B29703CAF002D4E05 /* ScheduleAddingView.swift */; };
+		FD49070E29703E0B002D4E05 /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD49070D29703E0B002D4E05 /* ScheduleListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		FD49070629703BDF002D4E05 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		FD49070829703BEC002D4E05 /* ScheduleDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDTO.swift; sourceTree = "<group>"; };
 		FD49070B29703CAF002D4E05 /* ScheduleAddingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleAddingView.swift; sourceTree = "<group>"; };
+		FD49070D29703E0B002D4E05 /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				FD49070329703AA9002D4E05 /* ScheduleListView.swift */,
+				FD49070D29703E0B002D4E05 /* ScheduleListViewModel.swift */,
 			);
 			path = ScheduleList;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				FD49070729703BDF002D4E05 /* Schedule.swift in Sources */,
 				FD49070929703BEC002D4E05 /* ScheduleDTO.swift in Sources */,
 				FD4906ED296F8274002D4E05 /* LoginViewModel.swift in Sources */,
+				FD49070E29703E0B002D4E05 /* ScheduleListViewModel.swift in Sources */,
 				FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */,
 				FD49070429703AA9002D4E05 /* ScheduleListView.swift in Sources */,
 				FD4906BA296E8FF2002D4E05 /* PersonalSchedulerApp.swift in Sources */,
