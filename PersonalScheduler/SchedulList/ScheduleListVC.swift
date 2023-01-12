@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum RefreshControlType {
+    case tableView
+    case activity
+}
+
 class ScheduleListVC: BaseVC {
     // MARK: - View
     private let scheduleListV = ScheduleListV()
@@ -47,6 +52,8 @@ extension ScheduleListVC {
     private func configureTableView() {
         scheduleListV.scheduletableView.dataSource = self
         scheduleListV.scheduletableView.delegate = self
+        scheduleListV.scheduletableView.refreshControl = scheduleListV.tableViewRefreshControl
+        scheduleListV.tableViewRefreshControl.addTarget(self, action: #selector(didTableViewRefresh), for: .valueChanged)
     }
     
     private func addButtonAction() {
@@ -58,14 +65,30 @@ extension ScheduleListVC {
         addView.viewType = .add
         self.navigationController?.pushViewController(addView, animated: true)
     }
+    
+    @objc private func didTableViewRefresh() {
+        DispatchQueue.main.async { [weak self] in
+            self?.scheduleListV.tableViewRefreshControl.endRefreshing()
+            self?.viewModel.output.currentDate = Date()
+            self?.scheduleListV.scheduletableView.reloadData()
+        }
+    }
 }
 
 // MARK: - OutputBind
 extension ScheduleListVC {
     private func collectionViewBind() {
         viewModel.output.scheduleList.bind { [weak self] _ in
-            self?.scheduleListV.scheduletableView.reloadData()
-            self?.scheduleListV.indicator.stopAnimating()
+            DispatchQueue.main.async {
+                self?.scheduleListV.scheduletableView.reloadData()
+                self?.scheduleListV.indicator.stopAnimating()
+            }
+        }
+        
+        viewModel.output.completion.bind { [weak self] error in
+            if let error {
+                AlertManager.shared.showErrorAlert(error: error, viewController: self!)
+            }
         }
     }
 }
@@ -78,6 +101,7 @@ extension ScheduleListVC {
     @objc private func refreshData() {
         self.scheduleListV.indicator.startAnimating()
         self.viewModel.fetchSchedulList()
+        self.viewModel.output.currentDate = Date()
     }
 }
 // MARK: - TableViewDatasource
@@ -98,7 +122,7 @@ extension ScheduleListVC: UITableViewDataSource {
         guard let list = self.viewModel.output.scheduleList.value else { return UITableViewCell() }
         
         cell.selectionStyle = .none
-        cell.configureCellData(schedule: list[indexPath.row])
+        cell.configureCellData(schedule: list[indexPath.row], currentDate: self.viewModel.output.currentDate)
         
         return cell
     }

@@ -40,7 +40,8 @@ class ScheduleManager {
                 completion(nil, err)
             } else {
                 self?.db.collection(Collection.user.rawValue).document(uid).collection(Collection.scheduleList.rawValue)
-                    .getDocuments(completion: { querySnapShot, error in
+                    .order(by: Field.startDate.rawValue)
+                    .getDocuments() { querySnapShot, error in
                         if let error {
                             completion(nil, error)
                         } else {
@@ -58,7 +59,7 @@ class ScheduleManager {
                                 completion(scheduleList, nil)
                             }
                         }
-                    })
+                    }
             }
         }
     }

@@ -74,10 +74,19 @@ class ScheduleCell: UITableViewCell {
         NSLayoutConstraint.activate(layout)
     }
     
-    func configureCellData(schedule: Schedule) {
+    func configureCellData(schedule: Schedule, currentDate: Date) {
         self.titleLabel.text = schedule.title
 //        let relpaceStartDate = schedule.startDate.replacingCharacters(in: "", with: "")
         self.startTimeLabel.text = "\(schedule.startDate) ~ \(schedule.endDate)"
         self.contentLabel.text = schedule.content
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "y-M-d_HH:mm:ss"
+        let startDate = dateFormatter.date(from: schedule.startDate)!
+        let endDate = dateFormatter.date(from: schedule.endDate)!
+        if currentDate > startDate && currentDate < endDate {
+            self.backgroundColor = .green
+        } else {
+            self.backgroundColor = .systemGray5
+        }
     }
 }

@@ -9,6 +9,8 @@ import UIKit
 
 class ScheduleListV: UIView, BaseView {
     
+    let tableViewRefreshControl = UIRefreshControl()
+    
     lazy var indicator: ActivityIndicator = {
         let activityIndicator = ActivityIndicator()
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false

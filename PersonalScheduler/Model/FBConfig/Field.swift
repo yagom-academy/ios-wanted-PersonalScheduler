@@ -7,8 +7,12 @@
 
 import Foundation
 
-enum Field {
+enum Field: String {
     case email
     case name
     case scheduleList
+    case content
+    case startDate
+    case endDate
+    case uid
 }

@@ -16,6 +16,8 @@ class ScheduleListVM: ViewModel {
     
     struct Output {
         let scheduleList: Dynamic<[Schedule]?> = Dynamic(nil)
+        var currentDate: Date = Date()
+        let completion: Dynamic<Error?> = Dynamic(nil)
     }
     
     var input: Input
@@ -42,7 +44,7 @@ class ScheduleListVM: ViewModel {
     func fetchSchedulList() {
         ScheduleManager.shared.fetchScheduleListData(completion: { [weak self] scheduleList, error in
             if let error {
-                print(error.localizedDescription)
+                self?.output.completion.value = error
             } else {
                 self?.output.scheduleList.value = scheduleList
             }
@@ -52,7 +54,7 @@ class ScheduleListVM: ViewModel {
     private func deleteSchedul(uid: String) {
         ScheduleManager.shared.deleteSchedule(scheduleUid: uid) { [weak self] deleteError in
             if let deleteError {
-                print(deleteError.localizedDescription)
+                self?.output.completion.value = deleteError
             } else {
                 self?.fetchSchedulList()
             }
