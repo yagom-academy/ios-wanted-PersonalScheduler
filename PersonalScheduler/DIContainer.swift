@@ -25,7 +25,7 @@ final class DIContainer {
     }
 
     func makeFetchScheduleUseCase() -> FetchScheduleUseCase {
-        return FetchScheduleUseCase(repository: MockScheduleRepository())
+        return FetchScheduleUseCase(repository: ScheduleListRepository())
     }
 
     func makeDeleteScheduleUseCase() -> FetchScheduleUseCase {
