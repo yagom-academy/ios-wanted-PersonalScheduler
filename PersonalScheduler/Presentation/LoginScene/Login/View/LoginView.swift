@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FacebookLogin
 
 final class LoginView: UIView {
     private let mainStackView: UIStackView = {
@@ -15,7 +16,7 @@ final class LoginView: UIView {
         stackView.alignment = .fill
         stackView.spacing = 40
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+        stackView.layoutMargins = UIEdgeInsets(top: 100, left: 40, bottom: 0, right: 40)
         return stackView
     }()
     
@@ -32,6 +33,7 @@ final class LoginView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .title2)
         label.font = .boldSystemFont(ofSize: label.font.pointSize)
+        label.text = "Personal Schedular에 로그인 하세요."
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()
@@ -40,6 +42,7 @@ final class LoginView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.text = "어느 기기에서든 나의 일정을 관리할 수 있습니다."
         return label
     }()
     
@@ -56,6 +59,7 @@ final class LoginView: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         textField.addLeftPadding()
+        textField.placeholder = "이메일 입력"
         textField.layer.borderColor = UIColor.systemGray5.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 5
@@ -67,6 +71,7 @@ final class LoginView: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         textField.addLeftPadding()
+        textField.placeholder = "비밀번호 입력"
         textField.layer.borderColor = UIColor.systemGray5.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 5
@@ -105,9 +110,10 @@ final class LoginView: UIView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
+//        stackView.spacing = 15
         stackView.distribution = .equalSpacing
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 50)
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
         return stackView
     }()
     
@@ -120,29 +126,29 @@ final class LoginView: UIView {
         return view
     }()
     
-    let kakaoLogoImageButton = LogoImageButton(
-        width: 70,
-        height: 70,
-        image: UIImage(systemName: "photo")!
-    )
-    let facebookLogoImageButton = LogoImageButton(
-        width: 70,
-        height: 70,
-        image: UIImage(systemName: "photo")!
-    )
-    let appleLogoImageButton = LogoImageButton(
-        width: 70,
-        height: 70,
-        image: UIImage(systemName: "photo")!
-    )
     private let labelSeparator = LabelSeparator(text: " SNS 계정 로그인 ")
+    
+    let kakaoLogoImageButton = LogoImageButton(
+        image: UIImage(named: "kakao_custom")!,
+        radius: 30
+    )
+    
+    let facebookLogoImageButton = LogoImageButton(
+        image: UIImage(named: "facebook_custom")!,
+        radius: 30
+    )
+    
+    let appleLogoImageButton = LogoImageButton(
+        image: UIImage(named: "apple_custom")!,
+        radius: 30
+    )
+    
     
     init() {
         super.init(frame: .zero)
         setupInitialView()
         addSubviews()
         setupLayer()
-        setupData()
     }
     
     required init?(coder: NSCoder) {
@@ -151,13 +157,6 @@ final class LoginView: UIView {
     
     private func setupInitialView() {
         backgroundColor = .systemBackground
-    }
-    
-    private func setupData() {
-        HeaderTitle.text = "Personal Schedular에 로그인 하세요."
-        subTitle.text = "어느 기기에서든 나의 기록을 남길 수 있습니다."
-        idTextField.placeholder = "이메일 입력"
-        passwordTextField.placeholder = "비밀번호 입력"
     }
     
     func retrieveLoginInfo() -> LoginInfo? {

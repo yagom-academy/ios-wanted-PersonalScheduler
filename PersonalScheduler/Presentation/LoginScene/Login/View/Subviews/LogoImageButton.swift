@@ -9,9 +9,9 @@ import UIKit
 
 final class LogoImageButton: UIButton {
     
-    init(width: CGFloat, height: CGFloat, image: UIImage) {
-        super.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
-        setupConstraints(width: width, height: height)
+    init(image: UIImage, radius: CGFloat) {
+        super.init(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: radius*2, height: radius*2)))
+        setSize(radius: radius)
         renderImage(image: image)
     }
     
@@ -19,16 +19,16 @@ final class LogoImageButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupConstraints(width: CGFloat, height: CGFloat) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.heightAnchor.constraint(equalToConstant: height).isActive = true
-        self.widthAnchor.constraint(equalToConstant: width).isActive = true
-        self.layer.cornerRadius = width / 2
-        self.layer.backgroundColor = UIColor.systemGray5.cgColor
+    private func setSize(radius r: CGFloat) {
+        translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            widthAnchor.constraint(equalToConstant: r * 2),
+            heightAnchor.constraint(equalToConstant: r * 2)
+        ])
     }
     
     private func renderImage(image: UIImage) {
-        self.imageView?.contentMode = .scaleToFill
+        self.imageView?.contentMode = .scaleAspectFill
         self.setImage(image, for: .normal)
     }
 }
