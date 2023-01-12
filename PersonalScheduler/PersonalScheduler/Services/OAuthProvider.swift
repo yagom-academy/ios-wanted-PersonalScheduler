@@ -15,6 +15,15 @@ protocol OAuthProvider {
     
 }
 
+extension OAuthProvider {
+    
+    func toFirebaseID() -> String {
+        let firebaseID = companyName.description + originalUserID
+        return firebaseID
+    }
+    
+}
+
 enum ProviderName {
     
     case kakao
