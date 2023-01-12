@@ -108,6 +108,13 @@ extension ScheduleListViewController: UITableViewDataSource, UITableViewDelegate
                                                  animated: true)
     }
     
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let headerView = view as? UITableViewHeaderFooterView else { return }
+        
+        headerView.textLabel?.font = .preferredFont(forTextStyle: .headline)
+        headerView.textLabel?.textColor = .label
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let deleteSchedule = scheduleInSection(at: indexPath.section)[indexPath.row]
