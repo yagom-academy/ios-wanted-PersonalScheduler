@@ -39,4 +39,14 @@ final class FirebaseService {
         }
     }
     
+    
+    func addUserToDatabase(firebaseID: String) {
+        let userDocumentReference = database.collection("Users").document(firebaseID)
+        userDocumentReference.setData(["id": firebaseID]) { error in
+            guard error == nil else {
+                print(error?.localizedDescription as Any)
+                return
+            }
+        }
+    }
 }
