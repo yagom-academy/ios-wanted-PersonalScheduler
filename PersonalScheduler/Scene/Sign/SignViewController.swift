@@ -5,6 +5,7 @@
 //  Created by 이호영 on 2023/01/11.
 //
 import UIKit
+import AuthenticationServices
 
 final class SignViewController: BaseViewController {
     
@@ -133,10 +134,22 @@ private extension SignViewController {
     
     @objc func didTapAppleLoginButton() {
         viewModel.didTapAppleLoginButton()
+        setupAppleLogin()
     }
     
     @objc func didTapFaceBookLoginButton() {
         viewModel.didTapFaceBookLoginButton()
     }
     
+    func setupAppleLogin() {
+        let authorizationController = viewModel.getAppleAuthorizationController()
+        authorizationController.presentationContextProvider = self
+    }
+    
+}
+
+extension SignViewController: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        self.view.window!
+    }
 }

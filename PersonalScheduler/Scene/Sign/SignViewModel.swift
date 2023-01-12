@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AuthenticationServices
 
 protocol SignViewModelInput {
     func autoLogInCheck()
@@ -64,11 +65,24 @@ final class SignViewModel: SignViewModellType {
     }
     
     func didTapAppleLoginButton() {
-        // authUseCase apple
+        self.loginTask = Task {
+            do {
+                try await authUseCase.login(authType: .apple)
+                print("다음 화면으로 넘어가기")
+            }
+            catch {
+                self.error.value = error.localizedDescription
+            }
+        }
+        loginTask?.cancel()
     }
     
     func didTapFaceBookLoginButton() {
         // authUseCase facebook
+    }
+    
+    func getAppleAuthorizationController() -> ASAuthorizationController {
+        return authUseCase.appleAuthRespository.authorizationController
     }
 }
 

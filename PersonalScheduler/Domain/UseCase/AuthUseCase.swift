@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AuthenticationServices
 
 enum AuthType {
     case kakao, apple, facebook
@@ -14,6 +15,7 @@ enum AuthType {
 final class AuthUseCase {
     
     let kakaoAuthRepository: KakaoAuthRepository = KakaoAuthRepository()
+    let appleAuthRespository: AppleAuthRespository = AppleAuthRespository()
     
     init() {
     }
@@ -23,7 +25,8 @@ final class AuthUseCase {
         case .kakao:
             let accessToken = try await kakaoAuthRepository.isKakaoTalkLoginAvailable()
         case .apple:
-            print()
+            let userId = try await appleAuthRespository.loginWithApple()
+            print(userId)
         case .facebook:
             print()
         }
@@ -38,6 +41,10 @@ final class AuthUseCase {
 //        motionInfo.time = item.time
 //
 //        coreDataManager.save(completion: completion)
+    }
+    
+    func getAppleAuthorizationController() -> ASAuthorizationController {
+        return appleAuthRespository.authorizationController
     }
     
     func autoLoginCheck() async throws -> Bool {
