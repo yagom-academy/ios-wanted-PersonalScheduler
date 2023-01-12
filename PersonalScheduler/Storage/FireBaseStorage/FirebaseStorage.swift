@@ -20,7 +20,7 @@ final class FirebaseStorage {
               with id: String
     ) async throws {
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
-            database.collection(collection).document(id).setData(data) { error in
+            database.collection(collection).document(id).setData(data, merge: true) { error in
                 if error != nil {
                     continuation.resume(throwing: FireBaseError.save)
                 }

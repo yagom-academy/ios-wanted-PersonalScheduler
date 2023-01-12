@@ -20,6 +20,7 @@
 		F366533C297079A300B359A8 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366533B297079A300B359A8 /* FirebaseError.swift */; };
 		F366533E29707A9D00B359A8 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366533D29707A9D00B359A8 /* UserUseCase.swift */; };
 		F366534029707EDD00B359A8 /* KeyChainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366533F29707EDD00B359A8 /* KeyChainRepository.swift */; };
+		F366534329708BA000B359A8 /* TImeInterval+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366534229708BA000B359A8 /* TImeInterval+extension.swift */; };
 		F39EDDD7296DBA7B00A4E655 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDD6296DBA7B00A4E655 /* SignViewController.swift */; };
 		F39EDDD9296DBBA400A4E655 /* SignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDD8296DBBA400A4E655 /* SignViewModel.swift */; };
 		F39EDDDD296DBD1100A4E655 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDDC296DBD1100A4E655 /* BaseViewController.swift */; };
@@ -60,6 +61,7 @@
 		F366533B297079A300B359A8 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		F366533D29707A9D00B359A8 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
 		F366533F29707EDD00B359A8 /* KeyChainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainRepository.swift; sourceTree = "<group>"; };
+		F366534229708BA000B359A8 /* TImeInterval+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TImeInterval+extension.swift"; sourceTree = "<group>"; };
 		F39EDDD6296DBA7B00A4E655 /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 		F39EDDD8296DBBA400A4E655 /* SignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewModel.swift; sourceTree = "<group>"; };
 		F39EDDDC296DBD1100A4E655 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -116,13 +118,13 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				F39EDE1E29700CEC00A4E655 /* Storage */,
 				F39EDE08296FEEE800A4E655 /* PersonalScheduler.entitlements */,
 				F39EDE122970097A00A4E655 /* GoogleService-Info.plist */,
-				F39EDDFF296F2E8600A4E655 /* Utility */,
+				F39EDE1E29700CEC00A4E655 /* Storage */,
 				F39EDDF3296F19DD00A4E655 /* Data */,
 				F39EDDF2296F19D800A4E655 /* Domain */,
 				F39EDDD5296DBA5F00A4E655 /* Scene */,
+				F39EDDFF296F2E8600A4E655 /* Utility */,
 				F39EDDD4296DBA1A00A4E655 /* Resources */,
 				F39EDDD3296DA91D00A4E655 /* Application */,
 			);
@@ -132,9 +134,9 @@
 		F36653292970298700B359A8 /* ScheduleEdit */ = {
 			isa = PBXGroup;
 			children = (
-				F366532C29702CF100B359A8 /* SubViews */,
 				F366532A297029CC00B359A8 /* ScheduleEditViewController.swift */,
 				F366532F297036E800B359A8 /* ScheduleEditViewModel.swift */,
+				F366532C29702CF100B359A8 /* SubViews */,
 			);
 			path = ScheduleEdit;
 			sourceTree = "<group>";
@@ -165,6 +167,14 @@
 			path = FireBaseStorage;
 			sourceTree = "<group>";
 		};
+		F366534129708B8E00B359A8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F366534229708BA000B359A8 /* TImeInterval+extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		F39EDDD3296DA91D00A4E655 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,10 +197,10 @@
 		F39EDDD5296DBA5F00A4E655 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				F36653292970298700B359A8 /* ScheduleEdit */,
-				F39EDE07296F49DA00A4E655 /* ScheduleList */,
-				F39EDDDB296DBCC200A4E655 /* Common */,
 				F39EDDDA296DBCB600A4E655 /* Sign */,
+				F39EDE07296F49DA00A4E655 /* ScheduleList */,
+				F36653292970298700B359A8 /* ScheduleEdit */,
+				F39EDDDB296DBCC200A4E655 /* Common */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -262,6 +272,7 @@
 		F39EDDFF296F2E8600A4E655 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				F366534129708B8E00B359A8 /* Extension */,
 				F39EDE00296F2E9800A4E655 /* Observable */,
 			);
 			path = Utility;
@@ -278,10 +289,10 @@
 		F39EDE07296F49DA00A4E655 /* ScheduleList */ = {
 			isa = PBXGroup;
 			children = (
-				F39EDE0D296FFB6A00A4E655 /* SubViews */,
 				F39EDE05296F49D400A4E655 /* ScheduleListViewController.swift */,
 				F39EDE09296FFA4200A4E655 /* ScheduleListViewModel.swift */,
 				F39EDE2129701E5700A4E655 /* ScheduleDataSource.swift */,
+				F39EDE0D296FFB6A00A4E655 /* SubViews */,
 			);
 			path = ScheduleList;
 			sourceTree = "<group>";
@@ -416,6 +427,7 @@
 				F366532B297029CC00B359A8 /* ScheduleEditViewController.swift in Sources */,
 				F39EDE11296FFC6000A4E655 /* ScheduleUseCase.swift in Sources */,
 				F39EDDFA296F2A5800A4E655 /* AppleAuthRespository.swift in Sources */,
+				F366534329708BA000B359A8 /* TImeInterval+extension.swift in Sources */,
 				F39EDE2029700D0200A4E655 /* FirebaseStorage.swift in Sources */,
 				F39EDE2229701E5700A4E655 /* ScheduleDataSource.swift in Sources */,
 				F39EDDFE296F2C6700A4E655 /* FireStoreRepository.swift in Sources */,

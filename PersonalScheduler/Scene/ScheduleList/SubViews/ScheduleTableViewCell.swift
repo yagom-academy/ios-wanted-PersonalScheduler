@@ -15,41 +15,34 @@ final class ScheduleTableViewCell: UITableViewCell {
     
     private let cellStack: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.spacing = 12
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
-    private let timeLabel: UILabel = {
-        let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .title2)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let contentStack: UIStackView = {
-        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fill
-        stackView.spacing = 20
+        stackView.spacing = 8
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
-    }()
-    
-    private let dateLabel: UILabel = {
-        let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .subheadline)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .title3)
+        label.font = .systemFont(ofSize: 22, weight: .bold)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let timeLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let contentLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.numberOfLines = 1
+        label.lineBreakMode = .byTruncatingTail
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -59,7 +52,7 @@ final class ScheduleTableViewCell: UITableViewCell {
         super.prepareForReuse()
         
         timeLabel.text = ""
-        dateLabel.text = ""
+        contentLabel.text = ""
         timeLabel.text = ""
     }
     
@@ -79,11 +72,10 @@ final class ScheduleTableViewCell: UITableViewCell {
         
         self.addSubview(cellStack)
         
-        cellStack.addArrangedSubview(contentStack)
-        cellStack.addArrangedSubview(timeLabel)
+        cellStack.addArrangedSubview(titleLabel)
         
-        contentStack.addArrangedSubview(dateLabel)
-        contentStack.addArrangedSubview(titleLabel)
+        cellStack.addArrangedSubview(timeLabel)
+        cellStack.addArrangedSubview(contentLabel)
 
         NSLayoutConstraint.activate([
             cellStack.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor,
@@ -94,15 +86,15 @@ final class ScheduleTableViewCell: UITableViewCell {
                                                  constant: -40),
             cellStack.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,
                                                  constant: -20),
-            timeLabel.widthAnchor.constraint(equalToConstant: 60)
+            contentLabel.widthAnchor.constraint(equalToConstant: 200)
             
         ])
     }
     
     public func configure(information: ScheduleInfo) {
         titleLabel.text = information.title
-        dateLabel.text = information.title
-        timeLabel.text = information.content
+        timeLabel.text = information.time.convertToString()
+        contentLabel.text = information.content
     }
 
 }
