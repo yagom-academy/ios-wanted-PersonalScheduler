@@ -13,6 +13,8 @@
 		63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB072967EA2600775EC3 /* Main.storyboard */; };
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
+		FFD58E6429702E3F002D99B6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD58E6329702E3F002D99B6 /* LoginViewModel.swift */; };
+		FFD58E6629702E51002D99B6 /* AppleAuthorityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD58E6529702E51002D99B6 /* AppleAuthorityService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFD58E5929702CA0002D99B6 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
+		FFD58E6329702E3F002D99B6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		FFD58E6529702E51002D99B6 /* AppleAuthorityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorityService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,16 +61,74 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				FFD58E6229702E1A002D99B6 /* Application */,
+				FFD58E5F29702DF7002D99B6 /* Data */,
+				FFD58E5D29702DE7002D99B6 /* Domain */,
+				FFD58E5E29702DEA002D99B6 /* Presentation */,
+				FFD58E5A29702DD3002D99B6 /* Resources */,
+			);
+			path = PersonalScheduler;
+			sourceTree = "<group>";
+		};
+		FFD58E5A29702DD3002D99B6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				FFD58E5929702CA0002D99B6 /* PersonalScheduler.entitlements */,
-				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
-				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
-				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
 				63AAAB072967EA2600775EC3 /* Main.storyboard */,
 				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
 				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
 			);
-			path = PersonalScheduler;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FFD58E5D29702DE7002D99B6 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		FFD58E5E29702DEA002D99B6 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				FFD58E6129702E10002D99B6 /* Login */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		FFD58E5F29702DF7002D99B6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FFD58E6029702E03002D99B6 /* Service */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FFD58E6029702E03002D99B6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FFD58E6529702E51002D99B6 /* AppleAuthorityService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		FFD58E6129702E10002D99B6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FFD58E6329702E3F002D99B6 /* LoginViewModel.swift */,
+				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		FFD58E6229702E1A002D99B6 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
+				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +202,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFD58E6429702E3F002D99B6 /* LoginViewModel.swift in Sources */,
+				FFD58E6629702E51002D99B6 /* AppleAuthorityService.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
