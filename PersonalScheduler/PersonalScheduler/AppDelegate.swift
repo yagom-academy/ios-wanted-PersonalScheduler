@@ -8,13 +8,16 @@
 import SwiftUI
 import KakaoSDKCommon
 import KakaoSDKAuth
+import FirebaseCore
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let kakaoAppKey = Bundle.main.infoDictionary?["KAKAO_NATIVE_APP_KEY"] ?? ""
         KakaoSDK.initSDK(appKey: kakaoAppKey as! String)
-      
+        
+        FirebaseApp.configure()
+        
         return true
     }
     
