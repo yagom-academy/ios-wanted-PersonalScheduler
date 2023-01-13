@@ -44,7 +44,7 @@ extension Schedule {
         guard let uid = UserDefaults.standard.string(forKey: "uid") else { return ScheduleDTO(scheduleData: [:]) }
         var scheduleDictionary = [String: Any]()
         scheduleDictionary.updateValue(uid, forKey: "uid")
-        scheduleDictionary.updateValue(id, forKey: "scheduleId")
+        scheduleDictionary.updateValue(id.uuidString, forKey: "scheduleId")
         scheduleDictionary.updateValue(title, forKey: "title")
         scheduleDictionary.updateValue(description, forKey: "description")
         scheduleDictionary.updateValue(startDate, forKey: "startDate")

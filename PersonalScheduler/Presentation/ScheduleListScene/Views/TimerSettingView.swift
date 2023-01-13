@@ -107,7 +107,6 @@ final class TimerSettingView: UIView {
         datePicker.locale = Locale.current
         datePicker.timeZone = TimeZone.current
         datePicker.translatesAutoresizingMaskIntoConstraints = false
-        datePicker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
         datePicker.isHidden = true
         datePicker.alpha = 0.3
         return datePicker
@@ -119,6 +118,7 @@ final class TimerSettingView: UIView {
         layout()
         addTapGesture()
         setLabelContents()
+        datePickerView.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
     }
 
     required init?(coder: NSCoder) {
@@ -206,9 +206,11 @@ final class TimerSettingView: UIView {
         case .start:
             startTimeLabel.text = timeDateFormatter.string(from: datePickerView.date)
             startDateLabel.text = dateFormatter.string(from: datePickerView.date)
+            startTime = datePickerView.date
         case .end:
             endTimeLabel.text = timeDateFormatter.string(from: datePickerView.date)
             endDateLabel.text = dateFormatter.string(from: datePickerView.date)
+            endTime = datePickerView.date
         }
     }
 

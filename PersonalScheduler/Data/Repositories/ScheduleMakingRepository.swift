@@ -8,7 +8,12 @@
 import Foundation
 
 final class ScheduleMakingRepository: ScheduleMakingRepositoryInterface {
-    func saveScheduleUseCase(schedule: Schedule, completion: @escaping (Result<Void, Error>) -> Void) {
 
+    private let firebaseService = FirebaseService.shared
+
+    func saveScheduleUseCase(schedule: Schedule, completion: @escaping (Result<Void, Error>) -> Void) {
+        firebaseService.saveSchedule(schedule: schedule) { result in
+            completion(result)
+        }
     }
 }

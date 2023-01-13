@@ -41,7 +41,9 @@ final class ScheduleMakingViewController: UIViewController {
         button.layer.cornerRadius = 25
 
         button.addAction(UIAction { _ in
-            self.dismiss(animated: true)
+            self.viewModel.saveScheduleButtonTapped(
+                title: self.titleView.textView.text, description: self.descriptionView.textView.text,
+                startDate: self.timerSettingView.startTime, endDate: self.timerSettingView.endTime)
         }, for: .touchUpInside)
         return button
     }()
@@ -63,7 +65,18 @@ final class ScheduleMakingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        bind()
         layout()
+    }
+
+    private func bind() {
+        viewModel.dismiss = { [weak self] in
+            self?.dismiss(animated: true)
+        }
+
+        viewModel.showAlert = { [weak self] alert in
+            self?.present(alert, animated: true)
+        }
     }
 
     private func layout() {

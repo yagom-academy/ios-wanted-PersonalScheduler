@@ -18,7 +18,7 @@ final class ImageTextView: UIView {
         return imageView
     }()
 
-    private let textView: UITextView = {
+    let textView: UITextView = {
         let textView = UITextView()
         textView.isEditable = true
         textView.isScrollEnabled = false

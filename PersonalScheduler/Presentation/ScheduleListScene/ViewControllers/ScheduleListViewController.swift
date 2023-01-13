@@ -115,7 +115,6 @@ final class ScheduleListViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         viewModel.viewWillAppear()
-
     }
 
     private func setupLongGestureRecognizerOnCollection() {

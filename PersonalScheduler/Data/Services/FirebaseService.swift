@@ -48,4 +48,17 @@ final class FirebaseService {
             completion(.success(()))
         }
     }
+
+    func saveSchedule(schedule: Schedule, completion: @escaping (Result<Void, Error>) -> Void) {
+        var data = schedule.toDTO().scheduleData
+
+        guard let id = data["scheduleId"] as? String else { return }
+        scheduleReference.document(id).setData(data) { error in
+            guard error == nil else {
+                completion(.failure(FirebaseError.internalError))
+                return
+            }
+            completion(.success(()))
+        }
+    }
 }

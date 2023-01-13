@@ -60,10 +60,11 @@ final class ScheduleListViewModel {
 // MARK: - Inputs
 extension ScheduleListViewModel {
     func viewDidLoad() {
-        fetchSchedules(date: Date())
+
     }
 
     func viewWillAppear() {
+        fetchSchedules(date: currentDate)
         self.applyCalendarDataSource?()
         selectCurrentDate()
     }
@@ -101,10 +102,6 @@ extension ScheduleListViewModel {
         guard let nextMonthDate = calendar.date(byAdding: .month, value: 1, to: currentDate) else { return }
         currentDate = nextMonthDate
         setCurrentMonthLabel?(nextMonthDate.toCurrentMonthText())
-    }
-
-    func moveToScheduleMakeButtonTapped() {
-        
     }
 }
 
