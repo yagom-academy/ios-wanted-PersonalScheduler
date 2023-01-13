@@ -6,7 +6,7 @@
 //
 
 struct SigninViewModelActions {
-//    let successRegister: () -> Void
+
 }
 
 protocol SigninViewModelInput {

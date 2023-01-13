@@ -33,23 +33,27 @@ final class DefaultLoginViewModel: LoginViewModel {
     private let kakaoLoginUseCase: KakaoLoginUseCase
     private let facebookLoginUseCase: FacebookLoginUseCase
     private let firebaseAuthUseCase: FirebaseAuthUseCase
+    private let loginCacheManager: LoginCacheManager
     
     init(
         actions: LoginViewModelActions? = nil,
         kakaoLoginUseCase: KakaoLoginUseCase,
         facebookLoginUseCase: FacebookLoginUseCase,
-        firebaseAuthUseCase: FirebaseAuthUseCase
+        firebaseAuthUseCase: FirebaseAuthUseCase,
+        loginCacheManager: LoginCacheManager
     ) {
         self.actions = actions
         self.kakaoLoginUseCase = kakaoLoginUseCase
         self.facebookLoginUseCase = facebookLoginUseCase
         self.firebaseAuthUseCase = firebaseAuthUseCase
+        self.loginCacheManager = loginCacheManager
     }
     
     func validateLoginInfo(_ loginInfo: LoginInfo) async throws {
         do {
             let userUID = try await firebaseAuthUseCase.fetchUserUID(from: loginInfo)
             actions?.successLogin(userUID)
+            loginCacheManager.setNewLoginInfo(userUID)
         } catch {
             print(String(describing: error))
             throw error
@@ -64,6 +68,7 @@ final class DefaultLoginViewModel: LoginViewModel {
         kakaoLoginUseCase.login { email in
             guard let email = email else { return }
             self.actions?.successKakaoLogin(email)
+            self.loginCacheManager.setNewLoginInfo(email)
         }
     }
     
@@ -72,6 +77,7 @@ final class DefaultLoginViewModel: LoginViewModel {
             facebookLoginUseCase.fetchEmail { [self] email in
                 guard let email = email else { return }
                 actions?.successFacebookLogin(email)
+                self.loginCacheManager.setNewLoginInfo(email)
             }
         }
     }

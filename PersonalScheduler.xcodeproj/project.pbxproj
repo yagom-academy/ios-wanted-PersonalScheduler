@@ -24,12 +24,14 @@
 		AF14CCE5296C09F1001FD1CC /* LogoImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF14CCE4296C09F1001FD1CC /* LogoImageButton.swift */; };
 		AF14CCE8296C0E0B001FD1CC /* LabelSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF14CCE7296C0E0B001FD1CC /* LabelSeparator.swift */; };
 		AF14CCEB296C29C7001FD1CC /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF14CCEA296C29C7001FD1CC /* UITextField+.swift */; };
+		AF43ABB42970DE630069B1AC /* LoginCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF43ABB32970DE630069B1AC /* LoginCacheManager.swift */; };
 		AF5B7510296D8FC900D184AC /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5B750F296D8FC900D184AC /* Observable.swift */; };
-		AF5B7513296D935C00D184AC /* ListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5B7512296D935C00D184AC /* ListTableView.swift */; };
 		AF5B7515296D939200D184AC /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5B7514296D939200D184AC /* ListCell.swift */; };
 		AF8844A7296EE0FC00D16646 /* FacebookLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8844A6296EE0FC00D16646 /* FacebookLoginService.swift */; };
 		AF8844A9296EE80400D16646 /* FacebookLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8844A8296EE80400D16646 /* FacebookLoginUseCase.swift */; };
 		AF9568F1296FABD900073438 /* FirebaseAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9568F0296FABD900073438 /* FirebaseAuthUseCase.swift */; };
+		AFA9BC0E296FED2D002701B6 /* ScheduleCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9BC0D296FED2D002701B6 /* ScheduleCollectionView.swift */; };
+		AFA9BC10296FF4A7002701B6 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA9BC0F296FF4A7002701B6 /* DateManager.swift */; };
 		AFCD0FCE296E7E0000FDE75B /* KakaoLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD0FCD296E7E0000FDE75B /* KakaoLoginService.swift */; };
 		AFCD0FD1296E7E9F00FDE75B /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AFCD0FD0296E7E9F00FDE75B /* KakaoSDKAuth */; };
 		AFCD0FD3296E7E9F00FDE75B /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = AFCD0FD2296E7E9F00FDE75B /* KakaoSDKCommon */; };
@@ -75,12 +77,14 @@
 		AF14CCE4296C09F1001FD1CC /* LogoImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImageButton.swift; sourceTree = "<group>"; };
 		AF14CCE7296C0E0B001FD1CC /* LabelSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSeparator.swift; sourceTree = "<group>"; };
 		AF14CCEA296C29C7001FD1CC /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		AF43ABB32970DE630069B1AC /* LoginCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCacheManager.swift; sourceTree = "<group>"; };
 		AF5B750F296D8FC900D184AC /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		AF5B7512296D935C00D184AC /* ListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableView.swift; sourceTree = "<group>"; };
 		AF5B7514296D939200D184AC /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		AF8844A6296EE0FC00D16646 /* FacebookLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginService.swift; sourceTree = "<group>"; };
 		AF8844A8296EE80400D16646 /* FacebookLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginUseCase.swift; sourceTree = "<group>"; };
 		AF9568F0296FABD900073438 /* FirebaseAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthUseCase.swift; sourceTree = "<group>"; };
+		AFA9BC0D296FED2D002701B6 /* ScheduleCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionView.swift; sourceTree = "<group>"; };
+		AFA9BC0F296FF4A7002701B6 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		AFCD0FCD296E7E0000FDE75B /* KakaoLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginService.swift; sourceTree = "<group>"; };
 		AFCD0FD6296E84FD00FDE75B /* KakaoLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginUseCase.swift; sourceTree = "<group>"; };
 		AFCD0FD8296E97E500FDE75B /* ScheduleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailView.swift; sourceTree = "<group>"; };
@@ -136,7 +140,6 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				AF026D42296BBEB400780955 /* Coordinator.swift */,
 				AFE2B924296D7595004227A5 /* Services */,
 				AFE2B91F296D6BA4004227A5 /* Utils */,
 				AFE31098296BD35800C14BBC /* Application */,
@@ -277,7 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				AF026D27296BB5D900780955 /* ScheduleListViewController.swift */,
-				AF5B7512296D935C00D184AC /* ListTableView.swift */,
+				AFA9BC0D296FED2D002701B6 /* ScheduleCollectionView.swift */,
 				AF5B7514296D939200D184AC /* ListCell.swift */,
 			);
 			path = View;
@@ -360,6 +363,9 @@
 				AF14CCE9296C29B6001FD1CC /* Extension */,
 				AFE2B920296D6BAE004227A5 /* AlertBuilder.swift */,
 				AF5B750F296D8FC900D184AC /* Observable.swift */,
+				AF026D42296BBEB400780955 /* Coordinator.swift */,
+				AFA9BC0F296FF4A7002701B6 /* DateManager.swift */,
+				AF43ABB32970DE630069B1AC /* LoginCacheManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -487,6 +493,7 @@
 				AF026D32296BBB6C00780955 /* LoginFlowCoordinator.swift in Sources */,
 				AF026D2A296BB5F600780955 /* ScheduleDetailViewController.swift in Sources */,
 				AF026D45296BBF5900780955 /* AppCoordinator.swift in Sources */,
+				AFA9BC0E296FED2D002701B6 /* ScheduleCollectionView.swift in Sources */,
 				AF026D26296BB5B300780955 /* LoginViewController.swift in Sources */,
 				AFE2B923296D6D2D004227A5 /* LoginError.swift in Sources */,
 				AFE2B91E296D53EF004227A5 /* LoginInfo.swift in Sources */,
@@ -498,16 +505,17 @@
 				AFCD0FD9296E97E500FDE75B /* ScheduleDetailView.swift in Sources */,
 				AF8844A9296EE80400D16646 /* FacebookLoginUseCase.swift in Sources */,
 				AF5B7510296D8FC900D184AC /* Observable.swift in Sources */,
+				AFA9BC10296FF4A7002701B6 /* DateManager.swift in Sources */,
 				AFE2B921296D6BAE004227A5 /* AlertBuilder.swift in Sources */,
 				AFE3109C296BD56000C14BBC /* ScheduleListViewModel.swift in Sources */,
 				AF14CCEB296C29C7001FD1CC /* UITextField+.swift in Sources */,
+				AF43ABB42970DE630069B1AC /* LoginCacheManager.swift in Sources */,
 				AF0B7B87296FA52300BFAD9E /* FirebaseAuthService.swift in Sources */,
 				AFCD0FD7296E84FD00FDE75B /* KakaoLoginUseCase.swift in Sources */,
 				AFE310A5296BECA500C14BBC /* LoginView.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				AFE2B91A296D42AE004227A5 /* SigninViewController.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
-				AF5B7513296D935C00D184AC /* ListTableView.swift in Sources */,
 				AF026D41296BBC6B00780955 /* Schedule.swift in Sources */,
 				AF9568F1296FABD900073438 /* FirebaseAuthUseCase.swift in Sources */,
 				AFE2B926296D7656004227A5 /* FireStoreManager.swift in Sources */,

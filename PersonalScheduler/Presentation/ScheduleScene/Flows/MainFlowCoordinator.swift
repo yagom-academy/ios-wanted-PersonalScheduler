@@ -8,8 +8,10 @@
 import UIKit
 
 protocol MainFlowCoordinatorDependencies {
-    func makeScheduleListViewController(actions: ScheduleListViewModelActions) -> ScheduleListViewController
-    func makeScheduleDetailViewController(schedule: Schedule) -> ScheduleDetailViewController
+    func makeScheduleListViewController(fireStoreCollectionId: String,
+                                        actions: ScheduleListViewModelActions) -> ScheduleListViewController
+    func makeScheduleDetailViewController(schedule: Schedule?,
+                                          fireStoreCollectionId: String) -> ScheduleDetailViewController
 }
 
 final class MainFlowCoordinator: Coordinator {
@@ -17,26 +19,41 @@ final class MainFlowCoordinator: Coordinator {
     
     private var navigationController: UINavigationController!
     private let dependencies: MainFlowCoordinatorDependencies
+    private let fireStoreCollectionId: String
     
     init(navigationController: UINavigationController,
-         dependencies: ScheduleSceneDIContainer) {
+         dependencies: ScheduleSceneDIContainer,
+         fireStoreCollectionId: String) {
         self.navigationController = navigationController
         self.dependencies = dependencies
+        self.fireStoreCollectionId = fireStoreCollectionId
     }
     
     func start() {
         let actions = ScheduleListViewModelActions(
-            showScheduleDetails: showScheduleDetails
+            showScheduleDetails: showScheduleDetails,
+            createNewSchedule: createNewSchedule
         )
         let scheduleListVC = dependencies.makeScheduleListViewController(
+            fireStoreCollectionId: fireStoreCollectionId,
             actions: actions
         )
         self.navigationController.pushViewController(scheduleListVC, animated: true)
     }
     
     private func showScheduleDetails(schedule: Schedule) {
-        let scheduleDetailVC = dependencies.makeScheduleDetailViewController(schedule: schedule)
-        //
+        let scheduleDetailVC = dependencies.makeScheduleDetailViewController(
+            schedule: schedule,
+            fireStoreCollectionId: fireStoreCollectionId
+        )
+        navigationController.pushViewController(scheduleDetailVC, animated: true)
+    }
+    
+    private func createNewSchedule() {
+        let scheduleDetailVC = dependencies.makeScheduleDetailViewController(
+            schedule: nil,
+            fireStoreCollectionId: fireStoreCollectionId
+        )
         navigationController.pushViewController(scheduleDetailVC, animated: true)
     }
 }
