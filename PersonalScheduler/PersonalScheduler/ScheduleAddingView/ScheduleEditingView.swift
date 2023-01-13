@@ -36,8 +36,7 @@ struct ScheduleEditingView: View, ScheduleWritableView {
                 Text("취소")
             }))
             .navigationBarItems(trailing: Button(action: {
-                // TODO: update 로직으로 변경
-                scheduleListViewModel.scheduleAddingSaveButtonTapped(schedule: selectedSchedule)
+                scheduleListViewModel.scheduleEditingSaveButtonTapped(schedule: selectedSchedule)
                 scheduleListViewModel.fetchDataFromFirestore(firebaseID: scheduleListViewModel.firebaseID)
                 shouldPresentEditingView.toggle()
             }, label: {
