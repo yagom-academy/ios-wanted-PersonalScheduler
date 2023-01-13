@@ -39,4 +39,7 @@ final class ScheduleListViewModel: ObservableObject {
         FirebaseService.shared.updateSchedule(firebaseID: firebaseID, schedule: schedule)
     }
     
+    func scheduleCellSwipedToLeft(schedule: Schedule) {
+        FirebaseService.shared.deleteSchedule(firebaseID: firebaseID, schedule: schedule)
+    }
 }
