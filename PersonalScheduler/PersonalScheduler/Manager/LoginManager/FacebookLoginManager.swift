@@ -5,14 +5,13 @@
 //  Created by brad on 2023/01/12.
 //
 
-import Foundation
 import FacebookLogin
 
 final class FacebookLoginManager {
     
     private let loginManager = LoginManager()
     
-    func loginFacebook(completion: @escaping (Result<String, Error>) -> Void) {
+    func handleLogin(completion: @escaping (Result<String, Error>) -> Void) {
         loginManager.logIn(permissions: ["email"],
                            from: nil) { loginManagerLoginResult, error in
             if let error = error {
@@ -25,7 +24,7 @@ final class FacebookLoginManager {
         }
     }
     
-    func logoutFacebook() {
+    func handleLogout() {
         loginManager.logOut()
     }
     

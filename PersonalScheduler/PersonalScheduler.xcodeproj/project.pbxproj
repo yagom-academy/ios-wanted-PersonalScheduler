@@ -88,6 +88,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A3B8DB0F2970F241002BCB36 /* LoginManager */ = {
+			isa = PBXGroup;
+			children = (
+				A3DEB0C4296C08770079903A /* FirebaseLoginManager.swift */,
+				A3EB6998296BEFF2004F492A /* KakaoLoginManager.swift */,
+				A3B8DB0A296FF947002BCB36 /* FacebookLoginManager.swift */,
+			);
+			path = LoginManager;
+			sourceTree = "<group>";
+		};
 		A3DEB0CE296C5E0D0079903A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,11 +164,9 @@
 		A3EB6997296BEFD8004F492A /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				A3DEB0C4296C08770079903A /* FirebaseLoginManager.swift */,
-				A3EB6998296BEFF2004F492A /* KakaoLoginManager.swift */,
+				A3B8DB0F2970F241002BCB36 /* LoginManager */,
 				A3DEB0CF296C5EAE0079903A /* FirebaseStorageManager.swift */,
 				A3B8DB01296EEC91002BCB36 /* NotificationManager.swift */,
-				A3B8DB0A296FF947002BCB36 /* FacebookLoginManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";

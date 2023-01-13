@@ -41,7 +41,7 @@ final class FirebaseLoginManager {
     }
     
     func loginWithFacebook(completion: @escaping (Result<User, Error>) -> Void) {
-        facebookLoginManager.loginFacebook { result in
+        facebookLoginManager.handleLogin { result in
             switch result {
             case .success(let accessToken):
                 let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)

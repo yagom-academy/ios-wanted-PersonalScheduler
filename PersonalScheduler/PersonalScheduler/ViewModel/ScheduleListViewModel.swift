@@ -36,7 +36,7 @@ final class ScheduleListViewModel: ObservableObject {
     func logout() {
         buttonAlert = .logout
         firebaseLoginManager.handleLogout()
-        facebookLoginManager.logoutFacebook()
+        facebookLoginManager.handleLogout()
         Task {
             await kakaoLoginManager.handleLogout()
         }
