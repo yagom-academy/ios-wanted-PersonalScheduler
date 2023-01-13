@@ -98,8 +98,6 @@ extension ScheduleListCoordinator: ScheduleListCoordinatorInterface {
     }
     
     func finished() {
-        navigationController.popViewController(animated: false)
-        navigationController.viewControllers.removeAll()
         finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
 }

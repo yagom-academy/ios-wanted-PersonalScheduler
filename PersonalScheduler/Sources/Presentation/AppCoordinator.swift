@@ -49,11 +49,11 @@ extension AppCoordinator: CoordinatorFinishDelegate {
 
         switch childCoordinator.type {
         case .login:
-            navigationController.popViewController(animated: false)
             navigationController.viewControllers.removeAll()
             navigationController.setNavigationBarHidden(false, animated: false)
             showMainFlow()
         case .list:
+            navigationController.viewControllers.removeAll()
             navigationController.setNavigationBarHidden(true, animated: false)
             start()
         default:
