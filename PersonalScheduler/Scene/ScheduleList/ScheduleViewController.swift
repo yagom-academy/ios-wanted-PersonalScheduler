@@ -168,4 +168,24 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
         return 100
     }
     
+    func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(
+            style: .destructive,
+            title: "삭제"
+        ) { action, view, handler in
+            print("delete")
+        }
+        
+        let modifyAction = UIContextualAction(
+            style: .normal,
+            title: "수정"
+        ) { action, view, handler in
+            print("modify")
+        }
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, modifyAction])
+    }
 }
