@@ -16,49 +16,15 @@ protocol FirebaseManagerable {
     func readArray<T: FirebaseDatable>(_ data: T, completion: @escaping (Result<[T],Error>) -> Void)
     func update<T: FirebaseDatable>(updatedData: T) throws
     func delete<T: FirebaseDatable>(_ data: T) throws
-    func observe<T: FirebaseDatable>(_: T.Type)
-    var networkConnectionDelegate: NetworkConnectionDelegate? { get set }
-    var firebaseEventObserveDelegate: FirebaseEventObserveDelegate? { get set }
-}
-
-protocol NetworkConnectionDelegate: AnyObject {
-    func offline()
-    func online()
-}
-
-protocol FirebaseEventObserveDelegate: AnyObject {
-    func added(snapshot: DataSnapshot)
-    func changed(snapshot: DataSnapshot)
-    func removed(snapshot: DataSnapshot)
 }
 
 //: DatabaseManagerable
 final class FirebaseManager: FirebaseManagerable {
     private var database: DatabaseReference
-    weak var networkConnectionDelegate: NetworkConnectionDelegate?
-    weak var firebaseEventObserveDelegate: FirebaseEventObserveDelegate?
     static let shared: FirebaseManagerable = FirebaseManager()
     
     private init(firebaseReference: DatabaseReference = Database.database().reference()) {
         database = firebaseReference
-    }
-    
-    func observe<T: FirebaseDatable>(_: T.Type) {
-        let observeRef = T.path.reduce(database) { database, path in
-            database.child(path)
-        }
-        
-        observeRef.observe(DataEventType.childAdded) { snapshot in
-            self.firebaseEventObserveDelegate?.added(snapshot: snapshot)
-        }
-        
-        observeRef.observe(DataEventType.childChanged) { snapshot in
-            self.firebaseEventObserveDelegate?.changed(snapshot: snapshot)
-        }
-        
-        observeRef.observe(DataEventType.childRemoved) { snapshot in
-            self.firebaseEventObserveDelegate?.removed(snapshot: snapshot)
-        }
     }
     
     func create<T: FirebaseDatable>(_ data: T) throws {
