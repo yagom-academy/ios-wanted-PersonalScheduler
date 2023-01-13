@@ -60,7 +60,7 @@ final class ScheduleListTableViewCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.spacing = 0
+        stackView.spacing = .zero
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -94,9 +94,17 @@ final class ScheduleListTableViewCell: UITableViewCell {
     func congigure(with schedule: Schedule) {
         titleLabel.text = schedule.title
         contentLabel.text = schedule.content
-        startTimeLabel.text = schedule.startTime.convertToString(isOnlyTime: true)
+        setupStartTimeLabel(isAllDay: schedule.isAllday, schedule.startTime)
         changeBellImage(schedule.isNotified, Date() > schedule.startTime)
         changeHighlight(schedule.endTime)
+    }
+    
+    private func setupStartTimeLabel(isAllDay: Bool, _ date: Date) {
+        if isAllDay {
+            startTimeLabel.text = "하루종일"
+        } else {
+            startTimeLabel.text = date.convertToString(isOnlyTime: true)
+        }
     }
     
     private func changeBellImage(_ isNotified: Bool, _ isOverDue: Bool) {
