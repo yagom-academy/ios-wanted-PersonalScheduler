@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 protocol SignInRepositoryProtocol {
-    func appleIDAuthorization()
+    func appleIDAuthorization(completion: @escaping (Result<AuthDataResult?, Error>) -> Void)
 }

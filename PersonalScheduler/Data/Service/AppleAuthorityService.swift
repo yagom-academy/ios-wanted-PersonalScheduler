@@ -12,7 +12,7 @@ import CryptoKit
 
 final class AppleAuthorityService: NSObject {
     
-    var didCompleteWithAuthorization: ((ASAuthorization) -> Void)?
+    var didCompleteWithAuthorization: ((AuthDataResult?) -> Void)?
     var didCompleteWithError: ((Error) -> Void)?
     
     var currentNonce: String?
@@ -95,8 +95,12 @@ extension AppleAuthorityService: ASAuthorizationControllerDelegate {
         
         let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
         
-        Auth.auth().signIn(with: credential) { result, error in
-            
+        Auth.auth().signIn(with: credential) { [weak self] result, error in
+            if error != nil {
+                guard let error = error else { return }
+                print(error.localizedDescription)
+            }
+            self?.didCompleteWithAuthorization?(result)
         }
     }
     

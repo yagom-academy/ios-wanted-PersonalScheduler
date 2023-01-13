@@ -16,6 +16,14 @@ final class SignInUseCase {
     }
     
     func appleSignIn() {
-        repository.appleIDAuthorization()
+        repository.appleIDAuthorization { result in
+            switch result {
+            case let .success(data):
+                guard let data = data else { return }
+                print(data.user.uid)
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
