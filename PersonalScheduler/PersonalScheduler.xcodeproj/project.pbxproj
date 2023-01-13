@@ -98,6 +98,25 @@
 			path = LoginManager;
 			sourceTree = "<group>";
 		};
+		A3B8DB10297153F8002BCB36 /* ScheduleList */ = {
+			isa = PBXGroup;
+			children = (
+				A3DEB0CA296C5CCE0079903A /* ScheduleListView.swift */,
+				A3B8DB08296FD852002BCB36 /* ScheduleListCellView.swift */,
+				A3DEB0D1296CE9040079903A /* ScheduleListViewModel.swift */,
+			);
+			path = ScheduleList;
+			sourceTree = "<group>";
+		};
+		A3B8DB1129715437002BCB36 /* ScheduleAdd */ = {
+			isa = PBXGroup;
+			children = (
+				A3DEB0D8296E71EA0079903A /* ScheduleAddView.swift */,
+				A3DEB0DA296E7C0E0079903A /* ScheduleAddViewModel.swift */,
+			);
+			path = ScheduleAdd;
+			sourceTree = "<group>";
+		};
 		A3DEB0CE296C5E0D0079903A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,14 +158,17 @@
 			isa = PBXGroup;
 			children = (
 				A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */,
+				A3B8DB0D2970F02D002BCB36 /* FBLogView.swift */,
 				A3EB6993296BE23F004F492A /* Info.plist */,
 				A3DEB0D3296CF3DE0079903A /* GoogleService-Info.plist */,
 				A3EB6989296BAFB5004F492A /* Assets.xcassets */,
 				A3DEB0D5296D94D60079903A /* Extension */,
 				A3DEB0CE296C5E0D0079903A /* Model */,
 				A3EB6997296BEFD8004F492A /* Manager */,
-				A3EB699A296BF03F004F492A /* ViewModel */,
-				A3EB699B296BF055004F492A /* View */,
+				A3EB699A296BF03F004F492A /* Login */,
+				A3EB699B296BF055004F492A /* SignUp */,
+				A3B8DB10297153F8002BCB36 /* ScheduleList */,
+				A3B8DB1129715437002BCB36 /* ScheduleAdd */,
 				A3EB698B296BAFB5004F492A /* Preview Content */,
 				A3EB6994296BE351004F492A /* Config.xcconfig */,
 			);
@@ -171,28 +193,22 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		A3EB699A296BF03F004F492A /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				A3EB6995296BE8C0004F492A /* LoginViewModel.swift */,
-				A3DEB0C8296C411E0079903A /* SignUpViewModel.swift */,
-				A3DEB0D1296CE9040079903A /* ScheduleListViewModel.swift */,
-				A3DEB0DA296E7C0E0079903A /* ScheduleAddViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		A3EB699B296BF055004F492A /* View */ = {
+		A3EB699A296BF03F004F492A /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				A3EB6987296BAFB4004F492A /* LoginView.swift */,
-				A3DEB0C6296C3ED70079903A /* SignUpView.swift */,
-				A3DEB0CA296C5CCE0079903A /* ScheduleListView.swift */,
-				A3B8DB08296FD852002BCB36 /* ScheduleListCellView.swift */,
-				A3DEB0D8296E71EA0079903A /* ScheduleAddView.swift */,
-				A3B8DB0D2970F02D002BCB36 /* FBLogView.swift */,
+				A3EB6995296BE8C0004F492A /* LoginViewModel.swift */,
 			);
-			path = View;
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A3EB699B296BF055004F492A /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				A3DEB0C6296C3ED70079903A /* SignUpView.swift */,
+				A3DEB0C8296C411E0079903A /* SignUpViewModel.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		DFC1B11B109C7ECC476FC565 /* Frameworks */ = {
