@@ -20,6 +20,7 @@
 		FF4CDF86297135A500B48003 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FF4CDF85297135A500B48003 /* FirebaseAuth */; };
 		FF4CDF88297135A500B48003 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FF4CDF87297135A500B48003 /* FirebaseFirestore */; };
 		FF4CDF8A297135A500B48003 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FF4CDF89297135A500B48003 /* FirebaseFirestoreSwift */; };
+		FFA0BAAA29713E4B00CEC09D /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0BAA929713E4B00CEC09D /* KeychainItem.swift */; };
 		FFD58E6429702E3F002D99B6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD58E6329702E3F002D99B6 /* LoginViewModel.swift */; };
 		FFD58E6629702E51002D99B6 /* AppleAuthorityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD58E6529702E51002D99B6 /* AppleAuthorityService.swift */; };
 /* End PBXBuildFile section */
@@ -37,6 +38,7 @@
 		FF4CDF7B2970FB9000B48003 /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
 		FF4CDF7E2970FBB600B48003 /* SignInRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepositoryProtocol.swift; sourceTree = "<group>"; };
 		FF4CDF822971349100B48003 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FFA0BAA929713E4B00CEC09D /* KeychainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
 		FFD58E6329702E3F002D99B6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FFD58E6529702E51002D99B6 /* AppleAuthorityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorityService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +79,7 @@
 				FFD58E6229702E1A002D99B6 /* Application */,
 				FFD58E5F29702DF7002D99B6 /* Data */,
 				FFD58E5D29702DE7002D99B6 /* Domain */,
+				FFA0BAA829713E3A00CEC09D /* Model */,
 				FFD58E5E29702DEA002D99B6 /* Presentation */,
 				FFD58E5A29702DD3002D99B6 /* Resources */,
 			);
@@ -105,6 +108,14 @@
 				FF4CDF7E2970FBB600B48003 /* SignInRepositoryProtocol.swift */,
 			);
 			path = RepositoryInterfaces;
+			sourceTree = "<group>";
+		};
+		FFA0BAA829713E3A00CEC09D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FFA0BAA929713E4B00CEC09D /* KeychainItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FFD58E5A29702DD3002D99B6 /* Resources */ = {
@@ -259,6 +270,7 @@
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				FF4CDF772970F7B600B48003 /* SignInUseCase.swift in Sources */,
+				FFA0BAAA29713E4B00CEC09D /* KeychainItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,21 +9,29 @@ import Foundation
 
 final class SignInUseCase {
     
-    let repository: SignInRepositoryProtocol!
+    private let repository: SignInRepositoryProtocol!
     
     init(repository: SignInRepositoryProtocol = SignInRepository()) {
         self.repository = repository
     }
     
     func appleSignIn() {
-        repository.appleIDAuthorization { result in
+        repository.appleIDAuthorization { [weak self] result in
             switch result {
             case let .success(data):
                 guard let data = data else { return }
-                print(data.user.uid)
+                self?.saveUserInKeychain(data.user.uid)
             case let .failure(error):
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    private func saveUserInKeychain(_ uid: String) {
+        do {
+            try KeychainItem(service: "com.wanted.PersonalScheduler", account: "uid").saveItem(uid)
+        } catch {
+            print("Unable to save uid to keychain.")
         }
     }
 }
