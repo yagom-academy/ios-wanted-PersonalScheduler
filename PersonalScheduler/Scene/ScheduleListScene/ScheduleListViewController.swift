@@ -160,8 +160,7 @@ extension ScheduleListViewController {
         view.addSubview(scheduleTableview)
         
         NSLayoutConstraint.activate([
-            scheduleTableview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                                                  constant: 8),
+            scheduleTableview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scheduleTableview.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
                                                   constant: -8),
             scheduleTableview.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,
