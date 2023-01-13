@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Schedule {
+struct Schedule: Identifiable {
     var id: String
     var title: String
     var description: String
