@@ -66,7 +66,7 @@ extension ListViewController {
         listViewModel.scheduleAddPublisher
             .sink { [weak self] _ in
                 guard let self = self else { return }
-                self.navigationController?.pushViewController(ScheduleAddViewController(), animated: true)
+                self.navigationController?.pushViewController(ScheduleAddViewController(scheduleAddViewModel: nil, isEditing: false), animated: true)
             }
             .store(in: &cancelable)
 
@@ -74,6 +74,13 @@ extension ListViewController {
             .sink { [weak self] _ in
                 guard let self = self else { return }
                 self.scheduleTableView.reloadData()
+            }
+            .store(in: &cancelable)
+
+        listViewModel.output.didSelectCellPublisher
+            .sink { [weak self] schedules in
+                guard let self = self else { return }
+                self.navigationController?.pushViewController(ScheduleAddViewController(scheduleAddViewModel: ScheduleAddViewModel(readSchedule: schedules), isEditing: true), animated: true)
             }
             .store(in: &cancelable)
     }
@@ -106,5 +113,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         delete.backgroundColor = .systemRed
 
         return UISwipeActionsConfiguration(actions: [delete])
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        listViewModel.input.didSelectCell(indexPath: indexPath)
     }
 }

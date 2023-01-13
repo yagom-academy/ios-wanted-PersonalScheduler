@@ -12,11 +12,13 @@ protocol ListViewModelInputInterface {
     func tappedAddButton()
     func onViewWillAppear()
     func deleteButtonDidTap(user: String, indexPath: IndexPath)
+    func didSelectCell(indexPath: IndexPath)
 }
 
 protocol ListViewModelOutputInterface {
     var scheduleAddPublisher: PassthroughSubject<Void, Never> { get }
     var tableViewReloadPublisher: PassthroughSubject<Void, Never> { get }
+    var didSelectCellPublisher: PassthroughSubject<ScheduleModel, Never> { get }
 }
 
 protocol ListViewModelInterface {
@@ -29,6 +31,7 @@ final class ListViewModel: ListViewModelInterface, ListViewModelOutputInterface 
     var output: ListViewModelOutputInterface { self }
     var scheduleAddPublisher = PassthroughSubject<Void, Never>()
     var tableViewReloadPublisher = PassthroughSubject<Void, Never>()
+    var didSelectCellPublisher = PassthroughSubject<ScheduleModel, Never>()
 
     private var allSchedules = [ScheduleModel]() {
         didSet {
@@ -46,6 +49,11 @@ final class ListViewModel: ListViewModelInterface, ListViewModelOutputInterface 
         }
     }
 
+    private var readSchedule: ScheduleModel = ScheduleModel(documentId: "",
+                                                            title: "",
+                                                            startDate: "",
+                                                            mainText: "")
+
     func fetchSchedule() {
         FirebaseManager.shared.readData(user: "user") { [weak self] schedule in
             guard let self = self else { return }
@@ -55,6 +63,13 @@ final class ListViewModel: ListViewModelInterface, ListViewModelOutputInterface 
 }
 
 extension ListViewModel: ListViewModelInputInterface {
+    func didSelectCell(indexPath: IndexPath) {
+        FirebaseManager.shared.readDocument(user: "user", document: allSchedules[indexPath.row].documentId ?? "") { data in
+            self.readSchedule = data
+        }
+        didSelectCellPublisher.send(readSchedule)
+    }
+
     func deleteButtonDidTap(user: String, indexPath: IndexPath) {
         FirebaseManager.shared.deleteData(user: user, indexPath: indexPath, cellData: allSchedules)
         fetchSchedule()

@@ -10,8 +10,25 @@ import Combine
 
 final class ScheduleAddViewController: UIViewController {
     private let textViewPlaceholder = "내용을 입력하세요"
-    private let scheduleAddViewModel = ScheduleAddViewModel()
+    private var scheduleAddViewModel: ScheduleAddViewModel
     private var cancelable = Set<AnyCancellable>()
+
+    init(scheduleAddViewModel: ScheduleAddViewModel?, isEditing: Bool) {
+        self.scheduleAddViewModel = scheduleAddViewModel ?? ScheduleAddViewModel(readSchedule: ScheduleModel(documentId: "",
+                                                                                                             title: "",
+                                                                                                             startDate: "",
+                                                                                                             mainText: ""))
+        super.init(nibName: nil, bundle: nil)
+        if isEditing {
+            self.navigationItem.rightBarButtonItem = editButton
+        } else {
+            self.navigationItem.rightBarButtonItem = saveButton
+        }
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private let titleTextField: UITextField = {
         let textField = UITextField()
@@ -74,6 +91,14 @@ final class ScheduleAddViewController: UIViewController {
         return button
     }()
 
+    private lazy var editButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.title = "수정"
+        button.target = self
+        button.action = #selector(didTapEditButton)
+        return button
+    }()
+
     private let informationStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -95,8 +120,8 @@ final class ScheduleAddViewController: UIViewController {
 
         setConstraints()
         bind()
+        scheduleAddViewModel.onViewDidLoad()
         self.navigationItem.titleView = titleLabel
-        self.navigationItem.rightBarButtonItem = saveButton
     }
 
     private func setStackView() {
@@ -127,19 +152,24 @@ final class ScheduleAddViewController: UIViewController {
         ])
     }
 
-    @objc
-    private func didTapTextView(_ sender: Any) {
-        view.endEditing(true)
-    }
-
     private func updateCountLabel(characterCount: Int) {
         remainCountLabel.text = "\(characterCount)/500"
         remainCountLabel.asColor(targetString: "\(characterCount)", color: characterCount == 0 ? .lightGray : .blue)
     }
 
     @objc
+    private func didTapTextView(_ sender: Any) {
+        view.endEditing(true)
+    }
+
+    @objc
     private func didTapSaveButton() {
         scheduleAddViewModel.input.tappedSaveButton()
+    }
+
+    @objc
+    private func didTapEditButton() {
+        scheduleAddViewModel.input.tappedEditButton()
     }
 }
 
@@ -158,6 +188,26 @@ extension ScheduleAddViewController {
             .sink { [weak self] _ in
                 guard let self = self else { return }
                 self.navigationController?.popViewController(animated: true)
+            }
+            .store(in: &cancelable)
+
+        scheduleAddViewModel.output.scheduleModelPublisher
+            .sink { [weak self] schedule in
+                guard let self = self else { return }
+                self.titleTextField.text = schedule.title
+                self.startedTimeControl.date = schedule.startDate?.toDate() ?? Date()
+                self.mainBodyTextView.text = schedule.mainText
+            }
+            .store(in: &cancelable)
+
+        scheduleAddViewModel.output.scheduleEditPublisher
+            .sink { [weak self] schedule in
+                guard let self = self else { return }
+                FirebaseManager.shared.editData(user: "user",
+                                                document: schedule.documentId ?? "",
+                                                title: self.titleTextField.text ?? "",
+                                                startedTime: self.startedTimeControl.date.toString(),
+                                                mainBody: self.mainBodyTextView.text)
             }
             .store(in: &cancelable)
     }

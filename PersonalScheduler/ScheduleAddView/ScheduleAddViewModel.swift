@@ -10,11 +10,15 @@ import Combine
 
 protocol ScheduleAddViewModelInputInterface {
     func tappedSaveButton()
+    func tappedEditButton()
+    func onViewDidLoad()
 }
 
 protocol ScheduleAddViewModelOutputInterface {
     var scheduleSavePublisher: PassthroughSubject<Void, Never> { get }
+    var scheduleEditPublisher: PassthroughSubject<ScheduleModel, Never> { get }
     var dismissPublisher: PassthroughSubject<Void, Never> { get }
+    var scheduleModelPublisher: PassthroughSubject<ScheduleModel, Never> { get }
 }
 
 protocol ScheduleAddViewModelInterface {
@@ -27,9 +31,28 @@ final class ScheduleAddViewModel: ScheduleAddViewModelInterface, ScheduleAddView
     var output: ScheduleAddViewModelOutputInterface { self }
     var scheduleSavePublisher = PassthroughSubject<Void, Never>()
     var dismissPublisher = PassthroughSubject<Void, Never>()
+    var scheduleModelPublisher = PassthroughSubject<ScheduleModel, Never>()
+    var scheduleEditPublisher = PassthroughSubject<ScheduleModel, Never>()
+    var readSchedule: ScheduleModel = ScheduleModel(documentId: "",
+                                                    title: "",
+                                                    startDate: "",
+                                                    mainText: "")
+
+    init(readSchedule: ScheduleModel) {
+        self.readSchedule = readSchedule
+    }
 }
 
 extension ScheduleAddViewModel: ScheduleAddViewModelInputInterface {
+    func tappedEditButton() {
+        scheduleEditPublisher.send(readSchedule)
+        dismissPublisher.send()
+    }
+
+    func onViewDidLoad() {
+        scheduleModelPublisher.send(readSchedule)
+    }
+
     func tappedSaveButton() {
         scheduleSavePublisher.send()
         dismissPublisher.send()

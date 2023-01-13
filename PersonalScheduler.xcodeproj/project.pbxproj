@@ -40,6 +40,7 @@
 		8F917AC0296FA84200AAF094 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F917ABF296FA84200AAF094 /* Date + Extension.swift */; };
 		8F917AC2296FB0B900AAF094 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F917AC1296FB0B900AAF094 /* UILabel + Extension.swift */; };
 		8F917AC4297001A300AAF094 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F917AC3297001A300AAF094 /* FirebaseManager.swift */; };
+		8F917AC62971616B00AAF094 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F917AC52971616B00AAF094 /* String + Extension.swift */; };
 		8F994402296EE34F0042B8D5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F994401296EE34F0042B8D5 /* LoginViewModel.swift */; };
 		8F994404296EE3A00042B8D5 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F994403296EE3A00042B8D5 /* ListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		8F917ABF296FA84200AAF094 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 		8F917AC1296FB0B900AAF094 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		8F917AC3297001A300AAF094 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		8F917AC52971616B00AAF094 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		8F994401296EE34F0042B8D5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8F994403296EE3A00042B8D5 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +183,7 @@
 			children = (
 				8F917ABF296FA84200AAF094 /* Date + Extension.swift */,
 				8F917AC1296FB0B900AAF094 /* UILabel + Extension.swift */,
+				8F917AC52971616B00AAF094 /* String + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			files = (
 				8F917AC4297001A300AAF094 /* FirebaseManager.swift in Sources */,
 				8F994402296EE34F0042B8D5 /* LoginViewModel.swift in Sources */,
+				8F917AC62971616B00AAF094 /* String + Extension.swift in Sources */,
 				8F917AC0296FA84200AAF094 /* Date + Extension.swift in Sources */,
 				8F917AB6296EF86500AAF094 /* ScheduleModel.swift in Sources */,
 				8F917ABB296F0CDD00AAF094 /* ScheduleAddViewModel.swift in Sources */,
