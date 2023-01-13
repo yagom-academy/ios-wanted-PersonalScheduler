@@ -148,8 +148,8 @@ extension ScheduleAddViewController {
         scheduleAddViewModel.output.scheduleSavePublisher
             .sink { _ in
                 FirebaseManager.shared.savedData(
-                    user: "user", scheduleData: ScheduleModel(firebase: ["title" : self.titleTextField.text ?? "",
-                                                                      "statedTime" : self.startedTimeControl.date,
+                    user: "user", document: UUID(), scheduleData: ScheduleModel(firebase: ["title" : self.titleTextField.text ?? "",
+                                                                         "startedTime" : self.startedTimeControl.date.formattedString(),
                                                                       "mainBody" : self.mainBodyTextView.text ?? ""]) ?? ScheduleModel(firebase: [:])!)
             }
             .store(in: &cancelable)

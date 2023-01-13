@@ -15,6 +15,7 @@ class ListViewController: UIViewController {
     private let scheduleTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: ScheduleTableViewCell.identifier)
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -43,6 +44,14 @@ class ListViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = addScheduleButton
         setTableView()
         bind()
+        self.scheduleTableView.reloadData()
+
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.scheduleTableView.reloadData()
+        listViewModel.input.onViewWillAppear()
     }
 
     private func setTableView() {
@@ -58,6 +67,13 @@ extension ListViewController {
             .sink { [weak self] _ in
                 guard let self = self else { return }
                 self.navigationController?.pushViewController(ScheduleAddViewController(), animated: true)
+            }
+            .store(in: &cancelable)
+
+        listViewModel.output.tableViewReloadPublisher
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.scheduleTableView.reloadData()
             }
             .store(in: &cancelable)
     }
@@ -79,5 +95,16 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
                                                        for: indexPath) as? ScheduleTableViewCell else { return ScheduleTableViewCell() }
         cell.configureCell(at: indexPath, cellData: listViewModel.schedules)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .normal, title: "Delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+
+            self.listViewModel.input.deleteButtonDidTap(user: "user", indexPath: indexPath)
+            self.scheduleTableView.reloadData()
+        }
+        delete.backgroundColor = .systemRed
+
+        return UISwipeActionsConfiguration(actions: [delete])
     }
 }

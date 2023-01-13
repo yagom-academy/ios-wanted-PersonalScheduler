@@ -15,26 +15,28 @@ final class FirebaseManager {
     private init() { }
 
     private var dataBase = Firestore.firestore()
-    private var reference: DocumentReference? = nil
-    var data: ScheduleModel = ScheduleModel(firebase: [:]) ?? ScheduleModel(firebase: [:])!
 
-    func savedData(user: String, scheduleData: ScheduleModel) {
-        reference = dataBase.collection(user).addDocument(data: [
+    func savedData(user: String, document: UUID, scheduleData: ScheduleModel) {
+        dataBase.collection(user).document(document.uuidString).setData([
+            "documentId" : document.uuidString,
             "title" : scheduleData.title ?? "",
-            "startedTime" : scheduleData.startDate ?? Date(),
+            "startedTime" : scheduleData.startDate ?? "",
             "mainBody" : scheduleData.mainText ?? ""
         ])
     }
 
-    func readData(user: String) {
+    func readData(user: String, completion: @escaping ([ScheduleModel]) -> Void) {
         dataBase.collection(user).getDocuments { schedule, error in
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                for document in schedule!.documents {
-                    self.data = ScheduleModel(firebase: document.data()) ?? ScheduleModel(firebase: [:])!
-                }
+                    completion(ScheduleModel.build(from: schedule?.documents ?? []))
             }
         }
+    }
+
+    func deleteData(user: String, indexPath: IndexPath, cellData: [ScheduleModel]) {
+        guard let doucument = cellData[indexPath.row].documentId else { return }
+        dataBase.collection(user).document(doucument).delete()
     }
 }

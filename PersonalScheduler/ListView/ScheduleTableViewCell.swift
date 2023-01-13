@@ -14,7 +14,6 @@ final class ScheduleTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -22,7 +21,6 @@ final class ScheduleTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -30,7 +28,6 @@ final class ScheduleTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.preferredFont(forTextStyle: .title2)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -40,12 +37,13 @@ final class ScheduleTableViewCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .leading
-        stackView.spacing = 10
+        stackView.spacing = 5
         return stackView
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = UIColor.white
         addSubViews()
         setConstraints()
     }
@@ -74,6 +72,13 @@ final class ScheduleTableViewCell: UITableViewCell {
     func configureCell(at indexPath: IndexPath, cellData: [ScheduleModel]) {
         titleLabel.text = cellData[indexPath.row].title
         mainBodyLabel.text = cellData[indexPath.row].mainText
-        startedAtLabel.text = cellData[indexPath.row].startDate?.formattedString()
+        startedAtLabel.text = cellData[indexPath.row].startDate
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = nil
+        mainBodyLabel.text = nil
+        startedAtLabel.text = nil
     }
 }
