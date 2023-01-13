@@ -116,8 +116,6 @@ final class LoginViewController: UIViewController {
     }
     
     @objc private func kakaoLoginButtonTapped() {
-        guard UserApi.isKakaoTalkLoginAvailable() == true else { return }
-        
         UserApi.shared.loginWithKakaoAccount { [weak self] oauthToken, error in
             if error != nil {
                 self?.showAlert(AlertPhrase.kakaoLoginFailed)
