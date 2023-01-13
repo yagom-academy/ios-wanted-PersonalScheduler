@@ -8,12 +8,56 @@
 import Foundation
 import Combine
 import KakaoSDKUser
+import FacebookLogin
 
 class ViewModel: ObservableObject {
     @Published var isLogin = false
     @Published var showingAlert = false
     @Published var schedule = Dummy()
+    @Published var facebookToken = ""
+    @Published var facebookname = ""
+    @Published var facebookemail = ""
 
+    func handleFacebookLogin() {
+        
+        LoginManager().logIn(permissions: [.publicProfile, .email]) { result in
+            
+            switch result {
+            case .success(granted: _ , declined: _, token: _):
+                print("success")
+                self.facebookToken = AccessToken.current?.tokenString ?? ""
+
+                let connection = GraphRequestConnection()
+                connection.add(GraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"], tokenString: self.facebookToken, version: Settings.defaultGraphAPIVersion, httpMethod: .get)) { connection, values, error in
+                    if let res = values {
+                        if let response = res as? [String: Any] {
+                            
+                            if let userId = response["id"] as? String {
+                                self.facebookToken = userId
+                            }
+                            
+                            if let name = response["name"] as? String {
+                                self.facebookname = name
+                            }
+                            
+                            if let email = response["email"] as? String {
+                                self.facebookemail = email
+                            }
+                        }
+                    }
+                }
+                connection.start()
+                
+                
+            case .failed(let error):
+                print(error.localizedDescription)
+            case .cancelled:
+                print("Cancelled")
+            }
+            
+        }
+    }
+    
     @MainActor
     func handleKakaoLogin() {
         Task {
