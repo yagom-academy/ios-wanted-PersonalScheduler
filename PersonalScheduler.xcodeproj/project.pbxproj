@@ -136,8 +136,6 @@
 				E131BFA9296D7D38003DC333 /* PersonalScheduler.entitlements */,
 				E131BFAA296D819F003DC333 /* Utility */,
 				E131BFA3296D7AAA003DC333 /* Model */,
-				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
-				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
 				E131BFAD296D8E85003DC333 /* GoogleService-Info.plist */,
 				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
 				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
@@ -211,6 +209,7 @@
 		E1A49892296EAA58005C279B /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				E1A6478E2971806A00599F71 /* Entry */,
 				E1A6477A29702DFB00599F71 /* Detail */,
 				E1A4989A296F1AEE005C279B /* List */,
 				E1A49893296EAA60005C279B /* Main */,
@@ -252,6 +251,15 @@
 				E1A6477D29702E3500599F71 /* DetailViewController.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		E1A6478E2971806A00599F71 /* Entry */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
+				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
+			);
+			path = Entry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
