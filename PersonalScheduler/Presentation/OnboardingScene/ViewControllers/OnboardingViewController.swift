@@ -157,6 +157,8 @@ extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
 
 extension OnboardingViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        pageControl.currentPage = Int(floor(onboardingCollectionView.contentOffset.x / onboardingCollectionView.frame.width))
+        if onboardingCollectionView.frame.width == 0 { return }
+        let page = Int(floor(onboardingCollectionView.contentOffset.x / onboardingCollectionView.frame.width))
+        pageControl.currentPage = page
     }
 }

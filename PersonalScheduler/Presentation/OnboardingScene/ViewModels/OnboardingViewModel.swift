@@ -17,9 +17,8 @@ final class OnboardingViewModel {
     func appleLoginButtonTapped(completion: @escaping () -> Void) {
         oAuthLoginUseCase.execute(loginType: .apple) { result in
             switch result {
-            case .success(let authResult):
-                self.saveUID(authResult: authResult)
-                print("success")
+            case .success:
+                completion()
             case .failure(let error):
                 print(error)
             }
@@ -29,9 +28,8 @@ final class OnboardingViewModel {
     func kakaoLoginButtonTapped(completion: @escaping () -> Void) {
         oAuthLoginUseCase.execute(loginType: .kakao) { result in
             switch result {
-            case .success(let authResult):
-                self.saveUID(authResult: authResult)
-                print("success")
+            case .success:
+                completion()
             case .failure(let error):
                 print(error)
             }
@@ -41,20 +39,11 @@ final class OnboardingViewModel {
     func naverLoginButtonTapped(completion: @escaping () -> Void) {
         oAuthLoginUseCase.execute(loginType: .apple) { result in
             switch result {
-            case .success(let authResult):
-                self.saveUID(authResult: authResult)
-                print("success")
+            case .success:
+                completion()
             case .failure(let error):
                 print(error)
             }
-        }
-    }
-}
-
-extension OnboardingViewModel {
-    private func saveUID(authResult: AuthDataResult?) {
-        if let authResult = authResult {
-            UserDefaults.standard.set(authResult.user.uid, forKey: "uid")
         }
     }
 }
