@@ -22,6 +22,23 @@ final class TimerSettingView: UIView {
             datePickerView.date =  currentSelected == .start ? startTime : endTime
         }
     }
+    private let timeDateFormatter: DateFormatter = {
+        let timeDateFormatter = DateFormatter()
+        timeDateFormatter.timeZone = TimeZone(identifier: "ko_KR")
+        timeDateFormatter.locale = Locale(identifier: "ko_KR")
+        timeDateFormatter.dateFormat = "a hh시 mm분"
+        return timeDateFormatter
+    }()
+
+    private let dayDateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "ko_KR")
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "MM월 dd일 (E)"
+        return dateFormatter
+    }()
+
+
 
     private let clockImageView: UIImageView = {
         let imageView = UIImageView()
@@ -126,15 +143,11 @@ final class TimerSettingView: UIView {
     }
 
     private func setLabelContents() {
-        let timeDateFormatter = DateFormatter()
-        timeDateFormatter.dateFormat = "a hh시 mm분"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM월 dd일 (E)"
         datePickerView.date = Date()
         startTimeLabel.text = timeDateFormatter.string(from: datePickerView.date)
-        startDateLabel.text = dateFormatter.string(from: datePickerView.date)
+        startDateLabel.text = dayDateFormatter.string(from: datePickerView.date)
         endTimeLabel.text = timeDateFormatter.string(from: datePickerView.date)
-        endDateLabel.text = dateFormatter.string(from: datePickerView.date)
+        endDateLabel.text = dayDateFormatter.string(from: datePickerView.date)
     }
 
     private func layout() {
@@ -198,18 +211,14 @@ final class TimerSettingView: UIView {
 
     @objc
     private func datePickerChanged(_ sender: UIDatePicker) {
-        let timeDateFormatter = DateFormatter()
-        timeDateFormatter.dateFormat = "a hh시 mm분"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM월 dd일 (E)"
         switch currentSelected {
         case .start:
             startTimeLabel.text = timeDateFormatter.string(from: datePickerView.date)
-            startDateLabel.text = dateFormatter.string(from: datePickerView.date)
+            startDateLabel.text = dayDateFormatter.string(from: datePickerView.date)
             startTime = datePickerView.date
         case .end:
             endTimeLabel.text = timeDateFormatter.string(from: datePickerView.date)
-            endDateLabel.text = dateFormatter.string(from: datePickerView.date)
+            endDateLabel.text = dayDateFormatter.string(from: datePickerView.date)
             endTime = datePickerView.date
         }
     }
