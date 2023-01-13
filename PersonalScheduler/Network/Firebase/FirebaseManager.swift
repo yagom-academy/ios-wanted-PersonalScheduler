@@ -106,18 +106,21 @@ final class FirebaseManager: FirebaseManagerable {
         }
         
         taskItemRef.getData { error, dataSnapshot in
-            guard error == nil else {
+            guard error == nil, let dataSnapshot = dataSnapshot
+            else {
                 completion(result)
                 return
             }
             
-            if let dataSnapshot = dataSnapshot,
-               let encodedData = try? dataSnapshot.data(as: [T].self)
-            {
-                result = .success(encodedData)
-            } else {
-                result = .success([])
+            guard let childArray = dataSnapshot.children.allObjects as? [DataSnapshot] else {
+                completion(result)
+                return
             }
+            
+            let array = childArray.compactMap { child in
+                try? child.data(as: T.self)
+            }
+            result = .success(array)
             completion(result)
         }
     }
