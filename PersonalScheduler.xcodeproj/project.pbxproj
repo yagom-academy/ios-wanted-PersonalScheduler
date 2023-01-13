@@ -7,18 +7,124 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0223FAA2296BDD2600B6B32C /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAA1296BDD2600B6B32C /* TargetType.swift */; };
+		0223FAA4296BDD4D00B6B32C /* Encodable+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAA3296BDD4D00B6B32C /* Encodable+extension.swift */; };
+		0223FABA296BED9B00B6B32C /* DefaultAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAB9296BED9B00B6B32C /* DefaultAPIProvider.swift */; };
+		0223FABC296BEDAC00B6B32C /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FABB296BEDAC00B6B32C /* APIProvider.swift */; };
+		0223FABE296BEE8300B6B32C /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FABD296BEE8300B6B32C /* AuthenticationRepository.swift */; };
+		0223FAC0296BF21F00B6B32C /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FABF296BF21F00B6B32C /* Authentication.swift */; };
+		0223FAC3296BFBD300B6B32C /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FAC2296BFBD300B6B32C /* KakaoSDKAuth */; };
+		0223FAC5296BFBD300B6B32C /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FAC4296BFBD300B6B32C /* KakaoSDKCommon */; };
+		0223FAC7296BFBD300B6B32C /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FAC6296BFBD300B6B32C /* KakaoSDKUser */; };
+		0223FACF296C129200B6B32C /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FACE296C129200B6B32C /* FacebookCore */; };
+		0223FAD1296C129200B6B32C /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FAD0296C129200B6B32C /* FacebookLogin */; };
+		0223FAD5296D20DA00B6B32C /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAD4296D20DA00B6B32C /* LocalStorage.swift */; };
+		0223FAD7296D222D00B6B32C /* KeyChainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAD6296D222D00B6B32C /* KeyChainStorage.swift */; };
+		0223FAD9296D231500B6B32C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAD8296D231500B6B32C /* User.swift */; };
+		0223FADB296D2A7A00B6B32C /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FADA296D2A7A00B6B32C /* Schedule.swift */; };
+		0223FADE296D329900B6B32C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FADD296D329900B6B32C /* FirebaseFirestore */; };
+		0223FAE0296D329900B6B32C /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FADF296D329900B6B32C /* FirebaseFirestoreCombine-Community */; };
+		0223FAE2296D329900B6B32C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0223FAE1296D329900B6B32C /* FirebaseFirestoreSwift */; };
+		0223FAE8296D374100B6B32C /* FirestoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAE7296D374100B6B32C /* FirestoreStorage.swift */; };
+		0223FAED296D46C500B6B32C /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAEC296D46C500B6B32C /* ScheduleRepository.swift */; };
+		0223FAEF296D4E5F00B6B32C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAEE296D4E5F00B6B32C /* Coordinator.swift */; };
+		0223FAF1296D4EE800B6B32C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAF0296D4EE800B6B32C /* AppCoordinator.swift */; };
+		0223FAF7296D579400B6B32C /* Bundle+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAF6296D579400B6B32C /* Bundle+extension.swift */; };
+		0223FAF9296D5C5300B6B32C /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAF8296D5C5300B6B32C /* AuthCoordinator.swift */; };
+		0223FAFB296D5CCE00B6B32C /* ScheduleListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAFA296D5CCE00B6B32C /* ScheduleListCoordinator.swift */; };
+		0223FAFD296D5D2F00B6B32C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAFC296D5D2F00B6B32C /* AuthViewModel.swift */; };
+		0223FAFF296D5D8800B6B32C /* AuthCoordinatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FAFE296D5D8800B6B32C /* AuthCoordinatorInterface.swift */; };
+		0223FB02296D5EEB00B6B32C /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB01296D5EEB00B6B32C /* ScheduleListViewController.swift */; };
+		0223FB04296D5F0F00B6B32C /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB03296D5F0F00B6B32C /* ScheduleListViewModel.swift */; };
+		0223FB06296D5F1E00B6B32C /* ScheduleListCoordinatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB05296D5F1E00B6B32C /* ScheduleListCoordinatorInterface.swift */; };
+		0223FB0F296D673500B6B32C /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB0E296D673500B6B32C /* ScheduleViewController.swift */; };
+		0223FB11296D674300B6B32C /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB10296D674300B6B32C /* ScheduleViewModel.swift */; };
+		0223FB14296D67F800B6B32C /* ScheduleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB13296D67F800B6B32C /* ScheduleCoordinator.swift */; };
+		0223FB16296D695900B6B32C /* ScheduleCoordinatorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB15296D695900B6B32C /* ScheduleCoordinatorInterface.swift */; };
+		0223FB1B296D6B3300B6B32C /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB1A296D6B3300B6B32C /* UIColor+extension.swift */; };
+		0223FB1D296D6CBF00B6B32C /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB1C296D6CBF00B6B32C /* UIView+extension.swift */; };
+		0223FB1F296D6CCF00B6B32C /* UIStackView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB1E296D6CCF00B6B32C /* UIStackView+extension.swift */; };
+		0223FB21296D6DAD00B6B32C /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB20296D6DAD00B6B32C /* UIFont+extension.swift */; };
+		0223FB23296D6F5500B6B32C /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB22296D6F5500B6B32C /* LoginButton.swift */; };
+		0223FB25296D77A300B6B32C /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB24296D77A300B6B32C /* NavigationTitleView.swift */; };
+		0223FB27296D7A7100B6B32C /* UINavigationController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB26296D7A7100B6B32C /* UINavigationController+extension.swift */; };
+		0223FB2B296DAAC800B6B32C /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB2A296DAAC800B6B32C /* ScheduleCell.swift */; };
+		0223FB2D296DAB4D00B6B32C /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB2C296DAB4D00B6B32C /* DateView.swift */; };
+		0223FB2F296E495E00B6B32C /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB2E296E495E00B6B32C /* Date+extension.swift */; };
+		0223FB31296E538F00B6B32C /* UICollectionView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB30296E538F00B6B32C /* UICollectionView+extension.swift */; };
+		0223FB33296E53AC00B6B32C /* NSObject+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB32296E53AC00B6B32C /* NSObject+extension.swift */; };
+		0223FB35296E7D8400B6B32C /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0223FB34296E7D8400B6B32C /* AppAppearance.swift */; };
+		02544E2B296E91C200F06385 /* ScheduleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E2A296E91C200F06385 /* ScheduleContentView.swift */; };
+		02544E30296E9E0100F06385 /* DateSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E2F296E9E0000F06385 /* DateSettingView.swift */; };
+		02544E32296EB0A100F06385 /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E31296EB0A100F06385 /* UIViewController+extension.swift */; };
+		02544E34296ED7DE00F06385 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E33296ED7DE00F06385 /* UserRepository.swift */; };
+		02544E36296EDC6100F06385 /* Publisher+MainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E35296EDC6100F06385 /* Publisher+MainThread.swift */; };
+		02544E38296EDD6000F06385 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E37296EDD6000F06385 /* LoadingView.swift */; };
+		02544E4029703E9F00F06385 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 02544E3F29703E9F00F06385 /* FirebaseMessaging */; };
+		02544E42297057C800F06385 /* Notification.Name+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E41297057C800F06385 /* Notification.Name+extension.swift */; };
+		02544E4A2970EADD00F06385 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E492970EADD00F06385 /* Logger.swift */; };
+		02544E502971303200F06385 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E4F2971303200F06385 /* BaseNavigationController.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
-		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
+		63AAAB062967EA2600775EC3 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* AuthViewController.swift */; };
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0223FAA1296BDD2600B6B32C /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		0223FAA3296BDD4D00B6B32C /* Encodable+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+extension.swift"; sourceTree = "<group>"; };
+		0223FAB9296BED9B00B6B32C /* DefaultAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAPIProvider.swift; sourceTree = "<group>"; };
+		0223FABB296BEDAC00B6B32C /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
+		0223FABD296BEE8300B6B32C /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
+		0223FABF296BF21F00B6B32C /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		0223FAC8296C071200B6B32C /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
+		0223FAD4296D20DA00B6B32C /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		0223FAD6296D222D00B6B32C /* KeyChainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainStorage.swift; sourceTree = "<group>"; };
+		0223FAD8296D231500B6B32C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0223FADA296D2A7A00B6B32C /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		0223FAE7296D374100B6B32C /* FirestoreStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreStorage.swift; sourceTree = "<group>"; };
+		0223FAEC296D46C500B6B32C /* ScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRepository.swift; sourceTree = "<group>"; };
+		0223FAEE296D4E5F00B6B32C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		0223FAF0296D4EE800B6B32C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		0223FAF6296D579400B6B32C /* Bundle+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+extension.swift"; sourceTree = "<group>"; };
+		0223FAF8296D5C5300B6B32C /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		0223FAFA296D5CCE00B6B32C /* ScheduleListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListCoordinator.swift; sourceTree = "<group>"; };
+		0223FAFC296D5D2F00B6B32C /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		0223FAFE296D5D8800B6B32C /* AuthCoordinatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinatorInterface.swift; sourceTree = "<group>"; };
+		0223FB01296D5EEB00B6B32C /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
+		0223FB03296D5F0F00B6B32C /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
+		0223FB05296D5F1E00B6B32C /* ScheduleListCoordinatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListCoordinatorInterface.swift; sourceTree = "<group>"; };
+		0223FB0E296D673500B6B32C /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		0223FB10296D674300B6B32C /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		0223FB13296D67F800B6B32C /* ScheduleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinator.swift; sourceTree = "<group>"; };
+		0223FB15296D695900B6B32C /* ScheduleCoordinatorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinatorInterface.swift; sourceTree = "<group>"; };
+		0223FB1A296D6B3300B6B32C /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
+		0223FB1C296D6CBF00B6B32C /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		0223FB1E296D6CCF00B6B32C /* UIStackView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+extension.swift"; sourceTree = "<group>"; };
+		0223FB20296D6DAD00B6B32C /* UIFont+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
+		0223FB22296D6F5500B6B32C /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		0223FB24296D77A300B6B32C /* NavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
+		0223FB26296D7A7100B6B32C /* UINavigationController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+extension.swift"; sourceTree = "<group>"; };
+		0223FB2A296DAAC800B6B32C /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		0223FB2C296DAB4D00B6B32C /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
+		0223FB2E296E495E00B6B32C /* Date+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
+		0223FB30296E538F00B6B32C /* UICollectionView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+extension.swift"; sourceTree = "<group>"; };
+		0223FB32296E53AC00B6B32C /* NSObject+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+extension.swift"; sourceTree = "<group>"; };
+		0223FB34296E7D8400B6B32C /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
+		02544E2A296E91C200F06385 /* ScheduleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleContentView.swift; sourceTree = "<group>"; };
+		02544E2F296E9E0000F06385 /* DateSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSettingView.swift; sourceTree = "<group>"; };
+		02544E31296EB0A100F06385 /* UIViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
+		02544E33296ED7DE00F06385 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		02544E35296EDC6100F06385 /* Publisher+MainThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+MainThread.swift"; sourceTree = "<group>"; };
+		02544E37296EDD6000F06385 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		02544E41297057C800F06385 /* Notification.Name+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+extension.swift"; sourceTree = "<group>"; };
+		02544E492970EADD00F06385 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		02544E4F2971303200F06385 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63AAAB052967EA2600775EC3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		63AAAB052967EA2600775EC3 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		63AAAB0A2967EA2700775EC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -29,17 +135,317 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02544E4029703E9F00F06385 /* FirebaseMessaging in Frameworks */,
+				0223FAD1296C129200B6B32C /* FacebookLogin in Frameworks */,
+				0223FAC5296BFBD300B6B32C /* KakaoSDKCommon in Frameworks */,
+				0223FAC3296BFBD300B6B32C /* KakaoSDKAuth in Frameworks */,
+				0223FAC7296BFBD300B6B32C /* KakaoSDKUser in Frameworks */,
+				0223FACF296C129200B6B32C /* FacebookCore in Frameworks */,
+				0223FADE296D329900B6B32C /* FirebaseFirestore in Frameworks */,
+				0223FAE0296D329900B6B32C /* FirebaseFirestoreCombine-Community in Frameworks */,
+				0223FAE2296D329900B6B32C /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0223FA9D296BDCA700B6B32C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
+				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0223FA9E296BDCAB00B6B32C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB00296D5D9900B6B32C /* Auth */,
+				0223FB07296D5F2D00B6B32C /* ScheduleList */,
+				0223FB12296D675100B6B32C /* Schedule */,
+				0223FAEE296D4E5F00B6B32C /* Coordinator.swift */,
+				0223FAF0296D4EE800B6B32C /* AppCoordinator.swift */,
+				0223FB34296E7D8400B6B32C /* AppAppearance.swift */,
+				02544E4F2971303200F06385 /* BaseNavigationController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		0223FA9F296BDCC900B6B32C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
+				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0223FAA0296BDCD300B6B32C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0223FA9D296BDCA700B6B32C /* App */,
+				02544E4D2970F81F00F06385 /* Common */,
+				0223FAEB296D45DE00B6B32C /* Model */,
+				02544E4C2970F80E00F06385 /* Data */,
+				0223FA9E296BDCAB00B6B32C /* Presentation */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		0223FAA5296BDD5200B6B32C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				02544E44297060DF00F06385 /* UI */,
+				0223FAF6296D579400B6B32C /* Bundle+extension.swift */,
+				0223FB2E296E495E00B6B32C /* Date+extension.swift */,
+				0223FAA3296BDD4D00B6B32C /* Encodable+extension.swift */,
+				02544E41297057C800F06385 /* Notification.Name+extension.swift */,
+				0223FB32296E53AC00B6B32C /* NSObject+extension.swift */,
+				02544E35296EDC6100F06385 /* Publisher+MainThread.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0223FAA6296BDDAF00B6B32C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0223FAA7296BDDC500B6B32C /* Protocol */,
+				0223FAB9296BED9B00B6B32C /* DefaultAPIProvider.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0223FAA7296BDDC500B6B32C /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				0223FAA1296BDD2600B6B32C /* TargetType.swift */,
+				0223FABB296BEDAC00B6B32C /* APIProvider.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		0223FAE9296D45CC00B6B32C /* Storages */ = {
+			isa = PBXGroup;
+			children = (
+				0223FAD4296D20DA00B6B32C /* LocalStorage.swift */,
+				0223FAD6296D222D00B6B32C /* KeyChainStorage.swift */,
+				0223FAE7296D374100B6B32C /* FirestoreStorage.swift */,
+			);
+			path = Storages;
+			sourceTree = "<group>";
+		};
+		0223FAEA296D45D600B6B32C /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				0223FABD296BEE8300B6B32C /* AuthenticationRepository.swift */,
+				0223FAEC296D46C500B6B32C /* ScheduleRepository.swift */,
+				02544E33296ED7DE00F06385 /* UserRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		0223FAEB296D45DE00B6B32C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0223FAD8296D231500B6B32C /* User.swift */,
+				0223FADA296D2A7A00B6B32C /* Schedule.swift */,
+				0223FABF296BF21F00B6B32C /* Authentication.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0223FB00296D5D9900B6B32C /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB08296D64A700B6B32C /* Coordinator */,
+				0223FB09296D64AD00B6B32C /* ViewController */,
+				0223FB0A296D64B400B6B32C /* ViewModel */,
+				0223FB28296DA7DA00B6B32C /* View */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		0223FB07296D5F2D00B6B32C /* ScheduleList */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB0B296D64BA00B6B32C /* Coordinator */,
+				0223FB0C296D64C500B6B32C /* ViewController */,
+				0223FB0D296D64CC00B6B32C /* ViewModel */,
+				0223FB29296DA7E200B6B32C /* View */,
+			);
+			path = ScheduleList;
+			sourceTree = "<group>";
+		};
+		0223FB08296D64A700B6B32C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0223FAFE296D5D8800B6B32C /* AuthCoordinatorInterface.swift */,
+				0223FAF8296D5C5300B6B32C /* AuthCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		0223FB09296D64AD00B6B32C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB052967EA2600775EC3 /* AuthViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0223FB0A296D64B400B6B32C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0223FAFC296D5D2F00B6B32C /* AuthViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0223FB0B296D64BA00B6B32C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0223FAFA296D5CCE00B6B32C /* ScheduleListCoordinator.swift */,
+				0223FB05296D5F1E00B6B32C /* ScheduleListCoordinatorInterface.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		0223FB0C296D64C500B6B32C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB01296D5EEB00B6B32C /* ScheduleListViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0223FB0D296D64CC00B6B32C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB03296D5F0F00B6B32C /* ScheduleListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0223FB12296D675100B6B32C /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB19296D696B00B6B32C /* ViewController */,
+				0223FB18296D696600B6B32C /* ViewModel */,
+				0223FB17296D696100B6B32C /* Coordinator */,
+				02544E2C296E9DB400F06385 /* View */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		0223FB17296D696100B6B32C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB13296D67F800B6B32C /* ScheduleCoordinator.swift */,
+				0223FB15296D695900B6B32C /* ScheduleCoordinatorInterface.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		0223FB18296D696600B6B32C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB10296D674300B6B32C /* ScheduleViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0223FB19296D696B00B6B32C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB0E296D673500B6B32C /* ScheduleViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0223FB28296DA7DA00B6B32C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB22296D6F5500B6B32C /* LoginButton.swift */,
+				02544E37296EDD6000F06385 /* LoadingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0223FB29296DA7E200B6B32C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB24296D77A300B6B32C /* NavigationTitleView.swift */,
+				0223FB2A296DAAC800B6B32C /* ScheduleCell.swift */,
+				0223FB2C296DAB4D00B6B32C /* DateView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		02544E2C296E9DB400F06385 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				02544E2A296E91C200F06385 /* ScheduleContentView.swift */,
+				02544E2F296E9E0000F06385 /* DateSettingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		02544E3E29703E9F00F06385 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		02544E44297060DF00F06385 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0223FB30296E538F00B6B32C /* UICollectionView+extension.swift */,
+				0223FB1A296D6B3300B6B32C /* UIColor+extension.swift */,
+				0223FB20296D6DAD00B6B32C /* UIFont+extension.swift */,
+				0223FB26296D7A7100B6B32C /* UINavigationController+extension.swift */,
+				0223FB1E296D6CCF00B6B32C /* UIStackView+extension.swift */,
+				0223FB1C296D6CBF00B6B32C /* UIView+extension.swift */,
+				02544E31296EB0A100F06385 /* UIViewController+extension.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		02544E4B2970F7A800F06385 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				02544E492970EADD00F06385 /* Logger.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		02544E4C2970F80E00F06385 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0223FAA6296BDDAF00B6B32C /* Network */,
+				0223FAEA296D45D600B6B32C /* Repositories */,
+				0223FAE9296D45CC00B6B32C /* Storages */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		02544E4D2970F81F00F06385 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0223FAA5296BDD5200B6B32C /* Extensions */,
+				02544E4B2970F7A800F06385 /* Utility */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		63AAAAF52967EA2600775EC3 = {
 			isa = PBXGroup;
 			children = (
 				63AAAB002967EA2600775EC3 /* PersonalScheduler */,
 				63AAAAFF2967EA2600775EC3 /* Products */,
+				02544E3E29703E9F00F06385 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,11 +460,9 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
-				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
-				63AAAB052967EA2600775EC3 /* ViewController.swift */,
-				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
-				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
+				0223FAC8296C071200B6B32C /* PersonalScheduler.entitlements */,
+				0223FA9F296BDCC900B6B32C /* Resources */,
+				0223FAA0296BDCD300B6B32C /* Sources */,
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
 			);
 			path = PersonalScheduler;
@@ -80,6 +484,17 @@
 			dependencies = (
 			);
 			name = PersonalScheduler;
+			packageProductDependencies = (
+				0223FAC2296BFBD300B6B32C /* KakaoSDKAuth */,
+				0223FAC4296BFBD300B6B32C /* KakaoSDKCommon */,
+				0223FAC6296BFBD300B6B32C /* KakaoSDKUser */,
+				0223FACE296C129200B6B32C /* FacebookCore */,
+				0223FAD0296C129200B6B32C /* FacebookLogin */,
+				0223FADD296D329900B6B32C /* FirebaseFirestore */,
+				0223FADF296D329900B6B32C /* FirebaseFirestoreCombine-Community */,
+				0223FAE1296D329900B6B32C /* FirebaseFirestoreSwift */,
+				02544E3F29703E9F00F06385 /* FirebaseMessaging */,
+			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +523,11 @@
 				Base,
 			);
 			mainGroup = 63AAAAF52967EA2600775EC3;
+			packageReferences = (
+				0223FAC1296BFBD300B6B32C /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				0223FACD296C129200B6B32C /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				0223FADC296D329900B6B32C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,9 +554,57 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
+				0223FB31296E538F00B6B32C /* UICollectionView+extension.swift in Sources */,
+				0223FAED296D46C500B6B32C /* ScheduleRepository.swift in Sources */,
+				02544E32296EB0A100F06385 /* UIViewController+extension.swift in Sources */,
+				0223FAD9296D231500B6B32C /* User.swift in Sources */,
+				0223FAD5296D20DA00B6B32C /* LocalStorage.swift in Sources */,
+				02544E38296EDD6000F06385 /* LoadingView.swift in Sources */,
+				02544E42297057C800F06385 /* Notification.Name+extension.swift in Sources */,
+				0223FABA296BED9B00B6B32C /* DefaultAPIProvider.swift in Sources */,
+				0223FABC296BEDAC00B6B32C /* APIProvider.swift in Sources */,
+				0223FAA4296BDD4D00B6B32C /* Encodable+extension.swift in Sources */,
+				0223FB02296D5EEB00B6B32C /* ScheduleListViewController.swift in Sources */,
+				02544E36296EDC6100F06385 /* Publisher+MainThread.swift in Sources */,
+				0223FB2F296E495E00B6B32C /* Date+extension.swift in Sources */,
+				0223FAC0296BF21F00B6B32C /* Authentication.swift in Sources */,
+				02544E502971303200F06385 /* BaseNavigationController.swift in Sources */,
+				0223FAD7296D222D00B6B32C /* KeyChainStorage.swift in Sources */,
+				0223FABE296BEE8300B6B32C /* AuthenticationRepository.swift in Sources */,
+				0223FB0F296D673500B6B32C /* ScheduleViewController.swift in Sources */,
+				0223FB2D296DAB4D00B6B32C /* DateView.swift in Sources */,
+				0223FB1D296D6CBF00B6B32C /* UIView+extension.swift in Sources */,
+				0223FB25296D77A300B6B32C /* NavigationTitleView.swift in Sources */,
+				0223FAA2296BDD2600B6B32C /* TargetType.swift in Sources */,
+				0223FB1F296D6CCF00B6B32C /* UIStackView+extension.swift in Sources */,
+				0223FB27296D7A7100B6B32C /* UINavigationController+extension.swift in Sources */,
+				0223FB06296D5F1E00B6B32C /* ScheduleListCoordinatorInterface.swift in Sources */,
+				0223FB23296D6F5500B6B32C /* LoginButton.swift in Sources */,
+				0223FB14296D67F800B6B32C /* ScheduleCoordinator.swift in Sources */,
+				0223FB16296D695900B6B32C /* ScheduleCoordinatorInterface.swift in Sources */,
+				0223FAFB296D5CCE00B6B32C /* ScheduleListCoordinator.swift in Sources */,
+				0223FAFF296D5D8800B6B32C /* AuthCoordinatorInterface.swift in Sources */,
+				0223FAF9296D5C5300B6B32C /* AuthCoordinator.swift in Sources */,
+				0223FB2B296DAAC800B6B32C /* ScheduleCell.swift in Sources */,
+				02544E2B296E91C200F06385 /* ScheduleContentView.swift in Sources */,
+				0223FAEF296D4E5F00B6B32C /* Coordinator.swift in Sources */,
+				63AAAB062967EA2600775EC3 /* AuthViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				02544E30296E9E0100F06385 /* DateSettingView.swift in Sources */,
+				0223FADB296D2A7A00B6B32C /* Schedule.swift in Sources */,
+				0223FB04296D5F0F00B6B32C /* ScheduleListViewModel.swift in Sources */,
+				0223FB21296D6DAD00B6B32C /* UIFont+extension.swift in Sources */,
+				02544E34296ED7DE00F06385 /* UserRepository.swift in Sources */,
+				0223FB35296E7D8400B6B32C /* AppAppearance.swift in Sources */,
+				0223FB11296D674300B6B32C /* ScheduleViewModel.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				0223FAFD296D5D2F00B6B32C /* AuthViewModel.swift in Sources */,
+				0223FAF7296D579400B6B32C /* Bundle+extension.swift in Sources */,
+				02544E4A2970EADD00F06385 /* Logger.swift in Sources */,
+				0223FB1B296D6B3300B6B32C /* UIColor+extension.swift in Sources */,
+				0223FAF1296D4EE800B6B32C /* AppCoordinator.swift in Sources */,
+				0223FAE8296D374100B6B32C /* FirestoreStorage.swift in Sources */,
+				0223FB33296E53AC00B6B32C /* NSObject+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +741,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PersonalScheduler/PersonalScheduler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -281,6 +750,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +770,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PersonalScheduler/PersonalScheduler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -308,6 +779,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -344,6 +816,81 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0223FAC1296BFBD300B6B32C /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		0223FACD296C129200B6B32C /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		0223FADC296D329900B6B32C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0223FAC2296BFBD300B6B32C /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0223FAC1296BFBD300B6B32C /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		0223FAC4296BFBD300B6B32C /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0223FAC1296BFBD300B6B32C /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		0223FAC6296BFBD300B6B32C /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0223FAC1296BFBD300B6B32C /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
+		0223FACE296C129200B6B32C /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0223FACD296C129200B6B32C /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		0223FAD0296C129200B6B32C /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0223FACD296C129200B6B32C /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		0223FADD296D329900B6B32C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0223FADC296D329900B6B32C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		0223FADF296D329900B6B32C /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0223FADC296D329900B6B32C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		0223FAE1296D329900B6B32C /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0223FADC296D329900B6B32C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		02544E3F29703E9F00F06385 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0223FADC296D329900B6B32C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 63AAAAF62967EA2600775EC3 /* Project object */;
 }
