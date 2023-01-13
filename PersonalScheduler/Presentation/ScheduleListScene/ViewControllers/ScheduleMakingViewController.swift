@@ -14,6 +14,7 @@ final class ScheduleMakingViewController: UIViewController {
 
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.keyboardDismissMode = .onDrag
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
