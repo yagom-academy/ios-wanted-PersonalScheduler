@@ -61,6 +61,13 @@ class ScheduleListViewController: UIViewController {
             .subscribe { [weak self] _ in
                 self?.scheduleTableview.reloadData()
             }
+        
+        scheduleViewModel.error
+            .subscribe { [weak self] error in
+                if let description = error {
+                    self?.showAlert(message: description)
+                }
+            }
     }
     
     private func loadSchedules() {

@@ -68,11 +68,12 @@ final class ScheduleDetailViewController: UIViewController {
     }
     
     private func bind() {
-        scheduleViewModel.error.subscribe { [weak self] error in
-            if let description = error {
-                self?.showAlert(message: description)
+        scheduleViewModel.error
+            .subscribe { [weak self] error in
+                if let description = error {
+                    self?.showAlert(message: description)
+                }
             }
-        }
     }
     
     private func createSchedule(_ id: UUID = UUID()) -> Schedule? {
@@ -81,14 +82,12 @@ final class ScheduleDetailViewController: UIViewController {
         
         guard title.isEmpty == false,
               content.isEmpty == false else {
-            showAlert(title: "저장 실패",
-                      message: "모든 항목을 입력해주세요.")
+            showAlert(AlertPhrase.insufficientInput)
             return nil
         }
         
         guard startDatePicker.selectedDate <= endDatePicker.selectedDate else {
-            showAlert(title: "저장 실패",
-                      message: "시작 날짜가 종료 날짜보다 이후일 수 없습니다.")
+            showAlert(AlertPhrase.impossibleDate)
             return nil
         }
         
@@ -223,7 +222,7 @@ extension ScheduleDetailViewController: UITextViewDelegate {
                   shouldChangeTextIn range: NSRange,
                   replacementText text: String) -> Bool {
         guard textView.text.count + text.count <= 500 else {
-            showAlert(message: "내용은 500자 이하만 가능합니다.")
+            showAlert(AlertPhrase.excessContent)
             return false
         }
         

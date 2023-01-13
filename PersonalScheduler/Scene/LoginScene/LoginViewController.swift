@@ -98,8 +98,8 @@ final class LoginViewController: UIViewController {
         guard UserApi.isKakaoTalkLoginAvailable() == true else { return }
         
         UserApi.shared.loginWithKakaoAccount { [weak self] oauthToken, error in
-            if let error = error {
-                self?.showAlert(message: "카카오 로그인에 실패했습니다.\n\(error.localizedDescription)")
+            if error != nil {
+                self?.showAlert(AlertPhrase.kakaoLoginFailed)
             } else {
                 if let token = oauthToken?.accessToken {
                     self?.presentScheduleListView(with: token)
@@ -121,6 +121,9 @@ final class LoginViewController: UIViewController {
     @objc private func facebookButtonTapped(_ notification: Notification) {
         if let token = AccessToken.current?.tokenString {
             presentScheduleListView(with: token)
+            return
         }
+        
+        showAlert(AlertPhrase.facebookLoginFailed)
     }
 }
