@@ -1,4 +1,4 @@
-## Personal Scheduler
+# Personal Scheduler
 
 **기간: 2023/01/09 ~ 2023/01/13**
 
@@ -6,7 +6,7 @@
 
 **제작자 소개:**
 
-<img src="https://avatars.githubusercontent.com/u/67148595?v=4" alt="img" style="zoom: 25%;" />
+<img src="https://avatars.githubusercontent.com/u/67148595?v=4" alt="img" style="zoom: 10%;" />
 
 **nickname: Neph**
 
@@ -14,9 +14,9 @@
 
 
 
-## 앱 작동화면 및 설명
+# 앱 작동화면 및 설명
 
-### [Onboarding](https://github.com/Neph3779/ios-wanted-PersonalScheduler/tree/main/PersonalScheduler/Presentation/OnboardingScene)
+## [Onboarding](https://github.com/Neph3779/ios-wanted-PersonalScheduler/tree/main/PersonalScheduler/Presentation/OnboardingScene)
 
 <img src="https://raw.githubusercontent.com/Neph3779/Blog-Image/forUpload/img/20230113212224.gif" alt="Simulator Screen Recording - iPhone 13 - 2023-01-13 at 21.13.08" style="zoom:33%;" />
 
@@ -25,7 +25,7 @@
 
 
 
-### [Schedule 관리 화면](https://github.com/Neph3779/ios-wanted-PersonalScheduler/tree/main/PersonalScheduler/Presentation/ScheduleListScene)
+## [Schedule 관리 화면](https://github.com/Neph3779/ios-wanted-PersonalScheduler/tree/main/PersonalScheduler/Presentation/ScheduleListScene)
 
 | ![mainPage](https://raw.githubusercontent.com/Neph3779/Blog-Image/forUpload/img/20230113212554.PNG) | ![expandableTextView](https://raw.githubusercontent.com/Neph3779/Blog-Image/forUpload/img/20230113212600.PNG) | ![deleteWithLongPress](https://raw.githubusercontent.com/Neph3779/Blog-Image/forUpload/img/20230113212604.PNG) |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
@@ -39,7 +39,7 @@
 
 
 
-### [Schedule 작성 화면](https://github.com/Neph3779/ios-wanted-PersonalScheduler/tree/main/PersonalScheduler/Presentation/ScheduleListScene)
+## [Schedule 작성 화면](https://github.com/Neph3779/ios-wanted-PersonalScheduler/tree/main/PersonalScheduler/Presentation/ScheduleListScene)
 
 | ![scheduleMaking](https://raw.githubusercontent.com/Neph3779/Blog-Image/forUpload/img/20230113214008.PNG) | ![errorMessage](https://raw.githubusercontent.com/Neph3779/Blog-Image/forUpload/img/20230113212845.PNG) | ![notification](https://raw.githubusercontent.com/Neph3779/Blog-Image/forUpload/img/20230113212851.PNG) |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
@@ -54,7 +54,7 @@
 
 
 
-## 적용한 아키텍쳐: Clean Architecture
+# 적용한 아키텍쳐: Clean Architecture
 
 ![image-20230113214316524](https://raw.githubusercontent.com/Neph3779/Blog-Image/forUpload/img/20230113214316.png)
 
