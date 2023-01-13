@@ -135,8 +135,7 @@ private extension ScheduleListViewController {
     
     func goToUpdateScheduleScene(schedule: ScheduleInfo) {
         let scheduleUpdateViewModel = ScheduleEditViewModel(schedule)
-        let scheduleUpdateViewController = ScheduleEditViewController(editType: .add, viewModel: scheduleUpdateViewModel)
-        let navigationController = UINavigationController(rootViewController: scheduleUpdateViewController)
-        self.navigationController?.present(navigationController, animated: true)
+        let scheduleUpdateViewController = ScheduleEditViewController(editType: .update, viewModel: scheduleUpdateViewModel)
+        navigationController?.pushViewController(scheduleUpdateViewController, animated: true)
     }
 }

@@ -21,6 +21,12 @@ final class ScheduleUseCase {
         try await fireStoreScehduleRepository.addSchedule(userId: userId, schedule)
     }
     
+    func updateSchedule(previousScehdule: ScheduleInfo, to newSchedule: ScheduleInfo) async throws {
+        let userId = try await keychainRepository.getUserId()
+        try await fireStoreScehduleRepository.deleteSchedule(userId: userId, previousScehdule)
+        try await fireStoreScehduleRepository.addSchedule(userId: userId, newSchedule)
+    }
+    
     func deleteSchedule(_ schedule: ScheduleInfo) async throws {
         let userId = try await keychainRepository.getUserId()
         try await fireStoreScehduleRepository.deleteSchedule(userId: userId, schedule)

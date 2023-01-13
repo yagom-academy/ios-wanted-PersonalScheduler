@@ -182,7 +182,13 @@ extension ScheduleEditViewController {
     }
     
     @objc private func saveSchedule() {
-        viewModel.addSchedule(title: titleTextField.text ?? "", time: dateTimePicker.date, content: contentTextView.text)
+        switch editType {
+        case .add:
+            viewModel.addSchedule(title: titleTextField.text ?? "", time: dateTimePicker.date, content: contentTextView.text)
+        case .update:
+            viewModel.updateSchedule(title: titleTextField.text ?? "", time: dateTimePicker.date, content: contentTextView.text)
+        }
+        
     }
     
     @objc private func cancel() {

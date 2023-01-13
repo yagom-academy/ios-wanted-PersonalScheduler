@@ -64,4 +64,33 @@ final class ScheduleEditViewModel: ScheduleEditViewModelType {
         }
         addScheduleTask?.cancel()
     }
+    
+    func updateSchedule(title: String, time: Date, content: String) {
+        guard let previousScehdule = schedule.value else { return }
+        let titleText = title.trimmingCharacters(in: .whitespaces)
+        let contentText = content.trimmingCharacters(in: .whitespaces)
+        
+        if titleText == "" {
+            self.error.value = "일정 제목을 입력해주세요"
+            return
+        }
+        
+        if contentText == "" {
+            self.error.value = "일정 내용을 입력해주세요"
+            return
+        }
+        
+        let schedule = ScheduleInfo(id: UUID().uuidString, title: titleText, time: time.timeIntervalSince1970, content: contentText)
+        
+        addScheduleTask = Task {
+            do {
+                try await scheduleUseCase.updateSchedule(previousScehdule: previousScehdule, to: schedule)
+                dismiss.value = true
+            }
+            catch {
+                self.error.value = error.localizedDescription
+            }
+        }
+        addScheduleTask?.cancel()
+    }
 }
