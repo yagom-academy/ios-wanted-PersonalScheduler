@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FBSDKLoginKit
 
 struct LoginView: View {
     
@@ -124,17 +123,4 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
     }
-}
-
-struct FBLog: UIViewRepresentable {
-    
-    func makeUIView(context: Context) -> FBLoginButton {
-        
-        let button = FBLoginButton()
-        
-        return button
-    }
-    
-    func updateUIView(_ uiView: FBLoginButton, context: Context) { }
-
 }
