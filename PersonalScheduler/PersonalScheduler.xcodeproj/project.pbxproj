@@ -26,6 +26,7 @@
 		FD4906F429700677002D4E05 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = FD4906F329700677002D4E05 /* FirebaseAnalytics */; };
 		FD4906F629700677002D4E05 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FD4906F529700677002D4E05 /* FirebaseFirestore */; };
 		FD4906F829700F33002D4E05 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906F729700F33002D4E05 /* FirebaseService.swift */; };
+		FD6E3A9A29718E7900D23B59 /* ScheduleEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6E3A9929718E7900D23B59 /* ScheduleEditingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		FD4906EE296FC8DB002D4E05 /* OAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthProvider.swift; sourceTree = "<group>"; };
 		FD4906F0296FD37C002D4E05 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD4906F729700F33002D4E05 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		FD6E3A9929718E7900D23B59 /* ScheduleEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEditingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				FD091B0A29706F8500A78DCD /* ScheduleAddingView.swift */,
+				FD6E3A9929718E7900D23B59 /* ScheduleEditingView.swift */,
 			);
 			path = ScheduleAddingView;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				FD4906ED296F8274002D4E05 /* LoginViewModel.swift in Sources */,
 				FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */,
 				FD4906BA296E8FF2002D4E05 /* PersonalSchedulerApp.swift in Sources */,
+				FD6E3A9A29718E7900D23B59 /* ScheduleEditingView.swift in Sources */,
 				FD4906E0296F2F89002D4E05 /* SceneDelegate.swift in Sources */,
 				FD091B0B29706F8500A78DCD /* ScheduleAddingView.swift in Sources */,
 				FD091B0829706F7700A78DCD /* ScheduleDTO.swift in Sources */,
