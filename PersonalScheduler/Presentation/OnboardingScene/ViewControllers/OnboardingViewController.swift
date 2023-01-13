@@ -48,6 +48,7 @@ final class OnboardingViewController: UIViewController {
         button.backgroundColor = .black
         button.setTitle("Apple로 로그인하기", for: .normal)
         button.titleLabel?.textColor = .white
+        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction { [weak self] action in
             self?.viewModel.appleLoginButtonTapped {
@@ -62,6 +63,7 @@ final class OnboardingViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Kakao로 로그인하기", for: .normal)
         button.titleLabel?.textColor = .white
+        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
         button.backgroundColor = .systemYellow
         button.addAction(UIAction { [weak self] action in
             self?.viewModel.kakaoLoginButtonTapped {
@@ -125,7 +127,8 @@ extension OnboardingViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
-        cell.setUpContents(image: viewModel.onboardingCardImages[indexPath.row])
+        cell.setUpContents(title: viewModel.onboardingCardTitles[indexPath.row],
+                           image: viewModel.onboardingCardImages[indexPath.row])
         return cell
     }
 }
