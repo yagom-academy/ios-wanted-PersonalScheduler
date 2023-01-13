@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FacebookLogin
 
 class MainViewController: UIViewController {
     
@@ -16,7 +17,8 @@ class MainViewController: UIViewController {
     }
     
     private enum Constant {
-        static var kakaobutton = "kakao_button_large"
+        static var kakaoButton = "kakao_button_large"
+        static var faceBookButton = ""
     }
 
     private var mainViewModel: MainViewModelable
@@ -70,12 +72,18 @@ class MainViewController: UIViewController {
         return label
     }()
     
-    private lazy var kakaobutton: UIButton = {
+    private lazy var kakaoButton: UIButton = {
         let button = UIButton(frame: .zero)
-        let image = UIImage(named: Constant.kakaobutton)
+        let image = UIImage(named: Constant.kakaoButton)
         
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(kakoLogin(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var facebookButton: UIButton = {
+        let button = FBLoginButton()
+        button.addTarget(self, action: #selector(faceBookLogin(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -83,23 +91,33 @@ class MainViewController: UIViewController {
         mainViewModel.login(loginType: .kakao)
     }
     
+    @objc func faceBookLogin(_ sender: UIButton) {
+        mainViewModel.login(loginType: .facebook)
+    }
+    
     
     private func setupView() {
         view.backgroundColor = .white
         
-        view.addSubviews(AppTitle)
+        view.addSubviews(AppTitle, kakaoButton, facebookButton)
         NSLayoutConstraint.activate([
             AppTitle.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: -100),
             AppTitle.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             AppTitle.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
         ])
         
-        view.addSubviews(kakaobutton)
         NSLayoutConstraint.activate([
-            kakaobutton.topAnchor.constraint(equalTo: AppTitle.bottomAnchor, constant: 150),
-            kakaobutton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            kakaobutton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
-            kakaobutton.heightAnchor.constraint(equalTo: kakaobutton.widthAnchor, multiplier: 0.2)
+            kakaoButton.topAnchor.constraint(equalTo: AppTitle.bottomAnchor, constant: 150),
+            kakaoButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            kakaoButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+            kakaoButton.heightAnchor.constraint(equalTo: kakaoButton.widthAnchor, multiplier: 0.2)
+        ])
+        
+        NSLayoutConstraint.activate([
+            facebookButton.topAnchor.constraint(equalTo: kakaoButton.bottomAnchor, constant: 20),
+            facebookButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            facebookButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+            facebookButton.heightAnchor.constraint(equalTo: kakaoButton.widthAnchor, multiplier: 0.2)
         ])
     }
 }

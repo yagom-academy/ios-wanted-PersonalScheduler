@@ -9,16 +9,19 @@ import UIKit
 import FirebaseCore
 import KakaoSDKAuth
 import KakaoSDKCommon
+import FacebookCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         KakaoSDK.initSDK(appKey: "5528ec17f06ec7fff082c9eb65548c8a")
+        ApplicationDelegate.shared.application(
+                    application,
+                    didFinishLaunchingWithOptions: launchOptions
+                )
         return true
     }
 

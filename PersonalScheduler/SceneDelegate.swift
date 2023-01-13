@@ -7,6 +7,7 @@
 
 import UIKit
 import KakaoSDKAuth
+import FacebookCore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -30,8 +31,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 if (AuthApi.isKakaoTalkLoginUrl(url)) {
                     _ = AuthController.handleOpenUrl(url: url)
                 }
+                ApplicationDelegate.shared.application(
+                    UIApplication.shared,
+                    open: url,
+                    sourceApplication: nil,
+                    annotation: [UIApplication.OpenURLOptionsKey.annotation]
+                )
             }
         }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

@@ -9,6 +9,7 @@ import Foundation
 
 enum LoginType: String {
     case kakao
+    case facebook
 }
 
 struct LoginInfo: FirebaseDatable {

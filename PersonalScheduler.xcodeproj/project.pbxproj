@@ -46,6 +46,9 @@
 		E1A647822970B5D700599F71 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A647812970B5D700599F71 /* String+Extension.swift */; };
 		E1A647842970B5E500599F71 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A647832970B5E500599F71 /* Date+Extension.swift */; };
 		E1A647862970B69500599F71 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A647852970B69500599F71 /* DateFormatter+Extension.swift */; };
+		E1A6478929713A5E00599F71 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = E1A6478829713A5E00599F71 /* FacebookCore */; };
+		E1A6478B29713A5E00599F71 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = E1A6478A29713A5E00599F71 /* FacebookLogin */; };
+		E1A6478D297158A800599F71 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A6478C297158A800599F71 /* FacebookLogin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +85,7 @@
 		E1A647812970B5D700599F71 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		E1A647832970B5E500599F71 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		E1A647852970B69500599F71 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		E1A6478C297158A800599F71 /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +94,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E131BF99296C5095003DC333 /* FirebaseDatabaseSwift in Frameworks */,
+				E1A6478929713A5E00599F71 /* FacebookCore in Frameworks */,
 				E131BF97296C5095003DC333 /* FirebaseDatabase in Frameworks */,
 				E131BF9E296C5128003DC333 /* AppAuthCore in Frameworks */,
 				E131BF9C296C5128003DC333 /* AppAuth in Frameworks */,
+				E1A6478B29713A5E00599F71 /* FacebookLogin in Frameworks */,
 				E131BF8C296C500A003DC333 /* KakaoSDK in Frameworks */,
 				E131BF95296C5095003DC333 /* FirebaseAuth in Frameworks */,
 				E131BF92296C500A003DC333 /* KakaoSDKCommonCore in Frameworks */,
@@ -156,6 +162,7 @@
 				E131BFA5296D7B01003DC333 /* Login.swift */,
 				E181D2DA296DFF6A00847DD7 /* LoginManager.swift */,
 				E131BFA7296D7B55003DC333 /* KakaoLogin.swift */,
+				E1A6478C297158A800599F71 /* FacebookLogin.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -273,6 +280,8 @@
 				E131BF98296C5095003DC333 /* FirebaseDatabaseSwift */,
 				E131BF9B296C5128003DC333 /* AppAuth */,
 				E131BF9D296C5128003DC333 /* AppAuthCore */,
+				E1A6478829713A5E00599F71 /* FacebookCore */,
+				E1A6478A29713A5E00599F71 /* FacebookLogin */,
 			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
@@ -306,6 +315,7 @@
 				E131BF8A296C5009003DC333 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				E131BF93296C5095003DC333 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				E131BF9A296C5128003DC333 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
+				E1A6478729713A5E00599F71 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
@@ -335,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1A6477C29702E2B00599F71 /* DetailViewModel.swift in Sources */,
+				E1A6478D297158A800599F71 /* FacebookLogin.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* MainViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				E1A49899296EFA30005C279B /* UIView+Extension.swift in Sources */,
@@ -604,6 +615,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		E1A6478729713A5E00599F71 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -651,6 +670,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E131BF9A296C5128003DC333 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
 			productName = AppAuthCore;
+		};
+		E1A6478829713A5E00599F71 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1A6478729713A5E00599F71 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		E1A6478A29713A5E00599F71 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1A6478729713A5E00599F71 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

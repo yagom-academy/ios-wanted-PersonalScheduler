@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FacebookLogin
 
 protocol MainvViewModelInput {
     func viewDidLoad()
@@ -45,27 +46,34 @@ final class MainViewModel: MainViewModelable {
         switch loginType {
         case .kakao:
             let kakao = KakaoLogin()
-            let _ = kakao.getId().observe(on: self) { [weak self] result in
-                switch result {
-                case .success(let id):
-                    guard let self = self else { return }
-                    let logininfo = LoginInfo(id: id, loginType: .kakao)
-                    let observeUserId = self.loginManager.getUserId(loginInfo: logininfo)
-                    observeUserId.observe(on: self, observerBlock: { result in
-                        switch result {
-                        case .success(let userId):
-                            self.userId.value = userId
-                            UserDefaults.standard.setValue(userId, forKey: Constant.userDefaultKey)
-                        case .failure(let error):
-                            self.errorMessage.value = error.localizedDescription
-                        case .none:
-                            break
-                        }})
-                case .failure(let error):
-                    self?.errorMessage.value = error.localizedDescription
-                case .none:
-                    break
-                }
+            setLoginObserver(login: kakao, type: .kakao)
+        case .facebook:
+            let facebook = FacebookLogin()
+            setLoginObserver(login: facebook, type: .facebook)
+        }
+    }
+    
+    private func setLoginObserver(login: Login, type: LoginType) {
+        let _ = login.getId().observe(on: self) { [weak self] result in
+            switch result {
+            case .success(let id):
+                guard let self = self else { return }
+                let logininfo = LoginInfo(id: id, loginType: type)
+                let observeUserId = self.loginManager.getUserId(loginInfo: logininfo)
+                observeUserId.observe(on: self, observerBlock: { result in
+                    switch result {
+                    case .success(let userId):
+                        self.userId.value = userId
+                        UserDefaults.standard.setValue(userId, forKey: Constant.userDefaultKey)
+                    case .failure(let error):
+                        self.errorMessage.value = error.localizedDescription
+                    case .none:
+                        break
+                    }})
+            case .failure(let error):
+                self?.errorMessage.value = error.localizedDescription
+            case .none:
+                break
             }
         }
     }
