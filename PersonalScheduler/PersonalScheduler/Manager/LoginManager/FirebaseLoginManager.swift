@@ -19,7 +19,13 @@ final class FirebaseLoginManager {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
-                completion(.failure(.badPassword))
+                Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                    if let error = error {
+                        print("Error: \(error.localizedDescription)")
+                    }
+                    Auth.auth().signIn(withEmail: email, password: password, completion: nil)
+                    completion(.success(KakaoInfo(uid: Auth.auth().currentUser?.uid ?? "", email: email, password: password)))
+                }
             } else {
                 completion(.success(KakaoInfo(uid: Auth.auth().currentUser?.uid ?? "", email: email, password: password)))
                 print(password)
@@ -31,8 +37,8 @@ final class FirebaseLoginManager {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
-                Auth.auth().signIn(withEmail: email, password: password, completion: nil)
             }
+            Auth.auth().signIn(withEmail: email, password: password, completion: nil)
         }
     }
     
