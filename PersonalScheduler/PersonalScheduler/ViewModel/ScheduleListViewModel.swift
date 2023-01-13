@@ -34,13 +34,12 @@ final class ScheduleListViewModel: ObservableObject {
     }
     
     func logout() {
-        self.buttonAlert = .logout
+        buttonAlert = .logout
         firebaseLoginManager.handleLogout()
         facebookLoginManager.logoutFacebook()
         Task {
             await kakaoLoginManager.handleLogout()
         }
-        UserDefaults.standard.removeObject(forKey: UserInfoData.id)
-        UserDefaults.standard.removeObject(forKey: UserInfoData.password)
     }
+    
 }

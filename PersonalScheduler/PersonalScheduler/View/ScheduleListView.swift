@@ -38,7 +38,7 @@ struct ScheduleListView: View {
                         $0.startTimeStamp.translateToDate() > $1.startTimeStamp.translateToDate()}), id: \.startTimeStamp) { data in
                             NavigationLink {
                                 ScheduleAddView(
-                                    isEditing: true,
+                                    isEditMode: true,
                                     accountUID: accountUID,
                                     uuid: data.id,
                                     title: data.title,
@@ -47,11 +47,13 @@ struct ScheduleListView: View {
                                     endTimeStamp: data.endTimeStamp.translateToDate()
                                 )
                             } label: {
-                                let compareDate = data.endTimeStamp.translateToDate().compare(Date().translateToDateFormat())
+                                let compareDate = data.endTimeStamp.translateToDate().compare(
+                                    Date().translateToDateFormat()
+                                )
                                 
                                 ScheduleListCellView(
                                     compareResult: compareDate,
-                                    title: data.title, 
+                                    title: data.title,
                                     startTimeStamp: data.startTimeStamp,
                                     endTimeStamp: data.endTimeStamp,
                                     description: data.description

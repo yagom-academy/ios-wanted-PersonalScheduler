@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScheduleAddView: View {
     
-    var isEditing: Bool = false
+    var isEditMode: Bool = false
     var accountUID: String = ""
     var uuid: String = ""
     
@@ -71,7 +71,7 @@ struct ScheduleAddView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding()
-        .navigationBarTitle(isEditing == false ? "등록 화면" : "편집 화면")
+        .navigationBarTitle(isEditMode == false ? "등록 화면" : "편집 화면")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             Button {
@@ -86,7 +86,7 @@ struct ScheduleAddView: View {
                 let alert = Alert(
                     title: Text("저장 하시겠습니까?"),
                     primaryButton: .default(Text("확인"), action: {
-                        if isEditing {
+                        if isEditMode {
                             scheduleAddViewModel.editSchedule(
                                 accountUID: accountUID,
                                 uuid: uuid,

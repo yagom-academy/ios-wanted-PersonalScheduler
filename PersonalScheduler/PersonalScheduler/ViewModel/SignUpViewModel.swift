@@ -30,9 +30,8 @@ final class SignUpViewModel: ObservableObject {
             
             guard let user = result?.user else { return }
             self?.loginResultAlert = .success
-            print(user.uid)
         }
-        isActiveAlert.toggle()
+        isActiveAlert = true
     }
     
 }

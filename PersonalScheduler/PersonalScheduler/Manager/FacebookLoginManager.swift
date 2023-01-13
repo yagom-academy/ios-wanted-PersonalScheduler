@@ -28,4 +28,5 @@ final class FacebookLoginManager {
     func logoutFacebook() {
         loginManager.logOut()
     }
+    
 }

@@ -60,7 +60,7 @@ struct LoginView: View {
                 }
                 
                 Button {
-                    loginViewModel.kakaoLogIn()
+                    loginViewModel.kakaoLogin()
                 } label: {
                     Image(uiImage: UIImage(named: "KakoLoginImageButton")!)
                         .resizable()
@@ -68,7 +68,7 @@ struct LoginView: View {
                 }
                 .padding(.top, 50)
                 Button {
-                    loginViewModel.facebookLogIn()
+                    loginViewModel.facebookLogin()
                 } label: {
                     FBLog()
                         .frame(width: 80, height: 50)
@@ -84,7 +84,7 @@ struct LoginView: View {
             .padding()
             .navigationTitle("Personal Scheduler")
             .navigationBarTitleDisplayMode(.large)
-            .fullScreenCover(isPresented: $loginViewModel.isLoggedIn) {
+            .fullScreenCover(isPresented: $loginViewModel.isCheckLogin) {
                 ScheduleListView(accountUID: loginViewModel.accountUID)
             }
             .alert(isPresented: $loginViewModel.isActiveAlert) {
@@ -93,20 +93,22 @@ struct LoginView: View {
                     let alert = Alert(
                         title: Text("환영 합니다~"),
                         primaryButton: .default(Text("확인"), action: {
-                            loginViewModel.isLoggedIn.toggle()
+                            loginViewModel.isCheckLogin = true
                         }),
                         secondaryButton: .cancel()
                     )
                     return alert
                 case .fail:
-                    let alert = Alert(title: Text("Error"),
-                                      message: Text(loginViewModel.errorMessage),
-                                      dismissButton: .cancel()
+                    let alert = Alert(
+                        title: Text("Error"),
+                        message: Text(loginViewModel.errorMessage),
+                        dismissButton: .cancel()
                     )
                     return alert
                 case .normal:
-                    let alert = Alert(title: Text("Checking..."),
-                                      dismissButton: .cancel()
+                    let alert = Alert(
+                        title: Text("Checking..."),
+                        dismissButton: .cancel()
                     )
                     return alert
                 }

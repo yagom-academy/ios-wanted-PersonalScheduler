@@ -44,4 +44,5 @@ final class ScheduleAddViewModel: ObservableObject {
         notificationManager.cancelNotification(uuid: uuid)
         notificationManager.scheduleNotification(uuid: uuid, title: title, subtitle: description, Date: endTimeStamp)
     }
+    
 }

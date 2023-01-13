@@ -45,20 +45,23 @@ struct SignUpView: View {
         .alert(isPresented: $signUpViewModel.isActiveAlert) {
             switch signUpViewModel.loginResultAlert {
             case .success:
-                let alert = Alert(title: Text("Success"),
-                                  message: Text("Welcom!!"),
-                                  dismissButton: .cancel()
+                let alert = Alert(
+                    title: Text("Success"),
+                    message: Text("Welcom!!"),
+                    dismissButton: .cancel()
                 )
                 return alert
             case .fail:
-                let alert = Alert(title: Text("Error"),
-                                  message: Text(signUpViewModel.errorMessage),
-                                  dismissButton: .cancel()
+                let alert = Alert(
+                    title: Text("Error"),
+                    message: Text(signUpViewModel.errorMessage),
+                    dismissButton: .cancel()
                 )
                 return alert
             case .normal:
-                let alert = Alert(title: Text("Checking..."),
-                                  dismissButton: .cancel()
+                let alert = Alert(
+                    title: Text("Checking..."),
+                    dismissButton: .cancel()
                 )
                 return alert
             }

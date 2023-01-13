@@ -19,8 +19,8 @@ final class LoginViewModel: ObservableObject {
     private let firebaseLoginManager = FirebaseLoginManager()
     private let kakaoLoginManager = KakaoLoginManager()
     
-    @Published var isAutoLogin = true
-    @Published var isLoggedIn: Bool = false
+    @Published var isAutoLogin: Bool = true
+    @Published var isCheckLogin: Bool = false
     @Published var isActiveAlert: Bool = false
     @Published var accountUID: String = ""
     @Published var email: String = ""
@@ -30,13 +30,11 @@ final class LoginViewModel: ObservableObject {
     
     func checkAutoLoginInfo() {
         isAutoLogin = UserDefaults.standard.bool(forKey: UserInfoData.isAutoLogin)
-
         if isAutoLogin {
-            if let userId = UserDefaults.standard.string(forKey: UserInfoData.id) {
-                self.email = userId
-                self.password = UserDefaults.standard.string(forKey: UserInfoData.password) ?? ""
-                
-                firebaseLogin()
+            if Auth.auth().currentUser?.uid != nil {
+                self.accountUID = Auth.auth().currentUser?.uid ?? ""
+                self.loginResultAlert = .success
+                isActiveAlert = true
             }
         }
     }
@@ -54,46 +52,40 @@ final class LoginViewModel: ObservableObject {
             self?.accountUID = user.uid
             self?.loginResultAlert = .success
         }
-        isActiveAlert.toggle()
-        
-        if isAutoLogin {
-            UserDefaults.standard.set(self.email, forKey: UserInfoData.id)
-            UserDefaults.standard.set(self.password, forKey: UserInfoData.password)
-        }
+        isActiveAlert = true
     }
     
     @MainActor
-    func kakaoLogIn() {
+    func kakaoLogin() {
         Task {
-            if await kakaoLoginManager.handleLogin(completion: { [weak self] response in
-                switch response {
+            if await kakaoLoginManager.handleLogin(completion: { [weak self] result in
+                switch result {
+                case .success(let user):
+                    self?.accountUID = user.uid
+                    self?.isCheckLogin = true
                     
-                case .success(let data):
-                    self?.accountUID = data.uid
-                    self?.isLoggedIn = true
-                    if ((self?.isAutoLogin) != nil) {
-                        UserDefaults.standard.set(data.email, forKey: UserInfoData.id)
-                        UserDefaults.standard.set(data.password, forKey: UserInfoData.password)
-                    }
-                case .failure(_):
-                    print("error")
+                case .failure(let error):
+                    print("Error : \(error.localizedDescription)")
+                    self?.errorMessage = error.localizedDescription
+                    self?.loginResultAlert = .fail
                 }
-            }) {
-                isLoggedIn = false
-            }
+            }) { }
         }
     }
     
-    func facebookLogIn() {
+    func facebookLogin() {
         firebaseLoginManager.loginWithFacebook { [weak self] result in
             switch result {
             case .success(let user):
                 self?.accountUID = user.uid
-                self?.isLoggedIn = true
+                self?.isCheckLogin = true
+                
             case .failure(let error):
-                print(error.localizedDescription)
-                self?.isLoggedIn = false
+                print("Error : \(error.localizedDescription)")
+                self?.errorMessage = error.localizedDescription
+                self?.loginResultAlert = .fail
             }
         }
     }
+    
 }
