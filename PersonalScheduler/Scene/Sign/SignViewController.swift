@@ -64,6 +64,8 @@ final class SignViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.autoLogInCheck()
     }
     
     // MARK: - Functions

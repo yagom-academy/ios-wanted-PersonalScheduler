@@ -37,19 +37,13 @@ final class AuthUseCase {
         return appleAuthRespository.authorizationController
     }
     
-    func autoLoginCheck() async throws -> Bool {
+    func checKakaoAutoSign() async throws -> Bool {
         return try await kakaoAuthRepository.autoLogInCheck()
     }
-
-    func Logout(offset: Int, count: Int) {
-//        let fetchRequest = MotionInfo.fetchRequest()
-//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: MotionInfo.Constant.date, ascending: false)]
-//        fetchRequest.fetchOffset = offset
-//        fetchRequest.fetchLimit = count
-//
-//        let motions = coreDataManager.fetch(fetchRequest)
-//
-//        return motions?.map { MotionInformation(model: $0) }
+    
+    func checAppleAutoSign() async throws -> Bool {
+        let userId = try await keychainRepository.getUserId()
+        return try await appleAuthRespository.checkAutoSign(userId: userId)
     }
 }
 

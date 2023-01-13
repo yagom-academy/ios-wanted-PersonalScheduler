@@ -44,9 +44,14 @@ final class SignViewModel: SignViewModellType {
     func autoLogInCheck() {
         self.autoSignTask = Task.detached(operation: {
             do {
-                let result = try await self.authUseCase.autoLoginCheck()
-                if result {
-                    print("다음 화면으로 넘어가기")
+                let kakaoResult = try await self.authUseCase.checKakaoAutoSign()
+                if kakaoResult {
+                    self.goToListScene.value = true
+                } else {
+                    let appleResult = try await self.authUseCase.checAppleAutoSign()
+                    if appleResult {
+                        self.goToListScene.value = true
+                    }
                 }
             }
             catch {

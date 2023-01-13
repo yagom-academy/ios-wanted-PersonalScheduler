@@ -27,6 +27,28 @@ final class AppleAuthRespository: NSObject {
             authorizationController.performRequests()
         }
     }
+    
+    func checkAutoSign(userId: String) async throws -> Bool {
+        return try await withCheckedThrowingContinuation { continuation in
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            appleIDProvider.getCredentialState(forUserID: userId) { credentialState, error in
+                switch credentialState {
+                  case .authorized:
+                    continuation.resume(returning: true)
+                    break
+                  case .revoked:
+                    continuation.resume(returning: false)
+                    break
+                  case .notFound:
+                    continuation.resume(returning: false)
+                    break
+                  default:
+                    continuation.resume(returning: false)
+                    break
+                  }
+            }
+        }
+    }
 }
 
 extension AppleAuthRespository: ASAuthorizationControllerDelegate {
