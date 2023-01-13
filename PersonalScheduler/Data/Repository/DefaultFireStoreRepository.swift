@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 
-final class FireStoreRepository {
+final class DefaultFireStoreRepository: FireStoreRepository {
     
     private let firebaseStorage = FirebaseStorage.shared
     private let collectionString = "User"

@@ -19,17 +19,21 @@
 		F36653392970797F00B359A8 /* KeyChainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36653382970797F00B359A8 /* KeyChainError.swift */; };
 		F366533C297079A300B359A8 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366533B297079A300B359A8 /* FirebaseError.swift */; };
 		F366533E29707A9D00B359A8 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366533D29707A9D00B359A8 /* UserUseCase.swift */; };
-		F366534029707EDD00B359A8 /* KeyChainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366533F29707EDD00B359A8 /* KeyChainRepository.swift */; };
+		F366534029707EDD00B359A8 /* DefaultKeyChainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366533F29707EDD00B359A8 /* DefaultKeyChainRepository.swift */; };
 		F366534329708BA000B359A8 /* TImeInterval+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366534229708BA000B359A8 /* TImeInterval+extension.swift */; };
+		F366534629718FBD00B359A8 /* KakaoAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366534529718FBD00B359A8 /* KakaoAuthRepository.swift */; };
+		F36653482971903A00B359A8 /* AppleAuthRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36653472971903A00B359A8 /* AppleAuthRespository.swift */; };
+		F366534A2971909300B359A8 /* FireStoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36653492971909300B359A8 /* FireStoreRepository.swift */; };
+		F366534C297190CF00B359A8 /* KeyChainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366534B297190CF00B359A8 /* KeyChainRepository.swift */; };
 		F39EDDD7296DBA7B00A4E655 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDD6296DBA7B00A4E655 /* SignViewController.swift */; };
 		F39EDDD9296DBBA400A4E655 /* SignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDD8296DBBA400A4E655 /* SignViewModel.swift */; };
 		F39EDDDD296DBD1100A4E655 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDDC296DBD1100A4E655 /* BaseViewController.swift */; };
 		F39EDDED296DD41E00A4E655 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F39EDDEC296DD41E00A4E655 /* KakaoSDKAuth */; };
 		F39EDDEF296DD41E00A4E655 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = F39EDDEE296DD41E00A4E655 /* KakaoSDKUser */; };
-		F39EDDF8296F22F600A4E655 /* KakaoAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDF7296F22F600A4E655 /* KakaoAuthRepository.swift */; };
-		F39EDDFA296F2A5800A4E655 /* AppleAuthRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDF9296F2A5800A4E655 /* AppleAuthRespository.swift */; };
+		F39EDDF8296F22F600A4E655 /* DefaultKakaoAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDF7296F22F600A4E655 /* DefaultKakaoAuthRepository.swift */; };
+		F39EDDFA296F2A5800A4E655 /* DefaultAppleAuthRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDF9296F2A5800A4E655 /* DefaultAppleAuthRespository.swift */; };
 		F39EDDFC296F2A6C00A4E655 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDFB296F2A6C00A4E655 /* AuthUseCase.swift */; };
-		F39EDDFE296F2C6700A4E655 /* FireStoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDFD296F2C6700A4E655 /* FireStoreRepository.swift */; };
+		F39EDDFE296F2C6700A4E655 /* DefaultFireStoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDFD296F2C6700A4E655 /* DefaultFireStoreRepository.swift */; };
 		F39EDE02296F2EA600A4E655 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE01296F2EA600A4E655 /* Observable.swift */; };
 		F39EDE06296F49D400A4E655 /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE05296F49D400A4E655 /* ScheduleListViewController.swift */; };
 		F39EDE0A296FFA4200A4E655 /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE09296FFA4200A4E655 /* ScheduleListViewModel.swift */; };
@@ -60,15 +64,19 @@
 		F36653382970797F00B359A8 /* KeyChainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainError.swift; sourceTree = "<group>"; };
 		F366533B297079A300B359A8 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		F366533D29707A9D00B359A8 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
-		F366533F29707EDD00B359A8 /* KeyChainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainRepository.swift; sourceTree = "<group>"; };
+		F366533F29707EDD00B359A8 /* DefaultKeyChainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeyChainRepository.swift; sourceTree = "<group>"; };
 		F366534229708BA000B359A8 /* TImeInterval+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TImeInterval+extension.swift"; sourceTree = "<group>"; };
+		F366534529718FBD00B359A8 /* KakaoAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAuthRepository.swift; sourceTree = "<group>"; };
+		F36653472971903A00B359A8 /* AppleAuthRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthRespository.swift; sourceTree = "<group>"; };
+		F36653492971909300B359A8 /* FireStoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreRepository.swift; sourceTree = "<group>"; };
+		F366534B297190CF00B359A8 /* KeyChainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainRepository.swift; sourceTree = "<group>"; };
 		F39EDDD6296DBA7B00A4E655 /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 		F39EDDD8296DBBA400A4E655 /* SignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewModel.swift; sourceTree = "<group>"; };
 		F39EDDDC296DBD1100A4E655 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		F39EDDF7296F22F600A4E655 /* KakaoAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAuthRepository.swift; sourceTree = "<group>"; };
-		F39EDDF9296F2A5800A4E655 /* AppleAuthRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthRespository.swift; sourceTree = "<group>"; };
+		F39EDDF7296F22F600A4E655 /* DefaultKakaoAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKakaoAuthRepository.swift; sourceTree = "<group>"; };
+		F39EDDF9296F2A5800A4E655 /* DefaultAppleAuthRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppleAuthRespository.swift; sourceTree = "<group>"; };
 		F39EDDFB296F2A6C00A4E655 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
-		F39EDDFD296F2C6700A4E655 /* FireStoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreRepository.swift; sourceTree = "<group>"; };
+		F39EDDFD296F2C6700A4E655 /* DefaultFireStoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFireStoreRepository.swift; sourceTree = "<group>"; };
 		F39EDE01296F2EA600A4E655 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		F39EDE05296F49D400A4E655 /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
 		F39EDE08296FEEE800A4E655 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
@@ -175,6 +183,17 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		F366534429718EBA00B359A8 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F366534529718FBD00B359A8 /* KakaoAuthRepository.swift */,
+				F36653472971903A00B359A8 /* AppleAuthRespository.swift */,
+				F36653492971909300B359A8 /* FireStoreRepository.swift */,
+				F366534B297190CF00B359A8 /* KeyChainRepository.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
 		F39EDDD3296DA91D00A4E655 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +244,7 @@
 		F39EDDF2296F19D800A4E655 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F366534429718EBA00B359A8 /* Interfaces */,
 				F39EDDF4296F19E900A4E655 /* Entities */,
 				F39EDDF6296F1F5800A4E655 /* UseCase */,
 			);
@@ -251,10 +271,10 @@
 		F39EDDF5296F19EF00A4E655 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				F39EDDF7296F22F600A4E655 /* KakaoAuthRepository.swift */,
-				F39EDDF9296F2A5800A4E655 /* AppleAuthRespository.swift */,
-				F39EDDFD296F2C6700A4E655 /* FireStoreRepository.swift */,
-				F366533F29707EDD00B359A8 /* KeyChainRepository.swift */,
+				F39EDDF7296F22F600A4E655 /* DefaultKakaoAuthRepository.swift */,
+				F39EDDF9296F2A5800A4E655 /* DefaultAppleAuthRespository.swift */,
+				F39EDDFD296F2C6700A4E655 /* DefaultFireStoreRepository.swift */,
+				F366533F29707EDD00B359A8 /* DefaultKeyChainRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -404,15 +424,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F366534C297190CF00B359A8 /* KeyChainRepository.swift in Sources */,
 				F39EDE02296F2EA600A4E655 /* Observable.swift in Sources */,
 				F36653372970796D00B359A8 /* KeyChainAccount.swift in Sources */,
 				F39EDE0C296FFA7000A4E655 /* ScheduleInfo.swift in Sources */,
-				F366534029707EDD00B359A8 /* KeyChainRepository.swift in Sources */,
+				F366534029707EDD00B359A8 /* DefaultKeyChainRepository.swift in Sources */,
 				F36653392970797F00B359A8 /* KeyChainError.swift in Sources */,
-				F39EDDF8296F22F600A4E655 /* KakaoAuthRepository.swift in Sources */,
+				F39EDDF8296F22F600A4E655 /* DefaultKakaoAuthRepository.swift in Sources */,
 				F39EDDD9296DBBA400A4E655 /* SignViewModel.swift in Sources */,
 				F39EDDFC296F2A6C00A4E655 /* AuthUseCase.swift in Sources */,
 				F3665330297036E800B359A8 /* ScheduleEditViewModel.swift in Sources */,
+				F366534A2971909300B359A8 /* FireStoreRepository.swift in Sources */,
 				F39EDE0F296FFB8600A4E655 /* ScheduleTableViewCell.swift in Sources */,
 				F39EDE0A296FFA4200A4E655 /* ScheduleListViewModel.swift in Sources */,
 				F39EDE06296F49D400A4E655 /* ScheduleListViewController.swift in Sources */,
@@ -426,11 +448,13 @@
 				F36653342970793A00B359A8 /* KeyChainStorage.swift in Sources */,
 				F366532B297029CC00B359A8 /* ScheduleEditViewController.swift in Sources */,
 				F39EDE11296FFC6000A4E655 /* ScheduleUseCase.swift in Sources */,
-				F39EDDFA296F2A5800A4E655 /* AppleAuthRespository.swift in Sources */,
+				F39EDDFA296F2A5800A4E655 /* DefaultAppleAuthRespository.swift in Sources */,
 				F366534329708BA000B359A8 /* TImeInterval+extension.swift in Sources */,
 				F39EDE2029700D0200A4E655 /* FirebaseStorage.swift in Sources */,
+				F366534629718FBD00B359A8 /* KakaoAuthRepository.swift in Sources */,
+				F36653482971903A00B359A8 /* AppleAuthRespository.swift in Sources */,
 				F39EDE2229701E5700A4E655 /* ScheduleDataSource.swift in Sources */,
-				F39EDDFE296F2C6700A4E655 /* FireStoreRepository.swift in Sources */,
+				F39EDDFE296F2C6700A4E655 /* DefaultFireStoreRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

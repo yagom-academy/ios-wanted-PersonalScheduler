@@ -8,8 +8,14 @@
 import Foundation
 
 final class ScheduleUseCase {
-    let fireStoreScehduleRepository = FireStoreRepository()
-    let keychainRepository: KeyChainRepository = KeyChainRepository()
+    
+    let fireStoreScehduleRepository: FireStoreRepository
+    let keychainRepository: KeyChainRepository
+    
+    init() {
+        self.fireStoreScehduleRepository = DefaultFireStoreRepository()
+        self.keychainRepository = DefaultKeyChainRepository()
+    }
     
     func getScheduleList() async throws -> [ScheduleInfo] {
         let userId = try await keychainRepository.getUserId()

@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class KeyChainRepository {
+final class DefaultKeyChainRepository: KeyChainRepository {
     
     private let keyChainStorage = KeyChainStorage.shared
     

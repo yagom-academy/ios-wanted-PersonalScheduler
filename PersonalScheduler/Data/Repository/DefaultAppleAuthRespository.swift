@@ -8,7 +8,7 @@
 import Foundation
 import AuthenticationServices
 
-final class AppleAuthRespository: NSObject {
+final class DefaultAppleAuthRespository: NSObject, AppleAuthRespository {
     
     private var authcontinuation: CheckedContinuation<String, Error>?
     
@@ -20,7 +20,7 @@ final class AppleAuthRespository: NSObject {
         authorizationController.delegate = self
         return authorizationController
     }()
-    
+     
     func loginWithApple() async throws -> String {
         return try await withCheckedThrowingContinuation { continuation in
             authcontinuation = continuation
@@ -51,7 +51,7 @@ final class AppleAuthRespository: NSObject {
     }
 }
 
-extension AppleAuthRespository: ASAuthorizationControllerDelegate {
+extension DefaultAppleAuthRespository: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             authcontinuation?.resume(returning: appleIDCredential.user)

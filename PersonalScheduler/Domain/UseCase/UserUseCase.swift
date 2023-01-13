@@ -8,8 +8,13 @@
 import Foundation
 
 final class UserUseCase {
-    let fireStoreScehduleRepository = FireStoreRepository()
-    let keychainRepository: KeyChainRepository = KeyChainRepository()
+    let fireStoreScehduleRepository: FireStoreRepository
+    let keychainRepository: KeyChainRepository
+    
+    init() {
+        self.fireStoreScehduleRepository = DefaultFireStoreRepository()
+        self.keychainRepository = DefaultKeyChainRepository()
+    }
     
     func setUserDocumentation() async throws {
         let userId = try await keychainRepository.getUserId()

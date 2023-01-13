@@ -14,11 +14,15 @@ enum AuthType {
 
 final class AuthUseCase {
     
-    let kakaoAuthRepository: KakaoAuthRepository = KakaoAuthRepository()
-    let appleAuthRespository: AppleAuthRespository = AppleAuthRespository()
-    let keychainRepository: KeyChainRepository = KeyChainRepository()
+    let kakaoAuthRepository: KakaoAuthRepository
+    let appleAuthRespository: AppleAuthRespository
+    let keychainRepository: KeyChainRepository
     
-    init() { }
+    init() {
+        self.kakaoAuthRepository = DefaultKakaoAuthRepository()
+        self.appleAuthRespository = DefaultAppleAuthRespository()
+        self.keychainRepository = DefaultKeyChainRepository()
+    }
     
     func login(authType: AuthType) async throws {
         switch authType {

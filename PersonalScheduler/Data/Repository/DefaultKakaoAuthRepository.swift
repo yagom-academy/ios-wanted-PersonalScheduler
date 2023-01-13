@@ -10,7 +10,7 @@ import KakaoSDKAuth
 import KakaoSDKUser
 import KakaoSDKCommon
 
-final class KakaoAuthRepository {
+final class DefaultKakaoAuthRepository: KakaoAuthRepository {
     
     /// 카카오톡 어플이 설치되어있는지 확인하는 로직
     func isKakaoTalkLoginAvailable() async throws -> String {
@@ -32,24 +32,8 @@ final class KakaoAuthRepository {
 
 }
 
-// MARK: - Logout
-extension KakaoAuthRepository {
-
-    func logoutWithKakao(completion: @escaping (Result<Void, Error>) -> Void) {
-        UserApi.shared.logout {(error) in
-            if let error = error {
-                print(error)
-            }
-            else {
-                print("logout() success.")
-            }
-        }
-    }
-
-}
-
 // MARK: - Token
-extension KakaoAuthRepository {
+extension DefaultKakaoAuthRepository {
     
     func autoLogInCheck() async throws -> Bool {
         return try await withCheckedThrowingContinuation { continuation in
@@ -84,7 +68,7 @@ extension KakaoAuthRepository {
 
 
 // MARK: - Login
-private extension KakaoAuthRepository {
+private extension DefaultKakaoAuthRepository {
 
     /// 카카오톡 어플을 통해 로그인합니다.
     func loginWithKakaoTalk(completion: @escaping (Result<String, Error>) -> Void) {
@@ -114,7 +98,7 @@ private extension KakaoAuthRepository {
 }
 
 // MARK: - UserInfo
-extension KakaoAuthRepository {
+extension DefaultKakaoAuthRepository {
 
     /// 카카오톡 유저 id를 반환합니다.
     func userId() async throws -> Int64 {
