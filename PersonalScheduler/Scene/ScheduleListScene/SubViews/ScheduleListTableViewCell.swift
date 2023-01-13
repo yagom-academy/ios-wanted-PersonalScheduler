@@ -31,6 +31,7 @@ final class ScheduleListTableViewCell: UITableViewCell {
         label.font = .preferredFont(forTextStyle: .title3)
         label.font = .boldSystemFont(ofSize: label.font.pointSize)
         label.textColor = .label
+        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -45,11 +46,29 @@ final class ScheduleListTableViewCell: UITableViewCell {
         return label
     }()
     
+    private let startTimeLabel: UILabel = {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .callout)
+        label.textColor = .label
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        label.adjustsFontForContentSizeCategory = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private let scheduleStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.spacing = 0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private let titleStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -75,6 +94,7 @@ final class ScheduleListTableViewCell: UITableViewCell {
     func congigure(with schedule: Schedule) {
         titleLabel.text = schedule.title
         contentLabel.text = schedule.content
+        startTimeLabel.text = schedule.startTime.convertToString(isOnlyTime: true)
         changeBellImage(schedule.isNotified, Date() > schedule.startTime)
         changeHighlight(schedule.endTime)
     }
@@ -115,7 +135,10 @@ extension ScheduleListTableViewCell {
     }
     
     private func addSubView() {
-        scheduleStackView.addArrangedSubview(titleLabel)
+        titleStackView.addArrangedSubview(titleLabel)
+        titleStackView.addArrangedSubview(startTimeLabel)
+        
+        scheduleStackView.addArrangedSubview(titleStackView)
         scheduleStackView.addArrangedSubview(contentLabel)
 
         entireStackView.addArrangedSubview(bellImageView)
