@@ -53,11 +53,14 @@ struct SecondView: View {
                     Button {
                         print("추가")
                     } label: {
-                        Image(systemName: "plus")
-                            .font(.largeTitle)
-                            .padding()
-                            .background(.yellow)
-                            .clipShape(Circle())
+                        ZStack {
+                            Image(systemName: "plus")
+                                .font(.largeTitle)
+                                .padding()
+                                .clipShape(Circle())
+                        }
+                        .background(Color.yellow)
+                        .clipShape(Circle())
                     }
                         .padding([.trailing], 30)
                     ,alignment: .bottomTrailing
