@@ -75,8 +75,9 @@ final class ScheduleCollectionViewCell: UICollectionViewCell {
     func setUpContents(section: ScheduleListViewController.ScheduleSection, schedule: Schedule) {
         titleLabel.text = schedule.title
         descriptionLabel.text = schedule.description
-        startTimeLabel.text = schedule.startDate.toString()
-        endTimeLabel.text = schedule.endDate.toString()
+        let isStartEndSameDay = Calendar.current.isDate(schedule.startDate, inSameDayAs: schedule.endDate)
+        startTimeLabel.text = schedule.startDate.toString(isStartEndSameDay: isStartEndSameDay)
+        endTimeLabel.text = schedule.endDate.toString(isStartEndSameDay: isStartEndSameDay)
         stateBar.backgroundColor = section.stateColor
     }
 
@@ -111,10 +112,14 @@ final class ScheduleCollectionViewCell: UICollectionViewCell {
 }
 
 fileprivate extension Date {
-    func toString() -> String {
+    func toString(isStartEndSameDay: Bool) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "US")
-        dateFormatter.dateFormat = "hh:mm a"
+        if !isStartEndSameDay {
+            dateFormatter.dateFormat = "M / d hh:mm a"
+        } else {
+            dateFormatter.dateFormat = "hh:mm a"
+        }
         return dateFormatter.string(from: self)
     }
 }
