@@ -63,6 +63,7 @@
 		02544E4029703E9F00F06385 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 02544E3F29703E9F00F06385 /* FirebaseMessaging */; };
 		02544E42297057C800F06385 /* Notification.Name+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E41297057C800F06385 /* Notification.Name+extension.swift */; };
 		02544E4A2970EADD00F06385 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E492970EADD00F06385 /* Logger.swift */; };
+		02544E502971303200F06385 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E4F2971303200F06385 /* BaseNavigationController.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* AuthViewController.swift */; };
@@ -119,6 +120,7 @@
 		02544E37296EDD6000F06385 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		02544E41297057C800F06385 /* Notification.Name+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+extension.swift"; sourceTree = "<group>"; };
 		02544E492970EADD00F06385 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		02544E4F2971303200F06385 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				0223FAEE296D4E5F00B6B32C /* Coordinator.swift */,
 				0223FAF0296D4EE800B6B32C /* AppCoordinator.swift */,
 				0223FB34296E7D8400B6B32C /* AppAppearance.swift */,
+				02544E4F2971303200F06385 /* BaseNavigationController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				02544E36296EDC6100F06385 /* Publisher+MainThread.swift in Sources */,
 				0223FB2F296E495E00B6B32C /* Date+extension.swift in Sources */,
 				0223FAC0296BF21F00B6B32C /* Authentication.swift in Sources */,
+				02544E502971303200F06385 /* BaseNavigationController.swift in Sources */,
 				0223FAD7296D222D00B6B32C /* KeyChainStorage.swift in Sources */,
 				0223FABE296BEE8300B6B32C /* AuthenticationRepository.swift in Sources */,
 				0223FB0F296D673500B6B32C /* ScheduleViewController.swift in Sources */,
