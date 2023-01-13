@@ -145,6 +145,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		2055F4EF297119B8002B5F07 /* Namespace */ = {
+			isa = PBXGroup;
+			children = (
+				207950C2296EF25B004D27EB /* ScheduleInfo.swift */,
+			);
+			path = Namespace;
+			sourceTree = "<group>";
+		};
 		207950C1296EF241004D27EB /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +176,7 @@
 		20CD5DCA296D5C1000DB0D7D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				2055F4EF297119B8002B5F07 /* Namespace */,
 				20F44DC8296FEAA2005BC329 /* LoginScene */,
 				20CD5DCB296D5C2100DB0D7D /* ScheduleListScene */,
 				20CD5DCF296D641600DB0D7D /* ScheduleDetailScene */,
@@ -188,7 +197,6 @@
 		20CD5DCC296D5C3800DB0D7D /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				207950C2296EF25B004D27EB /* ScheduleInfo.swift */,
 				204ACE03296CED21003BAD46 /* ScheduleListTableViewCell.swift */,
 			);
 			path = SubViews;
