@@ -110,7 +110,6 @@ final class LoginView: UIView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-//        stackView.spacing = 15
         stackView.distribution = .equalSpacing
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
