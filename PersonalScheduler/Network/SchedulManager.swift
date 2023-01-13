@@ -2,13 +2,15 @@
 //  SchedulManager.swift
 //  PersonalScheduler
 //
-//  Created by 곽우종 on 2023/01/12.
+//  Created by 우롱차 on 2023/01/12.
 //
 
 import Foundation
 
 protocol SchedulManagerAble {
     func loadSchedule(userId: String) -> Observable<Result<[Schedule],Error>?>
+    func addSchedule(schedule: Schedule) -> Observable<Result<Void, Error>?>
+    func deleteSchedule(schedule: Schedule) -> Observable<Result<Void, Error>?>
 }
 
 final class SchedulManager: SchedulManagerAble {
@@ -37,6 +39,17 @@ final class SchedulManager: SchedulManagerAble {
         let resultObserVer = Observable<Result<Void, Error>?>.init(nil)
         do {
             try firebaseManager.create(schedule)
+            resultObserVer.value = .success(())
+        } catch {
+            resultObserVer.value = .failure(error)
+        }
+        return resultObserVer
+    }
+    
+    func deleteSchedule(schedule: Schedule) -> Observable<Result<Void, Error>?> {
+        let resultObserVer = Observable<Result<Void, Error>?>.init(nil)
+        do {
+            try firebaseManager.delete(schedule)
             resultObserVer.value = .success(())
         } catch {
             resultObserVer.value = .failure(error)

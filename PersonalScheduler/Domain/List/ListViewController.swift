@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ListViewDelegate {
+    func updateList()
+}
+
 final class ListViewController: UIViewController {
     
     static func instance(userId: String) -> ListViewController {
@@ -28,6 +32,8 @@ final class ListViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tabelView = UITableView(frame: .zero)
         tabelView.backgroundColor = .gray
+        tabelView.rowHeight = 100
+        tabelView.delegate = self
         return tabelView
     }()
     
@@ -61,6 +67,7 @@ final class ListViewController: UIViewController {
     override func viewDidLoad() {
         setUp()
         bind()
+        setupTableView()
     }
     
     private func setUp() {
@@ -85,7 +92,11 @@ final class ListViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
-        
+    }
+    
+    private func setupTableView() {
+        tableView.register(ListViewCell.self, forCellReuseIdentifier: ListViewCell.identifier)
+        tableView.showsVerticalScrollIndicator = false
     }
     
     private func bind() {
@@ -109,7 +120,7 @@ final class ListViewController: UIViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ListViewCell.identifier, for: indexPath) as? ListViewCell else {
                 return UITableViewCell()
             }
-            cell.configureCell(itemIdentifier, row: indexPath.row)
+            cell.configureCell(itemIdentifier)
             return cell
         }
         return datasource
@@ -128,8 +139,44 @@ final class ListViewController: UIViewController {
             userId: viewModel.userId,
             schedule: nil
         )
+        viewController.delegate = self
+        viewController.modalPresentationStyle = .formSheet
+        present(viewController, animated: true)
+    }
+}
+
+extension ListViewController: ListViewDelegate {
+    func updateList() {
+        viewModel.loadSchedules()
+    }
+}
+
+extension ListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let schedul = dataSource.itemIdentifier(for: indexPath) else {
+            return
+        }
+        let viewController = DetailViewController.instance(
+            mode: .edit,
+            userId: viewModel.userId,
+            schedule: schedul
+        )
+        viewController.delegate = self
         viewController.modalPresentationStyle = .formSheet
         present(viewController, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            if let schedule = self.dataSource.itemIdentifier(for: indexPath) {
+                self.viewModel.deleteSchedule(schedule: schedule)
+            }
+            success(true)
+        }
+        delete.backgroundColor = .systemRed
+
+        return UISwipeActionsConfiguration(actions:[delete])
+    }
 }

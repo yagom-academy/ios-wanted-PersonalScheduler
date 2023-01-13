@@ -8,7 +8,7 @@
 import Foundation
 
 extension Date {
-    var toString: String {
+    var toFormattedString: String {
         return DateFormatter.defultDateFormatter.string(from: self)
     }
 }

@@ -21,7 +21,7 @@ final class DetailViewController: UIViewController {
     
     private var viewModel: DetailViewModelAble
     private lazy var forKeyboardConstraint = contentsTextView.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 10)
-    
+    var delegate: ListViewDelegate?
     
     init(viewModel: DetailViewModelAble) {
         self.viewModel = viewModel
@@ -40,6 +40,13 @@ final class DetailViewController: UIViewController {
         setUp()
         bind()
     }
+    
+    private lazy var overlay: UIView = {
+        let view = UIView(frame: view.frame)
+        view.backgroundColor = .black
+        view.alpha = 0.8
+        return view
+    }()
     
     private lazy var titleTextField: UITextField = {
         let textField = UITextField(frame: .zero)
@@ -94,10 +101,12 @@ final class DetailViewController: UIViewController {
     @objc func okButtonClicked(_: UIButton) {
         let schedule = makeSchedule()
         viewModel.save(schedule: schedule)
+        delegate?.updateList()
         dismiss(animated: true)
     }
     
     private func setUp() {
+        view.addSubview(overlay)
         view.addSubviews(titleTextField, datePicker, contentsTextView, okButton, cancleButton)
         
         NSLayoutConstraint.activate([
@@ -164,7 +173,7 @@ final class DetailViewController: UIViewController {
             let userId = viewModel.userId
             let scheduleId = viewModel.currentSchedule.value?.scheduleId ?? UUID().uuidString
             let title = titleTextField.text
-            let todoDate = datePicker.date.toString()
+            let todoDate = datePicker.date.toFormattedString
             let contents = contentsTextView.text
             let model = Schedule(
                 userId: userId,
@@ -178,7 +187,7 @@ final class DetailViewController: UIViewController {
             let userId = viewModel.userId
             let scheduleId = UUID().uuidString
             let title = titleTextField.text
-            let todoDate = datePicker.date.toString()
+            let todoDate = datePicker.date.toFormattedString
             let contents = contentsTextView.text
             let model = Schedule(
                 userId: userId,

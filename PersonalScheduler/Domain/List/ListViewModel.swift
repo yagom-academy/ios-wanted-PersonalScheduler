@@ -44,14 +44,26 @@ class ListViewModel: ListViewModelAble {
 extension ListViewModel {
     
     func deleteSchedule(schedule: Schedule) {
-        
+        scheduleManager.deleteSchedule(schedule: schedule).observe(on: self) { [weak self] result in
+            switch result {
+            case .success():
+                self?.loadSchedules()
+            case .failure(let error):
+                self?.errorMessage.value = error.localizedDescription
+            case .none:
+                return
+            }
+        }
     }
     
     func loadSchedules() {
         scheduleManager.loadSchedule(userId: userId).observe(on: self) { [weak self] result in
             switch result {
             case .success(let schedulArray):
-                self?.scheduls.value = schedulArray
+                let sortedArray = schedulArray.sorted { a, b in
+                    return a.todoDate?.toDate ?? Date() < b.todoDate?.toDate ?? Date()
+                }
+                self?.scheduls.value = sortedArray
             case .failure(let error):
                 self?.errorMessage.value = error.localizedDescription
             case .none:
