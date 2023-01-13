@@ -21,7 +21,6 @@
 		2055F4F829715284002B5F07 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2055F4F729715284002B5F07 /* FirebaseAuth */; };
 		2055F4FA29715284002B5F07 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2055F4F929715284002B5F07 /* FirebaseFirestore */; };
 		2055F4FC29715284002B5F07 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2055F4FB29715284002B5F07 /* FirebaseFirestoreSwift */; };
-		2055F4FE297180AD002B5F07 /* LoginInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2055F4FD297180AD002B5F07 /* LoginInfo.plist */; };
 		2055F50029718156002B5F07 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055F4FF29718156002B5F07 /* Bundle+.swift */; };
 		207950C3296EF25B004D27EB /* ScheduleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207950C2296EF25B004D27EB /* ScheduleInfo.swift */; };
 		207950C5296EF27D004D27EB /* DetailViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207950C4296EF27D004D27EB /* DetailViewMode.swift */; };
@@ -55,8 +54,8 @@
 		2055F4ED29711539002B5F07 /* String+toDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+toDate.swift"; sourceTree = "<group>"; };
 		2055F4F029711E39002B5F07 /* AlertPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPhrase.swift; sourceTree = "<group>"; };
 		2055F4F229712020002B5F07 /* ScheduleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleImage.swift; sourceTree = "<group>"; };
-		2055F4FD297180AD002B5F07 /* LoginInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = LoginInfo.plist; sourceTree = "<group>"; };
 		2055F4FF29718156002B5F07 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
+		2055F5012971846C002B5F07 /* SecretKey.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SecretKey.xcconfig; sourceTree = "<group>"; };
 		207950C2296EF25B004D27EB /* ScheduleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInfo.swift; sourceTree = "<group>"; };
 		207950C4296EF27D004D27EB /* DetailViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewMode.swift; sourceTree = "<group>"; };
 		207950C7296EF656004D27EB /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
@@ -277,9 +276,9 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				2055F5012971846C002B5F07 /* SecretKey.xcconfig */,
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
 				20F44DC6296FE1C4005BC329 /* GoogleService-Info.plist */,
-				2055F4FD297180AD002B5F07 /* LoginInfo.plist */,
 				20CD5DCA296D5C1000DB0D7D /* Scene */,
 				20CD5DCD296D5C6F00DB0D7D /* Utility */,
 				204ACE1D296D0841003BAD46 /* Service */,
@@ -365,7 +364,6 @@
 			files = (
 				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
 				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
-				2055F4FE297180AD002B5F07 /* LoginInfo.plist in Resources */,
 				20F44DC7296FE1C4005BC329 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +418,7 @@
 /* Begin XCBuildConfiguration section */
 		63AAAB102967EA2700775EC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2055F5012971846C002B5F07 /* SecretKey.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -534,6 +533,7 @@
 		};
 		63AAAB132967EA2700775EC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2055F5012971846C002B5F07 /* SecretKey.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

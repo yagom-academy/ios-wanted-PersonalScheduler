@@ -10,9 +10,9 @@ import Foundation
 
 extension Bundle {
     var kakaoAppKey: String {
-        guard let file = self.path(forResource: "LoginInfo", ofType: "plist") else { return "" }
+        guard let file = self.path(forResource: "Info", ofType: "plist") else { return "" }
         guard let resource = NSDictionary(contentsOfFile: file) else { return "" }
-        guard let key = resource["KAKAO_KEY"] as? String else { fatalError("LoginInfo.plist에 KAKAO_KEY 값을 입력 해주세요.")}
+        guard let key = resource["KAKAO_APP_KEY"] as? String else { fatalError("KAKAO_APP_KEY 값을 확인해주세요.")}
         return key
     }
 }

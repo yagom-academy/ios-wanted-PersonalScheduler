@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>KAKAO_APP_KEY</key>
+	<string>$(KAKAO_APP_KEY)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -9,7 +11,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakao9c0a77ad66e68678086e65a5585cbcc9</string>
+				<string>kakao$(KAKAO_APP_KEY)</string>
 			</array>
 		</dict>
 		<dict>
@@ -22,9 +24,9 @@
 		</dict>
 	</array>
 	<key>FacebookAppID</key>
-	<string>970904770540128</string>
+	<string>$(FACEBOOK_APP_ID)</string>
 	<key>FacebookClientToken</key>
-	<string>a727ba69c8057115f072a9323370104e</string>
+	<string>$(FACEBOOK_CLIENT_TOKEN)</string>
 	<key>FacebookDisplayName</key>
 	<string>PersonalScheduler</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -33,7 +35,7 @@
 		<array>
 			<string>fbapi</string>
 			<string>fb-messenger-share-api</string>
-            <string>fbauth2</string>
+			<string>fbauth2</string>
 		</array>
 		<string>kakaokompassauth</string>
 		<string>kakaolink</string>
