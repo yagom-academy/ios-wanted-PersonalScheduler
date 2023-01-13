@@ -34,6 +34,8 @@ final class ScheduleSwitchView: UIView {
         return switchView.isOn
     }
     
+    weak var switchDelegate: SetAllDayDelegate?
+    
     init(text: String, frame: CGRect = .zero) {
         super.init(frame: frame)
         setupView()
@@ -53,7 +55,15 @@ final class ScheduleSwitchView: UIView {
         switchView.isOn = isOn
     }
     
+    @objc private func allDaySwitchChanged(_ sender: UISwitch) {
+        switchDelegate?.allDaySwitchChange(isOn: sender.isOn)
+    }
+    
     private func setupView() {
+        switchView.addTarget(self,
+                             action: #selector(allDaySwitchChanged),
+                             for: .valueChanged)
+        
         entireStackView.addArrangedSubview(infoLabel)
         entireStackView.addArrangedSubview(switchView)
         
@@ -66,4 +76,8 @@ final class ScheduleSwitchView: UIView {
             entireStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
     }
+}
+
+protocol SetAllDayDelegate: AnyObject {
+    func allDaySwitchChange(isOn: Bool)
 }
