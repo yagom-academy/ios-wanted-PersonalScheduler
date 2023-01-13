@@ -67,7 +67,7 @@ final class ScheduleFirestoreUseCase {
 extension ScheduleFirestoreUseCase {
     private func toSchedule(from document: QueryDocumentSnapshot) -> Schedule? {
         guard let id = document[ScheduleData.id] as? String,
-              let scheduleID =  UUID(uuidString: id),
+              let scheduleID = UUID(uuidString: id),
               let title = document[ScheduleData.title] as? String,
               let content = document[ScheduleData.content] as? String,
               let isNotified = document[ScheduleData.isNotified] as? Bool,

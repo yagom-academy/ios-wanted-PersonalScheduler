@@ -59,7 +59,14 @@ final class LoginViewController: UIViewController {
         let facebookLoginButton = FBLoginButton()
         let spacingView = UIView()
         spacingView.translatesAutoresizingMaskIntoConstraints = false
-    
+
+        if let heightConstraint = facebookLoginButton.constraints
+            .first(where: { $0.firstAttribute == .height }) {
+            facebookLoginButton.removeConstraint(heightConstraint)
+        }
+        
+        facebookLoginButton.imageView?.contentMode = .scaleToFill
+        
         loginStackView.addArrangedSubview(titleLabel)
         loginStackView.addArrangedSubview(infoLabel)
         loginStackView.addArrangedSubview(spacingView)
@@ -76,8 +83,10 @@ final class LoginViewController: UIViewController {
                                                      constant: -16),
             loginStackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
     
+            facebookLoginButton.heightAnchor.constraint(equalTo: kakaoLoginButton.heightAnchor),
+            
             spacingView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor,
-                                                multiplier: 1/4),
+                                                multiplier: 1/4)
         ])
     }
     
