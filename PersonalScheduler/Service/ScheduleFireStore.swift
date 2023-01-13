@@ -24,16 +24,5 @@ final class ScheduleFireStore {
             path.updateData(["Schdule": FieldValue.arrayUnion([$0.dictionary])])
         }
     }
-    
-    func deleteSchedule(accountUID: String, uuid: String) {
-        let user = User(
-            email: "1234@asdf",
-            scehdule: [Schedule(title: "", body: "Af", createDate: "Asdf"),
-                       Schedule(title: "asdfa", body: "ASfd", createDate: "asdfsd")]
-        )
-        user.scehdule.forEach {
-            database.collection(user.email).addDocument(data: $0.dictionary)
-        }
-    }
 }
 

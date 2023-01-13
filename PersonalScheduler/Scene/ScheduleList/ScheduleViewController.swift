@@ -5,6 +5,8 @@
 //  Created by bard on 2023/01/11.
 //
 
+import KakaoSDKUser
+import FacebookLogin
 import UIKit
 
 final class ScheduleViewController: UIViewController, ScheduleDelegate {
@@ -14,11 +16,13 @@ final class ScheduleViewController: UIViewController, ScheduleDelegate {
     private var scheduleList: [Schedule] = [] {
         didSet {
             tableView.reloadData()
+            
+            let fireStore = ScheduleFireStore()
+            guard let userEmail = UserDefaults.standard.string(forKey: "userEmail") else {
+                return
+            }
+            fireStore.create(with: User(email: userEmail, scehdule: scheduleList))
         }
-    }
-    
-    func appendSchedule(_ schedule: Schedule) {
-        scheduleList.append(schedule)
     }
     
     private let titleLabel: UILabel = {
@@ -51,6 +55,15 @@ final class ScheduleViewController: UIViewController, ScheduleDelegate {
         return tableView
     }()
     
+    private let logoutButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("로그아웃", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        
+        return button
+    }()
+    
     // MARK: - Initializers
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -67,6 +80,10 @@ final class ScheduleViewController: UIViewController, ScheduleDelegate {
     
     // MARK: - Methods
     
+    func appendSchedule(_ schedule: Schedule) {
+        scheduleList.append(schedule)
+    }
+    
     private func commonInit() {
         modalPresentationStyle = .fullScreen
         view.backgroundColor = .systemBackground
@@ -74,10 +91,11 @@ final class ScheduleViewController: UIViewController, ScheduleDelegate {
         setupConstraints()
         setupTableView()
         setupEnrollButton()
+        setupLogoutButton()
     }
     
     private func setupSubviews() {
-        [titleLabel, enrollButton, tableView]
+        [titleLabel, enrollButton, logoutButton, tableView]
             .forEach { view.addSubview($0) }
     }
     
@@ -85,6 +103,7 @@ final class ScheduleViewController: UIViewController, ScheduleDelegate {
         setupTitleLabelConstraints()
         setupTableViewContraints()
         setupEnrollButtonConstraints()
+        setupLogoutButtonConstraints()
     }
     
     private func setupTitleLabelConstraints() {
@@ -108,6 +127,17 @@ final class ScheduleViewController: UIViewController, ScheduleDelegate {
             enrollButton.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
                 constant: -20
+            )
+        ])
+    }
+    
+    private func setupLogoutButtonConstraints() {
+        NSLayoutConstraint.activate([
+            logoutButton.bottomAnchor.constraint(
+                equalTo: titleLabel.bottomAnchor
+            ),
+            logoutButton.trailingAnchor.constraint(
+                equalTo: enrollButton.trailingAnchor
             )
         ])
     }
@@ -143,11 +173,32 @@ final class ScheduleViewController: UIViewController, ScheduleDelegate {
         )
     }
     
+    private func setupLogoutButton() {
+        logoutButton.addTarget(
+            self,
+            action: #selector(logoutButtonDidTap),
+            for: .touchUpInside
+        )
+    }
+    
     @objc
     private func enrollButtonDidTap() {
         let scheduleEnrollViewController = ScheduleEnrollViewController()
         scheduleEnrollViewController.scheuleDelegate = self
         present(scheduleEnrollViewController, animated: true)
+    }
+    
+    @objc
+    private func logoutButtonDidTap() {
+        let loginManager = LoginManager()
+        loginManager.logOut()
+        UserApi.shared.logout { error in
+            if let error = error {
+                print(error)
+            }
+        }
+        UserDefaults.standard.removeObject(forKey: "userEmail")
+       dismiss(animated: true)
     }
 }
 

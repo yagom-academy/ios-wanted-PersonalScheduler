@@ -53,7 +53,7 @@ final class LoginViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("로그인", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(.lightGray, for: .normal)
         
         return button
     }()
@@ -62,15 +62,7 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sample = ScheduleFireStore()
-//        sample.createSchedule(email: "asdfasdfsdf", scheduleList: [])
-        let user = User(
-            email: "1214@asdf",
-            scehdule: [Schedule(title: "", body: "Af", createDate: "Asdf"),
-                       Schedule(title: "asdfa", body: "ASfd", createDate: Date().timeStamp),
-                       Schedule(title: "asdfa", body: "ASfad", createDate: "asdfsd")]
-        )
-        sample.create(with: user)
+
         commonInit()
     }
     
@@ -196,6 +188,7 @@ final class LoginViewController: UIViewController {
             action: #selector(loginButtonDidTap),
             for: .touchUpInside
         )
+        loginButton.isEnabled = false
     }
     
     @objc
@@ -226,6 +219,9 @@ final class LoginViewController: UIViewController {
             }
             self.idTextField.text = user?.kakaoAccount?.email
             self.passwordTextField.text = "●●●●●●●"
+            self.loginButton.isEnabled = true
+            self.loginButton.setTitleColor(.systemBlue, for: .normal)
+            UserDefaults.standard.set(self.idTextField.text, forKey: "userEmail")
         }
     }
     
@@ -252,6 +248,9 @@ final class LoginViewController: UIViewController {
                     
                     self.idTextField.text = email
                     self.passwordTextField.text = "●●●●●●●"
+                    self.loginButton.isEnabled = true
+                    self.loginButton.setTitleColor(.systemBlue, for: .normal)
+                    UserDefaults.standard.set(self.idTextField.text, forKey: "userEmail")
                 }
             }
         }

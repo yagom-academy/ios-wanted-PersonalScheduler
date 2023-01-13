@@ -110,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				C4448E5529709B5E0085CB77 /* Login */,
-				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
 				C4448E5629709B640085CB77 /* ScheduleList */,
 				C4448E5729709B730085CB77 /* ScheduleEnroll */,
 			);
@@ -120,6 +119,7 @@
 		C4448E5529709B5E0085CB77 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
