@@ -14,6 +14,7 @@ enum DetailMode {
 
 protocol DetailViewModelInput {
     func save(schedule: Schedule)
+    func validationCheck(schedule: Schedule) -> Bool
 }
 
 protocol DetailViewModelOutput {
@@ -64,7 +65,7 @@ extension DetailViewModel {
         }
     }
     
-    private func validationCheck(schedule: Schedule) -> Bool {
+    func validationCheck(schedule: Schedule) -> Bool {
         guard let title = schedule.title, title != "" else {
             errorMessage.value = ValidationError.titleIsEmpty.localizedDescription
             return false

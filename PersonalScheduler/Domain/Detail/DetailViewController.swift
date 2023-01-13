@@ -43,7 +43,7 @@ final class DetailViewController: UIViewController {
     
     private lazy var overlay: UIView = {
         let view = UIView(frame: view.frame)
-        view.backgroundColor = .black
+        view.backgroundColor = .white
         view.alpha = 0.8
         return view
     }()
@@ -53,7 +53,7 @@ final class DetailViewController: UIViewController {
         textField.font = .preferredFont(forTextStyle: .title1)
         textField.placeholder = "제목"
         textField.textColor = .black
-        textField.backgroundColor = .darkGray
+        textField.backgroundColor = .white
         textField.textAlignment = .center
         textField.layer.borderWidth = 1
         textField.returnKeyType = .done
@@ -65,6 +65,7 @@ final class DetailViewController: UIViewController {
         let datePicker = UIDatePicker(frame: .zero)
         datePicker.date = Date()
         datePicker.preferredDatePickerStyle = .inline
+        datePicker.backgroundColor = .white
         return datePicker
     }()
     
@@ -100,6 +101,9 @@ final class DetailViewController: UIViewController {
     
     @objc func okButtonClicked(_: UIButton) {
         let schedule = makeSchedule()
+        guard viewModel.validationCheck(schedule: schedule) == true else {
+            return
+        }
         viewModel.save(schedule: schedule)
         delegate?.updateList()
         dismiss(animated: true)
