@@ -49,6 +49,8 @@ final class ScheduleMakingViewModel {
 
         let interval = schedule.startDate.timeIntervalSince(Date())
 
+        guard interval > 0 else { return }
+
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
         let request = UNNotificationRequest(identifier: schedule.id.uuidString, content: push, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
