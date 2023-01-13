@@ -284,30 +284,9 @@ extension ScheduleListViewController: UICollectionViewDelegate {
             if let date = calendarCollectionViewDataSource.itemIdentifier(for: indexPath) {
                 viewModel.dateCellSelected(date: date)
             }
-        } else {
-            if let schedule = scheduleCollectionViewDataSource.itemIdentifier(for: indexPath) {
-                var currentSnapshot = scheduleCollectionViewDataSource.snapshot()
-                currentSnapshot.reloadItems([schedule])
-                scheduleCollectionViewDataSource.apply(currentSnapshot)
-            }
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if collectionView == calendarCollectionView {
-            if let date = calendarCollectionViewDataSource.itemIdentifier(for: indexPath) {
-                viewModel.dateCellSelected(date: date)
-            }
-        } else {
-            if let schedule = scheduleCollectionViewDataSource.itemIdentifier(for: indexPath) {
-                var currentSnapshot = scheduleCollectionViewDataSource.snapshot()
-                currentSnapshot.reloadItems([schedule])
-                scheduleCollectionViewDataSource.apply(currentSnapshot)
-            }
         }
     }
 }
-
 
 // MARK: - CollectionView Sections
 
