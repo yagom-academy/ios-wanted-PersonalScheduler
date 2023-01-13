@@ -35,7 +35,7 @@ final class LoginViewController: UIViewController {
     
     private let kakaoLoginButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "kakao_login_large_narrow"), for: .normal)
+        button.setImage(ScheduleImage.kakaoButton, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
