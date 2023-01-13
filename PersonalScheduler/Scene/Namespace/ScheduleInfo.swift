@@ -6,8 +6,16 @@
 //
 
 enum ScheduleInfo {
-    static let newSchedule = "새로운 일정"
-    static let scheduleList = "일정 목록"
+    enum Notice {
+        static let emptyScheduleList = "저장된 일정이 없습니다."
+        static let startScheduleManagement = "일정 관리 시작하기"
+        static let autoLogin = "한 번 로그인하면 이후 자동 로그인 됩니다."
+    }
+    
+    enum NavigationTitle {
+        static let newSchedule = "새로운 일정"
+        static let scheduleList = "일정 목록"
+    }
 
     enum Edit {
         static let modify = "편집"

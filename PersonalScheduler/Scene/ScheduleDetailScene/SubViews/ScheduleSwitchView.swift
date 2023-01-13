@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SetAllDayDelegate: AnyObject {
+    func allDaySwitchChange(isOn: Bool)
+}
+
 final class ScheduleSwitchView: UIView {
     private let entireStackView: UIStackView = {
         let stackView = UIStackView()
@@ -76,8 +80,4 @@ final class ScheduleSwitchView: UIView {
             entireStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
     }
-}
-
-protocol SetAllDayDelegate: AnyObject {
-    func allDaySwitchChange(isOn: Bool)
 }

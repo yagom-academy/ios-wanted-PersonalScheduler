@@ -16,7 +16,7 @@ final class LoginViewController: UIViewController {
         label.font = .boldSystemFont(ofSize: label.font.pointSize)
         label.textColor = .label
         label.textAlignment = .center
-        label.text = "일정 관리 시작하기"
+        label.text = ScheduleInfo.Notice.startScheduleManagement
         label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -27,7 +27,7 @@ final class LoginViewController: UIViewController {
         label.font = .preferredFont(forTextStyle: .body)
         label.textColor = .systemGray
         label.textAlignment = .center
-        label.text = "한 번 로그인하면 이후 자동 로그인 됩니다."
+        label.text = ScheduleInfo.Notice.autoLogin
         label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -56,14 +56,14 @@ final class LoginViewController: UIViewController {
     }
     
     private func setupView() {
-        let loginButton = FBLoginButton()
+        let facebookLoginButton = FBLoginButton()
         let spacingView = UIView()
         spacingView.translatesAutoresizingMaskIntoConstraints = false
     
         loginStackView.addArrangedSubview(titleLabel)
         loginStackView.addArrangedSubview(infoLabel)
         loginStackView.addArrangedSubview(spacingView)
-        loginStackView.addArrangedSubview(loginButton)
+        loginStackView.addArrangedSubview(facebookLoginButton)
         loginStackView.addArrangedSubview(kakaoLoginButton)
         
         view.addSubview(loginStackView)
@@ -94,6 +94,16 @@ final class LoginViewController: UIViewController {
                                    for: .touchUpInside)
     }
     
+    private func presentScheduleListView(with token: String) {
+        let scheduleViewModel = ScheduleViewModel(with: token)
+        let scheduleListView = ScheduleListViewController(scheduleViewModel)
+        let navigationController = UINavigationController(rootViewController: scheduleListView)
+        
+        LoginManager.shared.saveUserToken(token)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
+    }
+    
     @objc private func kakaoLoginButtonTapped() {
         guard UserApi.isKakaoTalkLoginAvailable() == true else { return }
         
@@ -106,16 +116,6 @@ final class LoginViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    private func presentScheduleListView(with token: String) {
-        let scheduleViewModel = ScheduleViewModel(with: token)
-        let scheduleListView = ScheduleListViewController(scheduleViewModel)
-        let navigationController = UINavigationController(rootViewController: scheduleListView)
-        
-        LoginManager.shared.saveUserToken(token)
-        navigationController.modalPresentationStyle = .fullScreen
-        present(navigationController, animated: true)
     }
     
     @objc private func facebookButtonTapped(_ notification: Notification) {

@@ -101,7 +101,7 @@ final class ScheduleListTableViewCell: UITableViewCell {
     
     private func setupStartTimeLabel(isAllDay: Bool, _ date: Date) {
         if isAllDay {
-            startTimeLabel.text = "하루종일"
+            startTimeLabel.text = ScheduleInfo.Edit.allDay
         } else {
             startTimeLabel.text = date.convertToString(isOnlyTime: true)
         }

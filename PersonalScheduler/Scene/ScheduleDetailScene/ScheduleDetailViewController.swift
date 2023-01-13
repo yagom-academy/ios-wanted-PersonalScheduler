@@ -182,7 +182,7 @@ extension ScheduleDetailViewController {
             navigationItem.title = schedule.title
             navigationItem.rightBarButtonItem = editBarButton
         case .create:
-            navigationItem.title = ScheduleInfo.newSchedule
+            navigationItem.title = ScheduleInfo.NavigationTitle.newSchedule
             navigationItem.rightBarButtonItem = saveBarButton
         }
     }
@@ -268,7 +268,7 @@ extension ScheduleDetailViewController: SetAllDayDelegate {
         let endDate = endDatePicker.selectedDate
         
         if let startAllDay = startDate.convertToString().toDate(),
-           let endAllDay = startDate.convertToString().toDate() {
+           let endAllDay = endDate.convertToString().toDate() {
             startDatePicker.setupPicker(startAllDay)
             endDatePicker.setupPicker(endAllDay)
         }

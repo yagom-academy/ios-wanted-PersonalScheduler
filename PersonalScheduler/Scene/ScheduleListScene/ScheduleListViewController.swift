@@ -86,7 +86,7 @@ extension ScheduleListViewController: UITableViewDataSource, UITableViewDelegate
     private func setupInitialTableView() {
         let initialLabel = UILabel()
         initialLabel.frame = CGRect(x: .zero, y: .zero, width: view.bounds.width, height: view.bounds.height)
-        initialLabel.text = "저장된 일정이 없습니다."
+        initialLabel.text = ScheduleInfo.Notice.emptyScheduleList
         initialLabel.textAlignment = .center
         scheduleTableview.backgroundView = initialLabel
     }
@@ -104,9 +104,9 @@ extension ScheduleListViewController: UITableViewDataSource, UITableViewDelegate
         let sections = scheduleViewModel.sections.value
         scheduleTableview.backgroundView = .none
         
-        guard sections.isEmpty == false else{
+        guard sections.isEmpty == false else {
             setupInitialTableView()
-            return 0
+            return .zero
         }
             
         return sections.count
@@ -183,7 +183,7 @@ extension ScheduleListViewController {
                                                    target: self,
                                                    action: #selector(addScheduleBarButtonTapped))
         
-        navigationItem.title = ScheduleInfo.scheduleList
+        navigationItem.title = ScheduleInfo.NavigationTitle.scheduleList
         navigationItem.rightBarButtonItem = addScheduleBarButton
     }
     
