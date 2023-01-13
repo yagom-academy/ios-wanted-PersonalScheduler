@@ -44,6 +44,7 @@ final class LoginViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 8
+        stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -84,6 +85,7 @@ final class LoginViewController: UIViewController {
             loginStackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
     
             facebookLoginButton.heightAnchor.constraint(equalTo: kakaoLoginButton.heightAnchor),
+            facebookLoginButton.widthAnchor.constraint(equalTo: kakaoLoginButton.widthAnchor),
             
             spacingView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor,
                                                 multiplier: 1/4)

@@ -12,5 +12,5 @@ enum ScheduleImage {
     static let notifiedBell = UIImage(systemName: "bell.circle")
     static let unnotifyingBell = UIImage(systemName: "bell.slash.circle.fill")
     static let add = UIImage(systemName: "plus")
-    static let kakaoButton = UIImage(named: "kakao_login_large_narrow")
+    static let kakaoButton = UIImage(named: "kakao_login_medium_wide")
 }
