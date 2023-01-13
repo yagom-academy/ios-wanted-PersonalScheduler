@@ -11,4 +11,5 @@ struct UserInfoData {
     static let isAutoLogin: String = "isAutoLogin"
     static let id: String = "id"
     static let password: String = "password"
+    static let credential: String = "credential"
 }

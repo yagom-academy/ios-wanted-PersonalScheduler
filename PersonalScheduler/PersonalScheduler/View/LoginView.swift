@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FBSDKLoginKit
 
 struct LoginView: View {
     
@@ -62,12 +63,15 @@ struct LoginView: View {
                     loginViewModel.kakaoLogIn()
                 } label: {
                     Image(uiImage: UIImage(named: "KakoLoginImageButton")!)
+                        .resizable()
+                        .frame(width: 210, height: 50)
                 }
                 .padding(.top, 50)
                 Button {
                     loginViewModel.facebookLogIn()
                 } label: {
-                    Text("facebook login")
+                    FBLog()
+                        .frame(width: 80, height: 50)
                 }
                 
                 NavigationLink {
@@ -120,3 +124,15 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+struct FBLog: UIViewRepresentable {
+    
+    func makeUIView(context: Context) -> FBLoginButton {
+        
+        let button = FBLoginButton()
+        
+        return button
+    }
+    
+    func updateUIView(_ uiView: FBLoginButton, context: Context) { }
+
+}
