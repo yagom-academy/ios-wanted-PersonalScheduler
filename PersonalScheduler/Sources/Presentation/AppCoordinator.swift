@@ -15,11 +15,11 @@ final class AppCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
-    public init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
-    public func start() {
+    func start() {
         let coordinator = makeAuthCoordinator()
         coordinator.start()
     }
@@ -50,11 +50,11 @@ extension AppCoordinator: CoordinatorFinishDelegate {
 
         switch childCoordinator.type {
         case .login:
+            navigationController.popViewController(animated: false)
             navigationController.viewControllers.removeAll()
             navigationController.setNavigationBarHidden(false, animated: false)
             showMainFlow()
         case .list:
-            navigationController.viewControllers.removeAll()
             navigationController.setNavigationBarHidden(true, animated: false)
             start()
         default:

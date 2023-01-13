@@ -12,15 +12,15 @@ final class AuthCoordinator: Coordinator {
     var type: CoordinatorType { .login }
     weak var finishDelegate: CoordinatorFinishDelegate?
     
-    var parentCoordinator: Coordinator?
+    weak var parentCoordinator: Coordinator?
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
-    public init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
-    public func start() {
+    func start() {
         let viewController = makeAuthViewController()
         navigationController.pushViewController(viewController, animated: true)
     }

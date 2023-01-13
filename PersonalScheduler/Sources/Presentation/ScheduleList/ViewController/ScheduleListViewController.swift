@@ -21,7 +21,7 @@ class ScheduleListViewController: UIViewController {
         }
     }
     
-    public weak var coordinator: ScheduleListCoordinatorInterface?
+    weak var coordinator: ScheduleListCoordinatorInterface?
 
     private let viewModel: ScheduleListViewModel
     private var cancellables = Set<AnyCancellable>()
@@ -46,6 +46,10 @@ class ScheduleListViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showScrollToSchedule(_:)), name: .scrollToSchedule, object: nil)
         
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .scrollToSchedule, object: nil)
     }
     
     required init?(coder: NSCoder) {

@@ -12,7 +12,7 @@ final class ScheduleListCoordinator: Coordinator {
     var type: CoordinatorType { .list }
     weak var finishDelegate: CoordinatorFinishDelegate?
     
-    var parentCoordinator: Coordinator?
+    weak var parentCoordinator: Coordinator?
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
@@ -24,6 +24,10 @@ final class ScheduleListCoordinator: Coordinator {
         let viewController = makeScheduleListViewController()
         navigationController.pushViewController(viewController, animated: true)
         NotificationCenter.default.addObserver(self, selector: #selector(showScheduleList(_:)), name: .showScheduleList, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .showScheduleList, object: nil)
     }
     
 }
@@ -95,6 +99,8 @@ extension ScheduleListCoordinator: ScheduleListCoordinatorInterface {
     }
     
     func finished() {
+        navigationController.popViewController(animated: false)
+        navigationController.viewControllers.removeAll()
         finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
 }

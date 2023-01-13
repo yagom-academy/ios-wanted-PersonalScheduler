@@ -75,7 +75,7 @@ private extension DefaultAuthViewModel {
     }
     
     func registerNewUser(_ authentication: Authentication, snsType: SNSType) {
-        self.userRepository.register(authentication, snsType: snsType)
+        userRepository.register(authentication, snsType: snsType)
             .sink(receiveCompletion: { [weak self]  completion in
                 if case let .failure(error) = completion {
                     self?.debug(error: error, message: "신규 유저 등록 실패", frontMessage: "회원가입을 하는 도중에 알 수 없는 에러가 발생했습니다.")

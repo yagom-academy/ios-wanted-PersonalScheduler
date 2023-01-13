@@ -11,7 +11,7 @@ import AuthenticationServices
 
 class AuthViewController: UIViewController {
     
-    public weak var coordinator: AuthCoordinatorInterface?
+    weak var coordinator: AuthCoordinatorInterface?
     
     private let viewModel: AuthViewModel
     private var cancellables = Set<AnyCancellable>()
