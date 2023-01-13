@@ -19,6 +19,6 @@ final class SignInRepository: SignInRepositoryProtocol {
         appleAuthService.didCompleteWithError = {
             completion(.failure($0))
         }
-        appleAuthService.performAuthorizationRequest()
+        appleAuthService.startSignInWithAppleFlow()
     }
 }

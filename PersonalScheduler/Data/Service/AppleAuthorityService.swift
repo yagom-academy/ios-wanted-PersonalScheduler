@@ -15,9 +15,9 @@ final class AppleAuthorityService: NSObject {
     var didCompleteWithAuthorization: ((AuthDataResult?) -> Void)?
     var didCompleteWithError: ((Error) -> Void)?
     
-    var currentNonce: String?
+    private var currentNonce: String?
     
-    func performAuthorizationRequest() {
+    func startSignInWithAppleFlow() {
         let nonce = randomNonceString()
         currentNonce = nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
@@ -98,6 +98,7 @@ extension AppleAuthorityService: ASAuthorizationControllerDelegate {
         Auth.auth().signIn(with: credential) { [weak self] result, error in
             if error != nil {
                 guard let error = error else { return }
+                print(#function)
                 print(error.localizedDescription)
             }
             self?.didCompleteWithAuthorization?(result)

@@ -22,6 +22,7 @@ final class SignInUseCase {
                 guard let data = data else { return }
                 self?.saveUserInKeychain(data.user.uid)
             case let .failure(error):
+                print(#function)
                 print(error.localizedDescription)
             }
         }
