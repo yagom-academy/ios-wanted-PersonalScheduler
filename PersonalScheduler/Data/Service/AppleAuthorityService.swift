@@ -10,6 +10,9 @@ import AuthenticationServices
 
 final class AppleAuthorityService: NSObject {
     
+    var didCompleteWithAuthorization: ((ASAuthorization) -> Void)?
+    var didCompleteWithError: ((Error) -> Void)?
+    
     func performAuthorizationRequest() {
         let provider = ASAuthorizationAppleIDProvider()
         let request = provider.createRequest()
@@ -26,11 +29,11 @@ final class AppleAuthorityService: NSObject {
 extension AppleAuthorityService: ASAuthorizationControllerDelegate {
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        
+        didCompleteWithAuthorization?(authorization)
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        
+        didCompleteWithError?(error)
     }
 }
 

@@ -13,6 +13,9 @@
 		63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB072967EA2600775EC3 /* Main.storyboard */; };
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
+		FF4CDF772970F7B600B48003 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4CDF762970F7B600B48003 /* SignInUseCase.swift */; };
+		FF4CDF7C2970FB9000B48003 /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4CDF7B2970FB9000B48003 /* SignInRepository.swift */; };
+		FF4CDF7F2970FBB600B48003 /* SignInRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4CDF7E2970FBB600B48003 /* SignInRepositoryProtocol.swift */; };
 		FFD58E6429702E3F002D99B6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD58E6329702E3F002D99B6 /* LoginViewModel.swift */; };
 		FFD58E6629702E51002D99B6 /* AppleAuthorityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD58E6529702E51002D99B6 /* AppleAuthorityService.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +29,9 @@
 		63AAAB0A2967EA2700775EC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF4CDF762970F7B600B48003 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
+		FF4CDF7B2970FB9000B48003 /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
+		FF4CDF7E2970FBB600B48003 /* SignInRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepositoryProtocol.swift; sourceTree = "<group>"; };
 		FFD58E6329702E3F002D99B6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FFD58E6529702E51002D99B6 /* AppleAuthorityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorityService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +75,30 @@
 			path = PersonalScheduler;
 			sourceTree = "<group>";
 		};
+		FF4CDF782970F7C600B48003 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				FF4CDF762970F7B600B48003 /* SignInUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		FF4CDF7A2970FB7F00B48003 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				FF4CDF7B2970FB9000B48003 /* SignInRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		FF4CDF7D2970FBA100B48003 /* RepositoryInterfaces */ = {
+			isa = PBXGroup;
+			children = (
+				FF4CDF7E2970FBB600B48003 /* SignInRepositoryProtocol.swift */,
+			);
+			path = RepositoryInterfaces;
+			sourceTree = "<group>";
+		};
 		FFD58E5A29702DD3002D99B6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +113,8 @@
 		FFD58E5D29702DE7002D99B6 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				FF4CDF7D2970FBA100B48003 /* RepositoryInterfaces */,
+				FF4CDF782970F7C600B48003 /* UseCases */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -98,6 +130,7 @@
 		FFD58E5F29702DF7002D99B6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				FF4CDF7A2970FB7F00B48003 /* Repository */,
 				FFD58E6029702E03002D99B6 /* Service */,
 			);
 			path = Data;
@@ -203,8 +236,11 @@
 				FFD58E6429702E3F002D99B6 /* LoginViewModel.swift in Sources */,
 				FFD58E6629702E51002D99B6 /* AppleAuthorityService.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
+				FF4CDF7F2970FBB600B48003 /* SignInRepositoryProtocol.swift in Sources */,
+				FF4CDF7C2970FB9000B48003 /* SignInRepository.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				FF4CDF772970F7B600B48003 /* SignInUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

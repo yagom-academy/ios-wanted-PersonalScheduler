@@ -9,13 +9,13 @@ import Foundation
 
 final class LoginViewModel {
     
-    private let service: AppleAuthorityService!
+    private let useCase: SignInUseCase!
     
-    init(service: AppleAuthorityService = AppleAuthorityService()) {
-        self.service = service
+    init(useCase: SignInUseCase = SignInUseCase()) {
+        self.useCase = useCase
     }
     
-    func appleIDAuthorization() {
-        service.performAuthorizationRequest()
+    func appleLoginIn() {
+        useCase.appleSignIn()
     }
 }
