@@ -155,6 +155,10 @@ extension ScheduleDetailViewController {
         notificationSwitchView.changeOnOff(isEditable)
         contentTextView.isEditable = isEditable
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
 
 //MARK: Setup NavigationItem
