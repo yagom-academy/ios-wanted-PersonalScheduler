@@ -55,16 +55,20 @@ struct SecondView: View {
                 .padding([.bottom], 50)
                 .overlay (
                     Button {
-                        print("추가")
+
                     } label: {
-                        ZStack {
-                            Image(systemName: "plus")
-                                .font(.largeTitle)
-                                .padding()
-                                .clipShape(Circle())
+                        NavigationLink {
+                            DetailList(schedule: Schedule(title: "", date: Date(), body: "", emoji: ""), textManager: TextManager())
+                        } label: {
+                            ZStack {
+                                Image(systemName: "plus")
+                                    .font(.largeTitle)
+                                    .padding()
+                                    .clipShape(Circle())
+                            }
+                            .background(Color.yellow)
+                            .clipShape(Circle())
                         }
-                        .background(Color.yellow)
-                        .clipShape(Circle())
                     }
                         .padding([.trailing], 30)
                     ,alignment: .bottomTrailing
@@ -171,7 +175,7 @@ class TextManager: ObservableObject {
         }
     }
     
-    init(target: String) {
+    init(target: String = "") {
         self.target = target
     }
 }
