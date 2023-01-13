@@ -15,18 +15,10 @@ final class DefaultKakaoAuthRepository: KakaoAuthRepository {
     /// 카카오톡 어플이 설치되어있는지 확인하는 로직
     func isKakaoTalkLoginAvailable() async throws -> String {
         
-        return try await withCheckedThrowingContinuation { continuation in
-            DispatchQueue.main.async {
-                if UserApi.isKakaoTalkLoginAvailable() {
-                    self.loginWithKakaoTalk { result in
-                        continuation.resume(with: result)
-                    }
-                } else {
-                    self.loginWithKakaoAccount { result in
-                        continuation.resume(with: result)
-                    }
-                }
-            }
+        if UserApi.isKakaoTalkLoginAvailable() {
+            return try await self.loginWithKakaoTalk()
+        } else {
+            return try await self.loginWithKakaoAccount()
         }
     }
 
@@ -37,31 +29,26 @@ extension DefaultKakaoAuthRepository {
     
     func autoLogInCheck() async throws -> Bool {
         return try await withCheckedThrowingContinuation { continuation in
-            self.hasToken { result in
-                continuation.resume(with: result)
-            }
-        }
-    }
-
-    func hasToken(completion: @escaping (Result<Bool, Error>) -> Void) {
-        if (AuthApi.hasToken()) {
-            UserApi.shared.accessTokenInfo { (_, error) in
-                if let error = error {
-                    if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() == true  {
-                        completion(.success(false))
+            if (AuthApi.hasToken()) {
+                UserApi.shared.accessTokenInfo { (_, error) in
+                    if let error = error {
+                        if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() == true  {
+                            continuation.resume(throwing: error)
+                        }
+                        else {
+                            continuation.resume(throwing: error)
+                        }
                     }
                     else {
-                        completion(.failure(error))
+                        continuation.resume(returning: true)
                     }
                 }
-                else {
-                    completion(.success(true))
-                }
+            }
+            else {
+                continuation.resume(returning: false)
             }
         }
-        else {
-            completion(.success(false))
-        }
+        
     }
 
 }
@@ -71,27 +58,32 @@ extension DefaultKakaoAuthRepository {
 private extension DefaultKakaoAuthRepository {
 
     /// 카카오톡 어플을 통해 로그인합니다.
-    func loginWithKakaoTalk(completion: @escaping (Result<String, Error>) -> Void) {
-        UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-            guard let authToken = oauthToken else { return }
-            
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success(authToken.accessToken))
+    func loginWithKakaoTalk() async throws -> String {
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                guard let authToken = oauthToken else { return }
+                
+                if let error = error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(returning: authToken.accessToken)
+                }
             }
         }
     }
 
     /// 카카오톡 어플이 없는 경우, 카카오톡 계정을 통해 로그인합니다.
-    func loginWithKakaoAccount(completion: @escaping (Result<String, Error>) -> Void) {
-        UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-            guard let authToken = oauthToken else { return }
-            
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success(authToken.accessToken))
+    func loginWithKakaoAccount() async throws -> String {
+        return try await withCheckedThrowingContinuation { continuation in
+            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                guard let authToken = oauthToken else { return }
+                
+                if let error = error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(returning: authToken.accessToken)
+                }
             }
         }
     }

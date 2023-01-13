@@ -166,13 +166,13 @@
 			path = KeyChain;
 			sourceTree = "<group>";
 		};
-		F366533A2970798900B359A8 /* FireBaseStorage */ = {
+		F366533A2970798900B359A8 /* FirebaseStorage */ = {
 			isa = PBXGroup;
 			children = (
 				F39EDE1F29700D0200A4E655 /* FirebaseStorage.swift */,
 				F366533B297079A300B359A8 /* FirebaseError.swift */,
 			);
-			path = FireBaseStorage;
+			path = FirebaseStorage;
 			sourceTree = "<group>";
 		};
 		F366534129708B8E00B359A8 /* Extension */ = {
@@ -335,7 +335,7 @@
 		F39EDE1E29700CEC00A4E655 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				F366533A2970798900B359A8 /* FireBaseStorage */,
+				F366533A2970798900B359A8 /* FirebaseStorage */,
 				F36653352970795D00B359A8 /* KeyChain */,
 			);
 			path = Storage;

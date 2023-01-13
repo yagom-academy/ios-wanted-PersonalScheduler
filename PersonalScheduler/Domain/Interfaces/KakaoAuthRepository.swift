@@ -10,6 +10,5 @@ import Foundation
 protocol KakaoAuthRepository {
     func isKakaoTalkLoginAvailable() async throws -> String
     func autoLogInCheck() async throws -> Bool
-    func hasToken(completion: @escaping (Result<Bool, Error>) -> Void)
     func userId() async throws -> Int64
 }
