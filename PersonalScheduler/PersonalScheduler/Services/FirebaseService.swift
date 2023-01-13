@@ -118,4 +118,14 @@ final class FirebaseService {
         }
     }
     
+    func deleteSchedule(firebaseID: String, schedule: Schedule) {
+        let scheduleCollection = database.collection("Users/\(firebaseID)/Schedules")
+        scheduleCollection.document(schedule.id).delete() { error in
+            guard error == nil else {
+                print(error?.localizedDescription as Any)
+                return
+            }
+        }
+    }
+    
 }
