@@ -144,16 +144,8 @@
 			children = (
 				F366532A297029CC00B359A8 /* ScheduleEditViewController.swift */,
 				F366532F297036E800B359A8 /* ScheduleEditViewModel.swift */,
-				F366532C29702CF100B359A8 /* SubViews */,
 			);
 			path = ScheduleEdit;
-			sourceTree = "<group>";
-		};
-		F366532C29702CF100B359A8 /* SubViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SubViews;
 			sourceTree = "<group>";
 		};
 		F36653352970795D00B359A8 /* KeyChain */ = {
