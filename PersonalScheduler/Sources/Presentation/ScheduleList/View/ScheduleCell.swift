@@ -30,7 +30,7 @@ final class ScheduleCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var bottomseparatorView: UIView = {
+    private lazy var bottomSeparatorView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray4
         view.heightAnchor.constraint(equalToConstant: 0.3).isActive = true
@@ -144,15 +144,15 @@ private extension ScheduleCell {
     
     func configure() {
         contentView.backgroundColor = .psBackground
-        contentView.addSubviews(backgroundStackView, bottomseparatorView)
+        contentView.addSubviews(backgroundStackView, bottomSeparatorView)
         let constraints: [NSLayoutConstraint] = [
             backgroundStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             backgroundStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             backgroundStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             backgroundStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            bottomseparatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            bottomseparatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            bottomseparatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            bottomSeparatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            bottomSeparatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            bottomSeparatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             colorSeparatorView.heightAnchor.constraint(equalTo: scheduleView.heightAnchor)
         ]
         constraints.forEach { constraint in

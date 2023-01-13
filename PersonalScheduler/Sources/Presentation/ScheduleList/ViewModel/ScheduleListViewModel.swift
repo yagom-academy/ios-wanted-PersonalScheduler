@@ -77,8 +77,8 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelInput {
 
     func viewDidLoad() {
         scheduleRepository.read()
-            .sink(receiveCompletion: { [weak self] complection in
-                if case let .failure(error) = complection {
+            .sink(receiveCompletion: { [weak self] completion in
+                if case let .failure(error) = completion {
                     Logger.debug(error: error, message: "Remote에서 스케줄 목록 불러오기 실패")
                     self?._errorMessage.send("데이터를 불러오는 도중에 알 수 없는 에러가 발생했습니다.")
                 }
@@ -102,8 +102,8 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelInput {
         let schedules = _schedules.value.filter { $0 != schedule }
         _currentSchedules = schedules
         scheduleRepository.delete(schedule: schedule)
-            .sink(receiveCompletion: { [weak self] complection in
-                if case let .failure(error) = complection {
+            .sink(receiveCompletion: { [weak self] completion in
+                if case let .failure(error) = completion {
                     Logger.debug(error: error, message: "스케줄 삭제 실패")
                     self?._errorMessage.send("변경사항을 서버에 반영하는 도중에 알 수 없는 에러가 발생했습니다.")
                 }

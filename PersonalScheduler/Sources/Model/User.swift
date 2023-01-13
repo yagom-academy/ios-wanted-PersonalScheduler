@@ -17,12 +17,12 @@ struct User: Codable {
 
 extension User {
     
-    init(_ dictinary: [String: Any]) {
-        self.userID = dictinary["userID"] as? String
-        self.socialType = dictinary["socialType"] as? String
-        self.name = dictinary["name"] as? String
-        self.profileURL = dictinary["profileURL"] as? String
-        let schedules = dictinary["schedules"] as? [[String: Any]] ?? []
+    init(_ dictionary: [String: Any]) {
+        self.userID = dictionary["userID"] as? String
+        self.socialType = dictionary["socialType"] as? String
+        self.name = dictionary["name"] as? String
+        self.profileURL = dictionary["profileURL"] as? String
+        let schedules = dictionary["schedules"] as? [[String: Any]] ?? []
         self.schedules = schedules.map { Schedule($0) }
     }
     

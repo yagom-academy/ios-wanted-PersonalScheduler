@@ -41,12 +41,12 @@ extension Schedule {
         self.description = ""
     }
     
-    init(_ dictinary: [String: Any]) {
-        self.id = dictinary["id"] as? String ?? UUID().uuidString
-        self.title = dictinary["title"] as? String ?? ""
-        self.startDate = dictinary["startDate"] as? Date ?? Date()
-        self.endDate = dictinary["endDate"] as? Date ?? Date()
-        self.description = dictinary["description"] as? String ?? ""
+    init(_ dictionary: [String: Any]) {
+        self.id = dictionary["id"] as? String ?? UUID().uuidString
+        self.title = dictionary["title"] as? String ?? ""
+        self.startDate = dictionary["startDate"] as? Date ?? Date()
+        self.endDate = dictionary["endDate"] as? Date ?? Date()
+        self.description = dictionary["description"] as? String ?? ""
     }
     
 }

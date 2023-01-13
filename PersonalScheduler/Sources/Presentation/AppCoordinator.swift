@@ -15,8 +15,8 @@ final class AppCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
-    public init(navigationConrtoller: UINavigationController) {
-        self.navigationController = navigationConrtoller
+    public init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
     }
     
     public func start() {

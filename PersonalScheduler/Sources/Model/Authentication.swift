@@ -38,11 +38,6 @@ struct Authentication: Decodable {
     }
 }
 
-enum AuthenticationProvider: Int {
-    case kakao
-    case apple
-}
-
 struct TokenOption: OptionSet {
     let rawValue: Int
     static let access = TokenOption(rawValue: 1 << 0)
