@@ -43,10 +43,6 @@ final class KakaoLogin: Login {
                 }
             }
         }
-        
-        
-        
-         
         return result
     }
 }

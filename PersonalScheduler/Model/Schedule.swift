@@ -2,7 +2,7 @@
 //  Schedul.swift
 //  PersonalScheduler
 //
-//  Created by 곽우종 on 2023/01/12.
+//  Created by 우롱차 on 2023/01/12.
 //
 
 import Foundation

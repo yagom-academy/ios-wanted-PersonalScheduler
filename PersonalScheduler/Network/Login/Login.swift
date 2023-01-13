@@ -2,7 +2,7 @@
 //  Login.swift
 //  PersonalScheduler
 //
-//  Created by 곽우종 on 2023/01/10.
+//  Created by 우롱차 on 2023/01/10.
 //
 
 import Foundation
