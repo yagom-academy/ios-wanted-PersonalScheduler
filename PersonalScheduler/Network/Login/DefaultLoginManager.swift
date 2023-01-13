@@ -11,7 +11,7 @@ protocol LoginManagerAble {
     func getUserId(loginInfo: LoginInfo) -> Observable<Result<String, Error>?>
 }
 
-class LoginManager: LoginManagerAble {
+class DefaultLoginManager: LoginManagerAble {
     private let firebaseManager: FirebaseManagerable
     
     init(firebaseManager: FirebaseManagerable = FirebaseManager.shared) {

@@ -31,7 +31,7 @@ final class MainViewModel: MainViewModelable {
     var errorMessage: Observable<String?>
     private var loginManager: LoginManagerAble
     
-    init(loginManager: LoginManagerAble = LoginManager()) {
+    init(loginManager: LoginManagerAble = DefaultLoginManager()) {
         userId = .init(nil)
         errorMessage = .init(nil)
         self.loginManager = loginManager

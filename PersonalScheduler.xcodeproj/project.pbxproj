@@ -31,7 +31,7 @@
 		E181D2D2296DEA0100847DD7 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181D2D1296DEA0100847DD7 /* Encodable+Extension.swift */; };
 		E181D2D5296DEA6400847DD7 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181D2D4296DEA6400847DD7 /* FirebaseError.swift */; };
 		E181D2D9296DECD300847DD7 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181D2D8296DECD300847DD7 /* LoginError.swift */; };
-		E181D2DB296DFF6A00847DD7 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181D2DA296DFF6A00847DD7 /* LoginManager.swift */; };
+		E181D2DB296DFF6A00847DD7 /* DefaultLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181D2DA296DFF6A00847DD7 /* DefaultLoginManager.swift */; };
 		E1A49895296EAA9D005C279B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49894296EAA9D005C279B /* MainViewModel.swift */; };
 		E1A49897296EEE07005C279B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49896296EEE07005C279B /* UIViewController+Extension.swift */; };
 		E1A49899296EFA30005C279B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49898296EFA30005C279B /* UIView+Extension.swift */; };
@@ -70,7 +70,7 @@
 		E181D2D1296DEA0100847DD7 /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		E181D2D4296DEA6400847DD7 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		E181D2D8296DECD300847DD7 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
-		E181D2DA296DFF6A00847DD7 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		E181D2DA296DFF6A00847DD7 /* DefaultLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLoginManager.swift; sourceTree = "<group>"; };
 		E1A49894296EAA9D005C279B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		E1A49896296EEE07005C279B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		E1A49898296EFA30005C279B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				E131BFA5296D7B01003DC333 /* Login.swift */,
-				E181D2DA296DFF6A00847DD7 /* LoginManager.swift */,
+				E181D2DA296DFF6A00847DD7 /* DefaultLoginManager.swift */,
 				E131BFA7296D7B55003DC333 /* KakaoLogin.swift */,
 				E1A6478C297158A800599F71 /* FacebookLogin.swift */,
 			);
@@ -355,7 +355,7 @@
 				E181D2C9296DE61400847DD7 /* FirebaseManager.swift in Sources */,
 				E1A647822970B5D700599F71 /* String+Extension.swift in Sources */,
 				E181D2D9296DECD300847DD7 /* LoginError.swift in Sources */,
-				E181D2DB296DFF6A00847DD7 /* LoginManager.swift in Sources */,
+				E181D2DB296DFF6A00847DD7 /* DefaultLoginManager.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				E1A49895296EAA9D005C279B /* MainViewModel.swift in Sources */,
 				E1A6477E29702E3500599F71 /* DetailViewController.swift in Sources */,

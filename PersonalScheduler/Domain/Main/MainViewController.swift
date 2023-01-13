@@ -83,7 +83,7 @@ class MainViewController: UIViewController {
     
     private lazy var facebookButton: UIButton = {
         let button = FBLoginButton()
-        button.addTarget(self, action: #selector(faceBookLogin(_:)), for: .touchUpInside)
+        button.delegate = self
         return button
     }()
     
@@ -122,3 +122,14 @@ class MainViewController: UIViewController {
     }
 }
 
+extension MainViewController: LoginButtonDelegate {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        if let _ = result {
+            mainViewModel.login(loginType: .facebook)
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        return
+    }
+}
