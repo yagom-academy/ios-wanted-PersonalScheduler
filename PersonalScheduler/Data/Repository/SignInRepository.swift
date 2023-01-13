@@ -12,7 +12,7 @@ final class SignInRepository: SignInRepositoryProtocol {
     private let appleAuthService = AppleAuthorityService()
     
     func appleIDAuthorization() {
-        appleAuthService.didCompleteWithAuthorization = { auth in
+        appleAuthService.didCompleteWithAuthorization = { data in
             
         }
         appleAuthService.didCompleteWithError = { error in
