@@ -9,33 +9,43 @@ import UIKit
 
 final class ScheduleSceneDIContainer {
     // MARK: - Schedule List
-    func makeScheduleListViewController(actions: ScheduleListViewModelActions) -> ScheduleListViewController {
-        let viewModel = makeScheduleListViewModel(actions: actions)
+    func makeScheduleListViewController(fireStoreCollectionId: String,
+                                        actions: ScheduleListViewModelActions) -> ScheduleListViewController {
+        let viewModel = makeScheduleListViewModel(fireStoreCollectionId: fireStoreCollectionId, actions: actions)
         return ScheduleListViewController(with: viewModel)
     }
     
-    func makeScheduleListViewModel(actions: ScheduleListViewModelActions) -> ScheduleListViewModel {
-        return DefaultScheduleListViewModel(actions: actions)
+    func makeScheduleListViewModel(fireStoreCollectionId: String,
+                                   actions: ScheduleListViewModelActions) -> ScheduleListViewModel {
+        return DefaultScheduleListViewModel(fireStoreCollectionId: fireStoreCollectionId, actions: actions)
     }
     
     // MARK: - Schedule Detail
-    func makeScheduleDetailViewController(schedule: Schedule) -> ScheduleDetailViewController {
-        let viewModel = makeScheduleDetailViewModel(with: schedule)
+    func makeScheduleDetailViewController(schedule: Schedule?,
+                                          fireStoreCollectionId: String) -> ScheduleDetailViewController {
+        let viewModel = makeScheduleDetailViewModel(
+            with: schedule,
+            fireStoreCollectionId: fireStoreCollectionId
+        )
         return ScheduleDetailViewController(with: viewModel)
     }
     
-    func makeScheduleDetailViewModel(with schedule: Schedule) -> ScheduleDetailViewModel {
-        return DefaultScheduleDetailViewModel(currentSchedule: schedule)
+    func makeScheduleDetailViewModel(with schedule: Schedule?,
+                                     fireStoreCollectionId: String) -> ScheduleDetailViewModel {
+        return DefaultScheduleDetailViewModel(
+            currentSchedule: schedule,
+            fireStoreCollectionId: fireStoreCollectionId
+        )
     }
     
     // MARK: - Main Flow Coordinator
-    func makeMainFlowCoordinator(
-        navigationController: UINavigationController
-    ) -> MainFlowCoordinator {
+    func makeMainFlowCoordinator(navigationController: UINavigationController,
+                                 fireStoreCollectionId: String) -> MainFlowCoordinator {
         
         return MainFlowCoordinator(
             navigationController: navigationController,
-            dependencies: self
+            dependencies: self,
+            fireStoreCollectionId: fireStoreCollectionId
         )
     }
 }
