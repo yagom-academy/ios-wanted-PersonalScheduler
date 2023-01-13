@@ -82,12 +82,12 @@ final class ScheduleDetailViewController: UIViewController {
         
         guard title.isEmpty == false,
               content.isEmpty == false else {
-            showAlert(AlertPhrase.insufficientInput)
+            showAlert(.insufficientInput)
             return nil
         }
         
         guard startDatePicker.selectedDate <= endDatePicker.selectedDate else {
-            showAlert(AlertPhrase.impossibleDate)
+            showAlert(.impossibleDate)
             return nil
         }
         
@@ -222,7 +222,7 @@ extension ScheduleDetailViewController: UITextViewDelegate {
                   shouldChangeTextIn range: NSRange,
                   replacementText text: String) -> Bool {
         guard textView.text.count + text.count <= 500 else {
-            showAlert(AlertPhrase.excessContent)
+            showAlert(.excessContent)
             return false
         }
         

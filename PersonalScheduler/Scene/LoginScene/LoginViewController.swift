@@ -67,9 +67,7 @@ final class LoginViewController: UIViewController {
             .first(where: { $0.firstAttribute == .height }) {
             facebookLoginButton.removeConstraint(heightConstraint)
         }
-        
-        facebookLoginButton.imageView?.contentMode = .scaleToFill
-        
+
         loginStackView.addArrangedSubview(titleLabel)
         loginStackView.addArrangedSubview(infoLabel)
         loginStackView.addArrangedSubview(spacingView)
@@ -114,13 +112,13 @@ final class LoginViewController: UIViewController {
     private func createKakaoUser() {
         UserApi.shared.me() { [weak self] user, error in
             if error != nil {
-                self?.showAlert(AlertPhrase.kakaoLoginFailed)
+                self?.showAlert(.kakaoLoginFailed)
                 return
             }
 
             guard let user = user,
                   let email = user.kakaoAccount?.email else {
-                self?.showAlert(AlertPhrase.kakaoLoginFailed)
+                self?.showAlert(.kakaoLoginFailed)
                 return
             }
             
@@ -132,7 +130,7 @@ final class LoginViewController: UIViewController {
                     Auth.auth().createUser(withEmail: email,
                                            password: password) { result, error in
                         if error != nil {
-                            self?.showAlert(AlertPhrase.kakaoLoginFailed)
+                            self?.showAlert(.kakaoLoginFailed)
                             return
                         }
                     }
@@ -148,7 +146,7 @@ final class LoginViewController: UIViewController {
     @objc private func kakaoLoginButtonTapped() {
         UserApi.shared.loginWithKakaoAccount { [weak self] oauthToken, error in
             if error != nil {
-                self?.showAlert(AlertPhrase.kakaoLoginFailed)
+                self?.showAlert(.kakaoLoginFailed)
             } else {
                 self?.createKakaoUser()
             }
