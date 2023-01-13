@@ -117,6 +117,17 @@
 			path = ScheduleAdd;
 			sourceTree = "<group>";
 		};
+		A3B8DB1229715A08002BCB36 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A3EB699A296BF03F004F492A /* Login */,
+				A3EB699B296BF055004F492A /* SignUp */,
+				A3B8DB1129715437002BCB36 /* ScheduleAdd */,
+				A3B8DB10297153F8002BCB36 /* ScheduleList */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		A3DEB0CE296C5E0D0079903A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,17 +169,13 @@
 			isa = PBXGroup;
 			children = (
 				A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */,
-				A3B8DB0D2970F02D002BCB36 /* FBLogView.swift */,
 				A3EB6993296BE23F004F492A /* Info.plist */,
 				A3DEB0D3296CF3DE0079903A /* GoogleService-Info.plist */,
 				A3EB6989296BAFB5004F492A /* Assets.xcassets */,
 				A3DEB0D5296D94D60079903A /* Extension */,
 				A3DEB0CE296C5E0D0079903A /* Model */,
 				A3EB6997296BEFD8004F492A /* Manager */,
-				A3EB699A296BF03F004F492A /* Login */,
-				A3EB699B296BF055004F492A /* SignUp */,
-				A3B8DB10297153F8002BCB36 /* ScheduleList */,
-				A3B8DB1129715437002BCB36 /* ScheduleAdd */,
+				A3B8DB1229715A08002BCB36 /* Presentation */,
 				A3EB698B296BAFB5004F492A /* Preview Content */,
 				A3EB6994296BE351004F492A /* Config.xcconfig */,
 			);
@@ -198,6 +205,7 @@
 			children = (
 				A3EB6987296BAFB4004F492A /* LoginView.swift */,
 				A3EB6995296BE8C0004F492A /* LoginViewModel.swift */,
+				A3B8DB0D2970F02D002BCB36 /* FBLogView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
