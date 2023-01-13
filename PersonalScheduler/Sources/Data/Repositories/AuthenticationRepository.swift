@@ -38,16 +38,17 @@ final class DefaultAuthenticationRepository: NSObject, AuthenticationRepository 
     private let authentication = CurrentValueSubject<Authentication?, Error>(nil)
     
     func kakaoAuthorize() -> AnyPublisher<Authentication?, Error> {
+        let authentication = PassthroughSubject<Authentication?, Error>()
         if UserApi.isKakaoTalkLoginAvailable() {
-            UserApi.shared.loginWithKakaoTalk { [weak self] oauthToken, error in
+            UserApi.shared.loginWithKakaoTalk { oauthToken, error in
                 if let error {
-                    self?.authentication.send(completion: .failure(error))
+                    authentication.send(completion: .failure(error))
                 } else {
                     UserApi.shared.me { user, error in
                         if let error {
-                            self?.authentication.send(completion: .failure(error))
+                            authentication.send(completion: .failure(error))
                         } else {
-                            self?.authentication.send(
+                            authentication.send(
                                 Authentication(
                                     accessToken: oauthToken?.accessToken,
                                     refreshToken: oauthToken?.refreshToken,
@@ -59,21 +60,21 @@ final class DefaultAuthenticationRepository: NSObject, AuthenticationRepository 
                                     snsProfileUrl: user?.kakaoAccount?.profile?.profileImageUrl?.absoluteString
                                 )
                             )
-                            self?.authentication.send(completion: .finished)
+                            authentication.send(completion: .finished)
                         }
                     }
                 }
             }
         } else {
-            UserApi.shared.loginWithKakaoAccount { [weak self] oauthToken, error in
+            UserApi.shared.loginWithKakaoAccount { oauthToken, error in
                 if let error {
-                    self?.authentication.send(completion: .failure(error))
+                    authentication.send(completion: .failure(error))
                 } else {
                     UserApi.shared.me { user, error in
                         if let error {
-                            self?.authentication.send(completion: .failure(error))
+                            authentication.send(completion: .failure(error))
                         } else {
-                            self?.authentication.send(
+                            authentication.send(
                                 Authentication(
                                     accessToken: oauthToken?.accessToken,
                                     refreshToken: oauthToken?.refreshToken,
@@ -85,7 +86,7 @@ final class DefaultAuthenticationRepository: NSObject, AuthenticationRepository 
                                     snsProfileUrl: user?.kakaoAccount?.profile?.profileImageUrl?.absoluteString
                                 )
                             )
-                            self?.authentication.send(completion: .finished)
+                            authentication.send(completion: .finished)
                         }
                     }
                 }
@@ -107,15 +108,16 @@ final class DefaultAuthenticationRepository: NSObject, AuthenticationRepository 
     }
     
     func facebookAuthorize() -> AnyPublisher<Authentication?, Error> {
+        let authentication = PassthroughSubject<Authentication?, Error>()
         let loginManager = LoginManager()
-        loginManager.logIn(permissions:[.publicProfile, .email,], viewController: nil) { [weak self] (result) in
+        loginManager.logIn(permissions:[.publicProfile, .email,], viewController: nil) { (result) in
             switch result {
             case .cancelled:
                 print("[⚠️] User cancelled login")
-                self?.authentication.send(completion: .finished)
+                authentication.send(completion: .finished)
                 
             case .failed(let error):
-                self?.authentication.send(completion: .failure(error))
+                authentication.send(completion: .failure(error))
                 
             case .success(_, _, let accessToken):
                 let tokenString = accessToken?.tokenString
@@ -123,13 +125,13 @@ final class DefaultAuthenticationRepository: NSObject, AuthenticationRepository 
                 GraphRequest(
                     graphPath: "me",
                     parameters: ["fields": "id, name, picture.type(large), email"]
-                ).start { [weak self] (connection, result, error) -> Void in
+                ).start { (connection, result, error) -> Void in
                     if let error {
-                        self?.authentication.send(completion: .failure(error))
+                        authentication.send(completion: .failure(error))
                     } else {
                         let userInfo = result as? [String: Any]
                         let profileURL = userInfo?["picture"].flatMap { ($0 as? [String: [String: Any]])?["data"]?["url"] as? String }
-                        let authentication = Authentication(
+                        let newAuthentication = Authentication(
                             accessToken: tokenString,
                             refreshToken: nil,
                             identityToken: nil,
@@ -139,8 +141,8 @@ final class DefaultAuthenticationRepository: NSObject, AuthenticationRepository 
                             snsUserId: userID,
                             snsProfileUrl: profileURL
                         )
-                        self?.authentication.send(authentication)
-                        self?.authentication.send(completion: .finished)
+                        authentication.send(newAuthentication)
+                        authentication.send(completion: .finished)
                     }
                 }
             }
@@ -210,7 +212,8 @@ extension DefaultAuthenticationRepository: ASAuthorizationControllerDelegate {
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        authentication.send(completion: .failure(error))
+        Logger.debug(error: error, message: "애플 로그인 실패")
+        authentication.send(completion: .finished)
     }
     
 }
