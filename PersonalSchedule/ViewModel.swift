@@ -12,7 +12,8 @@ import KakaoSDKUser
 class ViewModel: ObservableObject {
     @Published var isLogin = false
     @Published var showingAlert = false
-    
+    @Published var schedule = Dummy()
+
     @MainActor
     func handleKakaoLogin() {
         Task {
