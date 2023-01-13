@@ -26,6 +26,7 @@ final class ScheduleDatePickerView: UIView {
     
     private let datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
+        datePicker.minuteInterval = 5
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         return datePicker
     }()
