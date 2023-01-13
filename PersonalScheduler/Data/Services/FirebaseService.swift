@@ -19,9 +19,8 @@ final class FirebaseService {
 
     func fetchSchedules(for date: Date, completion: @escaping (Result<[ScheduleDTO], Error>) -> Void) {
         guard let uid = UserDefaults.standard.string(forKey: "uid") else { return }
+
         scheduleReference.whereField("uid", isEqualTo: uid)
-            .order(by: "startDate", descending: true)
-            .order(by: "endDate", descending: false)
             .getDocuments { snapShot, error in
                 guard error == nil else {
                     completion(.failure(FirebaseError.internalError))

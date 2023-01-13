@@ -66,12 +66,13 @@ extension ScheduleListViewModel {
     func viewWillAppear() {
         fetchSchedules(date: currentDate)
         self.applyCalendarDataSource?()
-        selectCurrentDate()
+        updateCalendarUIToCurrentDate()
     }
 
     func dateCellSelected(date: Date) {
         currentDate = date
-        selectCurrentDate()
+        updateCalendarUIToCurrentDate()
+        fetchSchedules(date: currentDate)
     }
 
     func deleteActionDone(schedule: Schedule) {
@@ -89,7 +90,8 @@ extension ScheduleListViewModel {
 
     func todayButtonTapped() {
         currentDate = Date()
-        selectCurrentDate()
+        updateCalendarUIToCurrentDate()
+        fetchSchedules(date: currentDate)
     }
 
     func previousMonthButtonTapped() {
@@ -107,12 +109,16 @@ extension ScheduleListViewModel {
 
 // MARK: - Private Methods
 
-extension ScheduleListViewModel {
+extension ScheduleListViewModel { // TODO: Caching
     private func fetchSchedules(date: Date) {
+        let startOfInputDate = Calendar.current.startOfDay(for: date)
+        guard let endOfInputDate = Calendar.current.date(byAdding: .day, value: 1, to: date) else { return }
         fetchScheduleUseCase.execute(for: date) { result in
             switch result {
             case .success(let schedules):
-                self.schedules = schedules
+                self.schedules = schedules.filter {
+                    return $0.startDate < endOfInputDate && startOfInputDate < $0.endDate
+                }
                 self.applyScheduleDataSource?()
             case .failure(let error):
                 let alert = UIAlertController(title: "Error", message: error.localizedDescription,
@@ -122,7 +128,7 @@ extension ScheduleListViewModel {
         }
     }
 
-    private func selectCurrentDate() {
+    private func updateCalendarUIToCurrentDate() {
         setCurrentMonthLabel?(currentDate.toCurrentMonthText())
         if let day = calendar.dateComponents([.year, .month, .day], from: currentDate).day {
             selectItemAt?(IndexPath(row: day - 1, section: 0))
