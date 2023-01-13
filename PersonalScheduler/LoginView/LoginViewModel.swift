@@ -12,7 +12,6 @@ import FirebaseAuth
 
 protocol LoginViewModelInputInterface {
     func tappedKaKaoButton()
-    func tappedLogoutButton()
 }
 
 protocol LoginViewModelOutputInterface {
@@ -130,20 +129,6 @@ final class LoginViewModel: LoginViewModelOutputInterface, LoginViewModelInterfa
             }
         }
     }
-
-    private func handleKakaoLogout() {
-        UserApi.shared.logout {(error) in
-            if let error = error {
-                print(error)
-            } else {
-                do {
-                    try Auth.auth().signOut()
-                } catch let error {
-                    print(error.localizedDescription)
-                }
-            }
-        }
-    }
 }
 
 extension LoginViewModel: LoginViewModelInputInterface {
@@ -152,9 +137,5 @@ extension LoginViewModel: LoginViewModelInputInterface {
             kakaoLoginPublisher.send()
             return }
         kakaoLogin()
-    }
-
-    func tappedLogoutButton() {
-        handleKakaoLogout()
     }
 }

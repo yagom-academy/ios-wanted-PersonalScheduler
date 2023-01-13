@@ -8,12 +8,14 @@
 import Foundation
 import Combine
 import FirebaseAuth
+import KakaoSDKUser
 
 protocol ListViewModelInputInterface {
     func tappedAddButton()
     func onViewWillAppear()
     func deleteButtonDidTap(user: String, indexPath: IndexPath)
     func didSelectCell(indexPath: IndexPath)
+    func tappedLogoutButton()
 }
 
 protocol ListViewModelOutputInterface {
@@ -62,6 +64,20 @@ final class ListViewModel: ListViewModelInterface, ListViewModelOutputInterface 
             self.allSchedules = schedule
         }
     }
+
+    private func handleKakaoLogout() {
+        UserApi.shared.logout {(error) in
+            if let error = error {
+                print(error)
+            } else {
+                do {
+                    try Auth.auth().signOut()
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
 }
 
 extension ListViewModel: ListViewModelInputInterface {
@@ -83,5 +99,9 @@ extension ListViewModel: ListViewModelInputInterface {
 
     func tappedAddButton() {
         scheduleAddPublisher.send()
+    }
+
+    func tappedLogoutButton() {
+        handleKakaoLogout()
     }
 }

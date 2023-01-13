@@ -23,19 +23,10 @@ final class LoginViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    let kakaoLoginButton: UIButton = {
+    private let kakaoLoginButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "kakao_login_large_wide"), for: .normal)
         button.addTarget(self, action: #selector(tappedKakaoLoginButton), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
-    let kakaoLogoutButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("카카오로그아웃", for: .normal)
-        button.backgroundColor = UIColor.black
-        button.addTarget(self, action: #selector(tappedKakaoLogoutButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -56,7 +47,6 @@ final class LoginViewController: UIViewController {
         bind()
 
         stackView.addArrangedSubview(kakaoLoginButton)
-        stackView.addArrangedSubview(kakaoLogoutButton)
         view.addSubview(stackView)
         setConstraint()
     }
@@ -91,9 +81,5 @@ extension LoginViewController {
 
     @objc private func tappedKakaoLoginButton() {
         loginViewModel.input.tappedKaKaoButton()
-    }
-
-    @objc private func tappedKakaoLogoutButton() {
-        loginViewModel.input.tappedLogoutButton()
     }
 }

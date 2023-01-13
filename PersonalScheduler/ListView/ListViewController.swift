@@ -9,13 +9,14 @@ import UIKit
 import Combine
 import FirebaseAuth
 
-class ListViewController: UIViewController {
+final class ListViewController: UIViewController {
     private let listViewModel = ListViewModel()
     private var cancelable = Set<AnyCancellable>()
 
     private let scheduleTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .white
         tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: ScheduleTableViewCell.identifier)
         tableView.separatorStyle = .none
         return tableView
@@ -37,15 +38,26 @@ class ListViewController: UIViewController {
         return button
     }()
 
+    private let logoutButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("로그아웃", for: .normal)
+        button.backgroundColor = UIColor.black
+        button.addTarget(self, action: #selector(tappedKakaoLogoutButton), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view = scheduleTableView
+        view.addSubview(scheduleTableView)
+        view.addSubview(logoutButton)
         self.view.backgroundColor = .white
         self.navigationItem.titleView = titleLabel
         self.navigationItem.rightBarButtonItem = addScheduleButton
         setTableView()
         bind()
         self.scheduleTableView.reloadData()
+        setConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +69,18 @@ class ListViewController: UIViewController {
     private func setTableView() {
         self.scheduleTableView.delegate = self
         self.scheduleTableView.dataSource = self
+    }
+
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+            scheduleTableView.topAnchor.constraint(equalTo: view.topAnchor),
+            scheduleTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scheduleTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scheduleTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+
+            logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoutButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30)
+            ])
     }
 }
 
@@ -87,6 +111,10 @@ extension ListViewController {
 
     @objc private func tappedAddButton() {
         listViewModel.input.tappedAddButton()
+    }
+    
+    @objc private func tappedKakaoLogoutButton() {
+        listViewModel.input.tappedLogoutButton()
     }
 }
 
