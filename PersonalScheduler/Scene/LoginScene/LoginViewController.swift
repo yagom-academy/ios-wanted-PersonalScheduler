@@ -50,15 +50,16 @@ final class LoginViewController: UIViewController {
         return stackView
     }()
     
+    private let facebookLoginButton = FBLoginButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         addLoginButtonTarget()
-        addNotification()
+        facebookLoginButton.delegate = self
     }
     
     private func setupView() {
-        let facebookLoginButton = FBLoginButton()
         let spacingView = UIView()
         spacingView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -91,13 +92,6 @@ final class LoginViewController: UIViewController {
             spacingView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor,
                                                 multiplier: 1/4)
         ])
-    }
-    
-    private func addNotification() {
-        NotificationCenter.default.addObserver(forName: .AccessTokenDidChange,
-                                               object: nil,
-                                               queue: OperationQueue.main,
-                                               using: facebookButtonTapped)
     }
     
     private func addLoginButtonTarget() {
@@ -160,13 +154,34 @@ final class LoginViewController: UIViewController {
             }
         }
     }
-    
-    @objc private func facebookButtonTapped(_ notification: Notification) {
-        if let token = AccessToken.current?.tokenString {
-            presentScheduleListView(with: token)
+}
+
+extension LoginViewController: LoginButtonDelegate {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        if let error = error {
+          print(error.localizedDescription)
+          return
+        }
+        
+        guard let accessToken = AccessToken.current?.tokenString else {
+            showAlert(.facebookLoginFailed)
             return
         }
         
-        showAlert(AlertPhrase.facebookLoginFailed)
+        let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
+        
+        Auth.auth().signIn(with: credential) { [weak self] user, error in
+            if error != nil {
+                self?.showAlert(.facebookLoginFailed)
+                return
+            }
+            
+            LoginManager.shared.saveFacebookLogin(accessToken: accessToken)
+            self?.presentScheduleListView()
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        //TODO: Logout 구현
     }
 }

@@ -7,13 +7,13 @@
 
 import Foundation
 import FirebaseAuth
-
-
+import FacebookCore
 
 final class LoginManager {
     private enum Login {
         static let userID = "id"
         static let userPassword = "password"
+        static let userToken = "userToken"
         static let loginType = "loginType"
     }
     
@@ -46,10 +46,9 @@ final class LoginManager {
         UserDefaults.standard.set(password, forKey: Login.userPassword)
     }
     
-    func saveFacebookLogin(id: String, password: String) {
-        UserDefaults.standard.set(LoginType.facebook, forKey: Login.loginType)
-        UserDefaults.standard.set(id, forKey: Login.userID)
-        UserDefaults.standard.set(password, forKey: Login.userPassword)
+    func saveFacebookLogin(accessToken: String) {
+        UserDefaults.standard.set(LoginType.facebook.rawValue, forKey: Login.loginType)
+        UserDefaults.standard.set(accessToken, forKey: Login.userToken)
     }
     
     private func loginWithKakao() -> String? {
@@ -69,7 +68,20 @@ final class LoginManager {
         return user.uid
     }
     
-    private func loginWithFacebook() -> String {
-        return ""
+    private func loginWithFacebook() -> String? {
+        guard let token = UserDefaults.standard.string(forKey: Login.userToken) else {
+            return nil
+        }
+        
+        let credential = FacebookAuthProvider.credential(withAccessToken: token)
+        
+        Auth.auth().signIn(with: credential) { user, error in
+            if error != nil {
+                return
+            }
+        }
+        
+        guard let user = Auth.auth().currentUser else { return nil }
+        return user.uid
     }
 }
