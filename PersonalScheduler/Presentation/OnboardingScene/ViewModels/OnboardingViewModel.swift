@@ -35,15 +35,4 @@ final class OnboardingViewModel {
             }
         }
     }
-
-    func naverLoginButtonTapped(completion: @escaping () -> Void) {
-        oAuthLoginUseCase.execute(loginType: .apple) { result in
-            switch result {
-            case .success:
-                completion()
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
 }

@@ -71,20 +71,6 @@ final class OnboardingViewController: UIViewController {
         return button
     }()
 
-    private lazy var naverLoginButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Naver로 로그인하기", for: .normal)
-        button.titleLabel?.textColor = .white
-        button.backgroundColor = .systemGreen
-        button.addAction(UIAction { [weak self] action in
-            self?.viewModel.naverLoginButtonTapped {
-                self?.coordinator?.loginFinished()
-            }
-        }, for: .touchUpInside)
-        return button
-    }()
-
     init(coordinator: OnboardingCoordinator) {
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -101,7 +87,7 @@ final class OnboardingViewController: UIViewController {
     }
 
     private func layout() {
-        [onboardingCollectionView, pageControl, appleLoginButton, kakaoLoginButton, naverLoginButton].forEach {
+        [onboardingCollectionView, pageControl, appleLoginButton, kakaoLoginButton].forEach {
             view.addSubview($0)
         }
         NSLayoutConstraint.activate([
@@ -115,12 +101,7 @@ final class OnboardingViewController: UIViewController {
             pageControl.widthAnchor.constraint(equalToConstant: 200),
             pageControl.heightAnchor.constraint(equalToConstant: 50),
 
-            naverLoginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            naverLoginButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            naverLoginButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            naverLoginButton.heightAnchor.constraint(equalToConstant: 50),
-
-            kakaoLoginButton.bottomAnchor.constraint(equalTo: naverLoginButton.topAnchor, constant: -10),
+            kakaoLoginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             kakaoLoginButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             kakaoLoginButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             kakaoLoginButton.heightAnchor.constraint(equalToConstant: 50),
