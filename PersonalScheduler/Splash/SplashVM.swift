@@ -30,7 +30,6 @@ class SplashVM: ViewModel {
     
     private func inputBind() {
         input.viewDidLoadTrigger.bind { [weak self] _ in
-//            KakaoLoginManager.shared.logout()
             self?.checkingUser()
         }
     }

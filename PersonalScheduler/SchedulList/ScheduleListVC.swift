@@ -61,7 +61,7 @@ extension ScheduleListVC {
     }
     
     @objc private func didTapAddSheduleButton() {
-        let addView = InputSchedulVC()
+        let addView = InputScheduleVC()
         addView.viewType = .add
         self.navigationController?.pushViewController(addView, animated: true)
     }
@@ -140,7 +140,7 @@ extension ScheduleListVC: UITableViewDelegate {
         
         let edit = UIContextualAction(style: .normal, title: "수정") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             let schedule = self.viewModel.output.scheduleList.value![indexPath.row]
-            let editView = InputSchedulVC()
+            let editView = InputScheduleVC()
             editView.viewType = .edit(schedule: schedule)
             
             self.navigationController?.pushViewController(editView, animated: true)

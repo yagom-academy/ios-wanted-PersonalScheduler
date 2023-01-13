@@ -1,5 +1,5 @@
 //
-//  InputSchedulVC.swift
+//  InputSchedulㄷVC.swift
 //  PersonalScheduler
 //
 //  Created by 정재근 on 2023/01/09.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class InputSchedulVC: BaseVC {
+class InputScheduleVC: BaseVC {
     // MARK: - View
-    private let inputScheduleV = InputSchedulV()
+    private let inputScheduleV = InputScheduleV()
     
     override func loadView() {
         self.view = inputScheduleV
@@ -27,7 +27,7 @@ class InputSchedulVC: BaseVC {
         }
     }
     // MARK: - ViewModel
-    private let viewModel = InputSchedulVM()
+    private let viewModel = InputScheduleVM()
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class InputSchedulVC: BaseVC {
     }
 }
 // MARK: - Configure UI
-extension InputSchedulVC {
+extension InputScheduleVC {
     private func configureUI() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: inputScheduleV.saveButton)
     }
@@ -53,7 +53,7 @@ extension InputSchedulVC {
     }
 }
 // MARK: - OutputBind
-extension InputSchedulVC {
+extension InputScheduleVC {
     private func outputBind() {
         self.viewModel.output.completion.bind { [weak self] error in
             self?.inputScheduleV.indicator.stopAnimating()
@@ -67,7 +67,7 @@ extension InputSchedulVC {
     }
 }
 // MARK: - ButtonAction
-extension InputSchedulVC {
+extension InputScheduleVC {
     private func addButtonAction() {
         self.inputScheduleV.titleTextField.cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
         self.inputScheduleV.saveButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
@@ -99,7 +99,7 @@ extension InputSchedulVC {
     }
 }
 // MARK: - TextFieldDelegate
-extension InputSchedulVC: UITextFieldDelegate {
+extension InputScheduleVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if !textField.text!.isEmpty {
             inputScheduleV.titleTextField.isHiddenCancelButton = false
@@ -141,7 +141,7 @@ extension InputSchedulVC: UITextFieldDelegate {
     }
 }
 // MARK: - TextViewDelegate
-extension InputSchedulVC: UITextViewDelegate {
+extension InputScheduleVC: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         self.inputScheduleV.contentTextField.isFocus = true
         if textView.text == ContentTextField.placeHolderText {

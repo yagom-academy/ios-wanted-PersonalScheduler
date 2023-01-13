@@ -7,7 +7,7 @@
 
 import Foundation
 
-class InputSchedulVM: ViewModel {
+class InputScheduleVM: ViewModel {
     
     struct Input {
         let addButtonTrigger: Dynamic<Schedule?> = Dynamic(nil)

@@ -12,7 +12,7 @@ enum InputViewType {
     case edit(schedule: Schedule)
 }
 
-class InputSchedulV: UIView, BaseView {
+class InputScheduleV: UIView, BaseView {
     
     var saveButton: ScheduleSaveButton = ScheduleSaveButton()
     
@@ -202,7 +202,7 @@ class InputSchedulV: UIView, BaseView {
     }
 }
 // MARK: - Constraints
-extension InputSchedulV {
+extension InputScheduleV {
     func constraints() {
         let layout = [
             fullStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
