@@ -99,7 +99,7 @@ extension ScheduleListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let updateAction = UIContextualAction(style: .normal, title: "수정") { _, _, completionHandler in
-            self.goToUpdateScheduleScene()
+            self.goToUpdateScheduleScene(schedule: self.viewModel.items.value[indexPath.row])
             completionHandler(true)
         }
         updateAction.backgroundColor = UIColor.blue
@@ -128,14 +128,15 @@ private extension ScheduleListViewController {
     }
     
     @objc func goToAddScheduleScene() {
-        let scheduleAddViewController = ScheduleEditViewController(editType: .add)
+        let scheduleAddViewModel = ScheduleEditViewModel(nil)
+        let scheduleAddViewController = ScheduleEditViewController(editType: .add, viewModel: scheduleAddViewModel)
         navigationController?.pushViewController(scheduleAddViewController, animated: true)
     }
     
-    func goToUpdateScheduleScene() {
-        let scheduleAddViewController = ScheduleEditViewController(editType: .update)
-        let navigationController = UINavigationController(rootViewController: scheduleAddViewController)
-        
+    func goToUpdateScheduleScene(schedule: ScheduleInfo) {
+        let scheduleUpdateViewModel = ScheduleEditViewModel(schedule)
+        let scheduleUpdateViewController = ScheduleEditViewController(editType: .add, viewModel: scheduleUpdateViewModel)
+        let navigationController = UINavigationController(rootViewController: scheduleUpdateViewController)
         self.navigationController?.present(navigationController, animated: true)
     }
 }

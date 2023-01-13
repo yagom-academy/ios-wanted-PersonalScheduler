@@ -88,8 +88,8 @@ final class ScheduleEditViewController: BaseViewController {
     
     // MARK: - Life Cycle
     
-    init(editType: EditType) {
-        self.viewModel = ScheduleEditViewModel(nil)
+    init(editType: EditType, viewModel: ScheduleEditViewModel) {
+        self.viewModel = viewModel
         self.editType = editType
         super.init(nibName: nil, bundle: nil)
     }
@@ -150,6 +150,13 @@ final class ScheduleEditViewController: BaseViewController {
         self.viewModel.dismiss.subscribe { [weak self] isTrue in
             guard let isTrue = isTrue else { return }
             if isTrue { self?.pop() }
+        }
+        
+        self.viewModel.schedule.subscribe { [weak self] schedule in
+            guard let schedule = schedule else { return }
+            self?.titleTextField.text = schedule.title
+            self?.dateTimePicker.date = Date(timeIntervalSince1970: schedule.time)
+            self?.contentTextView.text = schedule.content
         }
     }
 }
