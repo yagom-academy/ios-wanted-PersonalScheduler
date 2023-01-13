@@ -21,6 +21,10 @@ final class ScheduleListDIContainer {
         return ScheduleListRepository()
     }
 
+    func makeScheduleMakingRepository() -> ScheduleMakingRepository {
+        return ScheduleMakingRepository()
+    }
+
     // MARK: - UseCases
 
     func makeFetchScheduleUseCase() -> FetchScheduleUseCase {
@@ -31,6 +35,10 @@ final class ScheduleListDIContainer {
         return DeleteScheduleUseCase(repository: makeScheduleListRepository())
     }
 
+    func makeSaveScheduleUseCase() -> SaveScheduleUseCase {
+        return SaveScheduleUseCase(repository: makeScheduleMakingRepository())
+    }
+
     // MARK: - ViewModels
 
     func makeScheduleListViewModel() -> ScheduleListViewModel {
@@ -39,7 +47,7 @@ final class ScheduleListDIContainer {
     }
 
     func makeScheduleMakingViewModel() -> ScheduleMakingViewModel {
-        return ScheduleMakingViewModel()
+        return ScheduleMakingViewModel(saveScheduleUseCase: makeSaveScheduleUseCase())
     }
 
     // MARK: - ViewControllers

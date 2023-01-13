@@ -8,5 +8,9 @@
 import Foundation
 
 final class ScheduleMakingViewModel {
-    
+    private let saveScheduleUseCase: SaveScheduleUseCase
+
+    init(saveScheduleUseCase: SaveScheduleUseCase) {
+        self.saveScheduleUseCase = saveScheduleUseCase
+    }
 }

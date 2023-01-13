@@ -90,8 +90,5 @@ final class ScheduleMakingViewController: UIViewController {
         [titleView, descriptionView, timerSettingView].forEach {
             stackView.addArrangedSubview($0)
         }
-
-        NSLayoutConstraint.activate([
-        ])
     }
 }
