@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SignUpView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+
     @StateObject var signUpViewModel = SignUpViewModel()
     
     @State var newEmail: String = ""
@@ -55,7 +57,9 @@ struct SignUpView: View {
                 let alert = Alert(
                     title: Text("Success"),
                     message: Text("Welcom!!"),
-                    dismissButton: .cancel()
+                    dismissButton: .default(Text("확인"), action: {
+                        presentationMode.wrappedValue.dismiss()
+                    })
                 )
                 return alert
             case .fail:
