@@ -17,7 +17,7 @@ final class FirebaseStorageManager {
     private var db = Firestore.firestore()
     private var posts = [ScheduleList]()
     
-    func uploadPost(accountUID: String, uuid: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
+    func createSchedule(accountUID: String, uuid: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
         
         let post = ScheduleList(
             id: uuid,
@@ -34,7 +34,7 @@ final class FirebaseStorageManager {
             .setData(post.dictionary)
     }
     
-    func fetchScheduleList(accountUID: String, completion: @escaping ([ScheduleList]) -> Void) {
+    func readSchedule(accountUID: String, completion: @escaping ([ScheduleList]) -> Void) {
         db.collection(FirebaseQuery.collection)
             .document(accountUID)
             .collection("collection")
@@ -57,7 +57,7 @@ final class FirebaseStorageManager {
             }
     }
     
-    func updateScheduleList(accountUID: String, uuid: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
+    func updateSchedule(accountUID: String, uuid: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
         
         let edit = ScheduleList(
             id: uuid,
@@ -70,7 +70,7 @@ final class FirebaseStorageManager {
         db.collection(FirebaseQuery.collection).document(accountUID).collection("collection").document(uuid).updateData(edit.dictionary)
     }
     
-    func deleteScheduleList(accountUID: String, uuid: String) {
+    func deleteSchedule(accountUID: String, uuid: String) {
         db.collection(FirebaseQuery.collection).document(accountUID).collection("collection").document(uuid).delete()
     }
     

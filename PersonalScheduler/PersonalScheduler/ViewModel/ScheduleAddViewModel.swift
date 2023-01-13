@@ -21,7 +21,7 @@ final class ScheduleAddViewModel: ObservableObject {
     func postSchedule(accountUID: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
         let postId = UUID().uuidString
         
-        firebaseStorageManager.uploadPost(
+        firebaseStorageManager.createSchedule(
             accountUID: accountUID,
             uuid: postId,
             title: title,
@@ -33,7 +33,7 @@ final class ScheduleAddViewModel: ObservableObject {
     }
     
     func editSchedule(accountUID: String, uuid: String, title: String, description: String, startTimeStamp: Date, endTimeStamp: Date) {
-        firebaseStorageManager.updateScheduleList(
+        firebaseStorageManager.updateSchedule(
             accountUID: accountUID,
             uuid: uuid,
             title: title,
