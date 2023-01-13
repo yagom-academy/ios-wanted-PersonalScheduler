@@ -48,7 +48,7 @@ class ScheduleListViewController: UIViewController {
                 var newSection: [String] = []
                 
                 schedules.forEach {
-                    let startTime = $0.startTime.toString()
+                    let startTime = $0.startTime.convertToString()
                     if newSection.contains(startTime) == false {
                         newSection.append(startTime)
                     }
@@ -89,7 +89,7 @@ extension ScheduleListViewController: UITableViewDataSource, UITableViewDelegate
         let schedules = scheduleViewModel.schedules.value
         
         return schedules.filter {
-            $0.startTime.toString() == sections[section]
+            $0.startTime.convertToString() == sections[section]
         }
     }
     

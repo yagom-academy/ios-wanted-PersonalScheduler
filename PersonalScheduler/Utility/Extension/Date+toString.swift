@@ -8,10 +8,15 @@
 import Foundation
 
 extension Date {
-    func toString() -> String {
+    func convertToString(isOnlyTime: Bool = false) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
-
+        
+        if isOnlyTime {
+            dateFormatter.dateFormat = "HH:mm"
+        } else {
+            dateFormatter.dateFormat = "yyyy.MM.dd"
+        }
+        
         return dateFormatter.string(from: self)
     }
 }
