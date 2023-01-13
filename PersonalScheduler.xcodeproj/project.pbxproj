@@ -183,13 +183,10 @@
 			isa = PBXGroup;
 			children = (
 				0223FA9D296BDCA700B6B32C /* App */,
-				0223FAA5296BDD5200B6B32C /* Extensions */,
+				02544E4D2970F81F00F06385 /* Common */,
 				0223FAEB296D45DE00B6B32C /* Model */,
-				0223FAA6296BDDAF00B6B32C /* Network */,
+				02544E4C2970F80E00F06385 /* Data */,
 				0223FA9E296BDCAB00B6B32C /* Presentation */,
-				0223FAEA296D45D600B6B32C /* Repositories */,
-				0223FAE9296D45CC00B6B32C /* Storages */,
-				02544E492970EADD00F06385 /* Logger.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -411,6 +408,33 @@
 				02544E31296EB0A100F06385 /* UIViewController+extension.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		02544E4B2970F7A800F06385 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				02544E492970EADD00F06385 /* Logger.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		02544E4C2970F80E00F06385 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0223FAA6296BDDAF00B6B32C /* Network */,
+				0223FAEA296D45D600B6B32C /* Repositories */,
+				0223FAE9296D45CC00B6B32C /* Storages */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		02544E4D2970F81F00F06385 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0223FAA5296BDD5200B6B32C /* Extensions */,
+				02544E4B2970F7A800F06385 /* Utility */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		63AAAAF52967EA2600775EC3 = {
