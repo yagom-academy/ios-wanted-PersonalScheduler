@@ -20,7 +20,7 @@
 ### ❗️ 로그인 기능을 위한 SecretKey 다운로드 
 키를 보호하기 위해 `xcconfig`로 분리해뒀습니다.
 
-[SecretKey.xcconfig 다운로드](https://drive.google.com/file/d/1ZzwOKFd0WsyEB79CEyNscho6dCWfYGhj/view?usp=share_link)
+[SecretKey.xcconfig 다운로드](https://drive.google.com/file/d/1WkpHBcJlr7lY3KpDiG6OIusCCBtkOgwt/view?usp=share_link)
 
 위 링크에서 `SecretKey.xcconfig` 다운로드 후 파일을 추가한 후 테스트 부탁드립니다!
 
