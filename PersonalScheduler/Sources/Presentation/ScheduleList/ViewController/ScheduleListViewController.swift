@@ -221,7 +221,8 @@ private extension ScheduleListViewController {
                 case .schedule:
                     let cell = collectionView.dequeueReusableCell(ScheduleCell.self, for: indexPath)
                     cell?.setUp(schedule)
-                    if let prevSchedule = self?.dataSource?.itemIdentifier(for: IndexPath(item: indexPath.item - 1, section: .zero)),
+                    let prevIndexPath = IndexPath(item: indexPath.item - 1, section: .zero)
+                    if let prevSchedule = self?.dataSource?.itemIdentifier(for: prevIndexPath),
                        prevSchedule.startDate.isEqualMonth(from: schedule.startDate) == false {
                         cell?.showMonthView(schedule.startDate)
                     }
