@@ -284,6 +284,22 @@ extension ScheduleListViewController: UICollectionViewDelegate {
             if let date = calendarCollectionViewDataSource.itemIdentifier(for: indexPath) {
                 viewModel.dateCellSelected(date: date)
             }
+        } else {
+            if let schedule = scheduleCollectionViewDataSource.itemIdentifier(for: indexPath) {
+                var currentSnapshot = scheduleCollectionViewDataSource.snapshot()
+                currentSnapshot.reloadItems([schedule])
+                scheduleCollectionViewDataSource.apply(currentSnapshot)
+            }
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if collectionView == scheduleCollectionView {
+            if let schedule = scheduleCollectionViewDataSource.itemIdentifier(for: indexPath) {
+                var currentSnapshot = scheduleCollectionViewDataSource.snapshot()
+                currentSnapshot.reloadItems([schedule])
+                scheduleCollectionViewDataSource.apply(currentSnapshot)
+            }
         }
     }
 }
@@ -319,19 +335,19 @@ extension ScheduleListViewController {
         case done
 
         var item: NSCollectionLayoutItem {
-            let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
+            let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200))
             return NSCollectionLayoutItem(layoutSize: size)
         }
 
         var group: NSCollectionLayoutGroup {
-            let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
+            let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200))
             return NSCollectionLayoutGroup.vertical(layoutSize: size, subitems: [item])
         }
 
         var header: NSCollectionLayoutBoundarySupplementaryItem {
             let headerSize = NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .estimated(0.1)
+                heightDimension: .estimated(50)
             )
             let header = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: headerSize,
