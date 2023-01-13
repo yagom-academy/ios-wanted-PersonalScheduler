@@ -49,7 +49,7 @@ final class FirebaseService {
     }
 
     func saveSchedule(schedule: Schedule, completion: @escaping (Result<Void, Error>) -> Void) {
-        var data = schedule.toDTO().scheduleData
+        let data = schedule.toDTO().scheduleData
 
         guard let id = data["scheduleId"] as? String else { return }
         scheduleReference.document(id).setData(data) { error in
