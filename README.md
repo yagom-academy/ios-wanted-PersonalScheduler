@@ -12,10 +12,10 @@
 ## 📜 프로젝트 및 개발자 소개
 > **소개** : 원티드 프리온보딩에서 진행한 개인 일정을 관리하는 앱 <br> **프로젝트 기간** : 2023.01.09 ~ 2023.01.13
 
-| **Judy** |
-|:---:|
-<img src="https://i.imgur.com/n304TQO.jpg" width="300" height="300" />|
-|[@Judy-999](https://github.com/Judy-999)|
+| **App Icom** | **Judy** |
+|:---:|:---:|
+| <img width="282" alt="image" src="https://user-images.githubusercontent.com/102353787/212327895-0ddff3b5-ccc1-4757-bb67-a20ec46005c7.png">| <img src="https://i.imgur.com/n304TQO.jpg" width="300" height="300" />|
+| |[@Judy-999](https://github.com/Judy-999)|
 
 ### ❗️ 로그인 기능을 위한 SecretKey 다운로드 
 키를 보호하기 위해 `xcconfig`로 분리해뒀습니다.
