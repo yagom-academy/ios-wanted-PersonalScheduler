@@ -13,7 +13,7 @@ struct ScheduleListView: View {
     @State private var shouldPresentAddingView = false
     @State private var shouldPresentEditingView = false
     @State private var selectedSchedule: Schedule = Schedule(id: "", title: "", description: "", startMoment: Date(), endMoment: Date(), status: .planned)
-
+    
     var body: some View {
         NavigationView {
             List {
@@ -27,6 +27,13 @@ struct ScheduleListView: View {
                         selectedSchedule = schedule
                         shouldPresentEditingView.toggle()
                     }
+                    .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                        .onEnded({ value in
+                            if value.translation.width < 0 {
+                                scheduleListViewModel.scheduleCellSwipedToLeft(schedule: schedule)
+                                scheduleListViewModel.fetchDataFromFirestore(firebaseID: scheduleListViewModel.firebaseID)
+                            }
+                        }))
                 }
             }.sheet(isPresented: $shouldPresentEditingView) {
                 ScheduleEditingView(scheduleListViewModel: scheduleListViewModel, shouldPresentEditingView: $shouldPresentEditingView, selectedSchedule: $selectedSchedule)
