@@ -176,7 +176,18 @@ final class ScheduleEnrollViewController: UIViewController {
     
     @objc
     private func cancelButtonDidTap() {
-        dismiss(animated: true)
+        let alertController = UIAlertController(
+            title: "작성을 그만두시고 취소하시겠어요?",
+            message: nil,
+            preferredStyle: .alert
+        )
+        let confirmAction = UIAlertAction(title: "작성 취소", style: .destructive) { action in
+            self.dismiss(animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "계속 작성", style: .default)
+        [confirmAction, cancelAction]
+            .forEach { alertController.addAction($0) }
+        present(alertController, animated: true)
     }
     
     @objc
