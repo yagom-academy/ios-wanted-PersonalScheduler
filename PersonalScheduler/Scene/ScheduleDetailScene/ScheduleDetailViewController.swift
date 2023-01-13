@@ -268,7 +268,8 @@ extension ScheduleDetailViewController: SetAllDayDelegate {
         let endDate = endDatePicker.selectedDate
         
         if let startAllDay = startDate.convertToString().toDate(),
-           let endAllDay = endDate.convertToString().toDate() {
+           let endDay = Calendar.current.date(byAdding: .day, value: 1, to: endDate),
+           let endAllDay = endDay.convertToString().toDate() {
             startDatePicker.setupPicker(startAllDay)
             endDatePicker.setupPicker(endAllDay)
         }
