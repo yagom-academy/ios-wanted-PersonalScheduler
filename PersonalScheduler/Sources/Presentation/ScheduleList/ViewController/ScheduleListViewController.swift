@@ -249,12 +249,14 @@ private extension ScheduleListViewController {
         var listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
         listConfiguration.showsSeparators = false
         listConfiguration.backgroundColor = .psBackground
-        listConfiguration.trailingSwipeActionsConfigurationProvider = makeSwipeActions
+        listConfiguration.trailingSwipeActionsConfigurationProvider = { [weak self] indexPath -> UISwipeActionsConfiguration? in
+            return self?.makeSwipeActions(for: indexPath)
+        }
         return UICollectionViewCompositionalLayout.list(using: listConfiguration)
     }
     
-    func makeSwipeActions(for indexPath: IndexPath?) -> UISwipeActionsConfiguration? {
-        guard let indexPath = indexPath, let schedule = dataSource?.itemIdentifier(for: indexPath) else {
+    func makeSwipeActions(for indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let schedule = dataSource?.itemIdentifier(for: indexPath) else {
             return nil
         }
         let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] _, _, completeHandler in
