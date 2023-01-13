@@ -31,7 +31,8 @@ final class ListViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tabelView = UITableView(frame: .zero)
-        tabelView.backgroundColor = .gray
+        tabelView.backgroundColor = .lightGray
+        
         tabelView.rowHeight = 100
         tabelView.delegate = self
         return tabelView
@@ -55,6 +56,16 @@ final class ListViewController: UIViewController {
         return button
     }()
     
+    private lazy var logoutButton: UIButton = {
+        let button = UIButton()
+        let config = UIImage.SymbolConfiguration(textStyle: .title3, scale: .medium)
+        let image = UIImage(systemName: "rectangle.portrait.and.arrow.right")?.withConfiguration(config)
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(logoutButtonClicked(_:)), for: .touchUpInside)
+        
+        return button
+    }()
+    
     init(viewModel: ListViewModelAble) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -72,11 +83,20 @@ final class ListViewController: UIViewController {
     
     private func setUp() {
         view.backgroundColor = .white
-        view.addSubviews(tableView, titleLabel, addButton)
+        view.addSubviews(tableView, titleLabel, addButton, logoutButton)
         
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            logoutButton.trailingAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+                constant: -10
+            ),
+            logoutButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            logoutButton.heightAnchor.constraint(equalTo: titleLabel.heightAnchor)
         ])
         
         NSLayoutConstraint.activate([
@@ -142,6 +162,11 @@ final class ListViewController: UIViewController {
         viewController.delegate = self
         viewController.modalPresentationStyle = .formSheet
         present(viewController, animated: true)
+    }
+    
+    @objc private func logoutButtonClicked(_: UIBarButtonItem) {
+        viewModel.logout()
+        dismiss(animated: true)
     }
 }
 

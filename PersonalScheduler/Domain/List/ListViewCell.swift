@@ -51,6 +51,7 @@ final class ListViewCell: UITableViewCell {
     
     private func setUp() {
         backgroundColor = .white
+        selectionStyle = .none
         contentView.addSubviews(
             titleLabel,
             dateLabel,

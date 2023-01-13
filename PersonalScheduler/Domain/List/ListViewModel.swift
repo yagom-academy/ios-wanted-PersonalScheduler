@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import FacebookLogin
 
 protocol ListViewModelInput {
     func loadSchedules()
     func deleteSchedule(schedule: Schedule)
+    func logout()
 }
 
 protocol ListViewModelOutput {
@@ -70,5 +72,11 @@ extension ListViewModel {
                 return
             }
         }
+    }
+    
+    func logout() {
+        UserDefaults.standard.setValue(nil, forKey: DefaultLoginManager.userDefaultKey)
+        let manager = LoginManager()
+        manager.logOut()
     }
 }

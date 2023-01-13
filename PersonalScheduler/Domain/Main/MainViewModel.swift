@@ -22,10 +22,6 @@ protocol MainViewModelable: MainViewModelOutput, MainvViewModelInput {}
 
 final class MainViewModel: MainViewModelable {
     
-    private enum Constant {
-        static var userDefaultKey = "UserId"
-    }
-    
     //Mark Output
     var userId: Observable<String?>
     var errorMessage: Observable<String?>
@@ -64,7 +60,7 @@ final class MainViewModel: MainViewModelable {
                     switch result {
                     case .success(let userId):
                         self.userId.value = userId
-                        UserDefaults.standard.setValue(userId, forKey: Constant.userDefaultKey)
+                        UserDefaults.standard.setValue(userId, forKey: DefaultLoginManager.userDefaultKey)
                     case .failure(let error):
                         self.errorMessage.value = error.localizedDescription
                     case .none:
@@ -81,7 +77,7 @@ final class MainViewModel: MainViewModelable {
 
 private extension MainViewModel {
     func loadUserId() -> String? {
-        let userId = UserDefaults.standard.string(forKey: Constant.userDefaultKey)
+        let userId = UserDefaults.standard.string(forKey: DefaultLoginManager.userDefaultKey)
         return userId
     }
 }

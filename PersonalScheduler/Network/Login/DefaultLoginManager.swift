@@ -12,6 +12,8 @@ protocol LoginManagerAble {
 }
 
 class DefaultLoginManager: LoginManagerAble {
+    static var userDefaultKey = "UserId"
+    
     private let firebaseManager: FirebaseManagerable
     
     init(firebaseManager: FirebaseManagerable = FirebaseManager.shared) {
