@@ -71,16 +71,22 @@ final class DefaultScheduleListViewModel: ScheduleListViewModel {
     
 }
 
+private extension DefaultScheduleListViewModel {
+    func debug(error: Error, message: String, frontMessage: String) {
+        Logger.debug(error: error, message: message)
+        _errorMessage.send(frontMessage)
+    }
+}
+
 extension DefaultScheduleListViewModel: ScheduleListViewModelInput {
     
     var input: ScheduleListViewModelInput { self }
 
     func viewDidLoad() {
         scheduleRepository.read()
-            .sink(receiveCompletion: { [weak self] complection in
-                if case let .failure(error) = complection {
-                    debugPrint(error)
-                    self?._errorMessage.send("데이터를 불러오는 도중에 알 수 없는 에러가 발생했습니다.")
+            .sink(receiveCompletion: { [weak self] completion in
+                if case let .failure(error) = completion {
+                    self?.debug(error: error, message: "Remote에서 스케줄 목록 불러오기 실패", frontMessage: "데이터를 불러오는 도중에 알 수 없는 에러가 발생했습니다.")
                 }
                 self?._isLoading.send(false)
             }, receiveValue: { [weak self] schedules in
@@ -102,10 +108,9 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelInput {
         let schedules = _schedules.value.filter { $0 != schedule }
         _currentSchedules = schedules
         scheduleRepository.delete(schedule: schedule)
-            .sink(receiveCompletion: { [weak self] complection in
-                if case let .failure(error) = complection {
-                    debugPrint(error)
-                    self?._errorMessage.send("변경사항을 서버에 반영하는 도중에 알 수 없는 에러가 발생했습니다.")
+            .sink(receiveCompletion: { [weak self] completion in
+                if case let .failure(error) = completion {
+                    self?.debug(error: error, message: "스케줄 삭제 실패", frontMessage: "변경사항을 서버에 반영하는 도중에 알 수 없는 에러가 발생했습니다.")
                 }
             }, receiveValue: { _ in }).store(in: &cancellables)
         
@@ -118,13 +123,13 @@ extension DefaultScheduleListViewModel: ScheduleListViewModelInput {
         _currentSelectedDate.send(date)
         if let index = _currentSchedules.firstIndex(where: { $0.startDate.toString(.yyyyMMddEEEE) == date.toString(.yyyyMMddEEEE)  }) {
             _showSelectedDate.send(index)
-        } else if let index = _currentSchedules.firstIndex(where: { $0.startDate.isEqualMonth(from: date) }) {
-            _showSelectedDate.send(index)
-            _errorMessage.send("선택한 날짜에 일정이 존재하지 않습니다.")
-            _visibleTopSchedule.send(_currentSchedules[index])
-        } else {
-            _errorMessage.send("선택한 날짜에 일정이 존재하지 않습니다.")
+            return
         }
+        if let index = _currentSchedules.firstIndex(where: { $0.startDate.isEqualMonth(from: date) }) {
+            _showSelectedDate.send(index)
+            _visibleTopSchedule.send(_currentSchedules[index])
+        }
+        _errorMessage.send("선택한 날짜에 일정이 존재하지 않습니다.")
     }
     
     func visibleTopSchedule(_ schedule: Schedule) {

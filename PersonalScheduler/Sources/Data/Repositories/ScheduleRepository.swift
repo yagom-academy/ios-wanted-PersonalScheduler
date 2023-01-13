@@ -102,7 +102,7 @@ private extension DefaultScheduleRepository {
         )
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
-                print("⛔️ Notification Error: ", error)
+                Logger.debug(error: error, message: "Notification Error")
             }
         }
     }

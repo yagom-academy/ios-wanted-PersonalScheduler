@@ -21,7 +21,7 @@ class ScheduleListViewController: UIViewController {
         }
     }
     
-    public weak var coordinator: ScheduleListCoordinatorInterface?
+    weak var coordinator: ScheduleListCoordinatorInterface?
 
     private let viewModel: ScheduleListViewModel
     private var cancellables = Set<AnyCancellable>()
@@ -44,8 +44,12 @@ class ScheduleListViewController: UIViewController {
         self.viewModel = viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showSrollToSchedule(_:)), name: .scrollToSchedule, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showScrollToSchedule(_:)), name: .scrollToSchedule, object: nil)
         
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .scrollToSchedule, object: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -168,8 +172,8 @@ private extension ScheduleListViewController {
  
     func setUpNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: navigationTitleView)
-        let tappedLoacationView = UITapGestureRecognizer(target: self, action: #selector(didTapNavigationTitle(_:)))
-        navigationTitleView.addGestureRecognizer(tappedLoacationView)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapNavigationTitle(_:)))
+        navigationTitleView.addGestureRecognizer(tap)
         navigationController?.addCustomBottomLine(color: .systemGray4, height: 0.3)
         let moreButton = UIBarButtonItem(
             image: UIImage(systemName: "ellipsis.circle"),
@@ -202,7 +206,7 @@ private extension ScheduleListViewController {
         coordinator?.showCreateSchedule()
     }
     
-    @objc func showSrollToSchedule(_ notification: Notification) {
+    @objc func showScrollToSchedule(_ notification: Notification) {
         guard let scheduleID = notification.object as? String,
               let index = viewModel.output.currentSchedules.firstIndex(where: { $0.id == scheduleID })
         else {
@@ -221,7 +225,8 @@ private extension ScheduleListViewController {
                 case .schedule:
                     let cell = collectionView.dequeueReusableCell(ScheduleCell.self, for: indexPath)
                     cell?.setUp(schedule)
-                    if let prevSchedule = self?.dataSource?.itemIdentifier(for: IndexPath(item: indexPath.item - 1, section: .zero)),
+                    let prevIndexPath = IndexPath(item: indexPath.item - 1, section: .zero)
+                    if let prevSchedule = self?.dataSource?.itemIdentifier(for: prevIndexPath),
                        prevSchedule.startDate.isEqualMonth(from: schedule.startDate) == false {
                         cell?.showMonthView(schedule.startDate)
                     }
@@ -244,17 +249,19 @@ private extension ScheduleListViewController {
         var listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
         listConfiguration.showsSeparators = false
         listConfiguration.backgroundColor = .psBackground
-        listConfiguration.trailingSwipeActionsConfigurationProvider = makeSwipeActions
+        listConfiguration.trailingSwipeActionsConfigurationProvider = { [weak self] indexPath -> UISwipeActionsConfiguration? in
+            return self?.makeSwipeActions(for: indexPath)
+        }
         return UICollectionViewCompositionalLayout.list(using: listConfiguration)
     }
     
-    func makeSwipeActions(for indexPath: IndexPath?) -> UISwipeActionsConfiguration? {
-        guard let indexPath = indexPath, let schedule = dataSource?.itemIdentifier(for: indexPath) else {
+    func makeSwipeActions(for indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let schedule = dataSource?.itemIdentifier(for: indexPath) else {
             return nil
         }
-        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] _, _, completeHandeler in
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] _, _, completeHandler in
             self?.viewModel.input.delete(schedule: schedule)
-            completeHandeler(true)
+            completeHandler(true)
         }
         deleteAction.image = UIImage(systemName: "trash.fill")
         return UISwipeActionsConfiguration(actions: [deleteAction])

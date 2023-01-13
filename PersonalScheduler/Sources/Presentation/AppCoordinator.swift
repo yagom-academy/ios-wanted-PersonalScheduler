@@ -15,11 +15,11 @@ final class AppCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
-    public init(navigationConrtoller: UINavigationController) {
-        self.navigationController = navigationConrtoller
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
     }
     
-    public func start() {
+    func start() {
         let coordinator = makeAuthCoordinator()
         coordinator.start()
     }
@@ -31,7 +31,6 @@ private extension AppCoordinator {
         coordinator.finishDelegate = self
         coordinator.parentCoordinator = self
         childCoordinators.append(coordinator)
-        
         return coordinator
     }
     

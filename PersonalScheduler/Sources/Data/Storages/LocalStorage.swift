@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 enum LocalKey: String {
-    case userInfo = "userInfo"
+    case userInfo
 }
 
 protocol LocalStorageService: AnyObject {
@@ -44,8 +44,8 @@ extension UserDefaults: LocalStorageService {
     }
     
     func getUser() -> User? {
-        if let dittionary = Self.standard.object(forKey: LocalKey.userInfo.rawValue) as? [String: Any] {
-            return User(dittionary)
+        if let dictionary = Self.standard.object(forKey: LocalKey.userInfo.rawValue) as? [String: Any] {
+            return User(dictionary)
             
         }
         return nil

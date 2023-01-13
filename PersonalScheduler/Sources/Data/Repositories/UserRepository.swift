@@ -12,7 +12,7 @@ protocol UserRepository {
     func getRemoteUserInfo(authentication: Authentication) -> AnyPublisher<User, Error>
     func getLocalUserInfo() -> User?
     func localUpdate(user: User)
-    func register(_ authatication: Authentication, snsType: SNSType) -> AnyPublisher<Bool, Error>
+    func register(_ authentication: Authentication, snsType: SNSType) -> AnyPublisher<Bool, Error>
     func deleteUser()
     func logout()
 }
@@ -46,12 +46,12 @@ final class DefaultUserRepository: UserRepository {
         localStorage.saveUser(user)
     }
     
-    func register(_ authatication: Authentication, snsType: SNSType) -> AnyPublisher<Bool, Error> {
+    func register(_ authentication: Authentication, snsType: SNSType) -> AnyPublisher<Bool, Error> {
         let newUser = User(
-            userID: authatication.snsUserId,
+            userID: authentication.snsUserId,
             socialType: snsType.rawValue,
-            name: authatication.snsUserName,
-            profileURL: authatication.snsProfileUrl,
+            name: authentication.snsUserName,
+            profileURL: authentication.snsProfileUrl,
             schedules: []
         )
         localStorage.saveUser(newUser)

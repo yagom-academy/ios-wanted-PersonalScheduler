@@ -16,7 +16,7 @@ class ScheduleViewController: UIViewController {
     }
     
     private let type: ViewType
-    public weak var coordinator: ScheduleCoordinatorInterface?
+    weak var coordinator: ScheduleCoordinatorInterface?
     
     private let viewModel: ScheduleViewModel
     private var cancellables = Set<AnyCancellable>()

@@ -59,4 +59,5 @@ enum DateFormat: String {
     case day = "d"
     case week = "E"
     case yearAndMonth = "yyyy년 M월"
+    case log = "yyyy-MM-dd HH:mm:ss"
 }

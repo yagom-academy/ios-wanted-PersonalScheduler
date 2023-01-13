@@ -14,4 +14,3 @@ final class AppAppearance {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.label]
     }
 }
-

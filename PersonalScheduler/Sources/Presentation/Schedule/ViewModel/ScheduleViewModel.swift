@@ -70,12 +70,10 @@ final class DefaultScheduleViewModel: ScheduleViewModel {
 }
 
 private extension DefaultScheduleViewModel {
-    
-    func errorhandling(_ error: Error, message: String) {
-        debugPrint(error)
-        _errorMessage.send(message)
+    func debug(error: Error, message: String, frontMessage: String) {
+        Logger.debug(error: error, message: message)
+        _errorMessage.send(frontMessage)
     }
-    
 }
 
 extension DefaultScheduleViewModel: ScheduleViewModelInput {
@@ -110,9 +108,9 @@ extension DefaultScheduleViewModel: ScheduleViewModelInput {
         switch type {
         case .edit:
             scheduleRepository.update(schedule: newSchedule)
-                .sink(receiveCompletion: { [weak self] complection in
-                    if case let .failure(error) = complection {
-                        self?.errorhandling(error, message: "일정을 저장하는 도중에 알 수 없는 에러가 발생했습니다.")
+                .sink(receiveCompletion: { [weak self] completion in
+                    if case let .failure(error) = completion {
+                        self?.debug(error: error, message: "일정 업데이트 실패", frontMessage: "일정을 저장하는 도중에 알 수 없는 에러가 발생했습니다.")
                     }
                     self?._isLoading.send(false)
                 }, receiveValue: { [weak self] isSuccess in
@@ -120,9 +118,9 @@ extension DefaultScheduleViewModel: ScheduleViewModelInput {
                 }).store(in: &cancellables)
         case .create:
             scheduleRepository.write(schedule: newSchedule)
-                .sink(receiveCompletion: { [weak self] complection in
-                    if case let .failure(error) = complection {
-                        self?.errorhandling(error, message: "새 일정을 등록하는 도중에 알 수 없는 에러가 발생했습니다.")
+                .sink(receiveCompletion: { [weak self] completion in
+                    if case let .failure(error) = completion {
+                        self?.debug(error: error, message: "일정 추가 실패", frontMessage: "새 일정을 등록하는 도중에 알 수 없는 에러가 발생했습니다.")
                     }
                 self?._isLoading.send(false)
                 }, receiveValue: { [weak self] isSuccess in

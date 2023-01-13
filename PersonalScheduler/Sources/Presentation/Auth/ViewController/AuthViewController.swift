@@ -11,7 +11,7 @@ import AuthenticationServices
 
 class AuthViewController: UIViewController {
     
-    public weak var coordinator: AuthCoordinatorInterface?
+    weak var coordinator: AuthCoordinatorInterface?
     
     private let viewModel: AuthViewModel
     private var cancellables = Set<AnyCancellable>()
@@ -137,7 +137,9 @@ private extension AuthViewController {
             descriptionLabel.centerXAnchor.constraint(equalTo: loginButtonStackView.centerXAnchor),
             descriptionLabel.bottomAnchor.constraint(equalTo: loginButtonStackView.topAnchor, constant: -16),
             activityIndicator.widthAnchor.constraint(equalTo: view.widthAnchor),
-            activityIndicator.heightAnchor.constraint(equalTo: view.heightAnchor)
+            activityIndicator.heightAnchor.constraint(equalTo: view.heightAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
     
