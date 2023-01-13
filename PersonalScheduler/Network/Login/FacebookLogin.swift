@@ -13,6 +13,8 @@ final class FacebookLogin: Login {
         let observer: Observable<Result<String, Error>?> = .init(nil)
         if let id = AccessToken.current?.userID {
             observer.value = .success(id)
+        } else {
+            observer.value = .failure(LoginError.facebookLoadedError)
         }
         return observer
     }
