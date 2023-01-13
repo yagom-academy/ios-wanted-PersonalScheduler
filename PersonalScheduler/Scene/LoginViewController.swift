@@ -62,7 +62,15 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let sample = ScheduleFireStore()
+//        sample.createSchedule(email: "asdfasdfsdf", scheduleList: [])
+        let user = User(
+            email: "1214@asdf",
+            scehdule: [Schedule(title: "", body: "Af", createDate: "Asdf"),
+                       Schedule(title: "asdfa", body: "ASfd", createDate: Date().timeStamp),
+                       Schedule(title: "asdfa", body: "ASfad", createDate: "asdfsd")]
+        )
+        sample.create(with: user)
         commonInit()
     }
     

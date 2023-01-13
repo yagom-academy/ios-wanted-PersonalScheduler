@@ -10,8 +10,7 @@ import Foundation.NSDate
 extension Date {
     var timeStamp: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_kr")
-        dateFormatter.dateStyle = .long
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         let stringDate =  dateFormatter.string(from: self)
      
         return stringDate

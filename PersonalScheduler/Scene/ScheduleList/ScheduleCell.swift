@@ -15,7 +15,7 @@ final class ScheduleCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .title1)
-        label.text = "Title"
+        
         return label
     }()
     
@@ -32,7 +32,7 @@ final class ScheduleCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .body)
-        label.text = "body"
+        
         return label
     }()
     
@@ -51,6 +51,12 @@ final class ScheduleCell: UITableViewCell {
     }
     
     // MARK: - Methods
+    
+    func setupCell(with schedule: Schedule) {
+        titleLabel.text = schedule.title
+        bodyLabel.text = schedule.body
+        createdDateLabel.text = schedule.createDate
+    }
     
     private func commonInit() {
         setupSubviews()
@@ -102,6 +108,14 @@ final class ScheduleCell: UITableViewCell {
             ),
             bodyLabel.leadingAnchor.constraint(
                 equalTo: titleLabel.leadingAnchor
+            ),
+            bodyLabel.trailingAnchor.constraint(
+                equalTo: createdDateLabel.leadingAnchor,
+                constant: -20
+            ),
+            bodyLabel.bottomAnchor.constraint(
+                equalTo: bottomAnchor,
+                constant: -8
             )
         ])
     }

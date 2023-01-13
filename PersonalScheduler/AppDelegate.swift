@@ -6,6 +6,7 @@
 //
 
 import FacebookCore
+import Firebase
 import KakaoSDKCommon
 import KakaoSDKAuth
 import UIKit
@@ -27,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application,
             didFinishLaunchingWithOptions: launchOptions
         )
+        FirebaseApp.configure()
         
         return true
     }

@@ -7,9 +7,19 @@
 
 import UIKit
 
-final class ScheduleViewController: UIViewController {
+final class ScheduleViewController: UIViewController, ScheduleDelegate {
     
     // MARK: Properties
+    
+    private var scheduleList: [Schedule] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    func appendSchedule(_ schedule: Schedule) {
+        scheduleList.append(schedule)
+    }
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -136,6 +146,7 @@ final class ScheduleViewController: UIViewController {
     @objc
     private func enrollButtonDidTap() {
         let scheduleEnrollViewController = ScheduleEnrollViewController()
+        scheduleEnrollViewController.scheuleDelegate = self
         present(scheduleEnrollViewController, animated: true)
     }
 }
@@ -145,7 +156,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return 10
+        return scheduleList.count
     }
     
     func tableView(
@@ -158,7 +169,13 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.setupCell(with: scheduleList[indexPath.row])
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     func tableView(
@@ -175,8 +192,9 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
         let deleteAction = UIContextualAction(
             style: .destructive,
             title: "삭제"
-        ) { action, view, handler in
-            print("delete")
+        ) { _, _, _ in
+            
+            self.scheduleList.remove(at: indexPath.row)
         }
         
         let modifyAction = UIContextualAction(
@@ -184,6 +202,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
             title: "수정"
         ) { action, view, handler in
             print("modify")
+            
         }
         
         return UISwipeActionsConfiguration(actions: [deleteAction, modifyAction])

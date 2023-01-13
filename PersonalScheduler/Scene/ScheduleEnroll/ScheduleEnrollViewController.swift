@@ -11,6 +11,8 @@ final class ScheduleEnrollViewController: UIViewController {
     
     // MARK: Properties
     
+    weak var scheuleDelegate: ScheduleDelegate?
+    
     private let cancelButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -203,6 +205,12 @@ final class ScheduleEnrollViewController: UIViewController {
             alertController.addAction(confirmAction)
             present(alertController, animated: true)
         } else {
+            let newScedule = Schedule(
+                title: titleTextField.text,
+                body: bodyTextView.text,
+                createDate: Date().timeStamp
+            )
+            scheuleDelegate?.appendSchedule(newScedule)
             dismiss(animated: true)
         }
     }

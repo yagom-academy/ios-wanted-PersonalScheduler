@@ -17,6 +17,12 @@
 		C4448E5929709B9D0085CB77 /* ScheduleEnrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4448E5829709B9D0085CB77 /* ScheduleEnrollViewController.swift */; };
 		C4448E5C29712ED20085CB77 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4448E5B29712ED20085CB77 /* Schedule.swift */; };
 		C4448E5F297131930085CB77 /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4448E5E297131930085CB77 /* Date+extension.swift */; };
+		C4448E61297136650085CB77 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4448E60297136650085CB77 /* GoogleService-Info.plist */; };
+		C4448E7029713D170085CB77 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4448E6F29713D170085CB77 /* User.swift */; };
+		C4448E7229713DB00085CB77 /* ScheduleFireStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4448E7129713DB00085CB77 /* ScheduleFireStore.swift */; };
+		C4448E7529714A410085CB77 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C4448E7429714A410085CB77 /* FirebaseAuth */; };
+		C4448E7729714A410085CB77 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C4448E7629714A410085CB77 /* FirebaseFirestore */; };
+		C4448E7A29716CD80085CB77 /* ScheduleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4448E7929716CD80085CB77 /* ScheduleDelegate.swift */; };
 		C4D37DB5296DF2E40011F1B3 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D37DB4296DF2E40011F1B3 /* ScheduleViewController.swift */; };
 		C4FCC480296DB086000858A4 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = C4FCC47F296DB086000858A4 /* KakaoSDK */; };
 		C4FCC483296DB0C0000858A4 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = C4FCC482296DB0C0000858A4 /* FacebookCore */; };
@@ -36,6 +42,10 @@
 		C4448E5829709B9D0085CB77 /* ScheduleEnrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEnrollViewController.swift; sourceTree = "<group>"; };
 		C4448E5B29712ED20085CB77 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		C4448E5E297131930085CB77 /* Date+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
+		C4448E60297136650085CB77 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C4448E6F29713D170085CB77 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C4448E7129713DB00085CB77 /* ScheduleFireStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFireStore.swift; sourceTree = "<group>"; };
+		C4448E7929716CD80085CB77 /* ScheduleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDelegate.swift; sourceTree = "<group>"; };
 		C4D37DB3296DBD690011F1B3 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
 		C4D37DB4296DF2E40011F1B3 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -48,6 +58,8 @@
 				C4FCC480296DB086000858A4 /* KakaoSDK in Frameworks */,
 				C4FCC483296DB0C0000858A4 /* FacebookCore in Frameworks */,
 				C4FCC485296DB0C0000858A4 /* FacebookLogin in Frameworks */,
+				C4448E7729714A410085CB77 /* FirebaseFirestore in Frameworks */,
+				C4448E7529714A410085CB77 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +91,7 @@
 				C4DA53CE296D9459006368B0 /* Resource */,
 				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
 				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
+				C4448E7B29716E440085CB77 /* Service */,
 				C4448E5A29712EBD0085CB77 /* Model */,
 				C4448E5429709B510085CB77 /* Scene */,
 			);
@@ -124,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				C4448E5829709B9D0085CB77 /* ScheduleEnrollViewController.swift */,
+				C4448E7929716CD80085CB77 /* ScheduleDelegate.swift */,
 			);
 			path = ScheduleEnroll;
 			sourceTree = "<group>";
@@ -132,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				C4448E5B29712ED20085CB77 /* Schedule.swift */,
+				C4448E6F29713D170085CB77 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -144,10 +159,19 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		C4448E7B29716E440085CB77 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C4448E7129713DB00085CB77 /* ScheduleFireStore.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		C4DA53CE296D9459006368B0 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				C4448E60297136650085CB77 /* GoogleService-Info.plist */,
 				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
 				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
 			);
@@ -174,6 +198,8 @@
 				C4FCC47F296DB086000858A4 /* KakaoSDK */,
 				C4FCC482296DB0C0000858A4 /* FacebookCore */,
 				C4FCC484296DB0C0000858A4 /* FacebookLogin */,
+				C4448E7429714A410085CB77 /* FirebaseAuth */,
+				C4448E7629714A410085CB77 /* FirebaseFirestore */,
 			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
@@ -206,6 +232,7 @@
 			packageReferences = (
 				C4FCC47E296DB086000858A4 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				C4FCC481296DB0C0000858A4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				C4448E7329714A410085CB77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
@@ -223,6 +250,7 @@
 			files = (
 				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
 				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
+				C4448E61297136650085CB77 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +262,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
+				C4448E7A29716CD80085CB77 /* ScheduleDelegate.swift in Sources */,
 				C4448E5F297131930085CB77 /* Date+extension.swift in Sources */,
+				C4448E7229713DB00085CB77 /* ScheduleFireStore.swift in Sources */,
 				C4448E532970953D0085CB77 /* ReuseIdentifier.swift in Sources */,
 				C4448E50297093BB0085CB77 /* ScheduleCell.swift in Sources */,
 				C4448E5929709B9D0085CB77 /* ScheduleEnrollViewController.swift in Sources */,
@@ -242,6 +272,7 @@
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				C4448E5C29712ED20085CB77 /* Schedule.swift in Sources */,
 				C4D37DB5296DF2E40011F1B3 /* ScheduleViewController.swift in Sources */,
+				C4448E7029713D170085CB77 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +486,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C4448E7329714A410085CB77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		C4FCC47E296DB086000858A4 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
@@ -474,6 +513,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C4448E7429714A410085CB77 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4448E7329714A410085CB77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		C4448E7629714A410085CB77 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4448E7329714A410085CB77 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		C4FCC47F296DB086000858A4 /* KakaoSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C4FCC47E296DB086000858A4 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
