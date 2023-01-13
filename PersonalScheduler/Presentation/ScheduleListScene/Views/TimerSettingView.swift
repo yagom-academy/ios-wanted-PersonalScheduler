@@ -104,8 +104,8 @@ final class TimerSettingView: UIView {
         datePicker.minuteInterval = 5
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.calendar = Calendar.current
-        datePicker.locale = Locale.current
-        datePicker.timeZone = TimeZone.current
+        datePicker.locale = Locale(identifier: "ko_KR")
+        datePicker.timeZone = TimeZone(identifier: "ko_KR")
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         datePicker.isHidden = true
         datePicker.alpha = 0.3
