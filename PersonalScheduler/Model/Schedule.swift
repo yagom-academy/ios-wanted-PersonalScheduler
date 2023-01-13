@@ -6,7 +6,7 @@
 //
 
 struct Schedule {
-    let title: String
+    let title: String?
     let body: String
-    let createDate: Int
+    let createDate: String
 }
