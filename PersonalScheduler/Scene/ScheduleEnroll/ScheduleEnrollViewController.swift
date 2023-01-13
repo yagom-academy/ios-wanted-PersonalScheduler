@@ -181,7 +181,19 @@ final class ScheduleEnrollViewController: UIViewController {
     
     @objc
     private func enrollButtonDidTap() {
-        dismiss(animated: true)
+        if bodyTextView.text == "내용" || titleTextField.text == nil {
+            let alertController = UIAlertController(
+                title: "제목과 내용을 채워주세요",
+                message: nil,
+                preferredStyle: .alert
+            )
+            let confirmAction = UIAlertAction(title: "확인", style: .default)
+            
+            alertController.addAction(confirmAction)
+            present(alertController, animated: true)
+        } else {
+            dismiss(animated: true)
+        }
     }
 }
 
