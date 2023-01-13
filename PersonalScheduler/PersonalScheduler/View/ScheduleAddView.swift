@@ -23,7 +23,7 @@ struct ScheduleAddView: View {
     @State var startTimeStamp: Date = Date()
     @State var endTimeStamp: Date = Date()
 
-    @State private var totalChars: Int = 0
+    @State var totalChars: Int = 0
     @State private var lastText: String = ""
     
     var body: some View {

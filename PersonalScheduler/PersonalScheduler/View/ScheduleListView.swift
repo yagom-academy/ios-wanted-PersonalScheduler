@@ -26,10 +26,10 @@ struct ScheduleListView: View {
                         .fontWeight(.semibold)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    NavigationLink {
-                        ScheduleAddView(accountUID: accountUID)
+                    Button {
+                        isActiveAlert.toggle()
                     } label: {
-                        Image(uiImage: UIImage(systemName: "plus")!)
+                        Text("로그아웃")
                     }
                 }
                 
@@ -44,7 +44,8 @@ struct ScheduleListView: View {
                                     title: data.title,
                                     description: data.description,
                                     startTimeStamp: data.startTimeStamp.translateToDate(),
-                                    endTimeStamp: data.endTimeStamp.translateToDate()
+                                    endTimeStamp: data.endTimeStamp.translateToDate(),
+                                    totalChars: data.description.count
                                 )
                             } label: {
                                 let compareDate = data.endTimeStamp.translateToDate().compare(
@@ -71,12 +72,13 @@ struct ScheduleListView: View {
                         }
                 }
                 .listStyle(.plain)
-                
-                Button {
-                    isActiveAlert.toggle()
+
+                NavigationLink {
+                    ScheduleAddView(accountUID: accountUID)
                 } label: {
-                    Text("로그아웃")
+                    Image(uiImage: UIImage(systemName: "square.and.pencil")!)
                 }
+                .frame(maxWidth: .infinity, alignment: .trailing)
             }
             .padding()
             .alert(isPresented: $isActiveAlert) {

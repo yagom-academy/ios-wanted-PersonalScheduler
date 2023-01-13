@@ -16,7 +16,7 @@ struct SignUpView: View {
     
     var body: some View {
         VStack {
-            Text("Welcom!\nCreate your Account")
+            Text("Welcom!\nMy PersonalScheduler")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
                 .padding(.bottom, 50)
@@ -38,7 +38,7 @@ struct SignUpView: View {
                 Button {
                     signUpViewModel.registerUser(email: newEmail, password: newPassword)
                 } label: {
-                    Text("Check and Create Account")
+                    Text("Sign in")
                         .foregroundColor(.white)
                         .frame(width: geometry.size.width, height: 40)
                 }

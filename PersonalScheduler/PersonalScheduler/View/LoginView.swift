@@ -37,7 +37,7 @@ struct LoginView: View {
                     Button {
                         loginViewModel.firebaseLogin()
                     } label: {
-                        Text("Login")
+                        Text("Sign up")
                             .foregroundColor(.white)
                             .frame(width: geometry.size.width, height: 40)
                     }
@@ -50,7 +50,7 @@ struct LoginView: View {
                     NavigationLink {
                         SignUpView()
                     } label: {
-                        Text("Go Create Account Page")
+                        Text("Sign in")
                             .foregroundColor(.white)
                             .frame(width: geometry.size.width, height: 40)
                     }
