@@ -8,6 +8,7 @@
 import UIKit
 import KakaoSDKUser
 import FacebookLogin
+import FirebaseAuth
 
 final class LoginViewController: UIViewController {
     private let titleLabel: UILabel = {
@@ -105,14 +106,49 @@ final class LoginViewController: UIViewController {
                                    for: .touchUpInside)
     }
     
-    private func presentScheduleListView(with token: String) {
-        let scheduleViewModel = ScheduleViewModel(with: token)
+    private func presentScheduleListView() {
+        guard let user = Auth.auth().currentUser else { return }
+        
+        let scheduleViewModel = ScheduleViewModel(with: user.uid)
         let scheduleListView = ScheduleListViewController(scheduleViewModel)
         let navigationController = UINavigationController(rootViewController: scheduleListView)
-        
-        LoginManager.shared.saveUserToken(token)
+    
         navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: true)
+    }
+    
+    private func createKakaoUser() {
+        UserApi.shared.me() { [weak self] user, error in
+            if error != nil {
+                self?.showAlert(AlertPhrase.kakaoLoginFailed)
+                return
+            }
+
+            guard let user = user,
+                  let email = user.kakaoAccount?.email else {
+                self?.showAlert(AlertPhrase.kakaoLoginFailed)
+                return
+            }
+            
+            let password = String(describing: user.id)
+            
+            Auth.auth().signIn(withEmail: email,
+                               password: password) { result, error in
+                if error != nil {
+                    Auth.auth().createUser(withEmail: email,
+                                           password: password) { result, error in
+                        if error != nil {
+                            self?.showAlert(AlertPhrase.kakaoLoginFailed)
+                            return
+                        }
+                    }
+                    return
+                }
+                
+                LoginManager.shared.saveKakaoLogin(id: email, password: password)
+                self?.presentScheduleListView()
+            }
+        }
     }
     
     @objc private func kakaoLoginButtonTapped() {
@@ -120,9 +156,7 @@ final class LoginViewController: UIViewController {
             if error != nil {
                 self?.showAlert(AlertPhrase.kakaoLoginFailed)
             } else {
-                if let token = oauthToken?.accessToken {
-                    self?.presentScheduleListView(with: token)
-                }
+                self?.createKakaoUser()
             }
         }
     }
