@@ -11,6 +11,9 @@ final class ScheduleListCoordinator {
     var navigationController: UINavigationController
     private let scheduleListDIContinaer: ScheduleListDIContainer
 
+    private var scheduleListViewController: ScheduleListViewController!
+    private var scheduleMakingViewController: ScheduleMakingViewController!
+
     init(navigationController: UINavigationController, scheduleListDIContinaer: ScheduleListDIContainer) {
         self.navigationController = navigationController
         self.scheduleListDIContinaer = scheduleListDIContinaer
@@ -18,12 +21,18 @@ final class ScheduleListCoordinator {
 
     func start() {
         navigationController.popToRootViewController(animated: false)
-        let scheduleListViewController = scheduleListDIContinaer.makeScheduleListViewController(coordinator: self)
+        scheduleListViewController = scheduleListDIContinaer.makeScheduleListViewController(coordinator: self)
         navigationController.pushViewController(scheduleListViewController, animated: true)
     }
 
     func showScheduleMaking() {
-        let scheduleMakingViewController = scheduleListDIContinaer.makeScheduleMakingViewController()
+        scheduleMakingViewController = scheduleListDIContinaer.makeScheduleMakingViewController(coordinator: self)
         navigationController.present(scheduleMakingViewController, animated: true)
+    }
+
+    func dismissScheduleMaking() {
+        scheduleMakingViewController.dismiss(animated: true) { [weak self] in
+            self?.scheduleListViewController.viewWillAppear(true)
+        }
     }
 }

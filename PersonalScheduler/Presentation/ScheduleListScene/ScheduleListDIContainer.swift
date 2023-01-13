@@ -52,8 +52,8 @@ final class ScheduleListDIContainer {
 
     // MARK: - ViewControllers
 
-    func makeScheduleMakingViewController() -> ScheduleMakingViewController {
-        return ScheduleMakingViewController(viewModel: makeScheduleMakingViewModel())
+    func makeScheduleMakingViewController(coordinator: ScheduleListCoordinator) -> ScheduleMakingViewController {
+        return ScheduleMakingViewController(viewModel: makeScheduleMakingViewModel(), coordinator: coordinator)
     }
 
     func makeScheduleListViewController(coordinator: ScheduleListCoordinator) -> ScheduleListViewController {

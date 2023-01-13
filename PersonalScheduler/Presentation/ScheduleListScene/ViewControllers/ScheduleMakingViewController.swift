@@ -9,6 +9,7 @@ import UIKit
 
 final class ScheduleMakingViewController: UIViewController {
 
+    private var coordinator: ScheduleListCoordinator?
     private let viewModel: ScheduleMakingViewModel
 
     private let scrollView: UIScrollView = {
@@ -53,8 +54,9 @@ final class ScheduleMakingViewController: UIViewController {
                                                 placeholder: "내용")
     private let timerSettingView = TimerSettingView()
 
-    init(viewModel: ScheduleMakingViewModel) {
+    init(viewModel: ScheduleMakingViewModel, coordinator: ScheduleListCoordinator) {
         self.viewModel = viewModel
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -71,7 +73,7 @@ final class ScheduleMakingViewController: UIViewController {
 
     private func bind() {
         viewModel.dismiss = { [weak self] in
-            self?.dismiss(animated: true)
+            self?.coordinator?.dismissScheduleMaking()
         }
 
         viewModel.showAlert = { [weak self] alert in
