@@ -203,6 +203,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		328444EF297145E300BC099E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				32EAF5AA296C83850056513F /* OAuthServices */,
+				328444CC296FE06500BC099E /* FirebaseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		328444F0297145EA00BC099E /* DTO+Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				328444CE296FE13700BC099E /* ScheduleDTO.swift */,
+			);
+			path = "DTO+Mapping";
+			sourceTree = "<group>";
+		};
 		32EAF5A0296C48420056513F /* APIKeys */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,12 +243,10 @@
 		32EAF5A8296C83740056513F /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				328444D0296FE27800BC099E /* FirebaseError.swift */,
 				32FB8F11296D961B007D1BA6 /* Repositories */,
 				32EAF5A9296C83800056513F /* Errors */,
-				32EAF5AA296C83850056513F /* OAuthServices */,
-				328444CC296FE06500BC099E /* FirebaseService.swift */,
-				328444CE296FE13700BC099E /* ScheduleDTO.swift */,
+				328444EF297145E300BC099E /* Services */,
+				328444F0297145EA00BC099E /* DTO+Mapping */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -240,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				32EAF5A1296C7AA90056513F /* OAuthError.swift */,
+				328444D0296FE27800BC099E /* FirebaseError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
