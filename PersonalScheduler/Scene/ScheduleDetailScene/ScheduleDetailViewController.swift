@@ -108,6 +108,7 @@ extension ScheduleDetailViewController {
         setupConstraint()
         setupNavigationBar()
         setupTextViewDelegate()
+        allDaySwitchView.switchDelegate = self
         view.backgroundColor = .systemBackground
     }
     
@@ -248,5 +249,21 @@ extension ScheduleDetailViewController {
     
     @objc private func keyboardWillHide() {
         contentTextView.contentInset.bottom = .zero
+    }
+}
+
+extension ScheduleDetailViewController: SetAllDayDelegate {
+    func allDaySwitchChange(isOn: Bool) {
+        startDatePicker.changeTimePicker(isOn)
+        endDatePicker.changeTimePicker(isOn)
+       
+        let startDate = startDatePicker.selectedDate
+        let endDate = endDatePicker.selectedDate
+        
+        if let startAllDay = startDate.convertToString().toDate(),
+           let endAllDay = startDate.convertToString().toDate() {
+            startDatePicker.setupPicker(startAllDay)
+            endDatePicker.setupPicker(endAllDay)
+        }
     }
 }

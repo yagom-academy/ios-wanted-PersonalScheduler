@@ -14,6 +14,7 @@
 		204ACE1C296CFF1F003BAD46 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204ACE1B296CFF1F003BAD46 /* Schedule.swift */; };
 		204C9627296D6FDA000575BE /* ScheduleSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204C9626296D6FDA000575BE /* ScheduleSwitchView.swift */; };
 		204C9629296D6FE8000575BE /* ScheduleDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204C9628296D6FE8000575BE /* ScheduleDatePickerView.swift */; };
+		2055F4EE29711539002B5F07 /* String+toDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055F4ED29711539002B5F07 /* String+toDate.swift */; };
 		207950C3296EF25B004D27EB /* ScheduleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207950C2296EF25B004D27EB /* ScheduleInfo.swift */; };
 		207950C5296EF27D004D27EB /* DetailViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207950C4296EF27D004D27EB /* DetailViewMode.swift */; };
 		207950C8296EF656004D27EB /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207950C7296EF656004D27EB /* UIViewController+Alert.swift */; };
@@ -46,6 +47,7 @@
 		204ACE1B296CFF1F003BAD46 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		204C9626296D6FDA000575BE /* ScheduleSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSwitchView.swift; sourceTree = "<group>"; };
 		204C9628296D6FE8000575BE /* ScheduleDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDatePickerView.swift; sourceTree = "<group>"; };
+		2055F4ED29711539002B5F07 /* String+toDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+toDate.swift"; sourceTree = "<group>"; };
 		207950C2296EF25B004D27EB /* ScheduleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInfo.swift; sourceTree = "<group>"; };
 		207950C4296EF27D004D27EB /* DetailViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewMode.swift; sourceTree = "<group>"; };
 		207950C7296EF656004D27EB /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				207950C7296EF656004D27EB /* UIViewController+Alert.swift */,
 				20F44DBB296FC58A005BC329 /* Date+toString.swift */,
+				2055F4ED29711539002B5F07 /* String+toDate.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				204C9629296D6FE8000575BE /* ScheduleDatePickerView.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				204ACE04296CED21003BAD46 /* ScheduleListTableViewCell.swift in Sources */,
+				2055F4EE29711539002B5F07 /* String+toDate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				204ACE15296CFD49003BAD46 /* FirestoreManager.swift in Sources */,
 				204ACE1C296CFF1F003BAD46 /* Schedule.swift in Sources */,

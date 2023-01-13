@@ -54,6 +54,14 @@ final class ScheduleDatePickerView: UIView {
         datePicker.date = date
     }
     
+    func changeTimePicker(_ ishidden: Bool) {
+        if ishidden {
+            datePicker.datePickerMode = .date
+        } else {
+            datePicker.datePickerMode = .dateAndTime
+        }
+    }
+    
     private func setupView() {
         entireStackView.addArrangedSubview(infoLabel)
         entireStackView.addArrangedSubview(datePicker)
