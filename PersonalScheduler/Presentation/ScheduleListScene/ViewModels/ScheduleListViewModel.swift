@@ -141,7 +141,7 @@ extension ScheduleListViewModel { // TODO: Caching
 fileprivate extension Date {
     func toCurrentMonthText() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy년 MM월"
+        dateFormatter.dateFormat = "yyyy년 M월"
         return dateFormatter.string(from: self)
     }
 }
