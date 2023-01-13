@@ -20,7 +20,7 @@ final class ScheduleMakingViewController: UIViewController {
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 15
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -48,7 +48,8 @@ final class ScheduleMakingViewController: UIViewController {
 
     private let titleView = ImageTextView(image: UIImage(systemName: "note.text"), placeholder: "제목")
     private let descriptionView = ImageTextView(image: UIImage(systemName: "text.bubble"),
-                                                placeholder: "내용", shouldShowTextCount: true)
+                                                placeholder: "내용")
+    private let timerSettingView = TimerSettingView()
 
     init(viewModel: ScheduleMakingViewModel) {
         self.viewModel = viewModel
@@ -86,7 +87,7 @@ final class ScheduleMakingViewController: UIViewController {
             saveButton.widthAnchor.constraint(equalTo: saveButton.heightAnchor)
         ])
 
-        [titleView, descriptionView].forEach {
+        [titleView, descriptionView, timerSettingView].forEach {
             stackView.addArrangedSubview($0)
         }
 

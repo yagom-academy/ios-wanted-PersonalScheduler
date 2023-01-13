@@ -30,19 +30,18 @@ final class ImageTextView: UIView {
 
     private let textCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "0/500"
         label.textAlignment = .right
         label.font = .boldSystemFont(ofSize: 12)
-        label.textColor = .darkText
+        label.textColor = .systemRed
+        label.isHidden = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    init(image: UIImage?, placeholder: String, shouldShowTextCount: Bool = false) {
+    init(image: UIImage?, placeholder: String) {
         super.init(frame: .zero)
         self.imageView.image = image
         self.placeholder = placeholder
-        textCountLabel.isHidden = !shouldShowTextCount
         translatesAutoresizingMaskIntoConstraints = false
         setUpTextView()
         layout()
@@ -92,7 +91,7 @@ extension ImageTextView: UITextViewDelegate {
     }
 
     func textViewDidChange(_ textView: UITextView) {
-        self.textCountLabel.text = "\(textView.text.count)/500"
+        self.textCountLabel.text = "최대 500자까지만 작성할 수 있습니다. \(textView.text.count)/500"
     }
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -100,6 +99,11 @@ extension ImageTextView: UITextViewDelegate {
               let rangeToChange = Range(range, in: textViewText) else { return false }
 
         let updatedText = textViewText.replacingCharacters(in: rangeToChange, with: text)
+        if updatedText.count >= 450 {
+            self.textCountLabel.isHidden = false
+        } else {
+            self.textCountLabel.isHidden = true
+        }
         return updatedText.count <= 500
     }
 }
