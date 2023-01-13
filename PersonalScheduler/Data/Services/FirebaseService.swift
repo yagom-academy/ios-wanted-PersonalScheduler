@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseAuth
 
 final class FirebaseService {
 
@@ -18,7 +19,7 @@ final class FirebaseService {
     private init() { }
 
     func fetchSchedules(for date: Date, completion: @escaping (Result<[ScheduleDTO], Error>) -> Void) {
-        guard let uid = UserDefaults.standard.string(forKey: "uid") else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
 
         scheduleReference.whereField("uid", isEqualTo: uid)
             .getDocuments { snapShot, error in

@@ -41,7 +41,7 @@ extension ScheduleDTO {
 
 extension Schedule {
     func toDTO() -> ScheduleDTO {
-        guard let uid = UserDefaults.standard.string(forKey: "uid") else { return ScheduleDTO(scheduleData: [:]) }
+        guard let uid = Auth.auth().currentUser?.uid else { return ScheduleDTO(scheduleData: [:]) }
         var scheduleDictionary = [String: Any]()
         scheduleDictionary.updateValue(uid, forKey: "uid")
         scheduleDictionary.updateValue(id.uuidString, forKey: "scheduleId")
