@@ -8,19 +8,29 @@
 import FirebaseFirestore
 
 final class ScheduleFirestoreUseCase {
+    private enum ScheduleData {
+        static let id = "id"
+        static let title = "title"
+        static let content = "content"
+        static let isNotified = "isNotified"
+        static let startTime = "startTime"
+        static let endTime = "endTime"
+        static let isAllDay = "isAllDay"
+    }
+    
     private let firestoreManager = FirestoreManager.shared
     
     func save(_ schedule: Schedule,
               at userID: String,
               completion: @escaping (Result<Void, FirebaseError>) -> Void) {
         let scheduleData: [String: Any] = [
-            "id": schedule.id.uuidString,
-            "title": schedule.title,
-            "content": schedule.content,
-            "isNotified": schedule.isNotified,
-            "startTime": schedule.startTime,
-            "endTime": schedule.endTime,
-            "isAllDay": schedule.isAllday
+            ScheduleData.id: schedule.id.uuidString,
+            ScheduleData.title: schedule.title,
+            ScheduleData.content: schedule.content,
+            ScheduleData.isNotified: schedule.isNotified,
+            ScheduleData.startTime: schedule.startTime,
+            ScheduleData.endTime: schedule.endTime,
+            ScheduleData.isAllDay: schedule.isAllday
         ]
 
         firestoreManager.save(scheduleData,
@@ -56,14 +66,14 @@ final class ScheduleFirestoreUseCase {
 
 extension ScheduleFirestoreUseCase {
     private func toSchedule(from document: QueryDocumentSnapshot) -> Schedule? {
-        guard let id = document["id"] as? String,
+        guard let id = document[ScheduleData.id] as? String,
               let scheduleID =  UUID(uuidString: id),
-              let title = document["title"] as? String,
-              let content = document["content"] as? String,
-              let isNotified = document["isNotified"] as? Bool,
-              let startTimestamp = document["startTime"] as? Timestamp,
-              let endTimestamp = document["endTime"] as? Timestamp,
-              let isAllDay = document["isAllDay"] as? Bool else { return nil }
+              let title = document[ScheduleData.title] as? String,
+              let content = document[ScheduleData.content] as? String,
+              let isNotified = document[ScheduleData.isNotified] as? Bool,
+              let startTimestamp = document[ScheduleData.startTime] as? Timestamp,
+              let endTimestamp = document[ScheduleData.endTime] as? Timestamp,
+              let isAllDay = document[ScheduleData.isAllDay] as? Bool else { return nil }
         
         return Schedule(id: scheduleID,
                         title: title,
