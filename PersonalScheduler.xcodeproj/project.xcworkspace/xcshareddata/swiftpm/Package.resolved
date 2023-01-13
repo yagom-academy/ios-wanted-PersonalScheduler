@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/openid/AppAuth-iOS",
       "state" : {
-        "revision" : "3d36a58a2b736f7bc499453e996a704929b25080",
-        "version" : "1.6.0"
+        "branch" : "master",
+        "revision" : "b46216ab5c7a71634034cad03fc2ffe1b75005bf"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/facebook/facebook-ios-sdk",
       "state" : {
-        "revision" : "c3d367656ae8ced1149c2c6a5e6b5dd91ecad63c",
-        "version" : "9.3.0"
+        "branch" : "main",
+        "revision" : "46f2c431d2cbf89c811e5f6c92ef76d4ec6c9b29"
       }
     },
     {
@@ -50,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
-        "revision" : "7e80c25b51c2ffa238879b07fbfc5baa54bb3050",
-        "version" : "9.6.0"
+        "branch" : "master",
+        "revision" : "8913a64682c0b04aad2ede396ed402edade1f6ac"
       }
     },
     {
@@ -59,8 +59,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "c1cfde8067668027b23a42c29d11c246152fe046",
-        "version" : "9.6.0"
+        "revision" : "71eb6700dd53a851473c48d392f00a3ab26699a6",
+        "version" : "10.1.0"
       }
     },
     {
@@ -104,8 +104,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kakao/kakao-ios-sdk",
       "state" : {
-        "revision" : "b1d700ddaba7c7ff8eea56145a2b11fcb6ae037e",
-        "version" : "2.13.1"
+        "branch" : "master",
+        "revision" : "b1d700ddaba7c7ff8eea56145a2b11fcb6ae037e"
       }
     },
     {
