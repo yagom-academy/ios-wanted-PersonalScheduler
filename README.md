@@ -1,3 +1,5 @@
+###### tags: `README`
+
 # PersonalScheduler
 
 ## 🙋🏻‍♂️ 프로젝트 소개
@@ -86,21 +88,24 @@
 │   ├── ScheduleList.swift
 │   └── UserInfoData.swift
 ├── PersonalSchedulerApp.swift
-├── Preview Content
-│   └── Preview Assets.xcassets
-│       └── Contents.json
-├── View
-│   ├── FBLogView.swift
-│   ├── LoginView.swift
-│   ├── ScheduleAddView.swift
-│   ├── ScheduleListCellView.swift
-│   ├── ScheduleListView.swift
-│   └── SignUpView.swift
-└── ViewModel
-    ├── LoginViewModel.swift
-    ├── ScheduleAddViewModel.swift
-    ├── ScheduleListViewModel.swift
-    └── SignUpViewModel.swift
+├── Presentation
+│   ├── Login
+│   │   ├── FBLogView.swift
+│   │   ├── LoginView.swift
+│   │   └── LoginViewModel.swift
+│   ├── ScheduleAdd
+│   │   ├── ScheduleAddView.swift
+│   │   └── ScheduleAddViewModel.swift
+│   ├── ScheduleList
+│   │   ├── ScheduleListCellView.swift
+│   │   ├── ScheduleListView.swift
+│   │   └── ScheduleListViewModel.swift
+│   └── SignUp
+│       ├── SignUpView.swift
+│       └── SignUpViewModel.swift
+└── Preview Content
+    └── Preview Assets.xcassets
+        └── Contents.json
 ```
     
 ## ⚙️ 적용한 기술
