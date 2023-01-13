@@ -6,7 +6,7 @@
 
 **제작자 소개:**
 
-<img src="https://avatars.githubusercontent.com/u/67148595?v=4" alt="img" style="zoom: 10%;" />
+<img src = "https://user-images.githubusercontent.com/67148595/212323576-25fd6d2c-eb14-4fec-be74-6427a488be45.png" width="20%" height="20%">
 
 **nickname: Neph**
 
