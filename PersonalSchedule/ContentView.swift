@@ -10,34 +10,26 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject var viewModel = ViewModel()
-    @State private var showingSheet = false
-    @State private var showingAlert = false
 
     var body: some View {
-        VStack {
-            Button {
-                Task {
-                    if await viewModel.handleKakaoLogin() {
-                        showingSheet.toggle()
-                    } else {
-                        showingAlert.toggle()
+                VStack {
+                    Button {
+                        viewModel.handleKakaoLogin()
+                    } label: {
+                        Image("kakaoLogin")
+                            .resizable()
+                            .frame(width: 300, height: 50)
+                    }
+                    .alert(Text("로그인 실패😭"), isPresented: $viewModel.isLogin) {
+                        Button("확인") { }
+                    } message: {
+                        Text("로그인에 실패했습니다.")
+                    }
+                    .fullScreenCover(isPresented: $viewModel.isLogin) {
+                        //SecondView()
                     }
                 }
-            } label: {
-                Image("kakaoLogin")
-                    .resizable()
-                    .frame(width: 300, height: 50)
-            }
-            .alert(Text("로그인 실패😭"), isPresented: $showingAlert) {
-                Button("확인") { }
-            } message: {
-                Text("로그인에 실패했습니다.")
-            }
-            .fullScreenCover(isPresented: $showingSheet) {
-                SecondView()
-            }
-        }
-        .padding()
+                .padding()
     }
 }
 
