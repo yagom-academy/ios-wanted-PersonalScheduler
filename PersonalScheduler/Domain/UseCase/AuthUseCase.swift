@@ -9,7 +9,7 @@ import Foundation
 import AuthenticationServices
 
 enum AuthType {
-    case kakao, apple, facebook
+    case kakao, apple
 }
 
 final class AuthUseCase {
@@ -30,8 +30,6 @@ final class AuthUseCase {
         case .apple:
             let userId = try await appleAuthRespository.loginWithApple()
             try await keychainRepository.setUserId(userId)
-        case .facebook:
-            print()
         }
     }
     

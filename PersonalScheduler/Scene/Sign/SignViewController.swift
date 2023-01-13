@@ -51,16 +51,6 @@ final class SignViewController: BaseViewController {
         return button
     }()
     
-    private let facebookButton: UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 12
-        button.backgroundColor = UIColor(named: "facebook.color")
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("Facebook 로그인", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
     // MARK: - Life Cycle
     
     init() {
@@ -83,11 +73,10 @@ final class SignViewController: BaseViewController {
         
         kakaoButton.addTarget(self, action: #selector(didTapKakaoLoginButton), for: .touchUpInside)
         appleButton.addTarget(self, action: #selector(didTapAppleLoginButton), for: .touchUpInside)
-        facebookButton.addTarget(self, action: #selector(didTapFaceBookLoginButton), for: .touchUpInside)
     }
     
     override func addView() {
-        [mainTitle, subTitle, kakaoButton, appleButton, facebookButton].forEach {
+        [mainTitle, subTitle, kakaoButton, appleButton].forEach {
             view.addSubview($0)
         }
     }
@@ -111,13 +100,7 @@ final class SignViewController: BaseViewController {
             appleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             appleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             appleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            appleButton.heightAnchor.constraint(equalToConstant: 44),
-            
-            facebookButton.topAnchor.constraint(equalTo: appleButton.bottomAnchor, constant: 8),
-            facebookButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            facebookButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            facebookButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            facebookButton.heightAnchor.constraint(equalToConstant: 44)
+            appleButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
@@ -144,10 +127,6 @@ private extension SignViewController {
     @objc func didTapAppleLoginButton() {
         viewModel.didTapAppleLoginButton()
         setupAppleLogin()
-    }
-    
-    @objc func didTapFaceBookLoginButton() {
-        viewModel.didTapFaceBookLoginButton()
     }
     
     func setupAppleLogin() {
