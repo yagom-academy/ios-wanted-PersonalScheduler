@@ -33,6 +33,7 @@
 		<array>
 			<string>fbapi</string>
 			<string>fb-messenger-share-api</string>
+            <string>fbauth2</string>
 		</array>
 		<string>kakaokompassauth</string>
 		<string>kakaolink</string>
