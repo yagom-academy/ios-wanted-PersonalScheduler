@@ -35,7 +35,7 @@ final class ScheduleEnrollViewController: UIViewController {
         textField.font = .preferredFont(forTextStyle: .title1)
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 2
-        textField.layer.cornerRadius = 20
+        textField.layer.cornerRadius = 12
         textField.layer.masksToBounds = true
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.setContentHuggingPriority(.defaultHigh, for: .vertical)
@@ -55,7 +55,7 @@ final class ScheduleEnrollViewController: UIViewController {
         )
         textView.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.borderWidth = 2
-        textView.layer.cornerRadius = 20
+        textView.layer.cornerRadius = 12
         textView.layer.masksToBounds = true
         textView.text = "내용"
         textView.textColor = .lightGray
@@ -187,37 +187,16 @@ final class ScheduleEnrollViewController: UIViewController {
 
 extension ScheduleEnrollViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-           if textView.text == "내용" {
-               textView.text = nil
-               textView.textColor = .black
-           }
-       }
-
-       func textViewDidEndEditing(_ textView: UITextView) {
-           if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-               textView.text = "내용"
-               textView.textColor = .lightGray
-           }
-       }
-
-       func textView(
-        _ textView: UITextView,
-        shouldChangeTextIn range: NSRange,
-        replacementText text: String
-       ) -> Bool {
-           let inputString = text.trimmingCharacters(in: .whitespacesAndNewlines)
-           guard let oldString = textView.text,
-                    let newRange = Range(range, in: oldString) else {
-               return true
-           }
-           let newString = oldString.replacingCharacters(
-            in: newRange,
-            with: inputString
-           ).trimmingCharacters(in: .whitespacesAndNewlines)
-
-           let characterCount = newString.count
-           guard characterCount <= 700 else { return false }
-
-           return true
-       }
+        if textView.text == "내용" {
+            textView.text = nil
+            textView.textColor = .black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            textView.text = "내용"
+            textView.textColor = .lightGray
+        }
+    }
 }
