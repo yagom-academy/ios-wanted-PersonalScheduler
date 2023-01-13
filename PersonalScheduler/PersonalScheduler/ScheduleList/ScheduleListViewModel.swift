@@ -35,4 +35,8 @@ final class ScheduleListViewModel: ObservableObject {
         FirebaseService.shared.addSchedule(firebaseID: firebaseID, schedule: schedule)
     }
     
+    func scheduleEditingSaveButtonTapped(schedule: Schedule) {
+        FirebaseService.shared.updateSchedule(firebaseID: firebaseID, schedule: schedule)
+    }
+    
 }
