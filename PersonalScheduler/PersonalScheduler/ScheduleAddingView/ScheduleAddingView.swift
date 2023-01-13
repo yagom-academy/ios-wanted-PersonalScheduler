@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ScheduleAddingView: View {
+struct ScheduleAddingView: View, ScheduleWritableView {
     
     @StateObject var scheduleListViewModel: ScheduleListViewModel
     @Binding var shouldPresentAddingView: Bool
@@ -31,8 +31,8 @@ struct ScheduleAddingView: View {
                     }
                     
                     Section {
-                        startDatePickerView(title: "시작", date: $newSchedule.startMoment)
-                        startDatePickerView(title: "종료", date: $newSchedule.endMoment)
+                        datePickerView(title: "시작", date: $newSchedule.startMoment)
+                        datePickerView(title: "종료", date: $newSchedule.endMoment)
                     }
                 }
             }
@@ -59,28 +59,6 @@ struct ScheduleAddingView_Previews: PreviewProvider {
     
     static var previews: some View {
         ScheduleAddingView(scheduleListViewModel: ScheduleListViewModel(firebaseID: ""), shouldPresentAddingView: $shouldPresentSheet)
-    }
-    
-}
-
-extension ScheduleAddingView {
-    
-    func startDatePickerView(title: String, date: Binding<Date>) -> some View {
-        HStack {
-            Text(title)
-            
-            Spacer()
-            
-            Image(systemName: "calendar")
-            
-            DatePicker(
-                "DatePicker",
-                selection: date,
-                displayedComponents: [.date, .hourAndMinute]
-            )
-            .environment(\.locale, Locale.init(identifier: "ko"))
-            .labelsHidden()
-        }
     }
     
 }
