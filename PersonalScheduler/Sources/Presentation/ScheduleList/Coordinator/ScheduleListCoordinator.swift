@@ -42,7 +42,6 @@ private extension ScheduleListCoordinator {
         return viewController
     }
     
-    
     func makeScheduleCoordinator(type: CoordinatorType, schedule: Schedule) -> Coordinator? {
         let coordinator: ScheduleCoordinator
         switch type {
@@ -104,5 +103,3 @@ extension ScheduleListCoordinator: ScheduleListCoordinatorInterface {
         finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
 }
-
-

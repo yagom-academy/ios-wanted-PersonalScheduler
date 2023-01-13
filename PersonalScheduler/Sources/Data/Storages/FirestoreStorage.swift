@@ -26,7 +26,7 @@ final class FirestoreStorage: FirestoreStorageService {
     
     private let database = Firestore.firestore()
     
-    func read(userID: String?) -> AnyPublisher<User, Error>  {
+    func read(userID: String?) -> AnyPublisher<User, Error> {
         let completed = PassthroughSubject<User, Error>()
         guard let userID else {
             return Empty().eraseToAnyPublisher()

@@ -92,7 +92,6 @@ final class ScheduleCell: UICollectionViewCell {
         return label
     }()
     
-    
     private lazy var topSeparatorView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray4

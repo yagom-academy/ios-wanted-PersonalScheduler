@@ -110,7 +110,7 @@ final class DefaultAuthenticationRepository: NSObject, AuthenticationRepository 
     func facebookAuthorize() -> AnyPublisher<Authentication?, Error> {
         let authentication = PassthroughSubject<Authentication?, Error>()
         let loginManager = LoginManager()
-        loginManager.logIn(permissions:[.publicProfile, .email,], viewController: nil) { (result) in
+        loginManager.logIn(permissions:[.publicProfile, .email], viewController: nil) { (result) in
             switch result {
             case .cancelled:
                 print("[⚠️] User cancelled login")
@@ -125,7 +125,7 @@ final class DefaultAuthenticationRepository: NSObject, AuthenticationRepository 
                 GraphRequest(
                     graphPath: "me",
                     parameters: ["fields": "id, name, picture.type(large), email"]
-                ).start { (connection, result, error) -> Void in
+                ).start { connection, result, error -> Void in
                     if let error {
                         authentication.send(completion: .failure(error))
                     } else {

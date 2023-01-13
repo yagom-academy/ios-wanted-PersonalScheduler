@@ -8,8 +8,8 @@
 import Foundation
 
 enum KeyChinaKey: String {
-    case accessToken = "accessToken"
-    case refreshToken = "refreshToken"
+    case accessToken
+    case refreshToken
 }
 
 protocol KeyChainStorageService: AnyObject {
@@ -68,7 +68,6 @@ final class KeyChainStorage: KeyChainStorageService {
         let status: OSStatus = SecItemAdd(query as CFDictionary, nil)
         return status == errSecSuccess
     }
-    
     
     @discardableResult
     func delete(key: KeyChinaKey) -> Bool {

@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 enum LocalKey: String {
-    case userInfo = "userInfo"
+    case userInfo
 }
 
 protocol LocalStorageService: AnyObject {

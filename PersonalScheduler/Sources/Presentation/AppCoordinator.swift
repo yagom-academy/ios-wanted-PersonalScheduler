@@ -31,7 +31,6 @@ private extension AppCoordinator {
         coordinator.finishDelegate = self
         coordinator.parentCoordinator = self
         childCoordinators.append(coordinator)
-        
         return coordinator
     }
     
