@@ -10,12 +10,26 @@ import SwiftUI
 struct ScheduleListView: View {
     
     @StateObject var scheduleListViewModel: ScheduleListViewModel
-    @State var shouldPresentAddingView = false
-    
+    @State private var shouldPresentAddingView = false
+    @State private var shouldPresentEditingView = false
+    @State private var selectedSchedule: Schedule = Schedule(id: "", title: "", description: "", startMoment: Date(), endMoment: Date(), status: .planned)
+
     var body: some View {
         NavigationView {
-            List(scheduleListViewModel.schedules, id: \.id) { schedule in
-                Text(schedule.title)
+            List {
+                ForEach(scheduleListViewModel.schedules) { schedule in
+                    VStack {
+                        Text(schedule.title)
+                        Text(schedule.description)
+                        Text(schedule.startMoment.toString())
+                        Text(schedule.endMoment.toString())
+                    }.onTapGesture {
+                        selectedSchedule = schedule
+                        shouldPresentEditingView.toggle()
+                    }
+                }
+            }.sheet(isPresented: $shouldPresentEditingView) {
+                ScheduleEditingView(scheduleListViewModel: scheduleListViewModel, shouldPresentEditingView: $shouldPresentEditingView, selectedSchedule: $selectedSchedule)
             }
             .navigationTitle("Schedules")
             .navigationBarItems(trailing: Button(action: {
