@@ -19,7 +19,8 @@ final class LoginSceneDIContainer {
             actions: actions,
             kakaoLoginUseCase: makeKakaoLoginUseCase(),
             facebookLoginUseCase: makeFacebookLoginUseCase(),
-            firebaseAuthUseCase: makeFirebaseAuthUseCase()
+            firebaseAuthUseCase: makeFirebaseAuthUseCase(),
+            loginCacheManager: LoginCacheManager()
         )
     }
     
