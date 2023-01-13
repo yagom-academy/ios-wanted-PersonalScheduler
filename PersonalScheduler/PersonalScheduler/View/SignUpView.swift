@@ -34,12 +34,19 @@ struct SignUpView: View {
                 )
                 .cornerRadius(10)
             
-            Button {
-                signUpViewModel.registerUser(email: newEmail, password: newPassword)
-            } label: {
-                Text("Create Account")
+            GeometryReader { geometry in
+                Button {
+                    signUpViewModel.registerUser(email: newEmail, password: newPassword)
+                } label: {
+                    Text("Check and Create Account")
+                        .foregroundColor(.white)
+                        .frame(width: geometry.size.width, height: 40)
+                }
+                .background(Color.purple)
             }
-            .padding()
+            .frame(height: 40)
+            .cornerRadius(10)
+
         }
         .padding()
         .alert(isPresented: $signUpViewModel.isActiveAlert) {

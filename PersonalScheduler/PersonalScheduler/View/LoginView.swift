@@ -46,6 +46,19 @@ struct LoginView: View {
                 .frame(height: 40)
                 .cornerRadius(10)
 
+                GeometryReader { geometry in
+                    NavigationLink {
+                        SignUpView()
+                    } label: {
+                        Text("Go Create Account Page")
+                            .foregroundColor(.white)
+                            .frame(width: geometry.size.width, height: 40)
+                    }
+                    .background(Color.purple)
+                }
+                .frame(height: 40)
+                .cornerRadius(10)
+                
                 Toggle(isOn: $loginViewModel.isAutoLogin) {
                     Text("자동 로그인 설정")
                 }
@@ -66,19 +79,15 @@ struct LoginView: View {
                         .frame(width: 210, height: 50)
                 }
                 .padding(.top, 50)
+                
                 Button {
                     loginViewModel.facebookLogin()
                 } label: {
                     FBLog()
                         .frame(width: 80, height: 50)
                 }
-                
-                NavigationLink {
-                    SignUpView()
-                } label: {
-                    Text("Create Account")
-                }
-                .frame(maxHeight: .infinity, alignment: .bottom)
+                .padding(.bottom, 50)
+ 
             }
             .padding()
             .navigationTitle("Personal Scheduler")
