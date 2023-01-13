@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.reduce("", { $0 + String(format: "%02X", $1) })
-        print("[🔎Log] deviceToken :", deviceTokenString)
+        print("[🔎][LOG] deviceToken :", deviceTokenString)
         Messaging.messaging().apnsToken = deviceToken
     }
 }
@@ -58,7 +58,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        completionHandler()
+        NotificationCenter.default.post(name: .showScheduleList, object: response.notification.request.identifier)
     }
     
 }

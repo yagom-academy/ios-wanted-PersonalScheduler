@@ -62,6 +62,7 @@
 		02544E38296EDD6000F06385 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E37296EDD6000F06385 /* LoadingView.swift */; };
 		02544E4029703E9F00F06385 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 02544E3F29703E9F00F06385 /* FirebaseMessaging */; };
 		02544E42297057C800F06385 /* Notification.Name+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E41297057C800F06385 /* Notification.Name+extension.swift */; };
+		02544E4A2970EADD00F06385 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02544E492970EADD00F06385 /* Logger.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* AuthViewController.swift */; };
@@ -117,6 +118,7 @@
 		02544E35296EDC6100F06385 /* Publisher+MainThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+MainThread.swift"; sourceTree = "<group>"; };
 		02544E37296EDD6000F06385 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		02544E41297057C800F06385 /* Notification.Name+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+extension.swift"; sourceTree = "<group>"; };
+		02544E492970EADD00F06385 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				0223FA9E296BDCAB00B6B32C /* Presentation */,
 				0223FAEA296D45D600B6B32C /* Repositories */,
 				0223FAE9296D45CC00B6B32C /* Storages */,
+				02544E492970EADD00F06385 /* Logger.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				0223FAFD296D5D2F00B6B32C /* AuthViewModel.swift in Sources */,
 				0223FAF7296D579400B6B32C /* Bundle+extension.swift in Sources */,
+				02544E4A2970EADD00F06385 /* Logger.swift in Sources */,
 				0223FB1B296D6B3300B6B32C /* UIColor+extension.swift in Sources */,
 				0223FAF1296D4EE800B6B32C /* AppCoordinator.swift in Sources */,
 				0223FAE8296D374100B6B32C /* FirestoreStorage.swift in Sources */,

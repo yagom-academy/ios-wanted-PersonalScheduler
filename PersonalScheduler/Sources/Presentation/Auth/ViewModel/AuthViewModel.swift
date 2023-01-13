@@ -65,7 +65,7 @@ private extension DefaultAuthViewModel {
         userRepository.getRemoteUserInfo(authentication: authentication)
             .sink(receiveCompletion: { [weak self] complection in
                 if case let .failure(error) = complection {
-                    debugPrint(error)
+                    Logger.debug(error: error, message: "firestore 로그인 실패")
                     self?._errorMessage.send("로그인을 하는 도중에 알 수 없는 에러가 발생했습니다.")
                 } else {
                     self?.authRepository.writeToken(authentication: authentication)
@@ -84,7 +84,7 @@ private extension DefaultAuthViewModel {
         self.userRepository.register(authentication, snsType: snsType)
             .sink(receiveCompletion: { [weak self]  complection in
                 if case let .failure(error) = complection {
-                    debugPrint(error)
+                    Logger.debug(error: error, message: "신규 유저 등록 실패")
                     self?._errorMessage.send("회원가입을 하는 도중에 알 수 없는 에러가 발생했습니다.")
                 }
             }, receiveValue: { [weak self]  isSuccess in
@@ -103,7 +103,7 @@ extension DefaultAuthViewModel: AuthViewModelInput {
         authRepository.readToken(option: .access)
             .sink(receiveCompletion: { [weak self] complection in
                 if case let .failure(error) = complection {
-                    debugPrint(error)
+                    Logger.debug(error: error, message: "유저 토큰 읽어오기 실패")
                     self?._errorMessage.send("로그인을 하는 도중에 알 수 없는 에러가 발생했습니다.")
                 }
                 self?._isLoading.send(false)
@@ -120,7 +120,7 @@ extension DefaultAuthViewModel: AuthViewModelInput {
             .compactMap { $0 }
             .sink(receiveCompletion: { [weak self] complection in
                 if case let .failure(error) = complection {
-                    debugPrint(error)
+                    Logger.debug(error: error, message: "카카오 로그인 실패")
                     self?._errorMessage.send("로그인을 하는 도중에 알 수 없는 에러가 발생했습니다.")
                 }
                 self?._isLoading.send(false)
@@ -135,7 +135,7 @@ extension DefaultAuthViewModel: AuthViewModelInput {
             .compactMap { $0 }
             .sink(receiveCompletion: { [weak self] complection in
                 if case let .failure(error) = complection {
-                    debugPrint(error)
+                    Logger.debug(error: error, message: "애플 로그인 실패")
                     self?._errorMessage.send("로그인을 하는 도중에 알 수 없는 에러가 발생했습니다.")
                 }
                 self?._isLoading.send(false)
@@ -150,7 +150,7 @@ extension DefaultAuthViewModel: AuthViewModelInput {
             .compactMap { $0 }
             .sink(receiveCompletion: { [weak self] complection in
                 if case let .failure(error) = complection {
-                    debugPrint(error)
+                    Logger.debug(error: error, message: "페이스북 로그인 실패")
                     self?._errorMessage.send("로그인을 하는 도중에 알 수 없는 에러가 발생했습니다.")
                 }
                 self?._isLoading.send(false)

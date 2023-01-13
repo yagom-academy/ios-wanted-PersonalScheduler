@@ -41,12 +41,10 @@ final class DefaultAuthenticationRepository: NSObject, AuthenticationRepository 
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk { [weak self] oauthToken, error in
                 if let error {
-                    debugPrint(error)
                     self?.authentication.send(completion: .failure(error))
                 } else {
                     UserApi.shared.me { user, error in
                         if let error {
-                            debugPrint(error)
                             self?.authentication.send(completion: .failure(error))
                         } else {
                             self?.authentication.send(
@@ -69,12 +67,10 @@ final class DefaultAuthenticationRepository: NSObject, AuthenticationRepository 
         } else {
             UserApi.shared.loginWithKakaoAccount { [weak self] oauthToken, error in
                 if let error {
-                    debugPrint(error)
                     self?.authentication.send(completion: .failure(error))
                 } else {
                     UserApi.shared.me { user, error in
                         if let error {
-                            debugPrint(error)
                             self?.authentication.send(completion: .failure(error))
                         } else {
                             self?.authentication.send(
@@ -115,7 +111,7 @@ final class DefaultAuthenticationRepository: NSObject, AuthenticationRepository 
         loginManager.logIn(permissions:[.publicProfile, .email,], viewController: nil) { [weak self] (result) in
             switch result {
             case .cancelled:
-                print("User cancelled login")
+                print("[⚠️] User cancelled login")
                 self?.authentication.send(completion: .finished)
                 
             case .failed(let error):
