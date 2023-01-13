@@ -15,8 +15,10 @@ final class ScheduleCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
+                titleLabel.numberOfLines = 0
                 descriptionLabel.numberOfLines = 0
             } else {
+                titleLabel.numberOfLines = 1
                 descriptionLabel.numberOfLines = 2
             }
             layoutIfNeeded()
@@ -34,6 +36,8 @@ final class ScheduleCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.numberOfLines = 1
+        label.lineBreakStrategy = .hangulWordPriority
         return label
     }()
 
@@ -43,6 +47,7 @@ final class ScheduleCollectionViewCell: UICollectionViewCell {
         label.textColor = .darkGray
         label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 2
+        label.lineBreakStrategy = .hangulWordPriority
         return label
     }()
 
@@ -100,13 +105,14 @@ final class ScheduleCollectionViewCell: UICollectionViewCell {
             descriptionLabel.trailingAnchor.constraint(equalTo: startTimeLabel.leadingAnchor, constant: -5),
 
             startTimeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            startTimeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            startTimeLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
 
             endTimeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            endTimeLabel.topAnchor.constraint(equalTo: startTimeLabel.bottomAnchor, constant: 10),
             endTimeLabel.bottomAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
         ])
         startTimeLabel.setContentHuggingPriority(.required, for: .horizontal)
+        startTimeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        endTimeLabel.setContentHuggingPriority(.required, for: .vertical)
         endTimeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
 }
