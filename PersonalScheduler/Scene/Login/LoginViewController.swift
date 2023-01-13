@@ -191,6 +191,19 @@ final class LoginViewController: UIViewController {
         loginButton.isEnabled = false
     }
     
+    private func setupKakaoUserInfo() {
+        UserApi.shared.me { user, error in
+            if let error = error {
+                print(error)
+            }
+            self.idTextField.text = user?.kakaoAccount?.email
+            self.passwordTextField.text = "●●●●●●●"
+            self.loginButton.isEnabled = true
+            self.loginButton.setTitleColor(.systemBlue, for: .normal)
+            UserDefaults.standard.set(self.idTextField.text, forKey: "userEmail")
+        }
+    }
+    
     @objc
     private func kakaoButtonDidTap() {
         if UserApi.isKakaoTalkLoginAvailable() {
@@ -209,19 +222,6 @@ final class LoginViewController: UIViewController {
                     self.setupKakaoUserInfo()
                 }
             }
-        }
-    }
-    
-    private func setupKakaoUserInfo() {
-        UserApi.shared.me { user, error in
-            if let error = error {
-                print(error)
-            }
-            self.idTextField.text = user?.kakaoAccount?.email
-            self.passwordTextField.text = "●●●●●●●"
-            self.loginButton.isEnabled = true
-            self.loginButton.setTitleColor(.systemBlue, for: .normal)
-            UserDefaults.standard.set(self.idTextField.text, forKey: "userEmail")
         }
     }
     
