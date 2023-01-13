@@ -19,7 +19,8 @@ final class ScheduleFirestoreUseCase {
             "content": schedule.content,
             "isNotified": schedule.isNotified,
             "startTime": schedule.startTime,
-            "endTime": schedule.endTime
+            "endTime": schedule.endTime,
+            "isAllDay": schedule.isAllday
         ]
 
         firestoreManager.save(scheduleData,
@@ -61,13 +62,15 @@ extension ScheduleFirestoreUseCase {
               let content = document["content"] as? String,
               let isNotified = document["isNotified"] as? Bool,
               let startTimestamp = document["startTime"] as? Timestamp,
-              let endTimestamp = document["endTime"] as? Timestamp else { return nil }
+              let endTimestamp = document["endTime"] as? Timestamp,
+              let isAllDay = document["isAllDay"] as? Bool else { return nil }
         
         return Schedule(id: scheduleID,
                         title: title,
                         content: content,
                         isNotified: isNotified,
                         startTime: startTimestamp.dateValue(),
-                        endTime: endTimestamp.dateValue())
+                        endTime: endTimestamp.dateValue(),
+                        isAllday: isAllDay)
     }
 }

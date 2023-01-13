@@ -97,7 +97,8 @@ final class ScheduleDetailViewController: UIViewController {
                         content: content,
                         isNotified: notificationSwitchView.isSwitchOn,
                         startTime: startDatePicker.selectedDate,
-                        endTime: endDatePicker.selectedDate)
+                        endTime: endDatePicker.selectedDate,
+                        isAllday: allDaySwitchView.isSwitchOn)
     }
 }
 
@@ -140,11 +141,14 @@ extension ScheduleDetailViewController {
         changeEditable(false)
         
         titleTextField.text = schedule.title
-        allDaySwitchView.setupSwitch(false)
+        allDaySwitchView.setupSwitch(schedule.isAllday)
         startDatePicker.setupPicker(schedule.startTime)
         endDatePicker.setupPicker(schedule.endTime)
         notificationSwitchView.setupSwitch(schedule.isNotified)
         contentTextView.text = schedule.content
+        
+        startDatePicker.changeTimePicker(schedule.isAllday)
+        endDatePicker.changeTimePicker(schedule.isAllday)
     }
     
     private func changeEditable(_ isEditable: Bool) {

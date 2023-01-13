@@ -14,4 +14,5 @@ struct Schedule {
     let isNotified: Bool
     let startTime: Date
     let endTime: Date
+    let isAllday: Bool
 }
