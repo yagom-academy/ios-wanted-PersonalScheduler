@@ -1,4 +1,4 @@
-[![Swift 5.6](https://img.shields.io/badge/swift-5.6-ED523F.svg?style=flat)](https://swift.org/download/) [![Xcode 13.4](https://img.shields.io/badge/Xcode-13.4-ED523F.svg?style=flat&color=blue)](https://swift.org/download/)
+[![Swift 5.7](https://img.shields.io/badge/swift-5.7-ED523F.svg?style=flat)](https://swift.org/download/) [![Xcode 14.1](https://img.shields.io/badge/Xcode-14.1-ED523F.svg?style=flat&color=blue)](https://swift.org/download/)
 
 # PersonalScheduler
 
