@@ -56,8 +56,7 @@ final class FirebaseService {
     }
     
     func addSchedule(firebaseID: String, schedule: Schedule) {
-        let uuid = UUID().uuidString
-        let userSchedulesDocumentRefrerence = database.collection("Users/\(firebaseID)/Schedules").document(uuid)
+        let userSchedulesDocumentRefrerence = database.collection("Users/\(firebaseID)/Schedules").document(schedule.id)
         let scheduleDTO = schedule.toScheduleDTO()
         
         userSchedulesDocumentRefrerence.setData([
@@ -98,6 +97,23 @@ final class FirebaseService {
                 }
 
                 continuation.resume(returning: fetchedData)
+            }
+        }
+    }
+    
+    func updateSchedule(firebaseID: String, schedule: Schedule) {
+        let scheduleDTO = schedule.toScheduleDTO()
+        let scheduleCollection = database.collection("Users/\(firebaseID)/Schedules")
+        scheduleCollection.document(schedule.id).updateData([
+            "title": scheduleDTO.title,
+            "description": scheduleDTO.description,
+            "startMoment": scheduleDTO.startMoment,
+            "endMoment": scheduleDTO.endMoment,
+            "status": scheduleDTO.status
+        ]) { error in
+            guard error == nil else {
+                print(error?.localizedDescription as Any)
+                return
             }
         }
     }
