@@ -26,7 +26,7 @@ final class ScheduleTableViewCell: UITableViewCell {
 
     let mainBodyLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .darkGray
         label.font = UIFont.preferredFont(forTextStyle: .title2)
         return label
     }()
@@ -70,7 +70,7 @@ final class ScheduleTableViewCell: UITableViewCell {
     }
 
     func configureCell(at indexPath: IndexPath, cellData: [ScheduleModel]) {
-        titleLabel.text = cellData[indexPath.row].title
+        titleLabel.text =  cellData[indexPath.row].title
         mainBodyLabel.text = cellData[indexPath.row].mainText
         startedAtLabel.text = cellData[indexPath.row].startDate
     }

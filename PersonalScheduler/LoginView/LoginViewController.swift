@@ -61,6 +61,11 @@ final class LoginViewController: UIViewController {
         setConstraint()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loginViewModel.autoLogin()
+    }
+
     func setConstraint() {
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -89,6 +94,6 @@ extension LoginViewController {
     }
 
     @objc private func tappedKakaoLogoutButton() {
-        loginViewModel.input.tappedKaKaoLogoutButton()
+        loginViewModel.input.tappedLogoutButton()
     }
 }

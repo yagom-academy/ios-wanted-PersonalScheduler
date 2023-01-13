@@ -8,10 +8,11 @@ import KakaoSDKAuth
 import KakaoSDKUser
 import Foundation
 import Combine
+import FirebaseAuth
 
 protocol LoginViewModelInputInterface {
     func tappedKaKaoButton()
-    func tappedKaKaoLogoutButton()
+    func tappedLogoutButton()
 }
 
 protocol LoginViewModelOutputInterface {
@@ -36,31 +37,96 @@ final class LoginViewModel: LoginViewModelOutputInterface, LoginViewModelInterfa
                 print(error)
             }
             else {
-                self.kakaoLoginPublisher.send()
-                _ = oauthToken
+                UserApi.shared.me() {(user, error) in
+                    if let error = error {
+                        print(error)
+                    }
+
+                    Auth.auth().createUser(withEmail: (user?.kakaoAccount?.email)!, password: "\(String(describing: user?.id))") { result, error in
+                        if let error = error {
+                            print("파이어베이스 사용자 생성 실패 \(error.localizedDescription)")
+                        } else {
+                            UserDefaults.standard.set(result?.user.uid, forKey: "uid")
+                            print("파이어베이스 사용자 생성")
+                            self.kakaoLoginPublisher.send()
+                        }
+                    }
+                }
             }
         }
     }
 
-    private func kakaoLoginWithAccount() async {
+    private func kakaoLoginWithAccount(completion: @escaping (OAuthToken) -> Void) {
         UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
             if let error = error {
                 print(error)
-            }
-            else {
-                //do something
+            } else {
+                completion(oauthToken!)
                 self.kakaoLoginPublisher.send()
-                _ = oauthToken
             }
         }
     }
 
+    private func getUserInfo() {
+        UserApi.shared.me() {(user, error) in
+            if let error = error {
+                print(error)
+            } else {
+                if let email = UserDefaults.standard.string(forKey: "email"),
+                   let password = UserDefaults.standard.string(forKey: "password") {
+                    Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                        if let error = error {
+                            print("파이어베이스 사용자 생성 실패 \(error.localizedDescription)")
+                        } else {
+                            UserDefaults.standard.set(result?.user.uid, forKey: "uid")
+                            UserDefaults.standard.set(user?.kakaoAccount?.email, forKey: "email")
+                            UserDefaults.standard.set(user?.id, forKey: "password")
+                            print("파이어베이스 사용자 생성")
+                            self.kakaoLoginPublisher.send()
+                        }
+                    }
+                } else {
+                    Auth.auth().createUser(withEmail: (user?.kakaoAccount?.email)!, password: "\(String(describing: user?.id))") { result, error in
+                        if let error = error {
+                            print("파이어베이스 사용자 생성 실패 \(error.localizedDescription)")
+                        } else {
+                            UserDefaults.standard.set(result?.user.uid, forKey: "uid")
+                            UserDefaults.standard.set(user?.kakaoAccount?.email, forKey: "email")
+                            UserDefaults.standard.set(user?.id, forKey: "password")
+                            print("파이어베이스 사용자 생성")
+                            Auth.auth().signIn(withEmail: (user?.kakaoAccount?.email)!, password: "\(String(describing: user?.id))") { result, error in
+                                guard error == nil else { return }
+                                self.kakaoLoginPublisher.send()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    func autoLogin() {
+        guard let email = UserDefaults.standard.string(forKey: "email"),
+              let password = UserDefaults.standard.string(forKey: "password") else { return }
+
+        UserApi.shared.me() {(user, error) in
+            if let error = error {
+                print(error)
+            } else {
+                self.kakaoLoginPublisher.send()
+            }
+        }
+    }
+
+    @MainActor
     private func kakaoLogin() {
         Task {
             if (UserApi.isKakaoTalkLoginAvailable()) {
                 await kakaoLoginWithAPP()
             } else {
-                await kakaoLoginWithAccount()
+                kakaoLoginWithAccount { _ in
+                    self.getUserInfo()
+                }
             }
         }
     }
@@ -69,22 +135,26 @@ final class LoginViewModel: LoginViewModelOutputInterface, LoginViewModelInterfa
         UserApi.shared.logout {(error) in
             if let error = error {
                 print(error)
-            }
-            else {
+            } else {
+                do {
+                    try Auth.auth().signOut()
+                } catch let error {
+                    print(error.localizedDescription)
+                }
             }
         }
     }
 }
 
 extension LoginViewModel: LoginViewModelInputInterface {
-    func tappedKaKaoButton() {
+    @MainActor func tappedKaKaoButton() {
         guard !AuthApi.hasToken() else {
             kakaoLoginPublisher.send()
             return }
         kakaoLogin()
     }
 
-    func tappedKaKaoLogoutButton() {
+    func tappedLogoutButton() {
         handleKakaoLogout()
     }
 }

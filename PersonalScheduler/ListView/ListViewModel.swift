@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import FirebaseAuth
 
 protocol ListViewModelInputInterface {
     func tappedAddButton()
@@ -55,7 +56,8 @@ final class ListViewModel: ListViewModelInterface, ListViewModelOutputInterface 
                                                             mainText: "")
 
     func fetchSchedule() {
-        FirebaseManager.shared.readData(user: "user") { [weak self] schedule in
+        guard let UUID = UserDefaults.standard.string(forKey: "uid"), UUID.isEmpty == false else { return }
+        FirebaseManager.shared.readData(user: UUID) { [weak self] schedule in
             guard let self = self else { return }
             self.allSchedules = schedule
         }
@@ -64,7 +66,7 @@ final class ListViewModel: ListViewModelInterface, ListViewModelOutputInterface 
 
 extension ListViewModel: ListViewModelInputInterface {
     func didSelectCell(indexPath: IndexPath) {
-        FirebaseManager.shared.readDocument(user: "user", document: allSchedules[indexPath.row].documentId ?? "") { data in
+        FirebaseManager.shared.readDocument(user: UserDefaults.standard.string(forKey: "uid") ?? "", document: allSchedules[indexPath.row].documentId ?? "") { data in
             self.readSchedule = data
         }
         didSelectCellPublisher.send(readSchedule)

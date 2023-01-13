@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import FirebaseAuth
 
 final class ScheduleAddViewController: UIViewController {
     private let textViewPlaceholder = "내용을 입력하세요"
@@ -176,9 +177,10 @@ final class ScheduleAddViewController: UIViewController {
 extension ScheduleAddViewController {
     private func bind() {
         scheduleAddViewModel.output.scheduleSavePublisher
-            .sink { _ in
+            .sink { [weak self] _ in
+                guard let self = self, let uuid = UserDefaults.standard.string(forKey: "uid"), uuid.isEmpty == false else { return }
                 FirebaseManager.shared.savedData(
-                    user: "user", document: UUID(), scheduleData: ScheduleModel(firebase: ["title" : self.titleTextField.text ?? "",
+                    user: uuid, document: UUID(), scheduleData: ScheduleModel(firebase: ["title" : self.titleTextField.text ?? "",
                                                                          "startedTime" : self.startedTimeControl.date.formattedString(),
                                                                       "mainBody" : self.mainBodyTextView.text ?? ""]) ?? ScheduleModel(firebase: [:])!)
             }
@@ -202,8 +204,8 @@ extension ScheduleAddViewController {
 
         scheduleAddViewModel.output.scheduleEditPublisher
             .sink { [weak self] schedule in
-                guard let self = self else { return }
-                FirebaseManager.shared.editData(user: "user",
+                guard let self = self, let UUID = UserDefaults.standard.string(forKey: "uid"), UUID.isEmpty == false else { return }
+                FirebaseManager.shared.editData(user: UUID,
                                                 document: schedule.documentId ?? "",
                                                 title: self.titleTextField.text ?? "",
                                                 startedTime: self.startedTimeControl.date.toString(),

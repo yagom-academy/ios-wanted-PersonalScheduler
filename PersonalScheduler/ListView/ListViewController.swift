@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import FirebaseAuth
 
 class ListViewController: UIViewController {
     private let listViewModel = ListViewModel()
@@ -45,7 +46,6 @@ class ListViewController: UIViewController {
         setTableView()
         bind()
         self.scheduleTableView.reloadData()
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -107,7 +107,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .normal, title: "Delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
 
-            self.listViewModel.input.deleteButtonDidTap(user: "user", indexPath: indexPath)
+            self.listViewModel.input.deleteButtonDidTap(user: UserDefaults.standard.string(forKey: "uid") ?? "", indexPath: indexPath)
             self.scheduleTableView.reloadData()
         }
         delete.backgroundColor = .systemRed
