@@ -123,6 +123,7 @@ struct LoginView: View {
             }
             .onAppear {
                 loginViewModel.checkAutoLoginInfo()
+                NotificationManager.instance.requestAuthorization()
             }
         }
     }
