@@ -1,0 +1,430 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		052090A5297199FF00A7AFC1 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 052090A4297199FF00A7AFC1 /* FacebookCore */; };
+		052090A7297199FF00A7AFC1 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 052090A6297199FF00A7AFC1 /* FacebookLogin */; };
+		057BFB0A29702CCD00E28E54 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 057BFB0929702CCD00E28E54 /* KakaoSDKAuth */; };
+		057BFB0C29702CCD00E28E54 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 057BFB0B29702CCD00E28E54 /* KakaoSDKCommon */; };
+		057BFB0E29702CCD00E28E54 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 057BFB0D29702CCD00E28E54 /* KakaoSDKUser */; };
+		057BFB12297035B900E28E54 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BFB11297035B900E28E54 /* ViewModel.swift */; };
+		057BFB1429708A1F00E28E54 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BFB1329708A1F00E28E54 /* Schedule.swift */; };
+		05D849C829702A9300B9F6D7 /* PersonalScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D849C729702A9300B9F6D7 /* PersonalScheduleApp.swift */; };
+		05D849CA29702A9300B9F6D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D849C929702A9300B9F6D7 /* ContentView.swift */; };
+		05D849CC29702A9400B9F6D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05D849CB29702A9400B9F6D7 /* Assets.xcassets */; };
+		05D849CF29702A9400B9F6D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05D849CE29702A9400B9F6D7 /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		052090882971854800A7AFC1 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		052090A829719B1400A7AFC1 /* PersonalSchedule.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalSchedule.entitlements; sourceTree = "<group>"; };
+		057BFB0F29702D0800E28E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		057BFB11297035B900E28E54 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		057BFB1329708A1F00E28E54 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		05D849C429702A9300B9F6D7 /* PersonalSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		05D849C729702A9300B9F6D7 /* PersonalScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalScheduleApp.swift; sourceTree = "<group>"; };
+		05D849C929702A9300B9F6D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		05D849CB29702A9400B9F6D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		05D849CE29702A9400B9F6D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		05D849C129702A9300B9F6D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				052090A7297199FF00A7AFC1 /* FacebookLogin in Frameworks */,
+				057BFB0C29702CCD00E28E54 /* KakaoSDKCommon in Frameworks */,
+				057BFB0A29702CCD00E28E54 /* KakaoSDKAuth in Frameworks */,
+				057BFB0E29702CCD00E28E54 /* KakaoSDKUser in Frameworks */,
+				052090A5297199FF00A7AFC1 /* FacebookCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05D849BB29702A9300B9F6D7 = {
+			isa = PBXGroup;
+			children = (
+				05D849C629702A9300B9F6D7 /* PersonalSchedule */,
+				05D849C529702A9300B9F6D7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		05D849C529702A9300B9F6D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05D849C429702A9300B9F6D7 /* PersonalSchedule.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		05D849C629702A9300B9F6D7 /* PersonalSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				052090A829719B1400A7AFC1 /* PersonalSchedule.entitlements */,
+				057BFB0F29702D0800E28E54 /* Info.plist */,
+				05D849C729702A9300B9F6D7 /* PersonalScheduleApp.swift */,
+				05D849C929702A9300B9F6D7 /* ContentView.swift */,
+				05D849CB29702A9400B9F6D7 /* Assets.xcassets */,
+				05D849CD29702A9400B9F6D7 /* Preview Content */,
+				052090882971854800A7AFC1 /* Config.xcconfig */,
+				057BFB11297035B900E28E54 /* ViewModel.swift */,
+				057BFB1329708A1F00E28E54 /* Schedule.swift */,
+			);
+			path = PersonalSchedule;
+			sourceTree = "<group>";
+		};
+		05D849CD29702A9400B9F6D7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				05D849CE29702A9400B9F6D7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		05D849C329702A9300B9F6D7 /* PersonalSchedule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05D849D229702A9400B9F6D7 /* Build configuration list for PBXNativeTarget "PersonalSchedule" */;
+			buildPhases = (
+				05D849C029702A9300B9F6D7 /* Sources */,
+				05D849C129702A9300B9F6D7 /* Frameworks */,
+				05D849C229702A9300B9F6D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PersonalSchedule;
+			packageProductDependencies = (
+				057BFB0929702CCD00E28E54 /* KakaoSDKAuth */,
+				057BFB0B29702CCD00E28E54 /* KakaoSDKCommon */,
+				057BFB0D29702CCD00E28E54 /* KakaoSDKUser */,
+				052090A4297199FF00A7AFC1 /* FacebookCore */,
+				052090A6297199FF00A7AFC1 /* FacebookLogin */,
+			);
+			productName = PersonalSchedule;
+			productReference = 05D849C429702A9300B9F6D7 /* PersonalSchedule.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		05D849BC29702A9300B9F6D7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					05D849C329702A9300B9F6D7 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 05D849BF29702A9300B9F6D7 /* Build configuration list for PBXProject "PersonalSchedule" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 05D849BB29702A9300B9F6D7;
+			packageReferences = (
+				057BFB0829702CCD00E28E54 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				052090A3297199FF00A7AFC1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
+			productRefGroup = 05D849C529702A9300B9F6D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				05D849C329702A9300B9F6D7 /* PersonalSchedule */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		05D849C229702A9300B9F6D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05D849CF29702A9400B9F6D7 /* Preview Assets.xcassets in Resources */,
+				05D849CC29702A9400B9F6D7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		05D849C029702A9300B9F6D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05D849CA29702A9300B9F6D7 /* ContentView.swift in Sources */,
+				057BFB12297035B900E28E54 /* ViewModel.swift in Sources */,
+				057BFB1429708A1F00E28E54 /* Schedule.swift in Sources */,
+				05D849C829702A9300B9F6D7 /* PersonalScheduleApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		05D849D029702A9400B9F6D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 052090882971854800A7AFC1 /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		05D849D129702A9400B9F6D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		05D849D329702A9400B9F6D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 052090882971854800A7AFC1 /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PersonalSchedule/PersonalSchedule.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PersonalSchedule/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PersonalSchedule/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Seohyeon.PersonalSchedule;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		05D849D429702A9400B9F6D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PersonalSchedule/PersonalSchedule.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PersonalSchedule/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PersonalSchedule/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Seohyeon.PersonalSchedule;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		05D849BF29702A9300B9F6D7 /* Build configuration list for PBXProject "PersonalSchedule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05D849D029702A9400B9F6D7 /* Debug */,
+				05D849D129702A9400B9F6D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05D849D229702A9400B9F6D7 /* Build configuration list for PBXNativeTarget "PersonalSchedule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05D849D329702A9400B9F6D7 /* Debug */,
+				05D849D429702A9400B9F6D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		052090A3297199FF00A7AFC1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		057BFB0829702CCD00E28E54 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		052090A4297199FF00A7AFC1 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 052090A3297199FF00A7AFC1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		052090A6297199FF00A7AFC1 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 052090A3297199FF00A7AFC1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		057BFB0929702CCD00E28E54 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 057BFB0829702CCD00E28E54 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		057BFB0B29702CCD00E28E54 /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 057BFB0829702CCD00E28E54 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		057BFB0D29702CCD00E28E54 /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 057BFB0829702CCD00E28E54 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 05D849BC29702A9300B9F6D7 /* Project object */;
+}
