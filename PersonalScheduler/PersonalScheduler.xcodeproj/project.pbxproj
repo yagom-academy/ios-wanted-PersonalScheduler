@@ -1,0 +1,504 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FD091B0429706F6300A78DCD /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD091B0229706F6300A78DCD /* ScheduleListViewModel.swift */; };
+		FD091B0529706F6300A78DCD /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD091B0329706F6300A78DCD /* ScheduleListView.swift */; };
+		FD091B0829706F7700A78DCD /* ScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD091B0629706F7700A78DCD /* ScheduleDTO.swift */; };
+		FD091B0929706F7700A78DCD /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD091B0729706F7700A78DCD /* Schedule.swift */; };
+		FD091B0B29706F8500A78DCD /* ScheduleAddingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD091B0A29706F8500A78DCD /* ScheduleAddingView.swift */; };
+		FD4906BA296E8FF2002D4E05 /* PersonalSchedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906B9296E8FF2002D4E05 /* PersonalSchedulerApp.swift */; };
+		FD4906BE296E8FF2002D4E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD4906BD296E8FF2002D4E05 /* Assets.xcassets */; };
+		FD4906C1296E8FF2002D4E05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD4906C0296E8FF2002D4E05 /* Preview Assets.xcassets */; };
+		FD4906DE296F2ED4002D4E05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906DD296F2ED4002D4E05 /* AppDelegate.swift */; };
+		FD4906E0296F2F89002D4E05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906DF296F2F89002D4E05 /* SceneDelegate.swift */; };
+		FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */; };
+		FD4906E6296F3B23002D4E05 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = FD4906E5296F3B23002D4E05 /* KakaoSDKUser */; };
+		FD4906EB296F3F42002D4E05 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906EA296F3F42002D4E05 /* LoginView.swift */; };
+		FD4906ED296F8274002D4E05 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906EC296F8274002D4E05 /* LoginViewModel.swift */; };
+		FD4906EF296FC8DB002D4E05 /* OAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906EE296FC8DB002D4E05 /* OAuthProvider.swift */; };
+		FD4906F1296FD37C002D4E05 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD4906F0296FD37C002D4E05 /* GoogleService-Info.plist */; };
+		FD4906F429700677002D4E05 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = FD4906F329700677002D4E05 /* FirebaseAnalytics */; };
+		FD4906F629700677002D4E05 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FD4906F529700677002D4E05 /* FirebaseFirestore */; };
+		FD4906F829700F33002D4E05 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4906F729700F33002D4E05 /* FirebaseService.swift */; };
+		FD6E3A9829718DC100D23B59 /* ScheduleWritableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6E3A9729718DC100D23B59 /* ScheduleWritableView.swift */; };
+		FD6E3A9A29718E7900D23B59 /* ScheduleEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6E3A9929718E7900D23B59 /* ScheduleEditingView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FD091B0229706F6300A78DCD /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
+		FD091B0329706F6300A78DCD /* ScheduleListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
+		FD091B0629706F7700A78DCD /* ScheduleDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDTO.swift; sourceTree = "<group>"; };
+		FD091B0729706F7700A78DCD /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		FD091B0A29706F8500A78DCD /* ScheduleAddingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleAddingView.swift; sourceTree = "<group>"; };
+		FD4906B6296E8FF2002D4E05 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD4906B9296E8FF2002D4E05 /* PersonalSchedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSchedulerApp.swift; sourceTree = "<group>"; };
+		FD4906BD296E8FF2002D4E05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FD4906C0296E8FF2002D4E05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FD4906DB296F2AC7002D4E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FD4906DC296F2B9F002D4E05 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		FD4906DD296F2ED4002D4E05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FD4906DF296F2F89002D4E05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoOAuthService.swift; sourceTree = "<group>"; };
+		FD4906EA296F3F42002D4E05 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FD4906EC296F8274002D4E05 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		FD4906EE296FC8DB002D4E05 /* OAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthProvider.swift; sourceTree = "<group>"; };
+		FD4906F0296FD37C002D4E05 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FD4906F729700F33002D4E05 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		FD6E3A9729718DC100D23B59 /* ScheduleWritableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWritableView.swift; sourceTree = "<group>"; };
+		FD6E3A9929718E7900D23B59 /* ScheduleEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEditingView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FD4906B3296E8FF2002D4E05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD4906F429700677002D4E05 /* FirebaseAnalytics in Frameworks */,
+				FD4906E6296F3B23002D4E05 /* KakaoSDKUser in Frameworks */,
+				FD4906F629700677002D4E05 /* FirebaseFirestore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FD4906AD296E8FF2002D4E05 = {
+			isa = PBXGroup;
+			children = (
+				FD4906DC296F2B9F002D4E05 /* Config.xcconfig */,
+				FD4906F0296FD37C002D4E05 /* GoogleService-Info.plist */,
+				FD4906B8296E8FF2002D4E05 /* PersonalScheduler */,
+				FD4906B7296E8FF2002D4E05 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FD4906B7296E8FF2002D4E05 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD4906B6296E8FF2002D4E05 /* PersonalScheduler.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FD4906B8296E8FF2002D4E05 /* PersonalScheduler */ = {
+			isa = PBXGroup;
+			children = (
+				FD49070A29703C7B002D4E05 /* ScheduleAddingView */,
+				FD49070529703BC2002D4E05 /* Models */,
+				FD4906B9296E8FF2002D4E05 /* PersonalSchedulerApp.swift */,
+				FD4906E1296F3929002D4E05 /* Services */,
+				FD4906E9296F3F24002D4E05 /* LoginView */,
+				FD49070029703A69002D4E05 /* ScheduleList */,
+				FD4906DB296F2AC7002D4E05 /* Info.plist */,
+				FD4906BD296E8FF2002D4E05 /* Assets.xcassets */,
+				FD4906BF296E8FF2002D4E05 /* Preview Content */,
+				FD4906DD296F2ED4002D4E05 /* AppDelegate.swift */,
+				FD4906DF296F2F89002D4E05 /* SceneDelegate.swift */,
+			);
+			path = PersonalScheduler;
+			sourceTree = "<group>";
+		};
+		FD4906BF296E8FF2002D4E05 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FD4906C0296E8FF2002D4E05 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FD4906E1296F3929002D4E05 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FD4906E2296F3935002D4E05 /* KakaoOAuthService.swift */,
+				FD4906EE296FC8DB002D4E05 /* OAuthProvider.swift */,
+				FD4906F729700F33002D4E05 /* FirebaseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FD4906E9296F3F24002D4E05 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				FD4906EA296F3F42002D4E05 /* LoginView.swift */,
+				FD4906EC296F8274002D4E05 /* LoginViewModel.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		FD49070029703A69002D4E05 /* ScheduleList */ = {
+			isa = PBXGroup;
+			children = (
+				FD091B0329706F6300A78DCD /* ScheduleListView.swift */,
+				FD091B0229706F6300A78DCD /* ScheduleListViewModel.swift */,
+			);
+			path = ScheduleList;
+			sourceTree = "<group>";
+		};
+		FD49070529703BC2002D4E05 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FD091B0729706F7700A78DCD /* Schedule.swift */,
+				FD091B0629706F7700A78DCD /* ScheduleDTO.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FD49070A29703C7B002D4E05 /* ScheduleAddingView */ = {
+			isa = PBXGroup;
+			children = (
+				FD091B0A29706F8500A78DCD /* ScheduleAddingView.swift */,
+				FD6E3A9929718E7900D23B59 /* ScheduleEditingView.swift */,
+				FD6E3A9729718DC100D23B59 /* ScheduleWritableView.swift */,
+			);
+			path = ScheduleAddingView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FD4906B5296E8FF2002D4E05 /* PersonalScheduler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD4906C4296E8FF2002D4E05 /* Build configuration list for PBXNativeTarget "PersonalScheduler" */;
+			buildPhases = (
+				FD4906B2296E8FF2002D4E05 /* Sources */,
+				FD4906B3296E8FF2002D4E05 /* Frameworks */,
+				FD4906B4296E8FF2002D4E05 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PersonalScheduler;
+			packageProductDependencies = (
+				FD4906E5296F3B23002D4E05 /* KakaoSDKUser */,
+				FD4906F329700677002D4E05 /* FirebaseAnalytics */,
+				FD4906F529700677002D4E05 /* FirebaseFirestore */,
+			);
+			productName = PersonalScheduler;
+			productReference = FD4906B6296E8FF2002D4E05 /* PersonalScheduler.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FD4906AE296E8FF2002D4E05 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					FD4906B5296E8FF2002D4E05 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = FD4906B1296E8FF2002D4E05 /* Build configuration list for PBXProject "PersonalScheduler" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FD4906AD296E8FF2002D4E05;
+			packageReferences = (
+				FD4906E4296F3B23002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				FD4906F229700677002D4E05 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = FD4906B7296E8FF2002D4E05 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FD4906B5296E8FF2002D4E05 /* PersonalScheduler */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FD4906B4296E8FF2002D4E05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD4906C1296E8FF2002D4E05 /* Preview Assets.xcassets in Resources */,
+				FD4906BE296E8FF2002D4E05 /* Assets.xcassets in Resources */,
+				FD4906F1296FD37C002D4E05 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FD4906B2296E8FF2002D4E05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD4906EF296FC8DB002D4E05 /* OAuthProvider.swift in Sources */,
+				FD091B0429706F6300A78DCD /* ScheduleListViewModel.swift in Sources */,
+				FD4906EB296F3F42002D4E05 /* LoginView.swift in Sources */,
+				FD4906F829700F33002D4E05 /* FirebaseService.swift in Sources */,
+				FD4906DE296F2ED4002D4E05 /* AppDelegate.swift in Sources */,
+				FD091B0529706F6300A78DCD /* ScheduleListView.swift in Sources */,
+				FD091B0929706F7700A78DCD /* Schedule.swift in Sources */,
+				FD4906ED296F8274002D4E05 /* LoginViewModel.swift in Sources */,
+				FD4906E3296F3935002D4E05 /* KakaoOAuthService.swift in Sources */,
+				FD6E3A9829718DC100D23B59 /* ScheduleWritableView.swift in Sources */,
+				FD4906BA296E8FF2002D4E05 /* PersonalSchedulerApp.swift in Sources */,
+				FD6E3A9A29718E7900D23B59 /* ScheduleEditingView.swift in Sources */,
+				FD4906E0296F2F89002D4E05 /* SceneDelegate.swift in Sources */,
+				FD091B0B29706F8500A78DCD /* ScheduleAddingView.swift in Sources */,
+				FD091B0829706F7700A78DCD /* ScheduleDTO.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FD4906C2296E8FF2002D4E05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD4906DC296F2B9F002D4E05 /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FD4906C3296E8FF2002D4E05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD4906DC296F2B9F002D4E05 /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FD4906C5296E8FF2002D4E05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD4906DC296F2B9F002D4E05 /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PersonalScheduler/Preview Content\"";
+				DEVELOPMENT_TEAM = 4K2FDLWHBL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PersonalScheduler/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.minsson.PersonalScheduler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FD4906C6296E8FF2002D4E05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD4906DC296F2B9F002D4E05 /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PersonalScheduler/Preview Content\"";
+				DEVELOPMENT_TEAM = 4K2FDLWHBL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PersonalScheduler/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.minsson.PersonalScheduler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FD4906B1296E8FF2002D4E05 /* Build configuration list for PBXProject "PersonalScheduler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD4906C2296E8FF2002D4E05 /* Debug */,
+				FD4906C3296E8FF2002D4E05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD4906C4296E8FF2002D4E05 /* Build configuration list for PBXNativeTarget "PersonalScheduler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD4906C5296E8FF2002D4E05 /* Debug */,
+				FD4906C6296E8FF2002D4E05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FD4906E4296F3B23002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		FD4906F229700677002D4E05 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FD4906E5296F3B23002D4E05 /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD4906E4296F3B23002D4E05 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
+		FD4906F329700677002D4E05 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD4906F229700677002D4E05 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		FD4906F529700677002D4E05 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD4906F229700677002D4E05 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = FD4906AE296E8FF2002D4E05 /* Project object */;
+}
