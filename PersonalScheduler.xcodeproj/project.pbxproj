@@ -7,20 +7,95 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		328444B6296DC18700BC099E /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444B5296DC18700BC099E /* ScheduleListViewModel.swift */; };
+		328444BA296DC85100BC099E /* FetchScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444B9296DC85100BC099E /* FetchScheduleUseCase.swift */; };
+		328444BC296DC8A000BC099E /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444BB296DC8A000BC099E /* Schedule.swift */; };
+		328444BF296DD32B00BC099E /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444BE296DD32B00BC099E /* ScheduleCollectionViewCell.swift */; };
+		328444C1296DD7ED00BC099E /* ScheduleListRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C0296DD7ED00BC099E /* ScheduleListRepositoryInterface.swift */; };
+		328444C3296E5B3200BC099E /* DeleteScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C2296E5B3200BC099E /* DeleteScheduleUseCase.swift */; };
+		328444C7296E6D2600BC099E /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C6296E6D2600BC099E /* CalendarCollectionViewCell.swift */; };
+		328444C9296E95A600BC099E /* ScheduleListDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444C8296E95A600BC099E /* ScheduleListDIContainer.swift */; };
+		328444CB296ED1E000BC099E /* ScheduleListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444CA296ED1E000BC099E /* ScheduleListHeader.swift */; };
+		328444CD296FE06500BC099E /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444CC296FE06500BC099E /* FirebaseService.swift */; };
+		328444CF296FE13700BC099E /* ScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444CE296FE13700BC099E /* ScheduleDTO.swift */; };
+		328444D1296FE27800BC099E /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444D0296FE27800BC099E /* FirebaseError.swift */; };
+		328444D3296FEA1D00BC099E /* ScheduleListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444D2296FEA1D00BC099E /* ScheduleListRepository.swift */; };
+		328444D5297017E600BC099E /* ScheduleMakingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444D4297017E600BC099E /* ScheduleMakingViewController.swift */; };
+		328444D7297017F500BC099E /* ScheduleListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444D6297017F500BC099E /* ScheduleListCoordinator.swift */; };
+		328444D929701D4B00BC099E /* OnboardingDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444D829701D4B00BC099E /* OnboardingDIContainer.swift */; };
+		328444DB29701D6100BC099E /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444DA29701D6100BC099E /* OnboardingCoordinator.swift */; };
+		328444DD29701DB100BC099E /* ScheduleMakingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444DC29701DB100BC099E /* ScheduleMakingViewModel.swift */; };
+		328444E62970508300BC099E /* ImageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444E52970508300BC099E /* ImageTextView.swift */; };
+		328444E82970510800BC099E /* TimerSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444E72970510800BC099E /* TimerSettingView.swift */; };
+		328444EA297144F000BC099E /* ScheduleMakingRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444E9297144F000BC099E /* ScheduleMakingRepositoryInterface.swift */; };
+		328444EC2971452900BC099E /* ScheduleMakingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444EB2971452900BC099E /* ScheduleMakingRepository.swift */; };
+		328444EE2971454800BC099E /* SaveScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328444ED2971454800BC099E /* SaveScheduleUseCase.swift */; };
+		32EAF58B296C40B10056513F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32EAF58A296C40B10056513F /* GoogleService-Info.plist */; };
+		32EAF595296C46D70056513F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 32EAF594296C46D70056513F /* FirebaseAuth */; };
+		32EAF597296C46D70056513F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 32EAF596296C46D70056513F /* FirebaseFirestore */; };
+		32EAF599296C46D70056513F /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 32EAF598296C46D70056513F /* FirebaseFirestoreSwift */; };
+		32EAF59B296C46D70056513F /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 32EAF59A296C46D70056513F /* FirebaseInAppMessaging-Beta */; };
+		32EAF59D296C46D70056513F /* FirebaseInAppMessagingSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 32EAF59C296C46D70056513F /* FirebaseInAppMessagingSwift-Beta */; };
+		32EAF59F296C46D70056513F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 32EAF59E296C46D70056513F /* FirebaseMessaging */; };
+		32EAF5A2296C7AA90056513F /* OAuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAF5A1296C7AA90056513F /* OAuthError.swift */; };
+		32EAF5A4296C7BC20056513F /* AppleOAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAF5A3296C7BC20056513F /* AppleOAuthService.swift */; };
+		32EAF5A6296C7FA80056513F /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAF5A5296C7FA80056513F /* OnboardingViewModel.swift */; };
+		32EAF5AF296C886D0056513F /* OAuthLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAF5AE296C886D0056513F /* OAuthLoginUseCase.swift */; };
+		32FB8F01296D675A007D1BA6 /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB8F00296D675A007D1BA6 /* ScheduleListViewController.swift */; };
+		32FB8F04296D6E73007D1BA6 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB8F03296D6E73007D1BA6 /* OnboardingCollectionViewCell.swift */; };
+		32FB8F06296D7868007D1BA6 /* KaKaoOAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB8F05296D7868007D1BA6 /* KaKaoOAuthService.swift */; };
+		32FB8F09296D91D4007D1BA6 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 32FB8F08296D91D4007D1BA6 /* KakaoSDKAuth */; };
+		32FB8F0B296D91D4007D1BA6 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 32FB8F0A296D91D4007D1BA6 /* KakaoSDKUser */; };
+		32FB8F0D296D94E6007D1BA6 /* OAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB8F0C296D94E6007D1BA6 /* OAuthRepository.swift */; };
+		32FB8F0F296D94ED007D1BA6 /* OAuthRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB8F0E296D94ED007D1BA6 /* OAuthRepositoryInterface.swift */; };
+		32FB8F13296D9988007D1BA6 /* AppKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32FB8F12296D9988007D1BA6 /* AppKey.plist */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
-		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
-		63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB072967EA2600775EC3 /* Main.storyboard */; };
+		63AAAB062967EA2600775EC3 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* OnboardingViewController.swift */; };
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		328444B5296DC18700BC099E /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
+		328444B9296DC85100BC099E /* FetchScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchScheduleUseCase.swift; sourceTree = "<group>"; };
+		328444BB296DC8A000BC099E /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		328444BE296DD32B00BC099E /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
+		328444C0296DD7ED00BC099E /* ScheduleListRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListRepositoryInterface.swift; sourceTree = "<group>"; };
+		328444C2296E5B3200BC099E /* DeleteScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteScheduleUseCase.swift; sourceTree = "<group>"; };
+		328444C6296E6D2600BC099E /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		328444C8296E95A600BC099E /* ScheduleListDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListDIContainer.swift; sourceTree = "<group>"; };
+		328444CA296ED1E000BC099E /* ScheduleListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListHeader.swift; sourceTree = "<group>"; };
+		328444CC296FE06500BC099E /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		328444CE296FE13700BC099E /* ScheduleDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDTO.swift; sourceTree = "<group>"; };
+		328444D0296FE27800BC099E /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
+		328444D2296FEA1D00BC099E /* ScheduleListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListRepository.swift; sourceTree = "<group>"; };
+		328444D4297017E600BC099E /* ScheduleMakingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleMakingViewController.swift; sourceTree = "<group>"; };
+		328444D6297017F500BC099E /* ScheduleListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListCoordinator.swift; sourceTree = "<group>"; };
+		328444D829701D4B00BC099E /* OnboardingDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDIContainer.swift; sourceTree = "<group>"; };
+		328444DA29701D6100BC099E /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		328444DC29701DB100BC099E /* ScheduleMakingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleMakingViewModel.swift; sourceTree = "<group>"; };
+		328444E52970508300BC099E /* ImageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextView.swift; sourceTree = "<group>"; };
+		328444E72970510800BC099E /* TimerSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettingView.swift; sourceTree = "<group>"; };
+		328444E9297144F000BC099E /* ScheduleMakingRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleMakingRepositoryInterface.swift; sourceTree = "<group>"; };
+		328444EB2971452900BC099E /* ScheduleMakingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleMakingRepository.swift; sourceTree = "<group>"; };
+		328444ED2971454800BC099E /* SaveScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveScheduleUseCase.swift; sourceTree = "<group>"; };
+		32EAF589296C38F90056513F /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
+		32EAF58A296C40B10056513F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		32EAF5A1296C7AA90056513F /* OAuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthError.swift; sourceTree = "<group>"; };
+		32EAF5A3296C7BC20056513F /* AppleOAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleOAuthService.swift; sourceTree = "<group>"; };
+		32EAF5A5296C7FA80056513F /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		32EAF5AE296C886D0056513F /* OAuthLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthLoginUseCase.swift; sourceTree = "<group>"; };
+		32FB8F00296D675A007D1BA6 /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
+		32FB8F03296D6E73007D1BA6 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		32FB8F05296D7868007D1BA6 /* KaKaoOAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoOAuthService.swift; sourceTree = "<group>"; };
+		32FB8F0C296D94E6007D1BA6 /* OAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRepository.swift; sourceTree = "<group>"; };
+		32FB8F0E296D94ED007D1BA6 /* OAuthRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRepositoryInterface.swift; sourceTree = "<group>"; };
+		32FB8F12296D9988007D1BA6 /* AppKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppKey.plist; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63AAAB052967EA2600775EC3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		63AAAB082967EA2600775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		63AAAB052967EA2600775EC3 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		63AAAB0A2967EA2700775EC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,12 +106,231 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32FB8F09296D91D4007D1BA6 /* KakaoSDKAuth in Frameworks */,
+				32EAF59F296C46D70056513F /* FirebaseMessaging in Frameworks */,
+				32EAF595296C46D70056513F /* FirebaseAuth in Frameworks */,
+				32EAF597296C46D70056513F /* FirebaseFirestore in Frameworks */,
+				32FB8F0B296D91D4007D1BA6 /* KakaoSDKUser in Frameworks */,
+				32EAF59D296C46D70056513F /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
+				32EAF599296C46D70056513F /* FirebaseFirestoreSwift in Frameworks */,
+				32EAF59B296C46D70056513F /* FirebaseInAppMessaging-Beta in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		328444B7296DC29A00BC099E /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				32EAF5AE296C886D0056513F /* OAuthLoginUseCase.swift */,
+				328444B9296DC85100BC099E /* FetchScheduleUseCase.swift */,
+				328444C2296E5B3200BC099E /* DeleteScheduleUseCase.swift */,
+				328444ED2971454800BC099E /* SaveScheduleUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		328444B8296DC29F00BC099E /* RepositoryInterfaces */ = {
+			isa = PBXGroup;
+			children = (
+				32FB8F0E296D94ED007D1BA6 /* OAuthRepositoryInterface.swift */,
+				328444C0296DD7ED00BC099E /* ScheduleListRepositoryInterface.swift */,
+				328444E9297144F000BC099E /* ScheduleMakingRepositoryInterface.swift */,
+			);
+			path = RepositoryInterfaces;
+			sourceTree = "<group>";
+		};
+		328444BD296DD0B500BC099E /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				328444BB296DC8A000BC099E /* Schedule.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		328444DF2970203200BC099E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				328444CA296ED1E000BC099E /* ScheduleListHeader.swift */,
+				328444C6296E6D2600BC099E /* CalendarCollectionViewCell.swift */,
+				328444BE296DD32B00BC099E /* ScheduleCollectionViewCell.swift */,
+				328444E52970508300BC099E /* ImageTextView.swift */,
+				328444E72970510800BC099E /* TimerSettingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		328444E02970204000BC099E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				32FB8F00296D675A007D1BA6 /* ScheduleListViewController.swift */,
+				328444D4297017E600BC099E /* ScheduleMakingViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		328444E12970205000BC099E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				328444B5296DC18700BC099E /* ScheduleListViewModel.swift */,
+				328444DC29701DB100BC099E /* ScheduleMakingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		328444E22970206200BC099E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB052967EA2600775EC3 /* OnboardingViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		328444E32970206800BC099E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				32EAF5A5296C7FA80056513F /* OnboardingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		328444E42970207100BC099E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				32FB8F03296D6E73007D1BA6 /* OnboardingCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		328444EF297145E300BC099E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				32EAF5AA296C83850056513F /* OAuthServices */,
+				328444CC296FE06500BC099E /* FirebaseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		328444F0297145EA00BC099E /* DTO+Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				328444CE296FE13700BC099E /* ScheduleDTO.swift */,
+			);
+			path = "DTO+Mapping";
+			sourceTree = "<group>";
+		};
+		32EAF5A0296C48420056513F /* APIKeys */ = {
+			isa = PBXGroup;
+			children = (
+				32EAF58A296C40B10056513F /* GoogleService-Info.plist */,
+				32FB8F12296D9988007D1BA6 /* AppKey.plist */,
+			);
+			path = APIKeys;
+			sourceTree = "<group>";
+		};
+		32EAF5A7296C83690056513F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				32EAF589296C38F90056513F /* PersonalScheduler.entitlements */,
+				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
+				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
+				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		32EAF5A8296C83740056513F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				32FB8F11296D961B007D1BA6 /* Repositories */,
+				32EAF5A9296C83800056513F /* Errors */,
+				328444EF297145E300BC099E /* Services */,
+				328444F0297145EA00BC099E /* DTO+Mapping */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		32EAF5A9296C83800056513F /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				32EAF5A1296C7AA90056513F /* OAuthError.swift */,
+				328444D0296FE27800BC099E /* FirebaseError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		32EAF5AA296C83850056513F /* OAuthServices */ = {
+			isa = PBXGroup;
+			children = (
+				32EAF5A3296C7BC20056513F /* AppleOAuthService.swift */,
+				32FB8F05296D7868007D1BA6 /* KaKaoOAuthService.swift */,
+			);
+			path = OAuthServices;
+			sourceTree = "<group>";
+		};
+		32EAF5AB296C83920056513F /* EntryPoint */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
+				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
+			);
+			path = EntryPoint;
+			sourceTree = "<group>";
+		};
+		32EAF5AC296C839C0056513F /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				32EAF5AD296C856D0056513F /* OnboardingScene */,
+				32FB8F02296D6765007D1BA6 /* ScheduleListScene */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		32EAF5AD296C856D0056513F /* OnboardingScene */ = {
+			isa = PBXGroup;
+			children = (
+				328444DA29701D6100BC099E /* OnboardingCoordinator.swift */,
+				328444D829701D4B00BC099E /* OnboardingDIContainer.swift */,
+				328444E42970207100BC099E /* Views */,
+				328444E22970206200BC099E /* ViewControllers */,
+				328444E32970206800BC099E /* ViewModels */,
+			);
+			path = OnboardingScene;
+			sourceTree = "<group>";
+		};
+		32FB8F02296D6765007D1BA6 /* ScheduleListScene */ = {
+			isa = PBXGroup;
+			children = (
+				328444C8296E95A600BC099E /* ScheduleListDIContainer.swift */,
+				328444D6297017F500BC099E /* ScheduleListCoordinator.swift */,
+				328444DF2970203200BC099E /* Views */,
+				328444E02970204000BC099E /* ViewControllers */,
+				328444E12970205000BC099E /* ViewModels */,
+			);
+			path = ScheduleListScene;
+			sourceTree = "<group>";
+		};
+		32FB8F10296D9606007D1BA6 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				328444BD296DD0B500BC099E /* Entities */,
+				328444B7296DC29A00BC099E /* UseCases */,
+				328444B8296DC29F00BC099E /* RepositoryInterfaces */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		32FB8F11296D961B007D1BA6 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				32FB8F0C296D94E6007D1BA6 /* OAuthRepository.swift */,
+				328444D2296FEA1D00BC099E /* ScheduleListRepository.swift */,
+				328444EB2971452900BC099E /* ScheduleMakingRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		63AAAAF52967EA2600775EC3 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +350,12 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
-				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
-				63AAAB052967EA2600775EC3 /* ViewController.swift */,
-				63AAAB072967EA2600775EC3 /* Main.storyboard */,
-				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
-				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
-				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				32EAF5AB296C83920056513F /* EntryPoint */,
+				32EAF5AC296C839C0056513F /* Presentation */,
+				32FB8F10296D9606007D1BA6 /* Domain */,
+				32EAF5A8296C83740056513F /* Data */,
+				32EAF5A7296C83690056513F /* Resources */,
+				32EAF5A0296C48420056513F /* APIKeys */,
 			);
 			path = PersonalScheduler;
 			sourceTree = "<group>";
@@ -83,6 +376,16 @@
 			dependencies = (
 			);
 			name = PersonalScheduler;
+			packageProductDependencies = (
+				32EAF594296C46D70056513F /* FirebaseAuth */,
+				32EAF596296C46D70056513F /* FirebaseFirestore */,
+				32EAF598296C46D70056513F /* FirebaseFirestoreSwift */,
+				32EAF59A296C46D70056513F /* FirebaseInAppMessaging-Beta */,
+				32EAF59C296C46D70056513F /* FirebaseInAppMessagingSwift-Beta */,
+				32EAF59E296C46D70056513F /* FirebaseMessaging */,
+				32FB8F08296D91D4007D1BA6 /* KakaoSDKAuth */,
+				32FB8F0A296D91D4007D1BA6 /* KakaoSDKUser */,
+			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +414,10 @@
 				Base,
 			);
 			mainGroup = 63AAAAF52967EA2600775EC3;
+			packageReferences = (
+				32EAF593296C46D70056513F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				32FB8F07296D91D4007D1BA6 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,8 +433,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
+				32FB8F13296D9988007D1BA6 /* AppKey.plist in Resources */,
+				32EAF58B296C40B10056513F /* GoogleService-Info.plist in Resources */,
 				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
-				63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +446,47 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
+				328444EE2971454800BC099E /* SaveScheduleUseCase.swift in Sources */,
+				328444D3296FEA1D00BC099E /* ScheduleListRepository.swift in Sources */,
+				328444D929701D4B00BC099E /* OnboardingDIContainer.swift in Sources */,
+				328444C1296DD7ED00BC099E /* ScheduleListRepositoryInterface.swift in Sources */,
+				328444EC2971452900BC099E /* ScheduleMakingRepository.swift in Sources */,
+				328444E62970508300BC099E /* ImageTextView.swift in Sources */,
+				32EAF5A4296C7BC20056513F /* AppleOAuthService.swift in Sources */,
+				328444EA297144F000BC099E /* ScheduleMakingRepositoryInterface.swift in Sources */,
+				328444DD29701DB100BC099E /* ScheduleMakingViewModel.swift in Sources */,
+				328444CD296FE06500BC099E /* FirebaseService.swift in Sources */,
+				328444D5297017E600BC099E /* ScheduleMakingViewController.swift in Sources */,
+				32EAF5A6296C7FA80056513F /* OnboardingViewModel.swift in Sources */,
+				63AAAB062967EA2600775EC3 /* OnboardingViewController.swift in Sources */,
+				328444BC296DC8A000BC099E /* Schedule.swift in Sources */,
+				328444E82970510800BC099E /* TimerSettingView.swift in Sources */,
+				328444D7297017F500BC099E /* ScheduleListCoordinator.swift in Sources */,
+				328444CF296FE13700BC099E /* ScheduleDTO.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				32EAF5A2296C7AA90056513F /* OAuthError.swift in Sources */,
+				328444D1296FE27800BC099E /* FirebaseError.swift in Sources */,
+				328444CB296ED1E000BC099E /* ScheduleListHeader.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				32FB8F01296D675A007D1BA6 /* ScheduleListViewController.swift in Sources */,
+				328444BA296DC85100BC099E /* FetchScheduleUseCase.swift in Sources */,
+				328444C7296E6D2600BC099E /* CalendarCollectionViewCell.swift in Sources */,
+				328444B6296DC18700BC099E /* ScheduleListViewModel.swift in Sources */,
+				328444C9296E95A600BC099E /* ScheduleListDIContainer.swift in Sources */,
+				328444C3296E5B3200BC099E /* DeleteScheduleUseCase.swift in Sources */,
+				32FB8F06296D7868007D1BA6 /* KaKaoOAuthService.swift in Sources */,
+				32FB8F0D296D94E6007D1BA6 /* OAuthRepository.swift in Sources */,
+				32EAF5AF296C886D0056513F /* OAuthLoginUseCase.swift in Sources */,
+				32FB8F04296D6E73007D1BA6 /* OnboardingCollectionViewCell.swift in Sources */,
+				328444BF296DD32B00BC099E /* ScheduleCollectionViewCell.swift in Sources */,
+				32FB8F0F296D94ED007D1BA6 /* OAuthRepositoryInterface.swift in Sources */,
+				328444DB29701D6100BC099E /* OnboardingCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		63AAAB072967EA2600775EC3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63AAAB082967EA2600775EC3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,7 +548,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +602,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -285,13 +617,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PersonalScheduler/Resources/PersonalScheduler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 267JUTDVY2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PersonalScheduler/Info.plist;
+				INFOPLIST_FILE = PersonalScheduler/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -299,7 +632,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.PersonalScheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.PersonalScheduler.Neph;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -312,13 +645,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PersonalScheduler/Resources/PersonalScheduler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 267JUTDVY2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PersonalScheduler/Info.plist;
+				INFOPLIST_FILE = PersonalScheduler/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -326,7 +660,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.PersonalScheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.PersonalScheduler.Neph;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -356,6 +690,68 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		32EAF593296C46D70056513F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		32FB8F07296D91D4007D1BA6 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		32EAF594296C46D70056513F /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32EAF593296C46D70056513F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		32EAF596296C46D70056513F /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32EAF593296C46D70056513F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		32EAF598296C46D70056513F /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32EAF593296C46D70056513F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		32EAF59A296C46D70056513F /* FirebaseInAppMessaging-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32EAF593296C46D70056513F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessaging-Beta";
+		};
+		32EAF59C296C46D70056513F /* FirebaseInAppMessagingSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32EAF593296C46D70056513F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessagingSwift-Beta";
+		};
+		32EAF59E296C46D70056513F /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32EAF593296C46D70056513F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		32FB8F08296D91D4007D1BA6 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32FB8F07296D91D4007D1BA6 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		32FB8F0A296D91D4007D1BA6 /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32FB8F07296D91D4007D1BA6 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 63AAAAF62967EA2600775EC3 /* Project object */;
 }
