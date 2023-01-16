@@ -9,21 +9,84 @@
 /* Begin PBXBuildFile section */
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
-		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
-		63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB072967EA2600775EC3 /* Main.storyboard */; };
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
+		F366532B297029CC00B359A8 /* ScheduleEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366532A297029CC00B359A8 /* ScheduleEditViewController.swift */; };
+		F3665330297036E800B359A8 /* ScheduleEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366532F297036E800B359A8 /* ScheduleEditViewModel.swift */; };
+		F3665332297051FF00B359A8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3665331297051FF00B359A8 /* User.swift */; };
+		F36653342970793A00B359A8 /* KeyChainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36653332970793A00B359A8 /* KeyChainStorage.swift */; };
+		F36653372970796D00B359A8 /* KeyChainAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36653362970796D00B359A8 /* KeyChainAccount.swift */; };
+		F36653392970797F00B359A8 /* KeyChainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36653382970797F00B359A8 /* KeyChainError.swift */; };
+		F366533C297079A300B359A8 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366533B297079A300B359A8 /* FirebaseError.swift */; };
+		F366533E29707A9D00B359A8 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366533D29707A9D00B359A8 /* UserUseCase.swift */; };
+		F366534029707EDD00B359A8 /* DefaultKeyChainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366533F29707EDD00B359A8 /* DefaultKeyChainRepository.swift */; };
+		F366534329708BA000B359A8 /* TImeInterval+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366534229708BA000B359A8 /* TImeInterval+extension.swift */; };
+		F366534629718FBD00B359A8 /* KakaoAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366534529718FBD00B359A8 /* KakaoAuthRepository.swift */; };
+		F36653482971903A00B359A8 /* AppleAuthRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36653472971903A00B359A8 /* AppleAuthRespository.swift */; };
+		F366534A2971909300B359A8 /* FireStoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36653492971909300B359A8 /* FireStoreRepository.swift */; };
+		F366534C297190CF00B359A8 /* KeyChainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F366534B297190CF00B359A8 /* KeyChainRepository.swift */; };
+		F39EDDD7296DBA7B00A4E655 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDD6296DBA7B00A4E655 /* SignViewController.swift */; };
+		F39EDDD9296DBBA400A4E655 /* SignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDD8296DBBA400A4E655 /* SignViewModel.swift */; };
+		F39EDDDD296DBD1100A4E655 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDDC296DBD1100A4E655 /* BaseViewController.swift */; };
+		F39EDDED296DD41E00A4E655 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F39EDDEC296DD41E00A4E655 /* KakaoSDKAuth */; };
+		F39EDDEF296DD41E00A4E655 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = F39EDDEE296DD41E00A4E655 /* KakaoSDKUser */; };
+		F39EDDF8296F22F600A4E655 /* DefaultKakaoAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDF7296F22F600A4E655 /* DefaultKakaoAuthRepository.swift */; };
+		F39EDDFA296F2A5800A4E655 /* DefaultAppleAuthRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDF9296F2A5800A4E655 /* DefaultAppleAuthRespository.swift */; };
+		F39EDDFC296F2A6C00A4E655 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDFB296F2A6C00A4E655 /* AuthUseCase.swift */; };
+		F39EDDFE296F2C6700A4E655 /* DefaultFireStoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDDFD296F2C6700A4E655 /* DefaultFireStoreRepository.swift */; };
+		F39EDE02296F2EA600A4E655 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE01296F2EA600A4E655 /* Observable.swift */; };
+		F39EDE06296F49D400A4E655 /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE05296F49D400A4E655 /* ScheduleListViewController.swift */; };
+		F39EDE0A296FFA4200A4E655 /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE09296FFA4200A4E655 /* ScheduleListViewModel.swift */; };
+		F39EDE0C296FFA7000A4E655 /* ScheduleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE0B296FFA7000A4E655 /* ScheduleInfo.swift */; };
+		F39EDE0F296FFB8600A4E655 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE0E296FFB8600A4E655 /* ScheduleTableViewCell.swift */; };
+		F39EDE11296FFC6000A4E655 /* ScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE10296FFC6000A4E655 /* ScheduleUseCase.swift */; };
+		F39EDE132970097A00A4E655 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F39EDE122970097A00A4E655 /* GoogleService-Info.plist */; };
+		F39EDE1629700A1E00A4E655 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F39EDE1529700A1E00A4E655 /* FirebaseAnalytics */; };
+		F39EDE1829700A1E00A4E655 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F39EDE1729700A1E00A4E655 /* FirebaseFirestore */; };
+		F39EDE1A29700A1E00A4E655 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = F39EDE1929700A1E00A4E655 /* FirebaseMessaging */; };
+		F39EDE1D29700BD300A4E655 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F39EDE1C29700BD300A4E655 /* FirebaseFirestoreSwift */; };
+		F39EDE2029700D0200A4E655 /* FirebaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE1F29700D0200A4E655 /* FirebaseStorage.swift */; };
+		F39EDE2229701E5700A4E655 /* ScheduleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EDE2129701E5700A4E655 /* ScheduleDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63AAAB052967EA2600775EC3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		63AAAB082967EA2600775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63AAAB0A2967EA2700775EC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F366532A297029CC00B359A8 /* ScheduleEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEditViewController.swift; sourceTree = "<group>"; };
+		F366532F297036E800B359A8 /* ScheduleEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEditViewModel.swift; sourceTree = "<group>"; };
+		F3665331297051FF00B359A8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F36653332970793A00B359A8 /* KeyChainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainStorage.swift; sourceTree = "<group>"; };
+		F36653362970796D00B359A8 /* KeyChainAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainAccount.swift; sourceTree = "<group>"; };
+		F36653382970797F00B359A8 /* KeyChainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainError.swift; sourceTree = "<group>"; };
+		F366533B297079A300B359A8 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
+		F366533D29707A9D00B359A8 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
+		F366533F29707EDD00B359A8 /* DefaultKeyChainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeyChainRepository.swift; sourceTree = "<group>"; };
+		F366534229708BA000B359A8 /* TImeInterval+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TImeInterval+extension.swift"; sourceTree = "<group>"; };
+		F366534529718FBD00B359A8 /* KakaoAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAuthRepository.swift; sourceTree = "<group>"; };
+		F36653472971903A00B359A8 /* AppleAuthRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthRespository.swift; sourceTree = "<group>"; };
+		F36653492971909300B359A8 /* FireStoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreRepository.swift; sourceTree = "<group>"; };
+		F366534B297190CF00B359A8 /* KeyChainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainRepository.swift; sourceTree = "<group>"; };
+		F39EDDD6296DBA7B00A4E655 /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
+		F39EDDD8296DBBA400A4E655 /* SignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewModel.swift; sourceTree = "<group>"; };
+		F39EDDDC296DBD1100A4E655 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		F39EDDF7296F22F600A4E655 /* DefaultKakaoAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKakaoAuthRepository.swift; sourceTree = "<group>"; };
+		F39EDDF9296F2A5800A4E655 /* DefaultAppleAuthRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppleAuthRespository.swift; sourceTree = "<group>"; };
+		F39EDDFB296F2A6C00A4E655 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		F39EDDFD296F2C6700A4E655 /* DefaultFireStoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFireStoreRepository.swift; sourceTree = "<group>"; };
+		F39EDE01296F2EA600A4E655 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		F39EDE05296F49D400A4E655 /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
+		F39EDE08296FEEE800A4E655 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
+		F39EDE09296FFA4200A4E655 /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
+		F39EDE0B296FFA7000A4E655 /* ScheduleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInfo.swift; sourceTree = "<group>"; };
+		F39EDE0E296FFB8600A4E655 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		F39EDE10296FFC6000A4E655 /* ScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleUseCase.swift; sourceTree = "<group>"; };
+		F39EDE122970097A00A4E655 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Resources/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F39EDE1F29700D0200A4E655 /* FirebaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorage.swift; sourceTree = "<group>"; };
+		F39EDE2129701E5700A4E655 /* ScheduleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +94,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F39EDDEF296DD41E00A4E655 /* KakaoSDKUser in Frameworks */,
+				F39EDE1829700A1E00A4E655 /* FirebaseFirestore in Frameworks */,
+				F39EDE1A29700A1E00A4E655 /* FirebaseMessaging in Frameworks */,
+				F39EDDED296DD41E00A4E655 /* KakaoSDKAuth in Frameworks */,
+				F39EDE1629700A1E00A4E655 /* FirebaseAnalytics in Frameworks */,
+				F39EDE1D29700BD300A4E655 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +111,7 @@
 			children = (
 				63AAAB002967EA2600775EC3 /* PersonalScheduler */,
 				63AAAAFF2967EA2600775EC3 /* Products */,
+				F39EDE1B29700BD300A4E655 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +126,211 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
-				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
-				63AAAB052967EA2600775EC3 /* ViewController.swift */,
-				63AAAB072967EA2600775EC3 /* Main.storyboard */,
-				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
-				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
-				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				F39EDE08296FEEE800A4E655 /* PersonalScheduler.entitlements */,
+				F39EDE122970097A00A4E655 /* GoogleService-Info.plist */,
+				F39EDE1E29700CEC00A4E655 /* Storage */,
+				F39EDDF3296F19DD00A4E655 /* Data */,
+				F39EDDF2296F19D800A4E655 /* Domain */,
+				F39EDDD5296DBA5F00A4E655 /* Scene */,
+				F39EDDFF296F2E8600A4E655 /* Utility */,
+				F39EDDD4296DBA1A00A4E655 /* Resources */,
+				F39EDDD3296DA91D00A4E655 /* Application */,
 			);
 			path = PersonalScheduler;
+			sourceTree = "<group>";
+		};
+		F36653292970298700B359A8 /* ScheduleEdit */ = {
+			isa = PBXGroup;
+			children = (
+				F366532A297029CC00B359A8 /* ScheduleEditViewController.swift */,
+				F366532F297036E800B359A8 /* ScheduleEditViewModel.swift */,
+			);
+			path = ScheduleEdit;
+			sourceTree = "<group>";
+		};
+		F36653352970795D00B359A8 /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				F36653362970796D00B359A8 /* KeyChainAccount.swift */,
+				F36653382970797F00B359A8 /* KeyChainError.swift */,
+				F36653332970793A00B359A8 /* KeyChainStorage.swift */,
+			);
+			path = KeyChain;
+			sourceTree = "<group>";
+		};
+		F366533A2970798900B359A8 /* FirebaseStorage */ = {
+			isa = PBXGroup;
+			children = (
+				F39EDE1F29700D0200A4E655 /* FirebaseStorage.swift */,
+				F366533B297079A300B359A8 /* FirebaseError.swift */,
+			);
+			path = FirebaseStorage;
+			sourceTree = "<group>";
+		};
+		F366534129708B8E00B359A8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F366534229708BA000B359A8 /* TImeInterval+extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		F366534429718EBA00B359A8 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F366534529718FBD00B359A8 /* KakaoAuthRepository.swift */,
+				F36653472971903A00B359A8 /* AppleAuthRespository.swift */,
+				F36653492971909300B359A8 /* FireStoreRepository.swift */,
+				F366534B297190CF00B359A8 /* KeyChainRepository.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F39EDDD3296DA91D00A4E655 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
+				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		F39EDDD4296DBA1A00A4E655 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
+				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F39EDDD5296DBA5F00A4E655 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				F39EDDDA296DBCB600A4E655 /* Sign */,
+				F39EDE07296F49DA00A4E655 /* ScheduleList */,
+				F36653292970298700B359A8 /* ScheduleEdit */,
+				F39EDDDB296DBCC200A4E655 /* Common */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		F39EDDDA296DBCB600A4E655 /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				F39EDDD6296DBA7B00A4E655 /* SignViewController.swift */,
+				F39EDDD8296DBBA400A4E655 /* SignViewModel.swift */,
+			);
+			path = Sign;
+			sourceTree = "<group>";
+		};
+		F39EDDDB296DBCC200A4E655 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F39EDDDC296DBD1100A4E655 /* BaseViewController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F39EDDF2296F19D800A4E655 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F366534429718EBA00B359A8 /* Interfaces */,
+				F39EDDF4296F19E900A4E655 /* Entities */,
+				F39EDDF6296F1F5800A4E655 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F39EDDF3296F19DD00A4E655 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F39EDDF5296F19EF00A4E655 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F39EDDF4296F19E900A4E655 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				F39EDE0B296FFA7000A4E655 /* ScheduleInfo.swift */,
+				F3665331297051FF00B359A8 /* User.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		F39EDDF5296F19EF00A4E655 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F39EDDF7296F22F600A4E655 /* DefaultKakaoAuthRepository.swift */,
+				F39EDDF9296F2A5800A4E655 /* DefaultAppleAuthRespository.swift */,
+				F39EDDFD296F2C6700A4E655 /* DefaultFireStoreRepository.swift */,
+				F366533F29707EDD00B359A8 /* DefaultKeyChainRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F39EDDF6296F1F5800A4E655 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				F39EDDFB296F2A6C00A4E655 /* AuthUseCase.swift */,
+				F39EDE10296FFC6000A4E655 /* ScheduleUseCase.swift */,
+				F366533D29707A9D00B359A8 /* UserUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		F39EDDFF296F2E8600A4E655 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				F366534129708B8E00B359A8 /* Extension */,
+				F39EDE00296F2E9800A4E655 /* Observable */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		F39EDE00296F2E9800A4E655 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				F39EDE01296F2EA600A4E655 /* Observable.swift */,
+			);
+			path = Observable;
+			sourceTree = "<group>";
+		};
+		F39EDE07296F49DA00A4E655 /* ScheduleList */ = {
+			isa = PBXGroup;
+			children = (
+				F39EDE05296F49D400A4E655 /* ScheduleListViewController.swift */,
+				F39EDE09296FFA4200A4E655 /* ScheduleListViewModel.swift */,
+				F39EDE2129701E5700A4E655 /* ScheduleDataSource.swift */,
+				F39EDE0D296FFB6A00A4E655 /* SubViews */,
+			);
+			path = ScheduleList;
+			sourceTree = "<group>";
+		};
+		F39EDE0D296FFB6A00A4E655 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				F39EDE0E296FFB8600A4E655 /* ScheduleTableViewCell.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		F39EDE1B29700BD300A4E655 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F39EDE1E29700CEC00A4E655 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				F366533A2970798900B359A8 /* FirebaseStorage */,
+				F36653352970795D00B359A8 /* KeyChain */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +349,14 @@
 			dependencies = (
 			);
 			name = PersonalScheduler;
+			packageProductDependencies = (
+				F39EDDEC296DD41E00A4E655 /* KakaoSDKAuth */,
+				F39EDDEE296DD41E00A4E655 /* KakaoSDKUser */,
+				F39EDE1529700A1E00A4E655 /* FirebaseAnalytics */,
+				F39EDE1729700A1E00A4E655 /* FirebaseFirestore */,
+				F39EDE1929700A1E00A4E655 /* FirebaseMessaging */,
+				F39EDE1C29700BD300A4E655 /* FirebaseFirestoreSwift */,
+			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +385,10 @@
 				Base,
 			);
 			mainGroup = 63AAAAF52967EA2600775EC3;
+			packageReferences = (
+				F39EDDEB296DD41E00A4E655 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				F39EDE1429700A1E00A4E655 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +405,7 @@
 			files = (
 				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
 				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
-				63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */,
+				F39EDE132970097A00A4E655 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +416,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
+				F366534C297190CF00B359A8 /* KeyChainRepository.swift in Sources */,
+				F39EDE02296F2EA600A4E655 /* Observable.swift in Sources */,
+				F36653372970796D00B359A8 /* KeyChainAccount.swift in Sources */,
+				F39EDE0C296FFA7000A4E655 /* ScheduleInfo.swift in Sources */,
+				F366534029707EDD00B359A8 /* DefaultKeyChainRepository.swift in Sources */,
+				F36653392970797F00B359A8 /* KeyChainError.swift in Sources */,
+				F39EDDF8296F22F600A4E655 /* DefaultKakaoAuthRepository.swift in Sources */,
+				F39EDDD9296DBBA400A4E655 /* SignViewModel.swift in Sources */,
+				F39EDDFC296F2A6C00A4E655 /* AuthUseCase.swift in Sources */,
+				F3665330297036E800B359A8 /* ScheduleEditViewModel.swift in Sources */,
+				F366534A2971909300B359A8 /* FireStoreRepository.swift in Sources */,
+				F39EDE0F296FFB8600A4E655 /* ScheduleTableViewCell.swift in Sources */,
+				F39EDE0A296FFA4200A4E655 /* ScheduleListViewModel.swift in Sources */,
+				F39EDE06296F49D400A4E655 /* ScheduleListViewController.swift in Sources */,
+				F3665332297051FF00B359A8 /* User.swift in Sources */,
+				F366533C297079A300B359A8 /* FirebaseError.swift in Sources */,
+				F366533E29707A9D00B359A8 /* UserUseCase.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				F39EDDD7296DBA7B00A4E655 /* SignViewController.swift in Sources */,
+				F39EDDDD296DBD1100A4E655 /* BaseViewController.swift in Sources */,
+				F36653342970793A00B359A8 /* KeyChainStorage.swift in Sources */,
+				F366532B297029CC00B359A8 /* ScheduleEditViewController.swift in Sources */,
+				F39EDE11296FFC6000A4E655 /* ScheduleUseCase.swift in Sources */,
+				F39EDDFA296F2A5800A4E655 /* DefaultAppleAuthRespository.swift in Sources */,
+				F366534329708BA000B359A8 /* TImeInterval+extension.swift in Sources */,
+				F39EDE2029700D0200A4E655 /* FirebaseStorage.swift in Sources */,
+				F366534629718FBD00B359A8 /* KakaoAuthRepository.swift in Sources */,
+				F36653482971903A00B359A8 /* AppleAuthRespository.swift in Sources */,
+				F39EDE2229701E5700A4E655 /* ScheduleDataSource.swift in Sources */,
+				F39EDDFE296F2C6700A4E655 /* DefaultFireStoreRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		63AAAB072967EA2600775EC3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63AAAB082967EA2600775EC3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,7 +514,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +568,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -285,21 +583,23 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PersonalScheduler/PersonalScheduler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CADXU3X8JU;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PersonalScheduler/Info.plist;
+				INFOPLIST_FILE = PersonalScheduler/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.PersonalScheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llghdud921.PersonalScheduler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -312,21 +612,23 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PersonalScheduler/PersonalScheduler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CADXU3X8JU;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PersonalScheduler/Info.plist;
+				INFOPLIST_FILE = PersonalScheduler/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.PersonalScheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llghdud921.PersonalScheduler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -356,6 +658,58 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F39EDDEB296DD41E00A4E655 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		F39EDE1429700A1E00A4E655 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F39EDDEC296DD41E00A4E655 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F39EDDEB296DD41E00A4E655 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		F39EDDEE296DD41E00A4E655 /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F39EDDEB296DD41E00A4E655 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
+		F39EDE1529700A1E00A4E655 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F39EDE1429700A1E00A4E655 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		F39EDE1729700A1E00A4E655 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F39EDE1429700A1E00A4E655 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		F39EDE1929700A1E00A4E655 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F39EDE1429700A1E00A4E655 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		F39EDE1C29700BD300A4E655 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F39EDE1429700A1E00A4E655 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 63AAAAF62967EA2600775EC3 /* Project object */;
 }
