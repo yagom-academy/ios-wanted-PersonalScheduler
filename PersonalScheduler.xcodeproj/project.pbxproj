@@ -7,23 +7,76 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4215C65F296ED2E400C55A2F /* KakaoLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4215C65E296ED2E400C55A2F /* KakaoLoginViewController.swift */; };
+		423E6C74296FEFC400236FE4 /* SchedularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423E6C73296FEFC400236FE4 /* SchedularViewController.swift */; };
+		423E6C7D296FF87100236FE4 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423E6C7C296FF87100236FE4 /* Schedule.swift */; };
+		423E6C8129700F5200236FE4 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423E6C8029700F5200236FE4 /* ScheduleViewModel.swift */; };
+		423E6C832970101A00236FE4 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423E6C822970101A00236FE4 /* ScheduleCell.swift */; };
+		423E6C85297017EB00236FE4 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423E6C84297017EB00236FE4 /* FirebaseManager.swift */; };
+		423E6C88297018F800236FE4 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423E6C87297018F800236FE4 /* Encodable+Extension.swift */; };
+		423E6C8A2970595400236FE4 /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423E6C892970595400236FE4 /* KakaoLoginManager.swift */; };
+		423E6C8C2970619C00236FE4 /* WritingScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423E6C8B2970619C00236FE4 /* WritingScheduleViewController.swift */; };
+		4283EE6B296C527800B53654 /* CreateEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283EE6A296C527800B53654 /* CreateEmailViewController.swift */; };
+		4283EE6D296C53B400B53654 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4283EE6C296C53B400B53654 /* GoogleService-Info.plist */; };
+		4283EE6F296C5A5900B53654 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283EE6E296C5A5900B53654 /* MainViewController.swift */; };
+		4283EE72296C683400B53654 /* FacebookLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283EE71296C683400B53654 /* FacebookLoginViewController.swift */; };
+		4283EE74296C6E1D00B53654 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4283EE73296C6E1D00B53654 /* Podfile */; };
+		42FD7C5B29712D4200DC507C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FD7C5A29712D4200DC507C /* UIColor+Extension.swift */; };
+		42FD7C642971303700DC507C /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 42FD7C5D2971303700DC507C /* NotoSansKR-Light.otf */; };
+		42FD7C652971303700DC507C /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 42FD7C5E2971303700DC507C /* NotoSansKR-Bold.otf */; };
+		42FD7C662971303700DC507C /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 42FD7C5F2971303700DC507C /* NotoSansKR-Thin.otf */; };
+		42FD7C672971303700DC507C /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42FD7C602971303700DC507C /* OFL.txt */; };
+		42FD7C682971303700DC507C /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 42FD7C612971303700DC507C /* NotoSansKR-Black.otf */; };
+		42FD7C692971303700DC507C /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 42FD7C622971303700DC507C /* NotoSansKR-Medium.otf */; };
+		42FD7C6A2971303700DC507C /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 42FD7C632971303700DC507C /* NotoSansKR-Regular.otf */; };
+		42FD7C6C2971313500DC507C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FD7C6B2971313500DC507C /* UIFont+Extension.swift */; };
+		42FD7C6E297147D700DC507C /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FD7C6D297147D700DC507C /* UIStackView+Extension.swift */; };
+		42FD7C7029716A9E00DC507C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FD7C6F29716A9E00DC507C /* Date+Extension.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
-		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
-		63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB072967EA2600775EC3 /* Main.storyboard */; };
+		63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* LoginViewController.swift */; };
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
+		D2B2CB82A8B4C9A1C39D06FF /* Pods_PersonalScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B99951475C2443C8CE01EC /* Pods_PersonalScheduler.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		39B99951475C2443C8CE01EC /* Pods_PersonalScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4215C65E296ED2E400C55A2F /* KakaoLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginViewController.swift; sourceTree = "<group>"; };
+		423E6C73296FEFC400236FE4 /* SchedularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedularViewController.swift; sourceTree = "<group>"; };
+		423E6C7C296FF87100236FE4 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		423E6C8029700F5200236FE4 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		423E6C822970101A00236FE4 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		423E6C84297017EB00236FE4 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		423E6C87297018F800236FE4 /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
+		423E6C892970595400236FE4 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
+		423E6C8B2970619C00236FE4 /* WritingScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingScheduleViewController.swift; sourceTree = "<group>"; };
+		4283EE6A296C527800B53654 /* CreateEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEmailViewController.swift; sourceTree = "<group>"; };
+		4283EE6C296C53B400B53654 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4283EE6E296C5A5900B53654 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4283EE70296C675B00B53654 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
+		4283EE71296C683400B53654 /* FacebookLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginViewController.swift; sourceTree = "<group>"; };
+		4283EE73296C6E1D00B53654 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Podfile; sourceTree = "<group>"; };
+		42FD7C5A29712D4200DC507C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		42FD7C5D2971303700DC507C /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
+		42FD7C5E2971303700DC507C /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		42FD7C5F2971303700DC507C /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
+		42FD7C602971303700DC507C /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		42FD7C612971303700DC507C /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
+		42FD7C622971303700DC507C /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		42FD7C632971303700DC507C /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		42FD7C6B2971313500DC507C /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		42FD7C6D297147D700DC507C /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		42FD7C6F29716A9E00DC507C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63AAAB052967EA2600775EC3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		63AAAB082967EA2600775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		63AAAB052967EA2600775EC3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		63AAAB0A2967EA2700775EC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E62945F776804C8498C8A38 /* Pods-PersonalScheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.release.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.release.xcconfig"; sourceTree = "<group>"; };
+		CAF051F42ECF196E23A4443E /* Pods-PersonalScheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.debug.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +84,125 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B2CB82A8B4C9A1C39D06FF /* Pods_PersonalScheduler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		423E6C76296FF79B00236FE4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
+				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		423E6C77296FF7A300236FE4 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				423E6C7B296FF81800236FE4 /* Model */,
+				423E6C84297017EB00236FE4 /* FirebaseManager.swift */,
+				423E6C892970595400236FE4 /* KakaoLoginManager.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		423E6C78296FF7BC00236FE4 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				423E6C7E29700F2500236FE4 /* View */,
+				423E6C7F29700F3B00236FE4 /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		423E6C79296FF7E900236FE4 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				423E6C86297018E800236FE4 /* Extensions */,
+				423E6C7A296FF7F500236FE4 /* App */,
+				423E6C77296FF7A300236FE4 /* Repositories */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		423E6C7A296FF7F500236FE4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
+				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		423E6C7B296FF81800236FE4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				423E6C7C296FF87100236FE4 /* Schedule.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		423E6C7E29700F2500236FE4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
+				4283EE6A296C527800B53654 /* CreateEmailViewController.swift */,
+				4283EE71296C683400B53654 /* FacebookLoginViewController.swift */,
+				4215C65E296ED2E400C55A2F /* KakaoLoginViewController.swift */,
+				4283EE6E296C5A5900B53654 /* MainViewController.swift */,
+				423E6C73296FEFC400236FE4 /* SchedularViewController.swift */,
+				423E6C8B2970619C00236FE4 /* WritingScheduleViewController.swift */,
+				423E6C822970101A00236FE4 /* ScheduleCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		423E6C7F29700F3B00236FE4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				423E6C8029700F5200236FE4 /* ScheduleViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		423E6C86297018E800236FE4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				423E6C87297018F800236FE4 /* Encodable+Extension.swift */,
+				42FD7C5A29712D4200DC507C /* UIColor+Extension.swift */,
+				42FD7C6B2971313500DC507C /* UIFont+Extension.swift */,
+				42FD7C6D297147D700DC507C /* UIStackView+Extension.swift */,
+				42FD7C6F29716A9E00DC507C /* Date+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		42FD7C5C2971303700DC507C /* Noto_Sans_KR */ = {
+			isa = PBXGroup;
+			children = (
+				42FD7C5D2971303700DC507C /* NotoSansKR-Light.otf */,
+				42FD7C5E2971303700DC507C /* NotoSansKR-Bold.otf */,
+				42FD7C5F2971303700DC507C /* NotoSansKR-Thin.otf */,
+				42FD7C602971303700DC507C /* OFL.txt */,
+				42FD7C612971303700DC507C /* NotoSansKR-Black.otf */,
+				42FD7C622971303700DC507C /* NotoSansKR-Medium.otf */,
+				42FD7C632971303700DC507C /* NotoSansKR-Regular.otf */,
+			);
+			path = Noto_Sans_KR;
+			sourceTree = "<group>";
+		};
 		63AAAAF52967EA2600775EC3 = {
 			isa = PBXGroup;
 			children = (
+				42FD7C5C2971303700DC507C /* Noto_Sans_KR */,
 				63AAAB002967EA2600775EC3 /* PersonalScheduler */,
 				63AAAAFF2967EA2600775EC3 /* Products */,
+				C3436C70153A826103CE22C7 /* Pods */,
+				8D6A1EDBC871542704350891 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +217,32 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
-				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
-				63AAAB052967EA2600775EC3 /* ViewController.swift */,
-				63AAAB072967EA2600775EC3 /* Main.storyboard */,
-				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
-				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
+				4283EE70296C675B00B53654 /* PersonalScheduler.entitlements */,
+				423E6C76296FF79B00236FE4 /* Resources */,
+				423E6C79296FF7E900236FE4 /* Sources */,
+				423E6C78296FF7BC00236FE4 /* Presentation */,
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				4283EE6C296C53B400B53654 /* GoogleService-Info.plist */,
 			);
 			path = PersonalScheduler;
+			sourceTree = "<group>";
+		};
+		8D6A1EDBC871542704350891 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4283EE73296C6E1D00B53654 /* Podfile */,
+				39B99951475C2443C8CE01EC /* Pods_PersonalScheduler.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C3436C70153A826103CE22C7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CAF051F42ECF196E23A4443E /* Pods-PersonalScheduler.debug.xcconfig */,
+				6E62945F776804C8498C8A38 /* Pods-PersonalScheduler.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +252,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63AAAB122967EA2700775EC3 /* Build configuration list for PBXNativeTarget "PersonalScheduler" */;
 			buildPhases = (
+				010B1D657C2896AD57A03214 /* [CP] Check Pods Manifest.lock */,
 				63AAAAFA2967EA2600775EC3 /* Sources */,
 				63AAAAFB2967EA2600775EC3 /* Frameworks */,
 				63AAAAFC2967EA2600775EC3 /* Resources */,
+				0D630368853DF727AF7B8078 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,36 +305,94 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42FD7C6A2971303700DC507C /* NotoSansKR-Regular.otf in Resources */,
+				42FD7C682971303700DC507C /* NotoSansKR-Black.otf in Resources */,
 				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
+				42FD7C692971303700DC507C /* NotoSansKR-Medium.otf in Resources */,
+				42FD7C662971303700DC507C /* NotoSansKR-Thin.otf in Resources */,
+				42FD7C642971303700DC507C /* NotoSansKR-Light.otf in Resources */,
 				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
-				63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */,
+				4283EE74296C6E1D00B53654 /* Podfile in Resources */,
+				42FD7C652971303700DC507C /* NotoSansKR-Bold.otf in Resources */,
+				42FD7C672971303700DC507C /* OFL.txt in Resources */,
+				4283EE6D296C53B400B53654 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		010B1D657C2896AD57A03214 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PersonalScheduler-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0D630368853DF727AF7B8078 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		63AAAAFA2967EA2600775EC3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
+				423E6C8C2970619C00236FE4 /* WritingScheduleViewController.swift in Sources */,
+				423E6C85297017EB00236FE4 /* FirebaseManager.swift in Sources */,
+				423E6C8A2970595400236FE4 /* KakaoLoginManager.swift in Sources */,
+				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				42FD7C6E297147D700DC507C /* UIStackView+Extension.swift in Sources */,
+				423E6C74296FEFC400236FE4 /* SchedularViewController.swift in Sources */,
+				423E6C88297018F800236FE4 /* Encodable+Extension.swift in Sources */,
+				42FD7C5B29712D4200DC507C /* UIColor+Extension.swift in Sources */,
+				423E6C8129700F5200236FE4 /* ScheduleViewModel.swift in Sources */,
+				423E6C7D296FF87100236FE4 /* Schedule.swift in Sources */,
+				42FD7C6C2971313500DC507C /* UIFont+Extension.swift in Sources */,
+				4283EE72296C683400B53654 /* FacebookLoginViewController.swift in Sources */,
+				4215C65F296ED2E400C55A2F /* KakaoLoginViewController.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				4283EE6B296C527800B53654 /* CreateEmailViewController.swift in Sources */,
+				423E6C832970101A00236FE4 /* ScheduleCell.swift in Sources */,
+				42FD7C7029716A9E00DC507C /* Date+Extension.swift in Sources */,
+				4283EE6F296C5A5900B53654 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		63AAAB072967EA2600775EC3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63AAAB082967EA2600775EC3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,55 +520,63 @@
 		};
 		63AAAB132967EA2700775EC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAF051F42ECF196E23A4443E /* Pods-PersonalScheduler.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PersonalScheduler/PersonalScheduler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6T62MU29CF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PersonalScheduler/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.PersonalScheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yeton.PersonalScheduler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		63AAAB142967EA2700775EC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E62945F776804C8498C8A38 /* Pods-PersonalScheduler.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PersonalScheduler/PersonalScheduler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6T62MU29CF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PersonalScheduler/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.PersonalScheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = net.yeton.PersonalScheduler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
