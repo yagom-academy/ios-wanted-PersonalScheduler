@@ -6,14 +6,22 @@
 //
 
 import UIKit
+import FirebaseCore
+import KakaoSDKAuth
+import KakaoSDKCommon
+import FacebookCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        KakaoSDK.initSDK(appKey: "5528ec17f06ec7fff082c9eb65548c8a")
+        ApplicationDelegate.shared.application(
+                    application,
+                    didFinishLaunchingWithOptions: launchOptions
+                )
         return true
     }
 
@@ -30,7 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+            if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                return AuthController.handleOpenUrl(url: url)
+            }
 
+            return false
+        }
 
 }
 

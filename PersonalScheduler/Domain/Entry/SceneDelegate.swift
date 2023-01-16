@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import KakaoSDKAuth
+import FacebookCore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,8 +18,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
+        let mainViewController = MainViewController.instance()
+
+        window?.rootViewController = mainViewController
+        window?.makeKeyAndVisible()
     }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+            if let url = URLContexts.first?.url {
+                if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                    _ = AuthController.handleOpenUrl(url: url)
+                }
+                ApplicationDelegate.shared.application(
+                    UIApplication.shared,
+                    open: url,
+                    sourceApplication: nil,
+                    annotation: [UIApplication.OpenURLOptionsKey.annotation]
+                )
+            }
+        }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
