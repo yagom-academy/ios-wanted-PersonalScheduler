@@ -7,19 +7,101 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3504B4CE296D79E90036CB1B /* SchedulePlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504B4CD296D79E90036CB1B /* SchedulePlusButton.swift */; };
+		3504B4D0296D82080036CB1B /* InputScheduleV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504B4CF296D82080036CB1B /* InputScheduleV.swift */; };
+		3504B4D2296D832A0036CB1B /* TitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504B4D1296D832A0036CB1B /* TitleTextField.swift */; };
+		3504B4D4296D87000036CB1B /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504B4D3296D87000036CB1B /* CancelButton.swift */; };
+		3504B4D6296D99840036CB1B /* ContentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504B4D5296D99840036CB1B /* ContentTextField.swift */; };
+		35406C40296C5F5C0027A261 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 35406C3F296C5F5C0027A261 /* KakaoSDK */; };
+		35406C42296C5F5C0027A261 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 35406C41296C5F5C0027A261 /* KakaoSDKAuth */; };
+		35406C44296C5F5C0027A261 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 35406C43296C5F5C0027A261 /* KakaoSDKCommon */; };
+		35406C46296C5F5C0027A261 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 35406C45296C5F5C0027A261 /* KakaoSDKUser */; };
+		35406C49296C70A60027A261 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35406C48296C70A60027A261 /* User.swift */; };
+		35406C4B296C70E20027A261 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35406C4A296C70E20027A261 /* Schedule.swift */; };
+		35406C4D296C75670027A261 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35406C4C296C75670027A261 /* UserManager.swift */; };
+		35A57CBA296FEF1200F4C183 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A57CB9296FEF1200F4C183 /* AlertManager.swift */; };
+		35A57CBC296FF2B200F4C183 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A57CBB296FF2B200F4C183 /* ActivityIndicator.swift */; };
+		35A57CBE297002A100F4C183 /* FirebaseLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A57CBD297002A100F4C183 /* FirebaseLoginManager.swift */; };
+		35A57CC129700E5500F4C183 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 35A57CC029700E5500F4C183 /* FacebookCore */; };
+		35A57CC329700E5500F4C183 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 35A57CC229700E5500F4C183 /* FacebookLogin */; };
+		35AAA5C2296EBFB70096A80F /* ScheduleSaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AAA5C1296EBFB70096A80F /* ScheduleSaveButton.swift */; };
+		35AAA5C4296EC6740096A80F /* InputScheduleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AAA5C3296EC6740096A80F /* InputScheduleVM.swift */; };
+		35AAA5C6296EC7E80096A80F /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AAA5C5296EC7E80096A80F /* ScheduleManager.swift */; };
+		35AAA5CB296ECB510096A80F /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AAA5CA296ECB510096A80F /* Collection.swift */; };
+		35AAA5CD296ECB920096A80F /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AAA5CC296ECB920096A80F /* Field.swift */; };
+		35AAA5D0296ECC450096A80F /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AAA5CF296ECC450096A80F /* AuthError.swift */; };
+		35AF119C296D2E03002249AF /* ScheduleListV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF119B296D2E03002249AF /* ScheduleListV.swift */; };
+		35AF119E296D5E57002249AF /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF119D296D5E57002249AF /* ScheduleCell.swift */; };
+		35AF11A0296D609E002249AF /* ScheduleListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF119F296D609E002249AF /* ScheduleListVM.swift */; };
+		35AF5D3F296C4A5B0085D636 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 35AF5D3E296C4A5B0085D636 /* FirebaseAuth */; };
+		35AF5D41296C4A5B0085D636 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 35AF5D40296C4A5B0085D636 /* FirebaseFirestore */; };
+		35AF5D43296C4A5B0085D636 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 35AF5D42296C4A5B0085D636 /* FirebaseFirestoreSwift */; };
+		35AF5D4C296C4AC60085D636 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 35AF5D4B296C4AC60085D636 /* AppAuth */; };
+		35AF5D4F296C54520085D636 /* LoginV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF5D4E296C54520085D636 /* LoginV.swift */; };
+		35AF5D51296C54A10085D636 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF5D50296C54A10085D636 /* BaseView.swift */; };
+		35AF5D53296C55FD0085D636 /* KaKaoLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF5D52296C55FD0085D636 /* KaKaoLoginButton.swift */; };
+		35AF5D55296C58FD0085D636 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF5D54296C58FD0085D636 /* LoginVM.swift */; };
+		35AF5D57296C597E0085D636 /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF5D56296C597E0085D636 /* LoginType.swift */; };
+		35AF5D5A296C5A310085D636 /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF5D59296C5A310085D636 /* KakaoLoginManager.swift */; };
+		35EEA815296C0880002A30C9 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA814296C0880002A30C9 /* BaseVC.swift */; };
+		35EEA817296C08C6002A30C9 /* Cordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA816296C08C6002A30C9 /* Cordinator.swift */; };
+		35EEA819296C0EF4002A30C9 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA818296C0EF4002A30C9 /* LoginVC.swift */; };
+		35EEA81B296C0F49002A30C9 /* InputScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA81A296C0F49002A30C9 /* InputScheduleVC.swift */; };
+		35EEA81D296C0F70002A30C9 /* ScheduleListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA81C296C0F70002A30C9 /* ScheduleListVC.swift */; };
+		35EEA820296C1071002A30C9 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA81F296C1071002A30C9 /* Dynamic.swift */; };
+		35EEA822296C1164002A30C9 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA821296C1164002A30C9 /* ViewModelType.swift */; };
+		35EEA824296C11D7002A30C9 /* SplashVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA823296C11D7002A30C9 /* SplashVM.swift */; };
+		35EEA826296C1421002A30C9 /* SplashResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EEA825296C1421002A30C9 /* SplashResultType.swift */; };
+		35EEA828296C1BD1002A30C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35EEA827296C1BD1002A30C9 /* GoogleService-Info.plist */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
-		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
+		63AAAB062967EA2600775EC3 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* SplashVC.swift */; };
 		63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB072967EA2600775EC3 /* Main.storyboard */; };
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3504B4CD296D79E90036CB1B /* SchedulePlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePlusButton.swift; sourceTree = "<group>"; };
+		3504B4CF296D82080036CB1B /* InputScheduleV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputScheduleV.swift; sourceTree = "<group>"; };
+		3504B4D1296D832A0036CB1B /* TitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextField.swift; sourceTree = "<group>"; };
+		3504B4D3296D87000036CB1B /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
+		3504B4D5296D99840036CB1B /* ContentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTextField.swift; sourceTree = "<group>"; };
+		35406C48296C70A60027A261 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		35406C4A296C70E20027A261 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		35406C4C296C75670027A261 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		35A57CB9296FEF1200F4C183 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		35A57CBB296FF2B200F4C183 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		35A57CBD297002A100F4C183 /* FirebaseLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLoginManager.swift; sourceTree = "<group>"; };
+		35AAA5C1296EBFB70096A80F /* ScheduleSaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSaveButton.swift; sourceTree = "<group>"; };
+		35AAA5C3296EC6740096A80F /* InputScheduleVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputScheduleVM.swift; sourceTree = "<group>"; };
+		35AAA5C5296EC7E80096A80F /* ScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleManager.swift; sourceTree = "<group>"; };
+		35AAA5CA296ECB510096A80F /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		35AAA5CC296ECB920096A80F /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		35AAA5CF296ECC450096A80F /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		35AF119B296D2E03002249AF /* ScheduleListV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListV.swift; sourceTree = "<group>"; };
+		35AF119D296D5E57002249AF /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		35AF119F296D609E002249AF /* ScheduleListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListVM.swift; sourceTree = "<group>"; };
+		35AF5D4E296C54520085D636 /* LoginV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginV.swift; sourceTree = "<group>"; };
+		35AF5D50296C54A10085D636 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		35AF5D52296C55FD0085D636 /* KaKaoLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoLoginButton.swift; sourceTree = "<group>"; };
+		35AF5D54296C58FD0085D636 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
+		35AF5D56296C597E0085D636 /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
+		35AF5D59296C5A310085D636 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
+		35EEA814296C0880002A30C9 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		35EEA816296C08C6002A30C9 /* Cordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cordinator.swift; sourceTree = "<group>"; };
+		35EEA818296C0EF4002A30C9 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		35EEA81A296C0F49002A30C9 /* InputScheduleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputScheduleVC.swift; sourceTree = "<group>"; };
+		35EEA81C296C0F70002A30C9 /* ScheduleListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListVC.swift; sourceTree = "<group>"; };
+		35EEA81F296C1071002A30C9 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		35EEA821296C1164002A30C9 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		35EEA823296C11D7002A30C9 /* SplashVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVM.swift; sourceTree = "<group>"; };
+		35EEA825296C1421002A30C9 /* SplashResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashResultType.swift; sourceTree = "<group>"; };
+		35EEA827296C1BD1002A30C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63AAAB052967EA2600775EC3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		63AAAB052967EA2600775EC3 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		63AAAB082967EA2600775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63AAAB0A2967EA2700775EC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,12 +113,148 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35A57CC329700E5500F4C183 /* FacebookLogin in Frameworks */,
+				35AF5D4C296C4AC60085D636 /* AppAuth in Frameworks */,
+				35406C44296C5F5C0027A261 /* KakaoSDKCommon in Frameworks */,
+				35406C40296C5F5C0027A261 /* KakaoSDK in Frameworks */,
+				35AF5D3F296C4A5B0085D636 /* FirebaseAuth in Frameworks */,
+				35406C46296C5F5C0027A261 /* KakaoSDKUser in Frameworks */,
+				35AF5D41296C4A5B0085D636 /* FirebaseFirestore in Frameworks */,
+				35AF5D43296C4A5B0085D636 /* FirebaseFirestoreSwift in Frameworks */,
+				35A57CC129700E5500F4C183 /* FacebookCore in Frameworks */,
+				35406C42296C5F5C0027A261 /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35AAA5C9296ECB3D0096A80F /* FBConfig */ = {
+			isa = PBXGroup;
+			children = (
+				35AAA5CA296ECB510096A80F /* Collection.swift */,
+				35AAA5CC296ECB920096A80F /* Field.swift */,
+			);
+			path = FBConfig;
+			sourceTree = "<group>";
+		};
+		35AAA5CE296ECC330096A80F /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				35AAA5CF296ECC450096A80F /* AuthError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		35AF5D58296C5A1B0085D636 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				35AF5D59296C5A310085D636 /* KakaoLoginManager.swift */,
+				35406C4C296C75670027A261 /* UserManager.swift */,
+				35AAA5C5296EC7E80096A80F /* ScheduleManager.swift */,
+				35A57CB9296FEF1200F4C183 /* AlertManager.swift */,
+				35A57CBD297002A100F4C183 /* FirebaseLoginManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		35EEA80A296C0675002A30C9 /* Delgate */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
+				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
+			);
+			path = Delgate;
+			sourceTree = "<group>";
+		};
+		35EEA80B296C069A002A30C9 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB072967EA2600775EC3 /* Main.storyboard */,
+				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		35EEA80E296C06E8002A30C9 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				35EEA816296C08C6002A30C9 /* Cordinator.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		35EEA80F296C06EF002A30C9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				35EEA818296C0EF4002A30C9 /* LoginVC.swift */,
+				35AF5D4E296C54520085D636 /* LoginV.swift */,
+				35AF5D54296C58FD0085D636 /* LoginVM.swift */,
+				35AF5D56296C597E0085D636 /* LoginType.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		35EEA810296C076F002A30C9 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB052967EA2600775EC3 /* SplashVC.swift */,
+				35EEA823296C11D7002A30C9 /* SplashVM.swift */,
+				35EEA825296C1421002A30C9 /* SplashResultType.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		35EEA811296C0784002A30C9 /* SchedulList */ = {
+			isa = PBXGroup;
+			children = (
+				35EEA81C296C0F70002A30C9 /* ScheduleListVC.swift */,
+				35AF119B296D2E03002249AF /* ScheduleListV.swift */,
+				35AF119D296D5E57002249AF /* ScheduleCell.swift */,
+				35AF119F296D609E002249AF /* ScheduleListVM.swift */,
+			);
+			path = SchedulList;
+			sourceTree = "<group>";
+		};
+		35EEA812296C07E1002A30C9 /* InputSchedul */ = {
+			isa = PBXGroup;
+			children = (
+				35EEA81A296C0F49002A30C9 /* InputScheduleVC.swift */,
+				3504B4CF296D82080036CB1B /* InputScheduleV.swift */,
+				35AAA5C3296EC6740096A80F /* InputScheduleVM.swift */,
+			);
+			path = InputSchedul;
+			sourceTree = "<group>";
+		};
+		35EEA813296C085C002A30C9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				35EEA814296C0880002A30C9 /* BaseVC.swift */,
+				35EEA821296C1164002A30C9 /* ViewModelType.swift */,
+				35AF5D50296C54A10085D636 /* BaseView.swift */,
+				35AF5D52296C55FD0085D636 /* KaKaoLoginButton.swift */,
+				3504B4CD296D79E90036CB1B /* SchedulePlusButton.swift */,
+				3504B4D1296D832A0036CB1B /* TitleTextField.swift */,
+				3504B4D3296D87000036CB1B /* CancelButton.swift */,
+				3504B4D5296D99840036CB1B /* ContentTextField.swift */,
+				35AAA5C1296EBFB70096A80F /* ScheduleSaveButton.swift */,
+				35A57CBB296FF2B200F4C183 /* ActivityIndicator.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		35EEA81E296C105A002A30C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				35AAA5CE296ECC330096A80F /* Error */,
+				35AAA5C9296ECB3D0096A80F /* FBConfig */,
+				35EEA81F296C1071002A30C9 /* Dynamic.swift */,
+				35406C48296C70A60027A261 /* User.swift */,
+				35406C4A296C70E20027A261 /* Schedule.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		63AAAAF52967EA2600775EC3 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +274,19 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
-				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
-				63AAAB052967EA2600775EC3 /* ViewController.swift */,
-				63AAAB072967EA2600775EC3 /* Main.storyboard */,
+				35AF5D58296C5A1B0085D636 /* Manager */,
+				35EEA81E296C105A002A30C9 /* Model */,
+				35EEA813296C085C002A30C9 /* Common */,
+				35EEA810296C076F002A30C9 /* Splash */,
+				35EEA80F296C06EF002A30C9 /* Login */,
+				35EEA812296C07E1002A30C9 /* InputSchedul */,
+				35EEA811296C0784002A30C9 /* SchedulList */,
+				35EEA80E296C06E8002A30C9 /* Helper */,
+				35EEA80B296C069A002A30C9 /* Storyboard */,
+				35EEA80A296C0675002A30C9 /* Delgate */,
 				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
-				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				35EEA827296C1BD1002A30C9 /* GoogleService-Info.plist */,
 			);
 			path = PersonalScheduler;
 			sourceTree = "<group>";
@@ -83,6 +307,18 @@
 			dependencies = (
 			);
 			name = PersonalScheduler;
+			packageProductDependencies = (
+				35AF5D3E296C4A5B0085D636 /* FirebaseAuth */,
+				35AF5D40296C4A5B0085D636 /* FirebaseFirestore */,
+				35AF5D42296C4A5B0085D636 /* FirebaseFirestoreSwift */,
+				35AF5D4B296C4AC60085D636 /* AppAuth */,
+				35406C3F296C5F5C0027A261 /* KakaoSDK */,
+				35406C41296C5F5C0027A261 /* KakaoSDKAuth */,
+				35406C43296C5F5C0027A261 /* KakaoSDKCommon */,
+				35406C45296C5F5C0027A261 /* KakaoSDKUser */,
+				35A57CC029700E5500F4C183 /* FacebookCore */,
+				35A57CC229700E5500F4C183 /* FacebookLogin */,
+			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +347,12 @@
 				Base,
 			);
 			mainGroup = 63AAAAF52967EA2600775EC3;
+			packageReferences = (
+				35AF5D3D296C4A5B0085D636 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				35AF5D4A296C4AC60085D636 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
+				35406C3E296C5F5C0027A261 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				35A57CBF29700E5500F4C183 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -128,6 +370,7 @@
 				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
 				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
 				63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */,
+				35EEA828296C1BD1002A30C9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +381,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
+				35A57CBC296FF2B200F4C183 /* ActivityIndicator.swift in Sources */,
+				3504B4D2296D832A0036CB1B /* TitleTextField.swift in Sources */,
+				35EEA822296C1164002A30C9 /* ViewModelType.swift in Sources */,
+				3504B4D6296D99840036CB1B /* ContentTextField.swift in Sources */,
+				35AF5D57296C597E0085D636 /* LoginType.swift in Sources */,
+				35EEA826296C1421002A30C9 /* SplashResultType.swift in Sources */,
+				35AAA5C4296EC6740096A80F /* InputScheduleVM.swift in Sources */,
+				35AF119C296D2E03002249AF /* ScheduleListV.swift in Sources */,
+				63AAAB062967EA2600775EC3 /* SplashVC.swift in Sources */,
+				35A57CBA296FEF1200F4C183 /* AlertManager.swift in Sources */,
+				35EEA824296C11D7002A30C9 /* SplashVM.swift in Sources */,
+				35AF5D5A296C5A310085D636 /* KakaoLoginManager.swift in Sources */,
+				35AF119E296D5E57002249AF /* ScheduleCell.swift in Sources */,
+				3504B4CE296D79E90036CB1B /* SchedulePlusButton.swift in Sources */,
+				35AAA5C6296EC7E80096A80F /* ScheduleManager.swift in Sources */,
+				35AF5D55296C58FD0085D636 /* LoginVM.swift in Sources */,
+				3504B4D0296D82080036CB1B /* InputScheduleV.swift in Sources */,
+				35EEA817296C08C6002A30C9 /* Cordinator.swift in Sources */,
+				35EEA81B296C0F49002A30C9 /* InputScheduleVC.swift in Sources */,
+				35406C4D296C75670027A261 /* UserManager.swift in Sources */,
+				35A57CBE297002A100F4C183 /* FirebaseLoginManager.swift in Sources */,
+				35AAA5CD296ECB920096A80F /* Field.swift in Sources */,
+				35AAA5CB296ECB510096A80F /* Collection.swift in Sources */,
+				3504B4D4296D87000036CB1B /* CancelButton.swift in Sources */,
+				35EEA820296C1071002A30C9 /* Dynamic.swift in Sources */,
+				35EEA81D296C0F70002A30C9 /* ScheduleListVC.swift in Sources */,
+				35EEA819296C0EF4002A30C9 /* LoginVC.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				35AAA5C2296EBFB70096A80F /* ScheduleSaveButton.swift in Sources */,
+				35AF5D4F296C54520085D636 /* LoginV.swift in Sources */,
+				35AF5D51296C54A10085D636 /* BaseView.swift in Sources */,
+				35AF5D53296C55FD0085D636 /* KaKaoLoginButton.swift in Sources */,
+				35AF11A0296D609E002249AF /* ScheduleListVM.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				35EEA815296C0880002A30C9 /* BaseVC.swift in Sources */,
+				35406C4B296C70E20027A261 /* Schedule.swift in Sources */,
+				35406C49296C70A60027A261 /* User.swift in Sources */,
+				35AAA5D0296ECC450096A80F /* AuthError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +480,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -262,6 +541,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -287,6 +567,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 45K89U54K6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PersonalScheduler/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -294,12 +575,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.PersonalScheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JaeGeun.PersonalScheduler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -314,6 +596,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 45K89U54K6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PersonalScheduler/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -321,12 +604,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.PersonalScheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JaeGeun.PersonalScheduler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -356,6 +640,94 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		35406C3E296C5F5C0027A261 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		35A57CBF29700E5500F4C183 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		35AF5D3D296C4A5B0085D636 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		35AF5D4A296C4AC60085D636 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/openid/AppAuth-iOS";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		35406C3F296C5F5C0027A261 /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35406C3E296C5F5C0027A261 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+		35406C41296C5F5C0027A261 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35406C3E296C5F5C0027A261 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		35406C43296C5F5C0027A261 /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35406C3E296C5F5C0027A261 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		35406C45296C5F5C0027A261 /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35406C3E296C5F5C0027A261 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
+		35A57CC029700E5500F4C183 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35A57CBF29700E5500F4C183 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		35A57CC229700E5500F4C183 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35A57CBF29700E5500F4C183 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		35AF5D3E296C4A5B0085D636 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35AF5D3D296C4A5B0085D636 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		35AF5D40296C4A5B0085D636 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35AF5D3D296C4A5B0085D636 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		35AF5D42296C4A5B0085D636 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35AF5D3D296C4A5B0085D636 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		35AF5D4B296C4AC60085D636 /* AppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35AF5D4A296C4AC60085D636 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 63AAAAF62967EA2600775EC3 /* Project object */;
 }
