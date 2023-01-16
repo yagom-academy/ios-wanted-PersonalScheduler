@@ -1,0 +1,575 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9D260366D8ED2742D2457834 /* Pods_PersonalScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E231B816D0880DA22F05C8B /* Pods_PersonalScheduler.framework */; };
+		A3B8DB02296EEC91002BCB36 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B8DB01296EEC91002BCB36 /* NotificationManager.swift */; };
+		A3B8DB05296FBC7B002BCB36 /* KakaoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B8DB04296FBC7B002BCB36 /* KakaoInfo.swift */; };
+		A3B8DB07296FBC90002BCB36 /* UserInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B8DB06296FBC90002BCB36 /* UserInfoData.swift */; };
+		A3B8DB09296FD852002BCB36 /* ScheduleListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B8DB08296FD852002BCB36 /* ScheduleListCellView.swift */; };
+		A3B8DB0B296FF947002BCB36 /* FacebookLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B8DB0A296FF947002BCB36 /* FacebookLoginManager.swift */; };
+		A3B8DB0E2970F02D002BCB36 /* FBLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B8DB0D2970F02D002BCB36 /* FBLogView.swift */; };
+		A3DEB0C5296C08770079903A /* FirebaseLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0C4296C08770079903A /* FirebaseLoginManager.swift */; };
+		A3DEB0C7296C3ED70079903A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0C6296C3ED70079903A /* SignUpView.swift */; };
+		A3DEB0C9296C411E0079903A /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0C8296C411E0079903A /* SignUpViewModel.swift */; };
+		A3DEB0CB296C5CCE0079903A /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0CA296C5CCE0079903A /* ScheduleListView.swift */; };
+		A3DEB0CD296C5E080079903A /* ScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0CC296C5E080079903A /* ScheduleList.swift */; };
+		A3DEB0D0296C5EAE0079903A /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0CF296C5EAE0079903A /* FirebaseStorageManager.swift */; };
+		A3DEB0D2296CE9040079903A /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0D1296CE9040079903A /* ScheduleListViewModel.swift */; };
+		A3DEB0D4296CF3DE0079903A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3DEB0D3296CF3DE0079903A /* GoogleService-Info.plist */; };
+		A3DEB0D7296D94EC0079903A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0D6296D94EC0079903A /* Date+Extension.swift */; };
+		A3DEB0D9296E71EA0079903A /* ScheduleAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0D8296E71EA0079903A /* ScheduleAddView.swift */; };
+		A3DEB0DB296E7C0E0079903A /* ScheduleAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0DA296E7C0E0079903A /* ScheduleAddViewModel.swift */; };
+		A3DEB0DD296E953B0079903A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DEB0DC296E953B0079903A /* String+Extension.swift */; };
+		A3EB6986296BAFB4004F492A /* PersonalSchedulerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */; };
+		A3EB6988296BAFB4004F492A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6987296BAFB4004F492A /* LoginView.swift */; };
+		A3EB698A296BAFB5004F492A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3EB6989296BAFB5004F492A /* Assets.xcassets */; };
+		A3EB698D296BAFB5004F492A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3EB698C296BAFB5004F492A /* Preview Assets.xcassets */; };
+		A3EB6996296BE8C0004F492A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6995296BE8C0004F492A /* LoginViewModel.swift */; };
+		A3EB6999296BEFF2004F492A /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB6998296BEFF2004F492A /* KakaoLoginManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		348C73AD9D4B09F2298C3145 /* Pods-PersonalScheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.debug.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.debug.xcconfig"; sourceTree = "<group>"; };
+		4E231B816D0880DA22F05C8B /* Pods_PersonalScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3B8DB01296EEC91002BCB36 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		A3B8DB04296FBC7B002BCB36 /* KakaoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoInfo.swift; sourceTree = "<group>"; };
+		A3B8DB06296FBC90002BCB36 /* UserInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoData.swift; sourceTree = "<group>"; };
+		A3B8DB08296FD852002BCB36 /* ScheduleListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListCellView.swift; sourceTree = "<group>"; };
+		A3B8DB0A296FF947002BCB36 /* FacebookLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginManager.swift; sourceTree = "<group>"; };
+		A3B8DB0D2970F02D002BCB36 /* FBLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLogView.swift; sourceTree = "<group>"; };
+		A3DEB0C4296C08770079903A /* FirebaseLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLoginManager.swift; sourceTree = "<group>"; };
+		A3DEB0C6296C3ED70079903A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		A3DEB0C8296C411E0079903A /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		A3DEB0CA296C5CCE0079903A /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
+		A3DEB0CC296C5E080079903A /* ScheduleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleList.swift; sourceTree = "<group>"; };
+		A3DEB0CF296C5EAE0079903A /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
+		A3DEB0D1296CE9040079903A /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
+		A3DEB0D3296CF3DE0079903A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A3DEB0D6296D94EC0079903A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		A3DEB0D8296E71EA0079903A /* ScheduleAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleAddView.swift; sourceTree = "<group>"; };
+		A3DEB0DA296E7C0E0079903A /* ScheduleAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleAddViewModel.swift; sourceTree = "<group>"; };
+		A3DEB0DC296E953B0079903A /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		A3EB6982296BAFB4004F492A /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSchedulerApp.swift; sourceTree = "<group>"; };
+		A3EB6987296BAFB4004F492A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A3EB6989296BAFB5004F492A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A3EB698C296BAFB5004F492A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A3EB6993296BE23F004F492A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A3EB6994296BE351004F492A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		A3EB6995296BE8C0004F492A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		A3EB6998296BEFF2004F492A /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
+		B2A015D98D277D0327F3E886 /* Pods-PersonalScheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.release.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A3EB697F296BAFB4004F492A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D260366D8ED2742D2457834 /* Pods_PersonalScheduler.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A7BB1AE5A601E3102380819 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				348C73AD9D4B09F2298C3145 /* Pods-PersonalScheduler.debug.xcconfig */,
+				B2A015D98D277D0327F3E886 /* Pods-PersonalScheduler.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A3B8DB0F2970F241002BCB36 /* LoginManager */ = {
+			isa = PBXGroup;
+			children = (
+				A3DEB0C4296C08770079903A /* FirebaseLoginManager.swift */,
+				A3EB6998296BEFF2004F492A /* KakaoLoginManager.swift */,
+				A3B8DB0A296FF947002BCB36 /* FacebookLoginManager.swift */,
+			);
+			path = LoginManager;
+			sourceTree = "<group>";
+		};
+		A3B8DB10297153F8002BCB36 /* ScheduleList */ = {
+			isa = PBXGroup;
+			children = (
+				A3DEB0CA296C5CCE0079903A /* ScheduleListView.swift */,
+				A3B8DB08296FD852002BCB36 /* ScheduleListCellView.swift */,
+				A3DEB0D1296CE9040079903A /* ScheduleListViewModel.swift */,
+			);
+			path = ScheduleList;
+			sourceTree = "<group>";
+		};
+		A3B8DB1129715437002BCB36 /* ScheduleAdd */ = {
+			isa = PBXGroup;
+			children = (
+				A3DEB0D8296E71EA0079903A /* ScheduleAddView.swift */,
+				A3DEB0DA296E7C0E0079903A /* ScheduleAddViewModel.swift */,
+			);
+			path = ScheduleAdd;
+			sourceTree = "<group>";
+		};
+		A3B8DB1229715A08002BCB36 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A3EB699A296BF03F004F492A /* Login */,
+				A3EB699B296BF055004F492A /* SignUp */,
+				A3B8DB1129715437002BCB36 /* ScheduleAdd */,
+				A3B8DB10297153F8002BCB36 /* ScheduleList */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A3DEB0CE296C5E0D0079903A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A3DEB0CC296C5E080079903A /* ScheduleList.swift */,
+				A3B8DB04296FBC7B002BCB36 /* KakaoInfo.swift */,
+				A3B8DB06296FBC90002BCB36 /* UserInfoData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A3DEB0D5296D94D60079903A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A3DEB0D6296D94EC0079903A /* Date+Extension.swift */,
+				A3DEB0DC296E953B0079903A /* String+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A3EB6979296BAFB4004F492A = {
+			isa = PBXGroup;
+			children = (
+				A3EB6984296BAFB4004F492A /* PersonalScheduler */,
+				A3EB6983296BAFB4004F492A /* Products */,
+				5A7BB1AE5A601E3102380819 /* Pods */,
+				DFC1B11B109C7ECC476FC565 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A3EB6983296BAFB4004F492A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A3EB6982296BAFB4004F492A /* PersonalScheduler.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A3EB6984296BAFB4004F492A /* PersonalScheduler */ = {
+			isa = PBXGroup;
+			children = (
+				A3EB6985296BAFB4004F492A /* PersonalSchedulerApp.swift */,
+				A3EB6993296BE23F004F492A /* Info.plist */,
+				A3DEB0D3296CF3DE0079903A /* GoogleService-Info.plist */,
+				A3EB6989296BAFB5004F492A /* Assets.xcassets */,
+				A3DEB0D5296D94D60079903A /* Extension */,
+				A3DEB0CE296C5E0D0079903A /* Model */,
+				A3EB6997296BEFD8004F492A /* Manager */,
+				A3B8DB1229715A08002BCB36 /* Presentation */,
+				A3EB698B296BAFB5004F492A /* Preview Content */,
+				A3EB6994296BE351004F492A /* Config.xcconfig */,
+			);
+			path = PersonalScheduler;
+			sourceTree = "<group>";
+		};
+		A3EB698B296BAFB5004F492A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A3EB698C296BAFB5004F492A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A3EB6997296BEFD8004F492A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				A3B8DB0F2970F241002BCB36 /* LoginManager */,
+				A3DEB0CF296C5EAE0079903A /* FirebaseStorageManager.swift */,
+				A3B8DB01296EEC91002BCB36 /* NotificationManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		A3EB699A296BF03F004F492A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A3EB6987296BAFB4004F492A /* LoginView.swift */,
+				A3EB6995296BE8C0004F492A /* LoginViewModel.swift */,
+				A3B8DB0D2970F02D002BCB36 /* FBLogView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A3EB699B296BF055004F492A /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				A3DEB0C6296C3ED70079903A /* SignUpView.swift */,
+				A3DEB0C8296C411E0079903A /* SignUpViewModel.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		DFC1B11B109C7ECC476FC565 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4E231B816D0880DA22F05C8B /* Pods_PersonalScheduler.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A3EB6981296BAFB4004F492A /* PersonalScheduler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3EB6990296BAFB5004F492A /* Build configuration list for PBXNativeTarget "PersonalScheduler" */;
+			buildPhases = (
+				D815D1CD1B10C3E5AFE085F5 /* [CP] Check Pods Manifest.lock */,
+				A3EB697E296BAFB4004F492A /* Sources */,
+				A3EB697F296BAFB4004F492A /* Frameworks */,
+				A3EB6980296BAFB4004F492A /* Resources */,
+				DAB5FAF36307DD552DD7A463 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PersonalScheduler;
+			productName = PersonalScheduler;
+			productReference = A3EB6982296BAFB4004F492A /* PersonalScheduler.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A3EB697A296BAFB4004F492A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					A3EB6981296BAFB4004F492A = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = A3EB697D296BAFB4004F492A /* Build configuration list for PBXProject "PersonalScheduler" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ko,
+			);
+			mainGroup = A3EB6979296BAFB4004F492A;
+			productRefGroup = A3EB6983296BAFB4004F492A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A3EB6981296BAFB4004F492A /* PersonalScheduler */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A3EB6980296BAFB4004F492A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3EB698D296BAFB5004F492A /* Preview Assets.xcassets in Resources */,
+				A3EB698A296BAFB5004F492A /* Assets.xcassets in Resources */,
+				A3DEB0D4296CF3DE0079903A /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D815D1CD1B10C3E5AFE085F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PersonalScheduler-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DAB5FAF36307DD552DD7A463 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A3EB697E296BAFB4004F492A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3EB6988296BAFB4004F492A /* LoginView.swift in Sources */,
+				A3B8DB05296FBC7B002BCB36 /* KakaoInfo.swift in Sources */,
+				A3B8DB09296FD852002BCB36 /* ScheduleListCellView.swift in Sources */,
+				A3B8DB0B296FF947002BCB36 /* FacebookLoginManager.swift in Sources */,
+				A3EB6999296BEFF2004F492A /* KakaoLoginManager.swift in Sources */,
+				A3DEB0D0296C5EAE0079903A /* FirebaseStorageManager.swift in Sources */,
+				A3B8DB07296FBC90002BCB36 /* UserInfoData.swift in Sources */,
+				A3DEB0C5296C08770079903A /* FirebaseLoginManager.swift in Sources */,
+				A3EB6996296BE8C0004F492A /* LoginViewModel.swift in Sources */,
+				A3DEB0DB296E7C0E0079903A /* ScheduleAddViewModel.swift in Sources */,
+				A3B8DB0E2970F02D002BCB36 /* FBLogView.swift in Sources */,
+				A3B8DB02296EEC91002BCB36 /* NotificationManager.swift in Sources */,
+				A3DEB0D7296D94EC0079903A /* Date+Extension.swift in Sources */,
+				A3DEB0C7296C3ED70079903A /* SignUpView.swift in Sources */,
+				A3DEB0CB296C5CCE0079903A /* ScheduleListView.swift in Sources */,
+				A3DEB0D9296E71EA0079903A /* ScheduleAddView.swift in Sources */,
+				A3EB6986296BAFB4004F492A /* PersonalSchedulerApp.swift in Sources */,
+				A3DEB0D2296CE9040079903A /* ScheduleListViewModel.swift in Sources */,
+				A3DEB0CD296C5E080079903A /* ScheduleList.swift in Sources */,
+				A3DEB0DD296E953B0079903A /* String+Extension.swift in Sources */,
+				A3DEB0C9296C411E0079903A /* SignUpViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A3EB698E296BAFB5004F492A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3EB6994296BE351004F492A /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A3EB698F296BAFB5004F492A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3EB6994296BE351004F492A /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A3EB6991296BAFB5004F492A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 348C73AD9D4B09F2298C3145 /* Pods-PersonalScheduler.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PersonalScheduler/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PersonalScheduler/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = BradHeo.PersonalScheduler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A3EB6992296BAFB5004F492A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2A015D98D277D0327F3E886 /* Pods-PersonalScheduler.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PersonalScheduler/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PersonalScheduler/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = BradHeo.PersonalScheduler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A3EB697D296BAFB4004F492A /* Build configuration list for PBXProject "PersonalScheduler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3EB698E296BAFB5004F492A /* Debug */,
+				A3EB698F296BAFB5004F492A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3EB6990296BAFB5004F492A /* Build configuration list for PBXNativeTarget "PersonalScheduler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3EB6991296BAFB5004F492A /* Debug */,
+				A3EB6992296BAFB5004F492A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A3EB697A296BAFB4004F492A /* Project object */;
+}
