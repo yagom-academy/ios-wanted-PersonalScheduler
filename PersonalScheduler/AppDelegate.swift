@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  PersonalScheduler
 //
-//  Created by kjs on 06/01/23.
+//  Created by 써니쿠키 on 06/01/23.
 //
 
 import UIKit
