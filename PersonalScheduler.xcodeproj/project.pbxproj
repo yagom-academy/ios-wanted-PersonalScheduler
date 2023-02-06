@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		188479422991453B00160A1B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188479412991453B00160A1B /* LoginViewModel.swift */; };
 		18C1EF7C2991038900136466 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF7B2991038900136466 /* FirebaseAuth */; };
 		18C1EF7E2991038900136466 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF7D2991038900136466 /* FirebaseFirestore */; };
 		18C1EF802991038900136466 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF7F2991038900136466 /* FirebaseFirestoreSwift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		188479412991453B00160A1B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		18C1EF9529910EED00136466 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		188479392991447800160A1B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		1884793A2991447F00160A1B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		1884793B2991448300160A1B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				1884793E2991449F00160A1B /* Login */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		1884793C2991448900160A1B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1884793D2991448C00160A1B /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		1884793E2991449F00160A1B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				18847940299144AF00160A1B /* ViewModel */,
+				1884793F299144A900160A1B /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1884793F299144A900160A1B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18847940299144AF00160A1B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				188479412991453B00160A1B /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		18C1EF9229910BF600136466 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,33 +135,13 @@
 		18C1EF9329910BF900136466 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				18C1EF9929910F7600136466 /* ViewModel */,
-				18C1EF9829910F7300136466 /* View */,
-				18C1EF9729910F7100136466 /* Model */,
+				188479392991447800160A1B /* Application */,
+				1884793C2991448900160A1B /* Data */,
+				1884793A2991447F00160A1B /* Domain */,
+				1884793D2991448C00160A1B /* Infrastructure */,
+				1884793B2991448300160A1B /* Presentation */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		18C1EF9729910F7100136466 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		18C1EF9829910F7300136466 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		18C1EF9929910F7600136466 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		63AAAAF52967EA2600775EC3 = {
@@ -216,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				188479422991453B00160A1B /* LoginViewModel.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
