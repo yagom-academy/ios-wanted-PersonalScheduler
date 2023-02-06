@@ -21,6 +21,8 @@
 	</array>
 	<key>FacebookAppID</key>
 	<string>594016645397216</string>
+    <key>FacebookClientToken</key>
+    <string>e8169d087f95396e5bf9f956f67c2019</string>
 	<key>FacebookDisplayName</key>
 	<string>PersonalScheduler</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -32,6 +34,8 @@
 		<string>kakaokompassauth</string>
 		<string>kakaolink</string>
 	</array>
+    <key>FacebookAutoLogAppEventsEnabled</key>
+    <false/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -45,8 +49,6 @@
 					<string>Default Configuration</string>
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
-					<key>UISceneStoryboardFile</key>
-					<string>Main</string>
 				</dict>
 			</array>
 		</dict>
