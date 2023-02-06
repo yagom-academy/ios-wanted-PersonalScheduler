@@ -21,6 +21,9 @@
 		E347AD5029913F540022A5DB /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E347AD4F29913F540022A5DB /* FirebaseFirestoreSwift */; };
 		E347AD53299148EB0022A5DB /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = E347AD52299148EB0022A5DB /* FacebookCore */; };
 		E347AD55299148EB0022A5DB /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = E347AD54299148EB0022A5DB /* FacebookLogin */; };
+		E347AD672991573A0022A5DB /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E347AD662991573A0022A5DB /* KakaoSDKAuth */; };
+		E347AD692991573A0022A5DB /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = E347AD682991573A0022A5DB /* KakaoSDKCommon */; };
+		E347AD6B2991573A0022A5DB /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = E347AD6A2991573A0022A5DB /* KakaoSDKUser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,9 +47,12 @@
 				E347AD53299148EB0022A5DB /* FacebookCore in Frameworks */,
 				E347AD4A29913F540022A5DB /* FirebaseAnalyticsSwift in Frameworks */,
 				E347AD4E29913F540022A5DB /* FirebaseFirestore in Frameworks */,
+				E347AD692991573A0022A5DB /* KakaoSDKCommon in Frameworks */,
 				E347AD4C29913F540022A5DB /* FirebaseAuth in Frameworks */,
 				E347AD55299148EB0022A5DB /* FacebookLogin in Frameworks */,
 				E347AD4829913F540022A5DB /* FirebaseAnalytics in Frameworks */,
+				E347AD6B2991573A0022A5DB /* KakaoSDKUser in Frameworks */,
+				E347AD672991573A0022A5DB /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +114,9 @@
 				E347AD4F29913F540022A5DB /* FirebaseFirestoreSwift */,
 				E347AD52299148EB0022A5DB /* FacebookCore */,
 				E347AD54299148EB0022A5DB /* FacebookLogin */,
+				E347AD662991573A0022A5DB /* KakaoSDKAuth */,
+				E347AD682991573A0022A5DB /* KakaoSDKCommon */,
+				E347AD6A2991573A0022A5DB /* KakaoSDKUser */,
 			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
@@ -140,6 +149,7 @@
 			packageReferences = (
 				E347AD4629913F540022A5DB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				E347AD51299148EB0022A5DB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				E347AD652991573A0022A5DB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
@@ -415,6 +425,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		E347AD652991573A0022A5DB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -452,6 +470,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E347AD51299148EB0022A5DB /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookLogin;
+		};
+		E347AD662991573A0022A5DB /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E347AD652991573A0022A5DB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		E347AD682991573A0022A5DB /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E347AD652991573A0022A5DB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		E347AD6A2991573A0022A5DB /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E347AD652991573A0022A5DB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

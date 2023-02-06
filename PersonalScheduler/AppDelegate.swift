@@ -11,6 +11,7 @@ import FacebookCore
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
+import KakaoSDKCommon
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         FirebaseApp.configure()
+        KakaoSDK.initSDK(appKey: "963fdcdb3f875a6634918c579d794962")
         return true
     }
 

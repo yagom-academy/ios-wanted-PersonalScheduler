@@ -8,6 +8,7 @@
 import UIKit
 
 import FacebookCore
+import KakaoSDKAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -26,12 +27,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
+        // 페이스북 인증
         ApplicationDelegate.shared.application(
             UIApplication.shared,
             open: url,
             sourceApplication: nil,
             annotation: [UIApplication.OpenURLOptionsKey.annotation]
         )
+        
+        // 카카오 인증
+        if (AuthApi.isKakaoTalkLoginUrl(url)) {
+            _ = AuthController.handleOpenUrl(url: url)
+        }
+        
     }
 }
 
