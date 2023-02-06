@@ -40,15 +40,20 @@
       <dict>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>fbAPP-ID</string>
+        <string>3283279385255507</string>
       </array>
       </dict>
     </array>
     <key>FacebookAppID</key>
-    <string>APP-ID</string>
+    <string>3283279385255507</string>
     <key>FacebookClientToken</key>
-    <string>CLIENT-TOKEN</string>
+    <string>9e10975a0097d217966741ab962199db</string>
     <key>FacebookDisplayName</key>
-    <string>APP-NAME</string>
+    <string>심플한투두</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>fbapi</string>
+      <string>fb-messenger-share-api</string>
+    </array>
 </dict>
 </plist>
