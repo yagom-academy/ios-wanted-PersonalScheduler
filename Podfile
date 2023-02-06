@@ -9,6 +9,7 @@ target 'PersonalScheduler' do
 
 pod 'KakaoSDKCommon'
 pod 'KakaoSDKAuth'
+pod 'KakaoSDKUser'
 
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
