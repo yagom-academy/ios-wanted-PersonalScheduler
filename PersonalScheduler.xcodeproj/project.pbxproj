@@ -60,6 +60,8 @@
 		18C1EF9229910BF600136466 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
+				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
 				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
 				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
@@ -70,8 +72,33 @@
 		18C1EF9329910BF900136466 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				18C1EF9929910F7600136466 /* ViewModel */,
+				18C1EF9829910F7300136466 /* View */,
+				18C1EF9729910F7100136466 /* Model */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		18C1EF9729910F7100136466 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18C1EF9829910F7300136466 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18C1EF9929910F7600136466 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		63AAAAF52967EA2600775EC3 = {
@@ -96,9 +123,6 @@
 				18C1EF9529910EED00136466 /* GoogleService-Info.plist */,
 				18C1EF9329910BF900136466 /* Sources */,
 				18C1EF9229910BF600136466 /* Resources */,
-				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
-				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
-				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
 			);
 			path = PersonalScheduler;
 			sourceTree = "<group>";
