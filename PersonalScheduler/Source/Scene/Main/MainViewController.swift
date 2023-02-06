@@ -1,13 +1,13 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  PersonalScheduler
 //
-//  Created by Dragon on 23/02/26.
+//  Created by Dragon on 23/02/06.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     let loginView = LoginView()
     
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             loginView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
-            loginView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
+            loginView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.8),
             loginView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])

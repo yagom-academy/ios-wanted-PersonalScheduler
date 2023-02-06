@@ -2,7 +2,7 @@
 //  LoginView.swift
 //  PersonalScheduler
 //
-//  Created by yonggeun Kim on 2023/02/07.
+//  Created by Dragon on 23/02/07.
 //
 
 import UIKit
