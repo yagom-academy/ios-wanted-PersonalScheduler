@@ -17,6 +17,15 @@
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
+### Firebase ###
+.idea
+**/node_modules/*
+**/.firebaserc
+
+### Firebase Patch ###
+.runtimeconfig.json
+.firebase/
+
 ### macOS ###
 # General
 .DS_Store
@@ -144,3 +153,5 @@ bh_unicode_properties.cache
 # Sublime-github package stores a github token in this file
 # https://packagecontrol.io/packages/sublime-github
 GitHub.sublime-settings
+
+
