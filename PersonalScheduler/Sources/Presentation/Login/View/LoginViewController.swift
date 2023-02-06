@@ -16,6 +16,8 @@ final class LoginViewController: UIViewController {
         return button
     }()
     
+    private let viewModel = LoginViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +32,7 @@ private extension LoginViewController {
     }
     
     @objc func didTapKakaoLogin() {
-        print("did Tap Kakao Login")
+        viewModel.loginKakao()
     }
 }
 
