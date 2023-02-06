@@ -10,9 +10,8 @@ target 'PersonalScheduler' do
 pod 'KakaoSDKCommon'
 pod 'KakaoSDKAuth'
 
-pod 'FacebookCore'
-pod 'FacebookLogin'
-pod 'FacebookShare'
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
 
 pod 'FirebaseAnalytics'
 pod 'FirebaseAuth'

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class ViewController: UIViewController {
 
@@ -13,6 +14,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
+        
+        let loginButton = FBLoginButton()
+        loginButton.center = view.center
+        view.addSubview(loginButton)
+        
+        if let token = AccessToken.current,
+           !token.isExpired {
+            // User is logged in, do work such as go to next view controller.
+        }
+        
+        loginButton.permissions = ["public_profile", "email"]
     }
 }
 
