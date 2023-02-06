@@ -6,68 +6,33 @@
 //
 
 import UIKit
-import FBSDKLoginKit
-import KakaoSDKUser
 
 class ViewController: UIViewController {
     
-    let testButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .black
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.frame = CGRect(x: 200, y: 200, width: 100, height: 100)
-        return button
-    }()
-
+    let loginView = LoginView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
-        
-//        let loginButton = FBLoginButton()
-//        loginButton.center = view.center
-//        view.addSubview(loginButton)
-
-        testButton.center = view.center
-        testButton.addTarget(self, action: #selector(test), for: .touchDown)
-        view.addSubview(testButton)
-        
-        if let token = AccessToken.current,
-           !token.isExpired {
-            // User is logged in, do work such as go to next view controller.
-        }
-        
-//        loginButton.permissions = ["public_profile", "email"]
+        configureView()
+        configureLayout()
     }
     
-    @objc
-    func test() {
-        if (UserApi.isKakaoTalkLoginAvailable()) {
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                if let error = error {
-                    print(error)
-                }
-                else {
-                    print("loginWithKakaoTalk() success.")
-
-                    //do something
-                    _ = oauthToken
-                }
-            }
-        } else {
-            
-            // 카톡 없으면 -> 계정으로 로그인
-            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
-                if let error = error {
-                    print(error)
-                } else {
-                    print("카카오 계정으로 로그인 성공")
-                    
-                    _ = oauthToken
-                    // 관련 메소드 추가
-                }
-            }
-        }
+    private func configureView() {
+        view.backgroundColor = .systemBackground
+    }
+    
+    private func configureLayout() {
+        view.addSubview(loginView)
+        
+        loginView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            loginView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+            loginView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
+            loginView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 }
 
