@@ -7,6 +7,7 @@
 
 import UIKit
 import KakaoSDKAuth
+import FacebookCore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -31,6 +32,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         _ = AuthController.handleOpenUrl(url: url)
+        
+        // TODO: - Facebook Login URL
+        ApplicationDelegate.shared.application(
+            UIApplication.shared,
+            open: url,
+            sourceApplication: nil,
+            annotation: [UIApplication.OpenURLOptionsKey.annotation]
+        )
     }
 }
 
