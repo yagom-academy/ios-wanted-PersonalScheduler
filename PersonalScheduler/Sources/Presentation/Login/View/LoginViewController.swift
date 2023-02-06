@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FacebookLogin
 
 final class LoginViewController: UIViewController {
     private let kakaoLoginButton: UIButton = {
@@ -16,6 +17,13 @@ final class LoginViewController: UIViewController {
         return button
     }()
     
+    private let faceBookButton: FBLoginButton = {
+        let button = FBLoginButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.permissions = ["public_profile", "email"]
+        return button
+    }()
+    
     private let viewModel = LoginViewModel()
     
     override func viewDidLoad() {
@@ -23,16 +31,34 @@ final class LoginViewController: UIViewController {
         
         configureUI()
         setButtonAction()
+        
+        if let token = AccessToken.current,
+           token.isExpired == false {
+            print(token)
+        }
     }
 }
 
 private extension LoginViewController {
     func setButtonAction() {
         kakaoLoginButton.addTarget(self, action: #selector(didTapKakaoLogin), for: .touchUpInside)
+        faceBookButton.addTarget(self, action: #selector(didTapFaceBookLogin), for: .touchUpInside)
     }
     
     @objc func didTapKakaoLogin() {
         viewModel.loginKakao()
+    }
+    
+    @objc func didTapFaceBookLogin() {
+        LoginManager().logIn(permissions: ["public_profile"], from: self) { result, error in
+            if let error = error {
+                print("Error in \(error)")
+            } else if let result = result, result.isCancelled {
+                print("Canceled")
+            } else {
+                print("logged in")
+            }
+        }
     }
 }
 
@@ -43,7 +69,7 @@ private extension LoginViewController {
     }
     
     func addChildComponents() {
-        [kakaoLoginButton,].forEach(view.addSubview)
+        [kakaoLoginButton, faceBookButton].forEach(view.addSubview)
     }
     
     func setUpLayout() {
@@ -52,7 +78,11 @@ private extension LoginViewController {
         NSLayoutConstraint.activate([
             kakaoLoginButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             kakaoLoginButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            kakaoLoginButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -200)
+            kakaoLoginButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -200),
+            
+            faceBookButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            faceBookButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            faceBookButton.topAnchor.constraint(equalTo: kakaoLoginButton.bottomAnchor, constant: 20)
         ])
     }
 }
