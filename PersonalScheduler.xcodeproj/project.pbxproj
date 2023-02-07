@@ -18,6 +18,8 @@
 		E33299D92992961E00EB425B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E33299D82992961E00EB425B /* FirebaseFirestore */; };
 		E33299DB2992961E00EB425B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E33299DA2992961E00EB425B /* FirebaseFirestoreSwift */; };
 		E33299DD29929B2300EB425B /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299DC29929B2300EB425B /* ScheduleService.swift */; };
+		E33299E02992A16600EB425B /* RemoteDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299DF2992A16600EB425B /* RemoteDBError.swift */; };
+		E33299E32992C6BC00EB425B /* ScheduleServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299E22992C6BC00EB425B /* ScheduleServiceable.swift */; };
 		E347AD452991353D0022A5DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E347AD442991353D0022A5DB /* GoogleService-Info.plist */; };
 		E347AD6D29916E360022A5DB /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E347AD6C29916E360022A5DB /* Repository.swift */; };
 		E347AD6F299171610022A5DB /* DefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E347AD6E299171610022A5DB /* DefaultRepository.swift */; };
@@ -34,6 +36,8 @@
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E33299DC29929B2300EB425B /* ScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>"; };
+		E33299DF2992A16600EB425B /* RemoteDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDBError.swift; sourceTree = "<group>"; };
+		E33299E22992C6BC00EB425B /* ScheduleServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleServiceable.swift; sourceTree = "<group>"; };
 		E347AD442991353D0022A5DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E347AD6C29916E360022A5DB /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		E347AD6E299171610022A5DB /* DefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepository.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				E33299DE2992A14800EB425B /* Utility */,
 				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
 				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
 				63AAAB052967EA2600775EC3 /* ViewController.swift */,
@@ -87,6 +92,22 @@
 				E347AD442991353D0022A5DB /* GoogleService-Info.plist */,
 			);
 			path = PersonalScheduler;
+			sourceTree = "<group>";
+		};
+		E33299DE2992A14800EB425B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				E33299DF2992A16600EB425B /* RemoteDBError.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		E33299E12992C6A800EB425B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				E33299E22992C6BC00EB425B /* ScheduleServiceable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		E347AD74299249120022A5DB /* Repository */ = {
@@ -110,8 +131,9 @@
 		E347AD76299249650022A5DB /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				E347AD70299248DB0022A5DB /* Schedule.swift */,
 				E33299DC29929B2300EB425B /* ScheduleService.swift */,
+				E33299E12992C6A800EB425B /* Protocol */,
+				E347AD70299248DB0022A5DB /* Schedule.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -201,6 +223,8 @@
 				E347AD73299248E50022A5DB /* ScheduleEntity.swift in Sources */,
 				E347AD6F299171610022A5DB /* DefaultRepository.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
+				E33299E32992C6BC00EB425B /* ScheduleServiceable.swift in Sources */,
+				E33299E02992A16600EB425B /* RemoteDBError.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				E33299DD29929B2300EB425B /* ScheduleService.swift in Sources */,
