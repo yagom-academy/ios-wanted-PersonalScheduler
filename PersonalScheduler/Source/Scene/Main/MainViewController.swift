@@ -73,7 +73,13 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: UITableViewDelegate {}
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+}
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
