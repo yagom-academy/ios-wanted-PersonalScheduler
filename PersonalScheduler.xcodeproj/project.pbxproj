@@ -103,6 +103,7 @@
 				63AAAAFA2967EA2600775EC3 /* Sources */,
 				63AAAAFB2967EA2600775EC3 /* Frameworks */,
 				63AAAAFC2967EA2600775EC3 /* Resources */,
+				0EE339C3519488C5F058C63B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -160,6 +161,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0EE339C3519488C5F058C63B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		61EA53B1B637B16575241B7D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

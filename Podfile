@@ -6,5 +6,7 @@ target 'PersonalScheduler' do
   use_frameworks!
 
   # Pods for PersonalScheduler
+  pod 'KakaoSDKCommon'  # 필수 요소를 담은 공통 모듈
+  pod 'KakaoSDKAuth'  # 사용자 인증
 
 end
