@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  PersonalScheduler
+//
+//  Created by Kyo on 2023/02/07.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+KAKAO_NATIVE_APP_KEY = 9f0b456ce0cfc84b5dd9bc44d1849fe6
