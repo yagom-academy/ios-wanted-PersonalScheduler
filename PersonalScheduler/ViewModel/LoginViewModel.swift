@@ -10,7 +10,7 @@ import KakaoSDKAuth
 import KakaoSDKUser
 
 final class LoginViewModel {
-    
+    private var userInfo: UserInfo? = nil
 }
 
 //MARK: - KakaoLogin
