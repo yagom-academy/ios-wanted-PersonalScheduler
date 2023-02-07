@@ -20,8 +20,7 @@
 		D01D5A6B299218040000EA91 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A6A299218040000EA91 /* Schedule.swift */; };
 		D01D5A7129921C6C0000EA91 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A7029921C6C0000EA91 /* ListTableViewCell.swift */; };
 		D01D5A7429922F0A0000EA91 /* ScheduleInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A7329922F0A0000EA91 /* ScheduleInfoViewController.swift */; };
-		D055949929923034000AD5F4 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055949829923034000AD5F4 /* AddView.swift */; };
-		D055949B29923055000AD5F4 /* ManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055949A29923055000AD5F4 /* ManageView.swift */; };
+		D055949B29923055000AD5F4 /* ScheduleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055949A29923055000AD5F4 /* ScheduleInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +41,7 @@
 		D01D5A6A299218040000EA91 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		D01D5A7029921C6C0000EA91 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		D01D5A7329922F0A0000EA91 /* ScheduleInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInfoViewController.swift; sourceTree = "<group>"; };
-		D055949829923034000AD5F4 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
-		D055949A29923055000AD5F4 /* ManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageView.swift; sourceTree = "<group>"; };
+		D055949A29923055000AD5F4 /* ScheduleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,8 +195,7 @@
 		D01D5A7529922F0D0000EA91 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D055949829923034000AD5F4 /* AddView.swift */,
-				D055949A29923055000AD5F4 /* ManageView.swift */,
+				D055949A29923055000AD5F4 /* ScheduleInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -320,7 +317,6 @@
 			files = (
 				63AAAB062967EA2600775EC3 /* MainViewController.swift in Sources */,
 				D01D5A7129921C6C0000EA91 /* ListTableViewCell.swift in Sources */,
-				D055949929923034000AD5F4 /* AddView.swift in Sources */,
 				D01D5A7429922F0A0000EA91 /* ScheduleInfoViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				D01D5A68299217400000EA91 /* ListView.swift in Sources */,
@@ -328,7 +324,7 @@
 				D01D5A65299216C30000EA91 /* LoginViewController.swift in Sources */,
 				D01D5A6B299218040000EA91 /* Schedule.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
-				D055949B29923055000AD5F4 /* ManageView.swift in Sources */,
+				D055949B29923055000AD5F4 /* ScheduleInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

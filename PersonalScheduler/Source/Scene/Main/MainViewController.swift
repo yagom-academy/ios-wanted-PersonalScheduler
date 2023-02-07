@@ -10,12 +10,16 @@ import UIKit
 class MainViewController: UIViewController {
     
     let listView = ListView()
-    let scheduleList: [Schedule] = [Schedule(
+    var scheduleList: [Schedule] = [Schedule(
         title: "두번째,세번째 UI 구현",
         body: "점심전까지 두번째 뷰 구현",
         startDate: Date(),
         endDate: Date())
-    ]
+    ] {
+        didSet {
+            listView.reloadTableViewData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +56,11 @@ class MainViewController: UIViewController {
     
     @objc
     private func tapRightBarButton() {
+        let presentViewController = ScheduleInfoViewController()
+        
+        presentViewController.modalPresentationStyle = .overCurrentContext
+        
+        navigationController?.present(presentViewController, animated: true)
     }
 }
 

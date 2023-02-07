@@ -8,7 +8,7 @@
 import UIKit
 
 class ListView: UIView {
-    let listTableView: UITableView = {
+    private let listTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .systemBackground
@@ -29,6 +29,10 @@ class ListView: UIView {
     func configureTableView(with mainViewController: MainViewController) {
         listTableView.delegate = mainViewController
         listTableView.dataSource = mainViewController
+    }
+    
+    func reloadTableViewData() {
+        listTableView.reloadData()
     }
     
     private func configureLayout() {
