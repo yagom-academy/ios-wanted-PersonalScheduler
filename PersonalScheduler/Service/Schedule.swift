@@ -1,5 +1,5 @@
 //
-//  ScheduleDTO.swift
+//  Schedule.swift
 //  PersonalScheduler
 //
 //  Created by Wonbi on 2023/02/07.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ScheduleDTO {
+struct Schedule {
     let id: String
     let title: String
     let startDate: Date

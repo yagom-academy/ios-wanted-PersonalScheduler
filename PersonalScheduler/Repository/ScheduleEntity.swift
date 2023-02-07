@@ -8,8 +8,10 @@
 import Foundation
 
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct ScheduleEntity: Codable {
+    @DocumentID var documentID: String?
     let title: String
     let startDate: Timestamp
     let endDate: Timestamp
