@@ -34,10 +34,16 @@ class MainViewController: UIViewController {
         
         navigationItem.title = "Personal Scheduler"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "추가",
+            image: .add,
             style: .done,
             target: self,
             action: #selector(tapRightBarButton)
+        )
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "취소",
+            style: .done,
+            target: self,
+            action: #selector(tapBackBarButton)
         )
     }
     
@@ -58,9 +64,12 @@ class MainViewController: UIViewController {
     private func tapRightBarButton() {
         let presentViewController = ScheduleInfoViewController()
         
-        presentViewController.modalPresentationStyle = .overCurrentContext
-        
-        navigationController?.present(presentViewController, animated: true)
+        navigationController?.pushViewController(presentViewController, animated: true)
+    }
+    
+    @objc
+    private func tapBackBarButton() {
+        dismiss(animated: true)
     }
 }
 

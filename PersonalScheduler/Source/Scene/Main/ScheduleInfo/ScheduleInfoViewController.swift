@@ -11,6 +11,11 @@ class ScheduleInfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        configureView()
+    }
+    
+    private func configureView() {
+        view.backgroundColor = .systemBackground
     }
 }
