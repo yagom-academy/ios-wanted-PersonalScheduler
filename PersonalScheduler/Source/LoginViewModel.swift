@@ -1,5 +1,5 @@
 //
-//  KakaoLoginViewModel.swift
+//  LoginViewModel.swift
 //  PersonalScheduler
 //
 //  Created by Kyo on 2023/02/07.
@@ -9,7 +9,7 @@ import Foundation
 import KakaoSDKAuth
 import KakaoSDKUser
 
-final class KakaoLoginViewModel {
+final class LoginViewModel {
     func loginKakao() {
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
@@ -28,7 +28,6 @@ final class KakaoLoginViewModel {
                 }
                 else {
                     print("loginWithKakaoAccount() success.")
-                    //do something
                     _ = oauthToken
                 }
             }
