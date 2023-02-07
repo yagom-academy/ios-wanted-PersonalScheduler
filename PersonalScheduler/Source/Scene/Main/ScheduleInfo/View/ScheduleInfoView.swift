@@ -33,6 +33,7 @@ class ScheduleInfoView: UIView {
         textView.layer.borderWidth = 1
         return textView
     }()
+    
     private let startGuideLabel: UILabel = {
         let label = UILabel()
         label.text = "시작일자:"
@@ -54,6 +55,7 @@ class ScheduleInfoView: UIView {
         textField.layer.borderWidth = 1
         return textField
     }()
+    
     private let endGuideLabel: UILabel = {
         let label = UILabel()
         label.text = "종료일자:"
@@ -75,6 +77,7 @@ class ScheduleInfoView: UIView {
         textField.layer.borderWidth = 1
         return textField
     }()
+    
     private let timePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .time
@@ -89,6 +92,7 @@ class ScheduleInfoView: UIView {
         datePicker.locale = Locale(identifier: "ko-KR")
         return datePicker
     }()
+    
     private let startDateStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -105,6 +109,7 @@ class ScheduleInfoView: UIView {
         stackView.spacing = 10
         return stackView
     }()
+    
     private let dateStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -112,6 +117,7 @@ class ScheduleInfoView: UIView {
         stackView.alignment = .center
         return stackView
     }()
+    
     private let totalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -133,30 +139,13 @@ class ScheduleInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureDateButton() {
-        let startTimeToolbar = UIToolbar()
-        let startDateToolbar = UIToolbar()
-        let endTimeToolbar = UIToolbar()
-        let endDateToolbar = UIToolbar()
-        let startTimeSelectButton = UIBarButtonItem(
+    
+    private func createDateButton(type: DateType, textField: UITextField, action: Selector?) {
+        let toolbar = UIToolbar()
+        let barButtonItem = UIBarButtonItem(
             barButtonSystemItem: .done,
             target: self,
-            action: #selector(tapStartTimeSelectButton)
-        )
-        let startDateSelectButton = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: self,
-            action: #selector(tapStartDateSelectButton)
-        )
-        let endTimeSelectButton = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: self,
-            action: #selector(tapEndTimeSelectButton)
-        )
-        let endDateSelectButton = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: self,
-            action: #selector(tapEndDateSelectButton)
+            action: action
         )
         let emptyButton = UIBarButtonItem(
             barButtonSystemItem: .flexibleSpace,
@@ -164,25 +153,24 @@ class ScheduleInfoView: UIView {
             action: nil
         )
         
-        startTimeToolbar.sizeToFit()
-        startTimeToolbar.setItems([emptyButton, startTimeSelectButton], animated: true)
-        startTimeTextField.inputAccessoryView = startTimeToolbar
-        startTimeTextField.inputView = timePicker
+        toolbar.sizeToFit()
+        toolbar.setItems([emptyButton, barButtonItem], animated: true)
         
-        startDateToolbar.sizeToFit()
-        startDateToolbar.setItems([emptyButton, startDateSelectButton], animated: true)
-        startDateTextField.inputAccessoryView = startDateToolbar
-        startDateTextField.inputView = datePicker
+        textField.inputAccessoryView = toolbar
         
-        endTimeToolbar.sizeToFit()
-        endTimeToolbar.setItems([emptyButton, endTimeSelectButton], animated: true)
-        endTimeTextField.inputAccessoryView = endTimeToolbar
-        endTimeTextField.inputView = timePicker
-        
-        endDateToolbar.sizeToFit()
-        endDateToolbar.setItems([emptyButton, endDateSelectButton], animated: true)
-        endDateTextField.inputAccessoryView = endDateToolbar
-        endDateTextField.inputView = datePicker
+        switch type {
+        case .startDate, .endDate:
+            textField.inputView = datePicker
+        case .startTime, .endTime:
+            textField.inputView = timePicker
+        }
+    }
+    
+    private func configureDateButton() {
+        createDateButton(type: .startTime, textField: startTimeTextField, action: #selector(tapStartTimeSelectButton))
+        createDateButton(type: .startDate, textField: startDateTextField, action: #selector(tapStartDateSelectButton))
+        createDateButton(type: .endTime, textField: endTimeTextField, action: #selector(tapEndTimeSelectButton))
+        createDateButton(type: .endDate, textField: endDateTextField, action: #selector(tapEndDateSelectButton))
     }
     
     private func convertDateFormatter(type: DateType) -> String {
@@ -248,9 +236,9 @@ class ScheduleInfoView: UIView {
             bodyTextView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
             
             totalStackView.widthAnchor.constraint(equalTo: widthAnchor),
-            totalStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.75),
+            totalStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8),
             totalStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            totalStackView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            totalStackView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 20)
         ])
     }
     
