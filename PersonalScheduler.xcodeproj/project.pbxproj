@@ -23,6 +23,10 @@
 		E347AD672991573A0022A5DB /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E347AD662991573A0022A5DB /* KakaoSDKAuth */; };
 		E347AD692991573A0022A5DB /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = E347AD682991573A0022A5DB /* KakaoSDKCommon */; };
 		E347AD6B2991573A0022A5DB /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = E347AD6A2991573A0022A5DB /* KakaoSDKUser */; };
+		E347AD6D29916E360022A5DB /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E347AD6C29916E360022A5DB /* Repository.swift */; };
+		E347AD6F299171610022A5DB /* DefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E347AD6E299171610022A5DB /* DefaultRepository.swift */; };
+		E347AD71299248DB0022A5DB /* ScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E347AD70299248DB0022A5DB /* ScheduleDTO.swift */; };
+		E347AD73299248E50022A5DB /* ScheduleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E347AD72299248E50022A5DB /* ScheduleEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E347AD442991353D0022A5DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E347AD6C29916E360022A5DB /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		E347AD6E299171610022A5DB /* DefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepository.swift; sourceTree = "<group>"; };
+		E347AD70299248DB0022A5DB /* ScheduleDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDTO.swift; sourceTree = "<group>"; };
+		E347AD72299248E50022A5DB /* ScheduleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +87,40 @@
 				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
 				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
 				63AAAB052967EA2600775EC3 /* ViewController.swift */,
+				E347AD76299249650022A5DB /* Service */,
+				E347AD74299249120022A5DB /* Repository */,
 				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
 				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
 				E347AD442991353D0022A5DB /* GoogleService-Info.plist */,
 			);
 			path = PersonalScheduler;
+			sourceTree = "<group>";
+		};
+		E347AD74299249120022A5DB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				E347AD6E299171610022A5DB /* DefaultRepository.swift */,
+				E347AD752992492B0022A5DB /* Protocol */,
+				E347AD72299248E50022A5DB /* ScheduleEntity.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		E347AD752992492B0022A5DB /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				E347AD6C29916E360022A5DB /* Repository.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		E347AD76299249650022A5DB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E347AD70299248DB0022A5DB /* ScheduleDTO.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,9 +211,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E347AD71299248DB0022A5DB /* ScheduleDTO.swift in Sources */,
+				E347AD73299248E50022A5DB /* ScheduleEntity.swift in Sources */,
+				E347AD6F299171610022A5DB /* DefaultRepository.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				E347AD6D29916E360022A5DB /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
