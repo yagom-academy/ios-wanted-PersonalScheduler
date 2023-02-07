@@ -10,6 +10,7 @@ import UIKit
 class ScheduleInfoViewController: UIViewController {
     let scheduleInfoView = ScheduleInfoView()
     var mode: ManageMode = .create
+    var delegate: DataSendable?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,10 @@ class ScheduleInfoViewController: UIViewController {
     
     @objc
     private func tapRightBarButtonSaveAction() {
+        if let data = scheduleInfoView.saveScheduleData() {
+            delegate?.sendData(with: data, mode: .create)
+        }
+        
         navigationController?.popViewController(animated: true)
     }
     

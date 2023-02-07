@@ -138,6 +138,28 @@ class ScheduleInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func saveScheduleData() -> Schedule? {
+        if let title = titleTextField.text,
+           let body = bodyTextView.text,
+           let startDate = startDateTextField.text,
+           let startTime = startTimeTextField.text,
+           let endDate = endDateTextField.text,
+           let endTime = endTimeTextField.text {
+            let data = Schedule(
+                title: title,
+                body: body,
+                startDate: startDate,
+                startTime: startTime,
+                endDate: endDate,
+                endTime: endTime
+            )
+            
+            return data
+        }
+        
+        return nil
+    }
+    
     func checkDataAccess(mode: ManageMode) {
         switch mode {
         case .create, .edit:

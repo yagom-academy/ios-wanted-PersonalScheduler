@@ -10,12 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     let listView = ListView()
-    var scheduleList: [Schedule] = [Schedule(
-        title: "두번째,세번째 UI 구현",
-        body: "점심전까지 두번째 뷰 구현",
-        startDate: Date(),
-        endDate: Date())
-    ] {
+    var scheduleList: [Schedule] = [] {
         didSet {
             listView.reloadTableViewData()
         }
@@ -64,6 +59,9 @@ class MainViewController: UIViewController {
     private func tapRightBarButton() {
         let presentViewController = ScheduleInfoViewController()
         
+        presentViewController.mode = .create
+        presentViewController.delegate = self
+        
         navigationController?.pushViewController(presentViewController, animated: true)
     }
     
@@ -74,9 +72,12 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            scheduleList.remove(at: indexPath.row)
         }
     }
     
@@ -84,6 +85,7 @@ extension MainViewController: UITableViewDelegate {
         let presentViewController = ScheduleInfoViewController()
         
         presentViewController.mode = .read
+        presentViewController.delegate = self
         
         navigationController?.pushViewController(presentViewController, animated: true)
     }
@@ -107,5 +109,18 @@ extension MainViewController: UITableViewDataSource {
         }
         
         return UITableViewCell()
+    }
+}
+
+extension MainViewController: DataSendable {
+    func sendData(with data: Schedule, mode: ManageMode) {
+        switch mode {
+        case .create:
+            scheduleList.append(data)
+        case .edit:
+            break
+        case .read:
+            break
+        }
     }
 }
