@@ -14,8 +14,24 @@ final class LoginViewModel {
     // MARK: - Methods
     
     func tappedKakaoLoginButton() {
+        if AuthApi.hasToken() {
+            UserApi.shared.accessTokenInfo { accessTokenInfo, error in
+                if let error = error {
+                    print("카카오톡 토큰 가져오기 에러 \(error.localizedDescription)")
+                    self.kakaoLogin()
+                } else {
+                    // 토큰 유효성 체크 성공 (필요 시 토큰 갱신)
+                    self.setUserInfo()
+                }
+            }
+        } else {
+            kakaoLogin()
+        }
+    }
+    
+    private func kakaoLogin() {
         if (UserApi.isKakaoTalkLoginAvailable()) {
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+            UserApi.shared.loginWithKakaoTalk { (oauthToken, error) in
                 if let error = error {
                     print(error)
                 }
@@ -34,7 +50,7 @@ final class LoginViewModel {
     }
     
     private func setUserInfo() {
-        UserApi.shared.me() {(user, error) in
+        UserApi.shared.me() { (user, error) in
             if let error = error {
                 print(error)
             }
