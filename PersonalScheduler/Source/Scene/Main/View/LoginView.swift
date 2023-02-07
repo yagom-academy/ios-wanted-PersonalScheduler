@@ -26,7 +26,7 @@ class LoginView: UIView {
     private let loginGuideLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
-        label.text = "SNS 계정으로 간편 가입하기"
+        label.text = "SNS 계정으로 간편 로그인하기"
         label.textAlignment = .center
         label.textColor = .systemGray4
         return label
@@ -98,7 +98,7 @@ class LoginView: UIView {
         totalStackView.addArrangedSubview(titleLabel)
         totalStackView.addArrangedSubview(loginStackView)
     }
-
+    
     private func configureLayout() {
         setUpStackView()
         
@@ -115,7 +115,7 @@ class LoginView: UIView {
             appleLoginButton.heightAnchor.constraint(equalTo: loginStackView.heightAnchor, multiplier: 0.18),
             
             loginStackView.widthAnchor.constraint(equalTo: totalStackView.widthAnchor),
-            loginStackView.heightAnchor.constraint(equalTo: totalStackView.heightAnchor, multiplier: 0.5),
+            loginStackView.heightAnchor.constraint(equalTo: totalStackView.heightAnchor, multiplier: 0.45),
             
             totalStackView.widthAnchor.constraint(equalTo: widthAnchor),
             totalStackView.heightAnchor.constraint(equalTo: heightAnchor),
@@ -129,8 +129,7 @@ class LoginView: UIView {
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                 if let error = error {
                     print(error)
-                }
-                else {
+                } else {
                     _ = oauthToken
                 }
             }

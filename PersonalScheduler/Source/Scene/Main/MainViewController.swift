@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             loginView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
-            loginView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.8),
+            loginView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7),
             loginView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
