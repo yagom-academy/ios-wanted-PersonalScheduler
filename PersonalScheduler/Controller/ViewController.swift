@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import KakaoSDKAuth
+import KakaoSDKUser
 
 class ViewController: UIViewController {
 
@@ -22,7 +24,6 @@ class ViewController: UIViewController {
         imageView.layer.cornerRadius = 12
         imageView.image = UIImage(named: "kakao_login_medium_narrow")
         imageView.contentMode = .scaleAspectFill
-//        imageView.sizeToFit()
         return imageView
     }()
 
@@ -49,6 +50,33 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: - Objc Method
+private extension ViewController {
+    @objc func touchUpKakaoLogin() {
+        if UserApi.isKakaoTalkLoginAvailable() {
+            UserApi.shared.loginWithKakaoTalk { oauthToken, error in
+                if let error = error {
+                    // 에러처리하기
+                    print(error)
+                    return
+                }
+                _ = oauthToken
+                let accessToken = oauthToken?.accessToken
+            }
+        } else {
+            UserApi.shared.loginWithKakaoAccount { OAuthToken, error in
+                if let error = error {
+                    // 에러처리하기
+                    print(error)
+                    return
+                }
+                let accessToken = OAuthToken?.accessToken
+            }
+        }
+    }
+}
+
+// MARK: - UIConfiguration
 private extension ViewController {
     func configureUI() {
         [titleLabel,
@@ -59,6 +87,10 @@ private extension ViewController {
             view.addSubview($0)
         }
         settingLayouts()
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpKakaoLogin))
+        kakaoLoginImageView.addGestureRecognizer(tapGesture)
+        kakaoLoginImageView.isUserInteractionEnabled = true
     }
 
     func settingLayouts() {
