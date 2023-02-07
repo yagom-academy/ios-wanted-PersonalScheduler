@@ -10,12 +10,19 @@ import UIKit
 class MainViewController: UIViewController {
     
     let listView = ListView()
+    let scheduleList: [Schedule] = [Schedule(
+        title: "두번째,세번째 UI 구현",
+        body: "점심전까지 두번째 뷰 구현",
+        startDate: Date(),
+        endDate: Date())
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView()
         configureLayout()
+        listView.configureTableView(with: self)
     }
     
     private func configureView() {
@@ -24,7 +31,7 @@ class MainViewController: UIViewController {
         navigationItem.title = "Personal Scheduler"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "추가",
-            style: .plain,
+            style: .done,
             target: self,
             action: #selector(tapRightBarButton)
         )
@@ -48,3 +55,25 @@ class MainViewController: UIViewController {
     }
 }
 
+extension MainViewController: UITableViewDelegate {}
+
+extension MainViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return scheduleList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(
+            withIdentifier: ListTableViewCell.identifier,
+            for: indexPath) as? ListTableViewCell {
+            let data = scheduleList[indexPath.row]
+            
+            cell.configureLabelText(schedule: data)
+            cell.selectionStyle = .none
+            
+            return cell
+        }
+        
+        return UITableViewCell()
+    }
+}

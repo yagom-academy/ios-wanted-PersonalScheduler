@@ -8,8 +8,8 @@
 import Foundation.NSDate
 
 struct Schedule {
-    let startDate: Date
-    let endDate: Date
     let title: String
     let body: String
+    let startDate: Date
+    let endDate: Date
 }

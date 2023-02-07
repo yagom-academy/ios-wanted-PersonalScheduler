@@ -18,6 +18,7 @@
 		D01D5A65299216C30000EA91 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A64299216C30000EA91 /* LoginViewController.swift */; };
 		D01D5A68299217400000EA91 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A67299217400000EA91 /* ListView.swift */; };
 		D01D5A6B299218040000EA91 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A6A299218040000EA91 /* Schedule.swift */; };
+		D01D5A7129921C6C0000EA91 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A7029921C6C0000EA91 /* ListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		D01D5A64299216C30000EA91 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D01D5A67299217400000EA91 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		D01D5A6A299218040000EA91 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		D01D5A7029921C6C0000EA91 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				D01D5A67299217400000EA91 /* ListView.swift */,
+				D01D5A7029921C6C0000EA91 /* ListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63AAAB062967EA2600775EC3 /* MainViewController.swift in Sources */,
+				D01D5A7129921C6C0000EA91 /* ListTableViewCell.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				D01D5A68299217400000EA91 /* ListView.swift in Sources */,
 				D01D5A5B299169580000EA91 /* LoginView.swift in Sources */,
