@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class MainViewController: UIViewController {
     
@@ -19,9 +20,18 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkLogin()
         configureView()
         configureLayout()
         listView.configureTableView(with: self)
+    }
+    
+    private func checkLogin() {
+        if Auth.auth().currentUser?.uid == nil {
+            let presentViewController = LoginViewController()
+            
+            navigationController?.present(presentViewController, animated: true)
+        }
     }
     
     private func configureView() {
@@ -57,12 +67,12 @@ class MainViewController: UIViewController {
     
     @objc
     private func tapRightBarButton() {
-        let presentViewController = ScheduleInfoViewController()
+        let pushViewController = ScheduleInfoViewController()
         
-        presentViewController.mode = .create
-        presentViewController.delegate = self
+        pushViewController.mode = .create
+        pushViewController.delegate = self
         
-        navigationController?.pushViewController(presentViewController, animated: true)
+        navigationController?.pushViewController(pushViewController, animated: true)
     }
     
     @objc
@@ -82,12 +92,12 @@ extension MainViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let presentViewController = ScheduleInfoViewController()
+        let pushViewController = ScheduleInfoViewController()
         
-        presentViewController.mode = .read
-        presentViewController.delegate = self
+        pushViewController.mode = .read
+        pushViewController.delegate = self
         
-        navigationController?.pushViewController(presentViewController, animated: true)
+        navigationController?.pushViewController(pushViewController, animated: true)
     }
 }
 
