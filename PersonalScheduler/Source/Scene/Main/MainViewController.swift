@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let loginView = LoginView()
+    let listView = ListView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,19 +20,31 @@ class MainViewController: UIViewController {
     
     private func configureView() {
         view.backgroundColor = .systemBackground
+        
+        navigationItem.title = "Personal Scheduler"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "추가",
+            style: .plain,
+            target: self,
+            action: #selector(tapRightBarButton)
+        )
     }
     
     private func configureLayout() {
-        view.addSubview(loginView)
+        view.addSubview(listView)
         
-        loginView.translatesAutoresizingMaskIntoConstraints = false
+        listView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            loginView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
-            loginView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7),
-            loginView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            listView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            listView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            listView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            listView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+    }
+    
+    @objc
+    private func tapRightBarButton() {
     }
 }
 

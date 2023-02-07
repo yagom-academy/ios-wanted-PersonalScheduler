@@ -38,7 +38,7 @@ class LoginView: UIView {
     }()
     private let facebookLoginButton = FBLoginButton()
     private let appleLoginButton: ASAuthorizationAppleIDButton = {
-        let button = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
+        let button = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
         return button
     }()
     private let loginErrorButton: UIButton = {
