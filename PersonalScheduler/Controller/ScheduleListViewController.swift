@@ -13,5 +13,6 @@ class ScheduleListViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .systemBackground
+        navigationItem.title = "스케쥴케어"
     }
 }

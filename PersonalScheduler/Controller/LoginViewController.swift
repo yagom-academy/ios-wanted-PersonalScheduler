@@ -9,7 +9,7 @@ import UIKit
 import KakaoSDKAuth
 import KakaoSDKUser
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     // MARK: - Property
     private let titleLabel: UILabel = {
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: - Objc Method
-private extension ViewController {
+private extension LoginViewController {
     @objc func touchUpKakaoLogin() {
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk { oauthToken, error in
@@ -71,14 +71,17 @@ private extension ViewController {
                     return
                 }
                 let accessToken = OAuthToken?.accessToken
-                self.present(ScheduleListViewController(), animated: true)
+                let scheduleListViewController = ScheduleListViewController()
+                let navigationController = UINavigationController(rootViewController: scheduleListViewController)
+                navigationController.modalPresentationStyle = .fullScreen
+                self.present(navigationController, animated: true)
             }
         }
     }
 }
 
 // MARK: - UIConfiguration
-private extension ViewController {
+private extension LoginViewController {
     func configureUI() {
         [titleLabel,
          kakaoLoginImageView,
