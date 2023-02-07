@@ -12,6 +12,9 @@
 		3C8AB49C2991617F00A9E241 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49B2991617F00A9E241 /* KakaoSDKAuth */; };
 		3C8AB49E2991617F00A9E241 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49D2991617F00A9E241 /* KakaoSDKCommon */; };
 		3C8AB4A02991617F00A9E241 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49F2991617F00A9E241 /* KakaoSDKUser */; };
+		3CF4FE4B2992846200226CD1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3CF4FE4A2992846200226CD1 /* FirebaseFirestore */; };
+		3CF4FE4D2992846200226CD1 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3CF4FE4C2992846200226CD1 /* FirebaseFirestoreSwift */; };
+		3CF4FE50299288FC00226CD1 /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4FE4F299288FC00226CD1 /* FireStoreManager.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
@@ -22,6 +25,7 @@
 		3C3959B129923386006D2E52 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3C3959B329923C5B006D2E52 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3CC7AA0A29922D5A00DB3B56 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		3CF4FE4F299288FC00226CD1 /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +39,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CF4FE4D2992846200226CD1 /* FirebaseFirestoreSwift in Frameworks */,
 				3C8AB49E2991617F00A9E241 /* KakaoSDKCommon in Frameworks */,
+				3CF4FE4B2992846200226CD1 /* FirebaseFirestore in Frameworks */,
 				3C8AB49C2991617F00A9E241 /* KakaoSDKAuth in Frameworks */,
 				3C8AB4A02991617F00A9E241 /* KakaoSDKUser in Frameworks */,
 			);
@@ -47,6 +53,7 @@
 		3CC7AA0629922A7E00DB3B56 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				3CF4FE4E299288CD00226CD1 /* Network */,
 				3CC7AA0829922A8C00DB3B56 /* Application */,
 				3CC7AA0929922AEB00DB3B56 /* Scene */,
 				3C3959B129923386006D2E52 /* LoginViewModel.swift */,
@@ -80,6 +87,14 @@
 				3C3959B329923C5B006D2E52 /* LoginViewController.swift */,
 			);
 			path = Scene;
+			sourceTree = "<group>";
+		};
+		3CF4FE4E299288CD00226CD1 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3CF4FE4F299288FC00226CD1 /* FireStoreManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		63AAAAF52967EA2600775EC3 = {
@@ -127,6 +142,8 @@
 				3C8AB49B2991617F00A9E241 /* KakaoSDKAuth */,
 				3C8AB49D2991617F00A9E241 /* KakaoSDKCommon */,
 				3C8AB49F2991617F00A9E241 /* KakaoSDKUser */,
+				3CF4FE4A2992846200226CD1 /* FirebaseFirestore */,
+				3CF4FE4C2992846200226CD1 /* FirebaseFirestoreSwift */,
 			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
@@ -158,6 +175,7 @@
 			mainGroup = 63AAAAF52967EA2600775EC3;
 			packageReferences = (
 				3C8AB49A2991617F00A9E241 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				3CF4FE492992846200226CD1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
@@ -188,6 +206,7 @@
 				3C3959B229923386006D2E52 /* LoginViewModel.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				3C3959B429923C5B006D2E52 /* LoginViewController.swift in Sources */,
+				3CF4FE50299288FC00226CD1 /* FireStoreManager.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,6 +425,14 @@
 				version = 2.11.3;
 			};
 		};
+		3CF4FE492992846200226CD1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -423,6 +450,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3C8AB49A2991617F00A9E241 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
+		};
+		3CF4FE4A2992846200226CD1 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CF4FE492992846200226CD1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		3CF4FE4C2992846200226CD1 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CF4FE492992846200226CD1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

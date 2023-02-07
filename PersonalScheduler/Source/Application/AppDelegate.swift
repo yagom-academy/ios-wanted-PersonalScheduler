@@ -7,6 +7,7 @@
 
 import UIKit
 import KakaoSDKCommon
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let kakaoKey = nativeAppKey as? String else { return false }
         
         KakaoSDK.initSDK(appKey: kakaoKey)
+        FirebaseApp.configure()
+        
         return true
     }
 
