@@ -7,6 +7,7 @@
 
 import UIKit
 import FacebookLogin
+import AppTrackingTransparency
 
 final class LoginViewController: UIViewController {
     private let kakaoLoginButton: UIButton = {
@@ -17,10 +18,11 @@ final class LoginViewController: UIViewController {
         return button
     }()
     
-    private let faceBookButton: FBLoginButton = {
-        let button = FBLoginButton()
+    private let facebookLoginButton: UIButton = {
+        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.permissions = ["public_profile", "email"]
+        button.setTitle("facebook으로 로그인하기", for: .normal)
+        button.setTitleColor(.label, for: .normal)
         return button
     }()
     
@@ -32,8 +34,7 @@ final class LoginViewController: UIViewController {
         configureUI()
         setButtonAction()
         
-        if let token = AccessToken.current,
-           token.isExpired == false {
+        if let token = AccessToken.current {
             print(token)
         }
     }
@@ -42,7 +43,7 @@ final class LoginViewController: UIViewController {
 private extension LoginViewController {
     func setButtonAction() {
         kakaoLoginButton.addTarget(self, action: #selector(didTapKakaoLogin), for: .touchUpInside)
-        faceBookButton.addTarget(self, action: #selector(didTapFaceBookLogin), for: .touchUpInside)
+        facebookLoginButton.addTarget(self, action: #selector(didTapFaceBookLogin), for: .touchUpInside)
     }
     
     @objc func didTapKakaoLogin() {
@@ -50,14 +51,8 @@ private extension LoginViewController {
     }
     
     @objc func didTapFaceBookLogin() {
-        LoginManager().logIn(permissions: ["public_profile"], from: self) { result, error in
-            if let error = error {
-                print("Error in \(error)")
-            } else if let result = result, result.isCancelled {
-                print("Canceled")
-            } else {
-                print("logged in")
-            }
+        viewModel.faceBookLogin(from: self) { result in
+            // TODO: - Handling Token
         }
     }
 }
@@ -69,7 +64,7 @@ private extension LoginViewController {
     }
     
     func addChildComponents() {
-        [kakaoLoginButton, faceBookButton].forEach(view.addSubview)
+        [kakaoLoginButton, facebookLoginButton].forEach(view.addSubview)
     }
     
     func setUpLayout() {
@@ -80,9 +75,9 @@ private extension LoginViewController {
             kakaoLoginButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             kakaoLoginButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -200),
             
-            faceBookButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            faceBookButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            faceBookButton.topAnchor.constraint(equalTo: kakaoLoginButton.bottomAnchor, constant: 20)
+            facebookLoginButton.leadingAnchor.constraint(equalTo: kakaoLoginButton.leadingAnchor),
+            facebookLoginButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            facebookLoginButton.topAnchor.constraint(equalTo: kakaoLoginButton.bottomAnchor, constant: 30)
         ])
     }
 }

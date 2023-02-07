@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>심플한 투두</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<true/>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -17,12 +21,14 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb3283279385255507</string>
+				<string>fb872888447165181</string>
 			</array>
 		</dict>
 	</array>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<true/>
 	<key>FacebookAppID</key>
-	<string>3283279385255507</string>
+	<string>872888447165181</string>
 	<key>FacebookClientToken</key>
 	<string>9e10975a0097d217966741ab962199db</string>
 	<key>FacebookDisplayName</key>

@@ -9,6 +9,7 @@ import KakaoSDKUser
 import KakaoSDKCommon
 import Combine
 import FirebaseAuth
+import FacebookLogin
 
 class LoginViewModel {
     func loginKakao() {
@@ -69,5 +70,21 @@ class LoginViewModel {
     
     func createFirUser(id: String, password: String) {
         // TODO: - Open ID Connect
+    }
+    
+    func faceBookLogin(
+        from controller: UIViewController?,
+        completion: @escaping (LoginManagerLoginResult) -> Void
+    ) {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: ["public_profile"], from: controller) { result, error in
+            if error != nil {
+                return
+            }
+            
+            guard let result = result else { return }
+            
+            completion(result)
+        }
     }
 }
