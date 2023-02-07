@@ -7,10 +7,53 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
+    private let kakaoLoginButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("카카오로 로그인하기", for: .normal)
+        button.setTitleColor(.label, for: .normal)
+        return button
+    }()
+    
+    private let viewModel = LoginViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        configureUI()
+        setButtonAction()
+    }
+}
+
+private extension LoginViewController {
+    func setButtonAction() {
+        kakaoLoginButton.addTarget(self, action: #selector(didTapKakaoLogin), for: .touchUpInside)
+    }
+    
+    @objc func didTapKakaoLogin() {
+        viewModel.loginKakao()
+    }
+}
+
+private extension LoginViewController {
+    func configureUI() {
+        addChildComponents()
+        setUpLayout()
+    }
+    
+    func addChildComponents() {
+        [kakaoLoginButton,].forEach(view.addSubview)
+    }
+    
+    func setUpLayout() {
+        let safeArea = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            kakaoLoginButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            kakaoLoginButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            kakaoLoginButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -200)
+        ])
     }
 }
 
