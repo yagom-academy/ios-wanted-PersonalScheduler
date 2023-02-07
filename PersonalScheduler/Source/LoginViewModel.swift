@@ -15,6 +15,7 @@ final class LoginViewModel {
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                 if let error = error {
                     print(error)
+                    return
                 }
                 else {
                     print("loginWithKakaoTalk() success.")
@@ -25,12 +26,19 @@ final class LoginViewModel {
             UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
                 if let error = error {
                     print(error)
+                    return
                 }
                 else {
                     print("loginWithKakaoAccount() success.")
                     _ = oauthToken
                 }
             }
+        }
+        
+        UserApi.shared.me { user, error in
+            print("🔥")
+            print(user?.properties?["nickname"])
+            print(user?.properties?["profile_image"])
         }
     }
 }

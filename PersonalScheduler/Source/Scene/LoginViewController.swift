@@ -8,7 +8,7 @@
 import UIKit
 
 final class LoginViewController: UIViewController {
-    private let viewModel = LoginViewModel()
+    private let viewModel: LoginViewModel
     
     private let loginImageView: UIImageView = {
         let imageView = UIImageView()
@@ -19,13 +19,17 @@ final class LoginViewController: UIViewController {
     private let kakaoLoginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(
-            self,
-            action: #selector(kakaoLoginTapped),
-            for: .touchUpInside
-        )
         return button
     }()
+    
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +41,7 @@ final class LoginViewController: UIViewController {
 // MARK: - Button Action
 extension LoginViewController {
     @objc private func kakaoLoginTapped() {
-        
+        viewModel.loginKakao()
     }
 }
 
@@ -46,6 +50,8 @@ extension LoginViewController {
         view.backgroundColor = .systemBackground
         loginImageView.image = UIImage(named: "logo")
         kakaoLoginButton.setImage(UIImage(named: "kakao_login_image"), for: .normal)
+        kakaoLoginButton.addTarget(self, action: #selector(kakaoLoginTapped), for: .touchUpInside)
+        
         [loginImageView, kakaoLoginButton].forEach(view.addSubview(_:))
     }
     
