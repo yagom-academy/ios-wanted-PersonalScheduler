@@ -48,7 +48,6 @@
 				0ED79E58DA0057F148F527CE /* Pods-PersonalScheduler.debug.xcconfig */,
 				F4404D60176A0AC3B692EA5F /* Pods-PersonalScheduler.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
