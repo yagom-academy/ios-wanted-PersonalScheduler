@@ -40,6 +40,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09E95B5729929FBF004E120A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB052967EA2600775EC3 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		09E95B5829929FD0004E120A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09E95B5929929FD8004E120A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09E95B5A29929FF4004E120A /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
+				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
+				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
+				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		09E95B5B2992A01A004E120A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		5D671428E4A8358AD8BBBF0A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,12 +111,11 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
-				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
-				63AAAB052967EA2600775EC3 /* ViewController.swift */,
-				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
-				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
-				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				09E95B5B2992A01A004E120A /* Extension */,
+				09E95B5A29929FF4004E120A /* SupportFiles */,
+				09E95B5929929FD8004E120A /* Model */,
+				09E95B5829929FD0004E120A /* View */,
+				09E95B5729929FBF004E120A /* Controller */,
 			);
 			path = PersonalScheduler;
 			sourceTree = "<group>";
