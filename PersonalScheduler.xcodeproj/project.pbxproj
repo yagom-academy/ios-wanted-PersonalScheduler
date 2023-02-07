@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
-		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
+		63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* LoginViewController.swift */; };
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
 		E33299D32992961E00EB425B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E33299D22992961E00EB425B /* FirebaseAnalytics */; };
@@ -20,6 +20,9 @@
 		E33299DD29929B2300EB425B /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299DC29929B2300EB425B /* ScheduleService.swift */; };
 		E33299E02992A16600EB425B /* RemoteDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299DF2992A16600EB425B /* RemoteDBError.swift */; };
 		E33299E32992C6BC00EB425B /* ScheduleServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299E22992C6BC00EB425B /* ScheduleServiceable.swift */; };
+		E33299E62992C90800EB425B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299E52992C90800EB425B /* LoginViewModel.swift */; };
+		E33299EA2992C95A00EB425B /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299E92992C95A00EB425B /* ScheduleViewModel.swift */; };
+		E33299EC2992C96F00EB425B /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299EB2992C96F00EB425B /* ScheduleViewController.swift */; };
 		E347AD452991353D0022A5DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E347AD442991353D0022A5DB /* GoogleService-Info.plist */; };
 		E347AD6D29916E360022A5DB /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E347AD6C29916E360022A5DB /* Repository.swift */; };
 		E347AD6F299171610022A5DB /* DefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E347AD6E299171610022A5DB /* DefaultRepository.swift */; };
@@ -31,13 +34,16 @@
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63AAAB052967EA2600775EC3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		63AAAB052967EA2600775EC3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		63AAAB0A2967EA2700775EC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E33299DC29929B2300EB425B /* ScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>"; };
 		E33299DF2992A16600EB425B /* RemoteDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDBError.swift; sourceTree = "<group>"; };
 		E33299E22992C6BC00EB425B /* ScheduleServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleServiceable.swift; sourceTree = "<group>"; };
+		E33299E52992C90800EB425B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		E33299E92992C95A00EB425B /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		E33299EB2992C96F00EB425B /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		E347AD442991353D0022A5DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E347AD6C29916E360022A5DB /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		E347AD6E299171610022A5DB /* DefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepository.swift; sourceTree = "<group>"; };
@@ -83,7 +89,7 @@
 				E33299DE2992A14800EB425B /* Utility */,
 				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
 				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
-				63AAAB052967EA2600775EC3 /* ViewController.swift */,
+				E33299E42992C8D900EB425B /* Scene */,
 				E347AD76299249650022A5DB /* Service */,
 				E347AD74299249120022A5DB /* Repository */,
 				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
@@ -108,6 +114,33 @@
 				E33299E22992C6BC00EB425B /* ScheduleServiceable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		E33299E42992C8D900EB425B /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				E33299E82992C91B00EB425B /* ScheduleView */,
+				E33299E72992C90D00EB425B /* LoginView */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		E33299E72992C90D00EB425B /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
+				E33299E52992C90800EB425B /* LoginViewModel.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		E33299E82992C91B00EB425B /* ScheduleView */ = {
+			isa = PBXGroup;
+			children = (
+				E33299E92992C95A00EB425B /* ScheduleViewModel.swift */,
+				E33299EB2992C96F00EB425B /* ScheduleViewController.swift */,
+			);
+			path = ScheduleView;
 			sourceTree = "<group>";
 		};
 		E347AD74299249120022A5DB /* Repository */ = {
@@ -219,12 +252,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E33299EC2992C96F00EB425B /* ScheduleViewController.swift in Sources */,
 				E347AD71299248DB0022A5DB /* Schedule.swift in Sources */,
 				E347AD73299248E50022A5DB /* ScheduleEntity.swift in Sources */,
+				E33299E62992C90800EB425B /* LoginViewModel.swift in Sources */,
 				E347AD6F299171610022A5DB /* DefaultRepository.swift in Sources */,
-				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
+				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
 				E33299E32992C6BC00EB425B /* ScheduleServiceable.swift in Sources */,
 				E33299E02992A16600EB425B /* RemoteDBError.swift in Sources */,
+				E33299EA2992C95A00EB425B /* ScheduleViewModel.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				E33299DD29929B2300EB425B /* ScheduleService.swift in Sources */,
