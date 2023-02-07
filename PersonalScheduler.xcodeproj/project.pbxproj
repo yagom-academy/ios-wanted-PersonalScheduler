@@ -14,7 +14,6 @@
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
 		CD49D1156A5D269401E855A8 /* Pods_PersonalScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14244DB459E99929A4ECC81D /* Pods_PersonalScheduler.framework */; };
 		D00285CA2990BF7900B0122F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D00285C92990BF7900B0122F /* GoogleService-Info.plist */; };
-		D01D5A5B299169580000EA91 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A5A299169580000EA91 /* LoginView.swift */; };
 		D01D5A65299216C30000EA91 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A64299216C30000EA91 /* LoginViewController.swift */; };
 		D01D5A68299217400000EA91 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A67299217400000EA91 /* ListView.swift */; };
 		D01D5A6B299218040000EA91 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A6A299218040000EA91 /* Schedule.swift */; };
@@ -38,7 +37,6 @@
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D00285C92990BF7900B0122F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D01D5A5A299169580000EA91 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D01D5A64299216C30000EA91 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D01D5A67299217400000EA91 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		D01D5A6A299218040000EA91 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -168,17 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				D01D5A64299216C30000EA91 /* LoginViewController.swift */,
-				D01D5A66299216CE0000EA91 /* View */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		D01D5A66299216CE0000EA91 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				D01D5A5A299169580000EA91 /* LoginView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		D01D5A69299217D20000EA91 /* Model */ = {
@@ -329,7 +318,6 @@
 				D01D5A7429922F0A0000EA91 /* ScheduleInfoViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				D01D5A68299217400000EA91 /* ListView.swift in Sources */,
-				D01D5A5B299169580000EA91 /* LoginView.swift in Sources */,
 				D01D5A65299216C30000EA91 /* LoginViewController.swift in Sources */,
 				D01D5A6B299218040000EA91 /* Schedule.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
