@@ -8,6 +8,7 @@
 import UIKit
 import AuthenticationServices
 import FacebookLogin
+import Combine
 
 final class LoginViewController: UIViewController {
     private let appleLoginButton: UIButton = {
@@ -41,12 +42,13 @@ final class LoginViewController: UIViewController {
     }()
     
     private let viewModel = LoginViewModel()
+    private var cancellable = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-        setButtonAction()
+        bindAction()
         
         if let token = AccessToken.current {
             // TODO: - Facebook Login Token 관리하기
@@ -56,29 +58,34 @@ final class LoginViewController: UIViewController {
 }
 
 private extension LoginViewController {
-    func setButtonAction() {
-        kakaoLoginButton.addTarget(self, action: #selector(didTapKakaoLogin), for: .touchUpInside)
-        facebookLoginButton.addTarget(self, action: #selector(didTapFaceBookLogin), for: .touchUpInside)
-        appleLoginButton.addTarget(self, action: #selector(tapAppleLogin), for: .touchUpInside)
-    }
-    
-    @objc func didTapKakaoLogin() {
-        viewModel.loginKakao()
-    }
-    
-    @objc func didTapFaceBookLogin() {
-        viewModel.faceBookLogin(from: self) { result in
-            // TODO: - Handling Token
-        }
-    }
-    
-    @objc func tapAppleLogin() {
-        let request = ASAuthorizationAppleIDProvider().createRequest()
-        request.requestedScopes = [.fullName, .email]
-        let controller = ASAuthorizationController(authorizationRequests: [request])
-        controller.delegate = self
-        controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
-        controller.performRequests()
+    func bindAction() {
+        kakaoLoginButton
+            .tapPublisher
+            .sink { _ in
+                self.viewModel.loginKakao()
+            }
+            .store(in: &cancellable)
+        
+        facebookLoginButton
+            .tapPublisher
+            .sink { _ in
+                self.viewModel.faceBookLogin(from: self) { result in
+                    print(result)
+                }
+            }
+            .store(in: &cancellable)
+        
+        appleLoginButton
+            .tapPublisher
+            .sink { _ in
+                let request = ASAuthorizationAppleIDProvider().createRequest()
+                request.requestedScopes = [.fullName, .email]
+                let controller = ASAuthorizationController(authorizationRequests: [request])
+                controller.delegate = self
+                controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
+                controller.performRequests()
+            }
+            .store(in: &cancellable)
     }
 }
 
@@ -133,5 +140,13 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         print("Error \(error)")
+    }
+}
+
+private extension UIButton {
+    var tapPublisher: AnyPublisher<Void, Never> {
+        controlPublisher(for: .touchUpInside)
+            .map { _ in }
+            .eraseToAnyPublisher()
     }
 }
