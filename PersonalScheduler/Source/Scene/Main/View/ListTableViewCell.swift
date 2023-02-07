@@ -91,19 +91,19 @@ class ListTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             totalStackView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor,
-                constant: contentView.frame.width * 0.05
+                constant: contentView.frame.width * 0.1
             ),
             totalStackView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor,
-                constant: contentView.frame.width * 0.05
+                constant: contentView.frame.width * 0.1
             ),
             totalStackView.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
-                constant: contentView.frame.height * 0.1
+                constant: contentView.frame.height * 0.3
             ),
             totalStackView.bottomAnchor.constraint(
                 equalTo: contentView.bottomAnchor,
-                constant: -(contentView.frame.height * 0.1)
+                constant: -(contentView.frame.height * 0.3)
             )
         ])
     }
