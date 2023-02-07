@@ -10,8 +10,13 @@ import AuthenticationServices
 import FacebookLogin
 
 final class LoginViewController: UIViewController {
-    private let appleLoginButton: ASAuthorizationAppleIDButton = {
-        let button = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
+    private let appleLoginButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("애플로 로그인하기", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .black
+        button.layer.cornerRadius = 10
         return button
     }()
     
@@ -20,6 +25,8 @@ final class LoginViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("카카오로 로그인하기", for: .normal)
         button.setTitleColor(.label, for: .normal)
+        button.backgroundColor = .systemYellow
+        button.layer.cornerRadius = 10
         return button
     }()
     
@@ -28,6 +35,8 @@ final class LoginViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("facebook으로 로그인하기", for: .normal)
         button.setTitleColor(.label, for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 10
         return button
     }()
     
@@ -36,18 +45,30 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
-        
-        view.addSubview(appleLoginButton)
-        appleLoginButton.center = self.view.center
-        
-        appleLoginButton.addTarget(self, action: #selector(tapAppleLogin), for: .touchUpInside)
-        
         configureUI()
         setButtonAction()
         
         if let token = AccessToken.current {
+            // TODO: - Facebook Login Token 관리하기
             print(token)
+        }
+    }
+}
+
+private extension LoginViewController {
+    func setButtonAction() {
+        kakaoLoginButton.addTarget(self, action: #selector(didTapKakaoLogin), for: .touchUpInside)
+        facebookLoginButton.addTarget(self, action: #selector(didTapFaceBookLogin), for: .touchUpInside)
+        appleLoginButton.addTarget(self, action: #selector(tapAppleLogin), for: .touchUpInside)
+    }
+    
+    @objc func didTapKakaoLogin() {
+        viewModel.loginKakao()
+    }
+    
+    @objc func didTapFaceBookLogin() {
+        viewModel.faceBookLogin(from: self) { result in
+            // TODO: - Handling Token
         }
     }
     
@@ -62,30 +83,20 @@ final class LoginViewController: UIViewController {
 }
 
 private extension LoginViewController {
-    func setButtonAction() {
-        kakaoLoginButton.addTarget(self, action: #selector(didTapKakaoLogin), for: .touchUpInside)
-        facebookLoginButton.addTarget(self, action: #selector(didTapFaceBookLogin), for: .touchUpInside)
-    }
-    
-    @objc func didTapKakaoLogin() {
-        viewModel.loginKakao()
-    }
-    
-    @objc func didTapFaceBookLogin() {
-        viewModel.faceBookLogin(from: self) { result in
-            // TODO: - Handling Token
-        }
-    }
-}
-
-private extension LoginViewController {
     func configureUI() {
+        view.backgroundColor = .systemBackground
+        setAdditionalInset()
         addChildComponents()
         setUpLayout()
     }
     
+    func setAdditionalInset() {
+        additionalSafeAreaInsets.left += 16
+        additionalSafeAreaInsets.right += 16
+    }
+    
     func addChildComponents() {
-        [kakaoLoginButton, facebookLoginButton].forEach(view.addSubview)
+        [kakaoLoginButton, facebookLoginButton, appleLoginButton].forEach(view.addSubview)
     }
     
     func setUpLayout() {
@@ -96,9 +107,13 @@ private extension LoginViewController {
             kakaoLoginButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             kakaoLoginButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -200),
             
-            facebookLoginButton.leadingAnchor.constraint(equalTo: kakaoLoginButton.leadingAnchor),
+            facebookLoginButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             facebookLoginButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            facebookLoginButton.topAnchor.constraint(equalTo: kakaoLoginButton.bottomAnchor, constant: 30)
+            facebookLoginButton.topAnchor.constraint(equalTo: kakaoLoginButton.bottomAnchor, constant: 30),
+            
+            appleLoginButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            appleLoginButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            appleLoginButton.topAnchor.constraint(equalTo: facebookLoginButton.bottomAnchor, constant: 30)
         ])
     }
 }
