@@ -79,6 +79,14 @@ extension MainViewController: UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let presentViewController = ScheduleInfoViewController()
+        
+        presentViewController.mode = .read
+        
+        navigationController?.pushViewController(presentViewController, animated: true)
+    }
 }
 
 extension MainViewController: UITableViewDataSource {

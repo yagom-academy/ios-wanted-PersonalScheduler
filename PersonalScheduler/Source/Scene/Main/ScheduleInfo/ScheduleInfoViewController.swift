@@ -8,7 +8,8 @@
 import UIKit
 
 class ScheduleInfoViewController: UIViewController {
-    let mode: ManageMode = .create
+    let scheduleInfoView = ScheduleInfoView()
+    var mode: ManageMode = .create
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,23 +18,30 @@ class ScheduleInfoViewController: UIViewController {
     }
     
     private func configureView(_ mode: ManageMode) {
-        view = ScheduleInfoView()
+        view = scheduleInfoView
         view.backgroundColor = .systemBackground
         
         switch mode {
-        case .create, .edit:
+        case .create:
             navigationItem.rightBarButtonItem = UIBarButtonItem(
                 title: "저장",
                 style: .done,
                 target: self,
                 action: #selector(tapRightBarButtonSaveAction)
             )
-        case .read:
+        case .edit:
             navigationItem.rightBarButtonItem = UIBarButtonItem(
                 title: "수정",
                 style: .done,
                 target: self,
                 action: #selector(tapRightBarButtonEditAction)
+            )
+        case .read:
+            navigationItem.rightBarButtonItem = UIBarButtonItem(
+                title: "편집",
+                style: .done,
+                target: self,
+                action: #selector(tapRightBarButtonReadAction)
             )
         }
     }
@@ -47,4 +55,27 @@ class ScheduleInfoViewController: UIViewController {
     private func tapRightBarButtonEditAction() {
         
     }
+    
+    @objc
+    private func tapRightBarButtonReadAction() {
+        let alert = createAlert(
+            title: "모드전환",
+            message: "프로젝트 정보를 편집하시겠습니까?"
+        )
+        let firstAlertAction = createAlertAction(
+            title: "편집"
+        ) { [self] in
+            scheduleInfoView.checkDataAccess(mode: .edit)
+        }
+        let secondAlertAction = createAlertAction(
+            title: "취소"
+        ) {}
+        
+        alert.addAction(firstAlertAction)
+        alert.addAction(secondAlertAction)
+        
+        present(alert, animated: true)
+    }
 }
+
+extension ScheduleInfoViewController: AlertPresentable {}

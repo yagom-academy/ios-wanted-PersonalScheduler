@@ -22,6 +22,7 @@
 		D01D5A7429922F0A0000EA91 /* ScheduleInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A7329922F0A0000EA91 /* ScheduleInfoViewController.swift */; };
 		D055949B29923055000AD5F4 /* ScheduleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055949A29923055000AD5F4 /* ScheduleInfoView.swift */; };
 		D0C47547299234B900378CD2 /* ManageMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47546299234B900378CD2 /* ManageMode.swift */; };
+		D0C47549299286FD00378CD2 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47548299286FD00378CD2 /* AlertPresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		D01D5A7329922F0A0000EA91 /* ScheduleInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInfoViewController.swift; sourceTree = "<group>"; };
 		D055949A29923055000AD5F4 /* ScheduleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInfoView.swift; sourceTree = "<group>"; };
 		D0C47546299234B900378CD2 /* ManageMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageMode.swift; sourceTree = "<group>"; };
+		D0C47548299286FD00378CD2 /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			children = (
 				D01D5A6A299218040000EA91 /* Schedule.swift */,
 				D0C47546299234B900378CD2 /* ManageMode.swift */,
+				D0C47548299286FD00378CD2 /* AlertPresentable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				D01D5A6B299218040000EA91 /* Schedule.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				D0C47547299234B900378CD2 /* ManageMode.swift in Sources */,
+				D0C47549299286FD00378CD2 /* AlertPresentable.swift in Sources */,
 				D055949B29923055000AD5F4 /* ScheduleInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

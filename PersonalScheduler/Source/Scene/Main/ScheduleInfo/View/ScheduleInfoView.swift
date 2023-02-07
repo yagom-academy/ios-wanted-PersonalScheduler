@@ -12,7 +12,6 @@ class ScheduleInfoView: UIView {
     private enum DateType {
         case startDate
         case startTime
-        
         case endDate
         case endTime
     }
@@ -139,6 +138,24 @@ class ScheduleInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func checkDataAccess(mode: ManageMode) {
+        switch mode {
+        case .create, .edit:
+            startDateTextField.isUserInteractionEnabled = true
+            startTimeTextField.isUserInteractionEnabled = true
+            endDateTextField.isUserInteractionEnabled = true
+            endTimeTextField.isUserInteractionEnabled = true
+            titleTextField.isUserInteractionEnabled = true
+            bodyTextView.isUserInteractionEnabled = true
+        case .read:
+            startDateTextField.isUserInteractionEnabled = false
+            startTimeTextField.isUserInteractionEnabled = false
+            endDateTextField.isUserInteractionEnabled = false
+            endTimeTextField.isUserInteractionEnabled = false
+            titleTextField.isUserInteractionEnabled = false
+            bodyTextView.isUserInteractionEnabled = false
+        }
+    }
     
     private func createDateButton(type: DateType, textField: UITextField, action: Selector?) {
         let toolbar = UIToolbar()
