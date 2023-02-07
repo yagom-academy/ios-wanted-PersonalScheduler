@@ -2,11 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>kakaokompassauth</string>
-		<string>kakaolink</string>
-	</array>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>심플한 투두</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<true/>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -17,6 +16,27 @@
 				<string>kakaoe4508b7d898e0337970b66be44af9dec</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb872888447165181</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<true/>
+	<key>FacebookAppID</key>
+	<string>872888447165181</string>
+	<key>FacebookClientToken</key>
+	<string>9e10975a0097d217966741ab962199db</string>
+	<key>FacebookDisplayName</key>
+	<string>심플한투두</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

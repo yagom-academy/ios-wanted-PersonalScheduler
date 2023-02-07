@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import KakaoSDKCommon
+import FacebookCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         FirebaseApp.configure()
         KakaoSDK.initSDK(appKey: "e4508b7d898e0337970b66be44af9dec")
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
         return true
     }
 
