@@ -9,6 +9,7 @@ import UIKit
 
 final class LoginViewController: UIViewController {
 
+    private let viewModel: LoginViewModel = LoginViewModel()
     private let loginLabel = UILabel(text: "Login", font: .largeTitle, fontBold: true, textColor: .navy)
     private let introduceLabel = UILabel(text: "and save your Schedule", textColor: .secondary)
 
@@ -58,7 +59,7 @@ final class LoginViewController: UIViewController {
     }
 
     @objc private func loginWidthKakao() {
-        //구현예정: 카카오 로그인
+        viewModel.kakaoLogin()
     }
 }
 
