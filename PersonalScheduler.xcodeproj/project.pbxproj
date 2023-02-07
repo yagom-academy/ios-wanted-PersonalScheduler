@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		41ADCE1329926EC6001984D3 /* Loginable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADCE1229926EC6001984D3 /* Loginable.swift */; };
+		41ADCE152992822C001984D3 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADCE142992822C001984D3 /* UILabel+.swift */; };
 		41BC370F29921A54000A5ED7 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC370E29921A54000A5ED7 /* UIColor+.swift */; };
 		41BC371729922F8D000A5ED7 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 41BC371629922F8D000A5ED7 /* KakaoSDKAuth */; };
 		41BC371929922F8D000A5ED7 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 41BC371829922F8D000A5ED7 /* KakaoSDKCommon */; };
 		41BC371B29922F8D000A5ED7 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 41BC371A29922F8D000A5ED7 /* KakaoSDKUser */; };
 		41BC371E299251F1000A5ED7 /* KakaoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC371D299251F1000A5ED7 /* KakaoLoginViewModel.swift */; };
+		41C3CC7429928A3500F269CE /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C3CC7329928A3500F269CE /* UIFont+.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* LoginViewController.swift */; };
@@ -22,9 +24,11 @@
 
 /* Begin PBXFileReference section */
 		41ADCE1229926EC6001984D3 /* Loginable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loginable.swift; sourceTree = "<group>"; };
+		41ADCE142992822C001984D3 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		41BC370E29921A54000A5ED7 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		41BC371C29923251000A5ED7 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		41BC371D299251F1000A5ED7 /* KakaoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginViewModel.swift; sourceTree = "<group>"; };
+		41C3CC7329928A3500F269CE /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				41BC370E29921A54000A5ED7 /* UIColor+.swift */,
+				41ADCE142992822C001984D3 /* UILabel+.swift */,
+				41C3CC7329928A3500F269CE /* UIFont+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -199,10 +205,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41C3CC7429928A3500F269CE /* UIFont+.swift in Sources */,
 				41BC371E299251F1000A5ED7 /* KakaoLoginViewModel.swift in Sources */,
 				41ADCE1329926EC6001984D3 /* Loginable.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
 				41BC370F29921A54000A5ED7 /* UIColor+.swift in Sources */,
+				41ADCE152992822C001984D3 /* UILabel+.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 			);
@@ -346,6 +354,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G9W4Z8U9JB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PersonalScheduler/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
