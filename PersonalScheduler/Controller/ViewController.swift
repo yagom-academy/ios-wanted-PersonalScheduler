@@ -71,6 +71,7 @@ private extension ViewController {
                     return
                 }
                 let accessToken = OAuthToken?.accessToken
+                self.present(ScheduleListViewController(), animated: true)
             }
         }
     }
