@@ -2,6 +2,7 @@
 //  Created by zhilly on 2023/02/07
 
 import UIKit
+import FirebaseCore
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -10,6 +11,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        FirebaseApp.configure()
+        
         return true
     }
 
