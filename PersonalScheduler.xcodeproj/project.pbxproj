@@ -14,6 +14,9 @@
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
 		B49901E7299205C00065D68D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B49901E6299205C00065D68D /* FirebaseAnalytics */; };
 		B49901E9299205D70065D68D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B49901E8299205D70065D68D /* GoogleService-Info.plist */; };
+		B4BBBEE6299233060065BF78 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = B4BBBEE5299233060065BF78 /* KakaoSDK */; };
+		B4BBBEE829923B7A0065BF78 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BBBEE729923B7A0065BF78 /* LoginViewModel.swift */; };
+		B4BBBEEC29923BBC0065BF78 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BBBEEB29923BBC0065BF78 /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,8 @@
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B49901E8299205D70065D68D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B4BBBEE729923B7A0065BF78 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		B4BBBEEB29923BBC0065BF78 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +38,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B49901E7299205C00065D68D /* FirebaseAnalytics in Frameworks */,
+				B4BBBEE6299233060065BF78 /* KakaoSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +75,8 @@
 			children = (
 				B46BF5DE29915B610007CFBC /* App */,
 				B46BF5DF29915B880007CFBC /* View */,
+				B4BBBEE929923B880065BF78 /* Protocol */,
+				B4BBBEEA29923BA70065BF78 /* Model */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -105,8 +113,24 @@
 			isa = PBXGroup;
 			children = (
 				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
+				B4BBBEE729923B7A0065BF78 /* LoginViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		B4BBBEE929923B880065BF78 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		B4BBBEEA29923BA70065BF78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B4BBBEEB29923BBC0065BF78 /* Observable.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +151,7 @@
 			name = PersonalScheduler;
 			packageProductDependencies = (
 				B49901E6299205C00065D68D /* FirebaseAnalytics */,
+				B4BBBEE5299233060065BF78 /* KakaoSDK */,
 			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
@@ -158,6 +183,7 @@
 			mainGroup = 63AAAAF52967EA2600775EC3;
 			packageReferences = (
 				B49901E5299205C00065D68D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B4BBBEE4299233060065BF78 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
@@ -186,6 +212,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4BBBEE829923B7A0065BF78 /* LoginViewModel.swift in Sources */,
+				B4BBBEEC29923BBC0065BF78 /* Observable.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
@@ -410,6 +438,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		B4BBBEE4299233060065BF78 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -417,6 +453,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B49901E5299205C00065D68D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		B4BBBEE5299233060065BF78 /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4BBBEE4299233060065BF78 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
