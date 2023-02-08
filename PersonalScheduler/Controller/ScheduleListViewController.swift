@@ -13,6 +13,7 @@ final class ScheduleListViewController: UIViewController {
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .systemBackground
         return tableView
     }()
 
@@ -36,7 +37,6 @@ extension ScheduleListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        print(section)
         let dateText = ScheduleModel.scheduleList[section].date
         return createDateLabel(text: dateText)
     }
@@ -114,10 +114,18 @@ private extension ScheduleListViewController {
         tableView.layoutIfNeeded()
     }
 
-    func createDateLabel(text: String) -> UILabel {
+    func createDateLabel(text: String) -> UILabel? {
         let label = UILabel()
+        guard let goalDate = DateformatterManager.shared.convertStringToDate(dateText: text) else {
+            return nil
+        }
+        switch Date().compare(goalDate) {
+        case .orderedAscending, .orderedSame:
+            label.textColor = UIColor(hex: "#04CC00")
+        case .orderedDescending:
+            label.textColor = UIColor(hex: "9E9E9E")
+        }
         label.text = text
-        label.textColor = UIColor(hex: "#04CC00")
         return label
     }
 }

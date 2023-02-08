@@ -64,7 +64,7 @@ private extension DetailScheduleViewController {
     @objc func touchUpCreateButton() {
         guard let title = titleTextField.text,
               let body = bodyTextView.text else { return }
-        let date = "2023.02.10"
+        let date = DateformatterManager.shared.convertDateToString(date: datePicker.date)
         let data = ScheduleModel(title: title, body: body, date: date)
         detailScheduleDelegate?.createSchedule(data: data)
         navigationController?.popViewController(animated: true)

@@ -11,16 +11,16 @@ final class DateformatterManager {
     static let shared: DateformatterManager = DateformatterManager()
     private init() { }
 
+    let formatter = DateFormatter()
+
     func convertDateToString(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy. MM. dd"
+        formatter.dateFormat = "yyyy.MM.dd"
         let date = formatter.string(from: date)
         return date
     }
 
     func convertStringToDate(dateText: String) -> Date? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy. MM. dd"
+        formatter.dateFormat = "yyyy.MM.dd"
         guard let date = formatter.date(from: dateText) else { return nil }
         return date
     }
