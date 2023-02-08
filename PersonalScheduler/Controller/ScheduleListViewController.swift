@@ -58,11 +58,24 @@ extension ScheduleListViewController: UITableViewDelegate {
 
 }
 
+// MARK: - DetailViewDelegate
+extension ScheduleListViewController: DetailScheduleDelegate {
+    func createSchedule(data: ScheduleModel) {
+        ScheduleModel.scheduleList.append(data)
+        tableView.reloadData()
+    }
+
+    func updateSchedule(date: ScheduleModel) {
+        return
+    }
+}
+
 // MARK: - Objc Method
 private extension ScheduleListViewController {
     @objc func touchUpCreateButton() {
         let detailScheduleViewController = DetailScheduleViewController()
         detailScheduleViewController.mode = .create
+        detailScheduleViewController.detailScheduleDelegate = self
         navigationController?.pushViewController(detailScheduleViewController, animated: true)
     }
 }

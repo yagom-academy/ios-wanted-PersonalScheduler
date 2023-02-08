@@ -48,6 +48,7 @@ final class DetailScheduleViewController: UIViewController {
     }()
 
     var mode: DetailScheduleMode = .create
+    weak var detailScheduleDelegate: DetailScheduleDelegate?
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -61,6 +62,11 @@ final class DetailScheduleViewController: UIViewController {
 // MARK: - Objc Method
 private extension DetailScheduleViewController {
     @objc func touchUpCreateButton() {
+        guard let title = titleTextField.text,
+              let body = bodyTextView.text else { return }
+        let date = "2023.02.10"
+        let data = ScheduleModel(title: title, body: body, date: date)
+        detailScheduleDelegate?.createSchedule(data: data)
         navigationController?.popViewController(animated: true)
     }
 
