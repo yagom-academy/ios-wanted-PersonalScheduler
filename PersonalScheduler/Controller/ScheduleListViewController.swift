@@ -41,6 +41,10 @@ extension ScheduleListViewController: UITableViewDataSource {
         }
         return scheduleListCell
     }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -57,6 +61,7 @@ private extension ScheduleListViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(ScheduleListCell.self, forCellReuseIdentifier: ScheduleListCell.identifier)
+//        tableView.estimatedRowHeight = view.frame.height / 7
     }
 
     func settingLayouts() {

@@ -15,14 +15,16 @@ final class ScheduleListCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .title3)
+        label.text = "헬스장가기"
         return label
     }()
 
     private let bodyLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.textColor = .systemGray3
+        label.textColor = .systemGray2
         label.numberOfLines = 3
+        label.text = "유산소 30분하고 근력운동"
         return label
     }()
 
@@ -45,7 +47,7 @@ private extension ScheduleListCell {
 
         [titleLabel, bodyLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            addSubview($0)
+            contentView.addSubview($0)
         }
 
         settingLayouts()
@@ -53,16 +55,18 @@ private extension ScheduleListCell {
 
     func settingLayouts() {
         let smallSpacing: CGFloat = 20
+        titleLabel.setContentHuggingPriority(.defaultHigh + 1, for: .vertical)
+        bodyLabel.setContentCompressionResistancePriority(.defaultHigh + 1, for: .vertical)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: smallSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: smallSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: smallSpacing),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: smallSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: smallSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -smallSpacing),
 
-            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: smallSpacing),
-            bodyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: smallSpacing),
-            bodyLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: smallSpacing),
-            bodyLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: smallSpacing)
+            bodyLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: titleLabel.intrinsicContentSize.height + smallSpacing * 2),
+            bodyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: smallSpacing),
+            bodyLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -smallSpacing),
+            bodyLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -smallSpacing)
         ])
     }
 }
