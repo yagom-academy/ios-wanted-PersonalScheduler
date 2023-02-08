@@ -55,6 +55,13 @@ final class DetailScheduleViewController: UIViewController {
     }
 }
 
+// MARK: - Objc Method
+private extension DetailScheduleViewController {
+    @objc func touchUpStoreButton() {
+        navigationController?.popViewController(animated: true)
+    }
+}
+
 // MARK: - UIConfiguration
 private extension DetailScheduleViewController {
     func configureUI() {
@@ -64,6 +71,7 @@ private extension DetailScheduleViewController {
         }
 
         settingLayouts()
+        settingNavigationBar()
     }
 
     func settingLayouts() {
@@ -95,5 +103,10 @@ private extension DetailScheduleViewController {
             datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -smallSpacing),
             datePicker.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.25)
         ])
+    }
+
+    func settingNavigationBar() {
+        navigationItem.title = "스케쥴 생성"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(touchUpStoreButton))
     }
 }
