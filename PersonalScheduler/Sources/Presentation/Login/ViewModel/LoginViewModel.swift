@@ -5,68 +5,23 @@
 //  Copyright (c) 2023 Minii All rights reserved.
 
 import AuthenticationServices
-import KakaoSDKAuth
-import KakaoSDKUser
-import KakaoSDKCommon
 import Combine
 import FirebaseAuth
 import FacebookLogin
 
 class LoginViewModel: NSObject {
-    func loginKakao() {
-        if AuthApi.hasToken() {
-            UserApi.shared.accessTokenInfo { [weak self] _, error in
-                guard let self = self else { return }
-                
-                if let error = error {
-                    if let sdkError = error as? SdkError,
-                       sdkError.isInvalidTokenError() == true {
-                        self.authorizationKakao()
-                    } else {
-                        print("error in login Kakao")
-                    }
-                } else {
-                    self.readUserInformation()
-                }
-            }
-        } else {
-            authorizationKakao()
-        }
-    }
+    var isSuccessSubject: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
     
-    func authorizationKakao() {
-        if UserApi.isKakaoTalkLoginAvailable() {
-            UserApi.shared.loginWithKakaoTalk { token, error in
-                if let error = error {
-                    print("Error in user api : \(error)")
-                } else {
-                    self.readUserInformation()
-                }
-            }
-        } else {
-            UserApi.shared.loginWithKakaoAccount { token, error in
-                if let error = error {
-                    print("Error in user api in kakao Account : \(error)")
-                } else {
-                    self.readUserInformation()
-                }
-            }
-        }
-    }
+    private var loginService: LoginService?
+    private var cancellable = Set<AnyCancellable>()
     
-    func readUserInformation() {
-        UserApi.shared.me { user, error in
-            if let error = error {
-                print("Error in get user information : \(error)")
-            } else {
-                guard let email = user?.kakaoAccount?.email,
-                      let id = user?.id else {
-                    return
-                }
-                
-                self.createFirUser(id: email, password: id.description)
+    func login(with loginService: LoginService) {
+        self.loginService = loginService
+        loginService.authorization()
+            .sink {
+                self.isSuccessSubject.send($0)
             }
-        }
+            .store(in: &cancellable)
     }
     
     func createFirUser(id: String, password: String) {
