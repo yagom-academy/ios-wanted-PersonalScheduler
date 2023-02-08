@@ -25,6 +25,6 @@ extension ScheduleModel {
         ScheduleModel(title: "헬스장 가기2", body: "유산소30분 근력30분", date: "2023.02.23"),
         ScheduleModel(title: "헬스장 가기3", body: "유산소30분 근력30분", date: "2023.02.23"),
         ScheduleModel(title: "헬스장 가기4", body: "유산소30분 근력30분", date: "2023.02.23"),
-        ScheduleModel(title: "헬스장 가기5", body: "유산소30분 근력30분", date: "2023.02.23")
+        ScheduleModel(title: "헬스장 가기5", body: "유산소30분 근력30분", date: "2022.02.23")
     ]
 }

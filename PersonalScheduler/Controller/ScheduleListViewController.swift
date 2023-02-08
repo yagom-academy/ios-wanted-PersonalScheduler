@@ -42,10 +42,18 @@ extension ScheduleListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let scheduleListCell: ScheduleListCell = tableView.dequeueReusableCell(withIdentifier: ScheduleListCell.identifier, for: indexPath) as? ScheduleListCell else {
+        guard let scheduleListCell: ScheduleListCell = tableView.dequeueReusableCell(withIdentifier: ScheduleListCell.identifier, for: indexPath) as? ScheduleListCell,
+              let goalDate = DateformatterManager.shared.convertStringToDate(dateText: ScheduleModel.scheduleList[indexPath.section].date) else {
             return ScheduleListCell()
         }
         scheduleListCell.configureCell(data: ScheduleModel.scheduleList[indexPath.section])
+
+        switch Date().compare(goalDate) {
+        case .orderedAscending, .orderedSame:
+            scheduleListCell.layer.borderColor = UIColor(hex: "#04CC00").cgColor
+        case .orderedDescending:
+            scheduleListCell.layer.borderColor = UIColor(hex: "9E9E9E").cgColor
+        }
         return scheduleListCell
     }
 
