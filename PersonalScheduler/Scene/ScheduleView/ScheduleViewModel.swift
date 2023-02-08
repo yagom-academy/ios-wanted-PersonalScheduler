@@ -24,10 +24,39 @@ final class ScheduleViewModel {
     private weak var delegate: ScheduleViewModelDelegate?
     
     private var schedules: [Schedule] = [] {
+        didSet {
+            delegate?.scheduleViewModel(didChange: schedules)
+        }
     }
     
     init(userID: String, service: ScheduleServiceable) {
         self.userID = userID
         self.service = service
+    }
+    
+    func action(_ action: Action) {
+        switch action {
+        case .viewWillAppear:
+            setInitialSchedules()
+        case .tapSchedule(let indexPath):
+            tapScheduleCell(indexPath: indexPath)
+        }
+    }
+    
+    private func setInitialSchedules() {
+        service.requestAllSchedule(from: userID) { [weak self] result in
+            switch result {
+            case .success(let schedules):
+                self?.schedules = schedules
+            case .failure(let error):
+                self?.delegate?.scheduleViewModel(failedFetchData: error)
+            }
+        }
+    }
+    
+    private func tapScheduleCell(indexPath: IndexPath) {
+        let selectedSchedule = schedules[indexPath.row]
+        
+        delegate?.scheduleViewModel(selectedScheduleID: selectedSchedule.id)
     }
 }
