@@ -48,7 +48,7 @@ extension LoginViewModel {
                 print(error)
             }
             guard let id = user?.id else { return }
-            self.user = UserInfo(id: "kakao\(id)")
+            self.userInfo = UserInfo(id: "kakao\(id)")
         }
     }
 }
