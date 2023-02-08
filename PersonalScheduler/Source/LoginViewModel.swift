@@ -10,7 +10,7 @@ import KakaoSDKAuth
 import KakaoSDKUser
 
 final class LoginViewModel {
-    func loginKakao(completion: @escaping (User) -> Void) {
+    func loginKakao(completion: @escaping ((String, String?) -> Void)) {
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                 if let error = error {
@@ -37,9 +37,12 @@ final class LoginViewModel {
         
         UserApi.shared.me { user, error in
             guard let user = user else { return }
-            completion(user)
-//            print(user?.properties?["nickname"])
-//            print(user?.properties?["profile_image"])
+//            print(user.properties?["nickname"])
+//            print(user.properties?["profile_image"])
+            guard let nickName = user.kakaoAccount?.profile?.nickname else { return }
+            let email = user.kakaoAccount?.email
+            
+            completion(nickName, email)
         }
     }
 }

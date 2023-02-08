@@ -9,6 +9,7 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     private let viewModel: LoginViewModel
+    private var fireStoreManager: FireStoreManager?
     
     private let loginImageView: UIImageView = {
         let imageView = UIImageView()
