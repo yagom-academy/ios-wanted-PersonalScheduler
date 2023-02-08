@@ -23,6 +23,8 @@
 		E33299E62992C90800EB425B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299E52992C90800EB425B /* LoginViewModel.swift */; };
 		E33299EA2992C95A00EB425B /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299E92992C95A00EB425B /* ScheduleViewModel.swift */; };
 		E33299EC2992C96F00EB425B /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299EB2992C96F00EB425B /* ScheduleViewController.swift */; };
+		E33299EF299385A500EB425B /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = E33299EE299385A500EB425B /* FacebookCore */; };
+		E33299F1299385A500EB425B /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = E33299F0299385A500EB425B /* FacebookLogin */; };
 		E347AD452991353D0022A5DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E347AD442991353D0022A5DB /* GoogleService-Info.plist */; };
 		E347AD6D29916E360022A5DB /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E347AD6C29916E360022A5DB /* Repository.swift */; };
 		E347AD6F299171610022A5DB /* DefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E347AD6E299171610022A5DB /* DefaultRepository.swift */; };
@@ -57,9 +59,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E33299DB2992961E00EB425B /* FirebaseFirestoreSwift in Frameworks */,
+				E33299EF299385A500EB425B /* FacebookCore in Frameworks */,
 				E33299D52992961E00EB425B /* FirebaseAnalyticsSwift in Frameworks */,
 				E33299D92992961E00EB425B /* FirebaseFirestore in Frameworks */,
 				E33299D72992961E00EB425B /* FirebaseAuth in Frameworks */,
+				E33299F1299385A500EB425B /* FacebookLogin in Frameworks */,
 				E33299D32992961E00EB425B /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,6 +197,8 @@
 				E33299D62992961E00EB425B /* FirebaseAuth */,
 				E33299D82992961E00EB425B /* FirebaseFirestore */,
 				E33299DA2992961E00EB425B /* FirebaseFirestoreSwift */,
+				E33299EE299385A500EB425B /* FacebookCore */,
+				E33299F0299385A500EB425B /* FacebookLogin */,
 			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
@@ -224,6 +230,7 @@
 			mainGroup = 63AAAAF52967EA2600775EC3;
 			packageReferences = (
 				E33299D12992961E00EB425B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				E33299ED299385A500EB425B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
@@ -490,6 +497,14 @@
 				minimumVersion = 10.4.0;
 			};
 		};
+		E33299ED299385A500EB425B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -517,6 +532,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E33299D12992961E00EB425B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		E33299EE299385A500EB425B /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E33299ED299385A500EB425B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		E33299F0299385A500EB425B /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E33299ED299385A500EB425B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

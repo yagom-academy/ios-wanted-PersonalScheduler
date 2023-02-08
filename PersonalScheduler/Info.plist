@@ -5,6 +5,8 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb594016645397216</string>
@@ -21,21 +23,19 @@
 	</array>
 	<key>FacebookAppID</key>
 	<string>594016645397216</string>
-    <key>FacebookClientToken</key>
-    <string>e8169d087f95396e5bf9f956f67c2019</string>
+	<key>FacebookClientToken</key>
+	<string>e8169d087f95396e5bf9f956f67c2019</string>
 	<key>FacebookDisplayName</key>
 	<string>PersonalScheduler</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
-		<string>fb-messenger-api</string>
-		<string>fbauth2</string>
-		<string>fbshareextension</string>
+		<string>fb-messenger-share-api</string>
 		<string>kakaokompassauth</string>
 		<string>kakaolink</string>
 	</array>
-    <key>FacebookAutoLogAppEventsEnabled</key>
-    <false/>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<false/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
