@@ -35,6 +35,7 @@ final class LoginViewController: UIViewController {
     private lazy var facebookLoginButton: LoginButton = {
         let loginButton = LoginButton()
         loginButton.configure(with: viewModel.facebookLoginButtonViewModel)
+        loginButton.addTarget(self, action: #selector(loginWidthFaceBook), for: .touchUpInside)
 
         return loginButton
     }()
@@ -59,7 +60,11 @@ final class LoginViewController: UIViewController {
     }
 
     @objc private func loginWidthKakao() {
-        viewModel.kakaoLogin()
+        viewModel.loginWithKakao()
+    }
+
+    @objc private func loginWidthFaceBook() {
+        viewModel.loginWithFacebook(target: self)
     }
 }
 
