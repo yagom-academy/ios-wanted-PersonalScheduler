@@ -14,65 +14,72 @@ final class KakaoLoginService: LoginService {
     var isSuccess: PassthroughSubject<Bool, Never> = PassthroughSubject()
     
     func login() {
-        if AuthApi.hasToken() {
+        if AuthApi.hasToken() == true {
             UserApi.shared.accessTokenInfo { _, error in
                 guard error == nil else {
                     self.handleTokenError(error: error)
                     return
                 }
-                self.loginKakao()
+                self.authorizationKakao()
             }
-        } else {
-            self.loginKakao()
+        }
+        
+        if AuthApi.hasToken() == false {
+            self.authorizationKakao()
         }
     }
     
-    func handleTokenError(error: Error?) {
+    private func tokenHandle() {
+        UserApi.shared.accessTokenInfo { _, error in
+            guard error == nil else {
+                self.handleTokenError(error: error)
+                return
+            }
+            
+            self.authorizationKakao()
+        }
+    }
+    
+    private func handleTokenError(error: Error?) {
         guard let error = error as? SdkError else {
             isSuccess.send(false)
             return
         }
         
         if error.isInvalidTokenError() {
-            loginKakao()
+            authorizationKakao()
         }
     }
     
-    func loginKakao() {
+    private func authorizationKakao() {
         if UserApi.isKakaoTalkLoginAvailable() {
-            UserApi.shared.loginWithKakaoTalk { token, error in
-                guard error == nil else {
-                    self.isSuccess.send(false)
-                    return
-                }
-                self.isSuccess.send(true)
-            }
+            UserApi.shared.loginWithKakaoTalk(completion: handleToken)
         }
         
         if UserApi.isKakaoTalkLoginAvailable() == false {
-            UserApi.shared.loginWithKakaoAccount { token, error in
-                guard error == nil else {
-                    self.isSuccess.send(false)
-                    return
-                }
-                self.isSuccess.send(true)
-            }
+            UserApi.shared.loginWithKakaoAccount(completion: handleToken)
         }
     }
     
-    func readUserInformation() {
+    private func handleToken(token: OAuthToken?, error: Error?) {
+        guard error == nil else {
+            self.isSuccess.send(false)
+            return
+        }
+        
+        readUserInformation()
+    }
+    
+    private func readUserInformation() {
         UserApi.shared.me { user, error in
-            if let error = error {
+            guard error == nil,
+                  let email = user?.kakaoAccount?.email,
+                  let id = user?.id else {
                 self.isSuccess.send(false)
-            } else {
-                guard let email = user?.kakaoAccount?.email,
-                      let id = user?.id else {
-                    self.isSuccess.send(false)
-                    return
-                }
-                
-                self.isSuccess.send(true)
+                return
             }
+            
+            // TODO: - Firebase User Create
         }
     }
 }
