@@ -40,6 +40,15 @@ final class ScheduleListCell: UITableViewCell {
     }
 }
 
+// MARK: - Method
+extension ScheduleListCell {
+    func configureCell(data: ScheduleModel) {
+        titleLabel.text = data.title
+        bodyLabel.text = data.body
+    }
+}
+
+// MARK: - UIConfiguration
 private extension ScheduleListCell {
     func configureUI() {
         self.layer.borderWidth = 3

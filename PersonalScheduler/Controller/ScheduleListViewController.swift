@@ -42,9 +42,10 @@ extension ScheduleListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let scheduleListCell = tableView.dequeueReusableCell(withIdentifier: ScheduleListCell.identifier, for: indexPath) as? ScheduleListCell else {
+        guard let scheduleListCell: ScheduleListCell = tableView.dequeueReusableCell(withIdentifier: ScheduleListCell.identifier, for: indexPath) as? ScheduleListCell else {
             return ScheduleListCell()
         }
+        scheduleListCell.configureCell(data: ScheduleModel.scheduleList[indexPath.section])
         return scheduleListCell
     }
 
