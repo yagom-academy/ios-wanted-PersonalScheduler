@@ -48,16 +48,23 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        bind()
         bindAction()
-        
-        if let token = AccessToken.current {
-            // TODO: - Facebook Login Token 관리하기
-            print(token)
-        }
     }
 }
 
 private extension LoginViewController {
+    func bind() {
+        viewModel.isSuccessSubject
+            .receive(on: DispatchQueue.main)
+            .sink { isSuccess in
+                if isSuccess {
+                    self.presentMainViewController()
+                }
+            }
+            .store(in: &cancellable)
+    }
+    
     func bindAction() {
         kakaoLoginButton
             .tapPublisher
@@ -66,26 +73,14 @@ private extension LoginViewController {
             }
             .store(in: &cancellable)
         
-        viewModel.isSuccessSubject
-            .sink { isSuccess in
-                if isSuccess {
-                    let controller = UIViewController()
-                    controller.view.backgroundColor = .red
-                    controller.modalPresentationStyle = .fullScreen
-                    controller.modalTransitionStyle = .crossDissolve
-                    self.present(controller, animated: true)
-                }
+
+        
+        facebookLoginButton
+            .tapPublisher
+            .sink { _ in
+                self.viewModel.login(with: FacebookLoginService())
             }
             .store(in: &cancellable)
-        
-//        facebookLoginButton
-//            .tapPublisher
-//            .sink { _ in
-//                self.viewModel.faceBookLogin(from: self) { result in
-//                    print(result)
-//                }
-//            }
-//            .store(in: &cancellable)
 //
 //        appleLoginButton
 //            .tapPublisher
@@ -98,6 +93,17 @@ private extension LoginViewController {
 //                controller.performRequests()
 //            }
 //            .store(in: &cancellable)
+    }
+}
+
+// MARK: - Present Method
+private extension LoginViewController {
+    func presentMainViewController() {
+        let controller = UIViewController()
+        controller.modalPresentationStyle = .fullScreen
+        controller.modalTransitionStyle = .crossDissolve
+        controller.view.backgroundColor = .red
+        present(controller, animated: true)
     }
 }
 

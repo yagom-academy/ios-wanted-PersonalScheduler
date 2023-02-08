@@ -11,12 +11,9 @@ import FacebookLogin
 
 class LoginViewModel: NSObject {
     var isSuccessSubject: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
-    
-    private var loginService: LoginService?
     private var cancellable = Set<AnyCancellable>()
     
     func login(with loginService: LoginService) {
-        self.loginService = loginService
         loginService.authorization()
             .sink {
                 self.isSuccessSubject.send($0)
