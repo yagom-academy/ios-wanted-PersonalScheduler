@@ -6,6 +6,7 @@
 
 import Combine
 import Foundation
+import FirebaseAuth
 import KakaoSDKAuth
 import KakaoSDKCommon
 import KakaoSDKUser
@@ -13,7 +14,7 @@ import KakaoSDKUser
 final class KakaoLoginService: LoginService {
     var isSuccess: PassthroughSubject<Bool, Never> = PassthroughSubject()
     
-    func login() {
+    func login() -> AnyPublisher<Bool, Never> {
         if AuthApi.hasToken() == true {
             UserApi.shared.accessTokenInfo { _, error in
                 guard error == nil else {
@@ -27,6 +28,8 @@ final class KakaoLoginService: LoginService {
         if AuthApi.hasToken() == false {
             self.authorizationKakao()
         }
+        
+        return isSuccess.eraseToAnyPublisher()
     }
     
     private func tokenHandle() {
@@ -62,24 +65,29 @@ final class KakaoLoginService: LoginService {
     }
     
     private func handleToken(token: OAuthToken?, error: Error?) {
-        guard error == nil else {
+        guard error == nil,
+              let idToken = token?.idToken else {
             self.isSuccess.send(false)
             return
         }
         
-        readUserInformation()
+        loginFirebase(token: idToken)
     }
     
-    private func readUserInformation() {
-        UserApi.shared.me { user, error in
-            guard error == nil,
-                  let email = user?.kakaoAccount?.email,
-                  let id = user?.id else {
+    func loginFirebase(token: String) {
+        let credential = OAuthProvider.credential(
+            withProviderID: "oidc.kakao",
+            idToken: token,
+            rawNonce: nil
+        )
+        
+        Auth.auth().signIn(with: credential) { result, error in
+            guard error == nil else {
                 self.isSuccess.send(false)
                 return
             }
             
-            // TODO: - Firebase User Create
+            self.isSuccess.send(true)
         }
     }
 }

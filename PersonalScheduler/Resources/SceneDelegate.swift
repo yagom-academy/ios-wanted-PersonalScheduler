@@ -7,6 +7,7 @@
 
 import UIKit
 import KakaoSDKAuth
+import FirebaseAuth
 import FacebookCore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -41,6 +42,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             sourceApplication: nil,
             annotation: [UIApplication.OpenURLOptionsKey.annotation]
         )
+        
+        
     }
 }
 

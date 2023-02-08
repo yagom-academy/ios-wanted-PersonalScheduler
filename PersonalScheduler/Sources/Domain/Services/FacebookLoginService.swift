@@ -8,8 +8,8 @@ import Combine
 import FacebookLogin
 
 final class FacebookLoginService: LoginService {
-    var isSuccess: PassthroughSubject<Bool, Never> = PassthroughSubject()
-    func login() {
+    private var isSuccess: PassthroughSubject<Bool, Never> = PassthroughSubject()
+    func login() -> AnyPublisher<Bool, Never> {
         let loginManager = LoginManager()
         loginManager.logIn(permissions: ["public_profile"], from: nil) { result, error in
             guard error == nil else {
@@ -23,6 +23,8 @@ final class FacebookLoginService: LoginService {
                 self.getProfile()
             }
         }
+        
+        return isSuccess.eraseToAnyPublisher()
     }
     
     func getProfile() {

@@ -56,7 +56,7 @@ final class LoginViewController: UIViewController {
 // MARK: - Binding Method
 private extension LoginViewController {
     func bind() {
-        viewModel.isSuccessSubject
+        viewModel.$isSuccess
             .receive(on: DispatchQueue.main)
             .filter { $0 }
             .sink { _ in self.presentMainViewController() }
@@ -66,13 +66,16 @@ private extension LoginViewController {
     func bindAction() {
         kakaoLoginButton
             .tapPublisher
-            .sink { _ in self.viewModel.login(with: KakaoLoginService()) }
+            .sink { _ in
+                let repository = SocialLoginRepository(service: KakaoLoginService())
+                self.viewModel.login(with: repository)
+            }
             .store(in: &cancellable)
         
-        facebookLoginButton
-            .tapPublisher
-            .sink { _ in self.viewModel.login(with: FacebookLoginService()) }
-            .store(in: &cancellable)
+//        facebookLoginButton
+//            .tapPublisher
+//            .sink { _ in self.viewModel.login(with: FacebookLoginService()) }
+//            .store(in: &cancellable)
 
         appleLoginButton
             .tapPublisher

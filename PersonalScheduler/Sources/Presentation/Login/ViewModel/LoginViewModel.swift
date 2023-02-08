@@ -10,21 +10,16 @@ import FirebaseAuth
 import FacebookLogin
 
 class LoginViewModel: NSObject {
-    var isSuccessSubject: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
+    private var loginRepository: LoginRepository?
     private var cancellable = Set<AnyCancellable>()
+    @Published var isSuccess: Bool = false
     
-    func login(with loginService: LoginService) {
-        loginService.isSuccess
-            .sink {
-                self.isSuccessSubject.send($0)
-            }
-            .store(in: &cancellable)
+    func login(with repository: LoginRepository) {
+        self.loginRepository = repository
         
-        loginService.login()
-    }
-    
-    func createFirUser(id: String, password: String) {
-        // TODO: - Open ID Connect
+        self.loginRepository?.login()
+            .sink { self.isSuccess = $0 }
+            .store(in: &cancellable)
     }
 }
 
@@ -37,10 +32,10 @@ extension LoginViewModel: ASAuthorizationControllerDelegate {
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
             if let _ = appleIdCredential.email, let _ = appleIdCredential.fullName {
                 print("Login with apple good")
-                self.isSuccessSubject.send(true)
+                isSuccess = true
             } else {
                 print("Fucking no")
-                self.isSuccessSubject.send(true)
+                isSuccess = true
             }
         default:
             break
@@ -49,6 +44,6 @@ extension LoginViewModel: ASAuthorizationControllerDelegate {
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         print("Error \(error)")
-        self.isSuccessSubject.send(false)
+        isSuccess = false
     }
 }
