@@ -47,6 +47,9 @@ final class DetailScheduleViewController: UIViewController {
         return datePicker
     }()
 
+    var mode: DetailScheduleMode = .create
+
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -106,7 +109,13 @@ private extension DetailScheduleViewController {
     }
 
     func settingNavigationBar() {
-        navigationItem.title = "스케쥴 생성"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(touchUpStoreButton))
+        switch mode {
+        case .create:
+            navigationItem.title = "스케쥴 생성"
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(touchUpStoreButton))
+        case .update:
+            navigationItem.title = "스케쥴 수정"
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "수정", style: .plain, target: self, action: nil)
+        }
     }
 }
