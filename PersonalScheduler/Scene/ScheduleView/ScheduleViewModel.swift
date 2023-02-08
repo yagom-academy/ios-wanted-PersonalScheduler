@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol ScheduleViewModelDelegate: AnyObject {
+    func scheduleViewModel(didChange schedules: [Schedule])
+    func scheduleViewModel(selectedScheduleID id: String)
+    func scheduleViewModel(failedFetchData error: RemoteDBError)
+}

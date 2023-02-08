@@ -86,12 +86,12 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				E33299DE2992A14800EB425B /* Utility */,
 				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
 				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
 				E33299E42992C8D900EB425B /* Scene */,
 				E347AD76299249650022A5DB /* Service */,
 				E347AD74299249120022A5DB /* Repository */,
+				E33299DE2992A14800EB425B /* Utility */,
 				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
 				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
