@@ -72,10 +72,13 @@ private extension LoginViewController {
             }
             .store(in: &cancellable)
         
-//        facebookLoginButton
-//            .tapPublisher
-//            .sink { _ in self.viewModel.login(with: FacebookLoginService()) }
-//            .store(in: &cancellable)
+        facebookLoginButton
+            .tapPublisher
+            .sink { _ in
+                let repository = FacebookRepository()
+                self.viewModel.login(with: repository)
+            }
+            .store(in: &cancellable)
 
         appleLoginButton
             .tapPublisher

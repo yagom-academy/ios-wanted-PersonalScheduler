@@ -12,8 +12,8 @@ import KakaoSDKUser
 
 final class KakaoLoginRepository: LoginRepository {
     @Published private(set) var loginResult: Bool = false
-    private let service: LoginService
     private var cancellable = Set<AnyCancellable>()
+    let service: LoginService
     
     init(service: LoginService = FirebaseAuthService()) {
         self.service = service

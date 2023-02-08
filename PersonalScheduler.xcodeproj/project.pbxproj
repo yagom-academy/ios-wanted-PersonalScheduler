@@ -24,6 +24,7 @@
 		18F5F18E2993CFD7005B7733 /* KakaoLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F18D2993CFD7005B7733 /* KakaoLoginRepository.swift */; };
 		18F5F1982993ED27005B7733 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F5F1972993ED27005B7733 /* GoogleService-Info.plist */; };
 		18F5F19A2993F78A005B7733 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F1992993F78A005B7733 /* FirebaseAuthService.swift */; };
+		18F5F19D2993FEDA005B7733 /* FacebookLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F19C2993FEDA005B7733 /* FacebookLoginRepository.swift */; };
 		18FABA532992C6A800333D63 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FABA522992C6A800333D63 /* UIControl+Extension.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
@@ -41,6 +42,7 @@
 		18F5F18D2993CFD7005B7733 /* KakaoLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginRepository.swift; sourceTree = "<group>"; };
 		18F5F1972993ED27005B7733 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18F5F1992993F78A005B7733 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
+		18F5F19C2993FEDA005B7733 /* FacebookLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginRepository.swift; sourceTree = "<group>"; };
 		18FABA522992C6A800333D63 /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				18F5F18D2993CFD7005B7733 /* KakaoLoginRepository.swift */,
+				18F5F19C2993FEDA005B7733 /* FacebookLoginRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
 				18F5F18B2993CF66005B7733 /* LoginRepository.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				18F5F19D2993FEDA005B7733 /* FacebookLoginRepository.swift in Sources */,
 				18F5F18E2993CFD7005B7733 /* KakaoLoginRepository.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				18F5F19A2993F78A005B7733 /* FirebaseAuthService.swift in Sources */,

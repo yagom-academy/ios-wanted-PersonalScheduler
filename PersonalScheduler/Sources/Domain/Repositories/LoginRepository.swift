@@ -8,5 +8,6 @@ import Foundation
 import Combine
 
 protocol LoginRepository: AnyObject {
+    var service: LoginService { get }
     func login() -> AnyPublisher<Bool, Never>
 }
