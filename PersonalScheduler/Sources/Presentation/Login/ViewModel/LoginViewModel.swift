@@ -12,7 +12,7 @@ import FacebookLogin
 class LoginViewModel: NSObject {
     private var loginRepository: LoginRepository?
     private var cancellable = Set<AnyCancellable>()
-    @Published var isSuccess: Bool = false
+    @Published private(set) var isSuccess: Bool = false
     
     func login(with repository: LoginRepository) {
         self.loginRepository = repository
