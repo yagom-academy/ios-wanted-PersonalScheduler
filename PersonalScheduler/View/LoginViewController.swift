@@ -10,8 +10,9 @@ import UIKit
 final class LoginViewController: UIViewController {
 
     private let viewModel: LoginViewModel = LoginViewModel()
-    private let loginLabel = UILabel(text: "Login", font: .largeTitle, fontBold: true, textColor: .navy)
-    private let introduceLabel = UILabel(text: "and save your Schedule", textColor: .secondary)
+    
+    private lazy var loginLabel = UILabel(text: viewModel.title, font: .largeTitle, fontBold: true, textColor: .navy)
+    private lazy var introduceLabel = UILabel(text: viewModel.introduce, textColor: .secondary)
 
     private let calendarImageView: UIImageView = {
         let calendarImage = UIImage(named: "Calendar")
@@ -23,23 +24,29 @@ final class LoginViewController: UIViewController {
         return imageView
     }()
 
-    private lazy var LoginButton = { (image: UIImage?, action: Selector) -> UIButton in
-        let button = UIButton(frame: .zero)
-        button.addTarget(self, action: action, for: .touchUpInside)
-        button.setImage(image, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var kakaoLoginButton: LoginButton = {
+        let loginButton = LoginButton()
+        loginButton.configure(with: viewModel.kakaoLoginButtonViewModel)
+        loginButton.addTarget(self, action: #selector(loginWidthKakao), for: .touchUpInside)
 
-        return button
-    }
+        return loginButton
+    }()
+
+    private lazy var facebookLoginButton: LoginButton = {
+        let loginButton = LoginButton()
+        loginButton.configure(with: viewModel.facebookLoginButtonViewModel)
+
+        return loginButton
+    }()
 
     private let loginStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.spacing = 15
         stack.layer.cornerRadius = 30
-        stack.distribution = .fillProportionally
+        stack.distribution = .fill
         stack.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        stack.translatesAutoresizingMaskIntoConstraints = false
         stack.isLayoutMarginsRelativeArrangement = true
         stack.backgroundColor = .tertiary
 
@@ -49,13 +56,6 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         drawView()
-    }
-
-    private func generateLoginButtons() -> [UIButton] {
-        let kakaoLoginImage = UIImage(named: "KakaoLogin")
-        let kakaoLoginButton = self.LoginButton(kakaoLoginImage, #selector(loginWidthKakao))
-
-        return [kakaoLoginButton]
     }
 
     @objc private func loginWidthKakao() {
@@ -76,7 +76,8 @@ extension LoginViewController {
         [loginLabel, introduceLabel].forEach { label in
             loginStackView.addArrangedSubview(label)
         }
-        generateLoginButtons().forEach { loginButton in
+
+        [kakaoLoginButton, facebookLoginButton].forEach { loginButton in
             loginStackView.addArrangedSubview(loginButton)
         }
 
@@ -96,6 +97,9 @@ extension LoginViewController {
             loginStackView.topAnchor.constraint(equalTo: calendarImageView.bottomAnchor, constant: 20),
             loginStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -20),
             loginStackView.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier:  0.8),
+
+            kakaoLoginButton.heightAnchor.constraint(equalToConstant: 50),
+            facebookLoginButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
 }

@@ -8,8 +8,9 @@
 import UIKit
 
 struct loginButtonViewModel {
+
     let title: String
-    let logo: UIImage
+    let logo: UIImage?
     let backgroundColor: UIColor
     let textColor: UIColor
 }
