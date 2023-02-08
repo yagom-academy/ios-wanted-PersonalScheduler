@@ -42,13 +42,15 @@ extension ScheduleListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let currentDate = DateformatterManager.shared.convertDateToString(date: Date())
         guard let scheduleListCell: ScheduleListCell = tableView.dequeueReusableCell(withIdentifier: ScheduleListCell.identifier, for: indexPath) as? ScheduleListCell,
-              let goalDate = DateformatterManager.shared.convertStringToDate(dateText: ScheduleModel.scheduleList[indexPath.section].date) else {
+              let goalDate = DateformatterManager.shared.convertStringToDate(dateText: ScheduleModel.scheduleList[indexPath.section].date),
+              let currentDate = DateformatterManager.shared.convertStringToDate(dateText: currentDate) else {
             return ScheduleListCell()
         }
         scheduleListCell.configureCell(data: ScheduleModel.scheduleList[indexPath.section])
 
-        switch Date().compare(goalDate) {
+        switch currentDate.compare(goalDate) {
         case .orderedAscending, .orderedSame:
             scheduleListCell.layer.borderColor = UIColor(hex: "#04CC00").cgColor
         case .orderedDescending:
@@ -127,7 +129,10 @@ private extension ScheduleListViewController {
         guard let goalDate = DateformatterManager.shared.convertStringToDate(dateText: text) else {
             return nil
         }
-        switch Date().compare(goalDate) {
+        let currentDate = DateformatterManager.shared.convertDateToString(date: Date())
+        guard let currentDate = DateformatterManager.shared.convertStringToDate(dateText: currentDate) else { return nil }
+
+        switch currentDate.compare(goalDate) {
         case .orderedAscending, .orderedSame:
             label.textColor = UIColor(hex: "#04CC00")
         case .orderedDescending:
