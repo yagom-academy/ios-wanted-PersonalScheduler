@@ -27,6 +27,26 @@ final class FireStoreManager {
         fireStoreDB = Firestore.firestore().collection("Scedule")
     }
     
+    func load(completion: @escaping ([Schedule]) -> Void) {
+        var scedules: [Schedule] = []
+        
+        fireStoreDB.document(social).collection(userKey).getDocuments { querySnapshot, error in
+            guard error == nil else { return }
+            guard let snapshot = querySnapshot else { return }
+            
+            for document in snapshot.documents {
+                do {
+                    let data = try self.convertScedule(from: document)
+                    scedules.append(data)
+                } catch {
+                    print(error)
+                }
+            }
+            
+            completion(scedules)
+        }
+    }
+
     func add(data: Schedule) {
         print(userKey)
         fireStoreDB
@@ -47,5 +67,29 @@ final class FireStoreManager {
             .collection(userKey)
             .document(data.id.description)
             .delete()
+    }
+    
+    private func convertScedule(from document: QueryDocumentSnapshot) throws -> Schedule {
+        guard let id = UUID(uuidString: document.documentID),
+              let startStamp = document.data()["startDate"] as? Timestamp,
+              let endStamp = document.data()["endDate"] as? Timestamp else {
+            throw FireBaseError.dataError
+        }
+        
+        let title = document.data()["title"] as? String ?? ""
+        let content = document.data()["content"] as? String ?? ""
+
+        let startDate = startStamp.dateValue()
+        let endDate = endStamp.dateValue()
+        
+        let data = Schedule(
+            id: id,
+            startDate: startDate,
+            endDate: endDate,
+            title: title,
+            content: content
+        )
+        
+        return data
     }
 }
