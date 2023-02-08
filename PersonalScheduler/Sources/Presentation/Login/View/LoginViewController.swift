@@ -73,26 +73,33 @@ private extension LoginViewController {
             }
             .store(in: &cancellable)
         
-
-        
         facebookLoginButton
             .tapPublisher
             .sink { _ in
                 self.viewModel.login(with: FacebookLoginService())
             }
             .store(in: &cancellable)
-//
-//        appleLoginButton
-//            .tapPublisher
-//            .sink { _ in
-//                let request = ASAuthorizationAppleIDProvider().createRequest()
-//                request.requestedScopes = [.fullName, .email]
-//                let controller = ASAuthorizationController(authorizationRequests: [request])
-//                controller.delegate = self.viewModel
-//                controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
-//                controller.performRequests()
-//            }
-//            .store(in: &cancellable)
+
+        appleLoginButton
+            .tapPublisher
+            .sink { _ in
+                let provider = ASAuthorizationAppleIDProvider()
+                let request = provider.createRequest()
+                request.requestedScopes = [.fullName, .email]
+                
+                let controller = ASAuthorizationController(authorizationRequests: [request])
+                controller.delegate = self.viewModel
+                controller.presentationContextProvider = self
+                controller.performRequests()
+            }
+            .store(in: &cancellable)
+    }
+}
+
+// MARK: - Authorization Controller Context Providing
+extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return view.window ?? UIWindow()
     }
 }
 
@@ -141,13 +148,5 @@ private extension LoginViewController {
             appleLoginButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             appleLoginButton.topAnchor.constraint(equalTo: facebookLoginButton.bottomAnchor, constant: 30)
         ])
-    }
-}
-
-private extension UIButton {
-    var tapPublisher: AnyPublisher<Void, Never> {
-        controlPublisher(for: .touchUpInside)
-            .map { _ in }
-            .eraseToAnyPublisher()
     }
 }

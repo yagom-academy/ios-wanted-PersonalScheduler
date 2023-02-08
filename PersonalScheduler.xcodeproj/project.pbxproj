@@ -22,6 +22,7 @@
 		18C1EF912991097B00136466 /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF902991097B00136466 /* AppAuthCore */; };
 		18C1EF9629910EED00136466 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C1EF9529910EED00136466 /* GoogleService-Info.plist */; };
 		18F5F18029937F60005B7733 /* FacebookLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F17F29937F60005B7733 /* FacebookLoginService.swift */; };
+		18F5F1842993C773005B7733 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F1832993C773005B7733 /* UIButton+Extension.swift */; };
 		18FABA532992C6A800333D63 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FABA522992C6A800333D63 /* UIControl+Extension.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
@@ -37,6 +38,7 @@
 		18BEAD9829929A0F00679E18 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
 		18C1EF9529910EED00136466 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18F5F17F29937F60005B7733 /* FacebookLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginService.swift; sourceTree = "<group>"; };
+		18F5F1832993C773005B7733 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		18FABA522992C6A800333D63 /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				18FABA522992C6A800333D63 /* UIControl+Extension.swift */,
+				18F5F1832993C773005B7733 /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				188479422991453B00160A1B /* LoginViewModel.swift in Sources */,
 				18F5F18029937F60005B7733 /* FacebookLoginService.swift in Sources */,
 				18FABA532992C6A800333D63 /* UIControl+Extension.swift in Sources */,
+				18F5F1842993C773005B7733 /* UIButton+Extension.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,

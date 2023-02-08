@@ -7,5 +7,7 @@
 import Combine
 
 protocol LoginService {
-    func authorization() -> AnyPublisher<Bool, Never>
+    var isSuccess: PassthroughSubject<Bool, Never> { get }
+    
+    func login()
 }

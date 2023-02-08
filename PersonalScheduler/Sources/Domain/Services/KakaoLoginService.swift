@@ -11,11 +11,7 @@ import KakaoSDKCommon
 import KakaoSDKUser
 
 final class KakaoLoginService: LoginService {
-    @Published var isSuccess = false
-    func authorization() -> AnyPublisher<Bool, Never> {
-        login()
-        return AnyPublisher($isSuccess)
-    }
+    var isSuccess: PassthroughSubject<Bool, Never> = PassthroughSubject()
     
     func login() {
         if AuthApi.hasToken() {
@@ -33,7 +29,7 @@ final class KakaoLoginService: LoginService {
     
     func handleTokenError(error: Error?) {
         guard let error = error as? SdkError else {
-            isSuccess = false
+            isSuccess.send(false)
             return
         }
         
@@ -46,20 +42,20 @@ final class KakaoLoginService: LoginService {
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk { token, error in
                 guard error == nil else {
-                    self.isSuccess = false
+                    self.isSuccess.send(false)
                     return
                 }
-                self.isSuccess = true
+                self.isSuccess.send(true)
             }
         }
         
         if UserApi.isKakaoTalkLoginAvailable() == false {
             UserApi.shared.loginWithKakaoAccount { token, error in
                 guard error == nil else {
-                    self.isSuccess = false
+                    self.isSuccess.send(false)
                     return
                 }
-                self.isSuccess = true
+                self.isSuccess.send(true)
             }
         }
     }
@@ -67,15 +63,15 @@ final class KakaoLoginService: LoginService {
     func readUserInformation() {
         UserApi.shared.me { user, error in
             if let error = error {
-                self.isSuccess = false
+                self.isSuccess.send(false)
             } else {
                 guard let email = user?.kakaoAccount?.email,
                       let id = user?.id else {
-                    self.isSuccess = false
+                    self.isSuccess.send(false)
                     return
                 }
                 
-                self.isSuccess = true
+                self.isSuccess.send(true)
             }
         }
     }
