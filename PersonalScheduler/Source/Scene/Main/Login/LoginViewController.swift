@@ -20,18 +20,16 @@ class LoginViewController: UIViewController {
     // MARK: Private Enumeration
     
     private enum SNSType {
+        case normal
         case kakao
         case facebook
         case apple
     }
     
-    // MARK: Internal Properties
-    
-    let loginMode: LoginMode = .login
-    
     // MARK: Private Properties
     
-    private let normalLoginView = NormalLoginView()
+    private let normalLoginView = NormalLoginView(frame: .zero, mode: .login)
+    private let normalLoginViewCreateMode = NormalLoginView(frame: .zero, mode: .create)
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .headline).withSize(20)
@@ -86,8 +84,12 @@ class LoginViewController: UIViewController {
         configureView()
         configureLayout()
         configureButtonAction()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
-        normalLoginView.configureButtonText(loginMode)
+        configureDelegate()
     }
     
     func toggleFacebookLoginButton() {
@@ -98,6 +100,10 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .systemBackground
     }
     
+    private func configureDelegate() {
+        normalLoginView.delegate = self
+    }
+    
     private func configureButtonAction() {
         facebookLoginButton.delegate = self
         
@@ -105,28 +111,38 @@ class LoginViewController: UIViewController {
         appleLoginButton.addTarget(self, action: #selector(tapKakaoLoginButton), for: .touchDown)
     }
     
-    private func checkAuthLogIn(type: SNSType, id: String, password: String) {
-        var domainName = String()
-        
+    private func configureDomainName(type: SNSType) -> String {
         switch type {
+        case .normal:
+            return String()
         case .kakao:
-            domainName = "@kakaologin.com"
+            return "@kakaologin.com"
         case .facebook:
-            domainName = "@facebooklogin.com"
+            return "@facebooklogin.com"
         case .apple:
-            domainName = "@applelogin.com"
+            return "@applelogin.com"
         }
+    }
+    
+    private func checkAuthLogIn(type: SNSType, id: String, password: String) {
+        let domainName = configureDomainName(type: type)
         
-        Auth.auth().createUser(withEmail: String(id) + domainName, password: "\(id)") { authResult, error in
+        Auth.auth().createUser(withEmail: String(id) + domainName, password: password) { authResult, error in
             if let error = error {
                 print(error)
-                Auth.auth().signIn(withEmail: String(id) + domainName, password: "\(id)") { authResult, error in
-                    if let error = error {
-                        print(error)
-                    } else {
-                        self.dismiss(animated: true)
-                    }
-                }
+                self.signInAuth(type: type, id: id, password: password)
+            } else {
+                self.dismiss(animated: true)
+            }
+        }
+    }
+    
+    private func signInAuth(type: SNSType, id: String, password: String) {
+        let domainName = configureDomainName(type: type)
+        
+        Auth.auth().signIn(withEmail: String(id) + domainName, password: password) { authResult, error in
+            if let error = error {
+                print(error)
             } else {
                 self.dismiss(animated: true)
             }
@@ -224,7 +240,18 @@ extension LoginViewController: LoginButtonDelegate {
 }
 
 extension LoginViewController: UserInfoSendable {
-    func sendUserInfo(id: String, password: String) {
-        checkAuthLogIn(type: .facebook, id: id, password: password)
+    func createUserInfo(id: String, password: String) {
+        checkAuthLogIn(type: .normal, id: id, password: password)
+    }
+    
+    func presentCreateUserInfoView() {
+        let pushViewController = CreateUserInfoViewController()
+        
+        navigationController?.pushViewController(pushViewController, animated: true)
+        navigationItem.backButtonTitle = "뒤로가기"
+    }
+    
+    func signInUserInfo(id: String, password: String) {
+        signInAuth(type: .normal, id: id, password: password)
     }
 }

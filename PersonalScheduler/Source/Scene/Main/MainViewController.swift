@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
     
     private func checkLogin() {
         if Auth.auth().currentUser?.uid == nil {
-            let presentViewController = LoginViewController()
+            let presentViewController = UINavigationController(rootViewController: LoginViewController())
             
             navigationController?.present(presentViewController, animated: true)
         }
@@ -72,7 +72,8 @@ class MainViewController: UIViewController {
     
     @objc
     private func tapRightBarButton() {
-        let presentViewController = LoginViewController()
+        let loginViewController = LoginViewController()
+        let presentViewController = UINavigationController(rootViewController: loginViewController)
         
         do {
             try Auth.auth().signOut()
@@ -80,7 +81,7 @@ class MainViewController: UIViewController {
             print("Error signing out: %@", signOutError)
         }
         
-        presentViewController.toggleFacebookLoginButton()
+        loginViewController.toggleFacebookLoginButton()
         
         self.navigationController?.present(presentViewController, animated: true)
     }

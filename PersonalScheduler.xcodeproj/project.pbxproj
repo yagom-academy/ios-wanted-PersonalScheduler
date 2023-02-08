@@ -22,6 +22,7 @@
 		D055949B29923055000AD5F4 /* ScheduleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055949A29923055000AD5F4 /* ScheduleInfoView.swift */; };
 		D055F7062993C4FF007A7D51 /* NormalLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055F7052993C4FF007A7D51 /* NormalLoginView.swift */; };
 		D055F7082993E029007A7D51 /* UserInfoSendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055F7072993E029007A7D51 /* UserInfoSendable.swift */; };
+		D055F70C2993E5E5007A7D51 /* CreateUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055F70B2993E5E5007A7D51 /* CreateUserInfoViewController.swift */; };
 		D0C47547299234B900378CD2 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47546299234B900378CD2 /* Mode.swift */; };
 		D0C47549299286FD00378CD2 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47548299286FD00378CD2 /* AlertPresentable.swift */; };
 		D0C4754B29928DA800378CD2 /* DataSendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4754A29928DA800378CD2 /* DataSendable.swift */; };
@@ -47,6 +48,7 @@
 		D055949A29923055000AD5F4 /* ScheduleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInfoView.swift; sourceTree = "<group>"; };
 		D055F7052993C4FF007A7D51 /* NormalLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalLoginView.swift; sourceTree = "<group>"; };
 		D055F7072993E029007A7D51 /* UserInfoSendable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSendable.swift; sourceTree = "<group>"; };
+		D055F70B2993E5E5007A7D51 /* CreateUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserInfoViewController.swift; sourceTree = "<group>"; };
 		D0C47546299234B900378CD2 /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
 		D0C47548299286FD00378CD2 /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
 		D0C4754A29928DA800378CD2 /* DataSendable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSendable.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				D01D5A64299216C30000EA91 /* LoginViewController.swift */,
+				D055F70B2993E5E5007A7D51 /* CreateUserInfoViewController.swift */,
 				D055F7042993C4E1007A7D51 /* View */,
 			);
 			path = Login;
@@ -347,6 +350,7 @@
 				D0C47547299234B900378CD2 /* Mode.swift in Sources */,
 				D0C4754B29928DA800378CD2 /* DataSendable.swift in Sources */,
 				D0C47549299286FD00378CD2 /* AlertPresentable.swift in Sources */,
+				D055F70C2993E5E5007A7D51 /* CreateUserInfoViewController.swift in Sources */,
 				D055949B29923055000AD5F4 /* ScheduleInfoView.swift in Sources */,
 				D055F7062993C4FF007A7D51 /* NormalLoginView.swift in Sources */,
 			);

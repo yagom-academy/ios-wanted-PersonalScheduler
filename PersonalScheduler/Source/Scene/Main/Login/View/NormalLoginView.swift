@@ -90,20 +90,29 @@ class NormalLoginView: UIView {
     }()
     
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, mode: LoginMode) {
         super.init(frame: frame)
         
+        self.loginMode = mode
+        
         configureLayout()
-        configureNormalLoginButtonAction()
+        configureNormalLoginButtonAction(loginMode)
+        configureButtonText(loginMode)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureNormalLoginButtonAction() {
-        leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchDown)
-        rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchDown)
+    func configureNormalLoginButtonAction(_ mode: LoginMode) {
+        switch mode {
+        case .create:
+            leftButton.addTarget(self, action: #selector(tapCreateLeftButton), for: .touchDown)
+            rightButton.addTarget(self, action: #selector(tapCreateRightButton), for: .touchDown)
+        case .login:
+            leftButton.addTarget(self, action: #selector(tapLoginLeftButton), for: .touchDown)
+            rightButton.addTarget(self, action: #selector(tapLoginRightButton), for: .touchDown)
+        }
     }
     
     func configureButtonText(_ mode: LoginMode) {
@@ -113,7 +122,7 @@ class NormalLoginView: UIView {
             rightButton.setTitle("회원가입", for: .normal)
         case .create:
             leftButton.setTitle("생성", for: .normal)
-            rightButton.setTitle("취소", for: .normal)
+            rightButton.setTitle("초기화", for: .normal)
         }
     }
     
@@ -157,12 +166,28 @@ class NormalLoginView: UIView {
     }
     
     @objc
-    private func tapLeftButton() {
-        
+    private func tapLoginLeftButton() {
+        if let userID = idTextField.text,
+           let userPW = passwordTextField.text {
+            delegate?.signInUserInfo(id: userID, password: userPW)
+        }
     }
     
     @objc
-    private func tapRightButton() {
+    private func tapCreateLeftButton() {
+        if let userID = idTextField.text,
+           let userPW = passwordTextField.text {
+            delegate?.createUserInfo(id: userID, password: userPW)
+        }
+    }
+    
+    @objc
+    private func tapLoginRightButton() {
+        delegate?.presentCreateUserInfoView()
+    }
+    
+    @objc
+    private func tapCreateRightButton() {
         idTextField.text = String()
         passwordTextField.text = String()
     }
