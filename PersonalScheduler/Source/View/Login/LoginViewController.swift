@@ -35,6 +35,14 @@ final class LoginViewController: UIViewController {
         return button
     }()
     
+    private let kakaoLogoutButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("로그아웃", for: .normal)
+        button.setTitleColor(.systemRed, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     // MARK: - Life Cycle
     
     init(viewModel: LoginViewModel) {
@@ -61,7 +69,7 @@ final class LoginViewController: UIViewController {
         
         let safeArea = view.safeAreaLayoutGuide
         
-        [titleLabel, userInfoLabel, kakaoLoginButton].forEach(view.addSubview(_:))
+        [titleLabel, userInfoLabel, kakaoLoginButton, kakaoLogoutButton].forEach(view.addSubview(_:))
         
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -73,7 +81,10 @@ final class LoginViewController: UIViewController {
             kakaoLoginButton.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 100),
             kakaoLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             kakaoLoginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            kakaoLoginButton.heightAnchor.constraint(equalToConstant: 50)
+            kakaoLoginButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            kakaoLogoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            kakaoLogoutButton.topAnchor.constraint(equalTo: kakaoLoginButton.bottomAnchor, constant: 16)
         ])
     }
     
@@ -82,6 +93,11 @@ final class LoginViewController: UIViewController {
             self?.viewModel.tappedKakaoLoginButton()
         }
         kakaoLoginButton.addAction(kakaoLoginAction, for: .touchUpInside)
+        
+        let kakaoLogoutAction = UIAction { [weak self] _ in
+            self?.viewModel.kakaoLogout()
+        }
+        kakaoLogoutButton.addAction(kakaoLogoutAction, for: .touchUpInside)
     }
     
     private func bind() {
