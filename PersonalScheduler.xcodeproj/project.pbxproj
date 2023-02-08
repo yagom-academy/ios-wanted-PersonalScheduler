@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09AB6451299384D900036E75 /* ScheduleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB6450299384D900036E75 /* ScheduleListCell.swift */; };
+		09AB64532993E9C500036E75 /* DetailScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB64522993E9C500036E75 /* DetailScheduleViewController.swift */; };
 		09E95B5D2992A09D004E120A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E95B5C2992A09D004E120A /* UIColor+Extension.swift */; };
 		09E95B5F2992E3A2004E120A /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E95B5E2992E3A2004E120A /* ScheduleListViewController.swift */; };
 		57618FD49EE5975ED9C8A4FE /* Pods_PersonalScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D7EC747ED838E7863E7685 /* Pods_PersonalScheduler.framework */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		09AB6450299384D900036E75 /* ScheduleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListCell.swift; sourceTree = "<group>"; };
+		09AB64522993E9C500036E75 /* DetailScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScheduleViewController.swift; sourceTree = "<group>"; };
 		09E95B5C2992A09D004E120A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		09E95B5E2992E3A2004E120A /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
 		0ED79E58DA0057F148F527CE /* Pods-PersonalScheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.debug.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.debug.xcconfig"; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			children = (
 				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
 				09E95B5E2992E3A2004E120A /* ScheduleListViewController.swift */,
+				09AB64522993E9C500036E75 /* DetailScheduleViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				09E95B5D2992A09D004E120A /* UIColor+Extension.swift in Sources */,
+				09AB64532993E9C500036E75 /* DetailScheduleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
