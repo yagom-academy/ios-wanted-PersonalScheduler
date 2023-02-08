@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18009F4F29936C9F009B0A55 /* KakaoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18009F4E29936C9F009B0A55 /* KakaoService.swift */; };
+		18009F5329936CC3009B0A55 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18009F5229936CC3009B0A55 /* LoginService.swift */; };
 		188479422991453B00160A1B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188479412991453B00160A1B /* LoginViewModel.swift */; };
 		18C1EF7C2991038900136466 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF7B2991038900136466 /* FirebaseAuth */; };
 		18C1EF7E2991038900136466 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF7D2991038900136466 /* FirebaseFirestore */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18009F4E29936C9F009B0A55 /* KakaoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoService.swift; sourceTree = "<group>"; };
+		18009F5229936CC3009B0A55 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		188479412991453B00160A1B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		18BEAD9829929A0F00679E18 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
 		18C1EF9529910EED00136466 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -62,18 +66,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18009F4829936BBA009B0A55 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				18009F4929936BC6009B0A55 /* Extensions */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		18009F4929936BC6009B0A55 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				18FABA522992C6A800333D63 /* UIControl+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		18009F4C29936C73009B0A55 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				18009F4D29936C8F009B0A55 /* Services */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		18009F4D29936C8F009B0A55 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				18009F4E29936C9F009B0A55 /* KakaoService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		188479392991447800160A1B /* Application */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		1884793A2991447F00160A1B /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Domain;
 			sourceTree = "<group>";
 		};
 		1884793B2991448300160A1B /* Presentation */ = {
@@ -87,7 +116,7 @@
 		1884793C2991448900160A1B /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				18FABA512992C69A00333D63 /* Publishers */,
+				18009F5229936CC3009B0A55 /* LoginService.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -95,6 +124,7 @@
 		1884793D2991448C00160A1B /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				18009F4829936BBA009B0A55 /* Utility */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -139,21 +169,13 @@
 		18C1EF9329910BF900136466 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				18009F4C29936C73009B0A55 /* Domain */,
 				188479392991447800160A1B /* Application */,
 				1884793C2991448900160A1B /* Data */,
-				1884793A2991447F00160A1B /* Domain */,
 				1884793D2991448C00160A1B /* Infrastructure */,
 				1884793B2991448300160A1B /* Presentation */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		18FABA512992C69A00333D63 /* Publishers */ = {
-			isa = PBXGroup;
-			children = (
-				18FABA522992C6A800333D63 /* UIControl+Extension.swift */,
-			);
-			path = Publishers;
 			sourceTree = "<group>";
 		};
 		63AAAAF52967EA2600775EC3 = {
@@ -277,6 +299,8 @@
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				18009F4F29936C9F009B0A55 /* KakaoService.swift in Sources */,
+				18009F5329936CC3009B0A55 /* LoginService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

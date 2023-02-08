@@ -13,7 +13,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakaoe4508b7d898e0337970b66be44af9dec</string>
+				<string>kakaoee4508b7d898e0337970b66be44af9dec</string>
 			</array>
 		</dict>
 		<dict>
@@ -35,6 +35,8 @@
 	<string>심플한투두</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>kakaolink</string>
+		<string>kakaompassauth</string>
 		<string>fbapi</string>
 		<string>fb-messenger-share-api</string>
 	</array>
