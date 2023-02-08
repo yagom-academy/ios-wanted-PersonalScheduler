@@ -81,7 +81,6 @@ class LoginViewController: UIViewController {
         configureView()
         configureLayout()
         configureButtonAction()
-        facebookLoginButton.delegate = self
     }
     
     private func checkToken() {
@@ -97,6 +96,8 @@ class LoginViewController: UIViewController {
     }
     
     private func configureButtonAction() {
+        facebookLoginButton.delegate = self
+        
         kakaoLoginButton.addTarget(self, action: #selector(tapKakaoLoginButton), for: .touchDown)
         appleLoginButton.addTarget(self, action: #selector(tapKakaoLoginButton), for: .touchDown)
     }
@@ -108,12 +109,13 @@ class LoginViewController: UIViewController {
             }
             else {
                 guard let id = user?.id else { return }
-                Auth.auth().createUser(withEmail: "\(id)@dragon.com", password: "\(id)") {
+                Auth.auth().createUser(withEmail: "\(id)@kakaologin.com", password: "\(id)") {
                     authResult, error in
                     if let error = error {
                         print(error)
+                    } else {
+                        self.dismiss(animated: true)
                     }
-                    self.dismiss(animated: true)
                 }
             }
         }
@@ -189,11 +191,20 @@ class LoginViewController: UIViewController {
 extension LoginViewController: LoginButtonDelegate {
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if let error = error {
-            print(error.localizedDescription)
-            return
+            print(error)
         } else {
-            print(result)
-            dismiss(animated: true)
+            if let result = result {
+                if let id = result.token?.userID {
+                    Auth.auth().createUser(withEmail: "\(id)@facebooklogin.com", password: "\(id)") {
+                        authResult, error in
+                        if let error = error {
+                            print(error)
+                        } else {
+                            self.dismiss(animated: true)
+                        }
+                    }
+                }
+            }
         }
     }
     

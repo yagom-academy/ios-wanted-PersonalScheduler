@@ -27,11 +27,11 @@ class MainViewController: UIViewController {
     }
     
     private func checkLogin() {
-//        if Auth.auth().currentUser?.uid == nil {
+        if Auth.auth().currentUser?.uid == nil {
             let presentViewController = LoginViewController()
             
             navigationController?.present(presentViewController, animated: true)
-//        }
+        }
     }
     
     private func configureView() {
