@@ -60,7 +60,11 @@ final class DetailScheduleViewController: UIViewController {
 
 // MARK: - Objc Method
 private extension DetailScheduleViewController {
-    @objc func touchUpStoreButton() {
+    @objc func touchUpCreateButton() {
+        navigationController?.popViewController(animated: true)
+    }
+
+    @objc func touchUpUpdateButton() {
         navigationController?.popViewController(animated: true)
     }
 }
@@ -112,10 +116,10 @@ private extension DetailScheduleViewController {
         switch mode {
         case .create:
             navigationItem.title = "스케쥴 생성"
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(touchUpStoreButton))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(touchUpCreateButton))
         case .update:
             navigationItem.title = "스케쥴 수정"
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "수정", style: .plain, target: self, action: nil)
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(touchUpUpdateButton))
         }
     }
 }
