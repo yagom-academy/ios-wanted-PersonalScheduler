@@ -173,10 +173,9 @@
 		D01D5A69299217D20000EA91 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D0C4754C2993657400378CD2 /* Protocol */,
 				D01D5A6A299218040000EA91 /* Schedule.swift */,
 				D0C47546299234B900378CD2 /* ManageMode.swift */,
-				D0C47548299286FD00378CD2 /* AlertPresentable.swift */,
-				D0C4754A29928DA800378CD2 /* DataSendable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,6 +195,15 @@
 				D055949A29923055000AD5F4 /* ScheduleInfoView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D0C4754C2993657400378CD2 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D0C47548299286FD00378CD2 /* AlertPresentable.swift */,
+				D0C4754A29928DA800378CD2 /* DataSendable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

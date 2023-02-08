@@ -10,6 +10,7 @@ import FirebaseAuth
 import FirebaseCore
 import FBSDKLoginKit
 import FBSDKCoreKit
+import KakaoSDKCommon
 import KakaoSDKUser
 import KakaoSDKAuth
 import AuthenticationServices
@@ -42,6 +43,7 @@ class LoginViewController: UIViewController {
     }()
     private let facebookLoginButton: FBLoginButton = {
         let button = FBLoginButton()
+        button.permissions = ["public_profile", "email"]
         return button
     }()
     private let appleLoginButton: ASAuthorizationAppleIDButton = {
@@ -105,13 +107,14 @@ class LoginViewController: UIViewController {
                 print(error)
             }
             else {
-                print("me() success.")
-                
-                
-                let nickname = user?.kakaoAccount?.profile?.nickname
-                let email = user?.kakaoAccount?.email
-                
-                self.dismiss(animated: true)
+                guard let id = user?.id else { return }
+                Auth.auth().createUser(withEmail: "\(id)@dragon.com", password: "\(id)") {
+                    authResult, error in
+                    if let error = error {
+                        print(error)
+                    }
+                    self.dismiss(animated: true)
+                }
             }
         }
     }
@@ -126,7 +129,7 @@ class LoginViewController: UIViewController {
         totalStackView.addArrangedSubview(titleLabel)
         totalStackView.addArrangedSubview(loginStackView)
     }
-
+    
     private func configureLayout() {
         setUpStackView()
         
@@ -154,7 +157,7 @@ class LoginViewController: UIViewController {
     
     @objc
     private func tapKakaoLoginButton() {
-        if (UserApi.isKakaoTalkLoginAvailable()) {
+        if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk { oauthToken, error in
                 if let error = error {
                     print(error)
@@ -188,9 +191,10 @@ extension LoginViewController: LoginButtonDelegate {
         if let error = error {
             print(error.localizedDescription)
             return
+        } else {
+            print(result)
+            dismiss(animated: true)
         }
-        
-        dismiss(animated: true)
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginKit.FBLoginButton) {}
