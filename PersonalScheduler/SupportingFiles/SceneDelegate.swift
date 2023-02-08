@@ -30,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if (AuthApi.isKakaoTalkLoginUrl(url)) {
             _ = AuthController.handleOpenUrl(url: url)
+            return
         }
 
         ApplicationDelegate.shared.application(
