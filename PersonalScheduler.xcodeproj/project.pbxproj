@@ -10,6 +10,7 @@
 		41ADCE152992822C001984D3 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADCE142992822C001984D3 /* UILabel+.swift */; };
 		41B187EA29933A7200DF0CB4 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 41B187E929933A7200DF0CB4 /* FacebookCore */; };
 		41B187EC29933A7200DF0CB4 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 41B187EB29933A7200DF0CB4 /* FacebookLogin */; };
+		41B187EE29934DA700DF0CB4 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B187ED29934DA700DF0CB4 /* LoginButton.swift */; };
 		41BC370F29921A54000A5ED7 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC370E29921A54000A5ED7 /* UIColor+.swift */; };
 		41BC371729922F8D000A5ED7 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 41BC371629922F8D000A5ED7 /* KakaoSDKAuth */; };
 		41BC371929922F8D000A5ED7 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 41BC371829922F8D000A5ED7 /* KakaoSDKCommon */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		41ADCE142992822C001984D3 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		41B187ED29934DA700DF0CB4 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		41BC370E29921A54000A5ED7 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		41BC371C29923251000A5ED7 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		41BC371D299251F1000A5ED7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
+				41B187ED29934DA700DF0CB4 /* LoginButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				41ADCE152992822C001984D3 /* UILabel+.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				41B187EE29934DA700DF0CB4 /* LoginButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
