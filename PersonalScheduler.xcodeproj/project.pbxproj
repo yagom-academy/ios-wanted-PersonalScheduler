@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3C1B336C29928FC900AF9CA6 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1B336B29928FC900AF9CA6 /* Schedule.swift */; };
+		3C1B336F2992B1E000AF9CA6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3C1B336E2992B1E000AF9CA6 /* FirebaseAuth */; };
+		3C1B337229935B9400AF9CA6 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1B337129935B9400AF9CA6 /* DateFormatter+Extension.swift */; };
+		3C1B33742993667D00AF9CA6 /* Social.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1B33732993667D00AF9CA6 /* Social.swift */; };
 		3C3959B229923386006D2E52 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3959B129923386006D2E52 /* LoginViewModel.swift */; };
 		3C3959B429923C5B006D2E52 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3959B329923C5B006D2E52 /* LoginViewController.swift */; };
 		3C8AB49C2991617F00A9E241 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49B2991617F00A9E241 /* KakaoSDKAuth */; };
@@ -25,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		3C1B336B29928FC900AF9CA6 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		3C1B337129935B9400AF9CA6 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		3C1B33732993667D00AF9CA6 /* Social.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social.swift; sourceTree = "<group>"; };
 		3C3959B129923386006D2E52 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3C3959B329923C5B006D2E52 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3CC7AA0A29922D5A00DB3B56 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -44,6 +49,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CF4FE4D2992846200226CD1 /* FirebaseFirestoreSwift in Frameworks */,
+				3C1B336F2992B1E000AF9CA6 /* FirebaseAuth in Frameworks */,
 				3C8AB49E2991617F00A9E241 /* KakaoSDKCommon in Frameworks */,
 				3CF4FE4B2992846200226CD1 /* FirebaseFirestore in Frameworks */,
 				3C8AB49C2991617F00A9E241 /* KakaoSDKAuth in Frameworks */,
@@ -58,13 +64,30 @@
 			isa = PBXGroup;
 			children = (
 				3C1B336B29928FC900AF9CA6 /* Schedule.swift */,
+				3C1B33732993667D00AF9CA6 /* Social.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3C1B336D2992B1E000AF9CA6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3C1B337029935B8200AF9CA6 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				3C1B337129935B9400AF9CA6 /* DateFormatter+Extension.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		3CC7AA0629922A7E00DB3B56 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				3C1B337029935B8200AF9CA6 /* Util */,
 				3C1B336A29928F9F00AF9CA6 /* Model */,
 				3CF4FE4E299288CD00226CD1 /* Network */,
 				3CC7AA0829922A8C00DB3B56 /* Application */,
@@ -116,6 +139,7 @@
 			children = (
 				63AAAB002967EA2600775EC3 /* PersonalScheduler */,
 				63AAAAFF2967EA2600775EC3 /* Products */,
+				3C1B336D2992B1E000AF9CA6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -158,6 +182,7 @@
 				3C8AB49F2991617F00A9E241 /* KakaoSDKUser */,
 				3CF4FE4A2992846200226CD1 /* FirebaseFirestore */,
 				3CF4FE4C2992846200226CD1 /* FirebaseFirestoreSwift */,
+				3C1B336E2992B1E000AF9CA6 /* FirebaseAuth */,
 			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
@@ -220,7 +245,9 @@
 			files = (
 				3C1B336C29928FC900AF9CA6 /* Schedule.swift in Sources */,
 				3C3959B229923386006D2E52 /* LoginViewModel.swift in Sources */,
+				3C1B33742993667D00AF9CA6 /* Social.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				3C1B337229935B9400AF9CA6 /* DateFormatter+Extension.swift in Sources */,
 				3C3959B429923C5B006D2E52 /* LoginViewController.swift in Sources */,
 				3CF4FE50299288FC00226CD1 /* FireStoreManager.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
@@ -452,6 +479,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3C1B336E2992B1E000AF9CA6 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CF4FE492992846200226CD1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		3C8AB49B2991617F00A9E241 /* KakaoSDKAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3C8AB49A2991617F00A9E241 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
