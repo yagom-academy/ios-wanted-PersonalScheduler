@@ -43,7 +43,6 @@ class LoginViewController: UIViewController {
     }()
     private let facebookLoginButton: FBLoginButton = {
         let button = FBLoginButton()
-        button.permissions = ["public_profile", "email"]
         return button
     }()
     private let appleLoginButton: ASAuthorizationAppleIDButton = {
@@ -83,6 +82,10 @@ class LoginViewController: UIViewController {
         configureButtonAction()
     }
     
+    func toggleFacebookLoginButton() {
+        facebookLoginButton.isSelected = false
+    }
+    
     private func checkToken() {
         if let token = AccessToken.current,
            !token.isExpired {
@@ -106,16 +109,26 @@ class LoginViewController: UIViewController {
         UserApi.shared.me() {(user, error) in
             if let error = error {
                 print(error)
-            }
-            else {
-                guard let id = user?.id else { return }
-                Auth.auth().createUser(withEmail: "\(id)@kakaologin.com", password: "\(id)") {
-                    authResult, error in
-                    if let error = error {
-                        print(error)
-                    } else {
-                        self.dismiss(animated: true)
-                    }
+            } else {
+                if let id = user?.id {
+                    Auth.auth().createUser(
+                        withEmail: "\(id)@kakaologin.com",
+                        password: "\(id)") { authResult, error in
+                            if let error = error {
+                                print(error)
+                                Auth.auth().signIn(
+                                    withEmail: "\(id)@kakaologin.com",
+                                    password: "\(id)") { authResult, error in
+                                        if let error = error {
+                                            print(error)
+                                        } else {
+                                            self.dismiss(animated: true)
+                                        }
+                                    }
+                            } else {
+                                self.dismiss(animated: true)
+                            }
+                        }
                 }
             }
         }
@@ -195,14 +208,23 @@ extension LoginViewController: LoginButtonDelegate {
         } else {
             if let result = result {
                 if let id = result.token?.userID {
-                    Auth.auth().createUser(withEmail: "\(id)@facebooklogin.com", password: "\(id)") {
-                        authResult, error in
-                        if let error = error {
-                            print(error)
-                        } else {
-                            self.dismiss(animated: true)
+                    Auth.auth().createUser(
+                        withEmail: "\(id)@facebooklogin.com",
+                        password: "\(id)") { authResult, error in
+                            if let error = error {
+                                print(error)
+                                Auth.auth().signIn(
+                                    withEmail: "\(id)@facebooklogin.com",
+                                    password: "\(id)") { authResult, error in
+                                        if let error = error {
+                                            print(error)
+                                        } else {
+                                            self.dismiss(animated: true)
+                                        }
+                                    }
+                                self.dismiss(animated: true)
+                            }
                         }
-                    }
                 }
             }
         }

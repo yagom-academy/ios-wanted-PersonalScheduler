@@ -7,6 +7,9 @@
 
 import UIKit
 import FirebaseAuth
+import KakaoSDKAuth
+import KakaoSDKUser
+import KakaoSDKCommon
 
 class MainViewController: UIViewController {
     
@@ -20,10 +23,15 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkLogin()
         configureView()
         configureLayout()
         listView.configureTableView(with: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        checkLogin()
     }
     
     private func checkLogin() {
@@ -39,7 +47,7 @@ class MainViewController: UIViewController {
         
         navigationItem.title = "Personal Scheduler"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: .add,
+            image: .actions,
             style: .done,
             target: self,
             action: #selector(tapRightBarButton)
@@ -67,6 +75,21 @@ class MainViewController: UIViewController {
     
     @objc
     private func tapRightBarButton() {
+        let presentViewController = LoginViewController()
+        
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+        
+        presentViewController.toggleFacebookLoginButton()
+        
+        self.navigationController?.present(presentViewController, animated: true)
+    }
+    
+    @objc
+    private func tapAddButton() {
         let pushViewController = ScheduleInfoViewController()
         
         pushViewController.mode = .create
