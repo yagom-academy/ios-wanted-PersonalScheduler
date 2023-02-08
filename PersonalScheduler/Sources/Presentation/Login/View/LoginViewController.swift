@@ -62,30 +62,42 @@ private extension LoginViewController {
         kakaoLoginButton
             .tapPublisher
             .sink { _ in
-                self.viewModel.loginKakao()
+                self.viewModel.login(with: KakaoLoginService())
             }
             .store(in: &cancellable)
         
-        facebookLoginButton
-            .tapPublisher
-            .sink { _ in
-                self.viewModel.faceBookLogin(from: self) { result in
-                    print(result)
+        viewModel.isSuccessSubject
+            .sink { isSuccess in
+                if isSuccess {
+                    let controller = UIViewController()
+                    controller.view.backgroundColor = .red
+                    controller.modalPresentationStyle = .fullScreen
+                    controller.modalTransitionStyle = .crossDissolve
+                    self.present(controller, animated: true)
                 }
             }
             .store(in: &cancellable)
         
-        appleLoginButton
-            .tapPublisher
-            .sink { _ in
-                let request = ASAuthorizationAppleIDProvider().createRequest()
-                request.requestedScopes = [.fullName, .email]
-                let controller = ASAuthorizationController(authorizationRequests: [request])
-                controller.delegate = self.viewModel
-                controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
-                controller.performRequests()
-            }
-            .store(in: &cancellable)
+//        facebookLoginButton
+//            .tapPublisher
+//            .sink { _ in
+//                self.viewModel.faceBookLogin(from: self) { result in
+//                    print(result)
+//                }
+//            }
+//            .store(in: &cancellable)
+//
+//        appleLoginButton
+//            .tapPublisher
+//            .sink { _ in
+//                let request = ASAuthorizationAppleIDProvider().createRequest()
+//                request.requestedScopes = [.fullName, .email]
+//                let controller = ASAuthorizationController(authorizationRequests: [request])
+//                controller.delegate = self.viewModel
+//                controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
+//                controller.performRequests()
+//            }
+//            .store(in: &cancellable)
     }
 }
 
