@@ -13,6 +13,14 @@ class ScheduleListViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .systemBackground
+        settingNavigationBar()
+    }
+}
+
+// MARK: - UIConfiguration
+private extension ScheduleListViewController {
+    func settingNavigationBar() {
         navigationItem.title = "스케쥴케어"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
     }
 }
