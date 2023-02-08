@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09AB6451299384D900036E75 /* ScheduleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB6450299384D900036E75 /* ScheduleListCell.swift */; };
 		09E95B5D2992A09D004E120A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E95B5C2992A09D004E120A /* UIColor+Extension.swift */; };
 		09E95B5F2992E3A2004E120A /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E95B5E2992E3A2004E120A /* ScheduleListViewController.swift */; };
 		57618FD49EE5975ED9C8A4FE /* Pods_PersonalScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D7EC747ED838E7863E7685 /* Pods_PersonalScheduler.framework */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09AB6450299384D900036E75 /* ScheduleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListCell.swift; sourceTree = "<group>"; };
 		09E95B5C2992A09D004E120A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		09E95B5E2992E3A2004E120A /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
 		0ED79E58DA0057F148F527CE /* Pods-PersonalScheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.debug.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.debug.xcconfig"; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 		09E95B5829929FD0004E120A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09AB6450299384D900036E75 /* ScheduleListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09AB6451299384D900036E75 /* ScheduleListCell.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
 				09E95B5F2992E3A2004E120A /* ScheduleListViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,

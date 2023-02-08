@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScheduleListViewController: UIViewController {
+final class ScheduleListViewController: UIViewController {
 
     // MARK: - Property
     private let tableView: UITableView = {
