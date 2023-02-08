@@ -13,6 +13,7 @@
 		415BA1882993B22100EE88B6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 415BA1872993B22100EE88B6 /* FirebaseFirestore */; };
 		415BA18A2993B22100EE88B6 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 415BA1892993B22100EE88B6 /* FirebaseFirestoreSwift */; };
 		415BA18E2993C66400EE88B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415BA18D2993C66400EE88B6 /* ViewController.swift */; };
+		415BA1902993C80400EE88B6 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415BA18F2993C80400EE88B6 /* Observable.swift */; };
 		41ADCE152992822C001984D3 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADCE142992822C001984D3 /* UILabel+.swift */; };
 		41B187EA29933A7200DF0CB4 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 41B187E929933A7200DF0CB4 /* FacebookCore */; };
 		41B187EC29933A7200DF0CB4 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 41B187EB29933A7200DF0CB4 /* FacebookLogin */; };
@@ -36,6 +37,7 @@
 		415BA180299386DE00EE88B6 /* LoginButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonViewModel.swift; sourceTree = "<group>"; };
 		415BA1822993B0A500EE88B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		415BA18D2993C66400EE88B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		415BA18F2993C80400EE88B6 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		41ADCE142992822C001984D3 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		41B187ED29934DA700DF0CB4 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		41BC370E29921A54000A5ED7 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				41C3CC792992A0EB00F269CE /* UserInfo.swift */,
 				41C3CC7B2992A97F00F269CE /* Event.swift */,
+				415BA18F2993C80400EE88B6 /* Observable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				415BA1902993C80400EE88B6 /* Observable.swift in Sources */,
 				41C3CC7429928A3500F269CE /* UIFont+.swift in Sources */,
 				41BC371E299251F1000A5ED7 /* LoginViewModel.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,

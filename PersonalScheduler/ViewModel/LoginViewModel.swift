@@ -12,8 +12,8 @@ import FacebookLogin
 import Firebase
 
 final class LoginViewModel {
-    private var userInfo: UserInfo? = nil
-    private(set) var title: String = "Schedule"
+    private var userInfo: Observable<UserInfo?> = Observable(nil)
+    private(set) var title: String = "Scheduler"
     private(set) var introduce: String = "Login and save your Schedule"
     
     private(set) var kakaoLoginButtonViewModel = loginButtonViewModel(title: "Login with Kakao",
@@ -62,7 +62,7 @@ extension LoginViewModel {
                 print(error)
             }
             guard let id = user?.id else { return }
-            self.userInfo = UserInfo(id: "kakao\(id)")
+            self.userInfo.value = UserInfo(id: "kakao\(id)")
         }
     }
 }
@@ -91,7 +91,7 @@ extension LoginViewModel {
                 return
             }
             
-            self.userInfo = UserInfo(id: "facebook"+id)
+            self.userInfo.value = UserInfo(id: "facebook"+id)
 
             let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
             Auth.auth().signIn(with: credential)
