@@ -25,6 +25,7 @@
 		E33299EC2992C96F00EB425B /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299EB2992C96F00EB425B /* ScheduleViewController.swift */; };
 		E33299EF299385A500EB425B /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = E33299EE299385A500EB425B /* FacebookCore */; };
 		E33299F1299385A500EB425B /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = E33299F0299385A500EB425B /* FacebookLogin */; };
+		E33299F32993C27900EB425B /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299F22993C27900EB425B /* LoginService.swift */; };
 		E347AD452991353D0022A5DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E347AD442991353D0022A5DB /* GoogleService-Info.plist */; };
 		E347AD6D29916E360022A5DB /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E347AD6C29916E360022A5DB /* Repository.swift */; };
 		E347AD6F299171610022A5DB /* DefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E347AD6E299171610022A5DB /* DefaultRepository.swift */; };
@@ -46,6 +47,7 @@
 		E33299E52992C90800EB425B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E33299E92992C95A00EB425B /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		E33299EB2992C96F00EB425B /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		E33299F22993C27900EB425B /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		E347AD442991353D0022A5DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E347AD6C29916E360022A5DB /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		E347AD6E299171610022A5DB /* DefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepository.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				E33299DC29929B2300EB425B /* ScheduleService.swift */,
+				E33299F22993C27900EB425B /* LoginService.swift */,
 				E33299E12992C6A800EB425B /* Protocol */,
 				E347AD70299248DB0022A5DB /* Schedule.swift */,
 			);
@@ -268,6 +271,7 @@
 				E33299E32992C6BC00EB425B /* ScheduleServiceable.swift in Sources */,
 				E33299E02992A16600EB425B /* RemoteDBError.swift in Sources */,
 				E33299EA2992C95A00EB425B /* ScheduleViewModel.swift in Sources */,
+				E33299F32993C27900EB425B /* LoginService.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				E33299DD29929B2300EB425B /* ScheduleService.swift in Sources */,
