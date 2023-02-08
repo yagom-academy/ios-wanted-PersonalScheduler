@@ -1,18 +1,23 @@
 //
-//  KakaoService.swift
+//  KakaoLoginRepository.swift
 //  PersonalScheduler
 //
 //  Copyright (c) 2023 Minii All rights reserved.
 
 import Combine
-import Foundation
 import FirebaseAuth
 import KakaoSDKAuth
 import KakaoSDKCommon
 import KakaoSDKUser
 
-final class KakaoLoginService: LoginService {
-    var isSuccess: PassthroughSubject<Bool, Never> = PassthroughSubject()
+final class KakaoLoginRepository: LoginRepository {
+    @Published private(set) var loginResult: Bool = false
+    private let service: LoginService
+    private var cancellable = Set<AnyCancellable>()
+    
+    init(service: LoginService = FirebaseAuthService()) {
+        self.service = service
+    }
     
     func login() -> AnyPublisher<Bool, Never> {
         if AuthApi.hasToken() == true {
@@ -28,8 +33,7 @@ final class KakaoLoginService: LoginService {
         if AuthApi.hasToken() == false {
             self.authorizationKakao()
         }
-        
-        return isSuccess.eraseToAnyPublisher()
+        return AnyPublisher($loginResult)
     }
     
     private func tokenHandle() {
@@ -45,7 +49,7 @@ final class KakaoLoginService: LoginService {
     
     private func handleTokenError(error: Error?) {
         guard let error = error as? SdkError else {
-            isSuccess.send(false)
+            self.loginResult = false
             return
         }
         
@@ -67,7 +71,7 @@ final class KakaoLoginService: LoginService {
     private func handleToken(token: OAuthToken?, error: Error?) {
         guard error == nil,
               let idToken = token?.idToken else {
-            self.isSuccess.send(false)
+            self.loginResult = false
             return
         }
         
@@ -81,13 +85,9 @@ final class KakaoLoginService: LoginService {
             rawNonce: nil
         )
         
-        Auth.auth().signIn(with: credential) { result, error in
-            guard error == nil else {
-                self.isSuccess.send(false)
-                return
-            }
-            
-            self.isSuccess.send(true)
-        }
+        service.login(with: credential)
+            .sink { self.loginResult = $0 }
+            .store(in: &cancellable)
+        
     }
 }

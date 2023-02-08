@@ -24,15 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
         return true
     }
-    
-    func application(
-        _ app: UIApplication,
-        open url: URL,
-        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
-    ) -> Bool {
-        let result = Auth.auth().canHandle(url)
-        return result
-    }
 
     // MARK: UISceneSession Lifecycle
     func application(

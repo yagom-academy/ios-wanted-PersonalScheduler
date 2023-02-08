@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18009F4F29936C9F009B0A55 /* KakaoLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18009F4E29936C9F009B0A55 /* KakaoLoginService.swift */; };
 		18009F5329936CC3009B0A55 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18009F5229936CC3009B0A55 /* LoginService.swift */; };
 		188479422991453B00160A1B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188479412991453B00160A1B /* LoginViewModel.swift */; };
 		18C1EF7C2991038900136466 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF7B2991038900136466 /* FirebaseAuth */; };
@@ -20,11 +19,11 @@
 		18C1EF8C2991074C00136466 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF8B2991074C00136466 /* FacebookLogin */; };
 		18C1EF8F2991097B00136466 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF8E2991097B00136466 /* AppAuth */; };
 		18C1EF912991097B00136466 /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF902991097B00136466 /* AppAuthCore */; };
-		18F5F18029937F60005B7733 /* FacebookLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F17F29937F60005B7733 /* FacebookLoginService.swift */; };
 		18F5F1842993C773005B7733 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F1832993C773005B7733 /* UIButton+Extension.swift */; };
 		18F5F18B2993CF66005B7733 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F18A2993CF66005B7733 /* LoginRepository.swift */; };
-		18F5F18E2993CFD7005B7733 /* SocialLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F18D2993CFD7005B7733 /* SocialLoginRepository.swift */; };
+		18F5F18E2993CFD7005B7733 /* KakaoLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F18D2993CFD7005B7733 /* KakaoLoginRepository.swift */; };
 		18F5F1982993ED27005B7733 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F5F1972993ED27005B7733 /* GoogleService-Info.plist */; };
+		18F5F19A2993F78A005B7733 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F1992993F78A005B7733 /* FirebaseAuthService.swift */; };
 		18FABA532992C6A800333D63 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FABA522992C6A800333D63 /* UIControl+Extension.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
@@ -34,15 +33,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		18009F4E29936C9F009B0A55 /* KakaoLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginService.swift; sourceTree = "<group>"; };
 		18009F5229936CC3009B0A55 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		188479412991453B00160A1B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		18BEAD9829929A0F00679E18 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
-		18F5F17F29937F60005B7733 /* FacebookLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginService.swift; sourceTree = "<group>"; };
 		18F5F1832993C773005B7733 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		18F5F18A2993CF66005B7733 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
-		18F5F18D2993CFD7005B7733 /* SocialLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginRepository.swift; sourceTree = "<group>"; };
+		18F5F18D2993CFD7005B7733 /* KakaoLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginRepository.swift; sourceTree = "<group>"; };
 		18F5F1972993ED27005B7733 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18F5F1992993F78A005B7733 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		18FABA522992C6A800333D63 /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,8 +101,7 @@
 		18009F4D29936C8F009B0A55 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				18009F4E29936C9F009B0A55 /* KakaoLoginService.swift */,
-				18F5F17F29937F60005B7733 /* FacebookLoginService.swift */,
+				18F5F1992993F78A005B7733 /* FirebaseAuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -201,7 +198,7 @@
 		18F5F18C2993CFC3005B7733 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				18F5F18D2993CFD7005B7733 /* SocialLoginRepository.swift */,
+				18F5F18D2993CFD7005B7733 /* KakaoLoginRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -323,15 +320,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				188479422991453B00160A1B /* LoginViewModel.swift in Sources */,
-				18F5F18029937F60005B7733 /* FacebookLoginService.swift in Sources */,
 				18FABA532992C6A800333D63 /* UIControl+Extension.swift in Sources */,
 				18F5F1842993C773005B7733 /* UIButton+Extension.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
 				18F5F18B2993CF66005B7733 /* LoginRepository.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
-				18F5F18E2993CFD7005B7733 /* SocialLoginRepository.swift in Sources */,
+				18F5F18E2993CFD7005B7733 /* KakaoLoginRepository.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
-				18009F4F29936C9F009B0A55 /* KakaoLoginService.swift in Sources */,
+				18F5F19A2993F78A005B7733 /* FirebaseAuthService.swift in Sources */,
 				18009F5329936CC3009B0A55 /* LoginService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -5,7 +5,8 @@
 //  Copyright (c) 2023 Minii All rights reserved.
 
 import Combine
+import FirebaseAuth
 
 protocol LoginService {
-    func login() -> AnyPublisher<Bool, Never>
+    func login(with credential: AuthCredential) -> AnyPublisher<Bool, Never>
 }

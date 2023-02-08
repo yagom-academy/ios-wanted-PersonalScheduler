@@ -67,7 +67,7 @@ private extension LoginViewController {
         kakaoLoginButton
             .tapPublisher
             .sink { _ in
-                let repository = SocialLoginRepository(service: KakaoLoginService())
+                let repository = KakaoLoginRepository()
                 self.viewModel.login(with: repository)
             }
             .store(in: &cancellable)
