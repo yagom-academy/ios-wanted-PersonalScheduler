@@ -56,6 +56,14 @@ extension ScheduleListViewController: UITableViewDelegate {
 
 }
 
+// MARK: - Objc Method
+private extension ScheduleListViewController {
+    @objc func touchUpAddButton() {
+        let detailScheduleViewController = DetailScheduleViewController()
+        navigationController?.pushViewController(detailScheduleViewController, animated: true)
+    }
+}
+
 // MARK: - UIConfiguration
 private extension ScheduleListViewController {
     func configureUI() {
@@ -78,7 +86,7 @@ private extension ScheduleListViewController {
 
     func settingNavigationBar() {
         navigationItem.title = "스케쥴케어"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(touchUpAddButton))
     }
 
     func settingTableView() {

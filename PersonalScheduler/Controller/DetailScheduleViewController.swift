@@ -13,13 +13,14 @@ final class DetailScheduleViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .title2)
+        label.text = "제목"
         return label
     }()
 
     private let titleTextField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont.preferredFont(forTextStyle: .title3)
-        textField.layer.borderWidth = 1
+        textField.layer.borderWidth = 2
         textField.layer.cornerRadius = 10
         return textField
     }()
@@ -27,13 +28,14 @@ final class DetailScheduleViewController: UIViewController {
     private let bodyLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .title2)
+        label.text = "내용"
         return label
     }()
 
     private let bodyTextView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.preferredFont(forTextStyle: .body)
-        textView.layer.borderWidth = 1
+        textView.layer.borderWidth = 2
         textView.layer.cornerRadius = 10
         return textView
     }()
@@ -49,6 +51,7 @@ final class DetailScheduleViewController: UIViewController {
         super.viewDidLoad()
 
         configureUI()
+        view.backgroundColor = .systemBackground
     }
 }
 
@@ -65,29 +68,31 @@ private extension DetailScheduleViewController {
 
     func settingLayouts() {
         let safeArea = view.safeAreaLayoutGuide
+        let bitSpacing:CGFloat = 8
         let smallSpacing: CGFloat = 20
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: smallSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: smallSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: smallSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -smallSpacing),
 
-            titleTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            titleTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: bitSpacing),
             titleTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: smallSpacing),
-            titleTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: smallSpacing),
+            titleTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -smallSpacing),
+            titleTextField.heightAnchor.constraint(equalTo: titleLabel.heightAnchor, multiplier: 1.5),
 
             bodyLabel.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: smallSpacing),
             bodyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: smallSpacing),
-            bodyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: smallSpacing),
+            bodyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -smallSpacing),
 
-            bodyTextView.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor),
+            bodyTextView.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: bitSpacing),
             bodyTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: smallSpacing),
-            bodyTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: smallSpacing),
+            bodyTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -smallSpacing),
             bodyTextView.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.25),
 
             datePicker.topAnchor.constraint(equalTo: bodyTextView.bottomAnchor, constant: smallSpacing),
             datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: smallSpacing),
-            datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: smallSpacing),
+            datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -smallSpacing),
             datePicker.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.25)
         ])
     }

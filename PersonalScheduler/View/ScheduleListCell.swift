@@ -55,6 +55,7 @@ private extension ScheduleListCell {
 
     func settingLayouts() {
         let smallSpacing: CGFloat = 20
+
         titleLabel.setContentHuggingPriority(.defaultHigh + 1, for: .vertical)
         bodyLabel.setContentCompressionResistancePriority(.defaultHigh + 1, for: .vertical)
 
