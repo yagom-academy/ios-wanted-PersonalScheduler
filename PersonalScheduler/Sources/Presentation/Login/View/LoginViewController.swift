@@ -53,45 +53,30 @@ final class LoginViewController: UIViewController {
     }
 }
 
+// MARK: - Binding Method
 private extension LoginViewController {
     func bind() {
         viewModel.isSuccessSubject
             .receive(on: DispatchQueue.main)
-            .sink { isSuccess in
-                if isSuccess {
-                    self.presentMainViewController()
-                }
-            }
+            .filter { $0 }
+            .sink { _ in self.presentMainViewController() }
             .store(in: &cancellable)
     }
     
     func bindAction() {
         kakaoLoginButton
             .tapPublisher
-            .sink { _ in
-                self.viewModel.login(with: KakaoLoginService())
-            }
+            .sink { _ in self.viewModel.login(with: KakaoLoginService()) }
             .store(in: &cancellable)
         
         facebookLoginButton
             .tapPublisher
-            .sink { _ in
-                self.viewModel.login(with: FacebookLoginService())
-            }
+            .sink { _ in self.viewModel.login(with: FacebookLoginService()) }
             .store(in: &cancellable)
 
         appleLoginButton
             .tapPublisher
-            .sink { _ in
-                let provider = ASAuthorizationAppleIDProvider()
-                let request = provider.createRequest()
-                request.requestedScopes = [.fullName, .email]
-                
-                let controller = ASAuthorizationController(authorizationRequests: [request])
-                controller.delegate = self.viewModel
-                controller.presentationContextProvider = self
-                controller.performRequests()
-            }
+            .sink { _ in self.presentAppleLoginSheet() }
             .store(in: &cancellable)
     }
 }
@@ -111,6 +96,17 @@ private extension LoginViewController {
         controller.modalTransitionStyle = .crossDissolve
         controller.view.backgroundColor = .red
         present(controller, animated: true)
+    }
+    
+    func presentAppleLoginSheet() {
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self.viewModel
+        controller.presentationContextProvider = self
+        controller.performRequests()
     }
 }
 
