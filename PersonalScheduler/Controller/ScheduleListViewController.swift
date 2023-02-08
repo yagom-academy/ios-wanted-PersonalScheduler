@@ -28,7 +28,7 @@ final class ScheduleListViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension ScheduleListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return ScheduleModel.scheduleList.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,7 +36,9 @@ extension ScheduleListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return createDateLabel(text: "2023.02.15")
+        print(section)
+        let dateText = ScheduleModel.scheduleList[section].date
+        return createDateLabel(text: dateText)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
