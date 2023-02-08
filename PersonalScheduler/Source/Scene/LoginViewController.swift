@@ -42,7 +42,17 @@ final class LoginViewController: UIViewController {
 // MARK: - Button Action
 extension LoginViewController {
     @objc private func kakaoLoginTapped() {
-        viewModel.loginKakao()
+        viewModel.loginKakao { [weak self] nickName, email in
+            guard let email = email else { return }
+            
+            // MARK: - TEST
+            self?.fireStoreManager = FireStoreManager(user: nickName, email: email, social: .kakao)
+            self?.fireStoreManager?.add(data: Schedule(id: UUID(), startDate: Date(), endDate: Date(), title: "테스트", content: "테스트컨텐츠"))
+            
+            self?.fireStoreManager?.load(completion: { schedules in
+                print(schedules)
+            })
+        }
     }
 }
 
