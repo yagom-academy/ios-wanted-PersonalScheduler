@@ -18,7 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let rootViewController = LoginViewController(nibName: nil, bundle: nil)
+        let service = LoginService()
+        let viewModel = LoginViewModel(service: service)
+        let rootViewController = LoginViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: rootViewController)
         
         window.rootViewController = navigationController
