@@ -40,3 +40,40 @@ final class LoginViewModel {
         }
     }
 }
+
+extension LoginViewModel {
+    func tapFacebookLogin() {
+        facebookLoginManager.logIn(permissions: ["email"], from: nil) { result, error in
+            if let error = error {
+                self.delegate?.loginViewModel(failedFacebookLogin: error)
+                return
+            }
+            
+            guard let token = AccessToken.current?.tokenString else {
+                self.delegate?.loginViewModel(invalidToken: error)
+                return
+            }
+            
+            self.service.requestLogin(with: token) { [weak self] result in
+                switch result {
+                case .success(let uid):
+                    self?.delegate?.loginViewModel(successLogin: uid)
+                case .failure(let failure):
+                    self?.delegate?.loginViewModel(failedFirestoreLogin: failure)
+                }
+            }
+        }
+    }
+    
+    func tapFacebookLogout() {
+        facebookLoginManager.logOut()
+        service.requestLogout { [weak self] result in
+            switch result {
+            case .success():
+                self?.delegate?.loginViewModel(successLogout: ())
+            case .failure(let failure):
+                self?.delegate?.loginViewModel(failedLogout: failure)
+            }
+        }
+    }
+}
