@@ -7,9 +7,6 @@
 
 import UIKit
 import FirebaseAuth
-import KakaoSDKAuth
-import KakaoSDKUser
-import KakaoSDKCommon
 
 class MainViewController: UIViewController {
     
@@ -47,7 +44,7 @@ class MainViewController: UIViewController {
         
         navigationItem.title = "Personal Scheduler"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: .actions,
+            image: UIImage(named: "Logout.png"),
             style: .done,
             target: self,
             action: #selector(tapRightBarButton)

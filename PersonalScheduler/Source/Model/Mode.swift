@@ -10,3 +10,8 @@ enum ManageMode {
     case read
     case edit
 }
+
+enum LoginMode {
+    case login
+    case create
+}
