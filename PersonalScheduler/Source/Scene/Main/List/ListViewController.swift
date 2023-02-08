@@ -31,8 +31,14 @@ class ListViewController: UIViewController {
         navigationItem.hidesBackButton = true
 
         navigationItem.title = "Personal Scheduler"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "Logout.png"),
+            style: .done,
+            target: self,
+            action: #selector(tapLeftBarButton)
+        )
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: .add,
             style: .done,
             target: self,
             action: #selector(tapRightBarButton)
@@ -59,7 +65,7 @@ class ListViewController: UIViewController {
     }
     
     @objc
-    private func tapRightBarButton() {
+    private func tapLeftBarButton() {
         let loginViewController = MainViewController()
         
         do {
@@ -74,7 +80,7 @@ class ListViewController: UIViewController {
     }
     
     @objc
-    private func tapAddButton() {
+    private func tapRightBarButton() {
         let pushViewController = ScheduleInfoViewController()
         
         pushViewController.mode = .create

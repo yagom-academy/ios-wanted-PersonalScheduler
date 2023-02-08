@@ -30,7 +30,14 @@ class MainViewController: UIViewController {
     
     private let listViewController = ListViewController()
     private let normalLoginView = NormalLoginView(frame: .zero, mode: .login)
-    private let normalLoginViewCreateMode = NormalLoginView(frame: .zero, mode: .create)
+    private let indicatorView: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        activityIndicatorView.hidesWhenStopped = true
+        activityIndicatorView.style = .medium
+        activityIndicatorView.stopAnimating()
+        return activityIndicatorView
+    }()
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .headline).withSize(20)
@@ -94,8 +101,8 @@ class MainViewController: UIViewController {
     }
     
     private func checkLogin() {
-        if Auth.auth().currentUser?.uid == nil {
-            present(listViewController, animated: true)
+        if Auth.auth().currentUser?.uid != nil {
+            navigationController?.pushViewController(listViewController, animated: true)
         }
     }
     
@@ -130,12 +137,15 @@ class MainViewController: UIViewController {
     private func checkAuthLogIn(type: SNSType, id: String, password: String) {
         let domainName = configureDomainName(type: type)
         
-        Auth.auth().createUser(withEmail: String(id) + domainName, password: password) { authResult, error in
+        indicatorView.startAnimating()
+        
+        Auth.auth().createUser(withEmail: id + domainName, password: password) { authResult, error in
             if let error = error {
                 print(error)
                 self.signInAuth(type: type, id: id, password: password)
             } else {
-                self.present(self.listViewController, animated: true)
+                self.navigationController?.pushViewController(self.listViewController, animated: true)
+                self.indicatorView.stopAnimating()
             }
         }
     }
@@ -143,11 +153,14 @@ class MainViewController: UIViewController {
     private func signInAuth(type: SNSType, id: String, password: String) {
         let domainName = configureDomainName(type: type)
         
-        Auth.auth().signIn(withEmail: String(id) + domainName, password: password) { authResult, error in
+        indicatorView.startAnimating()
+        
+        Auth.auth().signIn(withEmail: id + domainName, password: password) { authResult, error in
             if let error = error {
                 print(error)
             } else {
-                self.present(self.listViewController, animated: true)
+                self.navigationController?.pushViewController(self.listViewController, animated: true)
+                self.indicatorView.stopAnimating()
             }
         }
     }
@@ -180,6 +193,9 @@ class MainViewController: UIViewController {
         setUpStackView()
         
         view.addSubview(totalStackView)
+        view.addSubview(indicatorView)
+        
+        indicatorView.center = view.center
         
         NSLayoutConstraint.activate([
             normalLoginView.widthAnchor.constraint(equalTo: totalStackView.widthAnchor, multiplier: 0.9),
@@ -243,10 +259,6 @@ extension MainViewController: LoginButtonDelegate {
 }
 
 extension MainViewController: UserInfoSendable {
-    func createUserInfo(id: String, password: String) {
-        checkAuthLogIn(type: .normal, id: id, password: password)
-    }
-    
     func presentCreateUserInfoView() {
         let pushViewController = CreateUserInfoViewController()
         
@@ -254,7 +266,7 @@ extension MainViewController: UserInfoSendable {
         navigationItem.backButtonTitle = "뒤로가기"
     }
     
-    func signInUserInfo(id: String, password: String) {
+    func sendUserInfo(id: String, password: String) {
         signInAuth(type: .normal, id: id, password: password)
     }
 }

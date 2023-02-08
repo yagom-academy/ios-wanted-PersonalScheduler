@@ -18,6 +18,7 @@ class ScheduleInfoView: UIView {
     
     private let titleTextField: UITextField = {
         let textField = UITextField()
+        textField.addLeftPadding()
         textField.backgroundColor = .systemBackground
         textField.font = .preferredFont(forTextStyle: .title3)
         textField.layer.borderColor = UIColor.label.cgColor

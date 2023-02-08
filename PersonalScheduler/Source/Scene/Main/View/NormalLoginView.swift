@@ -22,6 +22,7 @@ class NormalLoginView: UIView {
     }()
     private let idTextField: UITextField = {
         let textField = UITextField()
+        textField.addLeftPadding()
         textField.textAlignment = .left
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
@@ -38,6 +39,7 @@ class NormalLoginView: UIView {
     }()
     private let passwordTextField: UITextField = {
         let textField = UITextField()
+        textField.addLeftPadding()
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         textField.textAlignment = .left
         textField.layer.borderColor = UIColor.label.cgColor
@@ -96,6 +98,7 @@ class NormalLoginView: UIView {
         self.loginMode = mode
         
         configureLayout()
+        configureDelegate()
         configureNormalLoginButtonAction(loginMode)
         configureButtonText(loginMode)
     }
@@ -124,6 +127,11 @@ class NormalLoginView: UIView {
             leftButton.setTitle("생성", for: .normal)
             rightButton.setTitle("초기화", for: .normal)
         }
+    }
+    
+    private func configureDelegate() {
+        idTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     private func setUpStackView() {
@@ -169,7 +177,7 @@ class NormalLoginView: UIView {
     private func tapLoginLeftButton() {
         if let userID = idTextField.text,
            let userPW = passwordTextField.text {
-            delegate?.signInUserInfo(id: userID, password: userPW)
+            delegate?.sendUserInfo(id: userID, password: userPW)
         }
     }
     
@@ -177,7 +185,7 @@ class NormalLoginView: UIView {
     private func tapCreateLeftButton() {
         if let userID = idTextField.text,
            let userPW = passwordTextField.text {
-            delegate?.createUserInfo(id: userID, password: userPW)
+            delegate?.sendUserInfo(id: userID, password: userPW)
         }
     }
     
@@ -190,5 +198,20 @@ class NormalLoginView: UIView {
     private func tapCreateRightButton() {
         idTextField.text = String()
         passwordTextField.text = String()
+    }
+}
+
+extension NormalLoginView: UITextFieldDelegate {
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        if let textCount = textField.text?.count {
+            if textCount < 15 {
+                return true
+            }
+            return false
+        }
+        
+        return false
     }
 }

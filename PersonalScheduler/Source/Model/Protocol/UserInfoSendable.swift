@@ -6,7 +6,6 @@
 //
 
 protocol UserInfoSendable {
-    func signInUserInfo(id: String, password: String)
-    func createUserInfo(id: String, password: String)
+    func sendUserInfo(id: String, password: String)
     func presentCreateUserInfoView()
 }
