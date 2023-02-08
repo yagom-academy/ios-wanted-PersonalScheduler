@@ -26,9 +26,9 @@ class ListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureTableView(with mainViewController: MainViewController) {
-        listTableView.delegate = mainViewController
-        listTableView.dataSource = mainViewController
+    func configureTableView(with listViewController: ListViewController) {
+        listTableView.delegate = listViewController
+        listTableView.dataSource = listViewController
     }
     
     func reloadTableViewData() {

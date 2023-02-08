@@ -1,157 +1,260 @@
 //
-//  MainViewController.swift
+//  LoginViewController.swift
 //  PersonalScheduler
 //
-//  Created by Dragon on 23/02/06.
+//  Created by Dragon on 23/02/07.
 //
 
 import UIKit
 import FirebaseAuth
+import FirebaseCore
+import FBSDKLoginKit
+import FBSDKCoreKit
+import KakaoSDKCommon
+import KakaoSDKUser
+import KakaoSDKAuth
+import AuthenticationServices
 
 class MainViewController: UIViewController {
     
-    let listView = ListView()
-    var scheduleList: [Schedule] = [] {
-        didSet {
-            listView.reloadTableViewData()
-        }
+    // MARK: Private Enumeration
+    
+    private enum SNSType {
+        case normal
+        case kakao
+        case facebook
+        case apple
     }
+    
+    // MARK: Private Properties
+    
+    private let listViewController = ListViewController()
+    private let normalLoginView = NormalLoginView(frame: .zero, mode: .login)
+    private let normalLoginViewCreateMode = NormalLoginView(frame: .zero, mode: .create)
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .headline).withSize(20)
+        label.text = "개인 일정 관리 \n (Personal Scheduler)"
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.textColor = .label
+        return label
+    }()
+    private let loginGuideLabel: UILabel = {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .body)
+        label.text = "SNS 계정으로 간편 로그인하기"
+        label.textAlignment = .center
+        label.textColor = .systemGray4
+        return label
+    }()
+    private let kakaoLoginButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "KakaoLogin.png"), for: .normal)
+        return button
+    }()
+    private let facebookLoginButton: FBLoginButton = {
+        let button = FBLoginButton()
+        button.isSelected = false
+        return button
+    }()
+    private let appleLoginButton: ASAuthorizationAppleIDButton = {
+        let button = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
+        return button
+    }()
+    private let snsLoginStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.alignment = .fill
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 15
+        return stackView
+    }()
+    private let totalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.alignment = .center
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        return stackView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView()
         configureLayout()
-        listView.configureTableView(with: self)
+        configureDelegate()
+        configureButtonAction()
+        checkLogin()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        checkLogin()
+    func toggleFacebookLoginButton() {
+        FBSDKLoginKit.LoginManager().logOut()
     }
     
     private func checkLogin() {
         if Auth.auth().currentUser?.uid == nil {
-            let presentViewController = UINavigationController(rootViewController: LoginViewController())
-            
-            navigationController?.present(presentViewController, animated: true)
+            present(listViewController, animated: true)
         }
     }
     
     private func configureView() {
         view.backgroundColor = .systemBackground
+    }
+    
+    private func configureDelegate() {
+        normalLoginView.delegate = self
+    }
+    
+    private func configureButtonAction() {
+        facebookLoginButton.delegate = self
         
-        navigationItem.title = "Personal Scheduler"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "Logout.png"),
-            style: .done,
-            target: self,
-            action: #selector(tapRightBarButton)
-        )
-        navigationItem.backBarButtonItem = UIBarButtonItem(
-            title: "취소",
-            style: .done,
-            target: self,
-            action: #selector(tapBackBarButton)
-        )
+        kakaoLoginButton.addTarget(self, action: #selector(tapKakaoLoginButton), for: .touchDown)
+        appleLoginButton.addTarget(self, action: #selector(tapKakaoLoginButton), for: .touchDown)
+    }
+    
+    private func configureDomainName(type: SNSType) -> String {
+        switch type {
+        case .normal:
+            return String()
+        case .kakao:
+            return "@kakaologin.com"
+        case .facebook:
+            return "@facebooklogin.com"
+        case .apple:
+            return "@applelogin.com"
+        }
+    }
+    
+    private func checkAuthLogIn(type: SNSType, id: String, password: String) {
+        let domainName = configureDomainName(type: type)
+        
+        Auth.auth().createUser(withEmail: String(id) + domainName, password: password) { authResult, error in
+            if let error = error {
+                print(error)
+                self.signInAuth(type: type, id: id, password: password)
+            } else {
+                self.present(self.listViewController, animated: true)
+            }
+        }
+    }
+    
+    private func signInAuth(type: SNSType, id: String, password: String) {
+        let domainName = configureDomainName(type: type)
+        
+        Auth.auth().signIn(withEmail: String(id) + domainName, password: password) { authResult, error in
+            if let error = error {
+                print(error)
+            } else {
+                self.present(self.listViewController, animated: true)
+            }
+        }
+    }
+    
+    private func getUserInfo() {
+        UserApi.shared.me() {(user, error) in
+            if let error = error {
+                print(error)
+            } else {
+                if let id = user?.id {
+                    let stringID = String(id)
+                    self.checkAuthLogIn(type: .kakao, id: stringID, password: stringID)
+                }
+            }
+        }
+    }
+    
+    private func setUpStackView() {
+        snsLoginStackView.addArrangedSubview(loginGuideLabel)
+        snsLoginStackView.addArrangedSubview(kakaoLoginButton)
+        snsLoginStackView.addArrangedSubview(facebookLoginButton)
+        snsLoginStackView.addArrangedSubview(appleLoginButton)
+        
+        totalStackView.addArrangedSubview(titleLabel)
+        totalStackView.addArrangedSubview(normalLoginView)
+        totalStackView.addArrangedSubview(snsLoginStackView)
     }
     
     private func configureLayout() {
-        view.addSubview(listView)
+        setUpStackView()
         
-        listView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(totalStackView)
         
         NSLayoutConstraint.activate([
-            listView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            listView.heightAnchor.constraint(equalTo: view.heightAnchor),
-            listView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            listView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            normalLoginView.widthAnchor.constraint(equalTo: totalStackView.widthAnchor, multiplier: 0.9),
+            normalLoginView.heightAnchor.constraint(equalTo: totalStackView.heightAnchor, multiplier: 0.3),
+            
+            snsLoginStackView.widthAnchor.constraint(equalTo: totalStackView.widthAnchor, multiplier: 0.8),
+            snsLoginStackView.heightAnchor.constraint(equalTo: totalStackView.heightAnchor, multiplier: 0.35),
+            
+            totalStackView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            totalStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.8),
+            totalStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            totalStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
     
     @objc
-    private func tapRightBarButton() {
-        let loginViewController = LoginViewController()
-        let presentViewController = UINavigationController(rootViewController: loginViewController)
-        
-        do {
-            try Auth.auth().signOut()
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
+    private func tapKakaoLoginButton() {
+        if UserApi.isKakaoTalkLoginAvailable() {
+            UserApi.shared.loginWithKakaoTalk { oauthToken, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    _ = oauthToken
+                    self.getUserInfo()
+                }
+            }
+        } else {
+            UserApi.shared.loginWithKakaoAccount { oauthToken, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    _ = oauthToken
+                    self.getUserInfo()
+                }
+            }
         }
-        
-        loginViewController.toggleFacebookLoginButton()
-        
-        self.navigationController?.present(presentViewController, animated: true)
     }
     
     @objc
-    private func tapAddButton() {
-        let pushViewController = ScheduleInfoViewController()
-        
-        pushViewController.mode = .create
-        pushViewController.delegate = self
+    private func tapAppleLoginButton() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+    }
+}
+
+extension MainViewController: LoginButtonDelegate {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        if let error = error {
+            print(error)
+        } else {
+            if let result = result {
+                if let id = result.token?.userID {
+                    self.checkAuthLogIn(type: .facebook, id: id, password: id)
+                }
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginKit.FBLoginButton) {}
+}
+
+extension MainViewController: UserInfoSendable {
+    func createUserInfo(id: String, password: String) {
+        checkAuthLogIn(type: .normal, id: id, password: password)
+    }
+    
+    func presentCreateUserInfoView() {
+        let pushViewController = CreateUserInfoViewController()
         
         navigationController?.pushViewController(pushViewController, animated: true)
+        navigationItem.backButtonTitle = "뒤로가기"
     }
     
-    @objc
-    private func tapBackBarButton() {
-        dismiss(animated: true)
-    }
-}
-
-extension MainViewController: UITableViewDelegate {
-    func tableView(
-        _ tableView: UITableView,
-        commit editingStyle: UITableViewCell.EditingStyle,
-        forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            scheduleList.remove(at: indexPath.row)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let pushViewController = ScheduleInfoViewController()
-        
-        pushViewController.mode = .read
-        pushViewController.delegate = self
-        
-        navigationController?.pushViewController(pushViewController, animated: true)
-    }
-}
-
-extension MainViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return scheduleList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(
-            withIdentifier: ListTableViewCell.identifier,
-            for: indexPath) as? ListTableViewCell {
-            let data = scheduleList[indexPath.row]
-            
-            cell.configureLabelText(schedule: data)
-            cell.selectionStyle = .none
-            
-            return cell
-        }
-        
-        return UITableViewCell()
-    }
-}
-
-extension MainViewController: DataSendable {
-    func sendData(with data: Schedule, mode: ManageMode) {
-        switch mode {
-        case .create:
-            scheduleList.append(data)
-        case .edit:
-            break
-        case .read:
-            break
-        }
+    func signInUserInfo(id: String, password: String) {
+        signInAuth(type: .normal, id: id, password: password)
     }
 }
