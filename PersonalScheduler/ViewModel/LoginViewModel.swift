@@ -9,7 +9,7 @@ import UIKit
 import KakaoSDKAuth
 import KakaoSDKUser
 import FacebookLogin
-
+import Firebase
 
 final class LoginViewModel {
     private var userInfo: UserInfo? = nil
@@ -69,7 +69,7 @@ extension LoginViewModel {
 
 //MARK: - Facebook Login
 extension LoginViewModel {
-
+    
     func loginWithFacebook(target viewController: UIViewController) {
         let manager = LoginManager()
         manager.logIn(permissions: ["public_profile"], from: viewController) { result, error in
@@ -85,13 +85,16 @@ extension LoginViewModel {
                 print("Login Cancelled")
                 return
             }
-
+            
             guard let id = result.token?.appID else {
                 print("no Id")
                 return
             }
             
             self.userInfo = UserInfo(id: "facebook"+id)
+
+            let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+            Auth.auth().signIn(with: credential)
         }
     }
 }
