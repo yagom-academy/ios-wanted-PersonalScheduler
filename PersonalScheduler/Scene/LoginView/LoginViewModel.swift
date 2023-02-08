@@ -8,6 +8,14 @@
 import Foundation
 import FacebookLogin
 
+protocol LoginViewModelDelegate: AnyObject {
+    func loginViewModel(failedFacebookLogin error: Error)
+    func loginViewModel(invalidToken error: Error?)
+    func loginViewModel(failedFirestoreLogin error: Error?)
+    func loginViewModel(successLogin uid: String)
+    func loginViewModel(successLogout: Void)
+    func loginViewModel(failedLogout error: Error)
+}
 
 final class LoginViewModel {
     enum Action {
@@ -17,6 +25,7 @@ final class LoginViewModel {
     
     private let facebookLoginManager = LoginManager()
     private let service: LoginService
+    weak var delegate: LoginViewModelDelegate?
     
     init(service: LoginService) {
         self.service = service
