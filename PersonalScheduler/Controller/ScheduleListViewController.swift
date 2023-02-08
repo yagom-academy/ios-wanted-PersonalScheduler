@@ -11,7 +11,7 @@ final class ScheduleListViewController: UIViewController {
 
     // MARK: - Property
     private let tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -33,6 +33,10 @@ extension ScheduleListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return createDateLabel(text: "2023.02.15")
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,10 +62,7 @@ private extension ScheduleListViewController {
         view.addSubview(tableView)
         settingNavigationBar()
         settingLayouts()
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(ScheduleListCell.self, forCellReuseIdentifier: ScheduleListCell.identifier)
-//        tableView.estimatedRowHeight = view.frame.height / 7
+        settingTableView()
     }
 
     func settingLayouts() {
@@ -71,12 +72,27 @@ private extension ScheduleListViewController {
             tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
     func settingNavigationBar() {
         navigationItem.title = "스케쥴케어"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+    }
+
+    func settingTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(ScheduleListCell.self, forCellReuseIdentifier: ScheduleListCell.identifier)
+        tableView.contentInset.top = 20
+        tableView.layoutIfNeeded()
+    }
+
+    func createDateLabel(text: String) -> UILabel {
+        let label = UILabel()
+        label.text = text
+        label.textColor = UIColor(hex: "#04CC00")
+        return label
     }
 }

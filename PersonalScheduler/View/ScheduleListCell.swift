@@ -42,7 +42,7 @@ final class ScheduleListCell: UITableViewCell {
 
 private extension ScheduleListCell {
     func configureUI() {
-        self.layer.borderWidth = 2
+        self.layer.borderWidth = 3
         self.layer.borderColor = UIColor(hex: "#04CC00").cgColor
 
         [titleLabel, bodyLabel].forEach {
