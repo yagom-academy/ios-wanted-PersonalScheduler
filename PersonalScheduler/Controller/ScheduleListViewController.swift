@@ -25,12 +25,38 @@ final class ScheduleListViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
+extension ScheduleListViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 10
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let scheduleListCell = tableView.dequeueReusableCell(withIdentifier: ScheduleListCell.identifier, for: indexPath) as? ScheduleListCell else {
+            return ScheduleListCell()
+        }
+        return scheduleListCell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension ScheduleListViewController: UITableViewDelegate {
+
+}
+
 // MARK: - UIConfiguration
 private extension ScheduleListViewController {
     func configureUI() {
         view.addSubview(tableView)
         settingNavigationBar()
         settingLayouts()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(ScheduleListCell.self, forCellReuseIdentifier: ScheduleListCell.identifier)
     }
 
     func settingLayouts() {
