@@ -81,7 +81,7 @@ private extension LoginViewController {
                 let request = ASAuthorizationAppleIDProvider().createRequest()
                 request.requestedScopes = [.fullName, .email]
                 let controller = ASAuthorizationController(authorizationRequests: [request])
-                controller.delegate = self
+                controller.delegate = self.viewModel
                 controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
                 controller.performRequests()
             }
@@ -89,6 +89,7 @@ private extension LoginViewController {
     }
 }
 
+// MARK: - Configure UI
 private extension LoginViewController {
     func configureUI() {
         view.backgroundColor = .systemBackground
@@ -122,24 +123,6 @@ private extension LoginViewController {
             appleLoginButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             appleLoginButton.topAnchor.constraint(equalTo: facebookLoginButton.bottomAnchor, constant: 30)
         ])
-    }
-}
-
-extension LoginViewController: ASAuthorizationControllerDelegate {
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            let user = credential.user
-            
-            print("user \(user)")
-            
-            if let email = credential.email {
-                print("email \(email)")
-            }
-        }
-    }
-    
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("Error \(error)")
     }
 }
 

@@ -4,6 +4,7 @@
 //
 //  Copyright (c) 2023 Minii All rights reserved.
 
+import AuthenticationServices
 import KakaoSDKAuth
 import KakaoSDKUser
 import KakaoSDKCommon
@@ -11,7 +12,7 @@ import Combine
 import FirebaseAuth
 import FacebookLogin
 
-class LoginViewModel {
+class LoginViewModel: NSObject {
     func loginKakao() {
         if AuthApi.hasToken() {
             UserApi.shared.accessTokenInfo { [weak self] _, error in
@@ -86,5 +87,26 @@ class LoginViewModel {
             
             completion(result)
         }
+    }
+}
+
+extension LoginViewModel: ASAuthorizationControllerDelegate {
+    func authorizationController(
+        controller: ASAuthorizationController,
+        didCompleteWithAuthorization authorization: ASAuthorization
+    ) {
+        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            let user = credential.user
+            
+            print("user \(user)")
+            
+            if let email = credential.email {
+                print("email \(email)")
+            }
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("Error \(error)")
     }
 }
