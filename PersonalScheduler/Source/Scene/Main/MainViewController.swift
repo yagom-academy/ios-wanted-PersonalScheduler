@@ -34,7 +34,8 @@ class MainViewController: UIViewController {
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         activityIndicatorView.hidesWhenStopped = true
-        activityIndicatorView.style = .medium
+        activityIndicatorView.color = .orange
+        activityIndicatorView.style = .large
         activityIndicatorView.stopAnimating()
         return activityIndicatorView
     }()
@@ -207,7 +208,7 @@ class MainViewController: UIViewController {
             totalStackView.widthAnchor.constraint(equalTo: view.widthAnchor),
             totalStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.8),
             totalStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            totalStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            totalStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
     
