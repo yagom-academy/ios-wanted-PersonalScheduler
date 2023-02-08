@@ -18,3 +18,13 @@ struct ScheduleModel: Identifiable {
         self.date = date
     }
 }
+
+extension ScheduleModel {
+    static var scheduleList: [ScheduleModel] = [
+        ScheduleModel(title: "헬스장 가기", body: "유산소30분 근력30분", date: "2023.02.23"),
+        ScheduleModel(title: "헬스장 가기", body: "유산소30분 근력30분", date: "2023.02.23"),
+        ScheduleModel(title: "헬스장 가기", body: "유산소30분 근력30분", date: "2023.02.23"),
+        ScheduleModel(title: "헬스장 가기", body: "유산소30분 근력30분", date: "2023.02.23"),
+        ScheduleModel(title: "헬스장 가기", body: "유산소30분 근력30분", date: "2023.02.23")
+    ]
+}
