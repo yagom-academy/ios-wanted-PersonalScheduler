@@ -119,6 +119,7 @@ private extension ScheduleListViewController {
         settingNavigationBar()
         settingLayouts()
         settingTableView()
+        sortScheduleList()
     }
 
     func settingLayouts() {

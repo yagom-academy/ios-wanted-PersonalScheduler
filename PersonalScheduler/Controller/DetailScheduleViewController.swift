@@ -56,7 +56,6 @@ final class DetailScheduleViewController: UIViewController {
         super.viewDidLoad()
 
         configureUI()
-        view.backgroundColor = .systemBackground
     }
 }
 
@@ -106,6 +105,7 @@ private extension DetailScheduleViewController {
 // MARK: - UIConfiguration
 private extension DetailScheduleViewController {
     func configureUI() {
+        view.backgroundColor = .systemBackground
         [titleLabel, titleTextField, bodyLabel, bodyTextView, datePicker].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
@@ -114,6 +114,7 @@ private extension DetailScheduleViewController {
         bodyTextView.delegate = self
         settingLayouts()
         settingNavigationBar()
+        settingData()
     }
 
     func settingLayouts() {
@@ -163,5 +164,18 @@ private extension DetailScheduleViewController {
         let okAction = UIAlertAction(title: "확인", style: .default)
         alertController.addAction(okAction)
         present(alertController, animated: true)
+    }
+
+    func settingData() {
+        if mode == .update {
+            guard let modelID = modelID,
+                  let data = ScheduleModel.scheduleList.first(where: { scheduleModel in
+                      scheduleModel.id == modelID
+                  }),
+                  let date = DateformatterManager.shared.convertStringToDate(dateText: data.date) else { return }
+            titleTextField.text = data.title
+            bodyTextView.text = data.body
+            datePicker.date = date
+        }
     }
 }
