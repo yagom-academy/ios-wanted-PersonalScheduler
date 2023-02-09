@@ -11,6 +11,7 @@ final class ListViewController: UIViewController {
     private typealias Datasource = UICollectionViewDiffableDataSource<Int, Schedule.ID>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Schedule.ID>
 
+    private let firestoreService = FirestoreService()
     private var collectionView: UICollectionView?
     private var datasource: Datasource?
     private var schedules = [Schedule]()
@@ -22,6 +23,7 @@ final class ListViewController: UIViewController {
         configureDataSources()
         configureNavigationItem()
         configureHierarchy()
+        fetchSchedules()
     }
 
     private func configureCollectionView() {
@@ -51,9 +53,11 @@ final class ListViewController: UIViewController {
         datasource = Datasource(
             collectionView: collectionView,
             cellProvider: { collectionView, indexPath, itemIdentifier in
-                return collectionView.dequeueConfiguredReusableCell(using: cellRegistration,
-                                                                    for: indexPath,
-                                                                    item: itemIdentifier)
+                return collectionView.dequeueConfiguredReusableCell(
+                    using: cellRegistration,
+                    for: indexPath,
+                    item: itemIdentifier
+                )
             }
         )
     }
@@ -148,14 +152,18 @@ extension ListViewController {
 
     private func add(_ schedule: Schedule) {
         schedules.append(schedule)
+        firestoreService.add(schedule)
     }
 
     private func update(_ schedule: Schedule) {
         guard let index = schedules.firstIndex(where: { $0.id == schedule.id }) else { return }
         schedules[index] = schedule
+        firestoreService.update(schedule)
     }
 
     private func deleteSchedule(with id: Schedule.ID) {
+        guard let schedule = schedule(for: id) else { return }
+        firestoreService.delete(schedule)
         schedules.removeAll(where: { $0.id == id })
     }
 
@@ -163,6 +171,16 @@ extension ListViewController {
         if schedule.scheduleDate.isToday() { return Constants.isTodayColor }
         if schedule.scheduleDate.isEarlierThanToday() { return Constants.isEarlierThanTodayColor }
         return Constants.defaultColor
+    }
+
+    private func fetchSchedules() {
+        firestoreService.fetchAll { [weak self] schedules in
+            guard let self else { return }
+            DispatchQueue.main.async {
+                self.schedules = schedules
+                self.updateSnapshot()
+            }
+        }
     }
 }
 

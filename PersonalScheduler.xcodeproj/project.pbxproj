@@ -22,6 +22,9 @@
 		EB8E5A9D2994E45A0086F270 /* TextFieldContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E5A9C2994E45A0086F270 /* TextFieldContentView.swift */; };
 		EB8E5A9F2994E4F00086F270 /* DatePickerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E5A9E2994E4F00086F270 /* DatePickerContentView.swift */; };
 		EB8E5AA12994E53D0086F270 /* TextViewContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E5AA02994E53D0086F270 /* TextViewContentView.swift */; };
+		EB8E5AA32994F0870086F270 /* FirestoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E5AA22994F0870086F270 /* FirestoreRepository.swift */; };
+		EB8E5AA5299513C80086F270 /* FriestoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E5AA4299513C80086F270 /* FriestoreEntity.swift */; };
+		EB8E5AA7299519F50086F270 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E5AA6299519F50086F270 /* FirestoreService.swift */; };
 		EBDDF49D2993C5AB0061C781 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDF49C2993C5AB0061C781 /* LoginViewController.swift */; };
 		EBDDF4AD2993CE170061C781 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBDDF4AC2993CE170061C781 /* GoogleService-Info.plist */; };
 		EBDDF4B02993CF070061C781 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EBDDF4AF2993CF070061C781 /* FirebaseAnalytics */; };
@@ -47,6 +50,9 @@
 		EB8E5A9C2994E45A0086F270 /* TextFieldContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldContentView.swift; sourceTree = "<group>"; };
 		EB8E5A9E2994E4F00086F270 /* DatePickerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerContentView.swift; sourceTree = "<group>"; };
 		EB8E5AA02994E53D0086F270 /* TextViewContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewContentView.swift; sourceTree = "<group>"; };
+		EB8E5AA22994F0870086F270 /* FirestoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreRepository.swift; sourceTree = "<group>"; };
+		EB8E5AA4299513C80086F270 /* FriestoreEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriestoreEntity.swift; sourceTree = "<group>"; };
+		EB8E5AA6299519F50086F270 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		EBDDF49C2993C5AB0061C781 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EBDDF4AC2993CE170061C781 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				EB3FD2D429948790008483DC /* Schedule.swift */,
+				EB8E5AA4299513C80086F270 /* FriestoreEntity.swift */,
+				EB8E5AA22994F0870086F270 /* FirestoreRepository.swift */,
+				EB8E5AA6299519F50086F270 /* FirestoreService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,12 +232,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB8E5AA5299513C80086F270 /* FriestoreEntity.swift in Sources */,
+				EB8E5AA7299519F50086F270 /* FirestoreService.swift in Sources */,
 				EB3FD2DA2994A61E008483DC /* ListContentView.swift in Sources */,
 				EBDDF49D2993C5AB0061C781 /* LoginViewController.swift in Sources */,
 				EB8E5A9F2994E4F00086F270 /* DatePickerContentView.swift in Sources */,
 				EB8E5A9D2994E45A0086F270 /* TextFieldContentView.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				EB3FD2D529948790008483DC /* Schedule.swift in Sources */,
+				EB8E5AA32994F0870086F270 /* FirestoreRepository.swift in Sources */,
 				EB8E5AA12994E53D0086F270 /* TextViewContentView.swift in Sources */,
 				EB3FD2DD2994A663008483DC /* UILabel+.swift in Sources */,
 				EB3FD2D729948822008483DC /* ListViewController.swift in Sources */,
