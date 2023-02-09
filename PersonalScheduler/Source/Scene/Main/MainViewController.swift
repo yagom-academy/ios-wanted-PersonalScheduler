@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseCore
+import FirebaseFirestore
 import FBSDKLoginKit
 import FBSDKCoreKit
 import KakaoSDKCommon
@@ -30,6 +31,7 @@ final class MainViewController: UIViewController {
     
     private let listViewController = ListViewController()
     private let normalLoginView = NormalLoginView(frame: .zero, mode: .login)
+    private let db = Firestore.firestore()
     private let indicatorView: UIActivityIndicatorView = {
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
@@ -151,6 +153,7 @@ final class MainViewController: UIViewController {
                 print(error)
                 self.signInAuth(type: type, id: id, password: password)
             } else {
+                self.createUserCollection(id: id + domainName)
                 self.navigationController?.pushViewController(self.listViewController, animated: true)
                 self.indicatorView.stopAnimating()
             }
@@ -180,6 +183,22 @@ final class MainViewController: UIViewController {
                 if let id = user?.id {
                     let stringID = String(id)
                     self.checkAuthLogIn(type: .kakao, id: stringID, password: stringID)
+                }
+            }
+        }
+    }
+    
+    private func createUserCollection(id: String) {
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if let id = user?.email {
+//                self.db.collection(id).addDocument(data: ["Schedule":""])
+                self.db.collection(id).document("Personal").setData(["Schedule":""])
+                { err in
+                    if let err = err {
+                        print(err)
+                    } else {
+                        print("Firebase Save Success")
+                    }
                 }
             }
         }

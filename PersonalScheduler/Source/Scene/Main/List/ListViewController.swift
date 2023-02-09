@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 import FirebaseAuth
 
 final class ListViewController: UIViewController {
@@ -14,9 +15,11 @@ final class ListViewController: UIViewController {
     
     private let listView = ListView()
     private let scheduleInfoViewController = ScheduleInfoViewController()
+    private let db = Firestore.firestore()
     private var scheduleList: [Schedule] = [] {
         didSet {
             listView.reloadTableViewData()
+            saveUserScheduleData()
         }
     }
     
@@ -29,6 +32,12 @@ final class ListViewController: UIViewController {
         configureLayout()
         configureDelegate()
         configureListView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        readUserScheduleData()
     }
     
     // MARK: Private Methods
@@ -61,6 +70,48 @@ final class ListViewController: UIViewController {
     private func configureListView() {
         listView.configureTableView(with: self)
         listView.configureAddButton(target: self, action: #selector(tapAddButton))
+    }
+    
+    private func saveUserScheduleData() {
+        let jsonScheduleData = try? JSONEncoder().encode(scheduleList)
+        
+        guard let jsonScheduleData = jsonScheduleData,
+              let dataString = String(data: jsonScheduleData, encoding: .utf8) else { return }
+        
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if let id = user?.email {
+                let path = self.db.collection(id).document("Personal")
+                path.updateData(["Schedule" : dataString])
+            }
+        }
+    }
+    
+    private func readUserScheduleData() {
+        Auth.auth().addStateDidChangeListener { [self] auth, user in
+            if let id = user?.email {
+                db.collection(id).getDocuments() { [self] querySnapShot, error in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        print("Firebase Read Success")
+                        if let documents = querySnapShot?.documents {
+                            for document in documents {
+                                let datas = document.data().values
+                                for value in datas {
+                                    let stringValue = "\(value)"
+                                    if let jsonData = stringValue.data(using: .utf8) {
+                                        let data = try? JSONDecoder().decode([Schedule].self, from: jsonData)
+                                        if let datas = data {
+                                            scheduleList = datas
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     private func configureLayout() {

@@ -5,7 +5,7 @@
 //  Created by Dragon on 23/02/07.
 //
 
-struct Schedule {
+struct Schedule: Codable {
     let title: String
     let body: String
     let startDate: String
