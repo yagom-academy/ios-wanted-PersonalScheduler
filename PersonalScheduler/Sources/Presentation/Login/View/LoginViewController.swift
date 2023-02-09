@@ -7,7 +7,6 @@
 
 import UIKit
 import AuthenticationServices
-import FacebookLogin
 import Combine
 
 final class LoginViewController: UIViewController {
@@ -44,19 +43,19 @@ private extension LoginViewController {
     }
     
     func bindAction() {
-        contentView.kakaoLoginButton.tapPublisher
-            .sink { _ in
-                let repository = KakaoLoginRepository()
-                self.viewModel.login(with: repository)
-            }
-            .store(in: &cancellable)
-        
-        contentView.facebookLoginButton.tapPublisher
-            .sink { _ in
-                let repository = FacebookRepository()
-                self.viewModel.login(with: repository)
-            }
-            .store(in: &cancellable)
+//        contentView.kakaoLoginButton.tapPublisher
+//            .sink { _ in
+//                let repository = KakaoLoginRepository()
+//                self.viewModel.login(with: repository)
+//            }
+//            .store(in: &cancellable)
+//
+//        contentView.facebookLoginButton.tapPublisher
+//            .sink { _ in
+//                let repository = FacebookRepository()
+//                self.viewModel.login(with: repository)
+//            }
+//            .store(in: &cancellable)
 
         contentView.appleLoginButton.tapPublisher
             .sink { _ in self.presentAppleLoginSheet() }

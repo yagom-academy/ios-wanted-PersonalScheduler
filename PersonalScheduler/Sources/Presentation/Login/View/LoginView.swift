@@ -7,35 +7,9 @@
 import UIKit
 
 final class LoginView: UIView {
-    let appleLoginButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("애플로 로그인하기", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
-        button.layer.cornerRadius = 10
-        return button
-    }()
-    
-    let kakaoLoginButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("카카오로 로그인하기", for: .normal)
-        button.setTitleColor(.label, for: .normal)
-        button.backgroundColor = .systemYellow
-        button.layer.cornerRadius = 10
-        return button
-    }()
-    
-    let facebookLoginButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("facebook으로 로그인하기", for: .normal)
-        button.setTitleColor(.label, for: .normal)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 10
-        return button
-    }()
+    let kakaoLoginButton = SocialLoginButton(loginType: .kakao)
+    let facebookLoginButton = SocialLoginButton(loginType: .facebook)
+    let appleLoginButton = SocialLoginButton(loginType: .apple)
     
     init() {
         super.init(frame: .zero)
@@ -62,17 +36,21 @@ private extension LoginView {
     
     func setUpLayout() {
         NSLayoutConstraint.activate([
-            kakaoLoginButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            kakaoLoginButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            kakaoLoginButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -200),
+            appleLoginButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            appleLoginButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            appleLoginButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
             
             facebookLoginButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             facebookLoginButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            facebookLoginButton.topAnchor.constraint(equalTo: kakaoLoginButton.bottomAnchor, constant: 30),
+            facebookLoginButton.bottomAnchor.constraint(equalTo: appleLoginButton.topAnchor, constant: -16),
             
-            appleLoginButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            appleLoginButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            appleLoginButton.topAnchor.constraint(equalTo: facebookLoginButton.bottomAnchor, constant: 30)
+            kakaoLoginButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            kakaoLoginButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            kakaoLoginButton.bottomAnchor.constraint(equalTo: facebookLoginButton.topAnchor, constant: -16),
         ])
+        
+        [kakaoLoginButton, facebookLoginButton, appleLoginButton].forEach {
+            $0.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        }
     }
 }

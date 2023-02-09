@@ -10,6 +10,11 @@
 		1878BE712994E6FC009C0DF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1878BE702994E6FC009C0DF8 /* GoogleService-Info.plist */; };
 		1878BE732994EC69009C0DF8 /* AppleLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878BE722994EC69009C0DF8 /* AppleLoginRepository.swift */; };
 		1878BE7529952BF2009C0DF8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878BE7429952BF2009C0DF8 /* LoginView.swift */; };
+		1878BE792995313E009C0DF8 /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878BE782995313E009C0DF8 /* SocialLoginButton.swift */; };
+		1878BE8829955B5B009C0DF8 /* NanumGothicLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1878BE8429955B5B009C0DF8 /* NanumGothicLight.otf */; };
+		1878BE8929955B5B009C0DF8 /* NanumGothicExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1878BE8529955B5B009C0DF8 /* NanumGothicExtraBold.otf */; };
+		1878BE8A29955B5B009C0DF8 /* NanumGothic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1878BE8629955B5B009C0DF8 /* NanumGothic.otf */; };
+		1878BE8B29955B5B009C0DF8 /* NanumGothicBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1878BE8729955B5B009C0DF8 /* NanumGothicBold.otf */; };
 		188479422991453B00160A1B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188479412991453B00160A1B /* LoginViewModel.swift */; };
 		18C1EF7C2991038900136466 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF7B2991038900136466 /* FirebaseAuth */; };
 		18C1EF7E2991038900136466 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF7D2991038900136466 /* FirebaseFirestore */; };
@@ -38,6 +43,11 @@
 		1878BE702994E6FC009C0DF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1878BE722994EC69009C0DF8 /* AppleLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginRepository.swift; sourceTree = "<group>"; };
 		1878BE7429952BF2009C0DF8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1878BE782995313E009C0DF8 /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
+		1878BE8429955B5B009C0DF8 /* NanumGothicLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumGothicLight.otf; path = "../../../../../../../Downloads/나눔 글꼴/나눔고딕/NanumFontSetup_OTF_GOTHIC 2/NanumGothicLight.otf"; sourceTree = "<group>"; };
+		1878BE8529955B5B009C0DF8 /* NanumGothicExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumGothicExtraBold.otf; path = "../../../../../../../Downloads/나눔 글꼴/나눔고딕/NanumFontSetup_OTF_GOTHIC 2/NanumGothicExtraBold.otf"; sourceTree = "<group>"; };
+		1878BE8629955B5B009C0DF8 /* NanumGothic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumGothic.otf; path = "../../../../../../../Downloads/나눔 글꼴/나눔고딕/NanumFontSetup_OTF_GOTHIC 2/NanumGothic.otf"; sourceTree = "<group>"; };
+		1878BE8729955B5B009C0DF8 /* NanumGothicBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumGothicBold.otf; path = "../../../../../../../Downloads/나눔 글꼴/나눔고딕/NanumFontSetup_OTF_GOTHIC 2/NanumGothicBold.otf"; sourceTree = "<group>"; };
 		188479412991453B00160A1B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		18BEAD9829929A0F00679E18 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
 		18F5F1832993C773005B7733 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -155,6 +165,7 @@
 			children = (
 				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
 				1878BE7429952BF2009C0DF8 /* LoginView.swift */,
+				1878BE782995313E009C0DF8 /* SocialLoginButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -170,6 +181,10 @@
 		18C1EF9229910BF600136466 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1878BE8629955B5B009C0DF8 /* NanumGothic.otf */,
+				1878BE8729955B5B009C0DF8 /* NanumGothicBold.otf */,
+				1878BE8529955B5B009C0DF8 /* NanumGothicExtraBold.otf */,
+				1878BE8429955B5B009C0DF8 /* NanumGothicLight.otf */,
 				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
 				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
 				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
@@ -320,8 +335,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1878BE8829955B5B009C0DF8 /* NanumGothicLight.otf in Resources */,
 				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
 				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
+				1878BE8A29955B5B009C0DF8 /* NanumGothic.otf in Resources */,
+				1878BE8929955B5B009C0DF8 /* NanumGothicExtraBold.otf in Resources */,
+				1878BE8B29955B5B009C0DF8 /* NanumGothicBold.otf in Resources */,
 				1878BE712994E6FC009C0DF8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +357,7 @@
 				18FABA532992C6A800333D63 /* UIControl+Extension.swift in Sources */,
 				18F5F1842993C773005B7733 /* UIButton+Extension.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
+				1878BE792995313E009C0DF8 /* SocialLoginButton.swift in Sources */,
 				18F5F18B2993CF66005B7733 /* LoginRepository.swift in Sources */,
 				1878BE7529952BF2009C0DF8 /* LoginView.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
