@@ -68,12 +68,6 @@ final class SocialLoginButton: UIButton {
         backgroundColor = loginType.backgroundColor
         layer.cornerRadius = frame.height * 0.5
         translatesAutoresizingMaskIntoConstraints = false
-        
-        UIFont.familyNames.forEach {
-            UIFont.fontNames(forFamilyName: $0).forEach { name in
-                print(name)
-            }
-        }
     }
     
     override func layoutSubviews() {
