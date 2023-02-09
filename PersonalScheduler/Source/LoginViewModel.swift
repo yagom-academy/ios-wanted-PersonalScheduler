@@ -13,27 +13,17 @@ import FirebaseAuth
 
 final class LoginViewModel {
     func loginKakao(completion: @escaping ((String) -> Void)) {
+        var kakaoToken: String?
+        
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                 guard error == nil else {
                     print(error)
                     return
                 }
-                
                 print("loginWithKakaoTalk() success.")
-                guard let token = oauthToken?.idToken else { return }
-                let credential = OAuthProvider.credential(
-                    withProviderID: "oidc.kakao",
-                    idToken: token,
-                    rawNonce: nil
-                )
-                
-                Auth.auth().signIn(with: credential) { authResult, error in
-                    guard error == nil else {
-                        print(error)
-                        return
-                    }
-                }
+                kakaoToken = oauthToken?.idToken
+                self.configureKakaoSign(token: kakaoToken)
             }
         } else {
             UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
@@ -41,30 +31,27 @@ final class LoginViewModel {
                     print(error)
                     return
                 }
-                
                 print("loginWithKakaoAccount() success.")
-                guard let token = oauthToken?.idToken else { return }
-                let credential = OAuthProvider.credential(
-                    withProviderID: "oidc.kakao",
-                    idToken: token,
-                    rawNonce: nil
-                )
+                kakaoToken = oauthToken?.idToken
                 
-                Auth.auth().signIn(with: credential) { authResult, error in
-                    guard error == nil else {
-                        print(error)
-                        return
-                    }
-                }
-                
+                self.configureKakaoSign(token: kakaoToken)
             }
         }
+    }
+    
+    private func configureKakaoSign(token: String?) {
+        guard let token = token else { return }
+        let credential = OAuthProvider.credential(
+            withProviderID: "oidc.kakao",
+            idToken: token,
+            rawNonce: nil
+        )
         
-        // User Name 가져오기
-        UserApi.shared.me { user, error in
-            guard let user = user else { return }
-            guard let nickName = user.kakaoAccount?.profile?.nickname else { return }
-            completion(nickName)
+        Auth.auth().signIn(with: credential) { authResult, error in
+            guard error == nil else {
+                print(error)
+                return
+            }
         }
     }
     
