@@ -24,6 +24,8 @@
 		D055F7082993E029007A7D51 /* UserInfoSendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055F7072993E029007A7D51 /* UserInfoSendable.swift */; };
 		D055F70C2993E5E5007A7D51 /* CreateUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055F70B2993E5E5007A7D51 /* CreateUserInfoViewController.swift */; };
 		D08EDDFD2994128100F3FBEC /* UITextField +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EDDFC2994128100F3FBEC /* UITextField +.swift */; };
+		D0B9470E29956A5500AAC417 /* JSONDecoder +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9470D29956A5500AAC417 /* JSONDecoder +.swift */; };
+		D0B947102995816500AAC417 /* JSONEncoder +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9470F2995816500AAC417 /* JSONEncoder +.swift */; };
 		D0C47547299234B900378CD2 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47546299234B900378CD2 /* Mode.swift */; };
 		D0C47549299286FD00378CD2 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47548299286FD00378CD2 /* AlertPresentable.swift */; };
 		D0C4754B29928DA800378CD2 /* DataSendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4754A29928DA800378CD2 /* DataSendable.swift */; };
@@ -51,6 +53,8 @@
 		D055F7072993E029007A7D51 /* UserInfoSendable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSendable.swift; sourceTree = "<group>"; };
 		D055F70B2993E5E5007A7D51 /* CreateUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserInfoViewController.swift; sourceTree = "<group>"; };
 		D08EDDFC2994128100F3FBEC /* UITextField +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField +.swift"; sourceTree = "<group>"; };
+		D0B9470D29956A5500AAC417 /* JSONDecoder +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder +.swift"; sourceTree = "<group>"; };
+		D0B9470F2995816500AAC417 /* JSONEncoder +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder +.swift"; sourceTree = "<group>"; };
 		D0C47546299234B900378CD2 /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
 		D0C47548299286FD00378CD2 /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
 		D0C4754A29928DA800378CD2 /* DataSendable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSendable.swift; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				D08EDDFC2994128100F3FBEC /* UITextField +.swift */,
+				D0B9470D29956A5500AAC417 /* JSONDecoder +.swift */,
+				D0B9470F2995816500AAC417 /* JSONEncoder +.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -360,6 +366,7 @@
 				D08EDDFD2994128100F3FBEC /* UITextField +.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* ListViewController.swift in Sources */,
 				D01D5A7129921C6C0000EA91 /* ListTableViewCell.swift in Sources */,
+				D0B9470E29956A5500AAC417 /* JSONDecoder +.swift in Sources */,
 				D01D5A7429922F0A0000EA91 /* ScheduleInfoViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				D055F7082993E029007A7D51 /* UserInfoSendable.swift in Sources */,
@@ -371,6 +378,7 @@
 				D0C4754B29928DA800378CD2 /* DataSendable.swift in Sources */,
 				D0C47549299286FD00378CD2 /* AlertPresentable.swift in Sources */,
 				D055F70C2993E5E5007A7D51 /* CreateUserInfoViewController.swift in Sources */,
+				D0B947102995816500AAC417 /* JSONEncoder +.swift in Sources */,
 				D055949B29923055000AD5F4 /* ScheduleInfoView.swift in Sources */,
 				D055F7062993C4FF007A7D51 /* NormalLoginView.swift in Sources */,
 			);

@@ -11,17 +11,15 @@ import FirebaseAuth
 
 final class ListViewController: UIViewController {
     
+    // MARK: Internal Properties
+    
+    var scheduleList: [Schedule] = []
+    let listView = ListView()
+    
     // MARK: Private Properties
     
-    private let listView = ListView()
     private let scheduleInfoViewController = ScheduleInfoViewController()
     private let db = Firestore.firestore()
-    private var scheduleList: [Schedule] = [] {
-        didSet {
-            listView.reloadTableViewData()
-            saveUserScheduleData()
-        }
-    }
     
     // MARK: Life Cycle
     
@@ -34,10 +32,11 @@ final class ListViewController: UIViewController {
         configureListView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        readUserScheduleData()
+    // MARK: Internal Methods
+    
+    func configureScheduleList(data: [Schedule]) {
+        scheduleList = data
+        listView.reloadTableViewData()
     }
     
     // MARK: Private Methods
@@ -72,44 +71,16 @@ final class ListViewController: UIViewController {
         listView.configureAddButton(target: self, action: #selector(tapAddButton))
     }
     
-    private func saveUserScheduleData() {
-        let jsonScheduleData = try? JSONEncoder().encode(scheduleList)
-        
-        guard let jsonScheduleData = jsonScheduleData,
-              let dataString = String(data: jsonScheduleData, encoding: .utf8) else { return }
+    private func updateUserScheduleData() {
+        let jsonScheduleList = JSONEncoder().encodeScheduleList(scheduleList)
         
         Auth.auth().addStateDidChangeListener { auth, user in
             if let id = user?.email {
                 let path = self.db.collection(id).document("Personal")
-                path.updateData(["Schedule" : dataString])
-            }
-        }
-    }
-    
-    private func readUserScheduleData() {
-        Auth.auth().addStateDidChangeListener { [self] auth, user in
-            if let id = user?.email {
-                db.collection(id).getDocuments() { [self] querySnapShot, error in
-                    if let error = error {
-                        print(error)
-                    } else {
-                        print("Firebase Read Success")
-                        if let documents = querySnapShot?.documents {
-                            for document in documents {
-                                let datas = document.data().values
-                                for value in datas {
-                                    let stringValue = "\(value)"
-                                    if let jsonData = stringValue.data(using: .utf8) {
-                                        let data = try? JSONDecoder().decode([Schedule].self, from: jsonData)
-                                        if let datas = data {
-                                            scheduleList = datas
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                
+                path.updateData(["Schedule" : jsonScheduleList])
+                
+                self.listView.reloadTableViewData()
             }
         }
     }
@@ -149,6 +120,7 @@ extension ListViewController: UITableViewDelegate {
         forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             scheduleList.remove(at: indexPath.row)
+            updateUserScheduleData()
         }
     }
     
@@ -196,6 +168,7 @@ extension ListViewController: DataSendable {
         switch mode {
         case .create:
             scheduleList.append(data)
+            updateUserScheduleData()
         case .edit:
             break
         case .read:
@@ -246,7 +219,7 @@ extension ListViewController: AlertPresentable {
             
             loginViewController.toggleFacebookLoginButton()
             
-            self.navigationController?.popToRootViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
         let secondAlertAction = createAlertAction(
             title: "취소"

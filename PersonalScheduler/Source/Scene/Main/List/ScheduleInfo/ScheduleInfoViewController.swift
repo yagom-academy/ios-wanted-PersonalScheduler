@@ -94,11 +94,11 @@ extension ScheduleInfoViewController: AlertPresentable {
         ) { [self] in
             if let data = scheduleInfoView.saveScheduleData() {
                 delegate?.sendData(with: data, mode: .create)
+                
+                navigationController?.popViewController(animated: true)
             } else {
                 presentDataEmptyErrorAlert()
             }
-            
-            navigationController?.popViewController(animated: true)
         }
         let secondAlertAction = createAlertAction(
             title: "취소"

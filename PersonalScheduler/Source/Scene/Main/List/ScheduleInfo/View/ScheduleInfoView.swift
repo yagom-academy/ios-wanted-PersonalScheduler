@@ -282,11 +282,15 @@ final class ScheduleInfoView: UIView {
         if schedule.title == "일정 제목을 입력하세요. (최대 35자)" ||
             schedule.title == String() {
             titleText = "[일정 제목없음]"
+        } else {
+            titleText = schedule.title
         }
         
         if schedule.body == "일정 내용을 입력하세요. (최대 500자) \n(시작/종료일자 기입은 필수입니다.)" ||
             schedule.body == String() {
             bodyText = "[일정 내용없음]"
+        } else {
+            bodyText = schedule.body
         }
         
         let data = Schedule(

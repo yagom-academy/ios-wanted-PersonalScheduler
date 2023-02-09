@@ -98,6 +98,12 @@ final class MainViewController: UIViewController {
         configureLayout()
         configureDelegate()
         configureButtonAction()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        listViewController.configureScheduleList(data: .init())
         checkLogin()
     }
     
@@ -110,8 +116,18 @@ final class MainViewController: UIViewController {
     // MARK: Private Methods
     
     private func checkLogin() {
-        if Auth.auth().currentUser?.uid != nil {
-            navigationController?.pushViewController(listViewController, animated: true)
+        let auth = Auth.auth()
+        
+        if auth.currentUser?.email != nil {
+            indicatorView.startAnimating()
+            
+            auth.addStateDidChangeListener { auth, user in
+                if let id = user?.email {
+                    self.readUserScheduleData(id: id)
+                    self.navigationController?.pushViewController(self.listViewController, animated: true)
+                    self.indicatorView.stopAnimating()
+                }
+            }
         }
     }
     
@@ -145,15 +161,17 @@ final class MainViewController: UIViewController {
     
     private func checkAuthLogIn(type: SNSType, id: String, password: String) {
         let domainName = configureDomainName(type: type)
+        let userID = id + domainName
         
         indicatorView.startAnimating()
+        listViewController.configureScheduleList(data: .init())
         
-        Auth.auth().createUser(withEmail: id + domainName, password: password) { authResult, error in
+        Auth.auth().createUser(withEmail: userID, password: password) { authResult, error in
             if let error = error {
                 print(error)
-                self.signInAuth(type: type, id: id, password: password)
+                self.signInAuth(type: type, id: userID, password: password)
             } else {
-                self.createUserCollection(id: id + domainName)
+                self.createUserCollection(id: userID)
                 self.navigationController?.pushViewController(self.listViewController, animated: true)
                 self.indicatorView.stopAnimating()
             }
@@ -161,14 +179,11 @@ final class MainViewController: UIViewController {
     }
     
     private func signInAuth(type: SNSType, id: String, password: String) {
-        let domainName = configureDomainName(type: type)
-        
-        indicatorView.startAnimating()
-        
-        Auth.auth().signIn(withEmail: id + domainName, password: password) { authResult, error in
+        Auth.auth().signIn(withEmail: id, password: password) { authResult, error in
             if let error = error {
                 print(error)
             } else {
+                self.readUserScheduleData(id: id)
                 self.navigationController?.pushViewController(self.listViewController, animated: true)
                 self.indicatorView.stopAnimating()
             }
@@ -191,13 +206,31 @@ final class MainViewController: UIViewController {
     private func createUserCollection(id: String) {
         Auth.auth().addStateDidChangeListener { auth, user in
             if let id = user?.email {
-//                self.db.collection(id).addDocument(data: ["Schedule":""])
                 self.db.collection(id).document("Personal").setData(["Schedule":""])
                 { err in
                     if let err = err {
                         print(err)
                     } else {
                         print("Firebase Save Success")
+                    }
+                }
+            }
+        }
+    }
+    
+    private func readUserScheduleData(id: String) {
+        db.collection(id).getDocuments() { [self] querySnapShot, error in
+            if let error = error {
+                print(error)
+            } else {
+                guard let documents = querySnapShot?.documents else { return }
+                if documents.first?.documentID == "Personal" {
+                    let data = "\(documents.first?.data().values.first ?? String())"
+                    guard let jsonData = data.data(using: .utf8) else { return }
+                    let schedule = JSONDecoder().decodeData(data: jsonData, to: [Schedule].self)
+                    
+                    if let unwrappedSchedule = schedule {
+                        listViewController.configureScheduleList(data: unwrappedSchedule)
                     }
                 }
             }
