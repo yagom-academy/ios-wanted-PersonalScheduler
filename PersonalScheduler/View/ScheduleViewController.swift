@@ -12,7 +12,7 @@ final class ScheduleViewController: UIViewController {
     typealias DataSource = UITableViewDiffableDataSource<ScheduleSection, Event>
     typealias Snapshot = NSDiffableDataSourceSnapshot<ScheduleSection, Event>
 
-    private let events: [Event] = [] // ViewModel로 리팩토링 예정
+    private let viewModel = ScheduleViewModel()
     private let scheduleTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -27,8 +27,18 @@ final class ScheduleViewController: UIViewController {
         super.viewDidLoad()
         configureHierarchy()
         configureLayout()
+        bindViewModel()
         configureDateDataSource()
-        applySnapshot()
+    }
+
+    private func bindViewModel() {
+        viewModel.bind { [weak self] events in
+            guard var snapshot = self?.dataSource?.snapshot() else { return }
+            snapshot.deleteAllItems()
+            snapshot.appendSections([.main])
+            snapshot.appendItems(events)
+            self?.dataSource?.apply(snapshot)
+        }
     }
 
     private func configureDateDataSource() {
@@ -45,14 +55,10 @@ final class ScheduleViewController: UIViewController {
     private func registerCell() {
         scheduleTableView.register(ScheduleCell.self, forCellReuseIdentifier: ScheduleCell.reuseIdentifier)
     }
+}
 
-    private func applySnapshot() {
-        guard var snapshot = self.dataSource?.snapshot() else { return }
-        snapshot.deleteAllItems()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(events)
-        dataSource?.apply(snapshot)
-    }
+//MARK: - ViewHierarchy and Layout
+extension ScheduleViewController {
 
     private func configureHierarchy() {
         self.view.addSubview(scheduleTableView)

@@ -30,6 +30,7 @@
 		41C3CC7C2992A97F00F269CE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C3CC7B2992A97F00F269CE /* Event.swift */; };
 		41FB21A42993E575009044E6 /* UIStackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB21A32993E575009044E6 /* UIStackView +.swift */; };
 		41FB21A62994FC04009044E6 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB21A52994FC04009044E6 /* Date+.swift */; };
+		41FB21A829950320009044E6 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB21A729950320009044E6 /* ScheduleViewModel.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* LoginViewController.swift */; };
@@ -54,6 +55,7 @@
 		41C3CC7B2992A97F00F269CE /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		41FB21A32993E575009044E6 /* UIStackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView +.swift"; sourceTree = "<group>"; };
 		41FB21A52994FC04009044E6 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		41FB21A729950320009044E6 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				41BC371D299251F1000A5ED7 /* LoginViewModel.swift */,
 				415BA180299386DE00EE88B6 /* LoginButtonViewModel.swift */,
+				41FB21A729950320009044E6 /* ScheduleViewModel.swift */,
 				415BA1932993DBB800EE88B6 /* ScheduleCellViewModel.swift */,
 			);
 			path = ViewModel;
@@ -266,6 +269,7 @@
 				415BA18E2993C66400EE88B6 /* ScheduleViewController.swift in Sources */,
 				41ADCE152992822C001984D3 /* UILabel+.swift in Sources */,
 				41FB21A62994FC04009044E6 /* Date+.swift in Sources */,
+				41FB21A829950320009044E6 /* ScheduleViewModel.swift in Sources */,
 				415BA181299386DE00EE88B6 /* LoginButtonViewModel.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
