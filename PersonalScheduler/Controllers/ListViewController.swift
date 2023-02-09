@@ -25,9 +25,23 @@ final class ListViewController: UIViewController {
     }
 
     private func configureCollectionView() {
-        let configuration = UICollectionLayoutListConfiguration(appearance: .plain)
+        var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
+        configuration.trailingSwipeActionsConfigurationProvider = swipeActions
         let collectionViewLayout = UICollectionViewCompositionalLayout.list(using: configuration)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+    }
+
+    private func swipeActions(for indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let id = datasource?.itemIdentifier(for: indexPath) else { return nil }
+        let deleteActionTitle = NSLocalizedString("Delete", comment: "Delete Action Title")
+        let deleteAction = UIContextualAction(style: .destructive,
+                                              title: deleteActionTitle) { [weak self] _, _, completion in
+            guard let self else { return }
+            self.deleteSchedule(with: id)
+            self.updateSnapshot()
+            completion(true)
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 
     private func configureDataSources() {
@@ -97,6 +111,19 @@ extension ListViewController {
 
     private func scheduleIDs() -> [Schedule.ID] {
         return schedules.sorted(by: { $0.scheduleDate > $1.scheduleDate }).map { $0.id }
+    }
+
+    private func add(_ schedule: Schedule) {
+        schedules.append(schedule)
+    }
+
+    private func update(_ schedule: Schedule) {
+        guard let index = schedules.firstIndex(where: { $0.id == schedule.id }) else { return }
+        schedules[index] = schedule
+    }
+
+    private func deleteSchedule(with id: Schedule.ID) {
+        schedules.removeAll(where: { $0.id == id })
     }
 
     private func highlightColor(for schedule: Schedule) -> UIColor {
