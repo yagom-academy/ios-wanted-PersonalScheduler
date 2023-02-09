@@ -49,6 +49,15 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         drawView()
+        bindViewModel()
+    }
+
+    private func bindViewModel() {
+        viewModel.userId.bind { id in
+            guard let id = id else { return }
+            let scheduleViewController = ScheduleViewController(scheduleViewModel: ScheduleViewModel(userId: id))
+            self.navigationController?.pushViewController(scheduleViewController, animated: true)
+        }
     }
 
     @objc private func loginWidthKakao() {
