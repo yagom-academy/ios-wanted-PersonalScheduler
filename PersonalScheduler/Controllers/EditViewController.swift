@@ -37,6 +37,7 @@ final class EditViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDataSources()
+        configureNavigationItem()
     }
 
     private func configureDataSources() {
@@ -45,6 +46,36 @@ final class EditViewController: UICollectionViewController {
         datasource = Datasource(collectionView: collectionView, cellProvider: { collectionView, indexPath, row in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: row)
         })
+    }
+
+    private func configureNavigationItem() {
+        if isAdding {
+            navigationItem.title = NSLocalizedString("Add Schedule", comment: "Add Schedule ViewController Title")
+            navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .cancel,
+                                                               primaryAction: UIAction(handler: cancelHandler))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .done,
+                                                                primaryAction: UIAction(handler: doneAddingHandler))
+        } else {
+            navigationItem.title = NSLocalizedString("Schedule", comment: "Schedule ViewController Title")
+            navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .done,
+                                                                primaryAction: UIAction(handler: doneEditingHandler))
+        }
+    }
+
+    private func cancelHandler(_ action: UIAction) {
+        dismiss(animated: true)
+    }
+
+    private func doneAddingHandler(_ action: UIAction) {
+        onChange(editingSchedule)
+        dismiss(animated: true)
+    }
+
+    private func doneEditingHandler(_ action: UIAction) {
+        if editingSchedule != schedule {
+            onChange(editingSchedule)
+        }
+        navigationController?.popViewController(animated: true)
     }
 }
 

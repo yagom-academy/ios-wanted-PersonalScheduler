@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Schedule: Identifiable {
+struct Schedule: Identifiable, Equatable {
     let id: UUID
     var title: String
     var scheduleDate: Date
