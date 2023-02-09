@@ -13,7 +13,14 @@ import FirebaseAuth
 class LoginViewController: UIViewController {
     private let facebookLoginButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .black
+        button.backgroundColor = .blue
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let kakaoLoginButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .yellow
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -42,39 +49,37 @@ class LoginViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             facebookLoginButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            facebookLoginButton.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor)
+            facebookLoginButton.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor),
+            kakaoLoginButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            kakaoLoginButton.topAnchor.constraint(equalTo: facebookLoginButton.bottomAnchor, constant: 12)
         ])
     }
     
     private func configureView() {
         facebookLoginButton.addAction(UIAction(handler: tapFacebookLogin), for: .touchUpInside)
+        kakaoLoginButton.addAction(UIAction(handler: tapKakaoLogin), for: .touchUpInside)
         viewModel.delegate = self
         
         view.addSubview(facebookLoginButton)
+        view.addSubview(kakaoLoginButton)
     }
     
     private func tapFacebookLogin(_ action: UIAction) {
         viewModel.action(.tapFacebookLogin)
     }
+    
+    private func tapKakaoLogin(_ action: UIAction) {
+        viewModel.action(.tapKakaoLogin)
+    }
 }
 
 extension LoginViewController: LoginViewModelDelegate {
-    func loginViewModel(failedFacebookLogin error: Error) {
-        print(error.localizedDescription)
-    }
-    
-    func loginViewModel(invalidToken error: Error?) {
-        print(error?.localizedDescription)
-        
-    }
-    
-    func loginViewModel(failedFirestoreLogin error: Error?) {
-        print(error?.localizedDescription)
-        
-    }
-    
     func loginViewModel(successLogin uid: String) {
         print(uid)
+    }
+    
+    func loginViewModel(failedLogin error: Error) {
+        print(error.localizedDescription)
     }
     
     func loginViewModel(successLogout: Void) {
