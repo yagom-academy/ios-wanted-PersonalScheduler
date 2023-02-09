@@ -72,7 +72,8 @@ extension ScheduleListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let updateAction = swipeUpdateAction(indexPath)
-        return UISwipeActionsConfiguration(actions: [updateAction])
+        let deleteAction = swipeDeleteAction(indexPath)
+        return UISwipeActionsConfiguration(actions: [deleteAction, updateAction])
     }
 }
 
@@ -116,6 +117,15 @@ private extension ScheduleListViewController {
             handler(true)
         }
         return updateAction
+    }
+
+    func swipeDeleteAction(_ indexPath: IndexPath) -> UIContextualAction {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, handler in
+            ScheduleModel.scheduleList.remove(at: indexPath.section)
+            self?.tableView.reloadData()
+            handler(true)
+        }
+        return deleteAction
     }
 }
 
