@@ -67,36 +67,60 @@ class ScheduleInfoViewController: UIViewController {
     
     @objc
     private func tapRightBarButtonSaveAction() {
-        if let data = scheduleInfoView.saveScheduleData() {
-            delegate?.sendData(with: data, mode: .create)
-        }
-        
-        navigationController?.popViewController(animated: true)
+        presentDataSaveAlert()
     }
     
     @objc
     private func tapRightBarButtonEditAction() {
-        
+        scheduleInfoView.checkDataAccess(mode: .edit)
     }
     
     @objc
     private func tapRightBarButtonReadAction() {
-        presentEditModeCheckingAlert()
+        scheduleInfoView.checkDataAccess(mode: .edit)
     }
 }
 
 // MARK: - AlertPresentable
 
 extension ScheduleInfoViewController: AlertPresentable {
+    func presentDataSaveAlert() {
+        let alert = createAlert(
+            title: "데이터 관리",
+            message: "일정을 저장하시겠습니까?"
+        )
+        let firstAlertAction = createAlertAction(
+            title: "저장"
+        ) { [self] in
+            if let data = scheduleInfoView.saveScheduleData() {
+                delegate?.sendData(with: data, mode: .create)
+            }
+            
+            navigationController?.popViewController(animated: true)
+        }
+        let secondAlertAction = createAlertAction(
+            title: "취소"
+        ) {}
+        
+        alert.addAction(firstAlertAction)
+        alert.addAction(secondAlertAction)
+        
+        present(alert, animated: true)
+    }
+    
     func presentEditModeCheckingAlert() {
         let alert = createAlert(
-            title: "모드전환",
-            message: "프로젝트 정보를 편집하시겠습니까?"
+            title: "모드 전환",
+            message: "일정을 편집하시겠습니까?"
         )
         let firstAlertAction = createAlertAction(
             title: "편집"
         ) { [self] in
-            scheduleInfoView.checkDataAccess(mode: .edit)
+            if let data = scheduleInfoView.saveScheduleData() {
+                delegate?.sendData(with: data, mode: .create)
+            }
+            
+            navigationController?.popViewController(animated: true)
         }
         let secondAlertAction = createAlertAction(
             title: "취소"

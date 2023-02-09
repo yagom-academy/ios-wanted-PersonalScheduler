@@ -24,6 +24,8 @@ class ScheduleInfoView: UIView {
         let textField = UITextField()
         textField.addLeftPadding()
         textField.backgroundColor = .systemBackground
+        textField.text = "일정 제목을 입력하세요."
+        textField.textColor = .lightGray
         textField.font = .preferredFont(forTextStyle: .title3)
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
@@ -32,6 +34,9 @@ class ScheduleInfoView: UIView {
     private let bodyTextView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .systemBackground
+        textView.text = "일정 내용을 입력하세요."
+        textView.textColor = .lightGray
+        textView.textContainerInset = UIEdgeInsets(top: 15, left: 10, bottom: 15, right: 10)
         textView.font = .preferredFont(forTextStyle: .title3)
         textView.layer.borderColor = UIColor.label.cgColor
         textView.layer.borderWidth = 1
@@ -165,6 +170,8 @@ class ScheduleInfoView: UIView {
             )
             
             return data
+        } else {
+            // TODO: 데이터가 다 입력되지 않았음을 알리는 알림 띄우기
         }
         
         return nil
@@ -191,6 +198,7 @@ class ScheduleInfoView: UIView {
     
     private func configureDelegate() {
         titleTextField.delegate = self
+        bodyTextView.delegate = self
         
         startDateTextField.delegate = self
         startTimeTextField.delegate = self
@@ -336,5 +344,35 @@ extension ScheduleInfoView: UITextFieldDelegate {
         textField.resignFirstResponder() // TextField 비활성화
         return true
     }
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        if let textCount = textField.text?.count {
+            if textCount < 35 {
+                return true
+            }
+            return false
+        }
+        
+        return false
+    }
+    
+    func  textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text == "일정 제목을 입력하세요." && textField.textColor == .lightGray {
+            textField.text = nil
+            textField.textColor = .label
+        }
+    }
 }
 
+// MARK: - UITextViewDelegate
+
+extension ScheduleInfoView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "일정 내용을 입력하세요." && textView.textColor == .lightGray {
+            textView.text = nil
+            textView.textColor = .label
+        }
+    }
+}

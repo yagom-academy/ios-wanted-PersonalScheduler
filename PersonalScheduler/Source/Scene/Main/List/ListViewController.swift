@@ -12,8 +12,12 @@ class ListViewController: UIViewController {
     
     // MARK: Internal Properties
     
-    let listView = ListView()
-    var scheduleList: [Schedule] = [] {
+    
+    // MARK: Private Properties
+    
+    private let listView = ListView()
+    private let scheduleInfoViewController = ScheduleInfoViewController()
+    private var scheduleList: [Schedule] = [] {
         didSet {
             listView.reloadTableViewData()
         }
@@ -26,6 +30,7 @@ class ListViewController: UIViewController {
         
         configureView()
         configureLayout()
+        configureDelegate()
         listView.configureTableView(with: self)
     }
     
@@ -55,6 +60,10 @@ class ListViewController: UIViewController {
             target: self,
             action: #selector(tapBackBarButton)
         )
+    }
+    
+    private func configureDelegate() {
+        scheduleInfoViewController.delegate = self
     }
     
     private func configureLayout() {
@@ -89,12 +98,7 @@ class ListViewController: UIViewController {
     
     @objc
     private func tapRightBarButton() {
-        let pushViewController = ScheduleInfoViewController()
-        
-        pushViewController.mode = .create
-        pushViewController.delegate = self
-        
-        navigationController?.pushViewController(pushViewController, animated: true)
+        presentAddScheduleCheckingAlert()
     }
     
     @objc
@@ -160,5 +164,30 @@ extension ListViewController: DataSendable {
         case .read:
             break
         }
+    }
+}
+
+// MARK: - AlertPresentable
+
+extension ListViewController: AlertPresentable {
+    func presentAddScheduleCheckingAlert() {
+        let alert = createAlert(
+            title: "입력 확인",
+            message: "스케쥴을 추가하시겠습니까?"
+        )
+        let firstAlertAction = createAlertAction(
+            title: "확인"
+        ) { [self] in
+            scheduleInfoViewController.mode = .create
+            navigationController?.pushViewController(scheduleInfoViewController, animated: true)
+        }
+        let secondAlertAction = createAlertAction(
+            title: "취소"
+        ) {}
+        
+        alert.addAction(firstAlertAction)
+        alert.addAction(secondAlertAction)
+        
+        present(alert, animated: true)
     }
 }
