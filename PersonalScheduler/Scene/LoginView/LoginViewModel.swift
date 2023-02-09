@@ -7,12 +7,11 @@
 
 import Foundation
 import FacebookLogin
+import KakaoSDKUser
 
 protocol LoginViewModelDelegate: AnyObject {
-    func loginViewModel(failedFacebookLogin error: Error)
-    func loginViewModel(invalidToken error: Error?)
-    func loginViewModel(failedFirestoreLogin error: Error?)
     func loginViewModel(successLogin uid: String)
+    func loginViewModel(failedLogin error: Error)
     func loginViewModel(successLogout: Void)
     func loginViewModel(failedLogout error: Error)
 }
@@ -34,38 +33,87 @@ final class LoginViewModel {
     func action(_ action: Action) {
         switch action {
         case .tapKakaoLogin:
-            break
+            tapKakaoLogin()
         case .tapFacebookLogin:
             tapFacebookLogin()
         }
     }
 }
 
+// MARK: Kakao
 extension LoginViewModel {
-    func tapFacebookLogin() {
-        facebookLoginManager.logIn(permissions: ["email"], from: nil) { result, error in
+    private func loginWithKakaoTalk() {
+        UserApi.shared.loginWithKakaoTalk { [weak self] (oauthToken, error) in
             if let error = error {
-                self.delegate?.loginViewModel(failedFacebookLogin: error)
+                self?.delegate?.loginViewModel(failedLogin: error)
                 return
             }
             
-            guard let token = AccessToken.current?.tokenString else {
-                self.delegate?.loginViewModel(invalidToken: error)
-                return
-            }
+            guard let idToken = oauthToken?.idToken else { return }
             
-            self.service.requestLogin(with: token) { [weak self] result in
+            self?.service.requestLogin(to: .kakao, with: idToken) { [weak self] result in
                 switch result {
                 case .success(let uid):
                     self?.delegate?.loginViewModel(successLogin: uid)
                 case .failure(let failure):
-                    self?.delegate?.loginViewModel(failedFirestoreLogin: failure)
+                    self?.delegate?.loginViewModel(failedLogin: failure)
                 }
             }
         }
     }
     
-    func tapFacebookLogout() {
+    private func loginWithKakaoAccount() {
+        UserApi.shared.loginWithKakaoAccount { [weak self] (oauthToken, error) in
+            if let error = error {
+                self?.delegate?.loginViewModel(failedLogin: error)
+                return
+            }
+            
+            guard let idToken = oauthToken?.idToken else { return }
+            
+            self?.service.requestLogin(to: .kakao, with: idToken) { [weak self] result in
+                switch result {
+                case .success(let uid):
+                    self?.delegate?.loginViewModel(successLogin: uid)
+                case .failure(let failure):
+                    self?.delegate?.loginViewModel(failedLogin: failure)
+                }
+            }
+        }
+    }
+    
+    private func tapKakaoLogin() {
+        if UserApi.isKakaoTalkLoginAvailable() {
+            loginWithKakaoTalk()
+        } else {
+            loginWithKakaoAccount()
+        }
+    }
+}
+
+// MARK: Facebook
+extension LoginViewModel {
+    private func tapFacebookLogin() {
+        facebookLoginManager.logIn(permissions: ["email"], from: nil) { [weak self] result, error in
+            if let error = error {
+                self?.delegate?.loginViewModel(failedLogin: error)
+                return
+            }
+            
+            guard let token = AccessToken.current?.tokenString else { return }
+            
+            self?.service.requestLogin(to: .facebook, with: token) { [weak self] result in
+                switch result {
+                case .success(let uid):
+                    self?.delegate?.loginViewModel(successLogin: uid)
+                case .failure(let failure):
+                    self?.delegate?.loginViewModel(failedLogin: failure)
+                }
+            }
+        }
+    }
+    
+    private func tapFacebookLogout() {
         facebookLoginManager.logOut()
         service.requestLogout { [weak self] result in
             switch result {
