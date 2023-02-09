@@ -11,18 +11,34 @@ import FacebookLogin
 import FirebaseAuth
 
 class LoginViewController: UIViewController {
-    private let facebookLoginButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .blue
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    private let facebookLoginButton: LoginButton = {
+        let loginButton = ButtonBuilder()
+            .withProviderName("Facebook")
+            .withTextColor(.white)
+            .withLogoImage(UIImage(named: "facebook"))
+            .withBackgroundColor(UIColor(red: 24/255, green: 119/255, blue: 242/255, alpha: 1))
+            .build()
+        return loginButton
     }()
     
-    private let kakaoLoginButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .yellow
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    private let kakaoLoginButton: LoginButton = {
+        let loginButton = ButtonBuilder()
+            .withProviderName("Kakao")
+            .withTextColor(.black)
+            .withLogoImage(UIImage(named: "kakao"))
+            .withBackgroundColor(UIColor(red: 254/255, green: 229/255, blue: 0, alpha: 1))
+            .build()
+        return loginButton
+    }()
+    
+    private let buttonStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.spacing = 12
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
     
     private let viewModel: LoginViewModel
@@ -48,10 +64,12 @@ class LoginViewController: UIViewController {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            facebookLoginButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            facebookLoginButton.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor),
-            kakaoLoginButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            kakaoLoginButton.topAnchor.constraint(equalTo: facebookLoginButton.bottomAnchor, constant: 12)
+            buttonStackView.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.85),
+            buttonStackView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            buttonStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 400),
+            
+            facebookLoginButton.heightAnchor.constraint(equalToConstant: 60),
+            kakaoLoginButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
     
@@ -60,8 +78,8 @@ class LoginViewController: UIViewController {
         kakaoLoginButton.addAction(UIAction(handler: tapKakaoLogin), for: .touchUpInside)
         viewModel.delegate = self
         
-        view.addSubview(facebookLoginButton)
-        view.addSubview(kakaoLoginButton)
+        [facebookLoginButton, kakaoLoginButton].forEach(buttonStackView.addArrangedSubview(_:))
+        view.addSubview(buttonStackView)
     }
     
     private func tapFacebookLogin(_ action: UIAction) {
