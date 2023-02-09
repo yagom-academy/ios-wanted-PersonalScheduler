@@ -31,6 +31,8 @@
 		41FB21A42993E575009044E6 /* UIStackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB21A32993E575009044E6 /* UIStackView +.swift */; };
 		41FB21A62994FC04009044E6 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB21A52994FC04009044E6 /* Date+.swift */; };
 		41FB21A829950320009044E6 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB21A729950320009044E6 /* ScheduleViewModel.swift */; };
+		41FB21AA29950616009044E6 /* FirebaseManager + CRUDable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB21A929950616009044E6 /* FirebaseManager + CRUDable.swift */; };
+		41FB21AC29950633009044E6 /* CRUDable_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB21AB29950633009044E6 /* CRUDable_Protocol.swift */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
 		63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* LoginViewController.swift */; };
@@ -56,6 +58,8 @@
 		41FB21A32993E575009044E6 /* UIStackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView +.swift"; sourceTree = "<group>"; };
 		41FB21A52994FC04009044E6 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		41FB21A729950320009044E6 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		41FB21A929950616009044E6 /* FirebaseManager + CRUDable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseManager + CRUDable.swift"; sourceTree = "<group>"; };
+		41FB21AB29950633009044E6 /* CRUDable_Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUDable_Protocol.swift; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
 				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
 				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
+				41BC371C29923251000A5ED7 /* Config.xcconfig */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 		4153559D299148450078A35B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				41FB21AD29950739009044E6 /* DataBase */,
 				41C3CC792992A0EB00F269CE /* UserInfo.swift */,
 				41C3CC7B2992A97F00F269CE /* Event.swift */,
 				415BA18F2993C80400EE88B6 /* Observable.swift */,
@@ -141,6 +147,15 @@
 			path = "Extension+";
 			sourceTree = "<group>";
 		};
+		41FB21AD29950739009044E6 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				41FB21AB29950633009044E6 /* CRUDable_Protocol.swift */,
+				41FB21A929950616009044E6 /* FirebaseManager + CRUDable.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
 		63AAAAF52967EA2600775EC3 = {
 			isa = PBXGroup;
 			children = (
@@ -161,11 +176,10 @@
 			isa = PBXGroup;
 			children = (
 				41BC370D29921A30000A5ED7 /* Extension+ */,
-				4153559E299148580078A35B /* View */,
 				4153559D299148450078A35B /* Model */,
+				4153559E299148580078A35B /* View */,
 				4153559C2991483F0078A35B /* ViewModel */,
 				4153559B299147A70078A35B /* SupportingFiles */,
-				41BC371C29923251000A5ED7 /* Config.xcconfig */,
 			);
 			path = PersonalScheduler;
 			sourceTree = "<group>";
@@ -265,6 +279,7 @@
 				41BC370F29921A54000A5ED7 /* UIColor+.swift in Sources */,
 				415BA1922993D64E00EE88B6 /* ScheduleCell.swift in Sources */,
 				41FB21A42993E575009044E6 /* UIStackView +.swift in Sources */,
+				41FB21AA29950616009044E6 /* FirebaseManager + CRUDable.swift in Sources */,
 				41C3CC7A2992A0EB00F269CE /* UserInfo.swift in Sources */,
 				415BA18E2993C66400EE88B6 /* ScheduleViewController.swift in Sources */,
 				41ADCE152992822C001984D3 /* UILabel+.swift in Sources */,
@@ -274,6 +289,7 @@
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				41B187EE29934DA700DF0CB4 /* LoginButton.swift in Sources */,
+				41FB21AC29950633009044E6 /* CRUDable_Protocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
