@@ -9,12 +9,16 @@ import UIKit
 
 class ScheduleInfoView: UIView {
     
+    // MARK: Private Enumeration
+    
     private enum DateType {
         case startDate
         case startTime
         case endDate
         case endTime
     }
+    
+    // MARK: Private Properties
     
     private let titleTextField: UITextField = {
         let textField = UITextField()
@@ -128,6 +132,8 @@ class ScheduleInfoView: UIView {
         return stackView
     }()
     
+    // MARK: Initializer
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -138,6 +144,8 @@ class ScheduleInfoView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: Internal Methods
     
     func saveScheduleData() -> Schedule? {
         if let title = titleTextField.text,
@@ -179,6 +187,8 @@ class ScheduleInfoView: UIView {
             bodyTextView.isUserInteractionEnabled = false
         }
     }
+    
+    // MARK: Private Methods
     
     private func createDateButton(type: DateType, textField: UITextField, action: Selector?) {
         let toolbar = UIToolbar()
@@ -281,6 +291,8 @@ class ScheduleInfoView: UIView {
             totalStackView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 20)
         ])
     }
+    
+    // MARK: Action Methods
     
     @objc
     private func tapStartTimeSelectButton() {

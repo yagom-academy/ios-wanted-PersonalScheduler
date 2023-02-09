@@ -7,9 +7,14 @@
 
 import UIKit
 
-class NormalLoginView: UIView {
+final class NormalLoginView: UIView {
+    
+    // MARK: Internal Properties
     
     var delegate: UserInfoSendable?
+    
+    // MARK: Private Properties
+    
     private var loginMode: LoginMode = .login
     private let idLabel: UILabel = {
         let label = UILabel()
@@ -91,6 +96,7 @@ class NormalLoginView: UIView {
         return stackView
     }()
     
+    // MARK: Initializer
     
     init(frame: CGRect, mode: LoginMode) {
         super.init(frame: frame)
@@ -106,6 +112,8 @@ class NormalLoginView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: Internal Methods
     
     func configureNormalLoginButtonAction(_ mode: LoginMode) {
         switch mode {
@@ -128,6 +136,8 @@ class NormalLoginView: UIView {
             rightButton.setTitle("초기화", for: .normal)
         }
     }
+    
+    // MARK: Private Methods
     
     private func configureDelegate() {
         idTextField.delegate = self
@@ -173,6 +183,8 @@ class NormalLoginView: UIView {
         ])
     }
     
+    // MARK: Action Methods
+    
     @objc
     private func tapLoginLeftButton() {
         if let userID = idTextField.text,
@@ -200,6 +212,8 @@ class NormalLoginView: UIView {
         passwordTextField.text = String()
     }
 }
+
+// MARK: - UITextFieldDelegate
 
 extension NormalLoginView: UITextFieldDelegate {
     func textField(_ textField: UITextField,

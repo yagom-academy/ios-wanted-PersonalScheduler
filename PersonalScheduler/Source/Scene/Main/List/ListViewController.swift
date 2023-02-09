@@ -10,12 +10,16 @@ import FirebaseAuth
 
 class ListViewController: UIViewController {
     
+    // MARK: Internal Properties
+    
     let listView = ListView()
     var scheduleList: [Schedule] = [] {
         didSet {
             listView.reloadTableViewData()
         }
     }
+    
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,8 @@ class ListViewController: UIViewController {
         configureLayout()
         listView.configureTableView(with: self)
     }
+    
+    // MARK: Private Methods
     
     private func configureView() {
         view.backgroundColor = .systemBackground
@@ -64,6 +70,8 @@ class ListViewController: UIViewController {
         ])
     }
     
+    // MARK: Action Methods
+    
     @objc
     private func tapLeftBarButton() {
         let loginViewController = MainViewController()
@@ -95,6 +103,8 @@ class ListViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate
+
 extension ListViewController: UITableViewDelegate {
     func tableView(
         _ tableView: UITableView,
@@ -114,6 +124,8 @@ extension ListViewController: UITableViewDelegate {
         navigationController?.pushViewController(pushViewController, animated: true)
     }
 }
+
+// MARK: - UITableViewDataSource
 
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -135,6 +147,8 @@ extension ListViewController: UITableViewDataSource {
         return UITableViewCell()
     }
 }
+
+// MARK: - DataSendable
 
 extension ListViewController: DataSendable {
     func sendData(with data: Schedule, mode: ManageMode) {

@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  MainViewController.swift
 //  PersonalScheduler
 //
 //  Created by Dragon on 23/02/07.
@@ -15,7 +15,7 @@ import KakaoSDKUser
 import KakaoSDKAuth
 import AuthenticationServices
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
     // MARK: Private Enumeration
     
@@ -87,6 +87,8 @@ class MainViewController: UIViewController {
         return stackView
     }()
     
+    // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,9 +99,13 @@ class MainViewController: UIViewController {
         checkLogin()
     }
     
+    // MARK: Internal Methods
+    
     func toggleFacebookLoginButton() {
         FBSDKLoginKit.LoginManager().logOut()
     }
+    
+    // MARK: Private Methods
     
     private func checkLogin() {
         if Auth.auth().currentUser?.uid != nil {
@@ -212,6 +218,8 @@ class MainViewController: UIViewController {
         ])
     }
     
+    // MARK: Action Methods
+    
     @objc
     private func tapKakaoLoginButton() {
         if UserApi.isKakaoTalkLoginAvailable() {
@@ -243,6 +251,8 @@ class MainViewController: UIViewController {
     }
 }
 
+// MARK: - LoginButtonDelegate
+
 extension MainViewController: LoginButtonDelegate {
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if let error = error {
@@ -258,6 +268,8 @@ extension MainViewController: LoginButtonDelegate {
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginKit.FBLoginButton) {}
 }
+
+// MARK: - UserInfoSendable
 
 extension MainViewController: UserInfoSendable {
     func presentCreateUserInfoView() {

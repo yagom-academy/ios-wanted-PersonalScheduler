@@ -9,7 +9,11 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
 
+    // MARK: Identifier
+    
     static let identifier = "ListTableViewCell"
+    
+    // MARK: Private Properties
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -57,6 +61,8 @@ class ListTableViewCell: UITableViewCell {
         return stackView
     }()
     
+    // MARK: Initializer
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -67,12 +73,16 @@ class ListTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Internal Methods
+    
     func configureLabelText(schedule: Schedule) {
         titleLabel.text = schedule.title
         bodyLabel.text = schedule.body
         startDateLabel.text = "\(schedule.startDate)"
         endDateLabel.text = "\(schedule.endDate)"
     }
+    
+    // MARK: Private Methods
     
     private func setUpStackView() {
         dateStackView.addArrangedSubview(startDateLabel)

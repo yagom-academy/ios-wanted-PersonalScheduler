@@ -154,10 +154,9 @@
 			isa = PBXGroup;
 			children = (
 				D01D5A64299216C30000EA91 /* MainViewController.swift */,
-				D055F70B2993E5E5007A7D51 /* CreateUserInfoViewController.swift */,
 				D01D5A62299182160000EA91 /* View */,
+				D065DCA22995150C00C9EDF6 /* CreateUserInfo */,
 				D01D5A63299216A60000EA91 /* List */,
-				D01D5A7229922ED60000EA91 /* ScheduleInfo */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -175,6 +174,7 @@
 			children = (
 				63AAAB052967EA2600775EC3 /* ListViewController.swift */,
 				D055F7042993C4E1007A7D51 /* View */,
+				D01D5A7229922ED60000EA91 /* ScheduleInfo */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -214,6 +214,14 @@
 				D01D5A7029921C6C0000EA91 /* ListTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D065DCA22995150C00C9EDF6 /* CreateUserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				D055F70B2993E5E5007A7D51 /* CreateUserInfoViewController.swift */,
+			);
+			path = CreateUserInfo;
 			sourceTree = "<group>";
 		};
 		D08EDDFE2994128500F3FBEC /* Extension */ = {

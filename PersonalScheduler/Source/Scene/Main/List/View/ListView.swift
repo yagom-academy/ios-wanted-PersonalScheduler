@@ -8,6 +8,9 @@
 import UIKit
 
 class ListView: UIView {
+    
+    // MARK: Private Properties
+    
     private let listTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -16,6 +19,8 @@ class ListView: UIView {
         return tableView
     }()
 
+    // MARK: Initializer
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -26,6 +31,8 @@ class ListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Internal Methods
+    
     func configureTableView(with listViewController: ListViewController) {
         listTableView.delegate = listViewController
         listTableView.dataSource = listViewController
@@ -34,6 +41,8 @@ class ListView: UIView {
     func reloadTableViewData() {
         listTableView.reloadData()
     }
+    
+    // MARK: Private Methods
     
     private func configureLayout() {
         addSubview(listTableView)

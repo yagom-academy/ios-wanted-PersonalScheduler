@@ -8,15 +8,22 @@
 import UIKit
 
 class ScheduleInfoViewController: UIViewController {
+    
+    // MARK: Internal Properties
+    
     let scheduleInfoView = ScheduleInfoView()
     var mode: ManageMode = .create
     var delegate: DataSendable?
+    
+    // MARK: Private Properties
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView(mode)
     }
+    
+    // MARK: Private Methods
     
     private func configureView(_ mode: ManageMode) {
         view = scheduleInfoView
@@ -46,6 +53,8 @@ class ScheduleInfoViewController: UIViewController {
             )
         }
     }
+    
+    // MARK: Action Methods
     
     @objc
     private func tapRightBarButtonSaveAction() {
@@ -82,5 +91,7 @@ class ScheduleInfoViewController: UIViewController {
         present(alert, animated: true)
     }
 }
+
+// MARK: - AlertPresentable
 
 extension ScheduleInfoViewController: AlertPresentable {}

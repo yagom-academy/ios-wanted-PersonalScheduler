@@ -9,7 +9,9 @@ import UIKit
 import FirebaseAuth
 import FirebaseCore
 
-class CreateUserInfoViewController: UIViewController {
+final class CreateUserInfoViewController: UIViewController {
+    
+    // MARK: Private Properties
     
     private let normalLoginView = NormalLoginView(frame: .zero, mode: .create)
     private let indicatorView: UIActivityIndicatorView = {
@@ -50,16 +52,23 @@ class CreateUserInfoViewController: UIViewController {
         return label
     }()
     
+    // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView()
         configureLayout()
+        configureDelegate()
     }
+    
+    // MARK: Private Methods
     
     private func configureView() {
         view.backgroundColor = .systemBackground
-        
+    }
+    
+    private func configureDelegate() {
         normalLoginView.delegate = self
     }
     
@@ -109,6 +118,8 @@ class CreateUserInfoViewController: UIViewController {
         ])
     }
 }
+
+// MARK: - UserInfoSendable
 
 extension CreateUserInfoViewController: UserInfoSendable {
     func sendUserInfo(id: String, password: String) {
