@@ -9,9 +9,22 @@ import Foundation
 
 final class ScheduleViewModel {
 
-    private let events: Observable<[Event]> = Observable([])
+    private let userId: String
+    private(set) var events: Observable<[Event]> = Observable([])
+    private(set) var error: Observable<Error?> = Observable(nil)
 
-    func bind(closure: @escaping ([Event]) -> Void) {
-        events.bind(closure)
+    init(userId: String) {
+        self.userId = userId
+    }
+
+    func fetchEvents() {
+        FirebaseManager(collectionName: userId).read { result in
+            switch result {
+            case .success(let events):
+                self.events.value = events
+            case .failure(let error):
+                self.error.value = error
+            }
+        }
     }
 }
