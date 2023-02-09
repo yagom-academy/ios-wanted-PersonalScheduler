@@ -34,7 +34,7 @@ final class CreateUserInfoViewController: UIViewController {
     private let createIdGuideLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "[ID] E-Mail 형식으로 입력하세요. (최대 15자리)"
+        label.text = "[ID] E-Mail 형식으로 입력하세요. (최대 20자)"
         label.font = .preferredFont(forTextStyle: .subheadline)
         label.textColor = .label
         label.textAlignment = .center
@@ -44,7 +44,7 @@ final class CreateUserInfoViewController: UIViewController {
     private let createPwGuideLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "[PW] 최소 6자리 이상 입력하세요. (최대 15자리)"
+        label.text = "[PW] 최소 6자리 이상 입력하세요. (최대 20자)"
         label.font = .preferredFont(forTextStyle: .subheadline)
         label.textColor = .label
         label.textAlignment = .center

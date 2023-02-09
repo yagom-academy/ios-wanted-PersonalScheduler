@@ -94,6 +94,8 @@ extension ScheduleInfoViewController: AlertPresentable {
         ) { [self] in
             if let data = scheduleInfoView.saveScheduleData() {
                 delegate?.sendData(with: data, mode: .create)
+            } else {
+                presentDataEmptyErrorAlert()
             }
             
             navigationController?.popViewController(animated: true)
@@ -134,8 +136,22 @@ extension ScheduleInfoViewController: AlertPresentable {
     
     func presentDateInputErrorAlert() {
         let alert = createAlert(
-            title: "날짜/시간 입력 오류",
-            message: "시작 날짜/시간이후 날짜/시간을 선택해주세요."
+            title: "입력 오류",
+            message: "종료날짜/시간을 시작날짜/시간이후로 선택해주세요."
+        )
+        let AlertAction = createAlertAction(
+            title: "확인"
+        ) {}
+        
+        alert.addAction(AlertAction)
+        
+        present(alert, animated: true)
+    }
+    
+    func presentDataEmptyErrorAlert() {
+        let alert = createAlert(
+            title: "입력 오류",
+            message: "날짜/시간을 입력해주세요."
         )
         let AlertAction = createAlertAction(
             title: "확인"

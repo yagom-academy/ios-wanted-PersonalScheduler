@@ -220,7 +220,7 @@ extension NormalLoginView: UITextFieldDelegate {
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         if let textCount = textField.text?.count {
-            if textCount < 15 {
+            if textCount < 20 {
                 return true
             }
             return false

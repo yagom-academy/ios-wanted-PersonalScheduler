@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScheduleInfoView: UIView {
+final class ScheduleInfoView: UIView {
     
     // MARK: Private Enumeration
     
@@ -24,7 +24,7 @@ class ScheduleInfoView: UIView {
         let textField = UITextField()
         textField.addLeftPadding()
         textField.backgroundColor = .systemBackground
-        textField.text = "일정 제목을 입력하세요."
+        textField.text = "일정 제목을 입력하세요. (최대 35자)"
         textField.textColor = .lightGray
         textField.font = .preferredFont(forTextStyle: .title3)
         textField.layer.borderColor = UIColor.label.cgColor
@@ -34,9 +34,9 @@ class ScheduleInfoView: UIView {
     private let bodyTextView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .systemBackground
-        textView.text = "일정 내용을 입력하세요."
+        textView.text = "일정 내용을 입력하세요. (최대 500자) \n(시작/종료일자 기입은 필수입니다.)"
         textView.textColor = .lightGray
-        textView.textContainerInset = UIEdgeInsets(top: 15, left: 10, bottom: 15, right: 10)
+        textView.textContainerInset = UIEdgeInsets(top: 15, left: 8, bottom: 15, right: 8)
         textView.font = .preferredFont(forTextStyle: .title3)
         textView.layer.borderColor = UIColor.label.cgColor
         textView.layer.borderWidth = 1
@@ -53,6 +53,8 @@ class ScheduleInfoView: UIView {
     private let startDateTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .center
+        textField.text = "시작날짜"
+        textField.textColor = .lightGray
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
         return textField
@@ -60,6 +62,8 @@ class ScheduleInfoView: UIView {
     private let startTimeTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .center
+        textField.text = "시작시간"
+        textField.textColor = .lightGray
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
         return textField
@@ -75,6 +79,8 @@ class ScheduleInfoView: UIView {
     private let endDateTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .center
+        textField.text = "종료날짜"
+        textField.textColor = .lightGray
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
         return textField
@@ -82,6 +88,8 @@ class ScheduleInfoView: UIView {
     private let endTimeTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .center
+        textField.text = "종료시간"
+        textField.textColor = .lightGray
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
         return textField
@@ -160,7 +168,7 @@ class ScheduleInfoView: UIView {
            let startTime = startTimeTextField.text,
            let endDate = endDateTextField.text,
            let endTime = endTimeTextField.text {
-            let data = Schedule(
+            let schedule = Schedule(
                 title: title,
                 body: body,
                 startDate: startDate,
@@ -169,9 +177,7 @@ class ScheduleInfoView: UIView {
                 endTime: endTime
             )
             
-            return data
-        } else {
-            // TODO: 데이터가 다 입력되지 않았음을 알리는 알림 띄우기
+            return checkDataText(schedule: schedule)
         }
         
         return nil
@@ -196,6 +202,8 @@ class ScheduleInfoView: UIView {
         }
     }
     
+    // MARK: Private Methods
+    
     private func configureDelegate() {
         titleTextField.delegate = self
         bodyTextView.delegate = self
@@ -205,8 +213,6 @@ class ScheduleInfoView: UIView {
         endDateTextField.delegate = self
         endTimeTextField.delegate = self
     }
-    
-    // MARK: Private Methods
     
     private func createDateButton(type: DateType, textField: UITextField, action: Selector?) {
         let toolbar = UIToolbar()
@@ -256,6 +262,43 @@ class ScheduleInfoView: UIView {
             
             return formatter.string(from: timePicker.date)
         }
+    }
+    
+    private func checkDataText(schedule: Schedule) -> Schedule? {
+        var titleText: String = String()
+        var bodyText: String = String()
+        
+        if schedule.startDate == "시작날짜" ||
+            schedule.startDate == String() ||
+            schedule.startTime == "시작시간" ||
+            schedule.startTime == String() ||
+            schedule.endDate == "종료날짜" ||
+            schedule.endDate == String() ||
+            schedule.endTime == "종료시간" ||
+            schedule.endTime == String() {
+            return nil
+        }
+        
+        if schedule.title == "일정 제목을 입력하세요. (최대 35자)" ||
+            schedule.title == String() {
+            titleText = "[일정 제목없음]"
+        }
+        
+        if schedule.body == "일정 내용을 입력하세요. (최대 500자) \n(시작/종료일자 기입은 필수입니다.)" ||
+            schedule.body == String() {
+            bodyText = "[일정 내용없음]"
+        }
+        
+        let data = Schedule(
+            title: titleText,
+            body: bodyText,
+            startDate: schedule.startDate,
+            startTime: schedule.startTime,
+            endDate: schedule.endDate,
+            endTime: schedule.endTime
+        )
+        
+        return data
     }
 
     private func setUpStackView() {
@@ -359,7 +402,7 @@ extension ScheduleInfoView: UITextFieldDelegate {
     }
     
     func  textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.text == "일정 제목을 입력하세요." && textField.textColor == .lightGray {
+        if textField.textColor == .lightGray {
             textField.text = nil
             textField.textColor = .label
         }
@@ -370,9 +413,16 @@ extension ScheduleInfoView: UITextFieldDelegate {
 
 extension ScheduleInfoView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "일정 내용을 입력하세요." && textView.textColor == .lightGray {
+        if textView.textColor == .lightGray {
             textView.text = nil
             textView.textColor = .label
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let textViewText = textView.text else { return true }
+        let newLength = textViewText.count + text.count - range.length
+        
+        return newLength <= 500
     }
 }
