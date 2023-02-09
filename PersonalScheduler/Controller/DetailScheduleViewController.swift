@@ -128,4 +128,11 @@ private extension DetailScheduleViewController {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(touchUpUpdateButton))
         }
     }
+
+    func showAlert() {
+        let alertController = UIAlertController(title: "정보를 입력해주세요", message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default)
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
+    }
 }
