@@ -21,7 +21,7 @@ final class FireStoreManager {
     private let social: String
     private let fireStoreDB: CollectionReference
     
-    init(social: Social) {
+    init(_ social: Social) {
         self.social = "\(social)"
         userID = Auth.auth().currentUser?.uid ?? ""
         fireStoreDB = Firestore.firestore().collection("Scedule")

@@ -48,25 +48,19 @@ final class LoginViewController: UIViewController {
 // MARK: - Button Action
 extension LoginViewController {
     @objc private func kakaoLoginTapped() {
+        let listViewController = ListViewController(ListViewModel(FireStoreManager(.kakao)))
         viewModel.loginKakao { result in
             if result {
-                self.navigationController?.pushViewController(
-                    ListViewController(firStoreManager: FireStoreManager(social: .kakao)),
-                    animated: true
-                )
+                self.navigationController?.pushViewController(listViewController, animated: true)
             }
         }
     }
     
     @objc private func facebookLoginTapped() {
         viewModel.faceBookLogin { result in
-            
+            let listViewController = ListViewController(ListViewModel(FireStoreManager(.faceBook)))
             if result {
-                self.modalPresentationStyle = .fullScreen
-                self.present(
-                    ListViewController(firStoreManager: FireStoreManager(social: .faceBook)),
-                    animated: true
-                )
+                self.navigationController?.pushViewController(listViewController, animated: true)
             }
         }
     }

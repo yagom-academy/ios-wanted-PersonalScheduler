@@ -10,7 +10,7 @@ import Foundation
 final class ListViewModel {
     private let fireBaseManager: FireStoreManager
     
-    init(fireBaseManager: FireStoreManager) {
+    init(_ fireBaseManager: FireStoreManager) {
         self.fireBaseManager = fireBaseManager
     }
     

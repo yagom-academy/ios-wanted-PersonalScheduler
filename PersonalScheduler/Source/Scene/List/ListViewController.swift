@@ -8,7 +8,8 @@
 import UIKit
 
 final class ListViewController: UIViewController {
-    private let firStoreManager: FireStoreManager
+    private let viewModel: ListViewModel
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
@@ -16,8 +17,8 @@ final class ListViewController: UIViewController {
         setupConstraint()
     }
     
-    init(firStoreManager: FireStoreManager) {
-        self.firStoreManager = firStoreManager
+    init(_ viewModel: ListViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -29,10 +30,13 @@ final class ListViewController: UIViewController {
 // MARK: - UIConstraint
 extension ListViewController {
     private func setupNavigationBar() {
+        title = viewModel.fetchName() + "님의 Scedule"
         navigationController?.isNavigationBarHidden = false
-        let appearance = UINavigationBarAppearance()
+        navigationController?.navigationBar.prefersLargeTitles = true
         
+        let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemGray6
+        
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
