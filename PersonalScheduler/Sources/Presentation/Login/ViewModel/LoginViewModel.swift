@@ -11,8 +11,7 @@ import FacebookLogin
 
 class LoginViewModel: NSObject {
     private var loginRepository: LoginRepository?
-    private var cancellable = Set<AnyCancellable>()
-    private(set) var isSuccess: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
+    private(set) var isSuccess: PassthroughSubject<Bool, Never> = PassthroughSubject()
     
     func login(with repository: LoginRepository) {
         self.loginRepository = repository
@@ -25,5 +24,9 @@ class LoginViewModel: NSObject {
                 self.isSuccess.send(false)
             }
         }
+    }
+    
+    func resetValues() {
+        isSuccess = PassthroughSubject()
     }
 }

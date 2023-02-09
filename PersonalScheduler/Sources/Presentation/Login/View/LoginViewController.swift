@@ -37,14 +37,13 @@ private extension LoginViewController {
                 if $0 {
                     self.presentMainViewController()
                 } else {
-                    // TODO: - Error Handling
+                    self.presentErrorAlert(title: "로그인 실패", message: "로그인에 실패하였습니다. 다른 방법으로 로그인해주세요.")
                 }
             }
             .store(in: &cancellable)
     }
     
     func bindAction() {
-        
         contentView.kakaoLoginButton.tapPublisher
             .sink { _ in
                 let repository = KakaoLoginRepository()
@@ -122,6 +121,13 @@ private extension LoginViewController {
             message: message,
             preferredStyle: .alert
         )
+        
+        let confirmAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            self.viewModel.resetValues()
+        }
+        
+        alertController.addAction(confirmAction)
         
         present(alertController, animated: true)
     }
