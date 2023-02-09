@@ -36,7 +36,7 @@ final class LoginViewModel {
         case .tapKakaoLogin:
             break
         case .tapFacebookLogin:
-            break
+            tapFacebookLogin()
         }
     }
 }

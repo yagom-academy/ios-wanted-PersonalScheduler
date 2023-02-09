@@ -26,6 +26,7 @@
 		E33299EF299385A500EB425B /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = E33299EE299385A500EB425B /* FacebookCore */; };
 		E33299F1299385A500EB425B /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = E33299F0299385A500EB425B /* FacebookLogin */; };
 		E33299F32993C27900EB425B /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33299F22993C27900EB425B /* LoginService.swift */; };
+		E33299F62994D91600EB425B /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = E33299F52994D91600EB425B /* KakaoSDKUser */; };
 		E347AD452991353D0022A5DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E347AD442991353D0022A5DB /* GoogleService-Info.plist */; };
 		E347AD6D29916E360022A5DB /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E347AD6C29916E360022A5DB /* Repository.swift */; };
 		E347AD6F299171610022A5DB /* DefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E347AD6E299171610022A5DB /* DefaultRepository.swift */; };
@@ -48,6 +49,7 @@
 		E33299E92992C95A00EB425B /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		E33299EB2992C96F00EB425B /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		E33299F22993C27900EB425B /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		E33299F72994DA1100EB425B /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E347AD442991353D0022A5DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E347AD6C29916E360022A5DB /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		E347AD6E299171610022A5DB /* DefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepository.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				E33299EF299385A500EB425B /* FacebookCore in Frameworks */,
 				E33299D52992961E00EB425B /* FirebaseAnalyticsSwift in Frameworks */,
 				E33299D92992961E00EB425B /* FirebaseFirestore in Frameworks */,
+				E33299F62994D91600EB425B /* KakaoSDKUser in Frameworks */,
 				E33299D72992961E00EB425B /* FirebaseAuth in Frameworks */,
 				E33299F1299385A500EB425B /* FacebookLogin in Frameworks */,
 				E33299D32992961E00EB425B /* FirebaseAnalytics in Frameworks */,
@@ -102,6 +105,7 @@
 				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
 				E347AD442991353D0022A5DB /* GoogleService-Info.plist */,
+				E33299F72994DA1100EB425B /* Config.xcconfig */,
 			);
 			path = PersonalScheduler;
 			sourceTree = "<group>";
@@ -202,6 +206,7 @@
 				E33299DA2992961E00EB425B /* FirebaseFirestoreSwift */,
 				E33299EE299385A500EB425B /* FacebookCore */,
 				E33299F0299385A500EB425B /* FacebookLogin */,
+				E33299F52994D91600EB425B /* KakaoSDKUser */,
 			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
@@ -234,6 +239,7 @@
 			packageReferences = (
 				E33299D12992961E00EB425B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				E33299ED299385A500EB425B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				E33299F42994D91600EB425B /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
@@ -295,6 +301,7 @@
 /* Begin XCBuildConfiguration section */
 		63AAAB102967EA2700775EC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E33299F72994DA1100EB425B /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -355,6 +362,7 @@
 		};
 		63AAAB112967EA2700775EC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E33299F72994DA1100EB425B /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -409,6 +417,7 @@
 		};
 		63AAAB132967EA2700775EC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E33299F72994DA1100EB425B /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -440,6 +449,7 @@
 		};
 		63AAAB142967EA2700775EC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E33299F72994DA1100EB425B /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -509,6 +519,14 @@
 				minimumVersion = 15.1.0;
 			};
 		};
+		E33299F42994D91600EB425B /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -546,6 +564,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E33299ED299385A500EB425B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookLogin;
+		};
+		E33299F52994D91600EB425B /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E33299F42994D91600EB425B /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
