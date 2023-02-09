@@ -29,6 +29,7 @@ final class ListViewController: UIViewController {
         configuration.trailingSwipeActionsConfigurationProvider = swipeActions
         let collectionViewLayout = UICollectionViewCompositionalLayout.list(using: configuration)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        collectionView?.delegate = self
     }
 
     private func swipeActions(for indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -60,6 +61,20 @@ final class ListViewController: UIViewController {
     private func configureNavigationItem() {
         navigationItem.title = NSLocalizedString("Personal Scheduler", comment: "Scheduler List ViewController Title")
         navigationItem.hidesBackButton = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            systemItem: .add,
+            primaryAction: UIAction(handler: addHandler)
+        )
+    }
+
+    private func addHandler(_ action: UIAction) {
+        let viewController = EditViewController(schedule: Schedule(), isAdding: true) { [weak self] schedule in
+            guard let self else { return }
+            self.add(schedule)
+            self.updateSnapshot()
+        }
+        let navigationController = UINavigationController(rootViewController: viewController)
+        present(navigationController, animated: true)
     }
 
     private func configureHierarchy() {
@@ -101,6 +116,24 @@ extension ListViewController {
         configuration.body = schedule.body
         configuration.highlightColor = highlightColor(for: schedule)
         cell.contentConfiguration = configuration
+    }
+}
+
+extension ListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        guard let id = datasource?.itemIdentifier(for: indexPath) else { return false }
+        showDetail(for: id)
+        return false
+    }
+
+    private func showDetail(for id: Schedule.ID) {
+        guard let schedule = schedule(for: id) else { return }
+        let viewController = EditViewController(schedule: schedule, isAdding: false) { [weak self] schedule in
+            guard let self else { return }
+            self.update(schedule)
+            self.updateSnapshot([schedule.id])
+        }
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
