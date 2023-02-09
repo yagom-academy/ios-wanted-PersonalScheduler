@@ -12,7 +12,7 @@ import FacebookLogin
 import FirebaseAuth
 
 final class LoginViewModel {
-    func loginKakao(completion: @escaping ((String) -> Void)) {
+    func loginKakao() {
         var kakaoToken: String?
         
         if UserApi.isKakaoTalkLoginAvailable() {
