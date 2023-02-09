@@ -7,6 +7,10 @@
 import FirebaseAuth
 import Combine
 
+protocol LoginService {
+    func login(with credential: AuthCredential) -> AnyPublisher<Bool, Never>
+}
+
 final class FirebaseAuthService: LoginService {
     @Published private(set) var authResult: Bool = false
     

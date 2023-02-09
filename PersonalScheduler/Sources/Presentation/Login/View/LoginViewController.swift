@@ -86,6 +86,25 @@ private extension LoginViewController {
             .store(in: &cancellable)
     }
 }
+extension LoginViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(
+        controller: ASAuthorizationController,
+        didCompleteWithAuthorization authorization: ASAuthorization
+    ) {
+        switch authorization.credential {
+        case let appleIdCredential as ASAuthorizationAppleIDCredential:
+            let repository = AppleLoginRepository(credential: appleIdCredential)
+            viewModel.login(with: repository)
+            
+        default:
+            break
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // TODO: - Error Alert 띄우기
+    }
+}
 
 // MARK: - Authorization Controller Context Providing
 extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
@@ -110,7 +129,7 @@ private extension LoginViewController {
         request.requestedScopes = [.fullName, .email]
         
         let controller = ASAuthorizationController(authorizationRequests: [request])
-        controller.delegate = self.viewModel
+        controller.delegate = self
         controller.presentationContextProvider = self
         controller.performRequests()
     }

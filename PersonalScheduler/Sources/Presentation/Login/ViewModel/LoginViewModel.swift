@@ -22,28 +22,3 @@ class LoginViewModel: NSObject {
             .store(in: &cancellable)
     }
 }
-
-extension LoginViewModel: ASAuthorizationControllerDelegate {
-    func authorizationController(
-        controller: ASAuthorizationController,
-        didCompleteWithAuthorization authorization: ASAuthorization
-    ) {
-        switch authorization.credential {
-        case let appleIdCredential as ASAuthorizationAppleIDCredential:
-            if let _ = appleIdCredential.email, let _ = appleIdCredential.fullName {
-                print("Login with apple good")
-                isSuccess = true
-            } else {
-                print("Fucking no")
-                isSuccess = true
-            }
-        default:
-            break
-        }
-    }
-    
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("Error \(error)")
-        isSuccess = false
-    }
-}
