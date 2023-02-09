@@ -11,7 +11,7 @@ extension Date {
 
     func convertSlashFormatString() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "mm월 dd일"
+        dateFormatter.dateFormat = "MM월 dd일"
 
         return dateFormatter.string(from: self)
     }

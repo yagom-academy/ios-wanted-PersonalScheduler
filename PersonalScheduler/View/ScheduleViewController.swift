@@ -15,6 +15,7 @@ final class ScheduleViewController: UIViewController {
     private let viewModel: ScheduleViewModel
     private let scheduleTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
         return tableView

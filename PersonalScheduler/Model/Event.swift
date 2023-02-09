@@ -14,5 +14,5 @@ struct Event: Hashable {
     let startHour: Int
     let endHour: Int
     let detail: String
-    let uuid: UUID = UUID()
+    let uuid: UUID
 }

@@ -26,7 +26,6 @@
 		41BC371B29922F8D000A5ED7 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 41BC371A29922F8D000A5ED7 /* KakaoSDKUser */; };
 		41BC371E299251F1000A5ED7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BC371D299251F1000A5ED7 /* LoginViewModel.swift */; };
 		41C3CC7429928A3500F269CE /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C3CC7329928A3500F269CE /* UIFont+.swift */; };
-		41C3CC7A2992A0EB00F269CE /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C3CC792992A0EB00F269CE /* UserInfo.swift */; };
 		41C3CC7C2992A97F00F269CE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C3CC7B2992A97F00F269CE /* Event.swift */; };
 		41FB21A42993E575009044E6 /* UIStackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB21A32993E575009044E6 /* UIStackView +.swift */; };
 		41FB21A62994FC04009044E6 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB21A52994FC04009044E6 /* Date+.swift */; };
@@ -53,7 +52,6 @@
 		41BC371C29923251000A5ED7 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		41BC371D299251F1000A5ED7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		41C3CC7329928A3500F269CE /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
-		41C3CC792992A0EB00F269CE /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		41C3CC7B2992A97F00F269CE /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		41FB21A32993E575009044E6 /* UIStackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView +.swift"; sourceTree = "<group>"; };
 		41FB21A52994FC04009044E6 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				41FB21AD29950739009044E6 /* DataBase */,
-				41C3CC792992A0EB00F269CE /* UserInfo.swift */,
 				41C3CC7B2992A97F00F269CE /* Event.swift */,
 				415BA18F2993C80400EE88B6 /* Observable.swift */,
 			);
@@ -280,7 +277,6 @@
 				415BA1922993D64E00EE88B6 /* ScheduleCell.swift in Sources */,
 				41FB21A42993E575009044E6 /* UIStackView +.swift in Sources */,
 				41FB21AA29950616009044E6 /* FirebaseManager + CRUDable.swift in Sources */,
-				41C3CC7A2992A0EB00F269CE /* UserInfo.swift in Sources */,
 				415BA18E2993C66400EE88B6 /* ScheduleViewController.swift in Sources */,
 				41ADCE152992822C001984D3 /* UILabel+.swift in Sources */,
 				41FB21A62994FC04009044E6 /* Date+.swift in Sources */,
