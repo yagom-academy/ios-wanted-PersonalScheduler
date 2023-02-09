@@ -15,6 +15,7 @@
 		EB3FD2D729948822008483DC /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD2D629948822008483DC /* ListViewController.swift */; };
 		EB3FD2DA2994A61E008483DC /* ListContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD2D92994A61E008483DC /* ListContentView.swift */; };
 		EB3FD2DD2994A663008483DC /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD2DC2994A663008483DC /* UILabel+.swift */; };
+		EB3FD2DF2994DD5A008483DC /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD2DE2994DD5A008483DC /* Date+.swift */; };
 		EB62AB172993DDFC00D5EA38 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = EB62AB162993DDFC00D5EA38 /* FacebookCore */; };
 		EB62AB192993DDFC00D5EA38 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = EB62AB182993DDFC00D5EA38 /* FacebookLogin */; };
 		EBDDF49D2993C5AB0061C781 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDF49C2993C5AB0061C781 /* LoginViewController.swift */; };
@@ -36,6 +37,7 @@
 		EB3FD2D629948822008483DC /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		EB3FD2D92994A61E008483DC /* ListContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContentView.swift; sourceTree = "<group>"; };
 		EB3FD2DC2994A663008483DC /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		EB3FD2DE2994DD5A008483DC /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		EB62AB1A2993DE9300D5EA38 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
 		EBDDF49C2993C5AB0061C781 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EBDDF4AC2993CE170061C781 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				EB3FD2DC2994A663008483DC /* UILabel+.swift */,
+				EB3FD2DE2994DD5A008483DC /* Date+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				EB3FD2DD2994A663008483DC /* UILabel+.swift in Sources */,
 				EB3FD2D729948822008483DC /* ListViewController.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				EB3FD2DF2994DD5A008483DC /* Date+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
