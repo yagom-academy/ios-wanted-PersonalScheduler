@@ -138,6 +138,7 @@ class ScheduleInfoView: UIView {
         super.init(frame: frame)
         
         configureLayout()
+        configureDelegate()
         configureDateButton()
     }
     
@@ -186,6 +187,15 @@ class ScheduleInfoView: UIView {
             titleTextField.isUserInteractionEnabled = false
             bodyTextView.isUserInteractionEnabled = false
         }
+    }
+    
+    private func configureDelegate() {
+        titleTextField.delegate = self
+        
+        startDateTextField.delegate = self
+        startTimeTextField.delegate = self
+        endDateTextField.delegate = self
+        endTimeTextField.delegate = self
     }
     
     // MARK: Private Methods
@@ -318,3 +328,13 @@ class ScheduleInfoView: UIView {
         endEditing(true)
     }
 }
+
+// MARK: - UITextFieldDelegate
+
+extension ScheduleInfoView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // TextField 비활성화
+        return true
+    }
+}
+

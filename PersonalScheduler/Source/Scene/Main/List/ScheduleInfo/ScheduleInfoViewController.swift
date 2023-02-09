@@ -11,7 +11,6 @@ class ScheduleInfoViewController: UIViewController {
     
     // MARK: Internal Properties
     
-    let scheduleInfoView = ScheduleInfoView()
     var mode: ManageMode = .create
     var delegate: DataSendable?
     
@@ -21,6 +20,16 @@ class ScheduleInfoViewController: UIViewController {
         super.viewDidLoad()
         
         configureView(mode)
+    }
+    
+    // MARK: Private Properties
+    
+    private let scheduleInfoView = ScheduleInfoView()
+    
+    // MARK: Internal Methods
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     // MARK: Private Methods
@@ -72,6 +81,14 @@ class ScheduleInfoViewController: UIViewController {
     
     @objc
     private func tapRightBarButtonReadAction() {
+        presentEditModeCheckingAlert()
+    }
+}
+
+// MARK: - AlertPresentable
+
+extension ScheduleInfoViewController: AlertPresentable {
+    func presentEditModeCheckingAlert() {
         let alert = createAlert(
             title: "모드전환",
             message: "프로젝트 정보를 편집하시겠습니까?"
@@ -90,8 +107,18 @@ class ScheduleInfoViewController: UIViewController {
         
         present(alert, animated: true)
     }
+    
+    func presentDateInputErrorAlert() {
+        let alert = createAlert(
+            title: "날짜/시간 입력 오류",
+            message: "시작 날짜/시간이후 날짜/시간을 선택해주세요."
+        )
+        let AlertAction = createAlertAction(
+            title: "확인"
+        ) {}
+        
+        alert.addAction(AlertAction)
+        
+        present(alert, animated: true)
+    }
 }
-
-// MARK: - AlertPresentable
-
-extension ScheduleInfoViewController: AlertPresentable {}
