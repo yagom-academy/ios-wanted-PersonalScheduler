@@ -13,6 +13,8 @@
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
 		EB3FD2D529948790008483DC /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD2D429948790008483DC /* Schedule.swift */; };
 		EB3FD2D729948822008483DC /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD2D629948822008483DC /* ListViewController.swift */; };
+		EB3FD2DA2994A61E008483DC /* ListContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD2D92994A61E008483DC /* ListContentView.swift */; };
+		EB3FD2DD2994A663008483DC /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD2DC2994A663008483DC /* UILabel+.swift */; };
 		EB62AB172993DDFC00D5EA38 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = EB62AB162993DDFC00D5EA38 /* FacebookCore */; };
 		EB62AB192993DDFC00D5EA38 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = EB62AB182993DDFC00D5EA38 /* FacebookLogin */; };
 		EBDDF49D2993C5AB0061C781 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDF49C2993C5AB0061C781 /* LoginViewController.swift */; };
@@ -32,6 +34,8 @@
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB3FD2D429948790008483DC /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		EB3FD2D629948822008483DC /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		EB3FD2D92994A61E008483DC /* ListContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContentView.swift; sourceTree = "<group>"; };
+		EB3FD2DC2994A663008483DC /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		EB62AB1A2993DE9300D5EA38 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
 		EBDDF49C2993C5AB0061C781 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EBDDF4AC2993CE170061C781 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -73,8 +77,10 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				EB3FD2DB2994A64B008483DC /* Extensions */,
 				EB3FD2D329948749008483DC /* Models */,
 				EBDDF49E2993C5B20061C781 /* Controllers */,
+				EB3FD2D82994A605008483DC /* Views */,
 				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
 				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
 				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
@@ -92,6 +98,22 @@
 				EB3FD2D429948790008483DC /* Schedule.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EB3FD2D82994A605008483DC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EB3FD2D92994A61E008483DC /* ListContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EB3FD2DB2994A64B008483DC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EB3FD2DC2994A663008483DC /* UILabel+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EBDDF49E2993C5B20061C781 /* Controllers */ = {
@@ -186,9 +208,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB3FD2DA2994A61E008483DC /* ListContentView.swift in Sources */,
 				EBDDF49D2993C5AB0061C781 /* LoginViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				EB3FD2D529948790008483DC /* Schedule.swift in Sources */,
+				EB3FD2DD2994A663008483DC /* UILabel+.swift in Sources */,
 				EB3FD2D729948822008483DC /* ListViewController.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 			);
