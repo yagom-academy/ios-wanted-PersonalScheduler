@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListView: UIView {
+final class ListView: UIView {
     
     // MARK: Private Properties
     
@@ -17,6 +17,14 @@ class ListView: UIView {
         tableView.backgroundColor = .systemBackground
         tableView.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.identifier)
         return tableView
+    }()
+    private let addButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(.add, for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        return button
     }()
 
     // MARK: Initializer
@@ -42,12 +50,22 @@ class ListView: UIView {
         listTableView.reloadData()
     }
     
+    func configureAddButton(target: UIViewController, action: Selector) {
+        addButton.addTarget(target, action: action, for: .touchDown)
+    }
+    
     // MARK: Private Methods
     
     private func configureLayout() {
         addSubview(listTableView)
+        addSubview(addButton)
         
         NSLayoutConstraint.activate([
+            addButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.15),
+            addButton.heightAnchor.constraint(equalTo: addButton.widthAnchor),
+            addButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+            addButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
+            
             listTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             listTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             listTableView.topAnchor.constraint(equalTo: topAnchor),

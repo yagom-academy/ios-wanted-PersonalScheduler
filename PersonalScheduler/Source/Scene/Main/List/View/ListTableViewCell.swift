@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListTableViewCell: UITableViewCell {
+final class ListTableViewCell: UITableViewCell {
 
     // MARK: Identifier
     
@@ -25,7 +25,7 @@ class ListTableViewCell: UITableViewCell {
     private let bodyLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .subheadline)
-        label.numberOfLines = 2
+        label.numberOfLines = 1
         label.textColor = .label
         return label
     }()
@@ -78,8 +78,8 @@ class ListTableViewCell: UITableViewCell {
     func configureLabelText(schedule: Schedule) {
         titleLabel.text = schedule.title
         bodyLabel.text = schedule.body
-        startDateLabel.text = "\(schedule.startDate)"
-        endDateLabel.text = "\(schedule.endDate)"
+        startDateLabel.text = "시작일자 : " + schedule.startDate + " " + schedule.startTime
+        endDateLabel.text = "종료일자 : " + schedule.endDate + " " + schedule.endTime
     }
     
     // MARK: Private Methods
@@ -99,13 +99,15 @@ class ListTableViewCell: UITableViewCell {
         contentView.addSubview(totalStackView)
         
         NSLayoutConstraint.activate([
+            startDateLabel.widthAnchor.constraint(equalTo: totalStackView.widthAnchor, multiplier: 0.45),
+            
             totalStackView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor,
-                constant: contentView.frame.width * 0.1
+                constant: contentView.frame.width * 0.05
             ),
             totalStackView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor,
-                constant: contentView.frame.width * 0.1
+                constant: contentView.frame.width * 0.05
             ),
             totalStackView.topAnchor.constraint(
                 equalTo: contentView.topAnchor,

@@ -8,10 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class ListViewController: UIViewController {
-    
-    // MARK: Internal Properties
-    
+final class ListViewController: UIViewController {
     
     // MARK: Private Properties
     
@@ -31,7 +28,7 @@ class ListViewController: UIViewController {
         configureView()
         configureLayout()
         configureDelegate()
-        listView.configureTableView(with: self)
+        configureListView()
     }
     
     // MARK: Private Methods
@@ -42,28 +39,28 @@ class ListViewController: UIViewController {
         navigationItem.hidesBackButton = true
 
         navigationItem.title = "Personal Scheduler"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "Logout.png"),
-            style: .done,
-            target: self,
-            action: #selector(tapLeftBarButton)
-        )
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: .add,
+            image: UIImage(named: "Logout.png"),
             style: .done,
             target: self,
             action: #selector(tapRightBarButton)
         )
+        navigationItem.rightBarButtonItem?.tintColor = .label
         navigationItem.backBarButtonItem = UIBarButtonItem(
             title: "취소",
             style: .done,
             target: self,
-            action: #selector(tapBackBarButton)
+            action: nil
         )
     }
     
     private func configureDelegate() {
         scheduleInfoViewController.delegate = self
+    }
+    
+    private func configureListView() {
+        listView.configureTableView(with: self)
+        listView.configureAddButton(target: self, action: #selector(tapAddButton))
     }
     
     private func configureLayout() {
@@ -82,28 +79,13 @@ class ListViewController: UIViewController {
     // MARK: Action Methods
     
     @objc
-    private func tapLeftBarButton() {
-        let loginViewController = MainViewController()
-        
-        do {
-            try Auth.auth().signOut()
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-        }
-        
-        loginViewController.toggleFacebookLoginButton()
-        
-        self.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    @objc
     private func tapRightBarButton() {
-        presentAddScheduleCheckingAlert()
+        presentLogOutCheckingAlert()
     }
     
     @objc
-    private func tapBackBarButton() {
-        dismiss(animated: true)
+    private func tapAddButton() {
+        presentAddScheduleCheckingAlert()
     }
 }
 
@@ -150,6 +132,10 @@ extension ListViewController: UITableViewDataSource {
         
         return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(view.frame.size.height * 0.11)
+    }
 }
 
 // MARK: - DataSendable
@@ -172,7 +158,7 @@ extension ListViewController: DataSendable {
 extension ListViewController: AlertPresentable {
     func presentAddScheduleCheckingAlert() {
         let alert = createAlert(
-            title: "입력 확인",
+            title: "데이터 관리",
             message: "스케쥴을 추가하시겠습니까?"
         )
         let firstAlertAction = createAlertAction(
@@ -180,6 +166,36 @@ extension ListViewController: AlertPresentable {
         ) { [self] in
             scheduleInfoViewController.mode = .create
             navigationController?.pushViewController(scheduleInfoViewController, animated: true)
+        }
+        let secondAlertAction = createAlertAction(
+            title: "취소"
+        ) {}
+        
+        alert.addAction(firstAlertAction)
+        alert.addAction(secondAlertAction)
+        
+        present(alert, animated: true)
+    }
+    
+    func presentLogOutCheckingAlert() {
+        let alert = createAlert(
+            title: "로그아웃 확인",
+            message: "홈화면으로 이동하시겠습니까?"
+        )
+        let firstAlertAction = createAlertAction(
+            title: "확인"
+        ) { [self] in
+            let loginViewController = MainViewController()
+            
+            do {
+                try Auth.auth().signOut()
+            } catch let signOutError as NSError {
+                print("Error signing out: \(signOutError)")
+            }
+            
+            loginViewController.toggleFacebookLoginButton()
+            
+            self.navigationController?.popToRootViewController(animated: true)
         }
         let secondAlertAction = createAlertAction(
             title: "취소"
