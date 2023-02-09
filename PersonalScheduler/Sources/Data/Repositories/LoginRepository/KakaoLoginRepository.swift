@@ -11,85 +11,69 @@ import KakaoSDKCommon
 import KakaoSDKUser
 
 final class KakaoLoginRepository: LoginRepository {
-    @Published private(set) var loginResult: Bool = false
-    private var cancellable = Set<AnyCancellable>()
     let service: LoginService
     
     init(service: LoginService = FirebaseAuthService()) {
         self.service = service
     }
     
-    func login() -> AnyPublisher<Bool, Never> {
+    func login(completion: @escaping (Result<Void, LoginError>) -> Void) {
         if AuthApi.hasToken() == true {
             UserApi.shared.accessTokenInfo { _, error in
-                guard error == nil else {
-                    self.handleTokenError(error: error)
-                    return
+                if let error = error {
+                    if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() {
+                        self.authorizationKakao(completion: completion)
+                    } else {
+                        completion(.failure(.unknown))
+                    }
+                } else {
+                    guard let idToken = TokenManager.manager.getToken()?.idToken else {
+                        completion(.failure(.invalidToken))
+                        return
+                    }
+                    
+                    self.loginFirebase(token: idToken, completion: completion)
                 }
-                self.authorizationKakao()
             }
         }
         
         if AuthApi.hasToken() == false {
-            self.authorizationKakao()
+            authorizationKakao(completion: completion)
         }
-        return AnyPublisher($loginResult)
     }
 }
 
 private extension KakaoLoginRepository {
-    func tokenHandle() {
-        UserApi.shared.accessTokenInfo { _, error in
-            guard error == nil else {
-                self.handleTokenError(error: error)
-                return
-            }
-            
-            self.authorizationKakao()
-        }
-    }
-    
-    func handleTokenError(error: Error?) {
-        guard let error = error as? SdkError else {
-            self.loginResult = false
-            return
-        }
-        
-        if error.isInvalidTokenError() {
-            authorizationKakao()
-        }
-    }
-    
-    func authorizationKakao() {
+    func authorizationKakao(completion: @escaping (Result<Void, LoginError>) -> Void) {
         if UserApi.isKakaoTalkLoginAvailable() {
-            UserApi.shared.loginWithKakaoTalk(completion: handleToken)
+            UserApi.shared.loginWithKakaoTalk { token, error in
+                guard error == nil,
+                      let idToken = token?.idToken else {
+                    return
+                }
+                
+                self.loginFirebase(token: idToken, completion: completion)
+            }
         }
         
         if UserApi.isKakaoTalkLoginAvailable() == false {
-            UserApi.shared.loginWithKakaoAccount(completion: handleToken)
+            UserApi.shared.loginWithKakaoAccount { token, error in
+                guard error == nil,
+                      let idToken = token?.idToken else {
+                    return
+                }
+                
+                self.loginFirebase(token: idToken, completion: completion)
+            }
         }
     }
     
-    func handleToken(token: OAuthToken?, error: Error?) {
-        guard error == nil,
-              let idToken = token?.idToken else {
-            self.loginResult = false
-            return
-        }
-        
-        loginFirebase(token: idToken)
-    }
-    
-    func loginFirebase(token: String) {
+    func loginFirebase(token: String, completion: @escaping (Result<Void, LoginError>) -> Void) {
         let credential = OAuthProvider.credential(
             withProviderID: "oidc.kakao",
             idToken: token,
             rawNonce: nil
         )
-        
-        service.login(with: credential)
-            .sink { self.loginResult = $0 }
-            .store(in: &cancellable)
-        
+        service.login(with: credential, completion: completion)
     }
 }

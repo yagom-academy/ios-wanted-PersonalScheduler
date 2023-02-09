@@ -56,10 +56,16 @@ final class LoginViewController: UIViewController {
 // MARK: - Binding Method
 private extension LoginViewController {
     func bind() {
-        viewModel.$isSuccess
+        
+        viewModel.isSuccess
             .receive(on: DispatchQueue.main)
-            .filter { $0 }
-            .sink { _ in self.presentMainViewController() }
+            .sink {
+                if $0 {
+                    self.presentMainViewController()
+                } else {
+                    // TODO: - Error Handling
+                }
+            }
             .store(in: &cancellable)
     }
     

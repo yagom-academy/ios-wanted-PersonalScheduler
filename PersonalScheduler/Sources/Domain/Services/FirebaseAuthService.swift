@@ -8,22 +8,24 @@ import FirebaseAuth
 import Combine
 
 protocol LoginService {
-    func login(with credential: AuthCredential) -> AnyPublisher<Bool, Never>
+    func login(
+        with credential: AuthCredential,
+        completion: @escaping (Result<Void, LoginError>) -> Void
+    )
 }
 
 final class FirebaseAuthService: LoginService {
-    @Published private(set) var authResult: Bool = false
-    
-    func login(with credential: AuthCredential) -> AnyPublisher<Bool, Never> {
+    func login(
+        with credential: AuthCredential,
+        completion: @escaping (Result<Void, LoginError>) -> Void
+    ) {
         Auth.auth().signIn(with: credential) { result, error in
             guard error == nil else {
-                self.authResult = false
+                completion(.failure(.unReadCredential))
                 return
             }
             
-            self.authResult = true
+            completion(.success(()))
         }
-        
-        return AnyPublisher($authResult)
     }
 }

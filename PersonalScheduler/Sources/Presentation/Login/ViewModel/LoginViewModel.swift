@@ -12,13 +12,18 @@ import FacebookLogin
 class LoginViewModel: NSObject {
     private var loginRepository: LoginRepository?
     private var cancellable = Set<AnyCancellable>()
-    @Published private(set) var isSuccess: Bool = false
+    private(set) var isSuccess: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
     
     func login(with repository: LoginRepository) {
         self.loginRepository = repository
         
-        self.loginRepository?.login()
-            .sink { self.isSuccess = $0 }
-            .store(in: &cancellable)
+        self.loginRepository?.login { result in
+            switch result {
+            case .success:
+                self.isSuccess.send(true)
+            case .failure:
+                self.isSuccess.send(false)
+            }
+        }
     }
 }

@@ -9,24 +9,22 @@ import Combine
 import FirebaseAuth
 
 final class AppleLoginRepository: LoginRepository {
-    @Published private(set) var loginResult: Bool = false
     private let credential: ASAuthorizationAppleIDCredential
     let service: LoginService
     
     init(
         credential: ASAuthorizationAppleIDCredential,
-        loginResult: Bool = false,
         service: LoginService = FirebaseAuthService()
     ) {
-        self.loginResult = loginResult
         self.credential = credential
         self.service = service
     }
     
-    func login() -> AnyPublisher<Bool, Never> {
+    func login(completion: @escaping (Result<Void, LoginError>) -> Void) {
         guard let tokenData = credential.identityToken,
               let token = String(data: tokenData, encoding: .utf8) else {
-            return AnyPublisher($loginResult)
+            completion(.failure(.invalidToken))
+            return
         }
         
         let firebaseCredential = OAuthProvider.credential(
@@ -35,6 +33,6 @@ final class AppleLoginRepository: LoginRepository {
             rawNonce: nil
         )
         
-        return service.login(with: firebaseCredential)
+        service.login(with: firebaseCredential, completion: completion)
     }
 }

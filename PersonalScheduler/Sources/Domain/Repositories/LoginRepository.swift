@@ -7,7 +7,13 @@
 import Foundation
 import Combine
 
+enum LoginError: Error {
+    case invalidToken
+    case unReadCredential
+    case unknown
+}
+
 protocol LoginRepository: AnyObject {
     var service: LoginService { get }
-    func login() -> AnyPublisher<Bool, Never>
+    func login(completion: @escaping (Result<Void, LoginError>) -> Void)
 }
