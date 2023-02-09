@@ -38,6 +38,8 @@ final class EditViewController: UICollectionViewController {
         super.viewDidLoad()
         configureDataSources()
         configureNavigationItem()
+        hideKeyboardWhenTapped()
+        updateSnapshot()
     }
 
     private func configureDataSources() {
@@ -76,6 +78,14 @@ final class EditViewController: UICollectionViewController {
             onChange(editingSchedule)
         }
         navigationController?.popViewController(animated: true)
+    }
+
+    func hideKeyboardWhenTapped() {
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
