@@ -67,11 +67,12 @@ extension ScheduleListViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension ScheduleListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailScheduleViewController = DetailScheduleViewController()
-        detailScheduleViewController.mode = .update
-        detailScheduleViewController.modelID = ScheduleModel.scheduleList[indexPath.section].id
-        detailScheduleViewController.detailScheduleDelegate = self
-        navigationController?.pushViewController(detailScheduleViewController, animated: true)
+        moveToDetailScheduleViewController(indexPath)
+    }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let updateAction = swipeUpdateAction(indexPath)
+        return UISwipeActionsConfiguration(actions: [updateAction])
     }
 }
 
@@ -99,6 +100,22 @@ private extension ScheduleListViewController {
             DateformatterManager.shared.convertStringToDate(dateText: $0.date)?.compare(DateformatterManager.shared.convertStringToDate(dateText: $1.date)!) == .orderedDescending
         })
         tableView.reloadData()
+    }
+
+    func moveToDetailScheduleViewController(_ indexPath: IndexPath) {
+        let detailScheduleViewController = DetailScheduleViewController()
+        detailScheduleViewController.mode = .update
+        detailScheduleViewController.modelID = ScheduleModel.scheduleList[indexPath.section].id
+        detailScheduleViewController.detailScheduleDelegate = self
+        navigationController?.pushViewController(detailScheduleViewController, animated: true)
+    }
+
+    func swipeUpdateAction(_ indexPath: IndexPath) -> UIContextualAction {
+        let updateAction = UIContextualAction(style: .normal, title: "Update") { [weak self] _, _, handler in
+            self?.moveToDetailScheduleViewController(indexPath)
+            handler(true)
+        }
+        return updateAction
     }
 }
 
