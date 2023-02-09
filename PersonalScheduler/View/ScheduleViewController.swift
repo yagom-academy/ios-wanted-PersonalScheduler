@@ -2,7 +2,7 @@
 //  ScheduleViewController.swift
 //  PersonalScheduler
 //
-//  Created by 맹선아 on 2023/02/08.
+//  Created by 써니쿠키 on 2023/02/08.
 //
 
 import UIKit

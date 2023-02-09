@@ -16,14 +16,37 @@ final class ScheduleCell: UITableViewCell {
     private let titleLabel = UILabel(font: .title2, fontBold: true, textColor: .navy, textAlignment: .natural)
     private let detailLabel = UILabel(font: .body, textColor: .secondary, numberOfLines: 3, textAlignment: .natural)
     private let dateStackView = UIStackView(alignment: .leading, spacing: 10, margin: 10)
-    private let descriptionStackView = UIStackView(axis: .vertical,
-                                                   spacing: 5,
-                                                   radius: 12,
-                                                   backgroundColor: .primary,
-                                                   margin: 20)
+    private let descriptionStackView = UIStackView(axis: .vertical, spacing: 5, backgroundColor: .primary)
+    private let totalStackView = UIStackView(alignment: .center,
+                                             spacing: 10,
+                                             radius: 12,
+                                             backgroundColor: .primary,
+                                             margin: 10)
+
+    private let checkButton: UIButton = {
+        let button: UIButton = UIButton(type: .infoLight)
+        let imageConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .semibold, scale: .medium)
+        let checkImage = UIImage(systemName: "checkmark.circle", withConfiguration: imageConfiguration)?
+            .withTintColor(.secondary ?? .systemBlue, renderingMode:  .alwaysOriginal)
+        button.setImage(checkImage, for: .normal)
+        button.backgroundColor = .primary
+        button.translatesAutoresizingMaskIntoConstraints = false
+
+        return button
+    }()
+
+    private let descriptionView: UIView = {
+        let view = UIView(frame: .zero)
+        view.layer.cornerRadius = 12
+        view.backgroundColor = .primary
+        view.translatesAutoresizingMaskIntoConstraints = false
+
+        return view
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
         configureHierarchy()
         configureLayout()
     }
@@ -35,16 +58,24 @@ final class ScheduleCell: UITableViewCell {
         detailLabel.text = viewModel.detail
     }
 
-    private func configureHierarchy() {
-        [titleLabel, detailLabel].forEach { label in
-            descriptionStackView.addArrangedSubview(label)
-        }
+    func touchedUpCheckButton(target: UIViewController, action: Selector) {
+        checkButton.addTarget(target, action: action, for: .touchUpInside)
+    }
 
+    private func configureHierarchy() {
         [dateLabel, timeLabel].forEach { view in
             dateStackView.addArrangedSubview(view)
         }
 
-        [dateStackView, descriptionStackView].forEach { stackView in
+        [titleLabel, detailLabel].forEach { label in
+            descriptionStackView.addArrangedSubview(label)
+        }
+
+        [checkButton, descriptionStackView].forEach { stackView in
+            totalStackView.addArrangedSubview(stackView)
+        }
+
+        [dateStackView, totalStackView].forEach { stackView in
             contentView.addSubview(stackView)
         }
     }
@@ -58,10 +89,11 @@ final class ScheduleCell: UITableViewCell {
             dateStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: margin),
             dateStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
 
-            descriptionStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
-            descriptionStackView.topAnchor.constraint(equalTo: dateStackView.bottomAnchor),
-            descriptionStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
-            descriptionStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -margin)
+            descriptionStackView.widthAnchor.constraint(equalTo: totalStackView.widthAnchor, multiplier: 0.8),
+            totalStackView.topAnchor.constraint(equalTo: dateStackView.bottomAnchor),
+            totalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
+            totalStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
+            totalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -margin)
         ])
     }
 
