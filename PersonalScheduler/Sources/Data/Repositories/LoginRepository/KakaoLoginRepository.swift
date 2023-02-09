@@ -35,8 +35,10 @@ final class KakaoLoginRepository: LoginRepository {
         }
         return AnyPublisher($loginResult)
     }
-    
-    private func tokenHandle() {
+}
+
+private extension KakaoLoginRepository {
+    func tokenHandle() {
         UserApi.shared.accessTokenInfo { _, error in
             guard error == nil else {
                 self.handleTokenError(error: error)
@@ -47,7 +49,7 @@ final class KakaoLoginRepository: LoginRepository {
         }
     }
     
-    private func handleTokenError(error: Error?) {
+    func handleTokenError(error: Error?) {
         guard let error = error as? SdkError else {
             self.loginResult = false
             return
@@ -58,7 +60,7 @@ final class KakaoLoginRepository: LoginRepository {
         }
     }
     
-    private func authorizationKakao() {
+    func authorizationKakao() {
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk(completion: handleToken)
         }
@@ -68,7 +70,7 @@ final class KakaoLoginRepository: LoginRepository {
         }
     }
     
-    private func handleToken(token: OAuthToken?, error: Error?) {
+    func handleToken(token: OAuthToken?, error: Error?) {
         guard error == nil,
               let idToken = token?.idToken else {
             self.loginResult = false

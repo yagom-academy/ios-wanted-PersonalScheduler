@@ -21,7 +21,9 @@ final class FacebookRepository: LoginRepository {
         observeLogin()
         return AnyPublisher($loginResult)
     }
-    
+}
+
+private extension FacebookRepository {
     func observeLogin() {
         LoginManager().logIn(permissions: ["email"], from: nil) { result, error in
             guard error == nil,
