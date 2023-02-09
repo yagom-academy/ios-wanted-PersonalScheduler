@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 final class ListViewController: UIViewController {
     private typealias Datasource = UICollectionViewDiffableDataSource<Int, Schedule.ID>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Schedule.ID>
 
-    private let firestoreService = FirestoreService()
+    private var firestoreService: FirestoreService?
     private var collectionView: UICollectionView?
     private var datasource: Datasource?
     private var schedules = [Schedule]()
@@ -23,6 +24,7 @@ final class ListViewController: UIViewController {
         configureDataSources()
         configureNavigationItem()
         configureHierarchy()
+        configureFirestoreService()
         fetchSchedules()
     }
 
@@ -93,6 +95,13 @@ final class ListViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+
+
+    private func configureFirestoreService() {
+        if let user = Auth.auth().currentUser {
+            firestoreService = FirestoreService(collection: user.uid)
+        }
+    }
 }
 
 extension ListViewController {
@@ -152,18 +161,18 @@ extension ListViewController {
 
     private func add(_ schedule: Schedule) {
         schedules.append(schedule)
-        firestoreService.add(schedule)
+        firestoreService?.add(schedule)
     }
 
     private func update(_ schedule: Schedule) {
         guard let index = schedules.firstIndex(where: { $0.id == schedule.id }) else { return }
         schedules[index] = schedule
-        firestoreService.update(schedule)
+        firestoreService?.update(schedule)
     }
 
     private func deleteSchedule(with id: Schedule.ID) {
         guard let schedule = schedule(for: id) else { return }
-        firestoreService.delete(schedule)
+        firestoreService?.delete(schedule)
         schedules.removeAll(where: { $0.id == id })
     }
 
@@ -174,7 +183,7 @@ extension ListViewController {
     }
 
     private func fetchSchedules() {
-        firestoreService.fetchAll { [weak self] schedules in
+        firestoreService?.fetchAll { [weak self] schedules in
             guard let self else { return }
             DispatchQueue.main.async {
                 self.schedules = schedules

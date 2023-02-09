@@ -50,11 +50,11 @@ final class FirestoreRepository<T: FirestoreEntityType> {
 
     func update(_ data: T) {
         let reference = firestore.collection(collection).document(data.document)
-        reference.updateData(data.firestoreData, completion: { error in
+        reference.updateData(data.firestoreData) { error in
             if let error {
                 print(error.localizedDescription)
             }
-        })
+        }
     }
 
     func delete(_ data: T) {

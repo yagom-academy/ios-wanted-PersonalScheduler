@@ -8,7 +8,11 @@
 import Foundation
 
 final class FirestoreService {
-    private let firestoreRepository = FirestoreRepository<ScheduleEntity>(collection: Constants.collection)
+    private let firestoreRepository: FirestoreRepository<ScheduleEntity>
+
+    init(collection: String) {
+        firestoreRepository = FirestoreRepository<ScheduleEntity>(collection: collection)
+    }
 
     func fetchAll(completion: @escaping ([Schedule]) -> Void) {
         firestoreRepository.fetchAll { [weak self] scheduleEntities in
@@ -52,11 +56,5 @@ final class FirestoreService {
             scheduleDate: scheduleEntity.scheduleDate,
             body: scheduleEntity.body
         )
-    }
-}
-
-extension FirestoreService {
-    private enum Constants {
-        static let collection = "Schedule"
     }
 }

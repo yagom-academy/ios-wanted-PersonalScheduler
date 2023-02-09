@@ -23,7 +23,6 @@ struct ScheduleEntity: FirestoreEntityType {
     }
     var firestoreData: [String : Any] {
         return [
-            "id": id,
             "title": title,
             "scheduleDate": scheduleDate,
             "body": body
