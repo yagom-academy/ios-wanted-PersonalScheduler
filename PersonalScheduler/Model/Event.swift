@@ -7,9 +7,12 @@
 
 import Foundation
 
-struct Event {
+struct Event: Hashable {
 
     let title: String
     let date: Date
+    let startHour: Int
+    let endHour: Int
     let detail: String
+    let uuid: UUID = UUID()
 }
