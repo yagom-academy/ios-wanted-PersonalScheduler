@@ -11,26 +11,29 @@ import FirebaseAuth
 
 /*
 컬렉션      도큐먼트     컬렉션(날짜)    도큐먼트   필드
-Scedule - kakao  -   kyo_키값  -  uuid  - 데이터
+Scedule - kakao  -   token  -  uuid  - 데이터
                               -  uuid  - 데이터
                    - other_키값 - uuid  - 데이터
 */
 
 final class FireStoreManager {
-    private let userKey: String
+    private let userID: String
     private let social: String
     private let fireStoreDB: CollectionReference
     
-    init(user: String, email: String, social: Social) {
-        userKey = user + email
+    init(social: Social) {
         self.social = "\(social)"
+        userID = Auth.auth().currentUser?.uid ?? ""
         fireStoreDB = Firestore.firestore().collection("Scedule")
+        
+//        print(Auth.auth().currentUser?.email)
+//        print(Auth.auth().currentUser?.displayName)   
     }
     
     func load(completion: @escaping ([Schedule]) -> Void) {
         var scedules: [Schedule] = []
         
-        fireStoreDB.document(social).collection(userKey).getDocuments { querySnapshot, error in
+        fireStoreDB.document(social).collection(userID).getDocuments { querySnapshot, error in
             guard error == nil else { return }
             guard let snapshot = querySnapshot else { return }
             
@@ -48,10 +51,10 @@ final class FireStoreManager {
     }
 
     func add(data: Schedule) {
-        print(userKey)
+        print(userID)
         fireStoreDB
             .document(social)
-            .collection(userKey)
+            .collection(userID)
             .document(data.id.description)
             .setData([
                 "startDate": Timestamp(date: data.startDate),
@@ -64,7 +67,7 @@ final class FireStoreManager {
     func delete(data: Schedule) {
         fireStoreDB
             .document(social)
-            .collection(userKey)
+            .collection(userID)
             .document(data.id.description)
             .delete()
     }

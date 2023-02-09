@@ -7,6 +7,7 @@
 
 import UIKit
 import KakaoSDKCommon
+import FacebookCore
 import FirebaseCore
 
 @main
@@ -15,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
         
         let nativeAppKey = Bundle.main.infoDictionary?["KAKAO_NATIVE_APP_KEY"] ?? ""
         guard let kakaoKey = nativeAppKey as? String else { return false }

@@ -23,6 +23,13 @@ final class LoginViewController: UIViewController {
         return button
     }()
     
+    private let faceBookLoginButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "facebook_login_image"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -42,28 +49,33 @@ final class LoginViewController: UIViewController {
 // MARK: - Button Action
 extension LoginViewController {
     @objc private func kakaoLoginTapped() {
-        viewModel.loginKakao { [weak self] nickName, email in
-            guard let email = email else { return }
-            
-            // MARK: - TEST
-            self?.fireStoreManager = FireStoreManager(user: nickName, email: email, social: .kakao)
-            self?.fireStoreManager?.add(data: Schedule(id: UUID(), startDate: Date(), endDate: Date(), title: "테스트", content: "테스트컨텐츠"))
-            
-            self?.fireStoreManager?.load(completion: { schedules in
-                print(schedules)
-            })
-        }
+        viewModel.loginKakao()
+        fireStoreManager = FireStoreManager(social: .kakao)
+    }
+    
+    @objc private func facebookLoginTapped() {
+        viewModel.faceBookLogin()
+        fireStoreManager = FireStoreManager(social: .faceBook)
     }
 }
 
+// MARK: - UIConstraint
 extension LoginViewController {
     private func setupView() {
         view.backgroundColor = .systemBackground
         loginImageView.image = UIImage(named: "logo")
         kakaoLoginButton.setImage(UIImage(named: "kakao_login_image"), for: .normal)
-        kakaoLoginButton.addTarget(self, action: #selector(kakaoLoginTapped), for: .touchUpInside)
-        
-        [loginImageView, kakaoLoginButton].forEach(view.addSubview(_:))
+        kakaoLoginButton.addTarget(
+            self,
+            action: #selector(kakaoLoginTapped),
+            for: .touchUpInside
+        )
+        faceBookLoginButton.addTarget(
+            self,
+            action: #selector(facebookLoginTapped),
+            for: .touchUpInside
+        )
+        [loginImageView, kakaoLoginButton, faceBookLoginButton].forEach(view.addSubview(_:))
     }
     
     private func setupConstrinat() {
@@ -77,7 +89,11 @@ extension LoginViewController {
             kakaoLoginButton.topAnchor.constraint(
                 equalTo: loginImageView.bottomAnchor,
                 constant: 50
-            )
+            ),
+            
+            faceBookLoginButton.topAnchor.constraint(equalTo: kakaoLoginButton.bottomAnchor, constant: 20),
+            faceBookLoginButton.leadingAnchor.constraint(equalTo: kakaoLoginButton.leadingAnchor),
+            faceBookLoginButton.trailingAnchor.constraint(equalTo: kakaoLoginButton.trailingAnchor)
         ])
     }
 }
