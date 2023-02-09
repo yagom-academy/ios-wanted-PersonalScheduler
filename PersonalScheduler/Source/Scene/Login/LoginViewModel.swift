@@ -12,7 +12,7 @@ import FacebookLogin
 import FirebaseAuth
 
 final class LoginViewModel {
-    func loginKakao() {
+    func loginKakao(completion: @escaping (Bool) -> Void) {
         var kakaoToken: String?
         
         if UserApi.isKakaoTalkLoginAvailable() {
@@ -21,9 +21,14 @@ final class LoginViewModel {
                     print(error)
                     return
                 }
-                print("loginWithKakaoTalk() success.")
                 kakaoToken = oauthToken?.idToken
-                self.configureKakaoSign(token: kakaoToken)
+                self.configureKakaoSign(token: kakaoToken) { result in
+                    if result {
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                }
             }
         } else {
             UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
@@ -31,15 +36,19 @@ final class LoginViewModel {
                     print(error)
                     return
                 }
-                print("loginWithKakaoAccount() success.")
                 kakaoToken = oauthToken?.idToken
-                
-                self.configureKakaoSign(token: kakaoToken)
+                self.configureKakaoSign(token: kakaoToken) { result in
+                    if result {
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                }
             }
         }
     }
     
-    private func configureKakaoSign(token: String?) {
+    private func configureKakaoSign(token: String?, completion: @escaping (Bool) -> Void) {
         guard let token = token else { return }
         let credential = OAuthProvider.credential(
             withProviderID: "oidc.kakao",
@@ -50,12 +59,14 @@ final class LoginViewModel {
         Auth.auth().signIn(with: credential) { authResult, error in
             guard error == nil else {
                 print(error)
+                completion(false)
                 return
             }
+            completion(true)
         }
     }
     
-    func faceBookLogin() {
+    func faceBookLogin(completion: @escaping (Bool) -> Void) {
         let loginManager = LoginManager()
         
         loginManager.logIn(permissions: ["public_profile"], from: nil) { result, error in
@@ -75,8 +86,10 @@ final class LoginViewModel {
             Auth.auth().signIn(with: credential) { authResult, error in
                 guard error == nil else {
                     print(error)
+                    completion(false)
                     return
                 }
+                completion(true)
             }
         }
     }
