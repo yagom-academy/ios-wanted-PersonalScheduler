@@ -8,8 +8,16 @@
 import UIKit
 
 final class ListViewController: UIViewController {
+    typealias DataSource = UITableViewDiffableDataSource<Section, Schedule>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Schedule>
+    
+    enum Section {
+        case main
+    }
+    
     private let viewModel: ListViewModel
-
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
@@ -27,6 +35,31 @@ final class ListViewController: UIViewController {
     }
 }
 
+// MARK: - DataSource and Snapshot
+extension ListViewController {
+    func configureDataSource() -> DataSource {
+        let dataSource = DataSource(tableView: tableView) { tableView, indexPath, schedule in
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ScheduleTableViewCell.identifier,
+                for: indexPath
+            ) as? ScheduleTableViewCell else {
+                let errorCell = UITableViewCell()
+                return errorCell
+            }
+            
+            return cell
+        }
+        return dataSource
+    }
+}
+
+// MARK: - TableViewDelegate
+extension ListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
+
 // MARK: - UIConstraint
 extension ListViewController {
     private func setupNavigationBar() {
@@ -37,15 +70,23 @@ extension ListViewController {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemGray6
         
+        navigationItem.hidesBackButton = true
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     private func setupView() {
-        view.backgroundColor = .red
+        view.backgroundColor = .systemBackground
+        view.addSubview(tableView)
     }
     
     private func setupConstraint() {
-        
+        let safeArea = view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+        ])
     }
 }

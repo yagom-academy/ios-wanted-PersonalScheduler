@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Schedule {
+struct Schedule: Hashable {
     let id: UUID
     let startDate: Date
     let endDate: Date

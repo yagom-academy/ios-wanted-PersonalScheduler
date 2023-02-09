@@ -21,6 +21,8 @@
 		3C8AB49E2991617F00A9E241 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49D2991617F00A9E241 /* KakaoSDKCommon */; };
 		3C8AB4A02991617F00A9E241 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49F2991617F00A9E241 /* KakaoSDKUser */; };
 		3C8CE7B429952E9200BEDDDD /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8CE7B329952E9200BEDDDD /* ListViewModel.swift */; };
+		3C8CE7B629954A4500BEDDDD /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8CE7B529954A4500BEDDDD /* ScheduleTableViewCell.swift */; };
+		3C8CE7BA29954AC900BEDDDD /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8CE7B929954AC900BEDDDD /* Identifiable.swift */; };
 		3CF4FE4B2992846200226CD1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3CF4FE4A2992846200226CD1 /* FirebaseFirestore */; };
 		3CF4FE4D2992846200226CD1 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3CF4FE4C2992846200226CD1 /* FirebaseFirestoreSwift */; };
 		3CF4FE50299288FC00226CD1 /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4FE4F299288FC00226CD1 /* FireStoreManager.swift */; };
@@ -40,6 +42,8 @@
 		3C3959B129923386006D2E52 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3C3959B329923C5B006D2E52 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3C8CE7B329952E9200BEDDDD /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		3C8CE7B529954A4500BEDDDD /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		3C8CE7B929954AC900BEDDDD /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		3CC7AA0A29922D5A00DB3B56 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3CF4FE4F299288FC00226CD1 /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
 		3CF4FE5129928B0900226CD1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -89,7 +93,8 @@
 		3C1B337029935B8200AF9CA6 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				3C1B337129935B9400AF9CA6 /* DateFormatter+Extension.swift */,
+				3C8CE7B829954A6D00BEDDDD /* Protocol */,
+				3C8CE7B729954A5700BEDDDD /* Extension */,
 				3C1B337529936C7A00AF9CA6 /* FireBaseError.swift */,
 			);
 			path = Util;
@@ -109,8 +114,25 @@
 			children = (
 				3C1B337E29952C4300AF9CA6 /* ListViewController.swift */,
 				3C8CE7B329952E9200BEDDDD /* ListViewModel.swift */,
+				3C8CE7B529954A4500BEDDDD /* ScheduleTableViewCell.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		3C8CE7B729954A5700BEDDDD /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3C1B337129935B9400AF9CA6 /* DateFormatter+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		3C8CE7B829954A6D00BEDDDD /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3C8CE7B929954AC900BEDDDD /* Identifiable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		3CC7AA0629922A7E00DB3B56 /* Source */ = {
@@ -276,7 +298,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C1B336C29928FC900AF9CA6 /* Schedule.swift in Sources */,
+				3C8CE7B629954A4500BEDDDD /* ScheduleTableViewCell.swift in Sources */,
 				3C3959B229923386006D2E52 /* LoginViewModel.swift in Sources */,
+				3C8CE7BA29954AC900BEDDDD /* Identifiable.swift in Sources */,
 				3C1B33742993667D00AF9CA6 /* Social.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				3C1B337229935B9400AF9CA6 /* DateFormatter+Extension.swift in Sources */,
