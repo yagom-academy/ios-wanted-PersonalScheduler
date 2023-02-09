@@ -59,6 +59,7 @@ final class DetailScheduleViewController: UIViewController {
     }
 }
 
+// MARK: - UITextViewDelegate
 extension DetailScheduleViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let limitedLine = 500
@@ -69,23 +70,33 @@ extension DetailScheduleViewController: UITextViewDelegate {
     }
 }
 
-// MARK: - Objc Method
+// MARK: - Method
 private extension DetailScheduleViewController {
-    @objc func touchUpCreateButton() {
+    func getScheduleModel() -> ScheduleModel? {
         guard let title = titleTextField.text,
               let body = bodyTextView.text,
               title != "",
               body != "" else {
             showAlert()
-            return
+            return nil
         }
         let date = DateformatterManager.shared.convertDateToString(date: datePicker.date)
         let data = ScheduleModel(title: title, body: body, date: date)
+        return data
+    }
+}
+
+// MARK: - Objc Method
+private extension DetailScheduleViewController {
+    @objc func touchUpCreateButton() {
+        guard let data = getScheduleModel() else { return }
         detailScheduleDelegate?.createSchedule(data: data)
         navigationController?.popViewController(animated: true)
     }
 
     @objc func touchUpUpdateButton() {
+        guard let data = getScheduleModel() else { return }
+        detailScheduleDelegate?.updateSchedule(date: data)
         navigationController?.popViewController(animated: true)
     }
 }

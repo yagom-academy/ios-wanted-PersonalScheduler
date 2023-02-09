@@ -72,7 +72,12 @@ extension ScheduleListViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension ScheduleListViewController: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailScheduleViewController = DetailScheduleViewController()
+        detailScheduleViewController.mode = .update
+        detailScheduleViewController.detailScheduleDelegate = self
+        navigationController?.pushViewController(detailScheduleViewController, animated: true)
+    }
 }
 
 // MARK: - DetailViewDelegate
