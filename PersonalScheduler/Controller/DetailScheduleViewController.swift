@@ -48,6 +48,7 @@ final class DetailScheduleViewController: UIViewController {
     }()
 
     var mode: DetailScheduleMode = .create
+    var modelID: UUID?
     weak var detailScheduleDelegate: DetailScheduleDelegate?
 
     // MARK: - LifeCycle
@@ -72,7 +73,7 @@ extension DetailScheduleViewController: UITextViewDelegate {
 
 // MARK: - Method
 private extension DetailScheduleViewController {
-    func getScheduleModel() -> ScheduleModel? {
+    func getScheduleModel(id: UUID = UUID()) -> ScheduleModel? {
         guard let title = titleTextField.text,
               let body = bodyTextView.text,
               title != "",
@@ -81,7 +82,7 @@ private extension DetailScheduleViewController {
             return nil
         }
         let date = DateformatterManager.shared.convertDateToString(date: datePicker.date)
-        let data = ScheduleModel(title: title, body: body, date: date)
+        let data = ScheduleModel(id: id, title: title, body: body, date: date)
         return data
     }
 }
@@ -95,8 +96,9 @@ private extension DetailScheduleViewController {
     }
 
     @objc func touchUpUpdateButton() {
-        guard let data = getScheduleModel() else { return }
-        detailScheduleDelegate?.updateSchedule(date: data)
+        guard let id = modelID,
+            let data = getScheduleModel(id: id) else { return }
+        detailScheduleDelegate?.updateSchedule(data: data)
         navigationController?.popViewController(animated: true)
     }
 }

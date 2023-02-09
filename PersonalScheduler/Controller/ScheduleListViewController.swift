@@ -69,6 +69,7 @@ extension ScheduleListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailScheduleViewController = DetailScheduleViewController()
         detailScheduleViewController.mode = .update
+        detailScheduleViewController.modelID = ScheduleModel.scheduleList[indexPath.section].id
         detailScheduleViewController.detailScheduleDelegate = self
         navigationController?.pushViewController(detailScheduleViewController, animated: true)
     }
@@ -81,8 +82,13 @@ extension ScheduleListViewController: DetailScheduleDelegate {
         sortScheduleList()
     }
 
-    func updateSchedule(date: ScheduleModel) {
-        return
+    func updateSchedule(data: ScheduleModel) {
+        guard let index = ScheduleModel.scheduleList.firstIndex(where: { scheduleModel in
+            scheduleModel.id == data.id
+        }) else { return }
+
+        ScheduleModel.scheduleList[index] = data
+        sortScheduleList()
     }
 }
 

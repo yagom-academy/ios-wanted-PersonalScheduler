@@ -9,5 +9,5 @@ import Foundation
 
 protocol DetailScheduleDelegate: AnyObject {
     func createSchedule(data: ScheduleModel)
-    func updateSchedule(date: ScheduleModel)
+    func updateSchedule(data: ScheduleModel)
 }
