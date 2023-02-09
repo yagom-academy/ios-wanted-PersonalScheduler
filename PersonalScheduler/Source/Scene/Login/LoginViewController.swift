@@ -9,8 +9,7 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     private let viewModel: LoginViewModel
-    private var fireStoreManager: FireStoreManager?
-    
+
     private let loginImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,13 +48,27 @@ final class LoginViewController: UIViewController {
 // MARK: - Button Action
 extension LoginViewController {
     @objc private func kakaoLoginTapped() {
-        viewModel.loginKakao()
-        fireStoreManager = FireStoreManager(social: .kakao)
+        viewModel.loginKakao { result in
+            if result {
+                self.navigationController?.pushViewController(
+                    ListViewController(firStoreManager: FireStoreManager(social: .kakao)),
+                    animated: true
+                )
+            }
+        }
     }
     
     @objc private func facebookLoginTapped() {
-        viewModel.faceBookLogin()
-        fireStoreManager = FireStoreManager(social: .faceBook)
+        viewModel.faceBookLogin { result in
+            
+            if result {
+                self.modalPresentationStyle = .fullScreen
+                self.present(
+                    ListViewController(firStoreManager: FireStoreManager(social: .faceBook)),
+                    animated: true
+                )
+            }
+        }
     }
 }
 
@@ -63,6 +76,7 @@ extension LoginViewController {
 extension LoginViewController {
     private func setupView() {
         view.backgroundColor = .systemBackground
+        navigationController?.isNavigationBarHidden = true
         loginImageView.image = UIImage(named: "logo")
         kakaoLoginButton.setImage(UIImage(named: "kakao_login_image"), for: .normal)
         kakaoLoginButton.addTarget(
