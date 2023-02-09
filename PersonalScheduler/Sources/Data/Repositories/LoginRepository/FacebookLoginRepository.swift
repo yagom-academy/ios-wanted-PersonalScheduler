@@ -15,17 +15,25 @@ final class FacebookRepository: LoginRepository {
     }
     
     func login(completion: @escaping (Result<Void, LoginError>) -> Void) {
-        LoginManager().logIn(permissions: ["email"], from: nil) { result, error in
-            guard error == nil,
-                  let result = result,
-                  result.isCancelled == false,
-                  let token = result.token?.tokenString else {
-                return
+        if let token = AccessToken.current, !token.isExpired {
+            loginWithCredential(token: token.tokenString, completion: completion)
+        } else {
+            LoginManager().logIn(permissions: ["email"], from: nil) { result, error in
+                guard error == nil,
+                      let result = result,
+                      result.isCancelled == false,
+                      let token = result.token?.tokenString else {
+                    return
+                }
+                
+                self.loginWithCredential(token: token, completion: completion)
             }
-            
-            let credential = FacebookAuthProvider.credential(withAccessToken: token)
-            
-            self.service.login(with: credential, completion: completion)
         }
+    }
+    
+    func loginWithCredential(token: String, completion: @escaping (Result<Void, LoginError>) -> Void) {
+        let credential = FacebookAuthProvider.credential(withAccessToken: token)
+        
+        self.service.login(with: credential, completion: completion)
     }
 }
