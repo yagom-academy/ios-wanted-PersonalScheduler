@@ -72,6 +72,11 @@ final class FireStoreManager {
             .delete()
     }
     
+    func fetchUserName() -> String {
+        let name = Auth.auth().currentUser?.displayName
+        return name ?? ""
+    }
+    
     private func convertScedule(from document: QueryDocumentSnapshot) throws -> Schedule {
         guard let id = UUID(uuidString: document.documentID),
               let startStamp = document.data()["startDate"] as? Timestamp,
