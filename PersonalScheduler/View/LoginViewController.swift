@@ -40,19 +40,11 @@ final class LoginViewController: UIViewController {
         return loginButton
     }()
 
-    private let loginStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = 15
-        stack.layer.cornerRadius = 30
-        stack.distribution = .fill
-        stack.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.isLayoutMarginsRelativeArrangement = true
-        stack.backgroundColor = .tertiary
-
-        return stack
-    }()
+    private let loginStackView = UIStackView(axis: .vertical,
+                                             spacing: 15,
+                                             radius: 30,
+                                             backgroundColor: .tertiary,
+                                             margin: 20)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +87,7 @@ extension LoginViewController {
         NSLayoutConstraint.activate([
             calendarImageView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             calendarImageView.centerYAnchor.constraint(equalTo: safeArea.topAnchor,
-                                                       constant: safeArea.layoutFrame.height/4),
+                                                       constant: safeArea.layoutFrame.height/3),
             calendarImageView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3),
 
             loginStackView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),

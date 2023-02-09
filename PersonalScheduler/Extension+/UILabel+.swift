@@ -13,12 +13,15 @@ extension UILabel {
                      font: UIFont.TextStyle = .body,
                      fontBold: Bool = false,
                      textColor: UIColor? = .black,
+                     numberOfLines: Int = 1,
                      textAlignment: NSTextAlignment = .center) {
         self.init(frame: .zero)
         self.text = text
         self.font = .preferredFont(forTextStyle: font)
         self.textColor = textColor
         self.textAlignment = textAlignment
+        self.numberOfLines = numberOfLines
+        lineBreakMode = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
 
         if fontBold {
