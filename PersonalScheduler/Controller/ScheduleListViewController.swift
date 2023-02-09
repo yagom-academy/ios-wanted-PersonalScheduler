@@ -24,6 +24,12 @@ final class ScheduleListViewController: UIViewController {
         view.backgroundColor = .systemBackground
         configureUI()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        sortScheduleList()
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -78,6 +84,16 @@ extension ScheduleListViewController: DetailScheduleDelegate {
 
     func updateSchedule(date: ScheduleModel) {
         return
+    }
+}
+
+// MARK: - Method
+private extension ScheduleListViewController {
+    func sortScheduleList() {
+        ScheduleModel.scheduleList = ScheduleModel.scheduleList.sorted(by: {
+            DateformatterManager.shared.convertStringToDate(dateText: $0.date)?.compare(DateformatterManager.shared.convertStringToDate(dateText: $1.date)!) == .orderedDescending
+        })
+        tableView.reloadData()
     }
 }
 
