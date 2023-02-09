@@ -59,6 +59,16 @@ final class DetailScheduleViewController: UIViewController {
     }
 }
 
+extension DetailScheduleViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let limitedLine = 500
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let changedText = currentText.replacingCharacters(in: stringRange, with: text)
+        return changedText.count <= limitedLine
+    }
+}
+
 // MARK: - Objc Method
 private extension DetailScheduleViewController {
     @objc func touchUpCreateButton() {
@@ -88,6 +98,7 @@ private extension DetailScheduleViewController {
             view.addSubview($0)
         }
 
+        bodyTextView.delegate = self
         settingLayouts()
         settingNavigationBar()
     }
