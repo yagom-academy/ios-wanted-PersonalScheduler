@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FacebookLogin
 
 final class ListViewController: UIViewController {
     private typealias Datasource = UICollectionViewDiffableDataSource<Int, Schedule.ID>
@@ -66,11 +67,25 @@ final class ListViewController: UIViewController {
 
     private func configureNavigationItem() {
         navigationItem.title = NSLocalizedString("Personal Scheduler", comment: "Scheduler List ViewController Title")
-        navigationItem.hidesBackButton = true
+        let logoutButtonTitle = NSLocalizedString("Logout", comment: "Logout BarButton Title")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: logoutButtonTitle,
+            primaryAction: UIAction(handler: logoutHandler)
+        )
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             systemItem: .add,
             primaryAction: UIAction(handler: addHandler)
         )
+    }
+
+    private func logoutHandler(_ action: UIAction) {
+        do {
+            try Auth.auth().signOut()
+            LoginManager().logOut()
+            navigationController?.popViewController(animated: true)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
 
     private func addHandler(_ action: UIAction) {

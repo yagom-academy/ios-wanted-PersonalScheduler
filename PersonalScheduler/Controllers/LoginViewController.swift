@@ -12,53 +12,78 @@ import FirebaseAuth
 import FacebookLogin
 
 final class LoginViewController: UIViewController {
-    private var handle: AuthStateDidChangeListenerHandle?
-    private var isMFAEnabled = false
-    private let stackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 10.0
-        return stackView
-    }()
+    private let activityIndicatorView = UIActivityIndicatorView()
+    private let titleLabel = UILabel(font: UIFont.preferredFont(forTextStyle: .largeTitle))
     private let facebookLoginButton = {
         let button = FBLoginButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    private let stackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = Constants.stackViewSpacing
+        return stackView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        configureHierarchy()
+        titleLabel.text = Constants.title
+        configureActivityIndicator()
         configureLoginButton()
-    }
-
-    private func configureHierarchy() {
-        stackView.addArrangedSubview(facebookLoginButton)
-        view.addSubview(stackView)
-
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
-        ])
+        configureHierarchy()
+        showListViewIfLoggedIn()
     }
 
     private func configureLoginButton() {
         facebookLoginButton.delegate = self
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
-          // ...
+    private func configureActivityIndicator() {
+        activityIndicatorView.center = view.center
+        activityIndicatorView.style = .large
+    }
+
+    private func configureHierarchy() {
+        stackView.addArrangedSubview(facebookLoginButton)
+        view.addSubview(activityIndicatorView)
+        view.addSubview(titleLabel)
+        view.addSubview(stackView)
+
+        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -50.0),
+
+            stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            stackView.widthAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.widthAnchor,
+                multiplier: Constants.stackViewWidthMultiplier
+            ),
+            stackView.heightAnchor.constraint(equalToConstant: Constants.stackViewHeight)
+        ])
+    }
+
+    private func showListViewIfLoggedIn() {
+        if Auth.auth().currentUser != nil {
+            showListViewController()
         }
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        guard let handle else { return }
-        Auth.auth().removeStateDidChangeListener(handle)
+    private func startLoadingAnimation() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.startAnimating()
+            self.view.isUserInteractionEnabled = false
+        }
+    }
+
+    private func stopLoadingAnimation() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+            self.view.isUserInteractionEnabled = true
+        }
     }
 }
 
@@ -69,6 +94,7 @@ extension LoginViewController: LoginButtonDelegate {
         error: Error?) {
             if let error {
                 print(error.localizedDescription)
+                stopLoadingAnimation()
                 return
             }
             guard let tokenString = AccessToken.current?.tokenString else { return }
@@ -87,18 +113,32 @@ extension LoginViewController: LoginButtonDelegate {
 
 extension LoginViewController {
     private func firebaseLogin(_ credential: AuthCredential) {
+        startLoadingAnimation()
         Auth.auth().signIn(with: credential) { [weak self] authResult, error in
             guard let self else { return }
             if let error {
                 let authError = error as NSError
                 print(authError.localizedDescription)
+                self.stopLoadingAnimation()
             }
             self.showListViewController()
         }
     }
 
     private func showListViewController() {
-        let viewController = ListViewController()
-        navigationController?.pushViewController(viewController, animated: true)
+        DispatchQueue.main.async {
+            let viewController = ListViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
+            self.stopLoadingAnimation()
+        }
+    }
+}
+
+extension LoginViewController {
+    private enum Constants {
+        static let title = "Personal Scheduler"
+        static let stackViewSpacing = 10.0
+        static let stackViewWidthMultiplier = 0.9
+        static let stackViewHeight = 44.0
     }
 }
