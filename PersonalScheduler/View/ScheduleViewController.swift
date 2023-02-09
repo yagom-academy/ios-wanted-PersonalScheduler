@@ -20,6 +20,19 @@ final class ScheduleViewController: UIViewController {
 
         return tableView
     }()
+    private lazy var plusButton: UIButton = {
+        let button = UIButton(type: .custom)
+        let imageConfiguration = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold, scale: .large)
+        let plusImage =  UIImage(systemName: "plus", withConfiguration: imageConfiguration)?
+            .withTintColor(.tertiary ?? .white, renderingMode: .alwaysOriginal)
+        button.setImage(plusImage, for: .normal)
+        button.layer.cornerRadius = 12
+        button.backgroundColor = .secondary
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(touchedUpPlusButton), for: .touchUpInside)
+
+        return button
+    }()
 
     private var dataSource: DataSource? = nil
     private let snapshot: Snapshot = Snapshot()
@@ -71,6 +84,11 @@ final class ScheduleViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc private func touchedUpPlusButton() {
+        print("버튼액션 클릭")
+        // 액션구현
+    }
 }
 
 //MARK: - ViewHierarchy and Layout
@@ -78,6 +96,7 @@ extension ScheduleViewController {
 
     private func configureHierarchy() {
         self.view.addSubview(scheduleTableView)
+        scheduleTableView.addSubview(plusButton)
     }
 
     private func configureLayout() {
@@ -86,6 +105,11 @@ extension ScheduleViewController {
             scheduleTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scheduleTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             scheduleTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+
+            plusButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
+            plusButton.heightAnchor.constraint(equalTo: plusButton.widthAnchor),
+            plusButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            plusButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
         ])
     }
 }
