@@ -18,6 +18,7 @@ final class ListViewController: UIViewController {
     private let viewModel: ListViewModel
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
+    private lazy var dataSource = configureDataSource()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
@@ -37,7 +38,7 @@ final class ListViewController: UIViewController {
 
 // MARK: - DataSource and Snapshot
 extension ListViewController {
-    func configureDataSource() -> DataSource {
+    private func configureDataSource() -> DataSource {
         let dataSource = DataSource(tableView: tableView) { tableView, indexPath, schedule in
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: ScheduleTableViewCell.identifier,
@@ -50,6 +51,14 @@ extension ListViewController {
             return cell
         }
         return dataSource
+    }
+    
+    private func applySnapshot(data: [Schedule], animating: Bool) {
+        var snapshot = Snapshot()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(data)
+        
+        dataSource.apply(snapshot, animatingDifferences: animating)
     }
 }
 
