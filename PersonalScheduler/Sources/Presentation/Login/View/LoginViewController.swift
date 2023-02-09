@@ -31,7 +31,6 @@ final class LoginViewController: UIViewController {
 // MARK: - Binding Method
 private extension LoginViewController {
     func bind() {
-        
         viewModel.isSuccess
             .receive(on: DispatchQueue.main)
             .sink {
@@ -76,12 +75,16 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             viewModel.login(with: repository)
             
         default:
-            break
+            presentErrorAlert(title: "로그인 실패", message: "잘못된 접근입니다. 다른 방법으로 로그인해주세요.")
+            return
         }
     }
     
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // TODO: - Error Alert 띄우기
+    func authorizationController(
+        controller: ASAuthorizationController,
+        didCompleteWithError error: Error
+    ) {
+        presentErrorAlert(title: "로그인 실패", message: "예기치 못한 에러가 발생하였습니다. 잠시 후 다시 시도해주세요.")
     }
 }
 
@@ -111,5 +114,15 @@ private extension LoginViewController {
         controller.delegate = self
         controller.presentationContextProvider = self
         controller.performRequests()
+    }
+    
+    func presentErrorAlert(title: String, message: String) {
+        let alertController = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        present(alertController, animated: true)
     }
 }
