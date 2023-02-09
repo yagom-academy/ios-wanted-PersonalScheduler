@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 import FacebookLogin
 import KakaoSDKUser
 
@@ -94,21 +95,34 @@ extension LoginViewModel {
 // MARK: Facebook
 extension LoginViewModel {
     private func tapFacebookLogin() {
-        facebookLoginManager.logIn(permissions: ["email"], from: nil) { [weak self] result, error in
-            if let error = error {
-                self?.delegate?.loginViewModel(failedLogin: error)
-                return
-            }
-            
-            guard let token = AccessToken.current?.tokenString else { return }
-            
-            self?.service.requestLogin(to: .facebook, with: token) { [weak self] result in
-                switch result {
-                case .success(let uid):
-                    self?.delegate?.loginViewModel(successLogin: uid)
-                case .failure(let failure):
-                    self?.delegate?.loginViewModel(failedLogin: failure)
+        if let token = AccessToken.current, !token.isExpired {
+            loginFireStore(with: token)
+        } else {
+            facebookLoginManager.logIn(permissions: ["email"], from: nil) { [weak self] result, error in
+                if let error = error {
+                    self?.delegate?.loginViewModel(failedLogin: error)
+                    return
                 }
+                
+                guard let result = result,
+                      !result.isCancelled,
+                      let token = result.token
+                else {
+                    return
+                }
+                
+                self?.loginFireStore(with: token)
+            }
+        }
+    }
+    
+    private func loginFireStore(with token: AccessToken) {
+        service.requestLogin(to: .facebook, with: token.tokenString) { [weak self] result in
+            switch result {
+            case .success(let uid):
+                self?.delegate?.loginViewModel(successLogin: uid)
+            case .failure(let failure):
+                self?.delegate?.loginViewModel(failedLogin: failure)
             }
         }
     }
