@@ -12,6 +12,7 @@
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
 		EB3FD2D529948790008483DC /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD2D429948790008483DC /* Schedule.swift */; };
+		EB3FD2D729948822008483DC /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD2D629948822008483DC /* ListViewController.swift */; };
 		EB62AB172993DDFC00D5EA38 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = EB62AB162993DDFC00D5EA38 /* FacebookCore */; };
 		EB62AB192993DDFC00D5EA38 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = EB62AB182993DDFC00D5EA38 /* FacebookLogin */; };
 		EBDDF49D2993C5AB0061C781 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDF49C2993C5AB0061C781 /* LoginViewController.swift */; };
@@ -30,6 +31,7 @@
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB3FD2D429948790008483DC /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		EB3FD2D629948822008483DC /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		EB62AB1A2993DE9300D5EA38 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
 		EBDDF49C2993C5AB0061C781 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EBDDF4AC2993CE170061C781 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				EBDDF49C2993C5AB0061C781 /* LoginViewController.swift */,
+				EB3FD2D629948822008483DC /* ListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				EBDDF49D2993C5AB0061C781 /* LoginViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				EB3FD2D529948790008483DC /* Schedule.swift in Sources */,
+				EB3FD2D729948822008483DC /* ListViewController.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

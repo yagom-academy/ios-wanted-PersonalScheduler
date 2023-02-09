@@ -86,12 +86,19 @@ extension LoginViewController: LoginButtonDelegate {
 }
 
 extension LoginViewController {
-    func firebaseLogin(_ credential: AuthCredential) {
-        Auth.auth().signIn(with: credential) { authResult, error in
+    private func firebaseLogin(_ credential: AuthCredential) {
+        Auth.auth().signIn(with: credential) { [weak self] authResult, error in
+            guard let self else { return }
             if let error {
                 let authError = error as NSError
                 print(authError.localizedDescription)
             }
+            self.showListViewController()
         }
+    }
+
+    private func showListViewController() {
+        let viewController = ListViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
