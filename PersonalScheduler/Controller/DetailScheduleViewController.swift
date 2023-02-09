@@ -63,7 +63,12 @@ final class DetailScheduleViewController: UIViewController {
 private extension DetailScheduleViewController {
     @objc func touchUpCreateButton() {
         guard let title = titleTextField.text,
-              let body = bodyTextView.text else { return }
+              let body = bodyTextView.text,
+              title != "",
+              body != "" else {
+            showAlert()
+            return
+        }
         let date = DateformatterManager.shared.convertDateToString(date: datePicker.date)
         let data = ScheduleModel(title: title, body: body, date: date)
         detailScheduleDelegate?.createSchedule(data: data)
