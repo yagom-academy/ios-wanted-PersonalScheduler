@@ -19,10 +19,10 @@ final class ScheduleListViewModel {
             
             switch result {
             case .success:
-                self.isLogged = true
+                self.isLogged = false
                 
             case .failure:
-                self.isLogged = false
+                self.isLogged = true
             }
         }
     }

@@ -9,6 +9,10 @@ import Combine
 import FirebaseAuth
 
 final class AppleLoginRepository: LoginRepository {
+    enum Constants {
+        static let oAuthProviderID: String = "apple.com"
+    }
+    
     private let credential: ASAuthorizationAppleIDCredential
     let service: LoginService
     
@@ -28,7 +32,7 @@ final class AppleLoginRepository: LoginRepository {
         }
         
         let firebaseCredential = OAuthProvider.credential(
-            withProviderID: "apple.com",
+            withProviderID: Constants.oAuthProviderID,
             idToken: token,
             rawNonce: nil
         )

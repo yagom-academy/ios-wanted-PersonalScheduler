@@ -54,7 +54,6 @@ private extension KakaoLoginRepository {
         loginFirebase(token: token, completion: completion)
     }
     
-    
     func authorizationKakao(completion: @escaping (Result<Void, LoginError>) -> Void) {
         if UserApi.isKakaoTalkLoginAvailable() == true {
             guard let token = try? UserApi.shared.authorizeKakaoTalk() else {

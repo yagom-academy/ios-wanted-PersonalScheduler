@@ -22,30 +22,26 @@ final class ScheduleListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
-        
         configureUI()
+        bindAction()
         bind()
-        
-        // MARK: Logout
-        let action = UIAction { _ in
-            self.logout()
-        }
-        
-        logoutButton.addAction(action, for: .touchUpInside)
-    }
-    
-    private func logout() {
-        viewModel.logout()
     }
 }
 
 private extension ScheduleListViewController {
     func bind() {
         viewModel.$isLogged
-            .filter { $0 }
+            .filter { $0 == false }
             .sink { [weak self] _ in
                 self?.dismiss(animated: true)
+            }
+            .store(in: &cancellable)
+    }
+    
+    func bindAction() {
+        logoutButton.tapPublisher
+            .sink { [weak self] _ in
+                self?.viewModel.logout()
             }
             .store(in: &cancellable)
     }
@@ -54,6 +50,7 @@ private extension ScheduleListViewController {
 // MARK: - Configure UI
 private extension ScheduleListViewController {
     func configureUI() {
+        view.backgroundColor = .systemBackground
         addChildComponents()
         setUpLayout()
     }
