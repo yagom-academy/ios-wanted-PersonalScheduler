@@ -218,7 +218,7 @@ extension ListViewController: AlertPresentable {
             
             loginViewController.toggleFacebookLoginButton()
             
-            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
         }
         let secondAlertAction = createAlertAction(
             title: "취소"

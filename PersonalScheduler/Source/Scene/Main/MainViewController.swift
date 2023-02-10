@@ -122,16 +122,9 @@ final class MainViewController: UIViewController {
     private func checkLogin() {
         let auth = Auth.auth()
         
-        if auth.currentUser?.email != nil {
+        if let userID = auth.currentUser?.email  {
             indicatorView.startAnimating()
-            
-            auth.addStateDidChangeListener { auth, user in
-                if let id = user?.email {
-                    self.readUserScheduleData(id: id)
-                    self.navigationController?.pushViewController(self.listViewController, animated: true)
-                    self.indicatorView.stopAnimating()
-                }
-            }
+            readUserScheduleData(id: userID)
         }
     }
     
@@ -176,8 +169,8 @@ final class MainViewController: UIViewController {
                 self.signInAuth(type: type, id: userID, password: password)
             } else {
                 self.createUserCollection(id: userID)
-                self.navigationController?.pushViewController(self.listViewController, animated: true)
                 self.indicatorView.stopAnimating()
+                self.navigationController?.pushViewController(self.listViewController, animated: true)
             }
         }
     }
@@ -186,10 +179,9 @@ final class MainViewController: UIViewController {
         Auth.auth().signIn(withEmail: id, password: password) { authResult, error in
             if let error = error {
                 print(error)
+                self.indicatorView.stopAnimating()
             } else {
                 self.readUserScheduleData(id: id)
-                self.navigationController?.pushViewController(self.listViewController, animated: true)
-                self.indicatorView.stopAnimating()
             }
         }
     }
@@ -227,17 +219,23 @@ final class MainViewController: UIViewController {
             if let error = error {
                 print(error)
             } else {
-                guard let documents = querySnapShot?.documents else { return }
-                if documents.first?.documentID == "Personal" {
-                    let data = "\(documents.first?.data().values.first ?? String())"
-                    guard let jsonData = data.data(using: .utf8) else { return }
-                    let schedule = JSONDecoder().decodeData(data: jsonData, to: [Schedule].self)
-                    
-                    if let unwrappedSchedule = schedule {
-                        listViewController.configureScheduleList(data: unwrappedSchedule)
+                if let documents = querySnapShot?.documents {
+                    if documents.first?.documentID == "Personal" {
+                        let data = "\(documents.first?.data().values.first ?? String())"
+                        
+                        if let jsonData = data.data(using: .utf8) {
+                            let schedule = JSONDecoder().decodeData(data: jsonData, to: [Schedule].self)
+                            
+                            if let unwrappedSchedule = schedule {
+                                listViewController.configureScheduleList(data: unwrappedSchedule)
+                            }
+                        }
                     }
                 }
             }
+            
+            indicatorView.stopAnimating()
+            navigationController?.pushViewController(listViewController, animated: true)
         }
     }
     
@@ -331,8 +329,8 @@ extension MainViewController: UserInfoSendable {
     func presentCreateUserInfoView() {
         let pushViewController = CreateUserInfoViewController()
         
-        navigationController?.pushViewController(pushViewController, animated: true)
         navigationItem.backButtonTitle = "뒤로가기"
+        navigationController?.pushViewController(pushViewController, animated: true)
     }
     
     func sendUserInfo(id: String, password: String) {

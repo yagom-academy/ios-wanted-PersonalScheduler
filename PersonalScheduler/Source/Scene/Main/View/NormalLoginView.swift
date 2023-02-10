@@ -194,16 +194,16 @@ final class NormalLoginView: UIView {
     }
     
     @objc
+    private func tapLoginRightButton() {
+        delegate?.presentCreateUserInfoView()
+    }
+    
+    @objc
     private func tapCreateLeftButton() {
         if let userID = idTextField.text,
            let userPW = passwordTextField.text {
             delegate?.sendUserInfo(id: userID, password: userPW)
         }
-    }
-    
-    @objc
-    private func tapLoginRightButton() {
-        delegate?.presentCreateUserInfoView()
     }
     
     @objc
