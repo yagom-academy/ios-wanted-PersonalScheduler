@@ -8,13 +8,14 @@ import Combine
 
 final class ScheduleListViewModel {
     @Published var isLogged: Bool
+    private let firebaseAuthService = FirebaseAuthService()
     
     init(isLogged: Bool) {
         self.isLogged = isLogged
     }
     
     func logout() {
-        FirebaseAuthService().logout { [weak self] result in
+        firebaseAuthService.logout { [weak self] result in
             guard let self = self else { return }
             
             switch result {
