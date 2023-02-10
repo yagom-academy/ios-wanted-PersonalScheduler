@@ -23,11 +23,7 @@ final class ScheduleListViewController: UIViewController {
 
         view.backgroundColor = .systemBackground
         configureUI()
-
-        FirebaseManager.shared.fetchAllData { [weak self] data in
-            ScheduleModel.scheduleList = data
-            self?.sortScheduleList()
-        }
+        fetchScheduleList()
     }
 }
 
@@ -101,6 +97,13 @@ extension ScheduleListViewController: DetailScheduleDelegate {
 
 // MARK: - Method
 private extension ScheduleListViewController {
+    func fetchScheduleList() {
+        FirebaseManager.shared.fetchAllScheduleData { [weak self] data in
+            ScheduleModel.scheduleList = data
+            self?.sortScheduleList()
+        }
+    }
+
     func sortScheduleList() {
         ScheduleModel.scheduleList = ScheduleModel.scheduleList.sorted(by: {
             DateformatterManager.shared.convertStringToDate(dateText: $0.date)?.compare(DateformatterManager.shared.convertStringToDate(dateText: $1.date) ?? Date()) == .orderedDescending

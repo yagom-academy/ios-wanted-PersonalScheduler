@@ -14,7 +14,7 @@ final class FirebaseManager {
 
     let collection = Firestore.firestore().collection("schedule")
 
-    func fetchAllData(completionHandler: @escaping ([ScheduleModel]) -> Void) {
+    func fetchAllScheduleData(completionHandler: @escaping ([ScheduleModel]) -> Void) {
         var scheduleModels: [ScheduleModel] = []
 
         collection.getDocuments { (querySnapshot, error) in
@@ -40,10 +40,22 @@ final class FirebaseManager {
                     // 에러처리
                     return
                 }
-                let scheduleModel = ScheduleModel(id: id , title: title, body: body, date: date)
+                let scheduleModel = ScheduleModel(id: id, title: title, body: body, date: date)
                 scheduleModels.append(scheduleModel)
             }
             completionHandler(scheduleModels)
         }
+    }
+
+    func addScheduleData(_ scheduleModel: ScheduleModel) {
+        collection.document("\(scheduleModel.id.uuidString)").setData(scheduleModel.dictionary)
+    }
+
+    func updateScheduleData(_ scheduleModel: ScheduleModel) {
+        collection.document("\(scheduleModel.id.uuidString)").updateData(scheduleModel.dictionary)
+    }
+
+    func deleteScheduleData(_ scheduleModel: ScheduleModel) {
+        collection.document("\(scheduleModel.id.uuidString)").delete()
     }
 }
