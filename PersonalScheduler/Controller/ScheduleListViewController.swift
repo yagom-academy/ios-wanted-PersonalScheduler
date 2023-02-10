@@ -81,6 +81,7 @@ extension ScheduleListViewController: UITableViewDelegate {
 // MARK: - DetailViewDelegate
 extension ScheduleListViewController: DetailScheduleDelegate {
     func createSchedule(data: ScheduleModel) {
+        FirebaseManager.shared.addScheduleData(data)
         ScheduleModel.scheduleList.append(data)
         sortScheduleList()
     }
@@ -90,6 +91,7 @@ extension ScheduleListViewController: DetailScheduleDelegate {
             scheduleModel.id == data.id
         }) else { return }
 
+        FirebaseManager.shared.updateScheduleData(data)
         ScheduleModel.scheduleList[index] = data
         sortScheduleList()
     }
@@ -129,6 +131,7 @@ private extension ScheduleListViewController {
 
     func swipeDeleteAction(_ indexPath: IndexPath) -> UIContextualAction {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, handler in
+            FirebaseManager.shared.deleteScheduleData(ScheduleModel.scheduleList[indexPath.section])
             ScheduleModel.scheduleList.remove(at: indexPath.section)
             self?.tableView.reloadData()
             handler(true)
