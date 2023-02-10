@@ -5,6 +5,7 @@
 //  Copyright (c) 2023 Minii All rights reserved.
 
 import UIKit
+import Combine
 
 final class ScheduleListViewController: UIViewController {
     private let logoutButton: UIButton = {
@@ -16,6 +17,7 @@ final class ScheduleListViewController: UIViewController {
     }()
     
     private let viewModel = ScheduleListViewModel(isLogged: true)
+    private var cancellable = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,7 @@ final class ScheduleListViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         configureUI()
+        bind()
         
         // MARK: Logout
         let action = UIAction { _ in
@@ -37,6 +40,16 @@ final class ScheduleListViewController: UIViewController {
     }
 }
 
+private extension ScheduleListViewController {
+    func bind() {
+        viewModel.$isLogged
+            .filter { $0 }
+            .sink { [weak self] _ in
+                self?.dismiss(animated: true)
+            }
+            .store(in: &cancellable)
+    }
+}
 
 // MARK: - Configure UI
 private extension ScheduleListViewController {
