@@ -114,6 +114,7 @@ private extension DetailScheduleViewController {
         bodyTextView.delegate = self
         settingLayouts()
         settingNavigationBar()
+        settingTitleTextField()
         settingData()
     }
 
@@ -157,6 +158,12 @@ private extension DetailScheduleViewController {
             navigationItem.title = "스케쥴 수정"
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(touchUpUpdateButton))
         }
+    }
+
+    func settingTitleTextField() {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
+        titleTextField.leftView = paddingView
+        titleTextField.leftViewMode = .always
     }
 
     func showAlert() {
