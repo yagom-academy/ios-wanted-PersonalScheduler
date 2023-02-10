@@ -7,9 +7,16 @@
 
 import UIKit
 
+protocol ScheduleCellDelegate {
+
+    func touchedUpCheckButton(of viewModel: ScheduleCellViewModel)
+}
+
 final class ScheduleCell: UITableViewCell {
 
     static var reuseIdentifier: String { String(describing: self) }
+
+    var delegate: ScheduleCellDelegate?
 
     private let dateLabel = UILabel(font: .body, textColor: .navy, textAlignment: .natural)
     private let timeLabel = UILabel(font: .body, textColor: .systemGray, textAlignment: .natural)
@@ -23,7 +30,7 @@ final class ScheduleCell: UITableViewCell {
                                              backgroundColor: .primary,
                                              margin: 10)
 
-    private let checkButton: UIButton = {
+    private lazy var checkButton: UIButton = {
         let button: UIButton = UIButton(type: .infoLight)
         let imageConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .semibold, scale: .medium)
         let checkImage = UIImage(systemName: "checkmark.circle", withConfiguration: imageConfiguration)?
@@ -58,8 +65,12 @@ final class ScheduleCell: UITableViewCell {
         detailLabel.text = viewModel.detail
     }
 
-    func touchedUpCheckButton(target: UIViewController, action: Selector) {
-        checkButton.addTarget(target, action: action, for: .touchUpInside)
+    func addActionToCheckButton(of viewModel: ScheduleCellViewModel) {
+        let action = UIAction { [weak self] _ in
+            self?.delegate?.touchedUpCheckButton(of: viewModel)
+        }
+
+        checkButton.addAction(action, for: .touchUpInside)
     }
 
     private func configureHierarchy() {

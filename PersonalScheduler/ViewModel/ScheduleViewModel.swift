@@ -27,4 +27,12 @@ final class ScheduleViewModel {
             }
         }
     }
+
+    func removeEvent(of uuid: UUID) {
+        guard let event = events.value.filter({ $0.uuid == uuid }).first,
+              let index = events.value.firstIndex(of: event) else { return }
+
+        events.value.remove(at: index)
+        FirebaseManager(collectionName: userId).delete(event)
+    }
 }

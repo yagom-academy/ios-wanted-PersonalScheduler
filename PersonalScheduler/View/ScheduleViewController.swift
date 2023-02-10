@@ -71,7 +71,10 @@ final class ScheduleViewController: UIViewController {
 
         dataSource = DataSource(tableView: scheduleTableView) {tableView, indexPath, event in
             let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleCell.reuseIdentifier) as? ScheduleCell
-            cell?.configureCell(with: ScheduleCellViewModel(event: event))
+            let ScheduleCellViewModel = ScheduleCellViewModel(event: event)
+            cell?.delegate = self
+            cell?.configureCell(with: ScheduleCellViewModel)
+            cell?.addActionToCheckButton(of: ScheduleCellViewModel)
 
             return cell
         }
@@ -88,6 +91,12 @@ final class ScheduleViewController: UIViewController {
     @objc private func touchedUpPlusButton() {
         print("버튼액션 클릭")
         // 액션구현
+    }
+}
+
+extension ScheduleViewController: ScheduleCellDelegate {
+    func touchedUpCheckButton(of viewModel: ScheduleCellViewModel) {
+        self.viewModel.removeEvent(of: viewModel.uuid)
     }
 }
 

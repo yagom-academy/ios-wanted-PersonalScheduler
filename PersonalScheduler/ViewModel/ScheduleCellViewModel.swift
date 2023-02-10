@@ -13,11 +13,13 @@ struct ScheduleCellViewModel {
     let date: String
     let plannedTime: String
     let detail: String
+    let uuid: UUID
 
     init(event: Event) {
         self.title = event.title
         self.date = event.date.convertSlashFormatString()
         self.plannedTime = "\(event.startHour)시 - \(event.endHour)시"
         self.detail = event.detail
+        self.uuid = event.uuid
     }
 }
