@@ -8,6 +8,9 @@ import Foundation
 import Combine
 
 enum LoginError: Error {
+    case loginServiceError
+    case cancelLogin
+    case failDecodeToken
     case invalidToken
     case unReadCredential
     case unknown
