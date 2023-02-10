@@ -11,6 +11,10 @@ import KakaoSDKCommon
 import KakaoSDKUser
 
 final class KakaoLoginRepository: LoginRepository {
+    enum Constants {
+        static let oAuthProviderID: String = "oidc.kakao"
+    }
+    
     let service: LoginService
     
     init(service: LoginService = FirebaseAuthService()) {
@@ -19,22 +23,7 @@ final class KakaoLoginRepository: LoginRepository {
     
     func login(completion: @escaping (Result<Void, LoginError>) -> Void) {
         if AuthApi.hasToken() == true {
-            UserApi.shared.accessTokenInfo { _, error in
-                if let error = error {
-                    if let sdkError = error as? SdkError, sdkError.isInvalidTokenError() {
-                        self.authorizationKakao(completion: completion)
-                    } else {
-                        completion(.failure(.unknown))
-                    }
-                } else {
-                    guard let idToken = TokenManager.manager.getToken()?.idToken else {
-                        completion(.failure(.invalidToken))
-                        return
-                    }
-                    
-                    self.loginFirebase(token: idToken, completion: completion)
-                }
-            }
+            handleTokenInfoError(completion: completion)
         }
         
         if AuthApi.hasToken() == false {
@@ -44,36 +33,94 @@ final class KakaoLoginRepository: LoginRepository {
 }
 
 private extension KakaoLoginRepository {
-    func authorizationKakao(completion: @escaping (Result<Void, LoginError>) -> Void) {
-        if UserApi.isKakaoTalkLoginAvailable() {
-            UserApi.shared.loginWithKakaoTalk { token, error in
-                guard error == nil,
-                      let idToken = token?.idToken else {
-                    return
-                }
-                
-                self.loginFirebase(token: idToken, completion: completion)
+    func handleTokenInfoError(completion: @escaping (Result<Void, LoginError>) -> Void) {
+        UserApi.shared.accessTokenInfo { [weak self] _, error in
+            if let error = error as? SdkError, error.isInvalidTokenError() {
+                self?.authorizationKakao(completion: completion)
             }
+            
+            if error == nil {
+                self?.existToken(completion: completion)
+            }
+        }
+    }
+    
+    func existToken(completion: @escaping (Result<Void, LoginError>) -> Void) {
+        guard let token = TokenManager.manager.getToken()?.idToken else {
+            completion(.failure(.invalidToken))
+            return
+        }
+        
+        loginFirebase(token: token, completion: completion)
+    }
+    
+    
+    func authorizationKakao(completion: @escaping (Result<Void, LoginError>) -> Void) {
+        if UserApi.isKakaoTalkLoginAvailable() == true {
+            guard let token = try? UserApi.shared.authorizeKakaoTalk() else {
+                completion(.failure(.loginServiceError))
+                return
+            }
+            
+            loginFirebase(token: token, completion: completion)
         }
         
         if UserApi.isKakaoTalkLoginAvailable() == false {
-            UserApi.shared.loginWithKakaoAccount { token, error in
-                guard error == nil,
-                      let idToken = token?.idToken else {
-                    return
-                }
-                
-                self.loginFirebase(token: idToken, completion: completion)
+            guard let token = try? UserApi.shared.authorizeKakaoAccount() else {
+                completion(.failure(.loginServiceError))
+                return
             }
+            
+            loginFirebase(token: token, completion: completion)
         }
     }
     
     func loginFirebase(token: String, completion: @escaping (Result<Void, LoginError>) -> Void) {
         let credential = OAuthProvider.credential(
-            withProviderID: "oidc.kakao",
+            withProviderID: Constants.oAuthProviderID,
             idToken: token,
             rawNonce: nil
         )
         service.login(with: credential, completion: completion)
+    }
+}
+
+private extension UserApi {
+    func authorizeKakaoTalk() throws -> String {
+        var idToken: String? = nil
+        AuthController.shared.authorizeWithTalk { [weak self] token, error in
+            idToken = self?.handleAuthControllerResult(token: token, error: error)
+        }
+        
+        guard let idToken = idToken else {
+            throw LoginError.failDecodeToken
+        }
+        
+        return idToken
+    }
+    
+    func authorizeKakaoAccount() throws -> String {
+        var idToken: String? = nil
+        AuthController.shared.authorizeWithAuthenticationSession { [weak self] token, error in
+            idToken = self?.handleAuthControllerResult(token: token, error: error)
+        }
+        
+        guard let idToken = idToken else {
+            throw LoginError.failDecodeToken
+        }
+        
+        return idToken
+    }
+    
+    func handleAuthControllerResult(
+        token: OAuthToken?,
+        error: Error?
+    ) -> String? {
+        guard error == nil,
+              let idToken = token?.idToken else {
+            return nil
+        }
+        
+        return idToken
     }
 }
