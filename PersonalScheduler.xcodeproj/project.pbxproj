@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		099BA71F29963E2E00F26C15 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 099BA71E29963E2E00F26C15 /* GoogleService-Info.plist */; };
 		09AB6451299384D900036E75 /* ScheduleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB6450299384D900036E75 /* ScheduleListCell.swift */; };
 		09AB64532993E9C500036E75 /* DetailScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB64522993E9C500036E75 /* DetailScheduleViewController.swift */; };
 		09AB64552994014A00036E75 /* DetailScheduleMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB64542994014A00036E75 /* DetailScheduleMode.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		099BA71E29963E2E00F26C15 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		09AB6450299384D900036E75 /* ScheduleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListCell.swift; sourceTree = "<group>"; };
 		09AB64522993E9C500036E75 /* DetailScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScheduleViewController.swift; sourceTree = "<group>"; };
 		09AB64542994014A00036E75 /* DetailScheduleMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScheduleMode.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				099BA71E29963E2E00F26C15 /* GoogleService-Info.plist */,
 				09E95B5B2992A01A004E120A /* Extension */,
 				09E95B5A29929FF4004E120A /* SupportFiles */,
 				09E95B5929929FD8004E120A /* Model */,
@@ -214,6 +217,7 @@
 			files = (
 				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
 				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
+				099BA71F29963E2E00F26C15 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

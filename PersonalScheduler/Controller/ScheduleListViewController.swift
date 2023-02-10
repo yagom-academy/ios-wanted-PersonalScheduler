@@ -98,7 +98,7 @@ extension ScheduleListViewController: DetailScheduleDelegate {
 private extension ScheduleListViewController {
     func sortScheduleList() {
         ScheduleModel.scheduleList = ScheduleModel.scheduleList.sorted(by: {
-            DateformatterManager.shared.convertStringToDate(dateText: $0.date)?.compare(DateformatterManager.shared.convertStringToDate(dateText: $1.date)!) == .orderedDescending
+            DateformatterManager.shared.convertStringToDate(dateText: $0.date)?.compare(DateformatterManager.shared.convertStringToDate(dateText: $1.date) ?? Date()) == .orderedDescending
         })
         tableView.reloadData()
     }
