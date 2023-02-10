@@ -15,6 +15,8 @@ final class ScheduleListViewController: UIViewController {
         return button
     }()
     
+    private let viewModel = ScheduleListViewModel(isLogged: true)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +33,7 @@ final class ScheduleListViewController: UIViewController {
     }
     
     private func logout() {
-        print("LogOut")
+        viewModel.logout()
     }
 }
 

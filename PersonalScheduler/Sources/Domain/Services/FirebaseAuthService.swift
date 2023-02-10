@@ -12,6 +12,8 @@ protocol LoginService {
         with credential: AuthCredential,
         completion: @escaping (Result<Void, LoginError>) -> Void
     )
+    
+    func logout(completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class FirebaseAuthService: LoginService {
@@ -27,5 +29,14 @@ final class FirebaseAuthService: LoginService {
             
             completion(.success(()))
         }
+    }
+    
+    func logout(completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let _ = try? Auth.auth().signOut() else {
+            completion(.failure(LoginError.unknown))
+            return
+        }
+        
+        completion(.success(()))
     }
 }
