@@ -47,7 +47,9 @@ final class ListView: UIView {
     }
     
     func reloadTableViewData() {
-        listTableView.reloadData()
+        DispatchQueue.main.async {
+            self.listTableView.reloadData()
+        }
     }
     
     func configureAddButton(target: UIViewController, action: Selector) {

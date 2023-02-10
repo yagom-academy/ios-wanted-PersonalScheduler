@@ -13,6 +13,15 @@ final class ListTableViewCell: UITableViewCell {
     
     static let identifier = "ListTableViewCell"
     
+    // MARK: PrepareForReuse
+    
+    override func prepareForReuse() {
+        titleLabel.text = nil
+        bodyLabel.text = nil
+        startDateLabel.text = nil
+        endDateLabel.text = nil
+    }
+    
     // MARK: Private Properties
     
     private let titleLabel: UILabel = {

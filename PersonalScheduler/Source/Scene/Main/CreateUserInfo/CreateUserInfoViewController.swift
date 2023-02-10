@@ -62,6 +62,12 @@ final class CreateUserInfoViewController: UIViewController {
         configureDelegate()
     }
     
+    // MARK: Internal Methods
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     // MARK: Private Methods
     
     private func configureView() {

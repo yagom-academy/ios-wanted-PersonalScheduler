@@ -109,6 +109,10 @@ final class MainViewController: UIViewController {
     
     // MARK: Internal Methods
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     func toggleFacebookLoginButton() {
         FBSDKLoginKit.LoginManager().logOut()
     }

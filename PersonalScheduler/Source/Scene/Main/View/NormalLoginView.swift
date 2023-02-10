@@ -216,6 +216,12 @@ final class NormalLoginView: UIView {
 // MARK: - UITextFieldDelegate
 
 extension NormalLoginView: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {

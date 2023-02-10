@@ -409,7 +409,7 @@ final class ScheduleInfoView: UIView {
 
 extension ScheduleInfoView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder() // TextField 비활성화
+        textField.resignFirstResponder()
         return true
     }
     
