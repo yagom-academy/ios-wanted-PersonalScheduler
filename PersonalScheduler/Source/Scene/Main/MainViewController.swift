@@ -98,13 +98,13 @@ final class MainViewController: UIViewController {
         configureLayout()
         configureDelegate()
         configureButtonAction()
+        checkLogin()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         listViewController.configureScheduleList(data: .init())
-        checkLogin()
     }
     
     // MARK: Internal Methods

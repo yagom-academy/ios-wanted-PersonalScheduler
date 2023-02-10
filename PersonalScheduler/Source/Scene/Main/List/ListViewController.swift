@@ -18,7 +18,6 @@ final class ListViewController: UIViewController {
     
     // MARK: Private Properties
     
-    private let scheduleInfoViewController = ScheduleInfoViewController()
     private let db = Firestore.firestore()
     
     // MARK: Life Cycle
@@ -28,7 +27,6 @@ final class ListViewController: UIViewController {
         
         configureView()
         configureLayout()
-        configureDelegate()
         configureListView()
     }
     
@@ -60,10 +58,6 @@ final class ListViewController: UIViewController {
             target: self,
             action: nil
         )
-    }
-    
-    private func configureDelegate() {
-        scheduleInfoViewController.delegate = self
     }
     
     private func configureListView() {
@@ -127,8 +121,9 @@ extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pushViewController = ScheduleInfoViewController()
         
-        pushViewController.mode = .read
         pushViewController.delegate = self
+        pushViewController.dataManageMode = .read
+        pushViewController.savedSchedule = scheduleList[indexPath.row]
         
         navigationController?.pushViewController(pushViewController, animated: true)
     }
@@ -188,8 +183,12 @@ extension ListViewController: AlertPresentable {
         let firstAlertAction = createAlertAction(
             title: "확인"
         ) { [self] in
-            scheduleInfoViewController.mode = .create
-            navigationController?.pushViewController(scheduleInfoViewController, animated: true)
+            let pushViewController = ScheduleInfoViewController()
+            
+            pushViewController.delegate = self
+            pushViewController.dataManageMode = .create
+            
+            navigationController?.pushViewController(pushViewController, animated: true)
         }
         let secondAlertAction = createAlertAction(
             title: "취소"

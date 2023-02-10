@@ -11,21 +11,26 @@ class ScheduleInfoViewController: UIViewController {
     
     // MARK: Internal Properties
     
-    var mode: ManageMode = .create
+    var savedSchedule: Schedule?
+    var dataManageMode: ManageMode = .create
     var delegate: DataSendable?
-    
-    // MARK: Private Properties
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configureView(mode)
-    }
     
     // MARK: Private Properties
     
     private let scheduleInfoView = ScheduleInfoView()
     
+    
+    // MARK: Life Cycle
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        configureView(dataManageMode)
+        configureRightBarButtonItem(mode: dataManageMode)
+        scheduleInfoView.checkDataAccess(mode: dataManageMode)
+        checkSavedData(with: savedSchedule)
+    }
+
     // MARK: Internal Methods
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -34,10 +39,7 @@ class ScheduleInfoViewController: UIViewController {
     
     // MARK: Private Methods
     
-    private func configureView(_ mode: ManageMode) {
-        view = scheduleInfoView
-        view.backgroundColor = .systemBackground
-        
+    private func configureRightBarButtonItem(mode: ManageMode) {
         switch mode {
         case .create:
             navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -63,6 +65,17 @@ class ScheduleInfoViewController: UIViewController {
         }
     }
     
+    private func configureView(_ mode: ManageMode) {
+        view = scheduleInfoView
+        view.backgroundColor = .systemBackground
+    }
+    
+    private func checkSavedData(with data: Schedule?) {
+        if let savedData = data {
+            scheduleInfoView.showScheduleData(with: savedData)
+        }
+    }
+    
     // MARK: Action Methods
     
     @objc
@@ -72,12 +85,18 @@ class ScheduleInfoViewController: UIViewController {
     
     @objc
     private func tapRightBarButtonEditAction() {
-        scheduleInfoView.checkDataAccess(mode: .edit)
+        if let data = scheduleInfoView.saveScheduleData() {
+            delegate?.sendData(with: data, mode: .create)
+            
+            navigationController?.popViewController(animated: true)
+        } else {
+            presentDataEmptyErrorAlert()
+        }
     }
     
     @objc
     private func tapRightBarButtonReadAction() {
-        scheduleInfoView.checkDataAccess(mode: .edit)
+        presentEditModeCheckingAlert()
     }
 }
 
@@ -112,17 +131,15 @@ extension ScheduleInfoViewController: AlertPresentable {
     
     func presentEditModeCheckingAlert() {
         let alert = createAlert(
-            title: "모드 전환",
+            title: "데이터 관리",
             message: "일정을 편집하시겠습니까?"
         )
         let firstAlertAction = createAlertAction(
             title: "편집"
         ) { [self] in
-            if let data = scheduleInfoView.saveScheduleData() {
-                delegate?.sendData(with: data, mode: .create)
-            }
-            
-            navigationController?.popViewController(animated: true)
+            dataManageMode = .edit
+            scheduleInfoView.checkDataAccess(mode: dataManageMode)
+            configureRightBarButtonItem(mode: dataManageMode)
         }
         let secondAlertAction = createAlertAction(
             title: "취소"

@@ -24,8 +24,7 @@ final class ScheduleInfoView: UIView {
         let textField = UITextField()
         textField.addLeftPadding()
         textField.backgroundColor = .systemBackground
-        textField.text = "일정 제목을 입력하세요. (최대 35자)"
-        textField.textColor = .lightGray
+        textField.textColor = .label
         textField.font = .preferredFont(forTextStyle: .title3)
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
@@ -34,8 +33,7 @@ final class ScheduleInfoView: UIView {
     private let bodyTextView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .systemBackground
-        textView.text = "일정 내용을 입력하세요. (최대 500자) \n(시작/종료일자 기입은 필수입니다.)"
-        textView.textColor = .lightGray
+        textView.textColor = .label
         textView.textContainerInset = UIEdgeInsets(top: 15, left: 8, bottom: 15, right: 8)
         textView.font = .preferredFont(forTextStyle: .title3)
         textView.layer.borderColor = UIColor.label.cgColor
@@ -53,8 +51,7 @@ final class ScheduleInfoView: UIView {
     private let startDateTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .center
-        textField.text = "시작날짜"
-        textField.textColor = .lightGray
+        textField.textColor = .label
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
         return textField
@@ -62,8 +59,7 @@ final class ScheduleInfoView: UIView {
     private let startTimeTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .center
-        textField.text = "시작시간"
-        textField.textColor = .lightGray
+        textField.textColor = .label
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
         return textField
@@ -79,8 +75,7 @@ final class ScheduleInfoView: UIView {
     private let endDateTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .center
-        textField.text = "종료날짜"
-        textField.textColor = .lightGray
+        textField.textColor = .label
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
         return textField
@@ -88,8 +83,7 @@ final class ScheduleInfoView: UIView {
     private let endTimeTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .center
-        textField.text = "종료시간"
-        textField.textColor = .lightGray
+        textField.textColor = .label
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
         return textField
@@ -161,6 +155,15 @@ final class ScheduleInfoView: UIView {
     
     // MARK: Internal Methods
     
+    func showScheduleData(with scheduleData: Schedule) {
+        titleTextField.text = scheduleData.title
+        bodyTextView.text = scheduleData.body
+        startDateTextField.text = scheduleData.startDate
+        startTimeTextField.text = scheduleData.startTime
+        endDateTextField.text = scheduleData.endDate
+        endTimeTextField.text = scheduleData.endTime
+    }
+    
     func saveScheduleData() -> Schedule? {
         if let title = titleTextField.text,
            let body = bodyTextView.text,
@@ -185,20 +188,13 @@ final class ScheduleInfoView: UIView {
     
     func checkDataAccess(mode: ManageMode) {
         switch mode {
-        case .create, .edit:
-            startDateTextField.isUserInteractionEnabled = true
-            startTimeTextField.isUserInteractionEnabled = true
-            endDateTextField.isUserInteractionEnabled = true
-            endTimeTextField.isUserInteractionEnabled = true
-            titleTextField.isUserInteractionEnabled = true
-            bodyTextView.isUserInteractionEnabled = true
+        case .create:
+            configureCreateGuideText()
+            configureUserInteraction(enable: true)
+        case .edit:
+            configureUserInteraction(enable: true)
         case .read:
-            startDateTextField.isUserInteractionEnabled = false
-            startTimeTextField.isUserInteractionEnabled = false
-            endDateTextField.isUserInteractionEnabled = false
-            endTimeTextField.isUserInteractionEnabled = false
-            titleTextField.isUserInteractionEnabled = false
-            bodyTextView.isUserInteractionEnabled = false
+            configureUserInteraction(enable: false)
         }
     }
     
@@ -212,6 +208,31 @@ final class ScheduleInfoView: UIView {
         startTimeTextField.delegate = self
         endDateTextField.delegate = self
         endTimeTextField.delegate = self
+    }
+    
+    private func configureCreateGuideText() {
+        titleTextField.text = "일정 제목을 입력하세요. (최대 35자)"
+        bodyTextView.text = "일정 내용을 입력하세요. (최대 500자) \n(시작/종료일자 기입은 필수입니다.)"
+        startDateTextField.text = "시작날짜"
+        startTimeTextField.text = "시작시간"
+        endDateTextField.text = "종료날짜"
+        endTimeTextField.text = "종료시간"
+        
+        titleTextField.textColor = .lightGray
+        bodyTextView.textColor = .lightGray
+        startDateTextField.textColor = .lightGray
+        startTimeTextField.textColor = .lightGray
+        endDateTextField.textColor = .lightGray
+        endTimeTextField.textColor = .lightGray
+    }
+    
+    private func configureUserInteraction(enable: Bool) {
+        startDateTextField.isUserInteractionEnabled = enable
+        startTimeTextField.isUserInteractionEnabled = enable
+        endDateTextField.isUserInteractionEnabled = enable
+        endTimeTextField.isUserInteractionEnabled = enable
+        titleTextField.isUserInteractionEnabled = enable
+        bodyTextView.isUserInteractionEnabled = enable
     }
     
     private func createDateButton(type: DateType, textField: UITextField, action: Selector?) {
