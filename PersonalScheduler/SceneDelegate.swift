@@ -7,6 +7,9 @@
 
 import UIKit
 import FacebookCore
+import KakaoSDKCommon
+import KakaoSDKAuth
+import KakaoSDKUser
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
@@ -35,6 +38,13 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             sourceApplication: nil,
             annotation: [UIApplication.OpenURLOptionsKey.annotation]
         )
+
+        if let url = URLContexts.first?.url {
+            if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                _ = AuthController.handleOpenUrl(url: url)
+            }
+        }
+
     }
 }
 

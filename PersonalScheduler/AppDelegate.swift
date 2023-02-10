@@ -8,6 +8,9 @@
 import UIKit
 import FirebaseCore
 import FacebookCore
+import KakaoSDKCommon
+import KakaoSDKAuth
+import KakaoSDKUser
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         FirebaseApp.configure()
+
+        KakaoSDK.initSDK(appKey: "400683267cbbbafd2f5d9bda159d4bae")
 
         ApplicationDelegate.shared.application(
             application,
@@ -46,5 +51,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
             annotation: options[UIApplication.OpenURLOptionsKey.annotation]
         )
+
+        if (AuthApi.isKakaoTalkLoginUrl(url)) {
+            return AuthController.handleOpenUrl(url: url)
+        }
+
+        return false
     }
 }

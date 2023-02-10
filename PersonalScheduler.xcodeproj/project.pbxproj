@@ -25,6 +25,8 @@
 		EB8E5AA32994F0870086F270 /* FirestoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E5AA22994F0870086F270 /* FirestoreRepository.swift */; };
 		EB8E5AA5299513C80086F270 /* FriestoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E5AA4299513C80086F270 /* FriestoreEntity.swift */; };
 		EB8E5AA7299519F50086F270 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E5AA6299519F50086F270 /* FirestoreService.swift */; };
+		EB8E5AAA299603240086F270 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EB8E5AA9299603240086F270 /* KakaoSDKAuth */; };
+		EB8E5AAC299603240086F270 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = EB8E5AAB299603240086F270 /* KakaoSDKUser */; };
 		EBDDF49D2993C5AB0061C781 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDF49C2993C5AB0061C781 /* LoginViewController.swift */; };
 		EBDDF4AD2993CE170061C781 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBDDF4AC2993CE170061C781 /* GoogleService-Info.plist */; };
 		EBDDF4B02993CF070061C781 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EBDDF4AF2993CF070061C781 /* FirebaseAnalytics */; };
@@ -62,9 +64,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB8E5AAA299603240086F270 /* KakaoSDKAuth in Frameworks */,
 				EBDDF4B02993CF070061C781 /* FirebaseAnalytics in Frameworks */,
 				EB62AB172993DDFC00D5EA38 /* FacebookCore in Frameworks */,
 				EB62AB192993DDFC00D5EA38 /* FacebookLogin in Frameworks */,
+				EB8E5AAC299603240086F270 /* KakaoSDKUser in Frameworks */,
 				EBDDF4B22993CF070061C781 /* FirebaseAuth in Frameworks */,
 				EBDDF4B42993CF070061C781 /* FirebaseFirestore in Frameworks */,
 				EBDDF4B62993CF070061C781 /* FirebaseFirestoreSwift in Frameworks */,
@@ -172,6 +176,8 @@
 				EBDDF4B52993CF070061C781 /* FirebaseFirestoreSwift */,
 				EB62AB162993DDFC00D5EA38 /* FacebookCore */,
 				EB62AB182993DDFC00D5EA38 /* FacebookLogin */,
+				EB8E5AA9299603240086F270 /* KakaoSDKAuth */,
+				EB8E5AAB299603240086F270 /* KakaoSDKUser */,
 			);
 			productName = PersonalScheduler;
 			productReference = 63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */;
@@ -204,6 +210,7 @@
 			packageReferences = (
 				EBDDF4AE2993CF070061C781 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EB62AB152993DDFB00D5EA38 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				EB8E5AA8299603240086F270 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = 63AAAAFF2967EA2600775EC3 /* Products */;
 			projectDirPath = "";
@@ -470,6 +477,14 @@
 				kind = branch;
 			};
 		};
+		EB8E5AA8299603240086F270 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		EBDDF4AE2993CF070061C781 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -490,6 +505,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EB62AB152993DDFB00D5EA38 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookLogin;
+		};
+		EB8E5AA9299603240086F270 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB8E5AA8299603240086F270 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		EB8E5AAB299603240086F270 /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB8E5AA8299603240086F270 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
 		};
 		EBDDF4AF2993CF070061C781 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
