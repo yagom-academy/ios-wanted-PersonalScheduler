@@ -96,10 +96,9 @@ extension LoginViewController: ASAuthorizationControllerPresentationContextProvi
 // MARK: - Present Method
 private extension LoginViewController {
     func presentMainViewController() {
-        let controller = UIViewController()
+        let controller = ScheduleListViewController()
         controller.modalPresentationStyle = .fullScreen
         controller.modalTransitionStyle = .crossDissolve
-        controller.view.backgroundColor = .red
         present(controller, animated: true)
     }
     
