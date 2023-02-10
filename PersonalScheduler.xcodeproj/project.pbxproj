@@ -28,6 +28,8 @@
 		18C1EF8C2991074C00136466 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF8B2991074C00136466 /* FacebookLogin */; };
 		18C1EF8F2991097B00136466 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF8E2991097B00136466 /* AppAuth */; };
 		18C1EF912991097B00136466 /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF902991097B00136466 /* AppAuthCore */; };
+		18D55D5429962C2100FADED5 /* Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D55D5329962C2100FADED5 /* Previews.swift */; };
+		18D55D572996306E00FADED5 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D55D562996306E00FADED5 /* NavigationBarView.swift */; };
 		18F5F1842993C773005B7733 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F1832993C773005B7733 /* UIButton+Extension.swift */; };
 		18F5F18B2993CF66005B7733 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F18A2993CF66005B7733 /* LoginRepository.swift */; };
 		18F5F18E2993CFD7005B7733 /* KakaoLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F18D2993CFD7005B7733 /* KakaoLoginRepository.swift */; };
@@ -54,6 +56,8 @@
 		18B7BB2D2995E5FE007E1E74 /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
 		18B7BB2F2995E607007E1E74 /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
 		18BEAD9829929A0F00679E18 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
+		18D55D5329962C2100FADED5 /* Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previews.swift; sourceTree = "<group>"; };
+		18D55D562996306E00FADED5 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		18F5F1832993C773005B7733 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		18F5F18A2993CF66005B7733 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		18F5F18D2993CFD7005B7733 /* KakaoLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginRepository.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 			children = (
 				18FABA522992C6A800333D63 /* UIControl+Extension.swift */,
 				18F5F1832993C773005B7733 /* UIButton+Extension.swift */,
+				18D55D5329962C2100FADED5 /* Previews.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 		18B7BB2B2995E5DF007E1E74 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18D55D552996306300FADED5 /* Subviews */,
 				18B7BB2F2995E607007E1E74 /* ScheduleListViewController.swift */,
 			);
 			path = View;
@@ -234,6 +240,14 @@
 				1884793B2991448300160A1B /* Presentation */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		18D55D552996306300FADED5 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				18D55D562996306E00FADED5 /* NavigationBarView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		18F5F1892993CF49005B7733 /* Repositories */ = {
@@ -393,9 +407,11 @@
 				18F5F18B2993CF66005B7733 /* LoginRepository.swift in Sources */,
 				1878BE7529952BF2009C0DF8 /* LoginView.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				18D55D572996306E00FADED5 /* NavigationBarView.swift in Sources */,
 				18F5F19D2993FEDA005B7733 /* FacebookLoginRepository.swift in Sources */,
 				18F5F18E2993CFD7005B7733 /* KakaoLoginRepository.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				18D55D5429962C2100FADED5 /* Previews.swift in Sources */,
 				18F5F19A2993F78A005B7733 /* FirebaseAuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

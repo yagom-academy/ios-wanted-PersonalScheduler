@@ -8,13 +8,7 @@ import UIKit
 import Combine
 
 final class ScheduleListViewController: UIViewController {
-    private let logoutButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("로그 아웃", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private let navigationBarView = NavigationBar(title: "스케쥴")
     
     private let viewModel = ScheduleListViewModel(isLogged: true)
     private var cancellable = Set<AnyCancellable>()
@@ -39,11 +33,11 @@ private extension ScheduleListViewController {
     }
     
     func bindAction() {
-        logoutButton.tapPublisher
-            .sink { [weak self] _ in
-                self?.viewModel.logout()
-            }
-            .store(in: &cancellable)
+//        logoutButton.tapPublisher
+//            .sink { [weak self] _ in
+//                self?.viewModel.logout()
+//            }
+//            .store(in: &cancellable)
     }
 }
 
@@ -56,13 +50,32 @@ private extension ScheduleListViewController {
     }
     
     func addChildComponents() {
-        [logoutButton].forEach(view.addSubview)
+        [navigationBarView].forEach(view.addSubview)
     }
     
     func setUpLayout() {
+        let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            
+            navigationBarView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            navigationBarView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            navigationBarView.topAnchor.constraint(equalTo: view.topAnchor),
+            navigationBarView.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.25)
+            
+//            logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 }
+
+#if DEBUG
+import SwiftUI
+
+struct ServiceUnavailableViewPreview: PreviewProvider {
+    static var previews: some View {
+        ScheduleListViewController().showPreview()
+            .edgesIgnoringSafeArea(.all)
+    }
+}
+#endif
+
