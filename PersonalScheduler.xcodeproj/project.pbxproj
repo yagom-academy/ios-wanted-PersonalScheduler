@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		099BA71F29963E2E00F26C15 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 099BA71E29963E2E00F26C15 /* GoogleService-Info.plist */; };
+		099BA7212996632900F26C15 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099BA7202996632900F26C15 /* FirebaseManager.swift */; };
 		09AB6451299384D900036E75 /* ScheduleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB6450299384D900036E75 /* ScheduleListCell.swift */; };
 		09AB64532993E9C500036E75 /* DetailScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB64522993E9C500036E75 /* DetailScheduleViewController.swift */; };
 		09AB64552994014A00036E75 /* DetailScheduleMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB64542994014A00036E75 /* DetailScheduleMode.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		099BA71E29963E2E00F26C15 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		099BA7202996632900F26C15 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		09AB6450299384D900036E75 /* ScheduleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListCell.swift; sourceTree = "<group>"; };
 		09AB64522993E9C500036E75 /* DetailScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScheduleViewController.swift; sourceTree = "<group>"; };
 		09AB64542994014A00036E75 /* DetailScheduleMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScheduleMode.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				09AB64562994034500036E75 /* ScheduleModel.swift */,
 				09AB64582994091600036E75 /* DetailScheduleDelegate.swift */,
 				09AB645A29940F2000036E75 /* DateformatterManager.swift */,
+				099BA7202996632900F26C15 /* FirebaseManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				099BA7212996632900F26C15 /* FirebaseManager.swift in Sources */,
 				09AB64592994091600036E75 /* DetailScheduleDelegate.swift in Sources */,
 				09AB64552994014A00036E75 /* DetailScheduleMode.swift in Sources */,
 				09AB6451299384D900036E75 /* ScheduleListCell.swift in Sources */,

@@ -17,6 +17,15 @@ struct ScheduleModel: Identifiable {
         self.body = body
         self.date = date
     }
+
+    var dictionary: [String: Any] {
+        return [
+            "id": id,
+            "title": title,
+            "body": body,
+            "date": date
+        ]
+    }
 }
 
 extension ScheduleModel {
