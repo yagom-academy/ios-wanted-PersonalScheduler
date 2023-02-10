@@ -21,7 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
+        let controller = rootViewControllerWithAuthState()
+        window?.rootViewController = UINavigationController(rootViewController: controller)
         window?.backgroundColor = .systemBackground
         window?.makeKeyAndVisible()
     }
@@ -42,8 +43,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             sourceApplication: nil,
             annotation: [UIApplication.OpenURLOptionsKey.annotation]
         )
-        
-        
     }
 }
 
+private extension SceneDelegate {
+    func rootViewControllerWithAuthState() -> UIViewController {
+        let auth = FirebaseAuth.Auth.auth()
+        
+        guard let _ = auth.currentUser else {
+            return LoginViewController()
+        }
+        
+        return ScheduleListViewController()
+    }
+}
