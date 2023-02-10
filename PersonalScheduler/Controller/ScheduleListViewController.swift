@@ -23,6 +23,11 @@ final class ScheduleListViewController: UIViewController {
 
         view.backgroundColor = .systemBackground
         configureUI()
+
+        FirebaseManager.shared.fetchAllData { [weak self] data in
+            ScheduleModel.scheduleList = data
+            self?.sortScheduleList()
+        }
     }
 }
 

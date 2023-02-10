@@ -20,7 +20,7 @@ struct ScheduleModel: Identifiable {
 
     var dictionary: [String: Any] {
         return [
-            "id": id,
+            "id": id.uuidString,
             "title": title,
             "body": body,
             "date": date
@@ -30,10 +30,10 @@ struct ScheduleModel: Identifiable {
 
 extension ScheduleModel {
     static var scheduleList: [ScheduleModel] = [
-        ScheduleModel(title: "헬스장 가기1", body: "유산소30분 근력30분", date: "2023.02.20"),
-        ScheduleModel(title: "헬스장 가기2", body: "유산소30분 근력30분", date: "2023.02.23"),
-        ScheduleModel(title: "헬스장 가기3", body: "유산소30분 근력30분", date: "2023.02.22"),
-        ScheduleModel(title: "헬스장 가기4", body: "유산소30분 근력30분", date: "2023.02.22"),
-        ScheduleModel(title: "헬스장 가기5", body: "유산소30분 근력30분", date: "2023.02.05")
+//        ScheduleModel(title: "헬스장 가기1", body: "유산소30분 근력30분", date: "2023.02.20"),
+//        ScheduleModel(title: "헬스장 가기2", body: "유산소30분 근력30분", date: "2023.02.23"),
+//        ScheduleModel(title: "헬스장 가기3", body: "유산소30분 근력30분", date: "2023.02.22"),
+//        ScheduleModel(title: "헬스장 가기4", body: "유산소30분 근력30분", date: "2023.02.22"),
+//        ScheduleModel(title: "헬스장 가기5", body: "유산소30분 근력30분", date: "2023.02.05")
     ]
 }
