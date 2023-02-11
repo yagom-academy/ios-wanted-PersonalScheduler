@@ -3,7 +3,7 @@
 
 import UIKit
 
-final class LoginViewController: UIViewController {
+final class LoginViewController: BaseViewController {
     
     // MARK: - Properties
     
@@ -14,6 +14,7 @@ final class LoginViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Zhilly's Scheduler!"
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 28, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -21,7 +22,7 @@ final class LoginViewController: UIViewController {
     
     private let userInfoLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -57,19 +58,18 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
         setupAction()
-        bind()
     }
     
     // MARK: - Methods
     
-    private func setupViews() {
-        view.backgroundColor = .white
-        
-        let safeArea = view.safeAreaLayoutGuide
-        
+    override func setupView() {
+        super.setupView()
         [titleLabel, userInfoLabel, kakaoLoginButton, kakaoLogoutButton].forEach(view.addSubview(_:))
+    }
+    
+    override func setupLayout() {
+        let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -88,6 +88,18 @@ final class LoginViewController: UIViewController {
         ])
     }
     
+    override func bindViewModel() {
+        viewModel.userInfo.bind { [weak self] userInfo in
+            self?.userInfoLabel.text = userInfo
+        }
+        
+        viewModel.isLoginSuccess.bind { [weak self] isLoginSuccess in
+            if isLoginSuccess {
+                self?.presentScheduler()
+            }
+        }
+    }
+    
     private func setupAction() {
         let kakaoLoginAction = UIAction { [weak self] _ in
             self?.viewModel.tappedKakaoLoginButton()
@@ -100,9 +112,11 @@ final class LoginViewController: UIViewController {
         kakaoLogoutButton.addAction(kakaoLogoutAction, for: .touchUpInside)
     }
     
-    private func bind() {
-        viewModel.userInfo.bind { [weak self] userInfo in
-            self?.userInfoLabel.text = userInfo
-        }
+    private func presentScheduler() {
+        let viewModel = SchedulerViewModel()
+        let schedulerViewController = SchedulerViewController(viewModel: viewModel,
+                                                              userName: self.viewModel.userInfo.value ?? "")
+        schedulerViewController.modalPresentationStyle = .fullScreen
+        present(schedulerViewController, animated: true)
     }
 }
