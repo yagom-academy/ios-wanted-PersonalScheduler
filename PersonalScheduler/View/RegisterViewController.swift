@@ -48,7 +48,6 @@ final class RegisterViewController: UIViewController {
     private let endLabel = UILabel(text: "End", font: .title3, textColor: .black, textAlignment: .right)
     private let startTimePicker = UIDatePicker(mode: .time, style: .compact)
     private let endTimePicker = UIDatePicker(mode: .time, style: .compact)
-    private let datePicker = UIDatePicker(mode: .date, style: .wheels)
     private let startTimeStackView = UIStackView(spacing: 10, margin: 10)
     private let endTimeStackView = UIStackView(spacing: 10, margin: 10)
     private let totalStackView = UIStackView(axis: .vertical, distribution: .fill, spacing: 10, margin: 10)
@@ -63,10 +62,12 @@ final class RegisterViewController: UIViewController {
         [startLabel, startTimePicker].forEach { view in
             startTimeStackView.addArrangedSubview(view)
         }
+
         [endLabel, endTimePicker].forEach { view in
             endTimeStackView.addArrangedSubview(view)
         }
-        [viewLabel, titleField, startTimeStackView, endTimeStackView, datePicker, descriptionTextView].forEach { view in
+
+        [viewLabel, titleField, datePicker, startTimeStackView, endTimeStackView, descriptionTextView].forEach { view in
             totalStackView.addArrangedSubview(view)
         }
 
@@ -85,8 +86,11 @@ final class RegisterViewController: UIViewController {
             registerButton.widthAnchor.constraint(equalTo: registerButton.heightAnchor),
 
             viewLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+
             titleField.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+
             endLabel.widthAnchor.constraint(equalTo: startLabel.widthAnchor),
+
             totalStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             totalStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             totalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),

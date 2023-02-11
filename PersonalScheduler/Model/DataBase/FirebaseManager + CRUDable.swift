@@ -59,22 +59,27 @@ struct FirebaseManager: CRUDable {
     }
 
     private func changeToFields(from event: Event) -> [String: Any] {
-        return ["title": event.title,
+        return ["title": event.title ?? "",
                 "date": Timestamp(date: event.date),
-                "startHour": event.startHour,
-                "endHour": event.endHour,
-                "detail": event.detail]
+                "startTime": Timestamp(date: event.startTime),
+                "endTime": Timestamp(date: event.endTime),
+                "description": event.description ?? ""]
     }
 
     private func changeToEvent(_ document: QueryDocumentSnapshot) -> Event {
         let fields = document.data()
         let title = fields["title"] as? String ?? ""
         let date = (fields["date"] as? Timestamp)?.dateValue() ?? Date()
-        let startHour = fields["startHour"] as? Int ?? 0
-        let endHour = fields["endHour"] as? Int ?? 0
-        let detail = fields["detail"] as? String ?? ""
+        let startTime = (fields["startTime"] as? Timestamp)?.dateValue() ?? Date()
+        let endTime = (fields["endTime"] as? Timestamp)?.dateValue() ?? Date()
+        let description = fields["description"] as? String ?? ""
         let uuid = UUID(uuidString: document.documentID) ?? UUID()
 
-        return Event(title: title, date: date, startHour: startHour, endHour: endHour, detail: detail, uuid: uuid)
+        return Event(title: title,
+                     date: date,
+                     startTime: startTime,
+                     endTime: endTime,
+                     description: description,
+                     uuid: uuid)
     }
 }

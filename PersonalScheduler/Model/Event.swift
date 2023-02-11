@@ -9,10 +9,10 @@ import Foundation
 
 struct Event: Hashable {
 
-    let title: String
+    let title: String?
     let date: Date
-    let startHour: Int
-    let endHour: Int
-    let detail: String
+    let startTime: Date
+    let endTime: Date
+    let description: String?
     let uuid: UUID
 }

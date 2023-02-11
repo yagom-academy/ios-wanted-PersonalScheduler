@@ -21,7 +21,7 @@ final class ScheduleCell: UITableViewCell {
     private let dateLabel = UILabel(font: .body, textColor: .navy, textAlignment: .natural)
     private let timeLabel = UILabel(font: .body, textColor: .systemGray, textAlignment: .natural)
     private let titleLabel = UILabel(font: .title2, fontBold: true, textColor: .navy, textAlignment: .natural)
-    private let detailLabel = UILabel(font: .body, textColor: .secondary, numberOfLines: 3, textAlignment: .natural)
+    private let descriptionLabel = UILabel(font: .body, textColor: .secondary, numberOfLines: 3, textAlignment: .natural)
     private let dateStackView = UIStackView(alignment: .leading, spacing: 10, margin: 10)
     private let descriptionStackView = UIStackView(axis: .vertical, spacing: 5, backgroundColor: .primary)
     private let totalStackView = UIStackView(alignment: .center,
@@ -62,7 +62,7 @@ final class ScheduleCell: UITableViewCell {
         dateLabel.text =  viewModel.date
         timeLabel.text = viewModel.plannedTime
         titleLabel.text = viewModel.title
-        detailLabel.text = viewModel.detail
+        descriptionLabel.text = viewModel.description
     }
 
     func addActionToCheckButton(of viewModel: ScheduleCellViewModel) {
@@ -78,7 +78,7 @@ final class ScheduleCell: UITableViewCell {
             dateStackView.addArrangedSubview(view)
         }
 
-        [titleLabel, detailLabel].forEach { label in
+        [titleLabel, descriptionLabel].forEach { label in
             descriptionStackView.addArrangedSubview(label)
         }
 

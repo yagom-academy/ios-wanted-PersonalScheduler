@@ -29,6 +29,7 @@
 		41C3CC7C2992A97F00F269CE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C3CC7B2992A97F00F269CE /* Event.swift */; };
 		41D9787F2996300900D72E14 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9787E2996300900D72E14 /* RegisterViewController.swift */; };
 		41D978812996302500D72E14 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D978802996302500D72E14 /* UITextField+.swift */; };
+		41E78332299782B400CAFF56 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E78331299782B400CAFF56 /* RegisterViewModel.swift */; };
 		41FB21A42993E575009044E6 /* UIStackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB21A32993E575009044E6 /* UIStackView +.swift */; };
 		41FB21A62994FC04009044E6 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB21A52994FC04009044E6 /* Date+.swift */; };
 		41FB21A829950320009044E6 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB21A729950320009044E6 /* ScheduleViewModel.swift */; };
@@ -58,6 +59,7 @@
 		41C3CC7B2992A97F00F269CE /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		41D9787E2996300900D72E14 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		41D978802996302500D72E14 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		41E78331299782B400CAFF56 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		41FB21A32993E575009044E6 /* UIStackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView +.swift"; sourceTree = "<group>"; };
 		41FB21A52994FC04009044E6 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		41FB21A729950320009044E6 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				415BA180299386DE00EE88B6 /* LoginButtonViewModel.swift */,
 				41FB21A729950320009044E6 /* ScheduleViewModel.swift */,
 				415BA1932993DBB800EE88B6 /* ScheduleCellViewModel.swift */,
+				41E78331299782B400CAFF56 /* RegisterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				41B187EE29934DA700DF0CB4 /* LoginButton.swift in Sources */,
 				41FB21AC29950633009044E6 /* CRUDable_Protocol.swift in Sources */,
+				41E78332299782B400CAFF56 /* RegisterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
