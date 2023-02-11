@@ -85,7 +85,7 @@ final class RegisterViewController: UIViewController {
     }
 
     private func bindViewModel() {
-        viewLabel.text =  viewModel.viewTitle
+        viewLabel.text =  viewModel.state == .new ? viewModel.newStateTitle : viewModel.modificationStateTitle
         startLabel.text = viewModel.startLabelText
         endLabel.text = viewModel.endLabelText
         titleField.placeholder = viewModel.titleFieldPlaceHolder

@@ -17,7 +17,8 @@ final class RegisterViewModel {
     private(set) var state: State
     private let event: Event
 
-    var viewTitle: String { return "Add new event" }
+    var newStateTitle: String { return "Add new event" }
+    var modificationStateTitle: String { return "Modify event" }
     var startLabelText: String { return  "Start" }
     var endLabelText: String { return "End" }
     var titleFieldPlaceHolder: String { return  "Title" }
