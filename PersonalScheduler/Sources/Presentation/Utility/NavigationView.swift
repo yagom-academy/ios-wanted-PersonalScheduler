@@ -33,7 +33,8 @@ class NavigationBar: UIView {
             navigationTitleLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             navigationTitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             navigationTitleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            navigationTitleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
+            navigationTitleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            navigationTitleLabel.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.2)
         ])
     }
 }

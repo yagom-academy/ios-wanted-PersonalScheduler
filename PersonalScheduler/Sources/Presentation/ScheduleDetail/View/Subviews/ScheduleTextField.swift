@@ -9,7 +9,7 @@ import UIKit
 final class ScheduleTextField: UITextField {
     private var padding: UIEdgeInsets {
         get {
-            return UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
+            return UIEdgeInsets(top: 12, left: 10, bottom: 12, right: 10)
         }
     }
     
