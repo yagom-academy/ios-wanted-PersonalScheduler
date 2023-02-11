@@ -8,6 +8,7 @@
 import UIKit
 import KakaoSDKAuth
 import KakaoSDKUser
+import FBSDKLoginKit
 
 final class LoginViewController: UIViewController {
 
@@ -27,10 +28,10 @@ final class LoginViewController: UIViewController {
         return imageView
     }()
 
-    private let facebookLoginButton: UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 12
-        button.backgroundColor = UIColor.init(hex: "#5B7CF2")
+    private let facebookLoginButton: FBLoginButton = {
+        let button = FBLoginButton()
+//        button.layer.cornerRadius = 12
+//        button.backgroundColor = UIColor.init(hex: "#5B7CF2")
         return button
     }()
 
@@ -46,6 +47,26 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         configureUI()
+        autoFacebookLogin()
+    }
+}
+
+// MARK: - Method
+private extension LoginViewController {
+    func autoFacebookLogin() {
+        if let token = AccessToken.current,
+           !token.isExpired {
+            DispatchQueue.main.async { [weak self] in
+                self?.moveScheduleListViewController()
+            }
+        }
+    }
+
+    func moveScheduleListViewController() {
+        let scheduleListViewController = ScheduleListViewController()
+        let navigationController = UINavigationController(rootViewController: scheduleListViewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        self.present(navigationController, animated: true)
     }
 }
 
@@ -63,17 +84,13 @@ private extension LoginViewController {
                 let accessToken = oauthToken?.accessToken
             }
         } else {
-            UserApi.shared.loginWithKakaoAccount { oauthToken, error in
+            UserApi.shared.loginWithKakaoAccount { [weak self] oauthToken, error in
                 if let error = error {
                     // 에러처리하기
                     print(error)
                     return
                 }
-                let accessToken = oauthToken?.accessToken
-                let scheduleListViewController = ScheduleListViewController()
-                let navigationController = UINavigationController(rootViewController: scheduleListViewController)
-                navigationController.modalPresentationStyle = .fullScreen
-                self.present(navigationController, animated: true)
+                self?.moveScheduleListViewController()
             }
         }
     }
