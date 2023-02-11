@@ -17,6 +17,8 @@ final class ScheduleListViewController: UIViewController {
         return tableView
     }()
 
+    var kindOfLogin: KindOfLogin = .kakao
+
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,6 +176,7 @@ private extension ScheduleListViewController {
     func settingNavigationBar() {
         navigationItem.title = "스케쥴케어"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(touchUpCreateButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: createLogoutButton(kindOfLogin))
     }
 
     func settingTableView() {
@@ -200,5 +203,32 @@ private extension ScheduleListViewController {
         }
         label.text = text
         return label
+    }
+
+    func createLogoutButton(_ kindOfLogin: KindOfLogin) -> UIButton {
+        switch kindOfLogin {
+        case .kakao:
+            let button = UIButton(type: .system)
+            button.setImage(UIImage(named: "kakao"), for: .normal)
+            button.setTitle("로그아웃", for: .normal)
+            button.imageView?.contentMode = .scaleAspectFit
+            button.tintColor = UIColor(hex: "#191600")
+            button.titleLabel?.tintColor = UIColor.systemBlue
+            button.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 530)
+            button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 470)
+            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -500)
+            return button
+        case .facebook:
+            let button = UIButton(type: .system)
+            button.setImage(UIImage(named: "f_logo_RGB-White_58"), for: .normal)
+            button.setTitle("로그아웃", for: .normal)
+            button.imageView?.contentMode = .scaleAspectFit
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 150)
+            button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 90)
+            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -80)
+            return button
+        case .apple:
+            return UIButton()
+        }
     }
 }

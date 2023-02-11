@@ -8,6 +8,7 @@
 import UIKit
 import KakaoSDKAuth
 import KakaoSDKUser
+import KakaoSDKCommon
 import FBSDKLoginKit
 
 final class LoginViewController: UIViewController {
@@ -58,12 +59,24 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         configureUI()
-//        autoFacebookLogin()
+
+
+        // 주석풀기
+//        autoKakaoLogin()
+        autoFacebookLogin()
     }
 }
 
 // MARK: - Method
 private extension LoginViewController {
+    func autoKakaoLogin() {
+        if AuthApi.hasToken() {
+            DispatchQueue.main.async { [weak self] in
+                self?.moveScheduleListViewController()
+            }
+        }
+    }
+
     func autoFacebookLogin() {
         if let token = AccessToken.current,
            !token.isExpired {
@@ -85,7 +98,7 @@ private extension LoginViewController {
 private extension LoginViewController {
     @objc func touchUpKakaoLogin() {
         if UserApi.isKakaoTalkLoginAvailable() {
-            UserApi.shared.loginWithKakaoTalk { oauthToken, error in
+            UserApi.shared.loginWithKakaoTalk { [weak self] oauthToken, error in
                 if let error = error {
                     // 에러처리하기
                     print(error)
@@ -94,6 +107,7 @@ private extension LoginViewController {
 
                 _ = oauthToken
                 let accessToken = oauthToken?.accessToken
+                self?.moveScheduleListViewController()
             }
         } else {
             UserApi.shared.loginWithKakaoAccount { [weak self] oauthToken, error in

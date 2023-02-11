@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09197A5829979DA0005497C5 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09197A5729979DA0005497C5 /* UIFont+Extension.swift */; };
+		09197A5A2997D0CD005497C5 /* KindOfLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09197A592997D0CD005497C5 /* KindOfLogin.swift */; };
 		099BA71F29963E2E00F26C15 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 099BA71E29963E2E00F26C15 /* GoogleService-Info.plist */; };
 		099BA7212996632900F26C15 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099BA7202996632900F26C15 /* FirebaseManager.swift */; };
 		09AB6451299384D900036E75 /* ScheduleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB6450299384D900036E75 /* ScheduleListCell.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		09197A5729979DA0005497C5 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		09197A592997D0CD005497C5 /* KindOfLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KindOfLogin.swift; sourceTree = "<group>"; };
 		099BA71E29963E2E00F26C15 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		099BA7202996632900F26C15 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		09AB6450299384D900036E75 /* ScheduleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListCell.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				09AB64582994091600036E75 /* DetailScheduleDelegate.swift */,
 				09AB645A29940F2000036E75 /* DateformatterManager.swift */,
 				099BA7202996632900F26C15 /* FirebaseManager.swift */,
+				09197A592997D0CD005497C5 /* KindOfLogin.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				09AB645B29940F2000036E75 /* DateformatterManager.swift in Sources */,
 				09197A5829979DA0005497C5 /* UIFont+Extension.swift in Sources */,
 				09E95B5D2992A09D004E120A /* UIColor+Extension.swift in Sources */,
+				09197A5A2997D0CD005497C5 /* KindOfLogin.swift in Sources */,
 				09AB64532993E9C500036E75 /* DetailScheduleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
