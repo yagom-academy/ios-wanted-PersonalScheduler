@@ -8,7 +8,7 @@ import UIKit
 import Combine
 
 final class ScheduleListViewController: UIViewController {
-    private let navigationBarView = NavigationBar(title: "스케쥴")
+    private let navigationBarView = ScheduleListTitleView(title: "스케쥴")
     
     private let addButton: UIButton = {
         let button = UIButton()

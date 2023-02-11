@@ -18,6 +18,9 @@
 		188479422991453B00160A1B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188479412991453B00160A1B /* LoginViewModel.swift */; };
 		189FF56D2997A874006D4490 /* ScheduleSegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FF56C2997A874006D4490 /* ScheduleSegmentControlView.swift */; };
 		189FF56F2997D5E8006D4490 /* SegmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FF56E2997D5E8006D4490 /* SegmentButton.swift */; };
+		189FF5742997E834006D4490 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FF5732997E834006D4490 /* ScheduleDetailViewController.swift */; };
+		189FF5772997E9F8006D4490 /* ScheduleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FF5762997E9F8006D4490 /* ScheduleTextField.swift */; };
+		189FF57A2997F094006D4490 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FF5792997F094006D4490 /* NavigationView.swift */; };
 		18B7BB2E2995E5FE007E1E74 /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B7BB2D2995E5FE007E1E74 /* ScheduleListViewModel.swift */; };
 		18B7BB302995E607007E1E74 /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B7BB2F2995E607007E1E74 /* ScheduleListViewController.swift */; };
 		18C1EF7C2991038900136466 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF7B2991038900136466 /* FirebaseAuth */; };
@@ -57,6 +60,9 @@
 		188479412991453B00160A1B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		189FF56C2997A874006D4490 /* ScheduleSegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSegmentControlView.swift; sourceTree = "<group>"; };
 		189FF56E2997D5E8006D4490 /* SegmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentButton.swift; sourceTree = "<group>"; };
+		189FF5732997E834006D4490 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
+		189FF5762997E9F8006D4490 /* ScheduleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTextField.swift; sourceTree = "<group>"; };
+		189FF5792997F094006D4490 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		18B7BB2D2995E5FE007E1E74 /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
 		18B7BB2F2995E607007E1E74 /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
 		18BEAD9829929A0F00679E18 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
@@ -143,6 +149,8 @@
 		1884793B2991448300160A1B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				189FF5782997F083006D4490 /* Utility */,
+				189FF5702997E81A006D4490 /* ScheduleDetail */,
 				18B7BB2A2995E5D2007E1E74 /* ScheduleList */,
 				1884793E2991449F00160A1B /* Login */,
 			);
@@ -190,6 +198,47 @@
 				188479412991453B00160A1B /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		189FF5702997E81A006D4490 /* ScheduleDetail */ = {
+			isa = PBXGroup;
+			children = (
+				189FF5722997E824006D4490 /* View */,
+				189FF5712997E821006D4490 /* ViewModel */,
+			);
+			path = ScheduleDetail;
+			sourceTree = "<group>";
+		};
+		189FF5712997E821006D4490 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		189FF5722997E824006D4490 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				189FF5752997E9E4006D4490 /* Subviews */,
+				189FF5732997E834006D4490 /* ScheduleDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		189FF5752997E9E4006D4490 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				189FF5762997E9F8006D4490 /* ScheduleTextField.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		189FF5782997F083006D4490 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				189FF5792997F094006D4490 /* NavigationView.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		18B7BB2A2995E5D2007E1E74 /* ScheduleList */ = {
@@ -404,14 +453,17 @@
 			files = (
 				18B7BB302995E607007E1E74 /* ScheduleListViewController.swift in Sources */,
 				1878BE732994EC69009C0DF8 /* AppleLoginRepository.swift in Sources */,
+				189FF57A2997F094006D4490 /* NavigationView.swift in Sources */,
 				188479422991453B00160A1B /* LoginViewModel.swift in Sources */,
 				18FABA532992C6A800333D63 /* UIControl+Extension.swift in Sources */,
+				189FF5742997E834006D4490 /* ScheduleDetailViewController.swift in Sources */,
 				18B7BB2E2995E5FE007E1E74 /* ScheduleListViewModel.swift in Sources */,
 				18F5F1842993C773005B7733 /* UIButton+Extension.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
 				1878BE792995313E009C0DF8 /* SocialLoginButton.swift in Sources */,
 				189FF56F2997D5E8006D4490 /* SegmentButton.swift in Sources */,
 				18F5F18B2993CF66005B7733 /* LoginRepository.swift in Sources */,
+				189FF5772997E9F8006D4490 /* ScheduleTextField.swift in Sources */,
 				1878BE7529952BF2009C0DF8 /* LoginView.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				18D55D572996306E00FADED5 /* NavigationBarView.swift in Sources */,
