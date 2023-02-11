@@ -30,7 +30,19 @@ final class LoginViewController: UIViewController {
     private let facebookLoginButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 6
-        button.backgroundColor = UIColor.init(hex: "#5B7CF2")
+        button.setImage(UIImage(named: "f_logo_RGB-White_58"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageEdgeInsets = UIEdgeInsets(top: 12, left: -35, bottom: 12, right: 0)
+        button.setTitle("페이스북으로 로그인", for: .normal)
+        button.titleLabel?.font = .preferredFont(forTextStyle: .title3)
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.preferredFont(forTextStyle: .title3).bold(),
+            .foregroundColor: UIColor.white
+        ]
+        let attributedString = NSAttributedString(string: "페이스북으로 로그인", attributes: attributes)
+        button.setAttributedTitle(attributedString, for: .normal)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -95, bottom: 0, right: 0)
+        button.backgroundColor = UIColor.init(hex: "#1877F2")
         return button
     }()
 
@@ -162,7 +174,6 @@ private extension LoginViewController {
             appleLoginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
             appleLoginButton.heightAnchor.constraint(equalToConstant: buttonHeight),
             appleLoginButton.topAnchor.constraint(equalTo: facebookLoginButton.bottomAnchor, constant: smallSpacing)
-
         ])
     }
 }
