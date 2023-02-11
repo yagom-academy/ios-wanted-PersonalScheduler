@@ -1,12 +1,12 @@
 //
-//  NavigationBarView.swift
+//  ScheduleListTitleView.swift
 //  PersonalScheduler
 //
 //  Copyright (c) 2023 Minii All rights reserved.
 
 import UIKit
 
-final class NavigationBar: UIView {
+final class ScheduleListTitleView: NavigationBar {
     private let navigationTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "titleAccentColor")
@@ -22,9 +22,8 @@ final class NavigationBar: UIView {
     }()
     
     init(title: String) {
-        super.init(frame: .zero)
+        super.init()
         navigationTitleLabel.text = title
-        backgroundColor = UIColor(named: "skyBlue")
         translatesAutoresizingMaskIntoConstraints = false
         segmentController.delegate = self
         configureUI()
