@@ -22,22 +22,21 @@ final class LoginViewController: UIViewController {
 
     private let kakaoLoginImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 12
         imageView.image = UIImage(named: "kakao_login_medium_narrow")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
-    private let facebookLoginButton: FBLoginButton = {
-        let button = FBLoginButton()
-//        button.layer.cornerRadius = 12
-//        button.backgroundColor = UIColor.init(hex: "#5B7CF2")
+    private let facebookLoginButton: UIButton = {
+        let button = UIButton()
+        button.layer.cornerRadius = 6
+        button.backgroundColor = UIColor.init(hex: "#5B7CF2")
         return button
     }()
 
     private let appleLoginButton: UIButton = {
         let button = UIButton()
-        button.layer.cornerRadius = 12
+        button.layer.cornerRadius = 6
         button.backgroundColor = UIColor.init(hex: "#000000")
         return button
     }()
@@ -47,7 +46,7 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         configureUI()
-        autoFacebookLogin()
+//        autoFacebookLogin()
     }
 }
 
@@ -80,6 +79,7 @@ private extension LoginViewController {
                     print(error)
                     return
                 }
+
                 _ = oauthToken
                 let accessToken = oauthToken?.accessToken
             }
@@ -90,8 +90,34 @@ private extension LoginViewController {
                     print(error)
                     return
                 }
+
+                let accessToken = oauthToken?.accessToken
                 self?.moveScheduleListViewController()
             }
+        }
+    }
+
+    @objc func touchUpFacebookLoginButton() {
+        let manager = LoginManager()
+        manager.logIn(permissions: [], from: self) { [weak self] loginManagerLoginResult, error in
+            if let error = error {
+                // 에러처리하기
+                print("Process error: \(error)")
+                return
+            }
+
+            guard let result = loginManagerLoginResult else {
+                print("No Result")
+                return
+            }
+
+            if result.isCancelled {
+                print("Login Cancelled")
+                return
+            }
+
+            let accessToken = result.token
+            self?.moveScheduleListViewController()
         }
     }
 }
@@ -108,9 +134,11 @@ private extension LoginViewController {
         }
         settingLayouts()
 
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpKakaoLogin))
-        kakaoLoginImageView.addGestureRecognizer(tapGesture)
+        let kakaoLoginImagetapGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpKakaoLogin))
+        kakaoLoginImageView.addGestureRecognizer(kakaoLoginImagetapGesture)
         kakaoLoginImageView.isUserInteractionEnabled = true
+
+        facebookLoginButton.addTarget(self, action: #selector(touchUpFacebookLoginButton), for: .touchUpInside)
     }
 
     func settingLayouts() {
