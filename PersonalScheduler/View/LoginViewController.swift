@@ -11,7 +11,7 @@ final class LoginViewController: UIViewController {
 
     private let viewModel: LoginViewModel = LoginViewModel()
     
-    private lazy var loginLabel = UILabel(text: viewModel.title, font: .largeTitle, fontBold: true, textColor: .navy)
+    private lazy var loginLabel = UILabel(font: .largeTitle, fontBold: true, textColor: .navy, numberOfLines: 2)
     private lazy var introduceLabel = UILabel(text: viewModel.introduce, textColor: .secondary)
 
     private let calendarImageView: UIImageView = {
@@ -53,6 +53,8 @@ final class LoginViewController: UIViewController {
     }
 
     private func bindViewModel() {
+        loginLabel.text = viewModel.title
+
         viewModel.userId.bind { id in
             guard let id = id else { return }
             let scheduleViewController = ScheduleViewController(scheduleViewModel: ScheduleViewModel(userId: id))
@@ -96,7 +98,7 @@ extension LoginViewController {
         NSLayoutConstraint.activate([
             calendarImageView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             calendarImageView.centerYAnchor.constraint(equalTo: safeArea.topAnchor,
-                                                       constant: safeArea.layoutFrame.height/3),
+                                                       constant: safeArea.layoutFrame.height/4),
             calendarImageView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3),
 
             loginStackView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
