@@ -16,6 +16,11 @@ final class NavigationBar: UIView {
         return label
     }()
     
+    private let segmentController: ScheduleSegmentControlView = {
+        let segmentControl = ScheduleSegmentControlView(frame: .zero, titles:  ["할일", "진행중", "완료"])
+        return segmentControl
+    }()
+    
     init(title: String) {
         super.init(frame: .zero)
         navigationTitleLabel.text = title
@@ -31,12 +36,18 @@ final class NavigationBar: UIView {
     
     func configureUI() {
         addSubview(navigationTitleLabel)
+        addSubview(segmentController)
         
         NSLayoutConstraint.activate([
             navigationTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             navigationTitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             navigationTitleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            navigationTitleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+            navigationTitleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            
+            segmentController.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            segmentController.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            segmentController.topAnchor.constraint(equalTo: navigationTitleLabel.bottomAnchor, constant: 25),
+            segmentController.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40)
         ])
     }
 }
