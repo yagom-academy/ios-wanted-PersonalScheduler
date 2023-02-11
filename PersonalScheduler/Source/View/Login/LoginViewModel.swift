@@ -11,6 +11,7 @@ final class LoginViewModel {
     // MARK: - Properties
     
     var userInfo: Observable<String?> = Observable(.init())
+    var isLoginSuccess: Observable<Bool> = Observable(false)
     
     // MARK: - Methods
     
@@ -79,16 +80,25 @@ final class LoginViewModel {
         }
     }
     
-    func firebaseLogin(userEmail: String, userID: String) {
+    private func firebaseLogin(userEmail: String, userID: String) {
         Auth.auth().createUser(withEmail: userEmail, password: userID) { result, error in
             if let error = error {
                 print("DEBUG: 파이어베이스 사용자 생성 실패 \(error.localizedDescription)")
-                Auth.auth().signIn(withEmail: userEmail, password: userID)
-                //self.didSendEventClosure?(.close)
+                self.firebaseSignIn(userEmail: userEmail, userID: userID)
             } else {
                 print("DEBUG: 파이어베이스 사용자 생성")
-                //self.didSendEventClosure?(.showSignUp) // 회원가입 화면으로 이동
-                //self.dismiss(animated: true) // 창닫기
+                self.isLoginSuccess.value = true
+            }
+        }
+    }
+    
+    private func firebaseSignIn(userEmail: String, userID: String) {
+        Auth.auth().signIn(withEmail: userEmail, password: userID) { result, error in
+            if let error = error {
+                print("DEBUG: 파이어베이스 가입 실패 \(error.localizedDescription)")
+            } else {
+                print("DEBUG: 파이어베이스 가입 성공")
+                self.isLoginSuccess.value = true
             }
         }
     }
