@@ -7,6 +7,10 @@
 import UIKit
 import Combine
 
+protocol ScheduleSegmentControlDelegate: AnyObject {
+    func scheduleSegmentControl(with segmentControl: ScheduleSegmentControlView, changedIndex: Int)
+}
+
 final class ScheduleSegmentControlView: UIView {
     private var itemTitles: [String] = []
     
@@ -15,6 +19,7 @@ final class ScheduleSegmentControlView: UIView {
     private var selectedColor: UIColor = .white
     
     private var cancellable = Set<AnyCancellable>()
+    weak var delegate: ScheduleSegmentControlDelegate?
     
     convenience init(frame: CGRect, titles: [String]) {
         self.init(frame: frame)
@@ -89,17 +94,18 @@ final class ScheduleSegmentControlView: UIView {
     }
     
     private func bindAction() {
-        buttons.forEach { button in
-            button.tapPublisher
+        buttons.enumerated().forEach { index, item in
+            item.tapPublisher
                 .sink { [weak self] _ in
-                    self?.changeButtonsState(button)
+                    self?.changeButtonsState(item, index: index)
                 }
                 .store(in: &cancellable)
         }
     }
     
-    private func changeButtonsState(_ sender: UIButton) {
+    private func changeButtonsState(_ sender: UIButton, index: Int) {
         buttons.forEach { $0.isSelected = false }
         sender.isSelected = true
+        delegate?.scheduleSegmentControl(with: self, changedIndex: index)
     }
 }

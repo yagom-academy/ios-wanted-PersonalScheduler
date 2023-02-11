@@ -17,7 +17,7 @@ final class NavigationBar: UIView {
     }()
     
     private let segmentController: ScheduleSegmentControlView = {
-        let segmentControl = ScheduleSegmentControlView(frame: .zero, titles:  ["할일", "진행중", "완료"])
+        let segmentControl = ScheduleSegmentControlView(frame: .zero, titles:  ["전체", "진행중", "완료"])
         return segmentControl
     }()
     
@@ -26,7 +26,7 @@ final class NavigationBar: UIView {
         navigationTitleLabel.text = title
         backgroundColor = UIColor(named: "skyBlue")
         translatesAutoresizingMaskIntoConstraints = false
-        
+        segmentController.delegate = self
         configureUI()
     }
     
@@ -49,5 +49,15 @@ final class NavigationBar: UIView {
             segmentController.topAnchor.constraint(equalTo: navigationTitleLabel.bottomAnchor, constant: 25),
             segmentController.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40)
         ])
+    }
+}
+
+extension NavigationBar: ScheduleSegmentControlDelegate {
+    func scheduleSegmentControl(
+        with segmentControl: ScheduleSegmentControlView,
+        changedIndex: Int
+    ) {
+        // TODO: - 변경되는 사항 알려주는 메서드 추가하기
+        print(changedIndex)
     }
 }
