@@ -54,19 +54,19 @@ final class ScheduleDetailTitleView: NavigationBar {
         [titleTextField, startDateButton, endDateButton].forEach(addSubview)
         
         NSLayoutConstraint.activate([
-            titleTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            titleTextField.topAnchor.constraint(equalTo: super.navigationTitleLabel.bottomAnchor, constant: 24),
-            titleTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            titleTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            titleTextField.topAnchor.constraint(equalTo: super.navigationTitleLabel.bottomAnchor, constant: 18),
+            titleTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             
             startDateButton.leadingAnchor.constraint(equalTo: titleTextField.leadingAnchor),
             startDateButton.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 16),
             startDateButton.trailingAnchor.constraint(equalTo: titleTextField.centerXAnchor, constant: -8),
-            startDateButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -34),
+            startDateButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -24),
             
             endDateButton.leadingAnchor.constraint(equalTo: titleTextField.centerXAnchor, constant: 8),
             endDateButton.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 16),
             endDateButton.trailingAnchor.constraint(equalTo: titleTextField.trailingAnchor),
-            endDateButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -34)
+            endDateButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -24)
         ])
         
         titleTextField.setContentHuggingPriority(.required, for: .vertical)
@@ -103,12 +103,11 @@ private extension UIButton {
     }
     
     func setShadow() {
-        layer.cornerRadius = 8.5
         layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowRadius = 3
+        layer.shadowRadius = 1
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowOpacity = 1.0
-        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 12).cgPath
         layer.masksToBounds = false
         layer.shouldRasterize = true
     }
@@ -122,6 +121,7 @@ private extension UIButton {
     func setInitState() -> UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .white
+        layer.cornerRadius = 12
         return self
     }
 }
