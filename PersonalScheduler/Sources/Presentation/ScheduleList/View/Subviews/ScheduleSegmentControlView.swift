@@ -65,9 +65,6 @@ final class ScheduleSegmentControlView: UIView {
             buttons.append(button)
         }
         
-        let textColor = UIColor(named: "titleAccentColor")
-        
-        buttons[0].setTitleColor(textColor, for: .normal)
         buttons[0].isSelected = true
     }
     

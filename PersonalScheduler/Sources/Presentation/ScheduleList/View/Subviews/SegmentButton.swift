@@ -17,11 +17,13 @@ final class SegmentButton: UIButton {
         super.layoutSubviews()
         layer.cornerRadius = frame.height / 2
         
+        let textColor = UIColor(named: "titleAccentColor")
         setTitleColor(.white, for: .selected)
+        setTitleColor(textColor, for: .normal)
     }
     
     private func changeButtonState() {
-        UIView.animate(withDuration: 0.5, delay: 0) { [weak self] in
+        UIView.animate(withDuration: 1, delay: 0) { [weak self] in
             guard let isSelected = self?.isSelected else { return }
             
             if isSelected {
