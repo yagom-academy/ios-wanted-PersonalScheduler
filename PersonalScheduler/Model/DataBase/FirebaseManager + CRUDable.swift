@@ -19,7 +19,9 @@ struct FirebaseManager: CRUDable {
     }
 
     func read(completion: @escaping (Result<[Event], Error>) -> Void) {
-        fireStore.collection(collectionName).getDocuments { snapshot, error in
+        fireStore.collection(collectionName)
+            .order(by: "date")
+            .getDocuments { snapshot, error in
             if let error = error {
                 completion(.failure(error))
                 return
