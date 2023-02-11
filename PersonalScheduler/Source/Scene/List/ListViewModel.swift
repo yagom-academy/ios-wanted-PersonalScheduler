@@ -2,7 +2,7 @@
 //  ListViewModel.swift
 //  PersonalScheduler
 //
-//  Created by parkhyo on 2023/02/09.
+//  Created by Kyo on 2023/02/09.
 //
 
 import Foundation
