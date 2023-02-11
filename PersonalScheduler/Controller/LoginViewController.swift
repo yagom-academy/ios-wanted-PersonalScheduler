@@ -34,8 +34,6 @@ final class LoginViewController: UIViewController {
         button.setImage(UIImage(named: "f_logo_RGB-White_58"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.imageEdgeInsets = UIEdgeInsets(top: 15, left: -35, bottom: 15, right: 0)
-        button.setTitle("페이스북으로 로그인", for: .normal)
-        button.titleLabel?.font = .preferredFont(forTextStyle: .title3)
         let attributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.preferredFont(forTextStyle: .title3).bold(),
             .foregroundColor: UIColor.white
