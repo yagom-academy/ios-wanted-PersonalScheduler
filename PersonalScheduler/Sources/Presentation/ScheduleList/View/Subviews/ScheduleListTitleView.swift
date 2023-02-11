@@ -7,22 +7,13 @@
 import UIKit
 
 final class ScheduleListTitleView: NavigationBar {
-    private let navigationTitleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor(named: "titleAccentColor")
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.font = UIFont(name: "NanumGothicOTFBold", size: 18)
-        return label
-    }()
-    
     private let segmentController: ScheduleSegmentControlView = {
         let segmentControl = ScheduleSegmentControlView(frame: .zero, titles:  ["전체", "진행중", "완료"])
         return segmentControl
     }()
     
-    init(title: String) {
-        super.init()
+    override init(title: String) {
+        super.init(title: title)
         navigationTitleLabel.text = title
         translatesAutoresizingMaskIntoConstraints = false
         segmentController.delegate = self
@@ -33,19 +24,15 @@ final class ScheduleListTitleView: NavigationBar {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureUI() {
-        addSubview(navigationTitleLabel)
+    override func configureUI() {
+        super.configureUI()
+        
         addSubview(segmentController)
         
         NSLayoutConstraint.activate([
-            navigationTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            navigationTitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            navigationTitleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            navigationTitleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            
             segmentController.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             segmentController.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            segmentController.topAnchor.constraint(equalTo: navigationTitleLabel.bottomAnchor, constant: 25),
+            segmentController.topAnchor.constraint(equalTo: super.navigationTitleLabel.bottomAnchor, constant: 25),
             segmentController.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40)
         ])
     }

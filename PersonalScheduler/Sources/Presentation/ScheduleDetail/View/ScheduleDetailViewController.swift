@@ -7,6 +7,7 @@
 import UIKit
 
 final class ScheduleDetailViewController: UIViewController {
+//    private let navigationTitleView
     private let titleTextField: ScheduleTextField = {
         let textField = ScheduleTextField()
         textField.placeholder = "할일의 제목을 입력해주세요."
