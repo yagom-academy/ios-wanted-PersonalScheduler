@@ -17,6 +17,10 @@ final class ListViewController: UIViewController {
     var scheduleList: [Schedule] = []
     let listView = ListView()
     
+    // MARK: Private Properties
+    
+    private var editedListCount = 0
+    
     // MARK: Life Cycle
     
     override func viewDidLoad() {
@@ -117,6 +121,8 @@ extension ListViewController: UITableViewDelegate {
         pushViewController.dataManageMode = .read
         pushViewController.savedSchedule = scheduleList[indexPath.row]
         
+        editedListCount = indexPath.row
+        
         navigationController?.pushViewController(pushViewController, animated: true)
     }
 }
@@ -157,6 +163,10 @@ extension ListViewController: DataSendable {
             scheduleList.append(data)
             updateUserScheduleData()
         case .edit:
+            if editedListCount != 0 {
+                scheduleList[editedListCount] = data
+                updateUserScheduleData()
+            }
             break
         case .read:
             break

@@ -86,7 +86,7 @@ class ScheduleInfoViewController: UIViewController {
     @objc
     private func tapRightBarButtonEditAction() {
         if let data = scheduleInfoView.saveScheduleData() {
-            delegate?.sendData(with: data, mode: .create)
+            delegate?.sendData(with: data, mode: .edit)
             
             navigationController?.popViewController(animated: true)
         } else {
