@@ -60,6 +60,11 @@ final class LoginViewController: UIViewController {
             let scheduleViewController = ScheduleViewController(scheduleViewModel: ScheduleViewModel(userId: id))
             self.navigationController?.pushViewController(scheduleViewController, animated: true)
         }
+
+        viewModel.error.bind { error in
+            guard let error = error else { return }
+            UIAlertController.showError(message: error.localizedDescription, target: self)
+        }
     }
 
     @objc private func loginWidthKakao() {

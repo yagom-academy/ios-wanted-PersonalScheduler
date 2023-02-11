@@ -16,6 +16,7 @@
 		415BA1902993C80400EE88B6 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415BA18F2993C80400EE88B6 /* Observable.swift */; };
 		415BA1922993D64E00EE88B6 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415BA1912993D64E00EE88B6 /* ScheduleCell.swift */; };
 		415BA1942993DBB800EE88B6 /* ScheduleCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415BA1932993DBB800EE88B6 /* ScheduleCellViewModel.swift */; };
+		41A667F52997DD3C00A561F7 /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A667F42997DD3C00A561F7 /* UIAlertController+.swift */; };
 		41ADCE152992822C001984D3 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADCE142992822C001984D3 /* UILabel+.swift */; };
 		41B187EA29933A7200DF0CB4 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 41B187E929933A7200DF0CB4 /* FacebookCore */; };
 		41B187EC29933A7200DF0CB4 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 41B187EB29933A7200DF0CB4 /* FacebookLogin */; };
@@ -50,6 +51,7 @@
 		415BA18F2993C80400EE88B6 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		415BA1912993D64E00EE88B6 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		415BA1932993DBB800EE88B6 /* ScheduleCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCellViewModel.swift; sourceTree = "<group>"; };
+		41A667F42997DD3C00A561F7 /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
 		41ADCE142992822C001984D3 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		41B187ED29934DA700DF0CB4 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		41BC370E29921A54000A5ED7 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				41FB21A52994FC04009044E6 /* Date+.swift */,
 				41D978802996302500D72E14 /* UITextField+.swift */,
 				41FD159829973A12008BB478 /* UIDatePicker+.swift */,
+				41A667F42997DD3C00A561F7 /* UIAlertController+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				415BA18E2993C66400EE88B6 /* ScheduleViewController.swift in Sources */,
 				41D978812996302500D72E14 /* UITextField+.swift in Sources */,
 				41D9787F2996300900D72E14 /* RegisterViewController.swift in Sources */,
+				41A667F52997DD3C00A561F7 /* UIAlertController+.swift in Sources */,
 				41FD159929973A12008BB478 /* UIDatePicker+.swift in Sources */,
 				41ADCE152992822C001984D3 /* UILabel+.swift in Sources */,
 				41FB21A62994FC04009044E6 /* Date+.swift in Sources */,
