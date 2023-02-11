@@ -5,6 +5,8 @@ import UIKit
 
 final class SchedulerHeaderView: UITableViewHeaderFooterView, ReusableView {
     
+    // MARK: - Properties
+
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -13,6 +15,8 @@ final class SchedulerHeaderView: UITableViewHeaderFooterView, ReusableView {
         return label
     }()
         
+    // MARK: - Initialize
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: Self.reuseIdentifier)
         setupViews()
@@ -23,10 +27,8 @@ final class SchedulerHeaderView: UITableViewHeaderFooterView, ReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(userName: String) {
-        titleLabel.text = userName + "'s Schedule 🗂️"
-    }
-    
+    // MARK: - Methods
+
     private func setupViews() {
         addSubview(titleLabel)
         
@@ -35,5 +37,9 @@ final class SchedulerHeaderView: UITableViewHeaderFooterView, ReusableView {
             titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
             titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30)
         ])
+    }
+    
+    func configure(userName: String) {
+        titleLabel.text = userName + "'s Schedule 🗂️"
     }
 }
