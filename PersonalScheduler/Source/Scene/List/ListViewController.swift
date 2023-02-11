@@ -24,6 +24,7 @@ final class ListViewController: UIViewController {
         setupNavigationBar()
         setupView()
         setupConstraint()
+        setupBind()
     }
     
     init(_ viewModel: ListViewModel) {
@@ -33,6 +34,12 @@ final class ListViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupBind() {
+        viewModel.bindData { [weak self] datas in
+            self?.applySnapshot(data: datas, animating: true)
+        }
     }
 }
 
@@ -48,6 +55,7 @@ extension ListViewController {
                 return errorCell
             }
             
+            cell.setupData(CellViewModel(data: schedule), delegate: self)
             return cell
         }
         return dataSource
@@ -69,6 +77,12 @@ extension ListViewController: UITableViewDelegate {
     }
 }
 
+extension ListViewController: DataProcessChangeable {
+    func changeDataProcess(data: Schedule) {
+        viewModel.updateDataProcess(data)
+    }
+}
+
 // MARK: - UIConstraint
 extension ListViewController {
     private func setupNavigationBar() {
@@ -87,6 +101,8 @@ extension ListViewController {
     private func setupView() {
         view.backgroundColor = .systemBackground
         view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: ScheduleTableViewCell.identifier)
     }
     
     private func setupConstraint() {

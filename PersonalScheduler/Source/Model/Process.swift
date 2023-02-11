@@ -7,18 +7,7 @@
 
 import Foundation
 
-enum Process: Hashable {
-    case ready
+enum Process: Int, Hashable {
+    case ready = 0
     case complete
-}
-
-extension Process: CustomStringConvertible {
-    var description: String {
-        switch self {
-        case .ready:
-            return "Ready"
-        case .complete:
-            return "Complete"
-        }
-    }
 }

@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol DataProcessChangeable {
+    func changeDataProcess(data: Schedule)
+}
+
 final class ScheduleTableViewCell: UITableViewCell {
+    private var delegate: DataProcessChangeable?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -41,10 +46,12 @@ final class ScheduleTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    private let checkingImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "checkmark.square"))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    private let checkButton: UIButton = {
+        let button = UIButton()
+        
+        button.tintColor = .systemOrange
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     private let totalStackView: UIStackView = {
@@ -56,6 +63,8 @@ final class ScheduleTableViewCell: UITableViewCell {
         return stackView
     }()
     
+    private var viewModel: CellViewModel?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
@@ -65,13 +74,45 @@ final class ScheduleTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func prepareForReuse() {
+        dateLabel.text = nil
+        titleLabel.text = nil
+        contentLabel.text = nil
+        checkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+    }
+    
+    func setupData(_ viewModel: CellViewModel, delegate: DataProcessChangeable) {
+        self.delegate = delegate
+        self.viewModel = viewModel
+        
+        viewModel.bindData { [weak self] schedule in
+            self?.dateLabel.text = DateFormatter.removeTime(from: schedule.startDate) + "-" + DateFormatter.removeTime(from: schedule.endDate)
+
+            self?.titleLabel.text = schedule.title
+            self?.contentLabel.text = schedule.content
+            if schedule.state == .complete {
+                self?.checkButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
+            } else {
+                self?.checkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+            }
+        }
+    }
+}
+
+extension ScheduleTableViewCell {
+    @objc private func checkButtonTapped() {
+        guard let data = viewModel?.changeState() else { return }
+        delegate?.changeDataProcess(data: data)
+    }
 }
 
 // MARK: - UIConstraint
 extension ScheduleTableViewCell {
     private func setupView() {
         [dateLabel, titleLabel, contentLabel].forEach(contentStackView.addArrangedSubview(_:))
-        [contentStackView, checkingImageView].forEach(totalStackView.addArrangedSubview(_:))
+        [contentStackView, checkButton].forEach(totalStackView.addArrangedSubview(_:))
+        checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
         contentView.addSubview(totalStackView)
     }
     

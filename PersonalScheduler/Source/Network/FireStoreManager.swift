@@ -50,6 +50,16 @@ final class FireStoreManager {
         }
     }
 
+    func update(data: Schedule) {
+        fireStoreDB
+            .document(social)
+            .collection(userID)
+            .document(data.id.description)
+            .updateData([
+                "state": data.state.rawValue
+            ])
+    }
+    
     func add(data: Schedule) {
         print(userID)
         fireStoreDB
@@ -60,7 +70,8 @@ final class FireStoreManager {
                 "startDate": Timestamp(date: data.startDate),
                 "endDate": Timestamp(date: data.endDate),
                 "title": data.title,
-                "content": data.content
+                "content": data.content,
+                "state": data.state.rawValue
             ])
     }
     
@@ -86,7 +97,8 @@ final class FireStoreManager {
         
         let title = document.data()["title"] as? String ?? ""
         let content = document.data()["content"] as? String ?? ""
-
+        let state = document.data()["state"] as? Int ?? .zero
+        
         let startDate = startStamp.dateValue()
         let endDate = endStamp.dateValue()
         
@@ -95,7 +107,8 @@ final class FireStoreManager {
             startDate: startDate,
             endDate: endDate,
             title: title,
-            content: content
+            content: content,
+            state: Process(rawValue: state) ?? .ready
         )
         
         return data
