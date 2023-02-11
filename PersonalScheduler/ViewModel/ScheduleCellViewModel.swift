@@ -23,4 +23,8 @@ struct ScheduleCellViewModel {
     init(event: Event) {
         self.event = event
     }
+
+    var isToday: Bool {
+        return event.date.convertSlashFormatString() == Date().convertSlashFormatString()
+    }
 }

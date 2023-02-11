@@ -73,6 +73,21 @@ final class ScheduleCell: UITableViewCell {
         checkButton.addAction(action, for: .touchUpInside)
     }
 
+    func highlightToday(of viewModel: ScheduleCellViewModel) {
+        guard viewModel.isToday else { return }
+        totalStackView.subviews.forEach { view in
+            view.backgroundColor = .cellHighlight
+        }
+        totalStackView.backgroundColor = .cellHighlight
+    }
+
+    override func prepareForReuse() {
+        totalStackView.subviews.forEach { view in
+            view.backgroundColor = .primary
+        }
+        totalStackView.backgroundColor = .primary
+    }
+
     private func configureHierarchy() {
         [dateLabel, timeLabel].forEach { view in
             dateStackView.addArrangedSubview(view)

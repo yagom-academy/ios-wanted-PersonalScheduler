@@ -72,10 +72,11 @@ final class ScheduleViewController: UIViewController {
 
         dataSource = DataSource(tableView: scheduleTableView) {tableView, indexPath, event in
             let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleCell.reuseIdentifier) as? ScheduleCell
-            let ScheduleCellViewModel = ScheduleCellViewModel(event: event)
+            let scheduleCellViewModel = ScheduleCellViewModel(event: event)
             cell?.delegate = self
-            cell?.configureCell(with: ScheduleCellViewModel)
-            cell?.addActionToCheckButton(of: ScheduleCellViewModel)
+            cell?.configureCell(with: scheduleCellViewModel)
+            cell?.highlightToday(of: scheduleCellViewModel)
+            cell?.addActionToCheckButton(of: scheduleCellViewModel)
 
             return cell
         }
