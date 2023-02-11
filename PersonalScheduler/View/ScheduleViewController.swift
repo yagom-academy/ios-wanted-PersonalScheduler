@@ -107,6 +107,16 @@ extension ScheduleViewController: UITableViewDelegate {
         self.modalPresentationStyle = .popover
         self.present(registerViewController, animated: true)
     }
+
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let removeAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, _ in
+            guard let uuid = self?.viewModel.fetchEvent(index: indexPath.item).uuid else { return }
+            self?.viewModel.removeEvent(of: uuid)
+        }
+
+        return UISwipeActionsConfiguration(actions: [removeAction])
+    }
 }
 
 //MARK: - ScheduleCellDelegate
