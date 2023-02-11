@@ -99,25 +99,20 @@ private extension LoginViewController {
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk { [weak self] oauthToken, error in
                 if let error = error {
-                    // 에러처리하기
-                    print(error)
+                    self?.present(AlertManager.shared.showAlert(title: ApiError.loginError.description, message: error.localizedDescription), animated: true)
                     return
                 }
 
-                _ = oauthToken
-                let accessToken = oauthToken?.accessToken
                 self?.dismiss(animated: true)
                 self?.moveScheduleListViewController(.kakao)
             }
         } else {
             UserApi.shared.loginWithKakaoAccount { [weak self] oauthToken, error in
                 if let error = error {
-                    // 에러처리하기
-                    print(error)
+                    self?.present(AlertManager.shared.showAlert(title: ApiError.loginError.description, message: error.localizedDescription), animated: true)
                     return
                 }
 
-                let accessToken = oauthToken?.accessToken
                 self?.dismiss(animated: true)
                 self?.moveScheduleListViewController(.kakao)
             }
@@ -128,22 +123,20 @@ private extension LoginViewController {
         let manager = LoginManager()
         manager.logIn(permissions: [], from: self) { [weak self] loginManagerLoginResult, error in
             if let error = error {
-                // 에러처리하기
-                print("Process error: \(error)")
+                self?.present(AlertManager.shared.showAlert(title: ApiError.loginError.description, message: error.localizedDescription), animated: true)
                 return
             }
 
             guard let result = loginManagerLoginResult else {
-                print("No Result")
+                self?.present(AlertManager.shared.showAlert(title: ApiError.loginError.description, message: "No Result"), animated: true)
                 return
             }
 
             if result.isCancelled {
-                print("Login Cancelled")
+                self?.present(AlertManager.shared.showAlert(title: ApiError.loginError.description, message: "Login Cancelled"), animated: true)
                 return
             }
 
-            let accessToken = result.token
             self?.dismiss(animated: true)
             self?.moveScheduleListViewController(.facebook)
         }

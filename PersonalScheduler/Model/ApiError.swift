@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ApiError: CustomStringConvertible {
+enum ApiError: CustomStringConvertible, Error {
     case loginError
     case logoutError
     case firebaseFetchError

@@ -10,6 +10,7 @@
 		09197A5829979DA0005497C5 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09197A5729979DA0005497C5 /* UIFont+Extension.swift */; };
 		09197A5A2997D0CD005497C5 /* KindOfLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09197A592997D0CD005497C5 /* KindOfLogin.swift */; };
 		09197A5D2997F360005497C5 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09197A5C2997F360005497C5 /* ApiError.swift */; };
+		09197A5F2997F72F005497C5 /* AlerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09197A5E2997F72F005497C5 /* AlerManager.swift */; };
 		099BA71F29963E2E00F26C15 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 099BA71E29963E2E00F26C15 /* GoogleService-Info.plist */; };
 		099BA7212996632900F26C15 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099BA7202996632900F26C15 /* FirebaseManager.swift */; };
 		09AB6451299384D900036E75 /* ScheduleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB6450299384D900036E75 /* ScheduleListCell.swift */; };
@@ -32,6 +33,7 @@
 		09197A5729979DA0005497C5 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		09197A592997D0CD005497C5 /* KindOfLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KindOfLogin.swift; sourceTree = "<group>"; };
 		09197A5C2997F360005497C5 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		09197A5E2997F72F005497C5 /* AlerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlerManager.swift; sourceTree = "<group>"; };
 		099BA71E29963E2E00F26C15 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		099BA7202996632900F26C15 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		09AB6450299384D900036E75 /* ScheduleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListCell.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				099BA7202996632900F26C15 /* FirebaseManager.swift */,
 				09197A592997D0CD005497C5 /* KindOfLogin.swift */,
 				09197A5C2997F360005497C5 /* ApiError.swift */,
+				09197A5E2997F72F005497C5 /* AlerManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				09197A5D2997F360005497C5 /* ApiError.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				09AB645B29940F2000036E75 /* DateformatterManager.swift in Sources */,
+				09197A5F2997F72F005497C5 /* AlerManager.swift in Sources */,
 				09197A5829979DA0005497C5 /* UIFont+Extension.swift in Sources */,
 				09E95B5D2992A09D004E120A /* UIColor+Extension.swift in Sources */,
 				09197A5A2997D0CD005497C5 /* KindOfLogin.swift in Sources */,
