@@ -13,4 +13,5 @@ struct Schedule: Hashable {
     let endDate: Date
     let title: String
     let content: String
+    let state: Process
 }
