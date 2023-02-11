@@ -17,7 +17,7 @@ final class ScheduleCell: UITableViewCell {
     static var reuseIdentifier: String { String(describing: self) }
 
     var delegate: ScheduleCellDelegate?
-
+    private var deleteAction: UIAction? = nil
     private let dateLabel = UILabel(font: .body, textColor: .navy, textAlignment: .natural)
     private let timeLabel = UILabel(font: .body, textColor: .systemGray, textAlignment: .natural)
     private let titleLabel = UILabel(font: .title2, fontBold: true, textColor: .navy, textAlignment: .natural)
@@ -69,23 +69,30 @@ final class ScheduleCell: UITableViewCell {
         let action = UIAction { [weak self] _ in
             self?.delegate?.touchedUpCheckButton(of: viewModel)
         }
-
+        self.deleteAction = action
         checkButton.addAction(action, for: .touchUpInside)
     }
 
     func highlightToday(of viewModel: ScheduleCellViewModel) {
         guard viewModel.isToday else { return }
+
+        totalStackView.backgroundColor = .cellHighlight
         totalStackView.subviews.forEach { view in
             view.backgroundColor = .cellHighlight
         }
-        totalStackView.backgroundColor = .cellHighlight
     }
 
     override func prepareForReuse() {
+        super.prepareForReuse()
+
+        totalStackView.backgroundColor = .primary
         totalStackView.subviews.forEach { view in
             view.backgroundColor = .primary
         }
-        totalStackView.backgroundColor = .primary
+
+        guard let action = deleteAction else { return }
+
+        checkButton.removeAction(action, for: .touchUpInside)
     }
 
     private func configureHierarchy() {
@@ -110,6 +117,7 @@ final class ScheduleCell: UITableViewCell {
         let margin: CGFloat = 10
 
         dateLabel.setContentHuggingPriority(.required, for: .horizontal)
+
         NSLayoutConstraint.activate([
             dateStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
             dateStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: margin),
