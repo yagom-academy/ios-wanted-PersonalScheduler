@@ -25,10 +25,8 @@ final class LoginButton: UIButton {
         let loginLabelX: CGFloat = logoSize + (2 * spacing)
 
         layer.cornerRadius = 12
-        logoImageView.frame = CGRect(x: spacing, y: (frame.height - logoSize)/2,
-                                     width: logoSize, height: logoSize)
-        loginLabel.frame = CGRect(x: loginLabelX, y: 0,
-                                  width: (frame.width - loginLabelX), height: frame.size.height)
+        logoImageView.frame = CGRect(x: spacing, y: (frame.height - logoSize)/2, width: logoSize, height: logoSize)
+        loginLabel.frame = CGRect(x: loginLabelX, y: 0, width: (frame.width - loginLabelX), height: frame.size.height)
     }
 
     func configure(with viewModel: loginButtonViewModel) {

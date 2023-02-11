@@ -14,17 +14,18 @@ struct ScheduleCellViewModel {
     var date: String { return event.date.convertSlashFormatString() }
     var description: String? { return event.description }
     var uuid: UUID { return event.uuid }
+
     var plannedTime: String {
         let startTimeString = event.startTime.convertToTimeString()
         let endTimeString  = event.endTime.convertToTimeString()
         return  "\(startTimeString) ~ \(endTimeString)"
     }
 
-    init(event: Event) {
-        self.event = event
-    }
-
     var isToday: Bool {
         return event.date.convertSlashFormatString() == Date().convertSlashFormatString()
+    }
+
+    init(event: Event) {
+        self.event = event
     }
 }

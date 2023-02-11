@@ -10,8 +10,12 @@ import Firebase
 
 struct FirebaseManager: CRUDable {
 
-    let fireStore = Firestore.firestore()
-    let collectionName: String
+    private let fireStore = Firestore.firestore()
+    private let collectionName: String
+
+    init(collectionName: String) {
+        self.collectionName = collectionName
+    }
 
     func create(_ event: Event) {
         let eventUuid = event.uuid.uuidString
@@ -19,9 +23,7 @@ struct FirebaseManager: CRUDable {
     }
 
     func read(completion: @escaping (Result<[Event], Error>) -> Void) {
-        fireStore.collection(collectionName)
-            .order(by: "date")
-            .getDocuments { snapshot, error in
+        fireStore.collection(collectionName).order(by: "date").getDocuments { snapshot, error in
             if let error = error {
                 completion(.failure(error))
                 return

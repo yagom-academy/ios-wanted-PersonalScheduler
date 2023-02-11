@@ -17,12 +17,10 @@ final class LoginViewModel {
     private(set) var error: Observable<Error?> = Observable(nil)
     private(set) var title: String = "Personal \n Scheduler"
     private(set) var introduce: String = "Login and save your Schedule"
-    
     private(set) var kakaoLoginButtonViewModel = loginButtonViewModel(title: "Login with Kakao",
                                                                       logo: UIImage(named: "KakaoLogo"),
                                                                       backgroundColor: .kakao,
                                                                       textColor: .black)
-    
     private(set) var facebookLoginButtonViewModel = loginButtonViewModel(title: "Login with Facebook",
                                                                          logo: UIImage(named: "FacebookLogo"),
                                                                          backgroundColor: .facebook,
@@ -40,8 +38,7 @@ extension LoginViewModel {
         UserApi.shared.loginWithKakaoTalk { [weak self] (user, error) in
             if let error = error {
                 self?.error.value = error
-            }
-            else {
+            } else {
                 self?.fetchUserInfo()
             }
         }
@@ -51,8 +48,7 @@ extension LoginViewModel {
         UserApi.shared.loginWithKakaoAccount { [weak self] (_, error) in
             if let error = error {
                 self?.error.value = error
-            }
-            else {
+            } else {
                 self?.fetchUserInfo()
             }
         }
@@ -63,7 +59,9 @@ extension LoginViewModel {
             if let error = error {
                 self?.error.value = error
             }
+
             guard let id = user?.id else { return }
+
             self?.userId.value = "kakao\(id)"
         }
     }

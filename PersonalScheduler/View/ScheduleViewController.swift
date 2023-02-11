@@ -13,6 +13,9 @@ final class ScheduleViewController: UIViewController {
     typealias Snapshot = NSDiffableDataSourceSnapshot<ScheduleSection, Event>
 
     private let viewModel: ScheduleViewModel
+    private var dataSource: DataSource? = nil
+    private let snapshot: Snapshot = Snapshot()
+
     private let scheduleTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.separatorStyle = .none
@@ -20,6 +23,7 @@ final class ScheduleViewController: UIViewController {
 
         return tableView
     }()
+
     private lazy var plusButton: UIButton = {
         let button = UIButton(type: .custom)
         let imageConfiguration = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold, scale: .large)
@@ -33,9 +37,6 @@ final class ScheduleViewController: UIViewController {
 
         return button
     }()
-
-    private var dataSource: DataSource? = nil
-    private let snapshot: Snapshot = Snapshot()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,16 +86,16 @@ final class ScheduleViewController: UIViewController {
     private func registerCell() {
         scheduleTableView.register(ScheduleCell.self, forCellReuseIdentifier: ScheduleCell.reuseIdentifier)
     }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     @objc private func touchedUpPlusButton() {
         let registerViewController =  RegisterViewController(viewModel: RegisterViewModel())
         registerViewController.delegate = self
         self.modalPresentationStyle = .popover
         self.present(registerViewController, animated: true)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -105,6 +106,7 @@ extension ScheduleViewController: UITableViewDelegate {
         let event = viewModel.fetchEvent(index: indexPath.row)
         let registerViewController =  RegisterViewController(viewModel: RegisterViewModel(event: event))
         registerViewController.delegate = self
+
         self.modalPresentationStyle = .popover
         self.present(registerViewController, animated: true)
     }
@@ -113,6 +115,7 @@ extension ScheduleViewController: UITableViewDelegate {
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let removeAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, _ in
             guard let uuid = self?.viewModel.fetchEvent(index: indexPath.item).uuid else { return }
+
             self?.viewModel.removeEvent(of: uuid)
         }
 

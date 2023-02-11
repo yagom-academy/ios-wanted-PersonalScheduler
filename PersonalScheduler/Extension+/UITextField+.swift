@@ -25,7 +25,6 @@ extension UITextField {
     func addPadding(width: CGFloat) {
         let view = UIView(frame: CGRect(origin: .zero,
                                         size: CGSize(width: width, height: self.frame.height)))
-
         leftView = view
         rightView = view
         leftViewMode = .always

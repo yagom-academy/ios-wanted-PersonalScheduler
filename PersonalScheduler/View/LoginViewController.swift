@@ -10,7 +10,6 @@ import UIKit
 final class LoginViewController: UIViewController {
 
     private let viewModel: LoginViewModel = LoginViewModel()
-    
     private lazy var loginLabel = UILabel(font: .largeTitle, fontBold: true, textColor: .navy, numberOfLines: 2)
     private lazy var introduceLabel = UILabel(text: viewModel.introduce, textColor: .secondary)
 
@@ -57,12 +56,14 @@ final class LoginViewController: UIViewController {
 
         viewModel.userId.bind { id in
             guard let id = id else { return }
+
             let scheduleViewController = ScheduleViewController(scheduleViewModel: ScheduleViewModel(userId: id))
             self.navigationController?.pushViewController(scheduleViewController, animated: true)
         }
 
         viewModel.error.bind { error in
             guard let error = error else { return }
+
             UIAlertController.showError(message: error.localizedDescription, target: self)
         }
     }
@@ -94,12 +95,14 @@ extension LoginViewController {
             loginStackView.addArrangedSubview(loginButton)
         }
 
-        view.addSubview(loginStackView)
-        view.addSubview(calendarImageView)
+        [loginStackView, calendarImageView].forEach { subView in
+            view.addSubview(subView)
+        }
     }
 
     private func configureLayout() {
         let safeArea = view.safeAreaLayoutGuide
+        
         NSLayoutConstraint.activate([
             calendarImageView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             calendarImageView.centerYAnchor.constraint(equalTo: safeArea.topAnchor,
