@@ -19,7 +19,7 @@ final class ListViewController: UIViewController {
     
     // MARK: Private Properties
     
-    private var editedListCount = 0
+    private var editedListCount: Int?
     
     // MARK: Life Cycle
     
@@ -163,7 +163,7 @@ extension ListViewController: DataSendable {
             scheduleList.append(data)
             updateUserScheduleData()
         case .edit:
-            if editedListCount != 0 {
+            if let editedListCount = editedListCount {
                 scheduleList[editedListCount] = data
                 updateUserScheduleData()
             }
