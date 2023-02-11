@@ -7,12 +7,7 @@
 import UIKit
 
 final class ScheduleDetailViewController: UIViewController {
-//    private let navigationTitleView
-    private let titleTextField: ScheduleTextField = {
-        let textField = ScheduleTextField()
-        textField.placeholder = "할일의 제목을 입력해주세요."
-        return textField
-    }()
+    private let navigationTitleView = ScheduleDetailTitleView(title: "생성하기")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +32,7 @@ private extension ScheduleDetailViewController {
     
     func addChildComponents() {
         [
-            titleTextField
+            navigationTitleView
         ].forEach(view.addSubview)
     }
     
@@ -45,9 +40,10 @@ private extension ScheduleDetailViewController {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            titleTextField.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            titleTextField.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            titleTextField.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
+            navigationTitleView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navigationTitleView.topAnchor.constraint(equalTo: view.topAnchor),
+            navigationTitleView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            navigationTitleView.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.4),
         ])
     }
 }

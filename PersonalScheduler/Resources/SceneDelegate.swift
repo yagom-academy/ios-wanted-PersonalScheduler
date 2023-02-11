@@ -53,6 +53,7 @@ private extension SceneDelegate {
             return LoginViewController()
         }
         
-        return ScheduleListViewController()
+//        return ScheduleListViewController()
+        return ScheduleDetailViewController()
     }
 }
