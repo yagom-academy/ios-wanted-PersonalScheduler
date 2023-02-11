@@ -10,16 +10,16 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>kakaod9f7ce69b307d0099229d92f9633b9fe</string>
-                <string>fb712344750472276</string>
+				<string>fb712344750472276</string>
 			</array>
 		</dict>
 	</array>
-    <key>FacebookAppID</key>
-    <string>712344750472276</string>
-    <key>FacebookClientToken</key>
-    <string>694511449134eb9add5431478bbb6a52</string>
-    <key>FacebookDisplayName</key>
-    <string>iOS-PersonalScheduler</string>
+	<key>FacebookAppID</key>
+	<string>712344750472276</string>
+	<key>FacebookClientToken</key>
+	<string>694511449134eb9add5431478bbb6a52</string>
+	<key>FacebookDisplayName</key>
+	<string>iOS-PersonalScheduler</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
