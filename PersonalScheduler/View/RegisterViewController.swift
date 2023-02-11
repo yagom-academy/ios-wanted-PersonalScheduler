@@ -9,11 +9,12 @@ import UIKit
 
 final class RegisterViewController: UIViewController {
 
-    private let viewLabel = UILabel(text: "Add new event",
-                            font: .title2,
-                            fontBold: true,
-                            textColor: .navy,
-                            textAlignment: .center)
+    var delegate: RegisterViewControllerDelegate?
+    private let viewModel: RegisterViewModel
+    private let viewLabel = UILabel(font: .title2,
+                                    fontBold: true,
+                                    textColor: .navy,
+                                    textAlignment: .center)
 
     private let descriptionTextView: UITextView = {
         let textView = UITextView(frame: .zero)
@@ -38,14 +39,11 @@ final class RegisterViewController: UIViewController {
 
         return button
     }()
-
-    @objc private func touchedUpPlusButton() {
-        print("펜슬버튼 클릭")
-    }
-
-    private let titleField = UITextField(font: .title2, placeholder: "title", radius: 12)
-    private let startLabel = UILabel(text: "Start", font: .title3, textColor: .black, textAlignment: .right)
-    private let endLabel = UILabel(text: "End", font: .title3, textColor: .black, textAlignment: .right)
+    
+    private let titleField = UITextField(font: .title2, radius: 12)
+    private let datePicker = UIDatePicker(mode: .date, style: .wheels)
+    private let startLabel = UILabel(font: .title3, textColor: .black, textAlignment: .right)
+    private let endLabel = UILabel(font: .title3, textColor: .black, textAlignment: .right)
     private let startTimePicker = UIDatePicker(mode: .time, style: .compact)
     private let endTimePicker = UIDatePicker(mode: .time, style: .compact)
     private let startTimeStackView = UIStackView(spacing: 10, margin: 10)
