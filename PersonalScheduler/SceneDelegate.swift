@@ -9,6 +9,8 @@ import UIKit
 
 import FacebookCore
 import KakaoSDKAuth
+import FirebaseFirestore
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,10 +21,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let service = LoginService()
-        let viewModel = LoginViewModel(service: service)
-        let rootViewController = LoginViewController(viewModel: viewModel)
-        let navigationController = UINavigationController(rootViewController: rootViewController)
+        let navigationController: UINavigationController
+        if let currentUser = Auth.auth().currentUser {
+            let firestore = FireStore()
+            let repository = DefaultRepository(dataBase: firestore)
+            let service = ScheduleService(repository: repository)
+            let rootViewController = ScheduleViewModel(userID: currentUser.uid, service: service)
+            navigationController = UINavigationController(rootViewController: rootViewController)
+        } else {
+            let service = LoginService()
+            let viewModel = LoginViewModel(service: service)
+            let rootViewController = LoginViewController(viewModel: viewModel)
+            navigationController = UINavigationController(rootViewController: rootViewController)
+        }
         
         window.rootViewController = navigationController
         window.makeKeyAndVisible()

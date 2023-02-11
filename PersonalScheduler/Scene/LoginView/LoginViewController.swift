@@ -11,6 +11,15 @@ import FacebookLogin
 import FirebaseAuth
 
 class LoginViewController: UIViewController {
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "think, \nplan, \nand.. \nschedule it.\n\nPersonal Scheduler"
+        label.font = UIFont(name: "Futura-MediumItalic", size: 35)
+        label.numberOfLines = 6
+        label.textAlignment = .left
+        return label
+    }()
+    
     private let facebookLoginButton: LoginButton = {
         let loginButton = ButtonBuilder()
             .withProviderName("Facebook")
@@ -37,6 +46,14 @@ class LoginViewController: UIViewController {
         stackView.alignment = .fill
         stackView.distribution = .fill
         stackView.spacing = 12
+        return stackView
+    }()
+    
+    private let totalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -55,7 +72,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
         configureView()
         configureLayout()
     }
@@ -64,9 +80,10 @@ class LoginViewController: UIViewController {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            buttonStackView.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.85),
-            buttonStackView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            buttonStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 400),
+            totalStackView.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.85),
+            totalStackView.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.85),
+            totalStackView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            totalStackView.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor),
             
             facebookLoginButton.heightAnchor.constraint(equalToConstant: 60),
             kakaoLoginButton.heightAnchor.constraint(equalToConstant: 60)
@@ -74,12 +91,15 @@ class LoginViewController: UIViewController {
     }
     
     private func configureView() {
-        facebookLoginButton.addAction(UIAction(handler: tapFacebookLogin), for: .touchUpInside)
-        kakaoLoginButton.addAction(UIAction(handler: tapKakaoLogin), for: .touchUpInside)
+        view.backgroundColor = .systemBackground
         viewModel.delegate = self
         
         [facebookLoginButton, kakaoLoginButton].forEach(buttonStackView.addArrangedSubview(_:))
-        view.addSubview(buttonStackView)
+        [titleLabel, buttonStackView].forEach(totalStackView.addArrangedSubview(_:))
+        view.addSubview(totalStackView)
+        
+        facebookLoginButton.addAction(UIAction(handler: tapFacebookLogin), for: .touchUpInside)
+        kakaoLoginButton.addAction(UIAction(handler: tapKakaoLogin), for: .touchUpInside)
     }
     
     private func tapFacebookLogin(_ action: UIAction) {
@@ -106,6 +126,5 @@ extension LoginViewController: LoginViewModelDelegate {
     
     func loginViewModel(failedLogout error: Error) {
         print(error.localizedDescription)
-        
     }
 }
