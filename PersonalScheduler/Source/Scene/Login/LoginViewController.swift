@@ -89,19 +89,36 @@ extension LoginViewController {
     private func setupConstrinat() {
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            loginImageView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 100),
-            loginImageView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 30),
-            loginImageView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -30),
+            loginImageView.topAnchor.constraint(
+                equalTo: safeArea.topAnchor, constant: 100
+            ),
+            loginImageView.leadingAnchor.constraint(
+                equalTo: safeArea.leadingAnchor, constant: 30
+            ),
+            loginImageView.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor, constant: -30
+            ),
             
-            kakaoLoginButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            kakaoLoginButton.leadingAnchor.constraint(
+                equalTo: safeArea.leadingAnchor, constant: 70
+            ),
+            kakaoLoginButton.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor, constant: -70
+            ),
             kakaoLoginButton.topAnchor.constraint(
                 equalTo: loginImageView.bottomAnchor,
                 constant: 50
             ),
             
-            faceBookLoginButton.topAnchor.constraint(equalTo: kakaoLoginButton.bottomAnchor, constant: 20),
-            faceBookLoginButton.leadingAnchor.constraint(equalTo: kakaoLoginButton.leadingAnchor),
-            faceBookLoginButton.trailingAnchor.constraint(equalTo: kakaoLoginButton.trailingAnchor)
+            faceBookLoginButton.topAnchor.constraint(
+                equalTo: kakaoLoginButton.bottomAnchor, constant: 5
+            ),
+            faceBookLoginButton.leadingAnchor.constraint(
+                equalTo: safeArea.leadingAnchor, constant: 10
+            ),
+            faceBookLoginButton.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor, constant: -10
+            ),
         ])
     }
 }

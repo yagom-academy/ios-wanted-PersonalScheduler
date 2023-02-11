@@ -93,9 +93,4 @@ final class LoginViewModel {
             }
         }
     }
-    
-    
-    func appleLogin() {
-        
-    }
 }
