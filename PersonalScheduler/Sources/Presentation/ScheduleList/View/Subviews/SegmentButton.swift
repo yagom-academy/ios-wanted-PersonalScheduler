@@ -27,7 +27,7 @@ final class SegmentButton: UIButton {
             guard let isSelected = self?.isSelected else { return }
             
             if isSelected {
-                self?.backgroundColor = UIColor(named: "segementSelectedColor")
+                self?.backgroundColor = UIColor(named: "segmentSelectedColor")
             } else {
                 self?.backgroundColor = .white
             }
