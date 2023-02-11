@@ -40,6 +40,7 @@ final class ScheduleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        scheduleTableView.delegate = self
         configureHierarchy()
         configureLayout()
         bindViewModel()
@@ -89,14 +90,51 @@ final class ScheduleViewController: UIViewController {
     }
     
     @objc private func touchedUpPlusButton() {
-        print("버튼액션 클릭")
-        // 액션구현
+        let registerViewController =  RegisterViewController(viewModel: RegisterViewModel())
+        registerViewController.delegate = self
+        self.modalPresentationStyle = .popover
+        self.present(registerViewController, animated: true)
     }
 }
 
+//MARK: - tableViewDelegate
+extension ScheduleViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let event = viewModel.fetchEvent(index: indexPath.row)
+        let registerViewController =  RegisterViewController(viewModel: RegisterViewModel(event: event))
+        registerViewController.delegate = self
+        self.modalPresentationStyle = .popover
+        self.present(registerViewController, animated: true)
+    }
+}
+
+//MARK: - ScheduleCellDelegate
 extension ScheduleViewController: ScheduleCellDelegate {
+
     func touchedUpCheckButton(of viewModel: ScheduleCellViewModel) {
         self.viewModel.removeEvent(of: viewModel.uuid)
+    }
+}
+
+//MARK: - RegisterViewControllerDelegate
+extension ScheduleViewController: RegisterViewControllerDelegate {
+
+    func registerEvent(state: RegisterViewModel.State,
+                       title: String?,
+                       date: Date,
+                       startTime: Date,
+                       endTime: Date,
+                       description: String,
+                       uuid: UUID) {
+        let event = self.viewModel.generateEvent(title: title,
+                                                 date: date,
+                                                 startTime: startTime,
+                                                 endTime: endTime,
+                                                 description: description,
+                                                 uuid: uuid)
+
+        self.viewModel.addEvent(of: event, state: state)
     }
 }
 

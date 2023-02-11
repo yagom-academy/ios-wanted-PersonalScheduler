@@ -7,6 +7,17 @@
 
 import UIKit
 
+protocol RegisterViewControllerDelegate {
+
+    func registerEvent(state: RegisterViewModel.State,
+                       title: String?,
+                       date: Date,
+                       startTime: Date,
+                       endTime: Date,
+                       description : String,
+                       uuid: UUID)
+}
+
 final class RegisterViewController: UIViewController {
 
     var delegate: RegisterViewControllerDelegate?
@@ -55,6 +66,43 @@ final class RegisterViewController: UIViewController {
         configureHierarchy()
         configureLayout()
     }
+
+    init(viewModel: RegisterViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        bindViewModel()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func bindViewModel() {
+        viewLabel.text =  viewModel.viewTitle
+        startLabel.text = viewModel.startLabelText
+        endLabel.text = viewModel.endLabelText
+        titleField.placeholder = viewModel.titleFieldPlaceHolder
+        titleField.text = viewModel.title
+        datePicker.date = viewModel.date
+        startTimePicker.date = viewModel.startTime
+        endTimePicker.date = viewModel.endTime
+        descriptionTextView.text = viewModel.description
+    }
+
+    @objc private func touchedUpPlusButton() {
+        delegate?.registerEvent(state: viewModel.state,
+                                title: titleField.text,
+                                date: datePicker.date,
+                                startTime: startTimePicker.date,
+                                endTime: endTimePicker.date,
+                                description : descriptionTextView.text,
+                                uuid: viewModel.uuid)
+        self.dismiss(animated: true)
+    }
+}
+
+//MARK: - ViewHierarchy and Layout
+extension RegisterViewController {
 
     private func configureHierarchy() {
         [startLabel, startTimePicker].forEach { view in
