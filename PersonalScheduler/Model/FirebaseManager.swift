@@ -14,19 +14,18 @@ final class FirebaseManager {
 
     let collection = Firestore.firestore().collection("schedule")
 
-    func fetchAllScheduleData(completionHandler: @escaping ([ScheduleModel]) -> Void) {
+    func fetchAllScheduleData(completionHandler: @escaping (Result<[ScheduleModel], ApiError>) -> Void) {
         var scheduleModels: [ScheduleModel] = []
 
         collection.getDocuments { (querySnapshot, error) in
-            if let error = error {
-                // 에러처리
-                print(error)
+            if error != nil {
+                completionHandler(.failure(.firebaseFetchError))
                 return
             }
 
             guard let documents = querySnapshot?.documents,
                   !documents.isEmpty else {
-                // 에러처리
+                completionHandler(.failure(.firebaseFetchDataNilError))
                 return
             }
 
@@ -37,13 +36,13 @@ final class FirebaseManager {
                       let title = data["title"] as? String,
                       let body = data["body"] as? String,
                       let date = data["date"] as? String else {
-                    // 에러처리
+                    completionHandler(.failure(.firebaseFetchDataWrongTypeError))
                     return
                 }
                 let scheduleModel = ScheduleModel(id: id, title: title, body: body, date: date)
                 scheduleModels.append(scheduleModel)
             }
-            completionHandler(scheduleModels)
+            completionHandler(.success(scheduleModels))
         }
     }
 

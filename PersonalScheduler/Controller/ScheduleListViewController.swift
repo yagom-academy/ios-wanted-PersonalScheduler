@@ -104,9 +104,14 @@ extension ScheduleListViewController: DetailScheduleDelegate {
 // MARK: - Method
 private extension ScheduleListViewController {
     func fetchScheduleList() {
-        FirebaseManager.shared.fetchAllScheduleData { [weak self] data in
-            ScheduleModel.scheduleList = data
-            self?.sortScheduleList()
+        FirebaseManager.shared.fetchAllScheduleData { [weak self] result in
+            switch result {
+            case .success(let data):
+                ScheduleModel.scheduleList = data
+                self?.sortScheduleList()
+            case .failure(let errorMessage):
+                self?.present(AlertManager.shared.showAlert(title: errorMessage.description, message: ""), animated: true)
+            }
         }
     }
 
@@ -156,8 +161,7 @@ private extension ScheduleListViewController {
     @objc func touchUpKakaoLogoutButton() {
         UserApi.shared.logout { [weak self] error in
             if let error = error {
-                // 에러처리
-                print(error)
+                self?.present(AlertManager.shared.showAlert(title: ApiError.logoutError.description, message: error.localizedDescription), animated: true)
             }
             let loginViewController = LoginViewController()
             self?.dismiss(animated: true)
