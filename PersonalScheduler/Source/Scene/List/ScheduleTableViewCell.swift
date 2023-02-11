@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol DataProcessChangeable {
-    func changeDataProcess(data: Schedule)
-}
-
 final class ScheduleTableViewCell: UITableViewCell {
     private var delegate: DataProcessChangeable?
     

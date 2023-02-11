@@ -8,6 +8,11 @@
 import Foundation
 
 final class ListViewModel {
+    enum Action {
+        case delete(index: Int)
+        case processUpdate(data: Schedule)
+    }
+    
     private var datas: [Schedule] = [] {
         didSet {
             dataHandler?(datas)
@@ -15,7 +20,6 @@ final class ListViewModel {
     }
     
     private var dataHandler: (([Schedule]) -> Void)?
-    
     private let fireBaseManager: FireStoreManager
     
     init(_ fireBaseManager: FireStoreManager) {
@@ -32,16 +36,19 @@ final class ListViewModel {
         return fireBaseManager.fetchUserName()
     }
     
-    func updateDataProcess(_ data: Schedule) {
-        fireBaseManager.update(data: data)
+    func dataAction(_ action: Action) {
+        switch action {
+        case .processUpdate(let data):
+            fireBaseManager.update(data: data)
+        case .delete(let index):
+            fireBaseManager.delete(data: datas[index])
+            datas.remove(at: index)
+        }
     }
     
     private func fetchData() {
         fireBaseManager.load { datas in
             self.datas = datas
-            print(datas)
         }
     }
-    
-    
 }

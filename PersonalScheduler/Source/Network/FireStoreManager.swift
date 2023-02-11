@@ -25,9 +25,6 @@ final class FireStoreManager {
         self.social = "\(social)"
         userID = Auth.auth().currentUser?.uid ?? ""
         fireStoreDB = Firestore.firestore().collection("Scedule")
-        
-//        print(Auth.auth().currentUser?.email)
-//        print(Auth.auth().currentUser?.displayName)   
     }
     
     func load(completion: @escaping ([Schedule]) -> Void) {
@@ -56,12 +53,15 @@ final class FireStoreManager {
             .collection(userID)
             .document(data.id.description)
             .updateData([
+                "startDate": Timestamp(date: data.startDate),
+                "endDate": Timestamp(date: data.endDate),
+                "title": data.title,
+                "content": data.content,
                 "state": data.state.rawValue
             ])
     }
     
     func add(data: Schedule) {
-        print(userID)
         fireStoreDB
             .document(social)
             .collection(userID)

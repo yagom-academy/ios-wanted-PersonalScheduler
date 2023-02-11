@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol DataProcessChangeable {
+    func changeDataProcess(data: Schedule)
+}
+
 final class ListViewController: UIViewController {
     typealias DataSource = UITableViewDiffableDataSource<Section, Schedule>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Schedule>
@@ -75,11 +79,28 @@ extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    
+    func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+    -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(
+            style: .normal,
+            title: "삭제") { [weak self] _, _, _ in
+                guard let self = self else { return }
+                self.viewModel.dataAction(.delete(index: indexPath.row))
+            }
+        
+        delete.backgroundColor = .systemOrange
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [delete])
+        
+        return swipeConfiguration
+    }
 }
 
 extension ListViewController: DataProcessChangeable {
     func changeDataProcess(data: Schedule) {
-        viewModel.updateDataProcess(data)
+        viewModel.dataAction(.processUpdate(data: data))
     }
 }
 
@@ -101,8 +122,14 @@ extension ListViewController {
     private func setupView() {
         view.backgroundColor = .systemBackground
         view.addSubview(tableView)
+        
+        tableView.delegate = self
+        tableView.separatorStyle = .singleLine
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: ScheduleTableViewCell.identifier)
+        tableView.register(
+            ScheduleTableViewCell.self,
+            forCellReuseIdentifier: ScheduleTableViewCell.identifier
+        )
     }
     
     private func setupConstraint() {
