@@ -10,6 +10,7 @@ import KakaoSDKAuth
 import KakaoSDKUser
 import KakaoSDKCommon
 import FBSDKLoginKit
+import AuthenticationServices
 
 final class LoginViewController: UIViewController {
 
@@ -24,7 +25,6 @@ final class LoginViewController: UIViewController {
     private let kakaoLoginImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "kakao_login_medium_narrow")
-        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
@@ -33,7 +33,7 @@ final class LoginViewController: UIViewController {
         button.layer.cornerRadius = 6
         button.setImage(UIImage(named: "f_logo_RGB-White_58"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
-        button.imageEdgeInsets = UIEdgeInsets(top: 12, left: -35, bottom: 12, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 15, left: -35, bottom: 15, right: 0)
         button.setTitle("페이스북으로 로그인", for: .normal)
         button.titleLabel?.font = .preferredFont(forTextStyle: .title3)
         let attributes: [NSAttributedString.Key: Any] = [
@@ -47,11 +47,9 @@ final class LoginViewController: UIViewController {
         return button
     }()
 
-    private let appleLoginButton: UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 6
-        button.backgroundColor = UIColor.init(hex: "#000000")
-        return button
+    private let appleLoginButton: ASAuthorizationAppleIDButton = {
+        let appleButton = ASAuthorizationAppleIDButton(type: .default, style: .black)
+        return appleButton
     }()
 
     // MARK: - LifeCycle
@@ -183,6 +181,7 @@ private extension LoginViewController {
 
             kakaoLoginImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             kakaoLoginImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
+            kakaoLoginImageView.heightAnchor.constraint(equalToConstant: buttonHeight),
             kakaoLoginImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: view.frame.height / 4),
 
             facebookLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
