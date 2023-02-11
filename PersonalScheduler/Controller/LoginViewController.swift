@@ -58,8 +58,6 @@ final class LoginViewController: UIViewController {
 
         configureUI()
 
-
-        // 주석풀기
         autoKakaoLogin()
         autoFacebookLogin()
     }
