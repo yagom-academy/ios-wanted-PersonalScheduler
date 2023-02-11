@@ -32,12 +32,18 @@ final class ScheduleTextField: UITextField {
         layer.borderColor = UIColor(named: "textFieldBorderColor")?.cgColor
         layer.borderWidth = 1
         layer.cornerRadius = 8.5
+        translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
         layer.shadowColor = UIColor.gray.cgColor
         layer.shadowRadius = 3
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowOpacity = 1.0
+        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
         layer.masksToBounds = false
-        translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {

@@ -13,59 +13,31 @@ final class ScheduleDetailTitleView: NavigationBar {
         return textField
     }()
     
-    private let startDateButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("시작일시", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 14)
-        button.setTitleColor(UIColor(named: "textColor"), for: .normal)
-        let image = UIImage(named: "startFlag")
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
-        button.contentHorizontalAlignment = .leading
-        button.setImage(image, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .white
-        button.layer.borderColor = UIColor(named: "textFieldBorderColor")?.cgColor
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 8.5
-        button.layer.shadowColor = UIColor.gray.cgColor
-        button.layer.shadowRadius = 3
-        button.layer.shadowOffset = CGSize(width: 0, height: 0)
-        button.layer.shadowOpacity = 1.0
-        button.layer.masksToBounds = false
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private let startDateButton = UIButton()
+        .setInitState()
+        .setTitleLabel(title: "시작일시")
+        .setImage(imageName: "endFlag")
+        .setBorder(color: UIColor(named: "textFieldBorderColor"), width: 1)
     
-    private let endDateButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("시작일시", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 14)
-        let image = UIImage(named: "startFlag")
-        button.setTitleColor(UIColor(named: "textColor"), for: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
-        button.contentHorizontalAlignment = .leading
-        button.setImage(image, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .white
-        button.layer.borderColor = UIColor(named: "textFieldBorderColor")?.cgColor
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 8.5
-        button.layer.shadowColor = UIColor.gray.cgColor
-        button.layer.shadowRadius = 3
-        button.layer.shadowOffset = CGSize(width: 0, height: 0)
-        button.layer.shadowOpacity = 1.0
-        button.layer.masksToBounds = false
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private let endDateButton = UIButton()
+        .setInitState()
+        .setTitleLabel(title: "종료일시")
+        .setImage(imageName: "endFlag")
+        .setBorder(color: UIColor(named: "textFieldBorderColor"), width: 1)
     
     override init(title: String) {
         super.init(title: title)
         translatesAutoresizingMaskIntoConstraints = false
         
         configureUI()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        [startDateButton, endDateButton].forEach {
+            $0.setShadow()
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -94,5 +66,46 @@ final class ScheduleDetailTitleView: NavigationBar {
         ])
         
         titleTextField.setContentHuggingPriority(.required, for: .vertical)
+    }
+}
+
+private extension UIButton {
+    func setTitleLabel(title: String) -> UIButton {
+        setTitle(title, for: .normal)
+        titleLabel?.font = .systemFont(ofSize: 14)
+        setTitleColor(UIColor(named: "textColor"), for: .normal)
+        return self
+    }
+    
+    func setImage(imageName: String) -> UIButton {
+        let image = UIImage(named: imageName)
+        imageEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0)
+        titleEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
+        contentHorizontalAlignment = .leading
+        setImage(image, for: .normal)
+        return self
+    }
+    
+    func setShadow() {
+        layer.cornerRadius = 8.5
+        layer.shadowColor = UIColor.gray.cgColor
+        layer.shadowRadius = 3
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowOpacity = 1.0
+        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        layer.masksToBounds = false
+        layer.shouldRasterize = true
+    }
+    
+    func setBorder(color: UIColor?, width: CGFloat) -> UIButton {
+        layer.borderColor = color?.cgColor
+        layer.borderWidth = width
+        return self
+    }
+    
+    func setInitState() -> UIButton {
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .white
+        return self
     }
 }
