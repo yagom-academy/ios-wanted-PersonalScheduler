@@ -13,12 +13,9 @@ final class ListViewController: UIViewController {
     
     // MARK: Internal Properties
     
+    var userID = String()
     var scheduleList: [Schedule] = []
     let listView = ListView()
-    
-    // MARK: Private Properties
-    
-    private let db = Firestore.firestore()
     
     // MARK: Life Cycle
     
@@ -67,16 +64,11 @@ final class ListViewController: UIViewController {
     
     private func updateUserScheduleData() {
         let jsonScheduleList = JSONEncoder().encodeScheduleList(scheduleList)
+        let path = Firestore.firestore().collection(userID).document("Personal")
         
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if let id = user?.email {
-                let path = self.db.collection(id).document("Personal")
-                
-                path.updateData(["Schedule" : jsonScheduleList])
-                
-                self.listView.reloadTableViewData()
-            }
-        }
+        path.updateData(["Schedule" : jsonScheduleList])
+        
+        self.listView.reloadTableViewData()
     }
     
     private func configureLayout() {

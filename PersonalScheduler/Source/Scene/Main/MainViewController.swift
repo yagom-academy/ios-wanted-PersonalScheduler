@@ -122,8 +122,9 @@ final class MainViewController: UIViewController {
     private func checkLogin() {
         let auth = Auth.auth()
         
-        if let userID = auth.currentUser?.email  {
+        if let userID = auth.currentUser?.email {
             indicatorView.startAnimating()
+            listViewController.userID = userID
             readUserScheduleData(id: userID)
         }
     }
@@ -159,6 +160,8 @@ final class MainViewController: UIViewController {
     private func checkAuthLogIn(type: SNSType, id: String, password: String) {
         let domainName = configureDomainName(type: type)
         let userID = id + domainName
+        
+        listViewController.userID = userID
         
         indicatorView.startAnimating()
         listViewController.configureScheduleList(data: .init())
@@ -202,7 +205,7 @@ final class MainViewController: UIViewController {
     private func createUserCollection(id: String) {
         Auth.auth().addStateDidChangeListener { auth, user in
             if let id = user?.email {
-                self.db.collection(id).document("Personal").setData(["Schedule":""])
+                Firestore.firestore().collection(id).document("Personal").setData(["Schedule":""])
                 { err in
                     if let err = err {
                         print(err)
@@ -215,7 +218,7 @@ final class MainViewController: UIViewController {
     }
     
     private func readUserScheduleData(id: String) {
-        db.collection(id).getDocuments() { [self] querySnapShot, error in
+        Firestore.firestore().collection(id).getDocuments() { [self] querySnapShot, error in
             if let error = error {
                 print(error)
             } else {
