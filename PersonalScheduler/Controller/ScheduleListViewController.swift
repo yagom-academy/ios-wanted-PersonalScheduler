@@ -235,10 +235,10 @@ private extension ScheduleListViewController {
         switch kindOfLogin {
         case .kakao:
             let button = UIButton(type: .system)
-            button.setImage(UIImage(named: "kakao"), for: .normal)
+            button.setImage(UIImage(named: "kakaoLogo"), for: .normal)
             button.setTitle("로그아웃", for: .normal)
             button.imageView?.contentMode = .scaleAspectFit
-            button.tintColor = UIColor(hex: "#191600")
+            button.tintColor = UIColor(hex: "#FEE500")
             button.titleLabel?.tintColor = UIColor.systemBlue
             button.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 530)
             button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 470)
