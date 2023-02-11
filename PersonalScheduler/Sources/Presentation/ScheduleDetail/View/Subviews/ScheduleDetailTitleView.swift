@@ -5,6 +5,7 @@
 //  Copyright (c) 2023 Minii All rights reserved.
         
 import UIKit
+import Combine
 
 final class ScheduleDetailTitleView: NavigationBar {
     private let titleTextField: ScheduleTextField = {
@@ -25,11 +26,14 @@ final class ScheduleDetailTitleView: NavigationBar {
         .setImage(imageName: "endFlag")
         .setBorder(color: UIColor(named: "textFieldBorderColor"), width: 1)
     
+    private var cancellable = Set<AnyCancellable>()
+    
     override init(title: String) {
         super.init(title: title)
         translatesAutoresizingMaskIntoConstraints = false
         
         configureUI()
+        bind()
     }
     
     override func layoutSubviews() {
@@ -66,6 +70,18 @@ final class ScheduleDetailTitleView: NavigationBar {
         ])
         
         titleTextField.setContentHuggingPriority(.required, for: .vertical)
+    }
+}
+
+private extension ScheduleDetailTitleView {
+    func bind() {
+        titleTextField.textPublisher
+            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .compactMap { $0 }
+            .sink {
+                print($0)
+            }
+            .store(in: &cancellable)
     }
 }
 

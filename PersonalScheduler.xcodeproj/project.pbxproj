@@ -22,6 +22,7 @@
 		189FF5772997E9F8006D4490 /* ScheduleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FF5762997E9F8006D4490 /* ScheduleTextField.swift */; };
 		189FF57A2997F094006D4490 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FF5792997F094006D4490 /* NavigationView.swift */; };
 		189FF57C2997F1F5006D4490 /* ScheduleDetailTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FF57B2997F1F5006D4490 /* ScheduleDetailTitleView.swift */; };
+		189FF57E29980BA8006D4490 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FF57D29980BA7006D4490 /* UITextField+Extension.swift */; };
 		18B7BB2E2995E5FE007E1E74 /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B7BB2D2995E5FE007E1E74 /* ScheduleListViewModel.swift */; };
 		18B7BB302995E607007E1E74 /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B7BB2F2995E607007E1E74 /* ScheduleListViewController.swift */; };
 		18C1EF7C2991038900136466 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 18C1EF7B2991038900136466 /* FirebaseAuth */; };
@@ -65,6 +66,7 @@
 		189FF5762997E9F8006D4490 /* ScheduleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTextField.swift; sourceTree = "<group>"; };
 		189FF5792997F094006D4490 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		189FF57B2997F1F5006D4490 /* ScheduleDetailTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailTitleView.swift; sourceTree = "<group>"; };
+		189FF57D29980BA7006D4490 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		18B7BB2D2995E5FE007E1E74 /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
 		18B7BB2F2995E607007E1E74 /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
 		18BEAD9829929A0F00679E18 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				18FABA522992C6A800333D63 /* UIControl+Extension.swift */,
 				18F5F1832993C773005B7733 /* UIButton+Extension.swift */,
 				18D55D5329962C2100FADED5 /* Previews.swift */,
+				189FF57D29980BA7006D4490 /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				18F5F18E2993CFD7005B7733 /* KakaoLoginRepository.swift in Sources */,
 				189FF56D2997A874006D4490 /* ScheduleSegmentControlView.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				189FF57E29980BA8006D4490 /* UITextField+Extension.swift in Sources */,
 				18D55D5429962C2100FADED5 /* Previews.swift in Sources */,
 				18F5F19A2993F78A005B7733 /* FirebaseAuthService.swift in Sources */,
 			);
