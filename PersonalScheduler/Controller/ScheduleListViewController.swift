@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import KakaoSDKUser
+import FBSDKLoginKit
 
 final class ScheduleListViewController: UIViewController {
 
@@ -150,6 +152,26 @@ private extension ScheduleListViewController {
         detailScheduleViewController.detailScheduleDelegate = self
         navigationController?.pushViewController(detailScheduleViewController, animated: true)
     }
+
+    @objc func touchUpKakaoLogoutButton() {
+        UserApi.shared.logout { [weak self] error in
+            if let error = error {
+                // 에러처리
+                print(error)
+            }
+            let loginViewController = LoginViewController()
+            self?.dismiss(animated: true)
+            self?.present(loginViewController, animated: true)
+        }
+    }
+
+    @objc func touchUpFacebookLogoutButton() {
+        let manager = LoginManager()
+        manager.logOut()
+        let loginViewController = LoginViewController()
+        dismiss(animated: true)
+        present(loginViewController, animated: true)
+    }
 }
 
 // MARK: - UIConfiguration
@@ -217,6 +239,7 @@ private extension ScheduleListViewController {
             button.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 530)
             button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 470)
             button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -500)
+            button.addTarget(self, action: #selector(touchUpKakaoLogoutButton), for: .touchUpInside)
             return button
         case .facebook:
             let button = UIButton(type: .system)
@@ -226,6 +249,7 @@ private extension ScheduleListViewController {
             button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 150)
             button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 90)
             button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -80)
+            button.addTarget(self, action: #selector(touchUpFacebookLogoutButton), for: .touchUpInside)
             return button
         case .apple:
             return UIButton()

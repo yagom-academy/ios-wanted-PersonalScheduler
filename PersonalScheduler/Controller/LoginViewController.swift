@@ -62,7 +62,7 @@ final class LoginViewController: UIViewController {
 
 
         // 주석풀기
-//        autoKakaoLogin()
+        autoKakaoLogin()
         autoFacebookLogin()
     }
 }
@@ -72,7 +72,8 @@ private extension LoginViewController {
     func autoKakaoLogin() {
         if AuthApi.hasToken() {
             DispatchQueue.main.async { [weak self] in
-                self?.moveScheduleListViewController()
+                self?.dismiss(animated: true)
+                self?.moveScheduleListViewController(.kakao)
             }
         }
     }
@@ -81,13 +82,15 @@ private extension LoginViewController {
         if let token = AccessToken.current,
            !token.isExpired {
             DispatchQueue.main.async { [weak self] in
-                self?.moveScheduleListViewController()
+                self?.dismiss(animated: true)
+                self?.moveScheduleListViewController(.facebook)
             }
         }
     }
 
-    func moveScheduleListViewController() {
+    func moveScheduleListViewController(_ kindOfLogin: KindOfLogin) {
         let scheduleListViewController = ScheduleListViewController()
+        scheduleListViewController.kindOfLogin = kindOfLogin
         let navigationController = UINavigationController(rootViewController: scheduleListViewController)
         navigationController.modalPresentationStyle = .fullScreen
         self.present(navigationController, animated: true)
@@ -107,7 +110,8 @@ private extension LoginViewController {
 
                 _ = oauthToken
                 let accessToken = oauthToken?.accessToken
-                self?.moveScheduleListViewController()
+                self?.dismiss(animated: true)
+                self?.moveScheduleListViewController(.kakao)
             }
         } else {
             UserApi.shared.loginWithKakaoAccount { [weak self] oauthToken, error in
@@ -118,7 +122,8 @@ private extension LoginViewController {
                 }
 
                 let accessToken = oauthToken?.accessToken
-                self?.moveScheduleListViewController()
+                self?.dismiss(animated: true)
+                self?.moveScheduleListViewController(.kakao)
             }
         }
     }
@@ -143,7 +148,8 @@ private extension LoginViewController {
             }
 
             let accessToken = result.token
-            self?.moveScheduleListViewController()
+            self?.dismiss(animated: true)
+            self?.moveScheduleListViewController(.facebook)
         }
     }
 }
