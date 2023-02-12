@@ -48,6 +48,11 @@ final class LoginViewController: UIViewController {
         showListViewIfLoggedIn()
     }
 
+    private func configureActivityIndicator() {
+        activityIndicatorView.center = view.center
+        activityIndicatorView.style = .large
+    }
+
     private func configureLoginButton() {
         facebookLoginButton.delegate = self
         kakaoLoginButton.addAction(UIAction(handler: kakaoLoginHandler), for: .touchUpInside)
@@ -59,11 +64,6 @@ final class LoginViewController: UIViewController {
         } else {
             loginWithKakaoAccount()
         }
-    }
-
-    private func configureActivityIndicator() {
-        activityIndicatorView.center = view.center
-        activityIndicatorView.style = .large
     }
 
     private func configureHierarchy() {
