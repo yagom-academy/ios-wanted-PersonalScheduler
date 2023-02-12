@@ -11,6 +11,10 @@ protocol DataProcessChangeable {
     func changeDataProcess(data: Schedule)
 }
 
+protocol ViewPresentable: AnyObject {
+    func presentDetailView(mode: DetailViewModel.Mode, data: Schedule?)
+}
+
 final class ListViewController: UIViewController {
     typealias DataSource = UITableViewDiffableDataSource<Section, Schedule>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Schedule>
@@ -34,6 +38,7 @@ final class ListViewController: UIViewController {
     init(_ viewModel: ListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        viewModel.presentDelegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -44,6 +49,19 @@ final class ListViewController: UIViewController {
         viewModel.bindData { [weak self] datas in
             self?.applySnapshot(data: datas, animating: true)
         }
+    }
+}
+
+// MARK: - Present
+extension ListViewController: ViewPresentable {
+    func presentDetailView(mode: DetailViewModel.Mode, data: Schedule?) {
+        let detailViewModel = DetailViewModel(mode: mode, data: data)
+        let detailView = DetailViewController(viewModel: detailViewModel)
+        navigationController?.pushViewController(detailView, animated: true)
+    }
+    
+    @objc private func addButtonTapped() {
+        viewModel.dataAction(.add)
     }
 }
 
@@ -107,7 +125,7 @@ extension ListViewController: DataProcessChangeable {
 // MARK: - UIConstraint
 extension ListViewController {
     private func setupNavigationBar() {
-        title = viewModel.fetchName() + "님의 Scedule"
+        title = viewModel.fetchName() + "님의 Schedule"
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -117,6 +135,16 @@ extension ListViewController {
         navigationItem.hidesBackButton = true
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        let addBarButton = UIBarButtonItem(
+            image: UIImage(systemName: "plus.circle.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(addButtonTapped)
+        )
+        
+        addBarButton.tintColor = .systemOrange
+        navigationItem.rightBarButtonItem = addBarButton
     }
     
     private func setupView() {
