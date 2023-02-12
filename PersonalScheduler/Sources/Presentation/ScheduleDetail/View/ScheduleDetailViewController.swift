@@ -23,7 +23,7 @@ final class ScheduleDetailViewController: UIViewController {
         return button
     }()
         
-    private let viewModel = ScheduleDetailViewModel()
+    private let viewModel = ScheduleDetailViewModel(with: "Users")
     
     override func viewDidLoad() {
         super.viewDidLoad()

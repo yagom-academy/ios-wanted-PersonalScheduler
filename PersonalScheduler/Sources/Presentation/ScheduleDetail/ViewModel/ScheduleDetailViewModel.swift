@@ -5,18 +5,25 @@
 //  Copyright (c) 2023 Minii All rights reserved.
 
 import Combine
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 final class ScheduleDetailViewModel {
-    private let service = FireStoreService<[Schedule]>(referenceName: "Users")
+    @Published var detailSchedule: Schedule? = nil
+    private var database: CollectionReference
+    private var repository = ScheduleDetailRepository(dataBaseName: "Users")
     private var cancellable = Set<AnyCancellable>()
-    // TODO: - Schedule 저장, 삭제, 업데이트
+    
+    init(with collectionName: String) {
+        database = Firestore.firestore().collection(collectionName)
+        
+        readData()
+    }
     
     func readData() {
-        service.readData(documentReference: "Schedule", collectionReference: "Example")
+        repository.readData(documentName: "Example")
             .replaceError(with: nil)
-            .sink { values in
-                print(values)
-            }
+            .sink { self.detailSchedule = $0 }
             .store(in: &cancellable)
     }
 }
