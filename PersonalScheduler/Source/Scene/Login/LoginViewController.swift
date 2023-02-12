@@ -9,8 +9,7 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     private let viewModel: LoginViewModel
-    private var fireStoreManager: FireStoreManager?
-    
+
     private let loginImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,13 +48,21 @@ final class LoginViewController: UIViewController {
 // MARK: - Button Action
 extension LoginViewController {
     @objc private func kakaoLoginTapped() {
-        viewModel.loginKakao()
-        fireStoreManager = FireStoreManager(social: .kakao)
+        let listViewController = ListViewController(ListViewModel(FireStoreManager(.kakao)))
+        viewModel.loginKakao { result in
+            if result {
+                self.navigationController?.pushViewController(listViewController, animated: true)
+            }
+        }
     }
     
     @objc private func facebookLoginTapped() {
-        viewModel.faceBookLogin()
-        fireStoreManager = FireStoreManager(social: .faceBook)
+        viewModel.faceBookLogin { result in
+            let listViewController = ListViewController(ListViewModel(FireStoreManager(.faceBook)))
+            if result {
+                self.navigationController?.pushViewController(listViewController, animated: true)
+            }
+        }
     }
 }
 
@@ -63,6 +70,7 @@ extension LoginViewController {
 extension LoginViewController {
     private func setupView() {
         view.backgroundColor = .systemBackground
+        navigationController?.isNavigationBarHidden = true
         loginImageView.image = UIImage(named: "logo")
         kakaoLoginButton.setImage(UIImage(named: "kakao_login_image"), for: .normal)
         kakaoLoginButton.addTarget(
@@ -81,19 +89,36 @@ extension LoginViewController {
     private func setupConstrinat() {
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            loginImageView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 100),
-            loginImageView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 30),
-            loginImageView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -30),
+            loginImageView.topAnchor.constraint(
+                equalTo: safeArea.topAnchor, constant: 100
+            ),
+            loginImageView.leadingAnchor.constraint(
+                equalTo: safeArea.leadingAnchor, constant: 30
+            ),
+            loginImageView.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor, constant: -30
+            ),
             
-            kakaoLoginButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            kakaoLoginButton.leadingAnchor.constraint(
+                equalTo: safeArea.leadingAnchor, constant: 70
+            ),
+            kakaoLoginButton.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor, constant: -70
+            ),
             kakaoLoginButton.topAnchor.constraint(
                 equalTo: loginImageView.bottomAnchor,
                 constant: 50
             ),
             
-            faceBookLoginButton.topAnchor.constraint(equalTo: kakaoLoginButton.bottomAnchor, constant: 20),
-            faceBookLoginButton.leadingAnchor.constraint(equalTo: kakaoLoginButton.leadingAnchor),
-            faceBookLoginButton.trailingAnchor.constraint(equalTo: kakaoLoginButton.trailingAnchor)
+            faceBookLoginButton.topAnchor.constraint(
+                equalTo: kakaoLoginButton.bottomAnchor, constant: 5
+            ),
+            faceBookLoginButton.leadingAnchor.constraint(
+                equalTo: safeArea.leadingAnchor, constant: 10
+            ),
+            faceBookLoginButton.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor, constant: -10
+            ),
         ])
     }
 }

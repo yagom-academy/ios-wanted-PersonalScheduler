@@ -14,11 +14,17 @@
 		3C1B337629936C7A00AF9CA6 /* FireBaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1B337529936C7A00AF9CA6 /* FireBaseError.swift */; };
 		3C1B337929937F0500AF9CA6 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3C1B337829937F0500AF9CA6 /* FacebookCore */; };
 		3C1B337B29937F0500AF9CA6 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 3C1B337A29937F0500AF9CA6 /* FacebookLogin */; };
+		3C1B337F29952C4400AF9CA6 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1B337E29952C4300AF9CA6 /* ListViewController.swift */; };
+		3C35D1A22997C233009E795F /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35D1A12997C233009E795F /* Process.swift */; };
+		3C35D1A42997C2A8009E795F /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35D1A32997C2A8009E795F /* CellViewModel.swift */; };
 		3C3959B229923386006D2E52 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3959B129923386006D2E52 /* LoginViewModel.swift */; };
 		3C3959B429923C5B006D2E52 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3959B329923C5B006D2E52 /* LoginViewController.swift */; };
 		3C8AB49C2991617F00A9E241 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49B2991617F00A9E241 /* KakaoSDKAuth */; };
 		3C8AB49E2991617F00A9E241 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49D2991617F00A9E241 /* KakaoSDKCommon */; };
 		3C8AB4A02991617F00A9E241 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49F2991617F00A9E241 /* KakaoSDKUser */; };
+		3C8CE7B429952E9200BEDDDD /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8CE7B329952E9200BEDDDD /* ListViewModel.swift */; };
+		3C8CE7B629954A4500BEDDDD /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8CE7B529954A4500BEDDDD /* ScheduleTableViewCell.swift */; };
+		3C8CE7BA29954AC900BEDDDD /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8CE7B929954AC900BEDDDD /* Identifiable.swift */; };
 		3CF4FE4B2992846200226CD1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3CF4FE4A2992846200226CD1 /* FirebaseFirestore */; };
 		3CF4FE4D2992846200226CD1 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3CF4FE4C2992846200226CD1 /* FirebaseFirestoreSwift */; };
 		3CF4FE50299288FC00226CD1 /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4FE4F299288FC00226CD1 /* FireStoreManager.swift */; };
@@ -34,8 +40,14 @@
 		3C1B337129935B9400AF9CA6 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		3C1B33732993667D00AF9CA6 /* Social.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social.swift; sourceTree = "<group>"; };
 		3C1B337529936C7A00AF9CA6 /* FireBaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseError.swift; sourceTree = "<group>"; };
+		3C1B337E29952C4300AF9CA6 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		3C35D1A12997C233009E795F /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
+		3C35D1A32997C2A8009E795F /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		3C3959B129923386006D2E52 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3C3959B329923C5B006D2E52 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3C8CE7B329952E9200BEDDDD /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		3C8CE7B529954A4500BEDDDD /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		3C8CE7B929954AC900BEDDDD /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		3CC7AA0A29922D5A00DB3B56 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3CF4FE4F299288FC00226CD1 /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
 		3CF4FE5129928B0900226CD1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -71,6 +83,7 @@
 			children = (
 				3C1B336B29928FC900AF9CA6 /* Schedule.swift */,
 				3C1B33732993667D00AF9CA6 /* Social.swift */,
+				3C35D1A12997C233009E795F /* Process.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -85,10 +98,47 @@
 		3C1B337029935B8200AF9CA6 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				3C1B337129935B9400AF9CA6 /* DateFormatter+Extension.swift */,
+				3C8CE7B829954A6D00BEDDDD /* Protocol */,
+				3C8CE7B729954A5700BEDDDD /* Extension */,
 				3C1B337529936C7A00AF9CA6 /* FireBaseError.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		3C1B337C29952C1800AF9CA6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3C3959B329923C5B006D2E52 /* LoginViewController.swift */,
+				3C3959B129923386006D2E52 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		3C1B337D29952C2700AF9CA6 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				3C1B337E29952C4300AF9CA6 /* ListViewController.swift */,
+				3C8CE7B329952E9200BEDDDD /* ListViewModel.swift */,
+				3C8CE7B529954A4500BEDDDD /* ScheduleTableViewCell.swift */,
+				3C35D1A32997C2A8009E795F /* CellViewModel.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		3C8CE7B729954A5700BEDDDD /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3C1B337129935B9400AF9CA6 /* DateFormatter+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		3C8CE7B829954A6D00BEDDDD /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3C8CE7B929954AC900BEDDDD /* Identifiable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		3CC7AA0629922A7E00DB3B56 /* Source */ = {
@@ -99,7 +149,6 @@
 				3CF4FE4E299288CD00226CD1 /* Network */,
 				3CC7AA0829922A8C00DB3B56 /* Application */,
 				3CC7AA0929922AEB00DB3B56 /* Scene */,
-				3C3959B129923386006D2E52 /* LoginViewModel.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -128,7 +177,8 @@
 		3CC7AA0929922AEB00DB3B56 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				3C3959B329923C5B006D2E52 /* LoginViewController.swift */,
+				3C1B337C29952C1800AF9CA6 /* Login */,
+				3C1B337D29952C2700AF9CA6 /* List */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -254,14 +304,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C1B336C29928FC900AF9CA6 /* Schedule.swift in Sources */,
+				3C8CE7B629954A4500BEDDDD /* ScheduleTableViewCell.swift in Sources */,
 				3C3959B229923386006D2E52 /* LoginViewModel.swift in Sources */,
+				3C8CE7BA29954AC900BEDDDD /* Identifiable.swift in Sources */,
 				3C1B33742993667D00AF9CA6 /* Social.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				3C1B337229935B9400AF9CA6 /* DateFormatter+Extension.swift in Sources */,
 				3C3959B429923C5B006D2E52 /* LoginViewController.swift in Sources */,
 				3C1B337629936C7A00AF9CA6 /* FireBaseError.swift in Sources */,
 				3CF4FE50299288FC00226CD1 /* FireStoreManager.swift in Sources */,
+				3C35D1A42997C2A8009E795F /* CellViewModel.swift in Sources */,
+				3C35D1A22997C233009E795F /* Process.swift in Sources */,
+				3C1B337F29952C4400AF9CA6 /* ListViewController.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				3C8CE7B429952E9200BEDDDD /* ListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

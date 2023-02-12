@@ -21,13 +21,10 @@ final class FireStoreManager {
     private let social: String
     private let fireStoreDB: CollectionReference
     
-    init(social: Social) {
+    init(_ social: Social) {
         self.social = "\(social)"
         userID = Auth.auth().currentUser?.uid ?? ""
         fireStoreDB = Firestore.firestore().collection("Scedule")
-        
-//        print(Auth.auth().currentUser?.email)
-//        print(Auth.auth().currentUser?.displayName)   
     }
     
     func load(completion: @escaping ([Schedule]) -> Void) {
@@ -50,8 +47,21 @@ final class FireStoreManager {
         }
     }
 
+    func update(data: Schedule) {
+        fireStoreDB
+            .document(social)
+            .collection(userID)
+            .document(data.id.description)
+            .updateData([
+                "startDate": Timestamp(date: data.startDate),
+                "endDate": Timestamp(date: data.endDate),
+                "title": data.title,
+                "content": data.content,
+                "state": data.state.rawValue
+            ])
+    }
+    
     func add(data: Schedule) {
-        print(userID)
         fireStoreDB
             .document(social)
             .collection(userID)
@@ -60,7 +70,8 @@ final class FireStoreManager {
                 "startDate": Timestamp(date: data.startDate),
                 "endDate": Timestamp(date: data.endDate),
                 "title": data.title,
-                "content": data.content
+                "content": data.content,
+                "state": data.state.rawValue
             ])
     }
     
@@ -72,6 +83,11 @@ final class FireStoreManager {
             .delete()
     }
     
+    func fetchUserName() -> String {
+        let name = Auth.auth().currentUser?.displayName
+        return name ?? ""
+    }
+    
     private func convertScedule(from document: QueryDocumentSnapshot) throws -> Schedule {
         guard let id = UUID(uuidString: document.documentID),
               let startStamp = document.data()["startDate"] as? Timestamp,
@@ -81,7 +97,8 @@ final class FireStoreManager {
         
         let title = document.data()["title"] as? String ?? ""
         let content = document.data()["content"] as? String ?? ""
-
+        let state = document.data()["state"] as? Int ?? .zero
+        
         let startDate = startStamp.dateValue()
         let endDate = endStamp.dateValue()
         
@@ -90,7 +107,8 @@ final class FireStoreManager {
             startDate: startDate,
             endDate: endDate,
             title: title,
-            content: content
+            content: content,
+            state: Process(rawValue: state) ?? .ready
         )
         
         return data
