@@ -32,6 +32,7 @@
 		189FF57A2997F094006D4490 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FF5792997F094006D4490 /* NavigationView.swift */; };
 		189FF57C2997F1F5006D4490 /* ScheduleDetailTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FF57B2997F1F5006D4490 /* ScheduleDetailTitleView.swift */; };
 		189FF57E29980BA8006D4490 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FF57D29980BA7006D4490 /* UITextField+Extension.swift */; };
+		18A32E9D2999307400D8EB4D /* ScheduleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A32E9C2999307400D8EB4D /* ScheduleListCell.swift */; };
 		18B7BB2E2995E5FE007E1E74 /* ScheduleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B7BB2D2995E5FE007E1E74 /* ScheduleListViewModel.swift */; };
 		18B7BB302995E607007E1E74 /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B7BB2F2995E607007E1E74 /* ScheduleListViewController.swift */; };
 		18BF36352998793400C251AE /* ScheduleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BF36342998793400C251AE /* ScheduleDetailViewModel.swift */; };
@@ -83,6 +84,7 @@
 		189FF5792997F094006D4490 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		189FF57B2997F1F5006D4490 /* ScheduleDetailTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailTitleView.swift; sourceTree = "<group>"; };
 		189FF57D29980BA7006D4490 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		18A32E9C2999307400D8EB4D /* ScheduleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListCell.swift; sourceTree = "<group>"; };
 		18B7BB2D2995E5FE007E1E74 /* ScheduleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewModel.swift; sourceTree = "<group>"; };
 		18B7BB2F2995E607007E1E74 /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
 		18BEAD9829929A0F00679E18 /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				18D55D562996306E00FADED5 /* ScheduleListTitleView.swift */,
 				189FF56C2997A874006D4490 /* ScheduleSegmentControlView.swift */,
 				189FF56E2997D5E8006D4490 /* SegmentButton.swift */,
+				18A32E9C2999307400D8EB4D /* ScheduleListCell.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				185D74FA2998C92F00516C5B /* ScheduleUserRepository.swift in Sources */,
 				18BF36462998926100C251AE /* StoreError.swift in Sources */,
 				189FF57A2997F094006D4490 /* NavigationView.swift in Sources */,
+				18A32E9D2999307400D8EB4D /* ScheduleListCell.swift in Sources */,
 				188479422991453B00160A1B /* LoginViewModel.swift in Sources */,
 				18FABA532992C6A800333D63 /* UIControl+Extension.swift in Sources */,
 				189FF5742997E834006D4490 /* ScheduleDetailViewController.swift in Sources */,

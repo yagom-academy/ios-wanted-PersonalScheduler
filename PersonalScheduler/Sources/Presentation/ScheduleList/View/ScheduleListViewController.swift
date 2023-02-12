@@ -23,10 +23,12 @@ final class ScheduleListViewController: UIViewController {
     
     private let scheduleListView: UITableView = {
         let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(ScheduleListCell.self, forCellReuseIdentifier: ScheduleListCell.identifier)
+        tableView.separatorColor = .clear
         return tableView
     }()
     
-    private var schedules: [Schedule] = []
     private let viewModel: ScheduleListViewModel
     private var cancellable = Set<AnyCancellable>()
     
@@ -42,7 +44,8 @@ final class ScheduleListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        scheduleListView.delegate = self
+        scheduleListView.dataSource = self
         configureUI()
         bindAction()
         bind()
@@ -60,8 +63,8 @@ private extension ScheduleListViewController {
         
         viewModel.$schedules
             .receive(on: DispatchQueue.main)
-            .sink { values in
-                self.schedules = values
+            .sink { _ in
+                self.scheduleListView.reloadData()
             }
             .store(in: &cancellable)
     }
@@ -90,14 +93,28 @@ private extension ScheduleListViewController {
 
 extension ScheduleListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return schedules.count
+        return viewModel.schedules.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = schedules[indexPath.row].title
-        
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: ScheduleListCell.identifier,
+            for: indexPath
+        ) as? ScheduleListCell else {
+            return UITableViewCell()
+        }
+        let data = viewModel.schedules[indexPath.row]
+        cell.titleView.text = data.title
+        cell.bodyView.text = data.body
+        cell.dateView.text = data.startTime.dateValue().convertDescription()
         return cell
+    }
+    
+}
+
+extension ScheduleListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
 
@@ -110,7 +127,7 @@ private extension ScheduleListViewController {
     }
     
     func addChildComponents() {
-        [navigationBarView, addButton].forEach(view.addSubview)
+        [navigationBarView, addButton, scheduleListView].forEach(view.addSubview)
     }
     
     func setUpLayout() {
@@ -125,6 +142,11 @@ private extension ScheduleListViewController {
             addButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16),
             addButton.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.4),
             addButton.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor, constant: 28),
+            
+            scheduleListView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            scheduleListView.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 16),
+            scheduleListView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            scheduleListView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             
 //            logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 //            logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)

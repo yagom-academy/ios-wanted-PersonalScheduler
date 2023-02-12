@@ -23,7 +23,9 @@ final class ScheduleListViewModel {
     
     func readList() {
         listRepository.$schedules
-            .sink { self.schedules = $0 }
+            .sink {
+                self.schedules = $0
+            }
             .store(in: &cancellable)
     }
     
