@@ -61,12 +61,12 @@ final class ScheduleDetailTitleView: NavigationBar {
             startDateButton.leadingAnchor.constraint(equalTo: titleTextField.leadingAnchor),
             startDateButton.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 16),
             startDateButton.trailingAnchor.constraint(equalTo: titleTextField.centerXAnchor, constant: -8),
-            startDateButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -24),
+            startDateButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
             
             endDateButton.leadingAnchor.constraint(equalTo: titleTextField.centerXAnchor, constant: 8),
             endDateButton.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 16),
             endDateButton.trailingAnchor.constraint(equalTo: titleTextField.trailingAnchor),
-            endDateButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -24)
+            endDateButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
         
         titleTextField.setContentHuggingPriority(.required, for: .vertical)
