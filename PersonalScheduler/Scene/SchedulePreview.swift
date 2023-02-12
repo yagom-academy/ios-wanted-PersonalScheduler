@@ -13,6 +13,7 @@ struct SchedulePreview: Hashable {
     let period: String
     let description: String
     let startDate: Date
+    let endDate: Date
     
     var startDateString: String {
         return startDate.convertToString()

@@ -36,7 +36,8 @@ struct Schedule {
             title: title,
             period: date,
             description: description,
-            startDate: startDate
+            startDate: startDate,
+            endDate: endDate ?? startDate
         )
         
         return schedule

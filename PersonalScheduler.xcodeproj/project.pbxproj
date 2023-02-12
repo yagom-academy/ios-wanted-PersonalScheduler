@@ -40,6 +40,7 @@
 		E3668D542997FCAB00EAC215 /* SchedulePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3668D532997FCAB00EAC215 /* SchedulePreview.swift */; };
 		E3668D7629984E4D00EAC215 /* ScheduleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3668D7529984E4D00EAC215 /* ScheduleHeaderView.swift */; };
 		E3668D79299861AF00EAC215 /* AlretBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3668D78299861AF00EAC215 /* AlretBuilder.swift */; };
+		E3F85EE229989881000F30CC /* ScheduleCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F85EE129989881000F30CC /* ScheduleCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		E3668D532997FCAB00EAC215 /* SchedulePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePreview.swift; sourceTree = "<group>"; };
 		E3668D7529984E4D00EAC215 /* ScheduleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleHeaderView.swift; sourceTree = "<group>"; };
 		E3668D78299861AF00EAC215 /* AlretBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlretBuilder.swift; sourceTree = "<group>"; };
+		E3F85EE129989881000F30CC /* ScheduleCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			children = (
 				E3668D7529984E4D00EAC215 /* ScheduleHeaderView.swift */,
 				E3668D4F2997C40400EAC215 /* ScheduleCell.swift */,
+				E3F85EE129989881000F30CC /* ScheduleCellViewModel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				E33299FB2995425100EB425B /* LoginButton.swift in Sources */,
 				E347AD71299248DB0022A5DB /* Schedule.swift in Sources */,
 				E3668D542997FCAB00EAC215 /* SchedulePreview.swift in Sources */,
+				E3F85EE229989881000F30CC /* ScheduleCellViewModel.swift in Sources */,
 				E347AD73299248E50022A5DB /* ScheduleEntity.swift in Sources */,
 				E3668D502997C40400EAC215 /* ScheduleCell.swift in Sources */,
 				E33299E62992C90800EB425B /* LoginViewModel.swift in Sources */,
