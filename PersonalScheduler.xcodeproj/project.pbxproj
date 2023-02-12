@@ -12,7 +12,7 @@
 		185D74ED2998A26D00516C5B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 185D74EC2998A26D00516C5B /* FirebaseFirestoreSwift */; };
 		185D74F02998A32000516C5B /* ScheduleDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D74EF2998A32000516C5B /* ScheduleDetailRepository.swift */; };
 		185D74F22998A7BE00516C5B /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D74F12998A7BE00516C5B /* UITextView+Extension.swift */; };
-		185D74F42998AC8F00516C5B /* DatePickerSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D74F32998AC8F00516C5B /* DatePickerSheetViewController.swift */; };
+		185D74F62998BDD200516C5B /* UIDatePicker+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D74F52998BDD200516C5B /* UIDatePicker+Extension.swift */; };
 		1878BE712994E6FC009C0DF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1878BE702994E6FC009C0DF8 /* GoogleService-Info.plist */; };
 		1878BE732994EC69009C0DF8 /* AppleLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878BE722994EC69009C0DF8 /* AppleLoginRepository.swift */; };
 		1878BE7529952BF2009C0DF8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878BE7429952BF2009C0DF8 /* LoginView.swift */; };
@@ -60,7 +60,7 @@
 /* Begin PBXFileReference section */
 		185D74EF2998A32000516C5B /* ScheduleDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailRepository.swift; sourceTree = "<group>"; };
 		185D74F12998A7BE00516C5B /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
-		185D74F32998AC8F00516C5B /* DatePickerSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerSheetViewController.swift; sourceTree = "<group>"; };
+		185D74F52998BDD200516C5B /* UIDatePicker+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDatePicker+Extension.swift"; sourceTree = "<group>"; };
 		1878BE702994E6FC009C0DF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1878BE722994EC69009C0DF8 /* AppleLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginRepository.swift; sourceTree = "<group>"; };
 		1878BE7429952BF2009C0DF8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -139,6 +139,7 @@
 				189FF57D29980BA7006D4490 /* UITextField+Extension.swift */,
 				18BF363B29988A6A00C251AE /* FireStore+Extension.swift */,
 				185D74F12998A7BE00516C5B /* UITextView+Extension.swift */,
+				185D74F52998BDD200516C5B /* UIDatePicker+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -252,7 +253,6 @@
 			children = (
 				189FF5752997E9E4006D4490 /* Subviews */,
 				189FF5732997E834006D4490 /* ScheduleDetailViewController.swift */,
-				185D74F32998AC8F00516C5B /* DatePickerSheetViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -510,7 +510,6 @@
 				18FABA532992C6A800333D63 /* UIControl+Extension.swift in Sources */,
 				189FF5742997E834006D4490 /* ScheduleDetailViewController.swift in Sources */,
 				185D74F22998A7BE00516C5B /* UITextView+Extension.swift in Sources */,
-				185D74F42998AC8F00516C5B /* DatePickerSheetViewController.swift in Sources */,
 				18B7BB2E2995E5FE007E1E74 /* ScheduleListViewModel.swift in Sources */,
 				18F5F1842993C773005B7733 /* UIButton+Extension.swift in Sources */,
 				189FF57C2997F1F5006D4490 /* ScheduleDetailTitleView.swift in Sources */,
@@ -522,6 +521,7 @@
 				1878BE7529952BF2009C0DF8 /* LoginView.swift in Sources */,
 				185D74F02998A32000516C5B /* ScheduleDetailRepository.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				185D74F62998BDD200516C5B /* UIDatePicker+Extension.swift in Sources */,
 				18D55D572996306E00FADED5 /* ScheduleListTitleView.swift in Sources */,
 				18F5F19D2993FEDA005B7733 /* FacebookLoginRepository.swift in Sources */,
 				18F5F18E2993CFD7005B7733 /* KakaoLoginRepository.swift in Sources */,

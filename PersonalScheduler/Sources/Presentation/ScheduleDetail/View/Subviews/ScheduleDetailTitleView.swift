@@ -20,17 +20,37 @@ final class ScheduleDetailTitleView: NavigationBar {
         return textField
     }()
     
-    private let startDateButton = UIButton()
-        .setInitState()
-        .setTitleLabel(title: "시작일시")
-        .setImage(imageName: "endFlag")
-        .setBorder(color: UIColor(named: "textFieldBorderColor"), width: 1)
+    private let startDateButton: ScheduleTextField = {
+        let textField = ScheduleTextField()
+        textField.placeholder = "시작 날짜"
+        return textField
+    }()
     
-    private let endDateButton = UIButton()
-        .setInitState()
-        .setTitleLabel(title: "종료일시")
-        .setImage(imageName: "endFlag")
-        .setBorder(color: UIColor(named: "textFieldBorderColor"), width: 1)
+    private let endDateButton: ScheduleTextField = {
+        let textField = ScheduleTextField()
+        textField.placeholder = "종료 날짜"
+        return textField
+    }()
+    
+    private let startDatePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.minimumDate = Date()
+        datePicker.locale = Locale(identifier: "ko-KR")
+        datePicker.datePickerMode = .dateAndTime
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        return datePicker
+    }()
+    
+    private let endDatePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.minimumDate = Date()
+        datePicker.locale = Locale(identifier: "ko-KR")
+        datePicker.datePickerMode = .dateAndTime
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        return datePicker
+    }()
     
     private var cancellable = Set<AnyCancellable>()
     
@@ -40,16 +60,10 @@ final class ScheduleDetailTitleView: NavigationBar {
         super.init(title: title)
         translatesAutoresizingMaskIntoConstraints = false
         
+        configureInputView()
+
         configureUI()
         bindAction()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        [startDateButton, endDateButton].forEach {
-            $0.setShadow()
-        }
     }
     
     required init?(coder: NSCoder) {
@@ -76,8 +90,6 @@ final class ScheduleDetailTitleView: NavigationBar {
             endDateButton.trailingAnchor.constraint(equalTo: titleTextField.trailingAnchor),
             endDateButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
-        
-        titleTextField.setContentHuggingPriority(.required, for: .vertical)
     }
 }
 
@@ -88,9 +100,36 @@ private extension ScheduleDetailTitleView {
             .sink { self.delegate?.scheduleDetailTitleView(with: self, title: $0) }
             .store(in: &cancellable)
         
-        startDateButton.tapPublisher
-            .sink { _ in self.delegate?.scheduleDetailTitleView(didTapStartTime: self) }
+        startDatePicker.dateSelectedPublisher
+            .sink { self.startDateButton.text = $0?.description }
             .store(in: &cancellable)
+        
+        endDatePicker.dateSelectedPublisher
+            .sink { self.endDateButton.text = $0?.description }
+            .store(in: &cancellable)
+    }
+}
+
+private extension ScheduleDetailTitleView {
+    func configureToolbar() -> UIToolbar {
+        let doneBotton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        let toolbar = UIToolbar()
+        toolbar.setItems([doneBotton], animated: true)
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        
+        return toolbar
+    }
+    
+    func configureInputView() {
+        startDateButton.inputView = startDatePicker
+        endDateButton.inputView = endDatePicker
+        
+        startDateButton.inputAccessoryView = configureToolbar()
+        endDateButton.inputAccessoryView = configureToolbar()
+    }
+    
+    @objc private func donePressed() {
+        endEditing(true)
     }
 }
 
