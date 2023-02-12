@@ -12,6 +12,7 @@ final class DetailViewController: UIViewController {
     
     private let titleTextField: UITextField = {
         let textField = UITextField()
+        textField.placeholder = "Title"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -52,6 +53,7 @@ final class DetailViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         setupNavigationBar()
+        setupBind()
         setupView()
         setupPicker()
         setupConstraint()
@@ -65,6 +67,28 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
     }
 }
+
+// MARK: - Binding
+extension DetailViewController {
+    private func setupBind() {
+        viewModel.bindTitle { [weak self] title in
+            self?.titleTextField.text = title
+        }
+        
+        viewModel.bindContent { [weak self] content in
+            self?.contentTextView.text = content
+        }
+        
+        viewModel.bindStartDate { [weak self] date in
+            self?.startDatePicker.setDate(date, animated: true)
+        }
+        
+        viewModel.bindEndDate { [weak self] date in
+            self?.endDatePicker.setDate(date, animated: true)
+        }
+    }
+}
+
 
 // MARK: - Action
 extension DetailViewController {
@@ -91,6 +115,7 @@ extension DetailViewController {
     }
     
     private func setupView() {
+        view.backgroundColor = .systemBackground
         [startDatePicker, dateLabel, endDatePicker]
             .forEach(dateStackView.addArrangedSubview(_:))
         [titleTextField, dateStackView, contentTextView]
