@@ -9,7 +9,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 final class ScheduleDetailRepository {
-    var dataBase: CollectionReference
+    private var dataBase: CollectionReference
     
     init(dataBaseName: String) {
         self.dataBase = Firestore.firestore().collection(dataBaseName)
@@ -19,13 +19,18 @@ final class ScheduleDetailRepository {
         return dataBase.document(documentName).toAnyPublisher()
     }
     
-    func writeData(documentName: String? = nil, item: Schedule, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard let _ = try? createDocument(documentName: documentName).setData(from: item) else {
-            completion(.failure(StoreError.writeError))
+    func writeData(
+        documentName: String? = nil,
+        item: Schedule,
+        completion: @escaping (String?) -> Void
+    ) {
+        let document = createDocument(documentName: documentName)
+        guard let _ = try? document.setData(from: item) else {
+            completion(nil)
             return
         }
         
-        completion(.success(()))
+        completion(document.documentID)
     }
     
     private func createDocument(documentName: String?) -> DocumentReference {

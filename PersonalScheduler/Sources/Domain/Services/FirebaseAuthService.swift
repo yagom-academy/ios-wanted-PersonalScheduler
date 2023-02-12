@@ -41,6 +41,14 @@ final class FirebaseAuthService: LoginService {
         }
     }
     
+    func setExistUserId() {
+        guard let userId = FirebaseAuth.Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        self.userId = userId
+    }
+    
     func logout(completion: @escaping (Result<Void, Error>) -> Void) {
         guard let _ = try? Auth.auth().signOut() else {
             completion(.failure(LoginError.unknown))

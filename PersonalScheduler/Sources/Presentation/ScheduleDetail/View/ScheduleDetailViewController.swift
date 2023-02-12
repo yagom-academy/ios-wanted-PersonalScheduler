@@ -25,11 +25,21 @@ final class ScheduleDetailViewController: UIViewController {
     }()
     
     private var cancellable = Set<AnyCancellable>()
-    private let viewModel = ScheduleDetailViewModel(with: "Users")
+    private let viewModel: ScheduleDetailViewModel
+    
+    init(viewModel: ScheduleDetailViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .systemBackground
         configureUI()
         bindAction()
         bind()
@@ -155,15 +165,3 @@ private extension UITextView {
         return self
     }
 }
-
-#if DEBUG
-import SwiftUI
-
-struct ScheduleDetailViewPreview: PreviewProvider {
-    static var previews: some View {
-        ScheduleDetailViewController()
-            .showPreview()
-            .edgesIgnoringSafeArea(.all)
-    }
-}
-#endif

@@ -44,6 +44,19 @@ private extension ScheduleListViewController {
     }
     
     func bindAction() {
+        addButton.tapPublisher
+            .sink { _ in
+                let userRepository = ScheduleUserRepository(
+                    authService: self.viewModel.firebaseAuthService,
+                    dataBaseName: "Users"
+                )
+                let viewModel = ScheduleDetailViewModel(userRepository: userRepository)
+                let controller = ScheduleDetailViewController(viewModel: viewModel)
+                controller.modalPresentationStyle = .fullScreen
+                self.present(controller, animated: true)
+            }
+            .store(in: &cancellable)
+        
 //        logoutButton.tapPublisher
 //            .sink { [weak self] _ in
 //                self?.viewModel.logout()

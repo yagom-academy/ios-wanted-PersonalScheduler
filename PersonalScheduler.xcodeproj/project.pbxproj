@@ -14,6 +14,7 @@
 		185D74F22998A7BE00516C5B /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D74F12998A7BE00516C5B /* UITextView+Extension.swift */; };
 		185D74F62998BDD200516C5B /* UIDatePicker+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D74F52998BDD200516C5B /* UIDatePicker+Extension.swift */; };
 		185D74F82998C35400516C5B /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D74F72998C35400516C5B /* Date+Extension.swift */; };
+		185D74FA2998C92F00516C5B /* ScheduleUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D74F92998C92F00516C5B /* ScheduleUserRepository.swift */; };
 		1878BE712994E6FC009C0DF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1878BE702994E6FC009C0DF8 /* GoogleService-Info.plist */; };
 		1878BE732994EC69009C0DF8 /* AppleLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878BE722994EC69009C0DF8 /* AppleLoginRepository.swift */; };
 		1878BE7529952BF2009C0DF8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878BE7429952BF2009C0DF8 /* LoginView.swift */; };
@@ -63,6 +64,7 @@
 		185D74F12998A7BE00516C5B /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		185D74F52998BDD200516C5B /* UIDatePicker+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDatePicker+Extension.swift"; sourceTree = "<group>"; };
 		185D74F72998C35400516C5B /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		185D74F92998C92F00516C5B /* ScheduleUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleUserRepository.swift; sourceTree = "<group>"; };
 		1878BE702994E6FC009C0DF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1878BE722994EC69009C0DF8 /* AppleLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginRepository.swift; sourceTree = "<group>"; };
 		1878BE7429952BF2009C0DF8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				185D74EF2998A32000516C5B /* ScheduleDetailRepository.swift */,
+				185D74F92998C92F00516C5B /* ScheduleUserRepository.swift */,
 			);
 			path = ScheduleRepository;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 			files = (
 				18B7BB302995E607007E1E74 /* ScheduleListViewController.swift in Sources */,
 				1878BE732994EC69009C0DF8 /* AppleLoginRepository.swift in Sources */,
+				185D74FA2998C92F00516C5B /* ScheduleUserRepository.swift in Sources */,
 				18BF36462998926100C251AE /* StoreError.swift in Sources */,
 				189FF57A2997F094006D4490 /* NavigationView.swift in Sources */,
 				188479422991453B00160A1B /* LoginViewModel.swift in Sources */,

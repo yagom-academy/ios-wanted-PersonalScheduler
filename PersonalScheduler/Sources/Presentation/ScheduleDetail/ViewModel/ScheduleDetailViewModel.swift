@@ -10,18 +10,17 @@ import FirebaseFirestoreSwift
 
 final class ScheduleDetailViewModel {
     @Published var detailSchedule: Schedule = Schedule.baseSchedule
-    private var database: CollectionReference
-    private var repository = ScheduleDetailRepository(dataBaseName: "Schedule")
+    @Published var isDismiss: Bool = false
+    private var scheduleDetailRepository = ScheduleDetailRepository(dataBaseName: "Schedule")
+    private var userRepository: ScheduleUserRepository
     private var cancellable = Set<AnyCancellable>()
     
-    init(with collectionName: String) {
-        database = Firestore.firestore().collection(collectionName)
-        
-        readData()
+    init(userRepository: ScheduleUserRepository) {
+        self.userRepository = userRepository
     }
     
     func readData() {
-        repository.readData(documentName: "Example")
+        scheduleDetailRepository.readData(documentName: "Example")
             .replaceError(with: nil)
             .compactMap { $0 }
             .sink {
@@ -31,12 +30,16 @@ final class ScheduleDetailViewModel {
     }
     
     func writeData() {
-        repository.writeData(item: detailSchedule) { result in
-            switch result {
-            case .success:
-                print("success")
-            case .failure:
-                print("Error in write")
+        scheduleDetailRepository.writeData(item: detailSchedule) { [weak self] result in
+            guard let result = result else { return }
+            
+            self?.userRepository.writeUserSchedule(documentId: result) { result in
+                switch result {
+                case .success:
+                    self?.isDismiss = true
+                case .failure:
+                    self?.isDismiss = false
+                }
             }
         }
     }
