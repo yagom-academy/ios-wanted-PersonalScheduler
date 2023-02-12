@@ -91,6 +91,11 @@ final class ListTableViewCell: UITableViewCell {
         endDateLabel.text = "종료일자 : " + schedule.endDate + " " + schedule.endTime
     }
     
+    func configureDateLabel(color: UIColor) {
+        startDateLabel.textColor = color
+        endDateLabel.textColor = color
+    }
+    
     // MARK: Private Methods
     
     private func setUpStackView() {

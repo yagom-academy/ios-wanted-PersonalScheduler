@@ -20,6 +20,8 @@ final class ScheduleInfoView: UIView {
     
     // MARK: Private Properties
     
+    private var startTimeIntervalSince1970: Double = 0
+    private var endTimeIntervalSince1970: Double = 0
     private let titleTextField: UITextField = {
         let textField = UITextField()
         textField.addLeftPadding()
@@ -177,7 +179,9 @@ final class ScheduleInfoView: UIView {
                 startDate: startDate,
                 startTime: startTime,
                 endDate: endDate,
-                endTime: endTime
+                endTime: endTime,
+                startTimeInterval1970: startTimeIntervalSince1970,
+                endTimeInterval1970: endTimeIntervalSince1970
             )
             
             return checkDataText(schedule: schedule)
@@ -274,11 +278,21 @@ final class ScheduleInfoView: UIView {
         formatter.locale = Locale(identifier: "ko-KR")
         
         switch type {
-        case .startDate, .endDate:
+        case .startDate:
+            startTimeIntervalSince1970 = datePicker.date.timeIntervalSince1970
             formatter.dateStyle = .short
             
             return formatter.string(from: datePicker.date)
-        case .startTime, .endTime:
+        case .endDate:
+            endTimeIntervalSince1970 = datePicker.date.timeIntervalSince1970
+            formatter.dateStyle = .short
+            
+            return formatter.string(from: datePicker.date)
+        case .startTime:
+            formatter.timeStyle = .short
+            
+            return formatter.string(from: timePicker.date)
+        case .endTime:
             formatter.timeStyle = .short
             
             return formatter.string(from: timePicker.date)
@@ -320,7 +334,9 @@ final class ScheduleInfoView: UIView {
             startDate: schedule.startDate,
             startTime: schedule.startTime,
             endDate: schedule.endDate,
-            endTime: schedule.endTime
+            endTime: schedule.endTime,
+            startTimeInterval1970: startTimeIntervalSince1970,
+            endTimeInterval1970: endTimeIntervalSince1970
         )
         
         return data
@@ -382,26 +398,65 @@ final class ScheduleInfoView: UIView {
     
     @objc
     private func tapStartTimeSelectButton() {
-        startTimeTextField.text = convertDateFormatter(type: .startTime)
-        endEditing(true)
+        if let startDateText = startDateTextField.text,
+           let endDateText = endDateTextField.text {
+            if startDateText == endDateText {
+                if timePicker.date.timeIntervalSince1970 > endTimeIntervalSince1970 {
+                    if endTimeIntervalSince1970 == 0 {
+                        startTimeTextField.text = convertDateFormatter(type: .startTime)
+                        endEditing(true)
+                    }
+                } else if timePicker.date.timeIntervalSince1970 <= endTimeIntervalSince1970 {
+                    startTimeTextField.text = convertDateFormatter(type: .startTime)
+                    endEditing(true)
+                }
+            } else {
+                startTimeTextField.text = convertDateFormatter(type: .startTime)
+                endEditing(true)
+            }
+        }
     }
     
     @objc
     private func tapStartDateSelectButton() {
-        startDateTextField.text = convertDateFormatter(type: .startDate)
-        endEditing(true)
+        if datePicker.date.timeIntervalSince1970 <= endTimeIntervalSince1970 {
+            startDateTextField.text = convertDateFormatter(type: .startDate)
+            endEditing(true)
+        } else if datePicker.date.timeIntervalSince1970 > endTimeIntervalSince1970 {
+            if endTimeIntervalSince1970 == 0 {
+                startDateTextField.text = convertDateFormatter(type: .startDate)
+                endEditing(true)
+            }
+        }
     }
     
     @objc
     private func tapEndTimeSelectButton() {
-        endTimeTextField.text = convertDateFormatter(type: .endTime)
-        endEditing(true)
+        if let startDateText = startDateTextField.text,
+           let endDateText = endDateTextField.text {
+            if startDateText == endDateText {
+                if timePicker.date.timeIntervalSince1970 >= startTimeIntervalSince1970 {
+                    endTimeTextField.text = convertDateFormatter(type: .endTime)
+                    endEditing(true)
+                }
+            } else {
+                endTimeTextField.text = convertDateFormatter(type: .endTime)
+                endEditing(true)
+            }
+        }
     }
     
     @objc
     private func tapEndDateSelectButton() {
-        endDateTextField.text = convertDateFormatter(type: .endDate)
-        endEditing(true)
+        if datePicker.date.timeIntervalSince1970 > startTimeIntervalSince1970 {
+            endDateTextField.text = convertDateFormatter(type: .endDate)
+            endEditing(true)
+        } else if datePicker.date.timeIntervalSince1970 == startTimeIntervalSince1970 {
+            if timePicker.date.timeIntervalSince1970 >= startTimeIntervalSince1970 {
+                endDateTextField.text = convertDateFormatter(type: .endDate)
+                endEditing(true)
+            }
+        }
     }
 }
 

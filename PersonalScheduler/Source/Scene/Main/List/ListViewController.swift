@@ -67,12 +67,14 @@ final class ListViewController: UIViewController {
     }
     
     private func updateUserScheduleData() {
+        scheduleList.sort(by: { $0.startTimeInterval1970 < $1.startTimeInterval1970 })
+        
         let jsonScheduleList = JSONEncoder().encodeScheduleList(scheduleList)
         let path = Firestore.firestore().collection(userID).document("Personal")
         
         path.updateData(["Schedule" : jsonScheduleList])
         
-        self.listView.reloadTableViewData()
+        listView.reloadTableViewData()
     }
     
     private func configureLayout() {
@@ -138,8 +140,20 @@ extension ListViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(
             withIdentifier: ListTableViewCell.identifier,
             for: indexPath) as? ListTableViewCell {
-            let data = scheduleList[indexPath.row]
+            scheduleList.sort(by: { $0.startTimeInterval1970 < $1.startTimeInterval1970 })
             
+            let data = scheduleList[indexPath.row]
+            let date = Date().timeIntervalSince1970
+                
+            if data.startTimeInterval1970 < date &&
+                data.endTimeInterval1970 > date {
+                cell.configureDateLabel(color: .label)
+            } else if data.startTimeInterval1970 < date {
+                cell.configureDateLabel(color: .systemRed)
+            } else if data.startTimeInterval1970 > date {
+                cell.configureDateLabel(color: .blue)
+            }
+        
             cell.configureLabelText(schedule: data)
             cell.selectionStyle = .none
             

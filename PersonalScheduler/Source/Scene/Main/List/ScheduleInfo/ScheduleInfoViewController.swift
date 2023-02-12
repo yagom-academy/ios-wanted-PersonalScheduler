@@ -151,20 +151,6 @@ extension ScheduleInfoViewController: AlertPresentable {
         present(alert, animated: true)
     }
     
-    func presentDateInputErrorAlert() {
-        let alert = createAlert(
-            title: "입력 오류",
-            message: "종료날짜/시간을 시작날짜/시간이후로 선택해주세요."
-        )
-        let AlertAction = createAlertAction(
-            title: "확인"
-        ) {}
-        
-        alert.addAction(AlertAction)
-        
-        present(alert, animated: true)
-    }
-    
     func presentDataEmptyErrorAlert() {
         let alert = createAlert(
             title: "입력 오류",

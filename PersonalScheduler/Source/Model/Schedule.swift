@@ -12,4 +12,6 @@ struct Schedule: Codable {
     let startTime: String
     let endDate: String
     let endTime: String
+    let startTimeInterval1970: Double
+    let endTimeInterval1970: Double
 }
