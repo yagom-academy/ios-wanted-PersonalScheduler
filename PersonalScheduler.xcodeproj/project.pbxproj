@@ -35,6 +35,7 @@
 		E3668D4A29979DB100EAC215 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = E3668D4929979DB100EAC215 /* FacebookCore */; };
 		E3668D4C29979DB100EAC215 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = E3668D4B29979DB100EAC215 /* FacebookLogin */; };
 		E3668D4E2997A96500EAC215 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3668D4D2997A96500EAC215 /* ViewControllerFactory.swift */; };
+		E3668D79299861AF00EAC215 /* AlretBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3668D78299861AF00EAC215 /* AlretBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		E347AD70299248DB0022A5DB /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		E347AD72299248E50022A5DB /* ScheduleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEntity.swift; sourceTree = "<group>"; };
 		E3668D4D2997A96500EAC215 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		E3668D78299861AF00EAC215 /* AlretBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlretBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				E33299F82995402800EB425B /* ButtonBuilder.swift */,
 				E33299FA2995425100EB425B /* LoginButton.swift */,
 				E3668D4D2997A96500EAC215 /* ViewControllerFactory.swift */,
+				E3668D78299861AF00EAC215 /* AlretBuilder.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3668D79299861AF00EAC215 /* AlretBuilder.swift in Sources */,
 				E33299EC2992C96F00EB425B /* ScheduleViewController.swift in Sources */,
 				E33299FB2995425100EB425B /* LoginButton.swift in Sources */,
 				E347AD71299248DB0022A5DB /* Schedule.swift in Sources */,
