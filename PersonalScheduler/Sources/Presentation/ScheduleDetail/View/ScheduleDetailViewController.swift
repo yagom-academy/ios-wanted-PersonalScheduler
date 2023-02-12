@@ -23,10 +23,14 @@ final class ScheduleDetailViewController: UIViewController {
         return button
     }()
         
+    private let viewModel = ScheduleDetailViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        
+        viewModel.readData()
     }
     
     override func viewDidLayoutSubviews() {

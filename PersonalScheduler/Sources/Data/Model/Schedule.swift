@@ -7,7 +7,7 @@
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-struct Schedule {
+struct Schedule: Decodable {
     var title: String
     var body: String
     var startTime: Timestamp
