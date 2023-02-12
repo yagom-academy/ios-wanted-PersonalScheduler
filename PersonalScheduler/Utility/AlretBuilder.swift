@@ -13,7 +13,7 @@ final class AlertBuilder {
     private var style: UIAlertController.Style = .alert
     private var actions: [UIAlertAction] = []
     private let defaultActions: [UIAlertAction] = [
-        UIAlertAction(title: "확인", style: .default)
+        UIAlertAction(title: "OK", style: .default)
     ]
     
     func withTitle(_ title: String) -> AlertBuilder {

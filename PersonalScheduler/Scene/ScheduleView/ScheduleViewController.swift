@@ -91,7 +91,6 @@ class ScheduleViewController: UIViewController {
     
     private func tapLogout(_ action: UIAction) {
         viewModel.action(.tapLogout)
-        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -125,6 +124,30 @@ extension ScheduleViewController {
 }
 
 extension ScheduleViewController: ScheduleViewModelDelegate {
+    func scheduleViewModel(successLogout: Void) {
+        let alert = AlertBuilder()
+            .withStyle(.alert)
+            .withTitle("Logout")
+            .withMessage("Logout successful")
+            .withAction(title: "OK", style: .default, handler: { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .build()
+        
+        present(alert, animated: true)
+    }
+    
+    func scheduleViewModel(failedLogout error: Error) {
+        let alert = AlertBuilder()
+            .withStyle(.alert)
+            .withTitle("Logout")
+            .withMessage("Logout failed")
+            .withDefaultActions()
+            .build()
+        
+        present(alert, animated: true)
+    }
+    
     func scheduleViewModel(didChange periodWithSchedules: [String : [SchedulePreview]]) {
         updateTableView(with: periodWithSchedules)
     }

@@ -11,6 +11,8 @@ protocol ScheduleViewModelDelegate: AnyObject {
     func scheduleViewModel(didChange startDateWithSchedules: [String: [SchedulePreview]])
     func scheduleViewModel(selectedScheduleID id: String)
     func scheduleViewModel(failedFetchData error: RemoteDBError)
+    func scheduleViewModel(successLogout: Void)
+    func scheduleViewModel(failedLogout error: Error)
 }
 
 final class ScheduleViewModel {
@@ -47,7 +49,7 @@ final class ScheduleViewModel {
         case .findSectionTitle(let section, let completion):
             findSectionTitle(from: section, completion: completion)
         case .tapLogout:
-            loginService.requestLogout { _ in }
+            taplogout()
         }
     }
     
@@ -74,6 +76,17 @@ final class ScheduleViewModel {
         guard let selectedSchedule = periodWithSchedules[section]?[index] else { return }
         
         delegate?.scheduleViewModel(selectedScheduleID: selectedSchedule.id)
+    }
+    
+    private func taplogout() {
+        loginService.requestLogout { [weak self] result in
+            switch result {
+            case .success():
+                self?.delegate?.scheduleViewModel(successLogout: ())
+            case .failure(let failure):
+                self?.delegate?.scheduleViewModel(failedLogout: failure)
+            }
+        }
     }
     
     func findSectionTitle(from section: Int, completion: ((String) -> Void)) {
