@@ -35,6 +35,8 @@
 		E3668D4A29979DB100EAC215 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = E3668D4929979DB100EAC215 /* FacebookCore */; };
 		E3668D4C29979DB100EAC215 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = E3668D4B29979DB100EAC215 /* FacebookLogin */; };
 		E3668D4E2997A96500EAC215 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3668D4D2997A96500EAC215 /* ViewControllerFactory.swift */; };
+		E3668D542997FCAB00EAC215 /* SchedulePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3668D532997FCAB00EAC215 /* SchedulePreview.swift */; };
+		E3668D7629984E4D00EAC215 /* ScheduleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3668D7529984E4D00EAC215 /* ScheduleHeaderView.swift */; };
 		E3668D79299861AF00EAC215 /* AlretBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3668D78299861AF00EAC215 /* AlretBuilder.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,8 @@
 		E347AD70299248DB0022A5DB /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		E347AD72299248E50022A5DB /* ScheduleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEntity.swift; sourceTree = "<group>"; };
 		E3668D4D2997A96500EAC215 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		E3668D532997FCAB00EAC215 /* SchedulePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePreview.swift; sourceTree = "<group>"; };
+		E3668D7529984E4D00EAC215 /* ScheduleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleHeaderView.swift; sourceTree = "<group>"; };
 		E3668D78299861AF00EAC215 /* AlretBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlretBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +147,7 @@
 			children = (
 				E33299E82992C91B00EB425B /* ScheduleView */,
 				E33299E72992C90D00EB425B /* LoginView */,
+				E3668D532997FCAB00EAC215 /* SchedulePreview.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 			children = (
 				E33299E92992C95A00EB425B /* ScheduleViewModel.swift */,
 				E33299EB2992C96F00EB425B /* ScheduleViewController.swift */,
+				E3668D772998602800EAC215 /* Components */,
 			);
 			path = ScheduleView;
 			sourceTree = "<group>";
@@ -192,6 +198,15 @@
 				E347AD70299248DB0022A5DB /* Schedule.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		E3668D772998602800EAC215 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E3668D7529984E4D00EAC215 /* ScheduleHeaderView.swift */,
+				E3668D4F2997C40400EAC215 /* ScheduleCell.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,9 +297,11 @@
 			files = (
 				E3668D79299861AF00EAC215 /* AlretBuilder.swift in Sources */,
 				E33299EC2992C96F00EB425B /* ScheduleViewController.swift in Sources */,
+				E3668D7629984E4D00EAC215 /* ScheduleHeaderView.swift in Sources */,
 				E33299FB2995425100EB425B /* LoginButton.swift in Sources */,
 				E347AD71299248DB0022A5DB /* Schedule.swift in Sources */,
 				E347AD73299248E50022A5DB /* ScheduleEntity.swift in Sources */,
+				E3668D502997C40400EAC215 /* ScheduleCell.swift in Sources */,
 				E33299E62992C90800EB425B /* LoginViewModel.swift in Sources */,
 				E347AD6F299171610022A5DB /* DefaultRepository.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
