@@ -20,8 +20,16 @@ extension Date {
         
         return dateFormatter.string(from: self)
     }
+    
+    func dropTime() -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy. MM. dd"
+        
+        let date = dateFormatter.string(from: self)
+        
+        return dateFormatter.date(from: date) ?? self
+    }
 }
-
 
 extension Sequence where Element: Hashable {
     func uniqued() -> [Element] {

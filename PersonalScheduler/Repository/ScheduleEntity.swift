@@ -26,7 +26,7 @@ struct ScheduleEntity: Codable {
     }
     
     func convertForService() -> Schedule {
-        let endDate = startDate.seconds == endDate.seconds ? startDate.dateValue() : endDate.dateValue()
+        let endDate = startDate.dateValue().dropTime() == endDate.dateValue().dropTime() ? startDate.dateValue() : endDate.dateValue()
 
         let schedule = Schedule(
             id: documentID,
