@@ -21,9 +21,12 @@ final class ScheduleDetailViewModel {
     }
     
     func readData() {
-        repository.readData(documentName: "Example")
+        repository.readData(documentName: "Schedule")
             .replaceError(with: nil)
-            .sink { self.detailSchedule = $0 }
+            .sink {
+                print($0)
+                self.detailSchedule = $0
+            }
             .store(in: &cancellable)
     }
 }

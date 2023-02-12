@@ -4,6 +4,7 @@
 //
 //  Copyright (c) 2023 Minii All rights reserved.
 
+import Combine
 import UIKit
 
 final class ScheduleDetailViewController: UIViewController {
@@ -22,15 +23,15 @@ final class ScheduleDetailViewController: UIViewController {
         button.titleLabel?.font = UIFont(name: "NanumGothicOTFExtraBold", size: 18)
         return button
     }()
-        
+    
+    private var cancellable = Set<AnyCancellable>()
     private let viewModel = ScheduleDetailViewModel(with: "Users")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-        
-        viewModel.readData()
+        bind()
     }
     
     override func viewDidLayoutSubviews() {
@@ -81,6 +82,16 @@ private extension ScheduleDetailViewController {
             saveButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             saveButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
+    }
+}
+
+private extension ScheduleDetailViewController {
+    func bind() {
+        viewModel.$detailSchedule
+            .sink {
+                self.bodyTextView.text = $0?.body
+            }
+            .store(in: &cancellable)
     }
 }
 
