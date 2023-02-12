@@ -31,6 +31,7 @@ final class ScheduleDetailViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        bindAction()
         bind()
     }
     
@@ -89,8 +90,14 @@ private extension ScheduleDetailViewController {
     func bind() {
         viewModel.$detailSchedule
             .sink {
-                self.bodyTextView.text = $0?.body
+                self.bodyTextView.text = $0.body
             }
+            .store(in: &cancellable)
+    }
+    
+    func bindAction() {
+        saveButton.tapPublisher
+            .sink { self.viewModel.writeData() }
             .store(in: &cancellable)
     }
 }
