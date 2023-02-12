@@ -25,12 +25,14 @@ struct ScheduleEntity: Codable {
         self.description = description
     }
     
-    func asDomain() -> Schedule {
+    func convertForService() -> Schedule {
+        let endDate = startDate.seconds == endDate.seconds ? startDate.dateValue() : endDate.dateValue()
+
         let schedule = Schedule(
             id: documentID,
             title: title,
             startDate: startDate.dateValue(),
-            endDate: endDate.dateValue(),
+            endDate: endDate,
             description: description
         )
         

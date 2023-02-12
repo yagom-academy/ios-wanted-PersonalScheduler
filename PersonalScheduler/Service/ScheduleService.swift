@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ScheduleService {
+final class ScheduleService: ScheduleServiceable {
     private let repository: Repository
     
     init(repository: Repository) {
@@ -18,7 +18,7 @@ final class ScheduleService {
         repository.readAll(from: userID) { result in
             switch result {
             case .success(let schedules):
-                completion(.success(schedules.map { $0.asDomain() }))
+                completion(.success(schedules.map { $0.convertForService() }))
             case .failure(let failure):
                 completion(.failure(failure))
             }
@@ -33,7 +33,7 @@ final class ScheduleService {
         repository.read(from: userID, documentID: documentID) { result in
             switch result {
             case .success(let schedule):
-                completion(.success(schedule.asDomain()))
+                completion(.success(schedule.convertForService()))
             case .failure(let failure):
                 completion(.failure(failure))
             }
