@@ -18,11 +18,12 @@ final class ScheduleViewModel {
         case viewWillAppear
         case tapSchedule(section: String, index: Int)
         case findSectionTitle(section: Int, completion: ((String) -> Void))
+        case tapLogout
     }
     
-    private let dispatchGroup = DispatchGroup()
     private let userID: String
-    private let service: ScheduleServiceable
+    private let scheduleservice: ScheduleServiceable
+    private let loginService: LoginService
     weak var delegate: ScheduleViewModelDelegate?
     
     private var periodWithSchedules: [String: [SchedulePreview]] = [:] {
@@ -31,9 +32,10 @@ final class ScheduleViewModel {
         }
     }
     
-    init(userID: String, service: ScheduleServiceable) {
+    init(userID: String, scheduleservice: ScheduleServiceable, loginService: LoginService) {
         self.userID = userID
-        self.service = service
+        self.scheduleservice = scheduleservice
+        self.loginService = loginService
     }
     
     func action(_ action: Action) {
@@ -44,11 +46,13 @@ final class ScheduleViewModel {
             tapScheduleCell(section: section, index: index)
         case .findSectionTitle(let section, let completion):
             findSectionTitle(from: section, completion: completion)
+        case .tapLogout:
+            loginService.requestLogout { _ in }
         }
     }
     
     private func setInitialSchedules() {
-        service.requestAllSchedule(from: userID) { [weak self] result in
+        scheduleservice.requestAllSchedule(from: userID) { [weak self] result in
             switch result {
             case .success(let schedules):
                 var result: [String: [SchedulePreview]] = [:]
