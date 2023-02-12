@@ -2,7 +2,7 @@
 //  CreateUserInfoViewController.swift
 //  PersonalScheduler
 //
-//  Created by yonggeun Kim on 2023/02/08.
+//  Created by Dragon on 2023/02/08.
 //
 
 import UIKit
@@ -26,7 +26,7 @@ final class CreateUserInfoViewController: UIViewController {
     private let createLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "회원가입"
+        label.text = NameSpace.createLabelText
         label.font = .preferredFont(forTextStyle: .headline).withSize(25)
         label.textColor = .label
         return label
@@ -34,7 +34,7 @@ final class CreateUserInfoViewController: UIViewController {
     private let createIdGuideLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "[ID] E-Mail 형식으로 입력하세요. (최대 20자)"
+        label.text = NameSpace.createIdGuideLabelText
         label.font = .preferredFont(forTextStyle: .subheadline)
         label.textColor = .label
         label.textAlignment = .center
@@ -44,7 +44,7 @@ final class CreateUserInfoViewController: UIViewController {
     private let createPwGuideLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "[PW] 최소 6자리 이상 입력하세요. (최대 20자)"
+        label.text = NameSpace.createPwGuideLabelText
         label.font = .preferredFont(forTextStyle: .subheadline)
         label.textColor = .label
         label.textAlignment = .center
@@ -133,4 +133,12 @@ extension CreateUserInfoViewController: UserInfoSendable {
     }
     
     func presentCreateUserInfoView() {}
+}
+
+// MARK: NameSpace
+
+private enum NameSpace {
+    static let createLabelText = "회원가입"
+    static let createIdGuideLabelText = "[ID] E-Mail 형식으로 입력하세요. (최대 20자)"
+    static let createPwGuideLabelText = "[PW] 최소 6자리 이상 입력하세요. (최대 20자)"
 }

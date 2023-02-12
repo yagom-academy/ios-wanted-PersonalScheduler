@@ -45,7 +45,7 @@ final class ScheduleInfoView: UIView {
     
     private let startGuideLabel: UILabel = {
         let label = UILabel()
-        label.text = "시작일자:"
+        label.text = NameSpace.startGuideLabelText
         label.font = .preferredFont(forTextStyle: .headline)
         label.textColor = .label
         return label
@@ -69,7 +69,7 @@ final class ScheduleInfoView: UIView {
     
     private let endGuideLabel: UILabel = {
         let label = UILabel()
-        label.text = "종료일자:"
+        label.text = NameSpace.endGuideLabelText
         label.font = .preferredFont(forTextStyle: .headline)
         label.textColor = .label
         return label
@@ -95,14 +95,14 @@ final class ScheduleInfoView: UIView {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .time
         datePicker.preferredDatePickerStyle = .wheels
-        datePicker.locale = Locale(identifier: "ko-KR")
+        datePicker.locale = Locale(identifier: NameSpace.localeIdentifier)
         return datePicker
     }()
     private let datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .inline
-        datePicker.locale = Locale(identifier: "ko-KR")
+        datePicker.locale = Locale(identifier: NameSpace.localeIdentifier)
         return datePicker
     }()
     
@@ -215,12 +215,12 @@ final class ScheduleInfoView: UIView {
     }
     
     private func configureCreateGuideText() {
-        titleTextField.text = "일정 제목을 입력하세요. (최대 35자)"
-        bodyTextView.text = "일정 내용을 입력하세요. (최대 500자) \n(시작/종료일자 기입은 필수입니다.)"
-        startDateTextField.text = "시작날짜"
-        startTimeTextField.text = "시작시간"
-        endDateTextField.text = "종료날짜"
-        endTimeTextField.text = "종료시간"
+        titleTextField.text = NameSpace.titleTextFieldDefaultText
+        bodyTextView.text = NameSpace.bodyTextFieldDefaultText
+        startDateTextField.text = NameSpace.startDateTextFieldDefaultText
+        startTimeTextField.text = NameSpace.startTimeTextFieldDefaultText
+        endDateTextField.text = NameSpace.endDateTextFieldDefaultText
+        endTimeTextField.text = NameSpace.endTimeTextFieldDefaultText
         
         titleTextField.textColor = .lightGray
         bodyTextView.textColor = .lightGray
@@ -275,7 +275,7 @@ final class ScheduleInfoView: UIView {
     private func convertDateFormatter(type: DateType) -> String {
         let formatter = DateFormatter()
         
-        formatter.locale = Locale(identifier: "ko-KR")
+        formatter.locale = Locale(identifier: NameSpace.localeIdentifier)
         
         switch type {
         case .startDate:
@@ -284,7 +284,7 @@ final class ScheduleInfoView: UIView {
             
             return formatter.string(from: datePicker.date)
         case .endDate:
-            endTimeIntervalSince1970 = datePicker.date.timeIntervalSince1970
+            endTimeIntervalSince1970 = datePicker.date.timeIntervalSince1970 + 86400.0
             formatter.dateStyle = .short
             
             return formatter.string(from: datePicker.date)
@@ -303,27 +303,27 @@ final class ScheduleInfoView: UIView {
         var titleText: String = String()
         var bodyText: String = String()
         
-        if schedule.startDate == "시작날짜" ||
+        if schedule.startDate == NameSpace.startDateTextFieldDefaultText ||
             schedule.startDate == String() ||
-            schedule.startTime == "시작시간" ||
+            schedule.startTime == NameSpace.startTimeTextFieldDefaultText ||
             schedule.startTime == String() ||
-            schedule.endDate == "종료날짜" ||
+            schedule.endDate == NameSpace.endDateTextFieldDefaultText ||
             schedule.endDate == String() ||
-            schedule.endTime == "종료시간" ||
+            schedule.endTime == NameSpace.endTimeTextFieldDefaultText ||
             schedule.endTime == String() {
             return nil
         }
         
-        if schedule.title == "일정 제목을 입력하세요. (최대 35자)" ||
+        if schedule.title == NameSpace.titleTextFieldDefaultText ||
             schedule.title == String() {
-            titleText = "[일정 제목없음]"
+            titleText = NameSpace.titleTextFieldEmptyText
         } else {
             titleText = schedule.title
         }
         
-        if schedule.body == "일정 내용을 입력하세요. (최대 500자) \n(시작/종료일자 기입은 필수입니다.)" ||
+        if schedule.body == NameSpace.bodyTextFieldDefaultText ||
             schedule.body == String() {
-            bodyText = "[일정 내용없음]"
+            bodyText = NameSpace.bodyTextFieldEmptyText
         } else {
             bodyText = schedule.body
         }
@@ -398,23 +398,8 @@ final class ScheduleInfoView: UIView {
     
     @objc
     private func tapStartTimeSelectButton() {
-        if let startDateText = startDateTextField.text,
-           let endDateText = endDateTextField.text {
-            if startDateText == endDateText {
-                if timePicker.date.timeIntervalSince1970 > endTimeIntervalSince1970 {
-                    if endTimeIntervalSince1970 == 0 {
-                        startTimeTextField.text = convertDateFormatter(type: .startTime)
-                        endEditing(true)
-                    }
-                } else if timePicker.date.timeIntervalSince1970 <= endTimeIntervalSince1970 {
-                    startTimeTextField.text = convertDateFormatter(type: .startTime)
-                    endEditing(true)
-                }
-            } else {
-                startTimeTextField.text = convertDateFormatter(type: .startTime)
-                endEditing(true)
-            }
-        }
+        startTimeTextField.text = convertDateFormatter(type: .startTime)
+        endEditing(true)
     }
     
     @objc
@@ -472,7 +457,7 @@ extension ScheduleInfoView: UITextFieldDelegate {
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         if let textCount = textField.text?.count {
-            if textCount < 35 {
+            if textCount < NameSpace.textFieldLimitCount {
                 return true
             }
             return false
@@ -503,6 +488,24 @@ extension ScheduleInfoView: UITextViewDelegate {
         guard let textViewText = textView.text else { return true }
         let newLength = textViewText.count + text.count - range.length
         
-        return newLength <= 500
+        return newLength <= NameSpace.textViewLimitCount
     }
+}
+
+// MARK - NameSpace
+
+private enum NameSpace {
+    static let startGuideLabelText = "시작일자:"
+    static let endGuideLabelText = "종료일자:"
+    static let localeIdentifier = "ko-KR"
+    static let titleTextFieldDefaultText = "일정 제목을 입력하세요. (최대 35자)"
+    static let titleTextFieldEmptyText = "[일정 제목없음]"
+    static let bodyTextFieldDefaultText = "일정 내용을 입력하세요. (최대 500자) \n(시작/종료일자 기입은 필수입니다.)"
+    static let bodyTextFieldEmptyText = "[일정 내용없음]"
+    static let startDateTextFieldDefaultText = "시작날짜"
+    static let startTimeTextFieldDefaultText = "시작시간"
+    static let endDateTextFieldDefaultText = "종료날짜"
+    static let endTimeTextFieldDefaultText = "종료시간"
+    static let textFieldLimitCount = 35
+    static let textViewLimitCount = 500
 }

@@ -44,7 +44,7 @@ final class MainViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .headline).withSize(20)
-        label.text = "개인 일정 관리 \n (Personal Scheduler)"
+        label.text = NameSpace.titleLabel
         label.numberOfLines = 2
         label.textAlignment = .center
         label.textColor = .label
@@ -53,14 +53,14 @@ final class MainViewController: UIViewController {
     private let loginGuideLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
-        label.text = "SNS 계정으로 간편 로그인하기"
+        label.text = NameSpace.loginGuideLabel
         label.textAlignment = .center
         label.textColor = .systemGray4
         return label
     }()
     private let kakaoLoginButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "KakaoLogin.png"), for: .normal)
+        button.setImage(UIImage(named: NameSpace.kakaoLoginButtonImage), for: .normal)
         return button
     }()
     private let facebookLoginButton: FBLoginButton = {
@@ -149,11 +149,11 @@ final class MainViewController: UIViewController {
         case .normal:
             return String()
         case .kakao:
-            return "@kakaologin.com"
+            return NameSpace.kakaoLoginEmail
         case .facebook:
-            return "@facebooklogin.com"
+            return NameSpace.facebookLoginEmail
         case .apple:
-            return "@applelogin.com"
+            return NameSpace.appleLoginEmail
         }
     }
     
@@ -205,12 +205,11 @@ final class MainViewController: UIViewController {
     private func createUserCollection(id: String) {
         Auth.auth().addStateDidChangeListener { auth, user in
             if let id = user?.email {
-                Firestore.firestore().collection(id).document("Personal").setData(["Schedule":""])
-                { err in
+                Firestore.firestore().collection(id).document(NameSpace.document).setData(
+                    [NameSpace.dataKey:String()]
+                ) { err in
                     if let err = err {
                         print(err)
-                    } else {
-                        print("Firebase Save Success")
                     }
                 }
             }
@@ -223,7 +222,7 @@ final class MainViewController: UIViewController {
                 print(error)
             } else {
                 if let documents = querySnapShot?.documents {
-                    if documents.first?.documentID == "Personal" {
+                    if documents.first?.documentID == NameSpace.document {
                         let data = "\(documents.first?.data().values.first ?? String())"
                         
                         if let jsonData = data.data(using: .utf8) {
@@ -332,11 +331,25 @@ extension MainViewController: UserInfoSendable {
     func presentCreateUserInfoView() {
         let pushViewController = CreateUserInfoViewController()
         
-        navigationItem.backButtonTitle = "뒤로가기"
+        navigationItem.backButtonTitle = NameSpace.backButtonTitle
         navigationController?.pushViewController(pushViewController, animated: true)
     }
     
     func sendUserInfo(id: String, password: String) {
         signInAuth(type: .normal, id: id, password: password)
     }
+}
+
+// MARK: - NameSpace
+
+private enum NameSpace {
+    static let titleLabel = "개인 일정 관리 \n (Personal Scheduler)"
+    static let loginGuideLabel = "SNS 계정으로 간편 로그인하기"
+    static let kakaoLoginButtonImage = "KakaoLogin.png"
+    static let kakaoLoginEmail = "@kakaologin.com"
+    static let facebookLoginEmail = "@facebooklogin.com"
+    static let appleLoginEmail = "@applelogin.com"
+    static let document = "Personal"
+    static let dataKey = "Schedule"
+    static let backButtonTitle = "뒤로가기"
 }

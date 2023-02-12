@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScheduleInfoViewController: UIViewController {
+final class ScheduleInfoViewController: UIViewController {
     
     // MARK: Internal Properties
     
@@ -43,21 +43,21 @@ class ScheduleInfoViewController: UIViewController {
         switch mode {
         case .create:
             navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: "저장",
+                title: NameSpace.createModeRightBarButtonItemTitle,
                 style: .done,
                 target: self,
                 action: #selector(tapRightBarButtonSaveAction)
             )
         case .edit:
             navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: "수정",
+                title: NameSpace.editModeRightBarButtonItemTitle,
                 style: .done,
                 target: self,
                 action: #selector(tapRightBarButtonEditAction)
             )
         case .read:
             navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: "편집",
+                title: NameSpace.readModeRightBarButtonItemTitle,
                 style: .done,
                 target: self,
                 action: #selector(tapRightBarButtonReadAction)
@@ -164,4 +164,12 @@ extension ScheduleInfoViewController: AlertPresentable {
         
         present(alert, animated: true)
     }
+}
+
+// MARK: - NameSpace
+
+private enum NameSpace {
+    static let createModeRightBarButtonItemTitle = "저장"
+    static let editModeRightBarButtonItemTitle = "수정"
+    static let readModeRightBarButtonItemTitle = "편집"
 }

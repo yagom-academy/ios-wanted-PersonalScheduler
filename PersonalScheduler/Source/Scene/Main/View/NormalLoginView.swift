@@ -20,7 +20,7 @@ final class NormalLoginView: UIView {
         let label = UILabel()
         label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         label.font = .preferredFont(forTextStyle: .subheadline)
-        label.text = "ID :"
+        label.text = NameSpace.idLabelText
         label.textAlignment = .right
         label.textColor = .label
         return label
@@ -37,7 +37,7 @@ final class NormalLoginView: UIView {
         let label = UILabel()
         label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         label.font = .preferredFont(forTextStyle: .subheadline)
-        label.text = "PW :"
+        label.text = NameSpace.passwordLabelText
         label.textAlignment = .right
         label.textColor = .label
         return label
@@ -129,11 +129,11 @@ final class NormalLoginView: UIView {
     func configureButtonText(_ mode: LoginMode) {
         switch mode {
         case .login:
-            leftButton.setTitle("로그인", for: .normal)
-            rightButton.setTitle("회원가입", for: .normal)
+            leftButton.setTitle(NameSpace.loginModeLeftButtonTitle, for: .normal)
+            rightButton.setTitle(NameSpace.loginModeRightButtonTitle, for: .normal)
         case .create:
-            leftButton.setTitle("생성", for: .normal)
-            rightButton.setTitle("초기화", for: .normal)
+            leftButton.setTitle(NameSpace.createModeLeftButtonTitle, for: .normal)
+            rightButton.setTitle(NameSpace.createModeRightButtonTitle, for: .normal)
         }
     }
     
@@ -226,7 +226,7 @@ extension NormalLoginView: UITextFieldDelegate {
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         if let textCount = textField.text?.count {
-            if textCount < 20 {
+            if textCount < NameSpace.textFieldLimitCount {
                 return true
             }
             return false
@@ -234,4 +234,16 @@ extension NormalLoginView: UITextFieldDelegate {
         
         return false
     }
+}
+
+// MARK: - NameSpace
+
+private enum  NameSpace {
+    static let idLabelText = "ID :"
+    static let passwordLabelText = "PW :"
+    static let loginModeLeftButtonTitle = "로그인"
+    static let loginModeRightButtonTitle = "회원가입"
+    static let createModeLeftButtonTitle = "생성"
+    static let createModeRightButtonTitle = "초기화"
+    static let textFieldLimitCount = 20
 }

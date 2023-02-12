@@ -11,7 +11,7 @@ final class ListTableViewCell: UITableViewCell {
 
     // MARK: Identifier
     
-    static let identifier = "ListTableViewCell"
+    static let identifier = NameSpace.identifier
     
     // MARK: PrepareForReuse
     
@@ -87,8 +87,8 @@ final class ListTableViewCell: UITableViewCell {
     func configureLabelText(schedule: Schedule) {
         titleLabel.text = schedule.title
         bodyLabel.text = schedule.body
-        startDateLabel.text = "시작일자 : " + schedule.startDate + " " + schedule.startTime
-        endDateLabel.text = "종료일자 : " + schedule.endDate + " " + schedule.endTime
+        startDateLabel.text = NameSpace.startDateLabelDefaultText + schedule.startDate + " " + schedule.startTime
+        endDateLabel.text = NameSpace.endDateLabelDefaultText + schedule.endDate + " " + schedule.endTime
     }
     
     func configureDateLabel(color: UIColor) {
@@ -133,4 +133,12 @@ final class ListTableViewCell: UITableViewCell {
             )
         ])
     }
+}
+
+// MARK: - NameSpace
+
+private enum NameSpace {
+    static let identifier = "ListTableViewCell"
+    static let startDateLabelDefaultText = "시작일자 : "
+    static let endDateLabelDefaultText = "종료일자 : "
 }

@@ -45,16 +45,16 @@ final class ListViewController: UIViewController {
         
         navigationItem.hidesBackButton = true
 
-        navigationItem.title = "Personal Scheduler"
+        navigationItem.title = NameSpace.navigationItemTitle
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "Logout.png"),
+            image: UIImage(named: NameSpace.RightBarButtonItemImageName),
             style: .done,
             target: self,
             action: #selector(tapRightBarButton)
         )
         navigationItem.rightBarButtonItem?.tintColor = .label
         navigationItem.backBarButtonItem = UIBarButtonItem(
-            title: "취소",
+            title: NameSpace.backBarButtonItem,
             style: .done,
             target: self,
             action: nil
@@ -70,9 +70,9 @@ final class ListViewController: UIViewController {
         scheduleList.sort(by: { $0.startTimeInterval1970 < $1.startTimeInterval1970 })
         
         let jsonScheduleList = JSONEncoder().encodeScheduleList(scheduleList)
-        let path = Firestore.firestore().collection(userID).document("Personal")
+        let path = Firestore.firestore().collection(userID).document(NameSpace.document)
         
-        path.updateData(["Schedule" : jsonScheduleList])
+        path.updateData([NameSpace.dataKey : jsonScheduleList])
         
         listView.reloadTableViewData()
     }
@@ -145,8 +145,8 @@ extension ListViewController: UITableViewDataSource {
             let data = scheduleList[indexPath.row]
             let date = Date().timeIntervalSince1970
                 
-            if data.startTimeInterval1970 < date &&
-                data.endTimeInterval1970 > date {
+            if data.startTimeInterval1970 <= date &&
+                data.endTimeInterval1970 >= date {
                 cell.configureDateLabel(color: .label)
             } else if data.startTimeInterval1970 < date {
                 cell.configureDateLabel(color: .systemRed)
@@ -245,4 +245,14 @@ extension ListViewController: AlertPresentable {
         
         present(alert, animated: true)
     }
+}
+
+// MARK: - NameSpace
+
+private enum NameSpace {
+    static let navigationItemTitle = "Personal Scheduler"
+    static let RightBarButtonItemImageName = "Logout.png"
+    static let backBarButtonItem = "취소"
+    static let document = "Personal"
+    static let dataKey = "Schedule"
 }
