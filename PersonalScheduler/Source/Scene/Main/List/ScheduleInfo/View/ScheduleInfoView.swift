@@ -164,6 +164,8 @@ final class ScheduleInfoView: UIView {
         startTimeTextField.text = scheduleData.startTime
         endDateTextField.text = scheduleData.endDate
         endTimeTextField.text = scheduleData.endTime
+        startTimeIntervalSince1970 = scheduleData.startTimeInterval1970
+        endTimeIntervalSince1970 = scheduleData.endTimeInterval1970
     }
     
     func saveScheduleData() -> Schedule? {
