@@ -9,7 +9,7 @@ import Combine
 
 protocol ScheduleDetailTitleDelegate: AnyObject {
     func scheduleDetailTitleView(with titleView: ScheduleDetailTitleView, title: String?)
-    func scheduleDetailTitleView(didTapStartTime titleView: ScheduleDetailTitleView)
+    func scheduleDetailTitleView(didTapStartTime titleView: ScheduleDetailTitleView, starTime: Date)
     func scheduleDetailTitleView(didTapEndTime titleView: ScheduleDetailTitleView, endTime: Date)
 }
 
@@ -23,12 +23,14 @@ final class ScheduleDetailTitleView: NavigationBar {
     private let startDateButton: ScheduleTextField = {
         let textField = ScheduleTextField()
         textField.placeholder = "시작 날짜"
+        textField.textAlignment = .center
         return textField
     }()
     
     private let endDateButton: ScheduleTextField = {
         let textField = ScheduleTextField()
         textField.placeholder = "종료 날짜"
+        textField.textAlignment = .center
         return textField
     }()
     
@@ -101,11 +103,19 @@ private extension ScheduleDetailTitleView {
             .store(in: &cancellable)
         
         startDatePicker.dateSelectedPublisher
-            .sink { self.startDateButton.text = $0?.description }
+            .compactMap { $0 }
+            .sink {
+                self.startDateButton.text = $0.convertDescription()
+                self.delegate?.scheduleDetailTitleView(didTapStartTime: self, starTime: $0)
+            }
             .store(in: &cancellable)
         
         endDatePicker.dateSelectedPublisher
-            .sink { self.endDateButton.text = $0?.description }
+            .compactMap { $0 }
+            .sink {
+                self.endDateButton.text = $0.convertDescription()
+                self.delegate?.scheduleDetailTitleView(didTapEndTime: self, endTime: $0)
+            }
             .store(in: &cancellable)
     }
 }

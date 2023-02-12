@@ -74,22 +74,12 @@ extension ScheduleDetailViewController: ScheduleDetailTitleDelegate {
         viewModel.detailSchedule.title = title
     }
     
-    func scheduleDetailTitleView(didTapStartTime titleView: ScheduleDetailTitleView) {
-        let datePicker = UIDatePicker()
-        
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
-        toolbar.setItems([doneButton], animated: true)
-        
-        datePicker.preferredDatePickerStyle = .wheels
-        
-        
+    func scheduleDetailTitleView(didTapStartTime titleView: ScheduleDetailTitleView, starTime: Date) {
+        print(starTime.convertDescription())
     }
     
     func scheduleDetailTitleView(didTapEndTime titleView: ScheduleDetailTitleView, endTime: Date) {
-        print("Did Tap endTime")
+        print(endTime.convertDescription())
     }
 }
 
