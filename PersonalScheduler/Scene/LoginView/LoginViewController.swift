@@ -8,7 +8,6 @@
 import UIKit
 
 import FacebookLogin
-import FirebaseAuth
 
 class LoginViewController: UIViewController {
     private let titleLabel: UILabel = {
@@ -115,18 +114,10 @@ extension LoginViewController: LoginViewModelDelegate {
     func loginViewModel(successLogin uid: String) {
         let scheduleViewController = ViewControllerFactory.makeViewController(type: .schedule(userID: uid))
         
-        present(scheduleViewController, animated: true)
+        navigationController?.pushViewController(scheduleViewController, animated: true)
     }
     
     func loginViewModel(failedLogin error: Error) {
-        print(error.localizedDescription)
-    }
-    
-    func loginViewModel(successLogout: Void) {
-        
-    }
-    
-    func loginViewModel(failedLogout error: Error) {
         print(error.localizedDescription)
     }
 }

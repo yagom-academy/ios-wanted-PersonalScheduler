@@ -8,13 +8,12 @@
 import Foundation
 
 import FacebookLogin
+import FirebaseAuth
 import KakaoSDKUser
 
 protocol LoginViewModelDelegate: AnyObject {
     func loginViewModel(successLogin uid: String)
     func loginViewModel(failedLogin error: Error)
-    func loginViewModel(successLogout: Void)
-    func loginViewModel(failedLogout error: Error)
 }
 
 final class LoginViewModel {
@@ -37,6 +36,17 @@ final class LoginViewModel {
             tapKakaoLogin()
         case .tapFacebookLogin:
             tapFacebookLogin()
+        }
+    }
+    
+    private func loginFireStore(with token: AccessToken) {
+        service.requestLogin(to: .facebook, with: token.tokenString) { [weak self] result in
+            switch result {
+            case .success(let uid):
+                self?.delegate?.loginViewModel(successLogin: uid)
+            case .failure(let failure):
+                self?.delegate?.loginViewModel(failedLogin: failure)
+            }
         }
     }
 }
@@ -112,29 +122,6 @@ extension LoginViewModel {
                 }
                 
                 self?.loginFireStore(with: token)
-            }
-        }
-    }
-    
-    private func loginFireStore(with token: AccessToken) {
-        service.requestLogin(to: .facebook, with: token.tokenString) { [weak self] result in
-            switch result {
-            case .success(let uid):
-                self?.delegate?.loginViewModel(successLogin: uid)
-            case .failure(let failure):
-                self?.delegate?.loginViewModel(failedLogin: failure)
-            }
-        }
-    }
-    
-    private func tapFacebookLogout() {
-        facebookLoginManager.logOut()
-        service.requestLogout { [weak self] result in
-            switch result {
-            case .success():
-                self?.delegate?.loginViewModel(successLogout: ())
-            case .failure(let failure):
-                self?.delegate?.loginViewModel(failedLogout: failure)
             }
         }
     }
