@@ -9,6 +9,7 @@ import UIKit
 
 import FacebookCore
 import KakaoSDKAuth
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,8 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let rootViewController = ViewController(nibName: nil, bundle: nil)
+        let rootViewController = ViewControllerFactory.makeViewController(type: .login)
         let navigationController = UINavigationController(rootViewController: rootViewController)
+        
+        if let currentUser = Auth.auth().currentUser {
+            let scheduleViewController = ViewControllerFactory.makeViewController(type: .schedule(userID: currentUser.uid))
+            navigationController.pushViewController(scheduleViewController, animated: true)
+        }
         
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
@@ -28,23 +34,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        guard let url = URLContexts.first?.url else {
+        guard let url = URLContexts.first?.url else { return }
+        
+        if (AuthApi.isKakaoTalkLoginUrl(url)) {
+            _ = AuthController.handleOpenUrl(url: url)
             return
         }
         
-        // 페이스북 인증
         ApplicationDelegate.shared.application(
             UIApplication.shared,
             open: url,
             sourceApplication: nil,
             annotation: [UIApplication.OpenURLOptionsKey.annotation]
         )
-        
-        // 카카오 인증
-        if (AuthApi.isKakaoTalkLoginUrl(url)) {
-            _ = AuthController.handleOpenUrl(url: url)
-        }
-        
     }
 }
 

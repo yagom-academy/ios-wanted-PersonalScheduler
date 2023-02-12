@@ -2,12 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>KAKAO_NATIVE_APP_KEY</key>
+	<string>${KAKAO_NATIVE_APP_KEY}</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb594016645397216</string>
+				<string>fb${FACEBOOK_APP_ID}</string>
 			</array>
 		</dict>
 		<dict>
@@ -15,27 +19,25 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakao963fdcdb3f875a6634918c579d794962</string>
+				<string>kakao${KAKAO_NATIVE_APP_KEY}</string>
 			</array>
 		</dict>
 	</array>
 	<key>FacebookAppID</key>
-	<string>594016645397216</string>
-    <key>FacebookClientToken</key>
-    <string>e8169d087f95396e5bf9f956f67c2019</string>
+	<string>${FACEBOOK_APP_ID}</string>
+	<key>FacebookClientToken</key>
+	<string>${FACEBOOK_CLIENT_TOKEN}</string>
 	<key>FacebookDisplayName</key>
 	<string>PersonalScheduler</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
-		<string>fb-messenger-api</string>
-		<string>fbauth2</string>
-		<string>fbshareextension</string>
+		<string>fb-messenger-share-api</string>
 		<string>kakaokompassauth</string>
 		<string>kakaolink</string>
 	</array>
-    <key>FacebookAutoLogAppEventsEnabled</key>
-    <false/>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<false/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
