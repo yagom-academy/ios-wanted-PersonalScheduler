@@ -96,7 +96,13 @@ private extension ScheduleDetailViewController {
     }
     
     func bindAction() {
+        bodyTextView.textPublisher
+            .compactMap { $0 }
+            .sink { self.viewModel.detailSchedule.body = $0 }
+            .store(in: &cancellable)
+        
         saveButton.tapPublisher
+            .throttle(for: 1, scheduler: RunLoop.main, latest: true)
             .sink { self.viewModel.writeData() }
             .store(in: &cancellable)
     }

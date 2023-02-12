@@ -11,6 +11,7 @@
 		185D74EB2998A26D00516C5B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 185D74EA2998A26D00516C5B /* FirebaseFirestore */; };
 		185D74ED2998A26D00516C5B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 185D74EC2998A26D00516C5B /* FirebaseFirestoreSwift */; };
 		185D74F02998A32000516C5B /* ScheduleDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D74EF2998A32000516C5B /* ScheduleDetailRepository.swift */; };
+		185D74F22998A7BE00516C5B /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D74F12998A7BE00516C5B /* UITextView+Extension.swift */; };
 		1878BE712994E6FC009C0DF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1878BE702994E6FC009C0DF8 /* GoogleService-Info.plist */; };
 		1878BE732994EC69009C0DF8 /* AppleLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878BE722994EC69009C0DF8 /* AppleLoginRepository.swift */; };
 		1878BE7529952BF2009C0DF8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878BE7429952BF2009C0DF8 /* LoginView.swift */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		185D74EF2998A32000516C5B /* ScheduleDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailRepository.swift; sourceTree = "<group>"; };
+		185D74F12998A7BE00516C5B /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		1878BE702994E6FC009C0DF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1878BE722994EC69009C0DF8 /* AppleLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginRepository.swift; sourceTree = "<group>"; };
 		1878BE7429952BF2009C0DF8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				18D55D5329962C2100FADED5 /* Previews.swift */,
 				189FF57D29980BA7006D4490 /* UITextField+Extension.swift */,
 				18BF363B29988A6A00C251AE /* FireStore+Extension.swift */,
+				185D74F12998A7BE00516C5B /* UITextView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				188479422991453B00160A1B /* LoginViewModel.swift in Sources */,
 				18FABA532992C6A800333D63 /* UIControl+Extension.swift in Sources */,
 				189FF5742997E834006D4490 /* ScheduleDetailViewController.swift in Sources */,
+				185D74F22998A7BE00516C5B /* UITextView+Extension.swift in Sources */,
 				18B7BB2E2995E5FE007E1E74 /* ScheduleListViewModel.swift in Sources */,
 				18F5F1842993C773005B7733 /* UIButton+Extension.swift in Sources */,
 				189FF57C2997F1F5006D4490 /* ScheduleDetailTitleView.swift in Sources */,
