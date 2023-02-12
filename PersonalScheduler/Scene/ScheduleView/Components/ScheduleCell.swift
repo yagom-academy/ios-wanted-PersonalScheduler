@@ -17,7 +17,7 @@ extension ReuseIdentifiable {
     }
 }
 
-class ScheduleCell: UITableViewCell, ReuseIdentifiable {
+final class ScheduleCell: UITableViewCell, ReuseIdentifiable {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Futura-Bold", size: 18)
@@ -43,13 +43,14 @@ class ScheduleCell: UITableViewCell, ReuseIdentifiable {
         stackView.alignment = .fill
         stackView.distribution = .fill
         stackView.spacing = 4
-        stackView.backgroundColor = .systemGray6
         stackView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layer.cornerRadius = 8
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+    
+    private let viewModel: ScheduleCellViewModel = ScheduleCellViewModel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -65,6 +66,7 @@ class ScheduleCell: UITableViewCell, ReuseIdentifiable {
         [titleLabel, descriptionLabel, periodLabel].forEach(stackView.addArrangedSubview(_:))
         contentView.addSubview(stackView)
         
+        viewModel.delegate = self
     }
     
     private func configureLayout() {
@@ -79,8 +81,22 @@ class ScheduleCell: UITableViewCell, ReuseIdentifiable {
     }
     
     func setupCellData(from preview: SchedulePreview) {
+        viewModel.checkDate(from: preview.startDate, to: preview.endDate)
         titleLabel.text = preview.title
         periodLabel.text = preview.period
         descriptionLabel.text = preview.description
+    }
+}
+
+extension ScheduleCell: ScheduleCellViewModelDelegate {
+    func scheduleCellViewModelDelegate(checkedResult: DateState) {
+        switch checkedResult {
+        case .expired:
+            stackView.backgroundColor = .systemGray
+        case .today:
+            stackView.backgroundColor = UIColor(red: 178/255, green: 222/255, blue: 158/255, alpha: 1.0)
+        case .notYet:
+            stackView.backgroundColor = .systemGray6
+        }
     }
 }
