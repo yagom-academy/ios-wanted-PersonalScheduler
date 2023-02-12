@@ -32,6 +32,7 @@ class ScheduleViewController: UIViewController {
         
         configureView()
         configureLayout()
+        configureNavigation()
         configureDataSource()
     }
     
@@ -43,7 +44,6 @@ class ScheduleViewController: UIViewController {
     
     private func configureView() {
         view.backgroundColor = .systemBackground
-        
         viewModel.delegate = self
         
         scheduleTableView.backgroundColor = .systemBackground
@@ -58,6 +58,26 @@ class ScheduleViewController: UIViewController {
         view.addSubview(scheduleTableView)
     }
     
+    private func configureNavigation() {
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: UIFont(name: "Futura-MediumItalic", size: 20) as Any
+        ]
+        navigationItem.title = "Scheduler"
+        
+        let logoutButton = UIBarButtonItem(title: "Logout", primaryAction: UIAction(handler: tapLogout))
+        logoutButton.setTitleTextAttributes([
+            NSAttributedString.Key.font: UIFont(name: "Futura-MediumItalic", size: 16) as Any,
+            NSAttributedString.Key.foregroundColor: UIColor.systemRed
+        ], for: .normal)
+        logoutButton.setTitleTextAttributes([
+            NSAttributedString.Key.font: UIFont(name: "Futura-MediumItalic", size: 16) as Any,
+            NSAttributedString.Key.foregroundColor: UIColor.systemGray
+        ], for: .highlighted)
+        
+        navigationItem.leftBarButtonItem = logoutButton
+        
+    }
+    
     private func configureLayout() {
         let safeArea = view.safeAreaLayoutGuide
         
@@ -67,6 +87,11 @@ class ScheduleViewController: UIViewController {
             scheduleTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -8),
             scheduleTableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
+    }
+    
+    private func tapLogout(_ action: UIAction) {
+        viewModel.action(.tapLogout)
+        navigationController?.popViewController(animated: true)
     }
 }
 

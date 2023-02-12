@@ -15,6 +15,8 @@ enum ControllerType {
 }
 
 enum ViewControllerFactory {
+    static private let loginService = LoginService()
+    
     static func makeViewController(type: ControllerType) -> UIViewController {
         switch type {
         case .login:
@@ -26,7 +28,7 @@ enum ViewControllerFactory {
     
     static private func makeLoginViewController() -> LoginViewController {
         let service = LoginService()
-        let viewModel = LoginViewModel(service: service)
+        let viewModel = LoginViewModel(service: loginService)
         let loginViewController = LoginViewController(viewModel: viewModel)
         
         return loginViewController
@@ -35,8 +37,12 @@ enum ViewControllerFactory {
     static private func makeScheduleViewController(userID: String) -> ScheduleViewController {
         let firestore = Firestore.firestore()
         let repository = DefaultRepository(dataBase: firestore)
-        let service = ScheduleService(repository: repository)
-        let scheduleViewModel = ScheduleViewModel(userID: userID, service: service)
+        let scheduleService = ScheduleService(repository: repository)
+        let scheduleViewModel = ScheduleViewModel(
+            userID: userID,
+            scheduleservice: scheduleService,
+            loginService: loginService
+        )
         let scheduleViewController = ScheduleViewController(viewModel: scheduleViewModel)
         
         return scheduleViewController
