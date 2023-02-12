@@ -19,6 +19,7 @@
 		3C35D1A42997C2A8009E795F /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35D1A32997C2A8009E795F /* CellViewModel.swift */; };
 		3C3959B229923386006D2E52 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3959B129923386006D2E52 /* LoginViewModel.swift */; };
 		3C3959B429923C5B006D2E52 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3959B329923C5B006D2E52 /* LoginViewController.swift */; };
+		3C4B4BD02999375D0054401E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4B4BCF2999375D0054401E /* DetailViewController.swift */; };
 		3C8AB49C2991617F00A9E241 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49B2991617F00A9E241 /* KakaoSDKAuth */; };
 		3C8AB49E2991617F00A9E241 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49D2991617F00A9E241 /* KakaoSDKCommon */; };
 		3C8AB4A02991617F00A9E241 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49F2991617F00A9E241 /* KakaoSDKUser */; };
@@ -45,6 +46,7 @@
 		3C35D1A32997C2A8009E795F /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		3C3959B129923386006D2E52 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3C3959B329923C5B006D2E52 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3C4B4BCF2999375D0054401E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3C8CE7B329952E9200BEDDDD /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		3C8CE7B529954A4500BEDDDD /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		3C8CE7B929954AC900BEDDDD /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
@@ -108,8 +110,8 @@
 		3C1B337C29952C1800AF9CA6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				3C4B4BCE299937380054401E /* ViewModel */,
 				3C3959B329923C5B006D2E52 /* LoginViewController.swift */,
-				3C3959B129923386006D2E52 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -117,12 +119,36 @@
 		3C1B337D29952C2700AF9CA6 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				3C4B4BCD299937250054401E /* ViewModel */,
 				3C1B337E29952C4300AF9CA6 /* ListViewController.swift */,
-				3C8CE7B329952E9200BEDDDD /* ListViewModel.swift */,
 				3C8CE7B529954A4500BEDDDD /* ScheduleTableViewCell.swift */,
-				3C35D1A32997C2A8009E795F /* CellViewModel.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		3C4B4BCC299936830054401E /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				3C4B4BCF2999375D0054401E /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		3C4B4BCD299937250054401E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3C35D1A32997C2A8009E795F /* CellViewModel.swift */,
+				3C8CE7B329952E9200BEDDDD /* ListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3C4B4BCE299937380054401E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3C3959B129923386006D2E52 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		3C8CE7B729954A5700BEDDDD /* Extension */ = {
@@ -177,6 +203,7 @@
 		3CC7AA0929922AEB00DB3B56 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				3C4B4BCC299936830054401E /* Detail */,
 				3C1B337C29952C1800AF9CA6 /* Login */,
 				3C1B337D29952C2700AF9CA6 /* List */,
 			);
@@ -310,6 +337,7 @@
 				3C1B33742993667D00AF9CA6 /* Social.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				3C1B337229935B9400AF9CA6 /* DateFormatter+Extension.swift in Sources */,
+				3C4B4BD02999375D0054401E /* DetailViewController.swift in Sources */,
 				3C3959B429923C5B006D2E52 /* LoginViewController.swift in Sources */,
 				3C1B337629936C7A00AF9CA6 /* FireBaseError.swift in Sources */,
 				3CF4FE50299288FC00226CD1 /* FireStoreManager.swift in Sources */,
