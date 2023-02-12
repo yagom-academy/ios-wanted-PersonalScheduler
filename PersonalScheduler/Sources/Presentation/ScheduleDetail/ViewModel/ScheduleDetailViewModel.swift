@@ -11,7 +11,7 @@ import FirebaseFirestoreSwift
 final class ScheduleDetailViewModel {
     @Published var detailSchedule: Schedule = Schedule.baseSchedule
     private var database: CollectionReference
-    private var repository = ScheduleDetailRepository(dataBaseName: "Users")
+    private var repository = ScheduleDetailRepository(dataBaseName: "Schedule")
     private var cancellable = Set<AnyCancellable>()
     
     init(with collectionName: String) {
@@ -21,7 +21,7 @@ final class ScheduleDetailViewModel {
     }
     
     func readData() {
-        repository.readData(documentName: "Schedule")
+        repository.readData(documentName: "Example")
             .replaceError(with: nil)
             .compactMap { $0 }
             .sink {
@@ -31,7 +31,7 @@ final class ScheduleDetailViewModel {
     }
     
     func writeData() {
-        repository.writeData(documentName: "Schedule", item: detailSchedule) { result in
+        repository.writeData(item: detailSchedule) { result in
             switch result {
             case .success:
                 print("success")
@@ -39,5 +39,13 @@ final class ScheduleDetailViewModel {
                 print("Error in write")
             }
         }
+    }
+    
+    func updateStartDate(with date: Date) {
+        detailSchedule.startTime = Timestamp(date: date)
+    }
+    
+    func updateEndDate(with date: Date) {
+        detailSchedule.endTime = Timestamp(date: date)
     }
 }

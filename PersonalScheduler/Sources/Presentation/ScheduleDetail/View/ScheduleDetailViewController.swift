@@ -75,11 +75,11 @@ extension ScheduleDetailViewController: ScheduleDetailTitleDelegate {
     }
     
     func scheduleDetailTitleView(didTapStartTime titleView: ScheduleDetailTitleView, starTime: Date) {
-        print(starTime.convertDescription())
+        viewModel.updateStartDate(with: starTime)
     }
     
     func scheduleDetailTitleView(didTapEndTime titleView: ScheduleDetailTitleView, endTime: Date) {
-        print(endTime.convertDescription())
+        viewModel.updateEndDate(with: endTime)
     }
 }
 

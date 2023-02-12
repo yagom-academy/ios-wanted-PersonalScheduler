@@ -19,12 +19,20 @@ final class ScheduleDetailRepository {
         return dataBase.document(documentName).toAnyPublisher()
     }
     
-    func writeData(documentName: String, item: Schedule, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard let _ = try? dataBase.document(documentName).setData(from: item) else {
+    func writeData(documentName: String? = nil, item: Schedule, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let _ = try? createDocument(documentName: documentName).setData(from: item) else {
             completion(.failure(StoreError.writeError))
             return
         }
         
         completion(.success(()))
+    }
+    
+    private func createDocument(documentName: String?) -> DocumentReference {
+        if let documentName = documentName {
+            return dataBase.document(documentName)
+        } else {
+            return dataBase.document()
+        }
     }
 }
