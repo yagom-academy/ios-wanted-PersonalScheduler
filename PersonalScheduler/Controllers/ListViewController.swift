@@ -66,7 +66,7 @@ final class ListViewController: UIViewController {
     }
 
     private func configureNavigationItem() {
-        navigationItem.title = NSLocalizedString("Personal Scheduler", comment: "Scheduler List ViewController Title")
+        navigationItem.title = Constants.title
         let logoutButtonTitle = NSLocalizedString("Logout", comment: "Logout BarButton Title")
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             title: logoutButtonTitle,
@@ -210,6 +210,7 @@ extension ListViewController {
 
 extension ListViewController {
     private enum Constants {
+        static let title = "Personal Scheduler"
         static let isTodayColor = UIColor.systemGreen
         static let isEarlierThanTodayColor = UIColor.systemGray
         static let defaultColor = UIColor.clear
