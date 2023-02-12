@@ -113,7 +113,9 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginViewModelDelegate {
     func loginViewModel(successLogin uid: String) {
-        print(uid)
+        let scheduleViewController = ViewControllerFactory.makeViewController(type: .schedule(userID: uid))
+        
+        present(scheduleViewController, animated: true)
     }
     
     func loginViewModel(failedLogin error: Error) {
