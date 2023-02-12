@@ -34,6 +34,7 @@
 		E3668D4729979D0600EAC215 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = E3668D4629979D0600EAC215 /* KakaoSDKUser */; };
 		E3668D4A29979DB100EAC215 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = E3668D4929979DB100EAC215 /* FacebookCore */; };
 		E3668D4C29979DB100EAC215 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = E3668D4B29979DB100EAC215 /* FacebookLogin */; };
+		E3668D4E2997A96500EAC215 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3668D4D2997A96500EAC215 /* ViewControllerFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		E347AD6E299171610022A5DB /* DefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepository.swift; sourceTree = "<group>"; };
 		E347AD70299248DB0022A5DB /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		E347AD72299248E50022A5DB /* ScheduleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEntity.swift; sourceTree = "<group>"; };
+		E3668D4D2997A96500EAC215 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				E33299DF2992A16600EB425B /* RemoteDBError.swift */,
 				E33299F82995402800EB425B /* ButtonBuilder.swift */,
 				E33299FA2995425100EB425B /* LoginButton.swift */,
+				E3668D4D2997A96500EAC215 /* ViewControllerFactory.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				E33299E62992C90800EB425B /* LoginViewModel.swift in Sources */,
 				E347AD6F299171610022A5DB /* DefaultRepository.swift in Sources */,
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
+				E3668D4E2997A96500EAC215 /* ViewControllerFactory.swift in Sources */,
 				E33299E32992C6BC00EB425B /* ScheduleServiceable.swift in Sources */,
 				E33299F92995402800EB425B /* ButtonBuilder.swift in Sources */,
 				E33299E02992A16600EB425B /* RemoteDBError.swift in Sources */,
