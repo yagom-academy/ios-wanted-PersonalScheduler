@@ -20,13 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let navigationController: UINavigationController
+        let rootViewController = ViewControllerFactory.makeViewController(type: .login)
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        
         if let currentUser = Auth.auth().currentUser {
-            let rootViewController = ViewControllerFactory.makeViewController(type: .schedule(userID: currentUser.uid))
-            navigationController = UINavigationController(rootViewController: rootViewController)
-        } else {
-            let rootViewController = ViewControllerFactory.makeViewController(type: .login)
-            navigationController = UINavigationController(rootViewController: rootViewController)
+            let scheduleViewController = ViewControllerFactory.makeViewController(type: .schedule(userID: currentUser.uid))
+            navigationController.pushViewController(scheduleViewController, animated: true)
         }
         
         window.rootViewController = navigationController
