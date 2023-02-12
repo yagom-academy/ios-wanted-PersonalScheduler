@@ -7,6 +7,12 @@
 import UIKit
 import Combine
 
+protocol ScheduleDetailTitleDelegate: AnyObject {
+    func scheduleDetailTitleView(with titleView: ScheduleDetailTitleView, title: String?)
+    func scheduleDetailTitleView(with titleView: ScheduleDetailTitleView, startTime: Date)
+    func scheduleDetailTitleView(with titleView: ScheduleDetailTitleView, endTime: Date)
+}
+
 final class ScheduleDetailTitleView: NavigationBar {
     private let titleTextField: ScheduleTextField = {
         let textField = ScheduleTextField()
@@ -27,6 +33,8 @@ final class ScheduleDetailTitleView: NavigationBar {
         .setBorder(color: UIColor(named: "textFieldBorderColor"), width: 1)
     
     private var cancellable = Set<AnyCancellable>()
+    
+    weak var delegate: ScheduleDetailTitleDelegate?
     
     override init(title: String) {
         super.init(title: title)
@@ -78,9 +86,7 @@ private extension ScheduleDetailTitleView {
         titleTextField.textPublisher
             .debounce(for: 0.5, scheduler: RunLoop.main)
             .compactMap { $0 }
-            .sink {
-                print($0)
-            }
+            .sink { self.delegate?.scheduleDetailTitleView(with: self, title: $0) }
             .store(in: &cancellable)
     }
 }

@@ -42,6 +42,48 @@ final class ScheduleDetailViewController: UIViewController {
     }
 }
 
+// MARK: - Binding Method
+private extension ScheduleDetailViewController {
+    func bind() {
+        viewModel.$detailSchedule
+            .sink {
+                self.bodyTextView.text = $0.body
+            }
+            .store(in: &cancellable)
+    }
+    
+    func bindAction() {
+        navigationTitleView.delegate = self
+        
+        bodyTextView.textPublisher
+            .compactMap { $0 }
+            .sink { self.viewModel.detailSchedule.body = $0 }
+            .store(in: &cancellable)
+        
+        saveButton.tapPublisher
+            .throttle(for: 1, scheduler: RunLoop.main, latest: true)
+            .sink { self.viewModel.writeData() }
+            .store(in: &cancellable)
+    }
+}
+
+// MARK: - Detail Title Delegate Method
+extension ScheduleDetailViewController: ScheduleDetailTitleDelegate {
+    func scheduleDetailTitleView(with titleView: ScheduleDetailTitleView, title: String?) {
+        guard let title = title else { return }
+        viewModel.detailSchedule.title = title
+    }
+    
+    func scheduleDetailTitleView(with titleView: ScheduleDetailTitleView, startTime: Date) {
+        print(startTime)
+    }
+    
+    func scheduleDetailTitleView(with titleView: ScheduleDetailTitleView, endTime: Date) {
+        print(endTime)
+    }
+}
+
+// MARK: - Configure UI
 private extension ScheduleDetailViewController {
     func configureUI() {
         addSafeArea()
@@ -79,35 +121,15 @@ private extension ScheduleDetailViewController {
             bodyTextView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -80),
             
             saveButton.topAnchor.constraint(equalTo: bodyTextView.bottomAnchor, constant: 16),
-            saveButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            saveButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            saveButton.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.6),
+            saveButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             saveButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
     }
 }
 
-private extension ScheduleDetailViewController {
-    func bind() {
-        viewModel.$detailSchedule
-            .sink {
-                self.bodyTextView.text = $0.body
-            }
-            .store(in: &cancellable)
-    }
-    
-    func bindAction() {
-        bodyTextView.textPublisher
-            .compactMap { $0 }
-            .sink { self.viewModel.detailSchedule.body = $0 }
-            .store(in: &cancellable)
-        
-        saveButton.tapPublisher
-            .throttle(for: 1, scheduler: RunLoop.main, latest: true)
-            .sink { self.viewModel.writeData() }
-            .store(in: &cancellable)
-    }
-}
 
+// MARK: - TextView Setting Method
 private extension UITextView {
     func setInitState() -> UITextView {
         translatesAutoresizingMaskIntoConstraints = false
