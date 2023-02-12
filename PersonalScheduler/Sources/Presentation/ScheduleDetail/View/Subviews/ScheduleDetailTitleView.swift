@@ -9,8 +9,8 @@ import Combine
 
 protocol ScheduleDetailTitleDelegate: AnyObject {
     func scheduleDetailTitleView(with titleView: ScheduleDetailTitleView, title: String?)
-    func scheduleDetailTitleView(with titleView: ScheduleDetailTitleView, startTime: Date)
-    func scheduleDetailTitleView(with titleView: ScheduleDetailTitleView, endTime: Date)
+    func scheduleDetailTitleView(didTapStartTime titleView: ScheduleDetailTitleView)
+    func scheduleDetailTitleView(didTapEndTime titleView: ScheduleDetailTitleView, endTime: Date)
 }
 
 final class ScheduleDetailTitleView: NavigationBar {
@@ -41,7 +41,7 @@ final class ScheduleDetailTitleView: NavigationBar {
         translatesAutoresizingMaskIntoConstraints = false
         
         configureUI()
-        bind()
+        bindAction()
     }
     
     override func layoutSubviews() {
@@ -82,11 +82,14 @@ final class ScheduleDetailTitleView: NavigationBar {
 }
 
 private extension ScheduleDetailTitleView {
-    func bind() {
+    func bindAction() {
         titleTextField.textPublisher
-            .debounce(for: 0.5, scheduler: RunLoop.main)
             .compactMap { $0 }
             .sink { self.delegate?.scheduleDetailTitleView(with: self, title: $0) }
+            .store(in: &cancellable)
+        
+        startDateButton.tapPublisher
+            .sink { _ in self.delegate?.scheduleDetailTitleView(didTapStartTime: self) }
             .store(in: &cancellable)
     }
 }

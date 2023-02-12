@@ -74,12 +74,14 @@ extension ScheduleDetailViewController: ScheduleDetailTitleDelegate {
         viewModel.detailSchedule.title = title
     }
     
-    func scheduleDetailTitleView(with titleView: ScheduleDetailTitleView, startTime: Date) {
-        print(startTime)
+    func scheduleDetailTitleView(didTapStartTime titleView: ScheduleDetailTitleView) {
+        let controller = DatePickerSheetViewController()
+        controller.modalPresentationStyle = .overFullScreen
+        self.present(controller, animated: true)
     }
     
-    func scheduleDetailTitleView(with titleView: ScheduleDetailTitleView, endTime: Date) {
-        print(endTime)
+    func scheduleDetailTitleView(didTapEndTime titleView: ScheduleDetailTitleView, endTime: Date) {
+        print("Did Tap endTime")
     }
 }
 
