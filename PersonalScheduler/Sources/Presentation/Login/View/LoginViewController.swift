@@ -96,7 +96,7 @@ extension LoginViewController: ASAuthorizationControllerPresentationContextProvi
 // MARK: - Present Method
 private extension LoginViewController {
     func presentMainViewController() {
-        let controller = ScheduleListViewController()
+        let controller = ScheduleListViewController(authService: FirebaseAuthService())
         controller.modalPresentationStyle = .fullScreen
         controller.modalTransitionStyle = .crossDissolve
         present(controller, animated: true)

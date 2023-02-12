@@ -21,6 +21,10 @@ protocol LoginService {
 final class FirebaseAuthService: LoginService {
     @Published var userId: String = ""
     
+    init() {
+        setExistUserId()
+    }
+    
     func login(
         with credential: AuthCredential,
         completion: @escaping (Result<Void, LoginError>) -> Void

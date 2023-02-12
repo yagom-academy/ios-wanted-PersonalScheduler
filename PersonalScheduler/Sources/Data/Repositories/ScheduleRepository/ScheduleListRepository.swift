@@ -10,11 +10,13 @@ import FirebaseFirestoreSwift
 
 final class ScheduleListRepository {
     @Published var schedules: [Schedule] = []
-    private var cancellable = Set<AnyCancellable>()
     @Published private var ids: [String] = []
+    
     private let scheduleDatabase = Firestore.firestore().collection("Schedule")
     private let userDatabase = Firestore.firestore().collection("Users")
     private let authService: FirebaseAuthService
+    
+    private var cancellable = Set<AnyCancellable>()
     
     init(authService: FirebaseAuthService) {
         self.authService = authService
@@ -28,13 +30,12 @@ final class ScheduleListRepository {
     }
     
     func readScheduleIds() {
-        userDatabase.toAnyPublisher()
-            .replaceError(with: nil)
-            .compactMap { $0 }
-            .sink { values in
-                self.ids = values
+        userDatabase.document(authService.userId)
+            .addSnapshotListener { snapshot, error in
+                guard let values = snapshot?.data(),
+                      let ids = values["schedules"] as? [String] else { return }
+                self.ids = ids
             }
-            .store(in: &cancellable)
     }
     
     func readListData(ids: [String]) {

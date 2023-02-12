@@ -21,8 +21,24 @@ final class ScheduleListViewController: UIViewController {
         return button
     }()
     
-    private let viewModel = ScheduleListViewModel(isLogged: true)
+    private let scheduleListView: UITableView = {
+        let tableView = UITableView()
+        return tableView
+    }()
+    
+    private var schedules: [Schedule] = []
+    private let viewModel: ScheduleListViewModel
     private var cancellable = Set<AnyCancellable>()
+    
+    init(authService: FirebaseAuthService) {
+        let listRepository = ScheduleListRepository(authService: authService)
+        self.viewModel = ScheduleListViewModel(listRepository: listRepository)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +55,13 @@ private extension ScheduleListViewController {
             .filter { $0 == false }
             .sink { [weak self] _ in
                 self?.dismiss(animated: true)
+            }
+            .store(in: &cancellable)
+        
+        viewModel.$schedules
+            .receive(on: DispatchQueue.main)
+            .sink { values in
+                self.schedules = values
             }
             .store(in: &cancellable)
     }
@@ -62,6 +85,19 @@ private extension ScheduleListViewController {
 //                self?.viewModel.logout()
 //            }
 //            .store(in: &cancellable)
+    }
+}
+
+extension ScheduleListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return schedules.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = schedules[indexPath.row].title
+        
+        return cell
     }
 }
 
@@ -95,15 +131,3 @@ private extension ScheduleListViewController {
         ])
     }
 }
-
-#if DEBUG
-import SwiftUI
-
-struct ServiceUnavailableViewPreview: PreviewProvider {
-    static var previews: some View {
-        ScheduleListViewController().showPreview()
-            .edgesIgnoringSafeArea(.all)
-    }
-}
-#endif
-

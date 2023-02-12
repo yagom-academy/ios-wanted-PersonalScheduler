@@ -18,18 +18,10 @@ final class ScheduleUserRepository {
     }
     
     func writeUserSchedule(documentId: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        print("/\(documentId)/key:(\(documentId))")
         dataBase
             .document(authService.userId)
-            .collection(documentId)
-            .addDocument(data: ["key": documentId]) { error in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                completion(.success(()))
-                return
-            }
+            .updateData([
+                "schedules": FieldValue.arrayUnion([documentId])
+            ])
     }
 }

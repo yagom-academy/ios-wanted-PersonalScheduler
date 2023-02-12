@@ -7,12 +7,24 @@
 import Combine
 
 final class ScheduleListViewModel {
-    @Published var isLogged: Bool
+    @Published var isLogged: Bool = true
+    @Published var schedules: [Schedule] = []
+    private let listRepository: ScheduleListRepository
     let firebaseAuthService = FirebaseAuthService()
     
-    init(isLogged: Bool) {
-        self.isLogged = isLogged
+    private var cancellable = Set<AnyCancellable>()
+    
+    init(listRepository: ScheduleListRepository) {
+        self.listRepository = listRepository
         firebaseAuthService.setExistUserId()
+        
+        readList()
+    }
+    
+    func readList() {
+        listRepository.$schedules
+            .sink { self.schedules = $0 }
+            .store(in: &cancellable)
     }
     
     func logout() {

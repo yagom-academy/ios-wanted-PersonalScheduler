@@ -53,6 +53,8 @@ private extension SceneDelegate {
             return LoginViewController()
         }
         
-        return ScheduleListViewController()
+        let authService = FirebaseAuthService()
+        
+        return ScheduleListViewController(authService: authService)
     }
 }
