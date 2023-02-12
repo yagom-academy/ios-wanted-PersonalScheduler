@@ -8,6 +8,8 @@ import FirebaseAuth
 import Combine
 
 protocol LoginService {
+    var userId: String { get }
+    
     func login(
         with credential: AuthCredential,
         completion: @escaping (Result<Void, LoginError>) -> Void
@@ -17,6 +19,8 @@ protocol LoginService {
 }
 
 final class FirebaseAuthService: LoginService {
+    @Published var userId: String = ""
+    
     func login(
         with credential: AuthCredential,
         completion: @escaping (Result<Void, LoginError>) -> Void
@@ -26,6 +30,12 @@ final class FirebaseAuthService: LoginService {
                 completion(.failure(.unReadCredential))
                 return
             }
+            guard let userId = Auth.auth().currentUser?.uid else {
+                completion(.failure(.unknown))
+                return
+            }
+            
+            self.userId = userId
             
             completion(.success(()))
         }
