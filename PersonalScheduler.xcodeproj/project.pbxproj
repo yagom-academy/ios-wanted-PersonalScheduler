@@ -7,23 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09197A5829979DA0005497C5 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09197A5729979DA0005497C5 /* UIFont+Extension.swift */; };
+		09197A5A2997D0CD005497C5 /* KindOfLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09197A592997D0CD005497C5 /* KindOfLogin.swift */; };
+		09197A5D2997F360005497C5 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09197A5C2997F360005497C5 /* ApiError.swift */; };
+		09197A5F2997F72F005497C5 /* AlerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09197A5E2997F72F005497C5 /* AlerManager.swift */; };
+		099BA71F29963E2E00F26C15 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 099BA71E29963E2E00F26C15 /* GoogleService-Info.plist */; };
+		099BA7212996632900F26C15 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099BA7202996632900F26C15 /* FirebaseManager.swift */; };
+		09AB6451299384D900036E75 /* ScheduleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB6450299384D900036E75 /* ScheduleListCell.swift */; };
+		09AB64532993E9C500036E75 /* DetailScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB64522993E9C500036E75 /* DetailScheduleViewController.swift */; };
+		09AB64552994014A00036E75 /* DetailScheduleMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB64542994014A00036E75 /* DetailScheduleMode.swift */; };
+		09AB64572994034500036E75 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB64562994034500036E75 /* ScheduleModel.swift */; };
+		09AB64592994091600036E75 /* DetailScheduleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB64582994091600036E75 /* DetailScheduleDelegate.swift */; };
+		09AB645B29940F2000036E75 /* DateformatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB645A29940F2000036E75 /* DateformatterManager.swift */; };
+		09E95B5D2992A09D004E120A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E95B5C2992A09D004E120A /* UIColor+Extension.swift */; };
+		09E95B5F2992E3A2004E120A /* ScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E95B5E2992E3A2004E120A /* ScheduleListViewController.swift */; };
+		57618FD49EE5975ED9C8A4FE /* Pods_PersonalScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D7EC747ED838E7863E7685 /* Pods_PersonalScheduler.framework */; };
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
-		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
-		63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB072967EA2600775EC3 /* Main.storyboard */; };
+		63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* LoginViewController.swift */; };
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09197A5729979DA0005497C5 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		09197A592997D0CD005497C5 /* KindOfLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KindOfLogin.swift; sourceTree = "<group>"; };
+		09197A5C2997F360005497C5 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		09197A5E2997F72F005497C5 /* AlerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlerManager.swift; sourceTree = "<group>"; };
+		099BA71E29963E2E00F26C15 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		099BA7202996632900F26C15 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		09AB6450299384D900036E75 /* ScheduleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListCell.swift; sourceTree = "<group>"; };
+		09AB64522993E9C500036E75 /* DetailScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScheduleViewController.swift; sourceTree = "<group>"; };
+		09AB64542994014A00036E75 /* DetailScheduleMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScheduleMode.swift; sourceTree = "<group>"; };
+		09AB64562994034500036E75 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
+		09AB64582994091600036E75 /* DetailScheduleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScheduleDelegate.swift; sourceTree = "<group>"; };
+		09AB645A29940F2000036E75 /* DateformatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateformatterManager.swift; sourceTree = "<group>"; };
+		09E95B5C2992A09D004E120A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		09E95B5E2992E3A2004E120A /* ScheduleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewController.swift; sourceTree = "<group>"; };
+		0ED79E58DA0057F148F527CE /* Pods-PersonalScheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.debug.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.debug.xcconfig"; sourceTree = "<group>"; };
+		31D7EC747ED838E7863E7685 /* Pods_PersonalScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63AAAB052967EA2600775EC3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		63AAAB082967EA2600775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		63AAAB052967EA2600775EC3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		63AAAB0A2967EA2700775EC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4404D60176A0AC3B692EA5F /* Pods-PersonalScheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.release.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +61,83 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57618FD49EE5975ED9C8A4FE /* Pods_PersonalScheduler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09E95B5729929FBF004E120A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB052967EA2600775EC3 /* LoginViewController.swift */,
+				09E95B5E2992E3A2004E120A /* ScheduleListViewController.swift */,
+				09AB64522993E9C500036E75 /* DetailScheduleViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		09E95B5829929FD0004E120A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09AB6450299384D900036E75 /* ScheduleListCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09E95B5929929FD8004E120A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09AB64542994014A00036E75 /* DetailScheduleMode.swift */,
+				09AB64562994034500036E75 /* ScheduleModel.swift */,
+				09AB64582994091600036E75 /* DetailScheduleDelegate.swift */,
+				09AB645A29940F2000036E75 /* DateformatterManager.swift */,
+				099BA7202996632900F26C15 /* FirebaseManager.swift */,
+				09197A592997D0CD005497C5 /* KindOfLogin.swift */,
+				09197A5C2997F360005497C5 /* ApiError.swift */,
+				09197A5E2997F72F005497C5 /* AlerManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09E95B5A29929FF4004E120A /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
+				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
+				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
+				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		09E95B5B2992A01A004E120A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				09E95B5C2992A09D004E120A /* UIColor+Extension.swift */,
+				09197A5729979DA0005497C5 /* UIFont+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		5D671428E4A8358AD8BBBF0A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0ED79E58DA0057F148F527CE /* Pods-PersonalScheduler.debug.xcconfig */,
+				F4404D60176A0AC3B692EA5F /* Pods-PersonalScheduler.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		63AAAAF52967EA2600775EC3 = {
 			isa = PBXGroup;
 			children = (
 				63AAAB002967EA2600775EC3 /* PersonalScheduler */,
 				63AAAAFF2967EA2600775EC3 /* Products */,
+				5D671428E4A8358AD8BBBF0A /* Pods */,
+				FEEAD1DC7823BD10930867AC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +152,22 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
-				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
-				63AAAB052967EA2600775EC3 /* ViewController.swift */,
-				63AAAB072967EA2600775EC3 /* Main.storyboard */,
-				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
-				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
-				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				099BA71E29963E2E00F26C15 /* GoogleService-Info.plist */,
+				09E95B5B2992A01A004E120A /* Extension */,
+				09E95B5A29929FF4004E120A /* SupportFiles */,
+				09E95B5929929FD8004E120A /* Model */,
+				09E95B5829929FD0004E120A /* View */,
+				09E95B5729929FBF004E120A /* Controller */,
 			);
 			path = PersonalScheduler;
+			sourceTree = "<group>";
+		};
+		FEEAD1DC7823BD10930867AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31D7EC747ED838E7863E7685 /* Pods_PersonalScheduler.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +177,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63AAAB122967EA2700775EC3 /* Build configuration list for PBXNativeTarget "PersonalScheduler" */;
 			buildPhases = (
+				61EA53B1B637B16575241B7D /* [CP] Check Pods Manifest.lock */,
 				63AAAAFA2967EA2600775EC3 /* Sources */,
 				63AAAAFB2967EA2600775EC3 /* Frameworks */,
 				63AAAAFC2967EA2600775EC3 /* Resources */,
+				0EE339C3519488C5F058C63B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,34 +232,81 @@
 			files = (
 				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
 				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
-				63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */,
+				099BA71F29963E2E00F26C15 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0EE339C3519488C5F058C63B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61EA53B1B637B16575241B7D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PersonalScheduler-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		63AAAAFA2967EA2600775EC3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
+				099BA7212996632900F26C15 /* FirebaseManager.swift in Sources */,
+				09AB64592994091600036E75 /* DetailScheduleDelegate.swift in Sources */,
+				09AB64552994014A00036E75 /* DetailScheduleMode.swift in Sources */,
+				09AB6451299384D900036E75 /* ScheduleListCell.swift in Sources */,
+				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
+				09AB64572994034500036E75 /* ScheduleModel.swift in Sources */,
+				09E95B5F2992E3A2004E120A /* ScheduleListViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				09197A5D2997F360005497C5 /* ApiError.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				09AB645B29940F2000036E75 /* DateformatterManager.swift in Sources */,
+				09197A5F2997F72F005497C5 /* AlerManager.swift in Sources */,
+				09197A5829979DA0005497C5 /* UIFont+Extension.swift in Sources */,
+				09E95B5D2992A09D004E120A /* UIColor+Extension.swift in Sources */,
+				09197A5A2997D0CD005497C5 /* KindOfLogin.swift in Sources */,
+				09AB64532993E9C500036E75 /* DetailScheduleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		63AAAB072967EA2600775EC3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63AAAB082967EA2600775EC3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,7 +368,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +422,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -282,18 +434,17 @@
 		};
 		63AAAB132967EA2700775EC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0ED79E58DA0057F148F527CE /* Pods-PersonalScheduler.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PersonalScheduler/Info.plist;
+				INFOPLIST_FILE = PersonalScheduler/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,18 +460,17 @@
 		};
 		63AAAB142967EA2700775EC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4404D60176A0AC3B692EA5F /* Pods-PersonalScheduler.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PersonalScheduler/Info.plist;
+				INFOPLIST_FILE = PersonalScheduler/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
