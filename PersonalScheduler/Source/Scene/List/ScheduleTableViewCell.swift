@@ -8,7 +8,7 @@
 import UIKit
 
 final class ScheduleTableViewCell: UITableViewCell {
-    private var delegate: DataProcessChangeable?
+    private weak var delegate: DataManageable?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -78,12 +78,14 @@ final class ScheduleTableViewCell: UITableViewCell {
         checkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
     }
     
-    func setupData(_ viewModel: CellViewModel, delegate: DataProcessChangeable) {
+    func setupData(_ viewModel: CellViewModel, delegate: DataManageable) {
         self.delegate = delegate
         self.viewModel = viewModel
         
         viewModel.bindData { [weak self] schedule in
-            self?.dateLabel.text = DateFormatter.removeTime(from: schedule.startDate) + "-" + DateFormatter.removeTime(from: schedule.endDate)
+            self?.dateLabel.text = DateFormatter.removeTime(from: schedule.startDate)
+            + "-"
+            + DateFormatter.removeTime(from: schedule.endDate)
 
             self?.titleLabel.text = schedule.title
             self?.contentLabel.text = schedule.content
@@ -99,7 +101,7 @@ final class ScheduleTableViewCell: UITableViewCell {
 extension ScheduleTableViewCell {
     @objc private func checkButtonTapped() {
         guard let data = viewModel?.changeState() else { return }
-        delegate?.changeDataProcess(data: data)
+        delegate?.updateProcess(data: data)
     }
 }
 

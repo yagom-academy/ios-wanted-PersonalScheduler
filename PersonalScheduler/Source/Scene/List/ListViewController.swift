@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol DataProcessChangeable {
-    func changeDataProcess(data: Schedule)
-}
-
 final class ListViewController: UIViewController {
     typealias DataSource = UITableViewDiffableDataSource<Section, Schedule>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Schedule>
@@ -34,6 +30,7 @@ final class ListViewController: UIViewController {
     init(_ viewModel: ListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        viewModel.presentDelegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -44,6 +41,19 @@ final class ListViewController: UIViewController {
         viewModel.bindData { [weak self] datas in
             self?.applySnapshot(data: datas, animating: true)
         }
+    }
+}
+
+// MARK: - Present
+extension ListViewController: EventManageable {
+    func presentDetailView(mode: Mode, data: Schedule?) {
+        let detailViewModel = DetailViewModel(mode: mode, data: data)
+        let detailView = DetailViewController(viewModel: detailViewModel, delegate: self)
+        navigationController?.pushViewController(detailView, animated: true)
+    }
+    
+    @objc private func addButtonTapped() {
+        viewModel.dataAction(.present(index: nil))
     }
 }
 
@@ -77,7 +87,7 @@ extension ListViewController {
 // MARK: - TableViewDelegate
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        viewModel.dataAction(.present(index: indexPath.row))
     }
     
     func tableView(
@@ -98,8 +108,12 @@ extension ListViewController: UITableViewDelegate {
     }
 }
 
-extension ListViewController: DataProcessChangeable {
-    func changeDataProcess(data: Schedule) {
+extension ListViewController: DataManageable {
+    func uploadData(mode: Mode, _ data: Schedule) {
+        viewModel.dataAction(.upload(mode: mode, data: data))
+    }
+    
+    func updateProcess(data: Schedule) {
         viewModel.dataAction(.processUpdate(data: data))
     }
 }
@@ -107,9 +121,10 @@ extension ListViewController: DataProcessChangeable {
 // MARK: - UIConstraint
 extension ListViewController {
     private func setupNavigationBar() {
-        title = viewModel.fetchName() + "님의 Scedule"
+        title = viewModel.fetchName() + "님의 Schedule"
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemGray6
@@ -117,6 +132,18 @@ extension ListViewController {
         navigationItem.hidesBackButton = true
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.tintColor = .systemOrange
+        navigationController?.navigationBar.topItem?.title = "Schedules"
+        
+        let addBarButton = UIBarButtonItem(
+            image: UIImage(systemName: "plus.circle.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(addButtonTapped)
+        )
+        
+        addBarButton.tintColor = .systemOrange
+        navigationItem.rightBarButtonItem = addBarButton
     }
     
     private func setupView() {
@@ -125,6 +152,9 @@ extension ListViewController {
         
         tableView.delegate = self
         tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(
+            top: .zero, left: .zero, bottom: .zero, right: .zero
+        )
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(
             ScheduleTableViewCell.self,
