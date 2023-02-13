@@ -134,6 +134,7 @@ extension ListViewController {
         title = viewModel.fetchName() + "님의 Schedule"
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .systemGray6
@@ -161,6 +162,7 @@ extension ListViewController {
         
         tableView.delegate = self
         tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(
             ScheduleTableViewCell.self,

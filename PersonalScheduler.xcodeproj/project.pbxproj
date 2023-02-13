@@ -131,8 +131,8 @@
 		3C4B4BCC299936830054401E /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				3C4B4BD32999E8290054401E /* ViewModel */,
 				3C4B4BCF2999375D0054401E /* DetailViewController.swift */,
-				3C4B4BD129993C410054401E /* DetailViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -150,6 +150,14 @@
 			isa = PBXGroup;
 			children = (
 				3C3959B129923386006D2E52 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3C4B4BD32999E8290054401E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3C4B4BD129993C410054401E /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
