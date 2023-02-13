@@ -1,0 +1,14 @@
+//
+//  Config.xcconfig
+//  PersonalScheduler
+//
+//  Created by 맹선아 on 2023/02/07.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+KAKAO_NATIVE_APP_KEY = 17b3a99376ce85086346cf6a6a34f9ac
+FACEBOOK_APP_ID = 731162931704089
+FACEBOOK_CLIENT_TOKEN = 68820906a5d7d6cc015e6d5efdf67928
+FACEBOOK_DISPLAY_NAME = Scheduler
