@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  PersonalScheduler
+
+  Created by junho lee on 2023/02/12.
+  
+*/
+
+"Add Schedule" = "스케줄 추가";
+"Schedule" = "스케줄";
+"Title" = "제목";
+"Schedule Date" = "실행 일시";
+"Body" = "본문";
+"Delete" = "삭제";
+"Logout" = "로그아웃";
