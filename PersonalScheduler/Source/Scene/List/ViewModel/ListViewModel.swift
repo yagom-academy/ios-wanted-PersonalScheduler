@@ -9,7 +9,8 @@ import Foundation
 
 final class ListViewModel {
     enum Action {
-        case add
+        case present
+        case add(data: Schedule)
         case delete(index: Int)
         case processUpdate(data: Schedule)
     }
@@ -22,7 +23,7 @@ final class ListViewModel {
     
     private var dataHandler: (([Schedule]) -> Void)?
     private let fireBaseManager: FireStoreManager
-    weak var presentDelegate: ViewPresentable?
+    weak var presentDelegate: EventManageable?
     
     init(_ fireBaseManager: FireStoreManager) {
         self.fireBaseManager = fireBaseManager
@@ -45,8 +46,11 @@ final class ListViewModel {
         case .delete(let index):
             fireBaseManager.delete(data: datas[index])
             datas.remove(at: index)
-        case .add:
+        case .present:
             presentDelegate?.presentDetailView(mode: .new, data: nil)
+        case .add(let data):
+            fireBaseManager.add(data: data)
+            fetchData()
         }
     }
     

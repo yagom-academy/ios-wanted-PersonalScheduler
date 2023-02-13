@@ -9,6 +9,7 @@ import UIKit
 
 final class DetailViewController: UIViewController {
     private let viewModel: DetailViewModel
+    private weak var delegate: DataManageable?
     
     private let titleTextField: UITextField = {
         let textField = UITextField()
@@ -68,8 +69,9 @@ final class DetailViewController: UIViewController {
         return stackView
     }()
     
-    init(viewModel: DetailViewModel) {
+    init(viewModel: DetailViewModel, delegate: DataManageable) {
         self.viewModel = viewModel
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
         setupNavigationBar()
         setupBind()
@@ -118,8 +120,19 @@ extension DetailViewController {
     @objc private func endDatePickerWheel(_ sender: UIDatePicker) -> Date {
         return sender.date
     }
+    
+    @objc private func doneButtonTapped() {
+        delegate?.uploadNewData(
+            data: viewModel.makeData(
+                title: titleTextField.text,
+                content: contentTextView.text,
+                start: startDatePickerWheel(startDatePicker),
+                end: endDatePickerWheel(endDatePicker)
+            )
+        )
+        navigationController?.popViewController(animated: true)
+    }
 }
-
 
 // MARK: - UIConstraint
 extension DetailViewController {
@@ -131,6 +144,16 @@ extension DetailViewController {
         
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        let doneBarButton = UIBarButtonItem(
+            image: UIImage(systemName: "checkmark.circle.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(doneButtonTapped)
+        )
+        
+        doneBarButton.tintColor = .systemOrange
+        navigationItem.rightBarButtonItem = doneBarButton
     }
     
     private func setupView() {

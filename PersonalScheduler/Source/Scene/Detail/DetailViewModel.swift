@@ -72,4 +72,15 @@ final class DetailViewModel {
         handler(content)
         contentHandler = handler
     }
+    
+    func makeData(title: String?, content: String?, start: Date?, end: Date?) -> Schedule {
+        return Schedule(
+            id: UUID(),
+            startDate: start ?? Date(),
+            endDate: end ?? Date(),
+            title: title ?? "",
+            content: content ?? "",
+            state: .ready
+        )
+    }
 }

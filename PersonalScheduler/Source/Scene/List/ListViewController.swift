@@ -7,13 +7,15 @@
 
 import UIKit
 
-protocol DataProcessChangeable {
+protocol DataManageable: AnyObject {
     func changeDataProcess(data: Schedule)
+    func uploadNewData(data: Schedule)
 }
 
-protocol ViewPresentable: AnyObject {
+protocol EventManageable: AnyObject {
     func presentDetailView(mode: DetailViewModel.Mode, data: Schedule?)
 }
+
 
 final class ListViewController: UIViewController {
     typealias DataSource = UITableViewDiffableDataSource<Section, Schedule>
@@ -53,15 +55,15 @@ final class ListViewController: UIViewController {
 }
 
 // MARK: - Present
-extension ListViewController: ViewPresentable {
+extension ListViewController: EventManageable {
     func presentDetailView(mode: DetailViewModel.Mode, data: Schedule?) {
         let detailViewModel = DetailViewModel(mode: mode, data: data)
-        let detailView = DetailViewController(viewModel: detailViewModel)
+        let detailView = DetailViewController(viewModel: detailViewModel, delegate: self)
         navigationController?.pushViewController(detailView, animated: true)
     }
     
     @objc private func addButtonTapped() {
-        viewModel.dataAction(.add)
+        viewModel.dataAction(.present)
     }
 }
 
@@ -116,7 +118,11 @@ extension ListViewController: UITableViewDelegate {
     }
 }
 
-extension ListViewController: DataProcessChangeable {
+extension ListViewController: DataManageable {
+    func uploadNewData(data: Schedule) {
+        viewModel.dataAction(.add(data: data))
+    }
+    
     func changeDataProcess(data: Schedule) {
         viewModel.dataAction(.processUpdate(data: data))
     }
