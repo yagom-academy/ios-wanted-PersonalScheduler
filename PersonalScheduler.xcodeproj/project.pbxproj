@@ -9,21 +9,55 @@
 /* Begin PBXBuildFile section */
 		63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB012967EA2600775EC3 /* AppDelegate.swift */; };
 		63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB032967EA2600775EC3 /* SceneDelegate.swift */; };
-		63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ViewController.swift */; };
-		63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB072967EA2600775EC3 /* Main.storyboard */; };
+		63AAAB062967EA2600775EC3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAAB052967EA2600775EC3 /* ListViewController.swift */; };
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
+		CD49D1156A5D269401E855A8 /* Pods_PersonalScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14244DB459E99929A4ECC81D /* Pods_PersonalScheduler.framework */; };
+		D00285CA2990BF7900B0122F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D00285C92990BF7900B0122F /* GoogleService-Info.plist */; };
+		D01D5A65299216C30000EA91 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A64299216C30000EA91 /* MainViewController.swift */; };
+		D01D5A68299217400000EA91 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A67299217400000EA91 /* ListView.swift */; };
+		D01D5A6B299218040000EA91 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A6A299218040000EA91 /* Schedule.swift */; };
+		D01D5A7129921C6C0000EA91 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A7029921C6C0000EA91 /* ListTableViewCell.swift */; };
+		D01D5A7429922F0A0000EA91 /* ScheduleInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D5A7329922F0A0000EA91 /* ScheduleInfoViewController.swift */; };
+		D055949B29923055000AD5F4 /* ScheduleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055949A29923055000AD5F4 /* ScheduleInfoView.swift */; };
+		D055F7062993C4FF007A7D51 /* NormalLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055F7052993C4FF007A7D51 /* NormalLoginView.swift */; };
+		D055F7082993E029007A7D51 /* UserInfoSendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055F7072993E029007A7D51 /* UserInfoSendable.swift */; };
+		D055F70C2993E5E5007A7D51 /* CreateUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055F70B2993E5E5007A7D51 /* CreateUserInfoViewController.swift */; };
+		D08EDDFD2994128100F3FBEC /* UITextField +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EDDFC2994128100F3FBEC /* UITextField +.swift */; };
+		D0B9470E29956A5500AAC417 /* JSONDecoder +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9470D29956A5500AAC417 /* JSONDecoder +.swift */; };
+		D0B947102995816500AAC417 /* JSONEncoder +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9470F2995816500AAC417 /* JSONEncoder +.swift */; };
+		D0C47547299234B900378CD2 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47546299234B900378CD2 /* Mode.swift */; };
+		D0C47549299286FD00378CD2 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C47548299286FD00378CD2 /* AlertPresentable.swift */; };
+		D0C4754B29928DA800378CD2 /* DataSendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4754A29928DA800378CD2 /* DataSendable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14244DB459E99929A4ECC81D /* Pods_PersonalScheduler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalScheduler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		520A99F155EF8F29A616F0F7 /* Pods-PersonalScheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.release.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.release.xcconfig"; sourceTree = "<group>"; };
+		5E6EAFBA5A175D378B199E05 /* Pods-PersonalScheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.debug.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.debug.xcconfig"; sourceTree = "<group>"; };
 		63AAAAFE2967EA2600775EC3 /* PersonalScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AAAB012967EA2600775EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63AAAB032967EA2600775EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63AAAB052967EA2600775EC3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		63AAAB082967EA2600775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		63AAAB052967EA2600775EC3 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		63AAAB0A2967EA2700775EC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63AAAB0D2967EA2700775EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63AAAB0F2967EA2700775EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D00285C92990BF7900B0122F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D01D5A64299216C30000EA91 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D01D5A67299217400000EA91 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		D01D5A6A299218040000EA91 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		D01D5A7029921C6C0000EA91 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		D01D5A7329922F0A0000EA91 /* ScheduleInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInfoViewController.swift; sourceTree = "<group>"; };
+		D055949A29923055000AD5F4 /* ScheduleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInfoView.swift; sourceTree = "<group>"; };
+		D055F7052993C4FF007A7D51 /* NormalLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalLoginView.swift; sourceTree = "<group>"; };
+		D055F7072993E029007A7D51 /* UserInfoSendable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSendable.swift; sourceTree = "<group>"; };
+		D055F70B2993E5E5007A7D51 /* CreateUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserInfoViewController.swift; sourceTree = "<group>"; };
+		D08EDDFC2994128100F3FBEC /* UITextField +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField +.swift"; sourceTree = "<group>"; };
+		D0B9470D29956A5500AAC417 /* JSONDecoder +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder +.swift"; sourceTree = "<group>"; };
+		D0B9470F2995816500AAC417 /* JSONEncoder +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder +.swift"; sourceTree = "<group>"; };
+		D0C47546299234B900378CD2 /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
+		D0C47548299286FD00378CD2 /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
+		D0C4754A29928DA800378CD2 /* DataSendable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSendable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD49D1156A5D269401E855A8 /* Pods_PersonalScheduler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +77,8 @@
 			children = (
 				63AAAB002967EA2600775EC3 /* PersonalScheduler */,
 				63AAAAFF2967EA2600775EC3 /* Products */,
+				B3D23C67097CC1712C11699D /* Pods */,
+				AD2516F99D4BFBE59192B4DF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +93,159 @@
 		63AAAB002967EA2600775EC3 /* PersonalScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
-				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
-				63AAAB052967EA2600775EC3 /* ViewController.swift */,
-				63AAAB072967EA2600775EC3 /* Main.storyboard */,
-				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
-				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
+				D01D5A5D299181EE0000EA91 /* Resource */,
+				D01D5A5C299181E90000EA91 /* Source */,
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
+				D00285C92990BF7900B0122F /* GoogleService-Info.plist */,
 			);
 			path = PersonalScheduler;
+			sourceTree = "<group>";
+		};
+		AD2516F99D4BFBE59192B4DF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14244DB459E99929A4ECC81D /* Pods_PersonalScheduler.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B3D23C67097CC1712C11699D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5E6EAFBA5A175D378B199E05 /* Pods-PersonalScheduler.debug.xcconfig */,
+				520A99F155EF8F29A616F0F7 /* Pods-PersonalScheduler.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D01D5A5C299181E90000EA91 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				D01D5A69299217D20000EA91 /* Model */,
+				D01D5A602991820D0000EA91 /* Scene */,
+				D01D5A5E299181FA0000EA91 /* App */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		D01D5A5D299181EE0000EA91 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB0A2967EA2700775EC3 /* Assets.xcassets */,
+				63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		D01D5A5E299181FA0000EA91 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB012967EA2600775EC3 /* AppDelegate.swift */,
+				63AAAB032967EA2600775EC3 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D01D5A602991820D0000EA91 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				D01D5A61299182120000EA91 /* Main */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		D01D5A61299182120000EA91 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D01D5A64299216C30000EA91 /* MainViewController.swift */,
+				D01D5A62299182160000EA91 /* View */,
+				D065DCA22995150C00C9EDF6 /* CreateUserInfo */,
+				D01D5A63299216A60000EA91 /* List */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		D01D5A62299182160000EA91 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D055F7052993C4FF007A7D51 /* NormalLoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D01D5A63299216A60000EA91 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				63AAAB052967EA2600775EC3 /* ListViewController.swift */,
+				D055F7042993C4E1007A7D51 /* View */,
+				D01D5A7229922ED60000EA91 /* ScheduleInfo */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		D01D5A69299217D20000EA91 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D0C4754C2993657400378CD2 /* Protocol */,
+				D08EDDFE2994128500F3FBEC /* Extension */,
+				D01D5A6A299218040000EA91 /* Schedule.swift */,
+				D0C47546299234B900378CD2 /* Mode.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D01D5A7229922ED60000EA91 /* ScheduleInfo */ = {
+			isa = PBXGroup;
+			children = (
+				D01D5A7329922F0A0000EA91 /* ScheduleInfoViewController.swift */,
+				D01D5A7529922F0D0000EA91 /* View */,
+			);
+			path = ScheduleInfo;
+			sourceTree = "<group>";
+		};
+		D01D5A7529922F0D0000EA91 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D055949A29923055000AD5F4 /* ScheduleInfoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D055F7042993C4E1007A7D51 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D01D5A67299217400000EA91 /* ListView.swift */,
+				D01D5A7029921C6C0000EA91 /* ListTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D065DCA22995150C00C9EDF6 /* CreateUserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				D055F70B2993E5E5007A7D51 /* CreateUserInfoViewController.swift */,
+			);
+			path = CreateUserInfo;
+			sourceTree = "<group>";
+		};
+		D08EDDFE2994128500F3FBEC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D08EDDFC2994128100F3FBEC /* UITextField +.swift */,
+				D0B9470D29956A5500AAC417 /* JSONDecoder +.swift */,
+				D0B9470F2995816500AAC417 /* JSONEncoder +.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D0C4754C2993657400378CD2 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D0C47548299286FD00378CD2 /* AlertPresentable.swift */,
+				D0C4754A29928DA800378CD2 /* DataSendable.swift */,
+				D055F7072993E029007A7D51 /* UserInfoSendable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +255,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63AAAB122967EA2700775EC3 /* Build configuration list for PBXNativeTarget "PersonalScheduler" */;
 			buildPhases = (
+				B4FE25191EAB2C2E226227EE /* [CP] Check Pods Manifest.lock */,
 				63AAAAFA2967EA2600775EC3 /* Sources */,
 				63AAAAFB2967EA2600775EC3 /* Frameworks */,
 				63AAAAFC2967EA2600775EC3 /* Resources */,
+				F993C394643547862CADFC88 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,34 +310,83 @@
 			files = (
 				63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */,
 				63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */,
-				63AAAB092967EA2600775EC3 /* Main.storyboard in Resources */,
+				D00285CA2990BF7900B0122F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B4FE25191EAB2C2E226227EE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PersonalScheduler-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F993C394643547862CADFC88 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		63AAAAFA2967EA2600775EC3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63AAAB062967EA2600775EC3 /* ViewController.swift in Sources */,
+				D08EDDFD2994128100F3FBEC /* UITextField +.swift in Sources */,
+				63AAAB062967EA2600775EC3 /* ListViewController.swift in Sources */,
+				D01D5A7129921C6C0000EA91 /* ListTableViewCell.swift in Sources */,
+				D0B9470E29956A5500AAC417 /* JSONDecoder +.swift in Sources */,
+				D01D5A7429922F0A0000EA91 /* ScheduleInfoViewController.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
+				D055F7082993E029007A7D51 /* UserInfoSendable.swift in Sources */,
+				D01D5A68299217400000EA91 /* ListView.swift in Sources */,
+				D01D5A65299216C30000EA91 /* MainViewController.swift in Sources */,
+				D01D5A6B299218040000EA91 /* Schedule.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
+				D0C47547299234B900378CD2 /* Mode.swift in Sources */,
+				D0C4754B29928DA800378CD2 /* DataSendable.swift in Sources */,
+				D0C47549299286FD00378CD2 /* AlertPresentable.swift in Sources */,
+				D055F70C2993E5E5007A7D51 /* CreateUserInfoViewController.swift in Sources */,
+				D0B947102995816500AAC417 /* JSONEncoder +.swift in Sources */,
+				D055949B29923055000AD5F4 /* ScheduleInfoView.swift in Sources */,
+				D055F7062993C4FF007A7D51 /* NormalLoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		63AAAB072967EA2600775EC3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63AAAB082967EA2600775EC3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,24 +514,26 @@
 		};
 		63AAAB132967EA2700775EC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E6EAFBA5A175D378B199E05 /* Pods-PersonalScheduler.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D5VN784N4W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PersonalScheduler/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.PersonalScheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PersonalScheduler.dragon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -309,24 +543,26 @@
 		};
 		63AAAB142967EA2700775EC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 520A99F155EF8F29A616F0F7 /* Pods-PersonalScheduler.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D5VN784N4W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PersonalScheduler/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.yagom.PersonalScheduler;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PersonalScheduler.dragon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
