@@ -8,16 +8,13 @@
 import Foundation
 
 final class DetailViewModel {
-    enum Mode: String {
-        case new = "New 📌"
-        case edit = "Edit 🖍"
-    }
-    
     private enum Constant {
         static let defaultText = ""
     }
     
     private(set) var mode: Mode
+    
+    private let id: UUID
     
     private var title: String = Constant.defaultText {
         didSet {
@@ -50,7 +47,15 @@ final class DetailViewModel {
     
     init(mode: Mode, data: Schedule? = nil) {
         self.mode = mode
-        
+        guard let data = data else {
+            id = UUID()
+            return
+        }
+        id = data.id
+        title = data.title
+        content = data.content
+        startDate = data.startDate
+        endDate = data.endDate
     }
     
     func bindTitle(handler: @escaping (String) -> Void) {
@@ -75,7 +80,7 @@ final class DetailViewModel {
     
     func makeData(title: String?, content: String?, start: Date?, end: Date?) -> Schedule {
         return Schedule(
-            id: UUID(),
+            id: id,
             startDate: start ?? Date(),
             endDate: end ?? Date(),
             title: title ?? "",

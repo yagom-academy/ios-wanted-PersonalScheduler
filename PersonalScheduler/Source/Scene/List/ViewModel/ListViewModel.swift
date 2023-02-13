@@ -9,8 +9,8 @@ import Foundation
 
 final class ListViewModel {
     enum Action {
-        case present
-        case add(data: Schedule)
+        case present(index: Int?)
+        case upload(mode: Mode, data: Schedule)
         case delete(index: Int)
         case processUpdate(data: Schedule)
     }
@@ -46,10 +46,18 @@ final class ListViewModel {
         case .delete(let index):
             fireBaseManager.delete(data: datas[index])
             datas.remove(at: index)
-        case .present:
-            presentDelegate?.presentDetailView(mode: .new, data: nil)
-        case .add(let data):
-            fireBaseManager.add(data: data)
+        case .present(let index):
+            guard let index = index else {
+                presentDelegate?.presentDetailView(mode: .new, data: nil)
+                return
+            }
+            presentDelegate?.presentDetailView(mode: .edit, data: datas[index])
+        case .upload(let mode, let data):
+            if mode == .new {
+                fireBaseManager.add(data: data)
+            } else {
+                fireBaseManager.update(data: data)
+            }
             fetchData()
         }
     }

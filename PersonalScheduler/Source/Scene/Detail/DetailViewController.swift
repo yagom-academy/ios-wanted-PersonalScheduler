@@ -122,8 +122,9 @@ extension DetailViewController {
     }
     
     @objc private func doneButtonTapped() {
-        delegate?.uploadNewData(
-            data: viewModel.makeData(
+        delegate?.uploadData(
+            mode: viewModel.mode,
+            viewModel.makeData(
                 title: titleTextField.text,
                 content: contentTextView.text,
                 start: startDatePickerWheel(startDatePicker),

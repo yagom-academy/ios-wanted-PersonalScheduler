@@ -8,12 +8,12 @@
 import UIKit
 
 protocol DataManageable: AnyObject {
-    func changeDataProcess(data: Schedule)
-    func uploadNewData(data: Schedule)
+    func updateProcess(data: Schedule)
+    func uploadData(mode: Mode, _ data: Schedule)
 }
 
 protocol EventManageable: AnyObject {
-    func presentDetailView(mode: DetailViewModel.Mode, data: Schedule?)
+    func presentDetailView(mode: Mode, data: Schedule?)
 }
 
 
@@ -56,14 +56,14 @@ final class ListViewController: UIViewController {
 
 // MARK: - Present
 extension ListViewController: EventManageable {
-    func presentDetailView(mode: DetailViewModel.Mode, data: Schedule?) {
+    func presentDetailView(mode: Mode, data: Schedule?) {
         let detailViewModel = DetailViewModel(mode: mode, data: data)
         let detailView = DetailViewController(viewModel: detailViewModel, delegate: self)
         navigationController?.pushViewController(detailView, animated: true)
     }
     
     @objc private func addButtonTapped() {
-        viewModel.dataAction(.present)
+        viewModel.dataAction(.present(index: nil))
     }
 }
 
@@ -97,7 +97,7 @@ extension ListViewController {
 // MARK: - TableViewDelegate
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        viewModel.dataAction(.present(index: indexPath.row))
     }
     
     func tableView(
@@ -119,11 +119,11 @@ extension ListViewController: UITableViewDelegate {
 }
 
 extension ListViewController: DataManageable {
-    func uploadNewData(data: Schedule) {
-        viewModel.dataAction(.add(data: data))
+    func uploadData(mode: Mode, _ data: Schedule) {
+        viewModel.dataAction(.upload(mode: mode, data: data))
     }
     
-    func changeDataProcess(data: Schedule) {
+    func updateProcess(data: Schedule) {
         viewModel.dataAction(.processUpdate(data: data))
     }
 }

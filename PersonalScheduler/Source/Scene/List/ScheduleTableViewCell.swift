@@ -99,7 +99,7 @@ final class ScheduleTableViewCell: UITableViewCell {
 extension ScheduleTableViewCell {
     @objc private func checkButtonTapped() {
         guard let data = viewModel?.changeState() else { return }
-        delegate?.changeDataProcess(data: data)
+        delegate?.updateProcess(data: data)
     }
 }
 

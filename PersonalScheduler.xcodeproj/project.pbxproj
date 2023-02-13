@@ -21,6 +21,7 @@
 		3C3959B429923C5B006D2E52 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3959B329923C5B006D2E52 /* LoginViewController.swift */; };
 		3C4B4BD02999375D0054401E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4B4BCF2999375D0054401E /* DetailViewController.swift */; };
 		3C4B4BD229993C410054401E /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4B4BD129993C410054401E /* DetailViewModel.swift */; };
+		3C4B4BD52999EE700054401E /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4B4BD42999EE700054401E /* Mode.swift */; };
 		3C8AB49C2991617F00A9E241 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49B2991617F00A9E241 /* KakaoSDKAuth */; };
 		3C8AB49E2991617F00A9E241 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49D2991617F00A9E241 /* KakaoSDKCommon */; };
 		3C8AB4A02991617F00A9E241 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49F2991617F00A9E241 /* KakaoSDKUser */; };
@@ -49,6 +50,7 @@
 		3C3959B329923C5B006D2E52 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3C4B4BCF2999375D0054401E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3C4B4BD129993C410054401E /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		3C4B4BD42999EE700054401E /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
 		3C8CE7B329952E9200BEDDDD /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		3C8CE7B529954A4500BEDDDD /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		3C8CE7B929954AC900BEDDDD /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				3C1B336B29928FC900AF9CA6 /* Schedule.swift */,
 				3C1B33732993667D00AF9CA6 /* Social.swift */,
 				3C35D1A12997C233009E795F /* Process.swift */,
+				3C4B4BD42999EE700054401E /* Mode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				3C1B33742993667D00AF9CA6 /* Social.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				3C1B337229935B9400AF9CA6 /* DateFormatter+Extension.swift in Sources */,
+				3C4B4BD52999EE700054401E /* Mode.swift in Sources */,
 				3C4B4BD02999375D0054401E /* DetailViewController.swift in Sources */,
 				3C3959B429923C5B006D2E52 /* LoginViewController.swift in Sources */,
 				3C1B337629936C7A00AF9CA6 /* FireBaseError.swift in Sources */,
