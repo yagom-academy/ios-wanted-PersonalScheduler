@@ -22,6 +22,7 @@
 		3C4B4BD02999375D0054401E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4B4BCF2999375D0054401E /* DetailViewController.swift */; };
 		3C4B4BD229993C410054401E /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4B4BD129993C410054401E /* DetailViewModel.swift */; };
 		3C4B4BD52999EE700054401E /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4B4BD42999EE700054401E /* Mode.swift */; };
+		3C4B4BD72999F0F50054401E /* Manageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4B4BD62999F0F50054401E /* Manageable.swift */; };
 		3C8AB49C2991617F00A9E241 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49B2991617F00A9E241 /* KakaoSDKAuth */; };
 		3C8AB49E2991617F00A9E241 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49D2991617F00A9E241 /* KakaoSDKCommon */; };
 		3C8AB4A02991617F00A9E241 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8AB49F2991617F00A9E241 /* KakaoSDKUser */; };
@@ -51,6 +52,7 @@
 		3C4B4BCF2999375D0054401E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3C4B4BD129993C410054401E /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		3C4B4BD42999EE700054401E /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
+		3C4B4BD62999F0F50054401E /* Manageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manageable.swift; sourceTree = "<group>"; };
 		3C8CE7B329952E9200BEDDDD /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		3C8CE7B529954A4500BEDDDD /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		3C8CE7B929954AC900BEDDDD /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				3C8CE7B929954AC900BEDDDD /* Identifiable.swift */,
+				3C4B4BD62999F0F50054401E /* Manageable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -184,10 +187,10 @@
 		3CC7AA0629922A7E00DB3B56 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				3CC7AA0829922A8C00DB3B56 /* Application */,
 				3C1B337029935B8200AF9CA6 /* Util */,
 				3C1B336A29928F9F00AF9CA6 /* Model */,
 				3CF4FE4E299288CD00226CD1 /* Network */,
-				3CC7AA0829922A8C00DB3B56 /* Application */,
 				3CC7AA0929922AEB00DB3B56 /* Scene */,
 			);
 			path = Source;
@@ -217,9 +220,9 @@
 		3CC7AA0929922AEB00DB3B56 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				3C4B4BCC299936830054401E /* Detail */,
 				3C1B337C29952C1800AF9CA6 /* Login */,
 				3C1B337D29952C2700AF9CA6 /* List */,
+				3C4B4BCC299936830054401E /* Detail */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C4B4BD229993C410054401E /* DetailViewModel.swift in Sources */,
+				3C4B4BD72999F0F50054401E /* Manageable.swift in Sources */,
 				3C1B336C29928FC900AF9CA6 /* Schedule.swift in Sources */,
 				3C8CE7B629954A4500BEDDDD /* ScheduleTableViewCell.swift in Sources */,
 				3C3959B229923386006D2E52 /* LoginViewModel.swift in Sources */,

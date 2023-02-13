@@ -9,13 +9,6 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
 
-/*
-컬렉션      도큐먼트     컬렉션(날짜)    도큐먼트   필드
-Scedule - kakao  -   token  -  uuid  - 데이터
-                              -  uuid  - 데이터
-                   - other_키값 - uuid  - 데이터
-*/
-
 final class FireStoreManager {
     private let userID: String
     private let social: String

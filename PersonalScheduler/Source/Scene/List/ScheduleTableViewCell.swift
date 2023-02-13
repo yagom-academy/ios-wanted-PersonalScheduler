@@ -83,7 +83,9 @@ final class ScheduleTableViewCell: UITableViewCell {
         self.viewModel = viewModel
         
         viewModel.bindData { [weak self] schedule in
-            self?.dateLabel.text = DateFormatter.removeTime(from: schedule.startDate) + "-" + DateFormatter.removeTime(from: schedule.endDate)
+            self?.dateLabel.text = DateFormatter.removeTime(from: schedule.startDate)
+            + "-"
+            + DateFormatter.removeTime(from: schedule.endDate)
 
             self?.titleLabel.text = schedule.title
             self?.contentLabel.text = schedule.content

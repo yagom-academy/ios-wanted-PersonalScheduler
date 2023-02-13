@@ -7,16 +7,6 @@
 
 import UIKit
 
-protocol DataManageable: AnyObject {
-    func updateProcess(data: Schedule)
-    func uploadData(mode: Mode, _ data: Schedule)
-}
-
-protocol EventManageable: AnyObject {
-    func presentDetailView(mode: Mode, data: Schedule?)
-}
-
-
 final class ListViewController: UIViewController {
     typealias DataSource = UITableViewDiffableDataSource<Section, Schedule>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Schedule>
@@ -162,7 +152,9 @@ extension ListViewController {
         
         tableView.delegate = self
         tableView.separatorStyle = .singleLine
-        tableView.separatorInset = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: .zero)
+        tableView.separatorInset = UIEdgeInsets(
+            top: .zero, left: .zero, bottom: .zero, right: .zero
+        )
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(
             ScheduleTableViewCell.self,
