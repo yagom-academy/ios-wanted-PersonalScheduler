@@ -13,26 +13,44 @@ final class DetailViewController: UIViewController {
     private let titleTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Title"
+        textField.layer.borderWidth = 2
+        textField.leftViewMode = .always
+        textField.layer.cornerRadius = 10
+        textField.font = UIFont.preferredFont(forTextStyle: .title2)
+        textField.layer.borderColor = UIColor.systemGray5.cgColor
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
     private let contentTextView: UITextView = {
         let textView = UITextView()
+        textView.layer.borderWidth = 2
+        textView.layer.cornerRadius = 10
+        textView.font = UIFont.preferredFont(forTextStyle: .body)
+        textView.layer.borderColor = UIColor.systemGray5.cgColor
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     
     private let startDatePicker = UIDatePicker()
     private let endDatePicker = UIDatePicker()
-    private let dateLabel: UILabel = {
+    
+    private let startDateLabel: UILabel = {
         let label = UILabel()
-        label.text = "~"
+        label.text = "Start🗓️"
+        return label
+    }()
+    
+    private let endDateLabel: UILabel = {
+        let label = UILabel()
+        label.text = "End🗓️"
         return label
     }()
     
     private let dateStackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.spacing = 10
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .fill
@@ -42,6 +60,7 @@ final class DetailViewController: UIViewController {
     
     private let detailStackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.spacing = 10
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill
@@ -116,7 +135,7 @@ extension DetailViewController {
     
     private func setupView() {
         view.backgroundColor = .systemBackground
-        [startDatePicker, dateLabel, endDatePicker]
+        [startDateLabel, startDatePicker, endDateLabel, endDatePicker]
             .forEach(dateStackView.addArrangedSubview(_:))
         [titleTextField, dateStackView, contentTextView]
             .forEach(detailStackView.addArrangedSubview(_:))
@@ -137,10 +156,12 @@ extension DetailViewController {
     private func setupConstraint() {
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            detailStackView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            detailStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            detailStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            detailStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+            titleTextField.heightAnchor.constraint(equalToConstant: 50),
+            
+            detailStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 10),
+            detailStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
+            detailStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10),
+            detailStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -10),
         ])
     }
 }

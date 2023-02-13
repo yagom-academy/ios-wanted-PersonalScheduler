@@ -135,6 +135,8 @@ extension ListViewController {
         navigationItem.hidesBackButton = true
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.tintColor = .systemOrange
+        navigationController?.navigationBar.topItem?.title = "Schedules"
         
         let addBarButton = UIBarButtonItem(
             image: UIImage(systemName: "plus.circle.fill"),
